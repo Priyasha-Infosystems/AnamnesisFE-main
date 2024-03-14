@@ -1,0 +1,205 @@
+<router-outlet>
+    <ngx-spinner bdColor="rgba(51,51,51,0.8)" size="medium" color="#fff" type="ball-circus" [fullScreen]="true">
+    </ngx-spinner>
+</router-outlet>
+<div class="tabcontent position-relative">
+    <div class="selectorBox">
+        <form [formGroup]="currentRequisitionNoSelectForm">
+            <div class="form-floating selectBox"
+                [ngClass]="{selectedFormValue : currentRequisitionNoSelectForm.value.currentRequisitionNo?true:false}">
+                <select name="Current Status" id="CurrentStatus" formControlName="currentRequisitionNo">
+                    <option value=""></option>
+                    <option [value]="requisition.requisitionNumber" *ngFor="let requisition of requisitionNoList">
+                        {{requisition.requisitionNumber}}</option>
+                </select>
+                <label for="Laboratory">Requisition No</label>
+                <i class="bi-x-circle-fill deleteName" (click)="unselectRequisitionNo()"
+                    *ngIf="currentRequisitionNoSelectForm.getRawValue().currentRequisitionNo"></i>
+            </div>
+        </form>
+    </div>
+    <div class="medicalName" *ngIf="pharmacyDetails">
+        <div class="row">
+            <div class="col-md-7">
+                <h2>{{pharmacyDetails.diagnosticCentreName}}</h2>
+                <h6 [innerHTML]="pharmacyDetails.addressLine |addressLine" *ngIf="pharmacyDetails.addressLine"></h6>
+                <h6>{{pharmacyDetails.landmark}}</h6>
+                <h6>{{pharmacyDetails.city}}, {{pharmacyDetails.stateName}} - {{pharmacyDetails.pincode}}</h6>
+            </div>
+            <div class="col-md-5">
+                <div class="d-flex mb-2">
+                    <i class="bi-telephone-fill"></i>
+                    <div class="px-1">
+                        <label for="phone-No">Phone No</label>
+                        <h6>{{pharmacyDetails.contactNo}}</h6>
+                    </div>
+                </div>
+                <div class="d-flex">
+                    <i class="bi-clock-fill"></i>
+                    <div class="px-1">
+                        <label for="Hours">Hours</label>
+                        <h6><b>{{getOpeningDays(pharmacyDetails.openDays)}}</b>
+                            {{pharmacyDetails.openHourStart?utilityService.timeFormateInto12Hours(pharmacyDetails.openHourStart):''}}
+                            -
+                            {{pharmacyDetails.openHourEnd?utilityService.timeFormateInto12Hours(pharmacyDetails.openHourEnd):''}}
+                        </h6>
+                    </div>
+                </div>
+                <div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="display" *ngIf="currentRequisitionNoSelectForm.getRawValue().currentRequisitionNo">
+        <div class="header">
+            <div class="row">
+                <div class="col-md-10">
+                    <div class="d-flex align-items-center h-100">
+                        <Label>Number Of Items :</Label>
+                        <p>{{itemList().length}}</p>
+                    </div>
+                </div>
+                <div class="col-md-2 d-flex flex-column">
+                    <div class="d-flex" *ngIf="!isRequisitionViewOnly">
+                        <label for="">Item Selected :</label>
+                        <p>{{selectedItemQuantity()}}</p>
+                    </div>
+                    <div class="d-flex justify-content-end Proceed" *ngIf="isRequisitionViewOnly">
+                        <button>Print</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="MedicineModify" *ngIf="!isRequisitionViewOnly">
+            <div class="row bottom-border">
+                <div class="col-md-1 text-center">
+                    <p>S.No</p>
+                </div>
+                <div class="col-md-7">
+                    <p>Medicine Name</p>
+                </div>
+                <div class="col-md-2">
+                    <p>Quantity</p>
+                </div>
+                <div class="col-md-2">
+                </div>
+            </div>
+            <div *ngIf="itemList().length">
+                <form [formGroup]="itemSupplierForm">
+                    <div formArrayName="itemList" *ngIf="itemList().length">
+                        <div class="bottom-borders" [ngClass]="{'noBorder':itemList().length <= itemIndex+1}"
+                            *ngFor="let item of itemList().controls; let itemIndex = index">
+                            <div class="row position-relative">
+                                <ng-container formGroupName="{{itemIndex}}">
+                                    <div class="col-md-1 S_no ">
+                                        <input class=" " type="checkbox" value=""
+                                            aria-label="Checkbox for following text input" id="Quantity"
+                                            formControlName="isSelect" (change)="itemSelect(itemIndex)">
+                                        <p>{{itemIndex+1}}</p>
+                                    </div>
+                                    <div class="col-md-7 d-flex align-items-center justify-content-start">
+                                        <h6>{{item.value.itemName}}</h6>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <div class="row">
+                                            <div class="col-md-6 px-2 d-flex justify-content-center align-items-center">
+                                                <div class="form-floating ">
+                                                    <p>{{item.getRawValue().quantity}}</p>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 px-2 position-relative">
+                                                <div class="form-floating updateQuantityInput">
+                                                    <input type="text" class="form-control" id="floatingInput"
+                                                        *ngIf="item.value.isEdit" placeholder="Quantity"
+                                                        formControlName="updatedQuantity"
+                                                        (keyup)="updateQuantityChange(itemIndex,item.value.updatedQuantity)"
+                                                        [ngClass]="{errinput:item.value.updatedQuantity && item.value.err,warninginut:item.value.updatedQuantity && item.value.war}">
+                                                </div>
+                                                <i class="fa fa-exclamation-triangle err"
+                                                    *ngIf=" item.value.updatedQuantity && item.value.err && !item.value.war"
+                                                    [ngbTooltip]="item.value.errMsg"></i>
+                                                <i class="fa fa-exclamation-triangle war"
+                                                    *ngIf=" item.value.updatedQuantity && !item.value.err && item.value.war"
+                                                    [ngbTooltip]="item.value.errMsg"></i>
+                                                <i class="fa fa-check-square suc"
+                                                    *ngIf=" item.value.updatedQuantity && !item.value.err && !item.value.war"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2 d-flex align-items-center justify-content-evenly"
+                                        *ngIf="item.value.isSelect">
+                                        <i class="fa fa-edit" [ngClass]="{disableEdit:!item.value.isEdit}"
+                                            (click)="updatequantity(itemIndex)"></i>
+                                    </div>
+                                </ng-container>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <div class="text-end px-4 Proceed" [ngClass]="{disable:!isDisabledproceed()}">
+                    <button (click)="medicineProceed()">Proceed</button>
+                </div>
+            </div>
+            <div class="noItem" *ngIf="!itemList().length">
+                <p>No item is there</p>
+            </div>
+        </div>
+        <div class="MedicineModify" *ngIf="isRequisitionViewOnly">
+            <div class="row bottom-border">
+                <div class="col-md-1 text-center">
+                    <p>S.No</p>
+                </div>
+                <div class="col-md-8">
+                    <p>Medicine Name</p>
+                </div>
+                <div class="col-md-3">
+                    <p>Quantity</p>
+                </div>
+            </div>
+            <div *ngIf="itemList().length">
+                <form [formGroup]="itemSupplierForm">
+                    <div formArrayName="itemList" *ngIf="itemList().length">
+                        <div class="bottom-borders" [ngClass]="{'noBorder':itemList().length <= itemIndex+1}"
+                            *ngFor="let item of itemList().controls; let itemIndex = index">
+                            <div class="row position-relative">
+                                <ng-container formGroupName="{{itemIndex}}">
+                                    <div class="col-md-1 d-flex align-items-center justify-content-evenly">
+                                        <p>{{itemIndex+1}}</p>
+                                    </div>
+                                    <div class="col-md-8 d-flex align-items-center justify-content-start">
+                                        <h6>{{item.value.itemName}}</h6>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="row">
+                                            <div class="col-md-12 px-2">
+                                                <div class="d-flex justify-content-start" style="margin-left: 30px;">
+                                                    <p>{{item.getRawValue().quantity}}</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </ng-container>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <div class="text-end px-4 Proceed" [ngClass]="{disable:!isDisabledproceed()}"
+                    *ngIf="!isRequisitionViewOnly">
+                    <button (click)="medicineProceed()">Proceed</button>
+                </div>
+                <div class="text-end px-4 Proceed" *ngIf="isRequisitionViewOnly">
+                    <button (click)="editRequisition()">Next</button>
+                </div>
+            </div>
+            <div class="noItem" *ngIf="!itemList().length">
+                <p>No item is there</p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="displayPopup" tabindex="-1" role="dialog" *ngIf="medicineConfirmation">
+    <div class="container">
+        <app-supplier-requisition-confirmation [supplierRequestData]="proceedData"
+            (close)="cllosePopup($event)"></app-supplier-requisition-confirmation>
+    </div>
+</div>

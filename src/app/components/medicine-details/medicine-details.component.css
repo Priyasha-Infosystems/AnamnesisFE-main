@@ -1,0 +1,504 @@
+.modal-content {
+  height: 100%;
+  background-color: #F6F7FF !important;
+  box-shadow: 0px 4px 5px rgba(113, 59, 219, 0.12);
+  border-radius: 5px;
+  padding: 6px 35px;
+}
+
+.close {
+  position: absolute;
+  right: -7px;
+  top: -7px;
+  z-index: 10;
+  cursor: pointer;
+  width: 34px;
+  height: 35px;
+  background: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50px;
+  box-shadow: 0px 0px 7px 1px #d9480f;
+}
+
+#medicineView {
+  display: flex;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4);
+  align-items: center;
+}
+
+.close i {
+  color: #d9480f;
+  font-size: 25px;
+}
+
+.bi-x-circle-fill::before {
+  vertical-align: -0.16em !important;
+}
+
+.modal-body {
+  padding: 15px;
+}
+
+.medicinename h2 {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 121.5%;
+  color: #434242;
+  margin: 0;
+}
+
+.medicineDetails p {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1;
+  color: #535353;
+  margin: 0;
+}
+
+.company {
+  padding: 6px 0px 0px 0px;
+}
+
+.medicineDetails h6 {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1;
+  color: #000000;
+  margin: 0;
+}
+
+.medicineDetails span {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 110%;
+  color: #d9480f;
+}
+
+.medicineDetails .bdr {
+  border-bottom: 1px solid rgba(113, 59, 219, 0.19);
+  margin-bottom: 15px;
+  padding-bottom: 5px;
+}
+
+.medicineDetails button {
+  width: 230px;
+  height: 45px;
+  background: rgba(255, 255, 255, 0.79);
+  border: 1px solid #d9480f;
+  box-shadow: 0px 12px 53px -24px #d9480f;
+  border-radius: 5px;
+  padding: 11px 6px;
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+  font-size: 12px;
+  line-height: 110%;
+  color: #d9480f;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.medicineDetails button img {
+  max-width: 16px;
+  margin: 0px 6px;
+}
+
+.Storebelow {
+  border: 1px solid #149EEC !important;
+  box-shadow: 0px 12px 53px -24px #149EEC !important;
+  color: #149EEC !important;
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+  width: 24px;
+  height: 24px;
+  top: 50%;
+  border-radius: 50px;
+  padding: 6px;
+  background: #444040;
+  box-shadow: 0px 4px 8px rgb(113 59 219 / 51%);
+  margin: 0px 20px;
+  opacity: 1;
+}
+
+.medicineDetails button span {
+  width: 10px;
+  height: 10px;
+}
+
+.medicineCarousel {
+  height: 250px;
+  margin: auto;
+  border: 1px solid rgba(221, 221, 221, 0.54);
+  box-shadow: 0px 12px 53px -24px rgba(134, 87, 226, 0.63);
+  border-radius: 12px;
+}
+
+.carousel-inner {
+  height: 250px;
+  margin: auto;
+}
+
+
+.carousel-item {
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  padding: 15px;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.carousel-item img {
+  height: 100%;
+  margin: auto;
+}
+
+.Description h2 {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 121.5%;
+  color: #434242;
+  margin-bottom: 5px;
+}
+
+.Description p {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 151%;
+  color: #535353;
+  margin: 0;
+  text-align: justify;
+}
+
+.user h3 {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 121.5%;
+  color: #000;
+}
+
+.Effects_Uses {
+  border: 1px solid #d9480f;
+  border-radius: 5px;
+  background: #fff;
+  box-shadow: 4px 4px 9px 1px #d3af6187;
+  margin-bottom: 15px;
+}
+
+.sideEffects {
+  padding: 10px 0px 10px 10px;
+  height: 100%;
+  width: 100%;
+}
+
+.border-right {
+  border-right: 1px solid #d9480f;
+}
+
+.user {
+  padding: 10px 10px 0px 0px;
+  height: 100%;
+  width: 100%;
+  position: relative;
+}
+
+.user p {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 147%;
+  color: #535353;
+  text-align: justify;
+  word-break: break-all;
+  padding-right: 4px;
+}
+
+.userScroll {
+  overflow: auto;
+  position: absolute;
+  top: 30px;
+  bottom: 16px;
+}
+
+.sideEffects h3 {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 121.5%;
+  color: #000;
+}
+
+.sideEffects p {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  color: #323131;
+  margin: 0;
+  display: inline-block;
+  padding: 0px 14px 0px 4px;
+  word-break: break-word;
+}
+
+.sideEffects i {
+  color: #d9480f;
+  font-size: 10px;
+  padding: 3px 0px 0px 13px;
+}
+
+.sideEffectsScroll {
+  height: 150px;
+  overflow: hidden;
+  overflow-y: auto;
+}
+
+.SafetyScroll {
+  height: 684px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding-right: 5px;
+}
+
+.Safety img {
+  background: #FFFFFF;
+  border: 1px solid rgb(205 72 28);
+  padding: 4px;
+  border-radius: 50px;
+  width: 36px;
+  height: 36px;
+  margin-right: 7px;
+}
+
+.Safety h2 {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 25px;
+  line-height: 121.5%;
+  color: #434242;
+}
+
+.Safety h3 {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 17px;
+  line-height: 121.5%;
+  color: #d9480f;
+  margin: 0;
+  letter-spacing: 1px;
+}
+
+.Safety p {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 146%;
+  color: #535353;
+  text-align: justify;
+  padding-right: 5px;
+}
+
+@media (min-width: 576px) {
+  .modal-dialog {
+    max-width: 98%;
+  }
+}
+
+.sliderimg {
+  width: 85%;
+  height: 246px;
+}
+
+.medicineDetails {
+  padding: 15px 0px;
+  position: relative;
+}
+
+.Description p {
+  overflow: auto;
+  height: 185px;
+  padding-right: 8px;
+}
+
+.carousel-indicators button {
+  background-color: #d9480f;
+}
+
+.details ::-webkit-scrollbar {
+  width: 5px;
+}
+
+.details ::-webkit-scrollbar-track {
+  background: #f1e3c2;
+  border-radius: 3px;
+}
+
+.Alcohol h5 {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 8px;
+  line-height: 121.5%;
+  color: #0d6efd;
+  margin: 0;
+  padding-left: 10px;
+  letter-spacing: 0.3px;
+}
+
+.details ::-webkit-scrollbar-thumb {
+  background: #d9480f;
+  border-radius: 3px;
+}
+
+.details ::-webkit-scrollbar-thumb:hover {
+  background: #a17612;
+}
+
+.somthingWentWrong {
+  min-height: 284px;
+  margin-top: 195px;
+  display: flex;
+  justify-content: center;
+}
+
+.modal {
+  display: block;
+  position: fixed;
+  padding-top: 14px;
+  left: 0px;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0 0 0 / 57%);
+  backdrop-filter: blur(2px);
+}
+
+.medicinename i {
+  color: #713bdb;
+  font-size: 18px;
+  padding: 0px 20px;
+  cursor: pointer;
+}
+
+.footerBtn button {
+  background-image: url(../../../assets/images/arrowBTN.png);
+  background-color: #fff0;
+  background-size: cover;
+  background-repeat: no-repeat;
+  border: none;
+  position: absolute;
+  top: 50%;
+  font-size: 12px;
+  line-height: 0;
+  color: #000;
+  transition: 0.3s;
+  transform: rotate(90deg);
+  height: 43px;
+  width: 114px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding-bottom: 16px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.footerBtn button:hover {
+  color: #d1cfcf;
+}
+
+.Faqs__ques___1iPB9 {
+  color: #212121;
+  padding-bottom: 8px;
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.Faqs__ans___1uuIW {
+  padding-bottom: 16px;
+  font-size: 12px;
+}
+
+.Address p {
+  padding-top: 4px;
+  color: #000 !important;
+}
+
+.rup {
+  font-size: 14px;
+  padding: 4px 4px;
+  color: #673AB7;
+}
+
+.medicinePrice h6 {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: normal;
+  color: #673AB7;
+}
+
+.medicinePrice h2 {
+  font-size: 17px;
+  margin: 0;
+  padding: 0px 4px 0px 5px;
+}
+
+.addCart {
+  background: #713bdb !important;
+  color: #fff !important;
+  border: none !important;
+  height: 40px !important;
+  font-size: 14px !important; 
+  margin: 10px 15px 0px 0px;
+}
+
+.status p {
+  color: #713bdb;
+  font-size: 14px;
+  padding-left: 15px;
+  margin: 0;
+}
+
+.scheduleDrug {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 110%;
+  color: #fff !important;
+  background-color: #d9480f;
+  border-radius: 5px;
+}

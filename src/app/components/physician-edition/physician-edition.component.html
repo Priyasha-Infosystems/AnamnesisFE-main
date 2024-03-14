@@ -1,0 +1,322 @@
+<div class="width">
+  <div class="row w-100 m-auto">
+    <div class="col-md-6"></div>
+    <div class="col-md-6">
+      <div class="tabpane" id="Physician">
+        <h2>Physician Edition</h2>
+        <form [formGroup]="PhysicianFormGroup">
+          <div class="box d-flex justify-content-between flex-wrap">
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-floating">
+                  <input type="text" name="Physician_Name" id="Physician_Name" placeholder="Enter Physician Name"
+                    class="form-control" formControlName="displayName">
+                  <label for="Laboratory">Physician Name</label>
+                </div>
+                <div class="validation-div errorDiv">
+                  <app-validation-message [control]="PhysicianFormGroup.controls['displayName']"
+                    [messages]="errorMessage.physicianForm.displayName">
+                  </app-validation-message>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-floating">
+                  <input type="text" name="First_Name" id="First_Name" placeholder="Enter First Name"
+                    class="form-control" formControlName="firstName">
+                  <label for="Laboratory">First Name</label>
+                </div>
+                <div class="validation-div errorDiv">
+                  <app-validation-message [control]="PhysicianFormGroup.controls['firstName']"
+                    [messages]="errorMessage.physicianForm.firstName">
+                  </app-validation-message>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-floating">
+                  <input type="text" name="Middle_Name" id="Middle_Name" placeholder="Enter Middle Name"
+                    class="form-control" formControlName="middleName">
+                  <label for="Laboratory">Middle Name</label>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-floating">
+                  <input type="text" name="Last_Name" id="Last_Name" placeholder="Enter Last Name" class="form-control"
+                    formControlName="lastName">
+                  <label for="Laboratory">Last Name</label>
+                </div>
+                <div class="validation-div errorDiv">
+                  <app-validation-message [control]="PhysicianFormGroup.controls['lastName']"
+                    [messages]="errorMessage.physicianForm.lastName">
+                  </app-validation-message>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-floating">
+                  <input type="text" name="Degree" id="Degree" placeholder="Enter Degree" class="form-control"
+                    formControlName="physicianQualification">
+                  <label for="Laboratory">Degree</label>
+                </div>
+                <div class="validation-div errorDiv">
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-floating">
+                  <input type="text" name="Specialisation" id="Specialisation" placeholder="Enter Specialisation"
+                    class="form-control" formControlName="physicianSpecialisation">
+                  <label for="Specialisation">Specialisation</label>
+                </div>
+                <div class="validation-div errorDiv">
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-floating">
+                  <input type="text" name="Registration" id="Registration" placeholder="Enter Registration Number"
+                    class="form-control" formControlName="registrationNumber">
+                  <label for="">Registration Number</label>
+                </div>
+                <div class="validation-div errorDiv">
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-floating">
+                  <input type="text" name="Registration_Authority" placeholder="Registration Authority"
+                    class="form-control" formControlName="registrationAuthority">
+                  <label for="">Registration Authority</label>
+                </div>
+                <div class="validation-div errorDiv">
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-floating">
+                  <input id="file" type="input" name="Contact_Number" class="form-control Dr-list massage-box"
+                    placeholder="Contact Number" class="form-control" formControlName="primaryContactNumber">
+                  <label for="">Contact Number</label>
+                </div>
+                <div class="validation-div errorDiv">
+                  <app-validation-message [control]="PhysicianFormGroup.controls['primaryContactNumber']"
+                    [messages]="errorMessage.physicianForm.primaryContactNumber">
+                  </app-validation-message>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-floating">
+                  <input id="file" type="input" name="Contact_Number" class="form-control Dr-list massage-box"
+                    placeholder="Contact Number" class="form-control" formControlName="secondaryContactNumber">
+                  <label for="">Secondary Contact Number</label>
+                </div>
+                <div class="validation-div errorDiv">
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-floating">
+                  <input type="email" name="Email" id="Email" placeholder="Enter Email Id" class="form-control"
+                    formControlName="emailID">
+                  <label for="">Email Id</label>
+                </div>
+                <div class="validation-div errorDiv">
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-floating selectBox"
+                      [ngClass]="{selectedFormValue : PhysicianFormGroup.value.addressType}">
+                      <select class="form-select" formControlName="addressType" id="floatingSelect TrendChart"
+                        aria-label="Floating label select example" name="TrendChart">
+                        <option value="WORK" *ngIf="PhysicianFormGroup.get('healthClinicName')?.value">Health
+                          Clinic
+                        </option>
+                        <option value="HOME">Home</option>
+                      </select>
+                      <label for="floatingSelect">Address Type</label>
+                    </div>
+                    <div class="validation-div errorDiv">
+                      <app-validation-message [control]="PhysicianFormGroup.controls['addressType']"
+                        [messages]="errorMessage.physicianForm.addressType">
+                      </app-validation-message>
+                      <small *ngIf="PhysicianFormGroup.controls['addressType'].valid">{{addressError}}</small>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <button class="addAddress w-100 mt-3" (click)="manageAddress()"> + Add Address</button>
+
+                    <div *ngIf="physicianWorkAddressDetails && physicianAddressType==='WORK'">
+                      <p>{{physicianWorkAddressDetails.addressIdentifier}}</p>
+                    </div>
+                    <div *ngIf="physicianHomeAddressDetails && physicianAddressType==='HOME'">
+                      <p>{{physicianHomeAddressDetails.addressIdentifier}}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-floating">
+                  <input type="text" name="Search" id="Search" placeholder="Search" class="form-control"
+                    formControlName="healthClinicName" [matAutocomplete]="healthClinicNameauto"
+                    [ngClass]="{'disable':PhysicianFormGroup.get('healthClinicName')?.disabled === true}"
+                    (keyup)="onTypeHealthClinicName()">
+                  <label for="">Health Clinic</label>
+                  <mat-autocomplete #healthClinicNameauto="matAutocomplete">
+                    <mat-option *ngFor="let item of healthClinicList" [value]="searcedhealthClinic"
+                      (click)="selectHealthClinic(item)">
+                      <p>{{item.healthClinicName}} <span
+                          style="font-size: 12px !important; color: #713bdb;">{{item.healthClinicID}}</span>
+                      </p>
+                    </mat-option>
+                  </mat-autocomplete>
+                  <button class="Delete" *ngIf="PhysicianFormGroup.get('healthClinicID')?.value.length"
+                    (click)="unSelectHealthClinicForPrescription()"><i class="bi-x-circle-fill"></i></button>
+                  <div *ngIf="showHealthClinicDetails" class="doctorDetails">
+                    <div class="CollapsePrescribed">
+                      <ul class="m-d expand-list p-0">
+                        <li data-md-content="200">
+                          <label name="tab" for="tabAddress" tabindex="-1" class="tab_lab w-100" role="tab">
+                            <div>
+                              <div id="dropdownMenuLink" style="display: flex;">
+                                <div>
+                                  <span>{{selectedHealthClinicDetails.physicianName}}</span>
+                                  <span
+                                    style="font-size: 12px !important; color: #713bdb;">&nbsp;({{selectedHealthClinicDetails.physicianUserCode}})</span>
+                                </div>
+                              </div>
+                            </div>
+                          </label>
+                          <div class="row">
+                            <div class="col-md-12">
+                              <div class="doctorCard">
+                                <div class="row">
+                                  <div class="col-md-11">
+                                    <div class="CollapsePrescribed">
+                                      <ul class="m-d expand-list p-0">
+                                        <li data-md-content="200">
+                                          <label name="tab" for="tabAddress" tabindex="-1" class="tab_lab w-100"
+                                            role="tab">
+                                            <div>
+                                              <div id="dropdownMenuLink" style="display: flex;">
+                                                <div>
+                                                  <span>{{selectedHealthClinicDetails.healthClinicName}}</span>
+                                                  <span
+                                                    style="font-size: 12px !important; color: #713bdb;">&nbsp;({{selectedHealthClinicDetails.healthClinicID
+                                                    }})</span>
+                                                </div>
+                                              </div>
+                                            </div>
+                                          </label>
+                                          <div class="row">
+                                            <div class="col-md-12">
+                                              <div class="doctorCard">
+                                                <div class="row">
+                                                  <div class="col-md-4">
+                                                    <div class="profileImg">
+                                                      <img
+                                                        [src]="selectedHealthClinicDetails.profilePictureName|getFile:selectedHealthClinicDetails.profilePictureType">
+                                                    </div>
+                                                  </div>
+                                                  <div class="col-md-8">
+                                                    <div class="d-flex flex-column">
+                                                      <div class="d-flex mb-2">
+                                                        <i class="bi-geo-alt-fill"></i>
+                                                        <div class="d-flex flex-column">
+                                                          <p [innerHTML]="selectedHealthClinicDetails.addressLine |addressLine"
+                                                            *ngIf="selectedHealthClinicDetails.addressLine"></p>
+                                                          <p>{{selectedHealthClinicDetails.landmark}}</p>
+                                                          <p>{{selectedHealthClinicDetails.city}} ,
+                                                            {{selectedHealthClinicDetails.stateName}} -
+                                                            {{selectedHealthClinicDetails.pincode}}</p>
+                                                        </div>
+                                                      </div>
+                                                      <div class="d-flex">
+                                                        <i class="bi-telephone-fill"></i>
+                                                        <div class="d-flex flex-column">
+                                                          <p>
+                                                            <b>(P)</b>+91{{selectedHealthClinicDetails.primaryContactNo}}
+                                                          </p>
+                                                          <div *ngIf="selectedHealthClinicDetails.secondaryContactNo">
+                                                            <p>
+                                                              <b>(S)</b>+91{{selectedHealthClinicDetails.secondaryContactNo}}
+                                                            </p>
+                                                          </div>
+                                                        </div>
+                                                      </div>
+                                                      <div class="d-flex">
+                                                        <i class="bi-clock"></i>
+                                                        <div class="d-flex ">
+                                                          <div *ngif="selectedHealthClinicDetails.openHoureStart">
+                                                            <p>
+                                                              <b>Open -
+                                                              </b>{{selectedHealthClinicDetails.openHoureStart}}
+                                                            </p>
+                                                          </div>
+                                                          <div *ngif="selectedHealthClinicDetails.openHoureEnd">
+                                                            <p>
+                                                              <b>Close -
+                                                              </b>{{selectedHealthClinicDetails.openHoureEnd}}
+                                                            </p>
+                                                          </div>
+                                                        </div>
+                                                      </div>
+                                                      <p>
+                                                        <!--  {{selectedPhysicianDetails.physicianSpecialisation}} -->
+                                                      </p>
+                                                    </div>
+                                                  </div>
+                                                </div>
+                                              </div>
+                                            </div>
+                                            <div class="col-md-12 d-flex justify-content-between">
+                                              <button class="Confirm"
+                                                (click)="selectHealthClinicForPrescription()">Confirm</button>
+                                              <button class="Confirm" (click)="unSelectHealthClinic()">Cancel</button>
+                                            </div>
+                                          </div>
+                                        </li>
+                                      </ul>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col-md-12 text-end">
+                              <button class="Confirm" (click)="unSelectHealthClinic()" class="p-2">Cancel</button>
+                              <button class="Confirm" (click)="selectHealthClinicForPrescription()"
+                                class="p-2">Confirm</button>
+                            </div>
+                          </div>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="errorDiv">
+                  <small>{{physicianErrMSG}}</small>
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+        <div class="row">
+          <div class="col-md-6 text-center">
+            <button class="p-2"
+              (click)="physicianSave(PhysicianFormGroup.value,PhysicianFormGroup.valid)">Confirm</button>
+          </div>
+          <div class="col-md-6 text-center">
+            <button class="p-2" (click)="closePopup()">Cancel</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="myModal" class="modal PHYeditionAdress" *ngIf="physicianOpenAddressModal" tabindex="-1" role="dialog">
+  <div class="row w-100 m-auto">
+    <div class="col-md-5"></div>
+    <div class="col-md-7  ">
+      <app-address-modal [stateList]="stateList" [newAddress]="physicianAddNewAddress"
+        [selectedAddress]="physicianSelectedAddress" [isApiCall]="false" [addressType]="physicianAddressType"
+        (close)="closeAddressPopup($event)">
+      </app-address-modal>
+    </div>
+  </div>
+</div>

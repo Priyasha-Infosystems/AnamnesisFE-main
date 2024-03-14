@@ -1,0 +1,31 @@
+<header id="header" class="header d-flex align-items-center fixed-top" [class.sticked]="header_variable">
+  <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
+    <a class="logo d-flex align-items-center" (click)="navigateTo('Banner')" routerLink="/" routerLinkActive="active">
+
+      <div class="d-flex align-items-center">
+        <a class="logo">
+          <img src="../../../assets/images/Anamnesis_new_logo.png">
+        </a>
+        <a class="logotitle"><small>A</small>namnesis <span>My Health Book</span></a>
+      </div>
+    </a>
+    <i class="mobile-nav-toggle mobile-nav-show bi bi-list" (click)="toggleNavbar()"></i>
+    <nav id="navbar" class="navbar" [ngClass]="{'openNav': openNavbar}">
+      <ul>
+        <i class="bi bi-x" *ngIf="openNavbar" (click)="toggleNavbar()"></i>
+        <li>
+          <a (click)="navigateTo('servicesList')" class="pointerCursor">Services</a>
+        </li>
+        <li>
+          <a (click)="navigateOther('about')" class="pointerCursor">About Us</a>
+        </li>
+        <li><a (click)="navigateTo('recentPosts')" class="pointerCursor">Blog</a></li>
+        <li><a (click)="navigateTo('contactForm')" class="pointerCursor">Contact Us </a></li>
+        <li><Button class="Login" (click)="navigateLogin()">LogIn</Button>
+          <!-- <span>Coming soon !!!</span> -->
+        </li>
+      </ul>
+    </nav>
+    <!-- .navbar -->
+  </div>
+</header>

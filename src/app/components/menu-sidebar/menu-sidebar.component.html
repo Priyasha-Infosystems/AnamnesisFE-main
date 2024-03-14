@@ -1,0 +1,63 @@
+<div id="menuSidebar" class="tab">
+    <h5>Manage Account</h5>
+    <div *ngFor="let avlMenu of activeMenuList">
+        <button *ngIf="avlMenu==='MPFL'" [ngClass]="activeMenu === 'my-profile' ? 'tablinks active' : 'tablinks'"
+        (click)="navigateTo('my-profile')"><i style="width: 5%" class="fa fa-user"></i> My
+        Profile</button>
+    <button *ngIf="avlMenu==='UPHD'"
+        [ngClass]="activeMenu === 'upload-health-document' ? 'tablinks active' : 'tablinks'"
+        (click)="navigateTo('upload-health-document')"><i style="width: 5%" class="fa fa-file"></i> Upload
+        Health Document</button>
+    <button *ngIf="avlMenu==='MNAD'" [ngClass]="activeMenu === 'manage-address' ? 'tablinks active' : 'tablinks'"
+        (click)="navigateTo('manage-address')"><i style="width: 5%" class="fa fa-map-marker"></i>
+        Manage Address</button>
+    <button *ngIf="avlMenu==='AUTH'"
+        [ngClass]="activeMenu === 'authorize-prescription' ? 'tablinks active' : 'tablinks'"
+        (click)="navigateTo('authorize-prescription')"><i style="width: 5%" class="fa fa-hospital-o"></i>
+        Authorize Prescription</button>
+    <button *ngIf="avlMenu==='BULK'" [ngClass]="activeMenu === 'user-setup' ? 'tablinks active' : 'tablinks'"
+        (click)="navigateTo('user-setup')"><i style="width: 5%" class="fa fa-hospital-o"></i>
+        User Setup</button>
+    <button *ngIf="avlMenu==='ASCH'" [ngClass]="activeMenu === 'add-schedule' ? 'tablinks active' : 'tablinks'"
+        (click)="navigateTo('add-schedule')"><i style="width: 5%" class="fa fa-hospital-o"></i>
+        Add Schedule</button>
+    <button *ngIf="avlMenu==='PHYS'"
+        [ngClass]="activeMenu === 'physician-schedule' ? 'tablinks active' : 'tablinks'"
+        (click)="navigateTo('physician-schedule')"><i style="width: 5%" class="fa fa-hospital-o"></i>
+        Physician Schedule</button>
+    <button *ngIf="avlMenu==='DCSS'"
+        [ngClass]="activeMenu === 'diagnostic-center-schedule' ? 'tablinks active' : 'tablinks'"
+        (click)="navigateTo('diagnostic-center-schedule')"><i style="width: 5%" class="fa fa-lock"></i> Diagnostic
+        Centre Schedule</button>
+    <button *ngIf="avlMenu==='LTRC'"
+        [ngClass]="activeMenu === 'labtest-report-creat' ? 'tablinks active' : 'tablinks'"
+        (click)="navigateTo('labtest-report-creat')"><i style="width: 5%" class="fa fa-lock"></i> Create
+        Laboratory Test Report</button>
+    <button *ngIf="avlMenu==='ASAD'"
+        [ngClass]="activeMenu === 'auth-signatory-addition' ? 'tablinks active' : 'tablinks'"
+        (click)="navigateTo('auth-signatory-addition')"><i style="width: 5%" class="bi-clipboard-plus"></i> Authorised
+        Signatory</button>
+    <button *ngIf="avlMenu==='PHYC'"
+        [ngClass]="activeMenu === 'physician-calendar' ? 'tablinks active' : 'tablinks'"
+        (click)="navigateTo('physician-calendar')"><i style="width: 5%" class="bi-clipboard-plus"></i> Physician
+        Calendar</button>
+    <button *ngIf="avlMenu==='PATC'"
+        [ngClass]="activeMenu === 'general-medical-information-update' ? 'tablinks active' : 'tablinks'"
+        (click)="navigateTo('general-medical-information-update')"><i style="width: 5%" class="bi-clipboard-plus"></i>
+        Patient Check-in</button>
+    <button *ngIf="avlMenu==='MOLS'" [ngClass]="activeMenu === 'my-order-list' ? 'tablinks active' : 'tablinks'"
+        (click)="navigateTo('my-order-list')"><i style="width: 5%" class="bi-clipboard-plus"></i> My Order List</button>
+    <button *ngIf="avlMenu==='PRCS'" [ngClass]="activeMenu === 'price-setup' ? 'tablinks active' : 'tablinks'"
+        (click)="navigateTo('price-setup')"><i style="width: 5%" class="bi-clipboard-plus"></i> Price Setup</button>
+    </div>
+    <br><br>
+    <h5 style="margin-bottom: 10%; font-size: 18px;">Privacy Settings</h5>
+    <div>
+        <button [ngClass]="activeMenu === 'security-question' ? 'tablinks active' : 'tablinks'"
+            (click)="navigateToSettings('security-question')"><i style="width: 5%" class="fa fa-shield"></i>
+            Security Question</button>
+        <button [ngClass]="activeMenu === 'change-password' ? 'tablinks active' : 'tablinks'"
+            (click)="navigateToSettings('change-password')"><i style="width: 5%" class="fa fa-lock"></i> Change
+            Password</button>
+    </div>
+</div>

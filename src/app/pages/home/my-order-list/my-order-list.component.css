@@ -1,0 +1,501 @@
+#MyOrderList {
+    width: 100%;
+    height: 100%;
+    background: #FFFFFF;
+    border-radius: 22px;
+    padding: 1rem 0.9375rem !important;
+}
+
+#MyOrderList .topHeader button {
+    padding: 1.0625rem 1.6875rem;
+    background: #713BDB;
+    box-shadow: 0px 0.6875rem 34px -5px rgba(113, 59, 219, 0.4);
+    border-radius: 6px;
+    border: none;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 0.8125rem;
+    line-height: 110%;
+    color: #FFFFFF;
+    margin-right: 0.5rem;
+}
+
+#MyOrderList .topHeader label {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 0.6875rem;
+    line-height: 110%;
+    color: #000000;
+}
+
+#MyOrderList label {
+    margin-right: 0.75rem;
+    display: flex;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+#MyOrderList label input {
+    margin-right: 0.25rem;
+    cursor: pointer;
+}
+
+#MyOrderList .contnet {
+    padding: 1rem 0.9375rem;
+}
+
+#MyOrderList .filter .filterHeader {
+    display: flex;
+    align-items: center;
+    padding-bottom: 0.625rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.17);
+}
+
+#MyOrderList .filter .filterHeader img {
+    width: 1rem;
+    height: 0.875rem;
+    margin-top: -0.125rem;
+}
+
+#MyOrderList .filter .filterHeader h2 {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 1.125rem;
+    line-height: 110%;
+    color: #484747;
+    margin: 0;
+    padding-left: 0.3125rem;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+#MyOrderList .filter span {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 1rem;
+    line-height: 110%;
+    color: #484747;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    margin-top: 1.375rem;
+    display: block;
+}
+
+#MyOrderList .filter label {
+    margin: 0.75rem 0rem;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 0.75rem;
+    line-height: 0.9375rem;
+    color: #713BDB;
+}
+
+#MyOrderList .filter input[type="checkbox"] {
+    background: rgba(255, 255, 255, 0.79);
+    border: 1px solid rgba(113, 59, 219, 0.53);
+    box-shadow: 0px -1px 34px -4px rgba(113, 59, 219, 0.86);
+    border-radius: 3px;
+}
+
+#MyOrderList .filter input[type="date"] {
+    width: 100%;
+    padding: 0.75rem;
+    background: rgba(255, 255, 255, 0.79);
+    border: 1px solid rgba(113, 59, 219, 0.35);
+    box-shadow: 0px -1px 34px -4px rgba(113, 59, 219, 0.28);
+    border-radius: 3px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 0.75rem;
+    line-height: 0.9375rem;
+    color: #713BDB;
+    margin-top: 0.4375rem;
+    outline: none;
+}
+
+#MyOrderList .filter .OrderType {
+    padding: 0.9375rem 0rem 0rem 0rem;
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    margin-top: 2.5rem;
+}
+
+#MyOrderList .filter input[type="text"] {
+    width: 100%;
+    padding: 0.75rem;
+    background: rgba(255, 255, 255, 0.79);
+    border: 1px solid rgba(218, 218, 218, 0.46);
+    border-radius: 6px;
+    margin: 0.5625rem 0rem;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 0.75rem;
+    line-height: 0.9375rem;
+    color: #696666;
+    outline: none;
+}
+
+#MyOrderList .orderDetailsList {
+    width: 100%;
+    padding: 0.625rem;
+    background: #fff;
+    border: 1px solid rgb(113 59 219 / 50%);
+    box-shadow: 0px 1rem 34px rgba(113, 59, 219, 0.19);
+    border-radius: 0.625rem;
+    margin-bottom: 0.75rem;
+    position: relative;
+}
+
+#MyOrderList .orderDetailsList .orderDate {
+    width: 100%;
+    height: 100%;
+    background: #F2ECFF;
+    border: 1px solid rgb(113 59 219 / 50%);
+    box-shadow: 0px 1rem 34px rgba(113, 59, 219, 0.19);
+    border-radius: 0.625rem;
+    padding: 0.625rem 0.9375rem;
+}
+
+#MyOrderList .orderDetailsList .orderDate p {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 0.75rem;
+    line-height: 140.5%;
+    color: #713BDB;
+    margin: 0;
+    padding-bottom: 0.3125rem;
+    word-wrap: break-word;
+}
+
+#MyOrderList .orderDetailsList .orderDate label {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 0.6875rem;
+    margin: 0;
+    color: #3E3E3E;
+}
+
+#MyOrderList .orderDetailsList .medicineNameList {
+    padding-top: 0.3125rem;
+    height: 7.5rem;
+}
+
+#MyOrderList .orderDetailsList .medicineNameList h2 {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 0.75rem;
+    line-height: 1.5;
+    color: #3E3E3E;
+    margin: 0;
+    padding-left: 0.3125rem;
+    cursor: pointer;
+    -webkit-user-select: none;
+    user-select: none;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+#MyOrderList .orderDetailsList .medicineNameList span {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 0.6875rem;
+    line-height: 1.8;
+    color: #713bdb;
+    margin: 0;
+    float: right;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+#MyOrderList .orderDetailsList .medicineNameList img {
+    max-width: 1.25rem;
+    max-height: 1.25rem;
+}
+
+#MyOrderList .orderDetailsList .Date {
+    display: flex;
+    padding: 0rem 0.5rem 0rem 0rem;
+    position: absolute;
+    right: 7.6875rem;
+    bottom: 0.25rem;
+}
+
+#MyOrderList .orderDetailsList .ExpectedDelivery label {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 0.75rem;
+    line-height: 184.5%;
+    color: #713BDB;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    padding-right: 0.3125rem;
+}
+
+#MyOrderList .orderDetailsList .ExpectedDelivery p {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 0.75rem;
+    line-height: 184.5%;
+    color: #713BDB;
+    margin: 0;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+#MyOrderList .orderDetailsList .totalCost {
+    width: 6.875rem;
+    height: 5.4375rem;
+    background: #F2ECFF;
+    border: 1px solid rgb(113 59 219 / 50%);
+    box-shadow: 0px 1rem 34px rgba(113, 59, 219, 0.19);
+    border-radius: 0.625rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#MyOrderList .orderDetailsList .totalCost label {
+    font-family: 'Poppins';
+    font-style: normal;
+    -webkit-user-select: none;
+    user-select: none;
+    font-weight: 600;
+    font-size: 0.75rem;
+    line-height: 110%;
+    color: #3E3E3E;
+    padding-bottom: 0.3125rem;
+    padding: 0;
+    margin: 0;
+    margin-bottom: 4px;
+}
+
+#MyOrderList .orderDetailsList .totalCost p {
+    font-family: 'Poppins';
+    font-style: normal;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    font-weight: 700;
+    font-size: 0.8125rem;
+    line-height: 110%;
+    color: #3E3E3E;
+}
+
+#MyOrderList .orderDetailsList .AppointmentDate {
+    display: flex;
+    justify-content: flex-end;
+}
+
+#MyOrderList .orderDetailsList .DrNameFee {
+    width: 100%;
+}
+
+#MyOrderList .orderDetailsList .DrNameFee img {
+    width: 1.25rem;
+    height: 1.25rem;
+    margin-right: 0.3125rem;
+}
+
+#MyOrderList .orderDetailsList .DrNameFee h2 {
+    font-family: 'Poppins';
+    font-style: normal;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    font-weight: 700;
+    font-size: 0.75rem;
+    line-height: 1.3;
+    color: #484747;
+    margin: 0;
+}
+
+#MyOrderList .orderDetailsList .DrNameFee p {
+    font-family: 'Poppins';
+    font-style: normal;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    font-weight: 400;
+    font-size: 0.75rem;
+    color: #484747;
+    margin: 0;
+}
+
+#MyOrderList .orderDetailsList .DrNameFee p span {
+    font-family: 'Poppins';
+    font-style: normal;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    font-weight: 600;
+    font-size: 0.75rem;
+    color: #484747;
+    margin: 0;
+}
+
+#MyOrderList .orderDetailsList .AppointmentDate label {
+    font-family: 'Poppins';
+    font-style: normal;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    font-weight: 500;
+    font-size: 0.75rem;
+    line-height: 184.5%;
+    color: #713BDB;
+}
+
+#MyOrderList .orderDetailsList .AppointmentDate p {
+    font-family: 'Poppins';
+    font-style: normal;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    font-weight: 600;
+    font-size: 0.75rem;
+    line-height: 184.5%;
+    color: #713BDB;
+    margin: 0;
+}
+
+/* .DrNameDate {
+    border-bottom: 1px solid rgba(113, 59, 219, 0.16);
+    padding-bottom: 1px;
+} */
+
+.DrNameDate:last-child {
+    border: none;
+}
+
+.prescriptionModal {
+    top: -5.875rem;
+}
+
+.orderdetailsOpen {
+    position: absolute;
+    top: 0rem;
+    bottom: 0;
+    height: 100%;
+    width: 100%;
+}
+
+.apiErr {
+    color: red;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 585px;
+}
+
+.medicinelistes h2 {
+    color: #d9480f !important;
+}
+
+.labtestlistes h2 {
+    color: #364fc7 !important;
+}
+
+.physicianOrderlistes h2 {
+    color: #862e9c !important;
+}
+
+.householdItemlistes h2 {
+    color: #5c940d !important;
+}
+
+.Allclick {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    cursor: pointer;
+}
+
+.cancel-btn {
+    width: 100%;
+    padding: 1.0625rem 1.6875rem;
+    background: #713BDB;
+    box-shadow: 0px 0.6875rem 34px -5px rgba(113, 59, 219, 0.4);
+    border-radius: 5px;
+    border: none;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 0.8125rem;
+    line-height: 110%;
+    color: #FFFFFF;
+    margin-top: 6px;
+}
+
+.OrderContent {
+    border: 1px solid #713bdb;
+    padding: 10px 10px;
+    height: 100%;
+    border-radius: 5px;
+    max-height: 886px;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.OrderContent::-webkit-scrollbar {
+    width: 8px;
+}
+
+.OrderContent::-webkit-scrollbar-track {
+    background: #bbafff;
+}
+
+.OrderContent::-webkit-scrollbar-thumb {
+    background: #713bdb;
+    border-radius: 5px;
+}
+
+@media (max-width:768px) {
+    .col-md-2 {
+        width: 28.666667%;
+    }
+
+    #MyOrderList .filter .filterHeader h2 {
+        font-size: 1rem;
+    }
+
+    #MyOrderList .filter .filterHeader img {
+        width: 12px;
+        height: 12px;
+    }
+
+    #MyOrderList .filter span {
+        font-size: 14px;
+    }
+}
+
+@media (min-width:769px) and (max-width:1024px) {}
+
+@media (max-width:820px) {}
+
+@media (min-width:821px) and (max-width:1180px) {}

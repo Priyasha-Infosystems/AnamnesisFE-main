@@ -1,0 +1,300 @@
+.EHR {
+    background-image: url('../../../../assets/images/body-Img.png');
+    height: 650px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    padding: 26px 10px 10px 10px;
+}
+
+p {
+    text-align: justify;
+}
+
+.forehead {
+    width: 100%;
+    height: 25px;
+    border: 1px solid #0000;
+    position: relative;
+}
+
+.eye {
+    width: 100%;
+    height: 20px;
+    border: 1px solid #0000;
+    position: relative;
+    margin-top: 7px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.earRight {
+    width: 108px;
+    height: 100%;
+    border: 1px solid #0000;
+    position: relative;
+}
+
+.eyeRight {
+    width: 27px;
+    height: 100%;
+    border: 1px solid #0000;
+    position: relative;
+}
+
+.eyeLeft {
+    width: 27px;
+    height: 100%;
+    border: 1px solid #0000;
+    position: relative;
+}
+
+.earLeft {
+    width: 103px;
+    height: 100%;
+    border: 1px solid #0000;
+    position: relative;
+}
+
+.nose {
+    width: 100%;
+    height: 13px;
+    border: 1px solid #0000;
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.facies {
+    width: 127px;
+    height: 100%;
+    border: 1px solid #0000;
+    position: relative;
+}
+
+.noseMain {
+    width: 138px;
+    height: 100%;
+    border: 1px solid #0000;
+    position: relative;
+}
+
+.mouth {
+    width: 100%;
+    height: 23px;
+    border: 1px solid #0000;
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.neck {
+    width: 100%;
+    height: 30px;
+    border: 1px solid #0000;
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.chest {
+    width: 100%;
+    height: 50px;
+    border: 1px solid #0000;
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.brachium {
+    width: 100%;
+    height: 45px;
+    border: 1px solid #0000;
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.forearm {
+    width: 100%;
+    height: 70px;
+    border: 1px solid #0000;
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.hand {
+    width: 100%;
+    height: 70px;
+    border: 1px solid #0000;
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.thigh {
+    width: 100%;
+    height: 65px;
+    border: 1px solid #0000;
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.patella {
+    width: 100%;
+    height: 45px;
+    border: 1px solid #0000;
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.crus {
+    width: 100%;
+    height: 72px;
+    border: 1px solid #0000;
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.Tarsus {
+    width: 100%;
+    height: 30px;
+    border: 1px solid #0000;
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.foot {
+    width: 100%;
+    height: 32px;
+    border: 1px solid #0000;
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.headPoint {
+    left: 0;
+    right: 0;
+    top: 3px;
+    margin: auto;
+}
+
+.Point {
+    width: 8px;
+    height: 8px;
+    background: #2196F3;
+    border-radius: 50%;
+    box-shadow: 0px 0px 0px 2px #ffffff;
+    position: absolute;
+}
+
+.faciesPoint {
+    right: 8px;
+    top: 2px;
+}
+
+.nosePoint {
+    left: 6px;
+    top: -2px;
+}
+
+.mouthPoint {
+    left: 18px;
+    top: 7px;
+    right: 0;
+    margin: auto;
+}
+
+.neckPoint {
+    left: 60px;
+    top: 4px;
+    right: 0;
+    margin: auto;
+}
+
+.chestPoint {
+    left: 0;
+    top: 32px;
+    right: 70px;
+    margin: auto;
+}
+
+.brachiumPoint {
+    left: 141px;
+    top: 20px;
+    right: 0;
+    margin: auto;
+}
+
+.forearmPoint {
+    left: 0;
+    top: 35px;
+    right: 143px;
+    margin: auto;
+}
+
+.handPoint {
+    left: 46px;
+    top: 27px;
+}
+
+.thighPoint {
+    left: 102px;
+    top: 24px;
+    right: 0;
+    margin: auto;
+}
+
+.patellaPoint {
+    left: 0;
+    top: 3px;
+    right: 74px;
+    margin: auto;
+}
+
+.crusPoint {
+    left: 33px;
+    top: 21px;
+    right: 0;
+    margin: auto;
+}
+
+.TarsusPoint {
+    left: 0;
+    top: 8px;
+    right: 42px;
+    margin: auto;
+}
+
+.footPoint {
+    left: 68px;
+    top: 12px;
+    right: 0px;
+    margin: auto;
+}
+
+.box {
+    width: 100%;
+    background: #be79e7;
+    min-height: 200px;
+    border-radius: 3px;
+}

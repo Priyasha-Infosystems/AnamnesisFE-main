@@ -1,0 +1,32 @@
+p {
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    font-size: 12px;
+    border-radius: 6px;
+    border: 1px solid #5c7cfa !important;
+    padding: 10px;
+    background: #fff;
+    right: 0;
+    top: 0;
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: rgb(99, 99, 99);
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}

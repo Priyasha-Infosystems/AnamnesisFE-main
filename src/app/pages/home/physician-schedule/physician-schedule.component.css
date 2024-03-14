@@ -1,0 +1,1276 @@
+.tabcontent {
+    float: left;
+    padding: 2.1875rem 0.75rem;
+    width: 100%;
+    border-left: none;
+    height: 100%;
+}
+
+.tabcontent p {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 0.875rem;
+    line-height: 1.125rem;
+    color: #474545;
+} 
+#Physician .ContentOne .col-md-5 {
+    /* padding-left: 1.875rem; */
+    padding-right: 0px;
+}
+
+#Physician .ContentOne #DoctorID input[type=text] {
+    width: 100%;
+    height: 3.5rem;
+    background: rgba(255, 255, 255, 0.79);
+    border: 2px solid rgba(174, 140, 239, 0.54);
+    box-shadow: 0px 0.75rem 53px -24px rgb(134 87 226 / 63%);
+    border-radius: 0.5rem;
+    padding: 20px 10px 4px 7px ;
+    font-size: 0.8125rem;
+    outline: none;
+}
+
+#Physician .ContentOne label {
+    display: flex;
+    align-items: center;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 1.0625rem;
+    line-height: 110%;
+    text-align: center;
+    color: #414141;
+}
+
+#Physician .ContentOne input[type=submit] {
+    background: rgb(112, 59, 219);
+    border: 2px solid rgba(174, 140, 239, 0.54);
+    box-shadow: 0px 0.75rem 53px -24px rgb(134 87 226 / 63%);
+    border-radius: 0.5625rem;
+    color: #fff;
+    position: absolute;
+    top: 0;
+    padding: 1.0625rem 1.875rem;
+    right: 0;
+    font-size: 0.75rem;
+    letter-spacing: 1px;
+}
+
+#Physician .ContentOne h2 {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 1.7;
+    color: #161616;
+    margin: 0;
+}
+
+#Physician .ContentOne p {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 0.875rem;
+    line-height: 149%;
+    color: #181818;
+    margin: 0;
+}
+
+#Physician .ContentTwo {
+    width: 100%;
+    background: #FFFFFF;
+    border-radius: 22px;
+}
+
+#Physician .ContentTwo .NewHealthClinic {
+    background: #F2ECFF;
+    border: 1px solid rgba(113, 59, 219, 0.19);
+    box-shadow: 0px 1rem 34px rgba(113, 59, 219, 0.19);
+    border-radius: 0.625rem;
+    padding: 33px 12px 12px 12px;
+    margin-bottom: 0.8125rem;
+    position: relative;
+}
+
+#Physician .ContentTwo .NewHealthClinic #ClinicName {
+    width: 100%;
+    padding: 1.0625rem 0.9375rem;
+    background: #FFFFFF;
+    border: 1px solid rgba(113, 59, 219, 0.19);
+    box-shadow: 0px 1rem 34px -6px rgba(113, 59, 219, 0.19);
+    border-radius: 0.5625rem;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 0.875rem;
+    line-height: 110%;
+    color: #484747;
+    outline: none;
+}
+
+#Physician .ContentTwo .NewHealthClinic input[type=submit] {
+    padding: 1rem 1.25rem;
+    background: #713BDB;
+    box-shadow: 0px 0.6875rem 34px -5px rgb(113 59 219 / 45%);
+    border: none;
+    border-radius: 6px;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 0.75rem;
+    line-height: 110%;
+    color: #FFFFFF;
+    margin-bottom: 1rem !important;
+}
+
+#ClinicName {
+    margin: unset !important;
+}
+
+#Physician .ContentTwo .NewHealthClinic #time {
+    width: 100%;
+    padding: 1.3125rem 1rem 1.3125rem 0.5rem;
+    margin-top: 0.3125rem;
+    background-color: rgba(255, 255, 255, 0.79);
+    border: 2px solid rgba(174, 140, 239, 0.54);
+    box-shadow: 0px 0.75rem 53px -24px rgba(134, 87, 226, 0.63);
+    border-radius: 0.5625rem;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 0.5625rem;
+    line-height: 110%;
+    color: #713BDB;
+    outline: none;
+}
+
+#Physician .ContentTwo .NewHealthClinic p {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 0.6875rem;
+    line-height: 110%;
+    color: #000000;
+    margin: 0.125rem;
+}
+
+#Physician .form-floating input[type=text] {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 0.6875rem;
+    padding: 1.1875rem 0.75rem 0.5625rem 0.5rem;
+    width: 100%;
+    background: #F2ECFF;
+    border: 1px solid rgba(113, 59, 219, 0.18);
+    box-shadow: 0px 0.6875rem 34px -5px rgb(113 59 219 / 21%);
+    border-radius: 6px;
+    line-height: 107%;
+    color: #713BDB;
+    outline: none;
+    height: 100% !important;
+}
+
+#Physician .ContentTwo .NewHealthClinic .AnotherScheduleList input {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 0.6875rem;
+    padding: 1.1875rem 0.75rem 0.5625rem 0.5rem;
+    width: 100%;
+    background: #F2ECFF;
+    border: 1px solid rgba(113, 59, 219, 0.18);
+    box-shadow: 0px 0.6875rem 34px -5px rgb(113 59 219 / 21%);
+    border-radius: 6px;
+    line-height: 107%;
+    color: #713BDB;
+    outline: none;
+    height: 100% !important;
+}
+
+#Physician select {
+    height: 100%;
+    background: #F2ECFF;
+    border: 1px solid rgba(113, 59, 219, 0.18);
+    box-shadow: 0px 0.6875rem 34px -5px rgb(113 59 219 / 21%);
+    border-radius: 6px;
+    outline: none;
+}
+
+#Physician select {
+    background: url("../../../../assets/images/selectArrow.png") no-repeat;
+    background-color: #F2ECFF;
+    background-size: 0.625rem;
+    background-position: calc(100% - 0.375rem) 1.125rem;
+    background-repeat: no-repeat;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 0.75rem;
+    line-height: 110%;
+    color: #713BDB;
+    padding: 1.125rem 1.125rem 0.8125rem 0.5625rem;
+}
+
+#Physician select {
+    outline: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+#Physician .ContentTwo .NewHealthClinic .feeRow p {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 0.75rem;
+    line-height: 110%;
+    color: #713BDB;
+    cursor: pointer;
+    margin-bottom: 0.25rem;
+    margin: 0;
+}
+
+#Physician .ContentTwo .NewHealthClinic .feeRow h2 {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 0.8125rem;
+    line-height: 2;
+    color: #713BDB;
+    cursor: pointer;
+    text-align: right;
+}
+
+.DeleteHC {
+    position: absolute;
+    top: 0.125rem;
+    right: 0.25rem;
+    color: #713bdb;
+    font-size: 1.25rem;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.DeleteHC:hover {
+    color: #2a0a6b;
+}
+
+#Physician .ContentTwo .NewHealthClinic .feeRow input {
+    width: 5rem;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 0.6875rem;
+    padding: 1.375rem 0.75rem 0.8125rem 0.5rem;
+    background: #F2ECFF;
+    border: 1px solid rgba(113, 59, 219, 0.18);
+    box-shadow: 0px 0.6875rem 34px -5px rgb(113 59 219 / 21%);
+    border-radius: 6px;
+    line-height: 107%;
+    color: #713BDB;
+    outline: none;
+    height: 100% !important;
+}
+
+#Physician .ContentTwo .AddHealthClinic {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 0.8125rem;
+    line-height: 110%;
+    color: #713BDB;
+    letter-spacing: 0.5px;
+    margin-top: -0.1875rem;
+    cursor: pointer;
+}
+
+#Physician .ContentTwo .HolidaySchedule,
+#Physician .ContentTwo .DailyBusyHours {
+    width: 100%;
+    background: #F2ECFF;
+    border: 1px solid rgba(113, 59, 219, 0.19);
+    box-shadow: 0px 1rem 34px rgba(113, 59, 219, 0.19);
+    border-radius: 0.625rem;
+    padding: .5875rem 1.25rem 1.25rem 1.25rem;
+}
+
+#Physician .ContentTwo .HolidaySchedule h2,
+#Physician .ContentTwo .DailyBusyHours h2 {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 1.25rem;
+    line-height: 110%;
+    color: #434242;
+}
+
+#Physician .ContentTwo .HolidaySchedule .startDate {
+    width: 100%;
+    padding: 0.9375rem 0.3125rem 0.3125rem 0.3125rem;
+    background: rgba(255, 255, 255, 0.79);
+    border: 2px solid rgba(174, 140, 239, 0.54);
+    box-shadow: 0px 0.75rem 53px -24px rgba(134, 87, 226, 0.63);
+    border-radius: 0.5625rem;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+#Physician .ContentTwo .HolidaySchedule input {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 0.6875rem;
+    padding: 1.1875rem 0.75rem 0.5625rem 0.5625rem;
+    width: 100%;
+    background: #F2ECFF;
+    border: 1px solid rgba(113, 59, 219, 0.18);
+    box-shadow: 0px 0.6875rem 34px -5px rgb(113 59 219 / 21%);
+    border-radius: 6px;
+    line-height: 107%;
+    color: #713BDB;
+    outline: none;
+    height: 100% !important;
+}
+
+.dateandtimeList p {
+    padding: 0px 4px;
+}
+
+#Physician .ContentTwo .HolidaySchedule span,
+.add span {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 0.75rem;
+    line-height: 110%;
+    color: #5c23ce;
+    margin: 0;
+    cursor: pointer;
+}
+
+#Physician .ContentTwo .HolidaySchedule .startDate p {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 0.75rem;
+    line-height: 110%;
+    color: #000000;
+    margin-bottom: 0.6875rem;
+}
+
+#Physician .ContentTwo .HolidaySchedule i {
+    color: #713BDB;
+    font-size: 0.8125rem;
+    cursor: pointer;
+}
+
+#Physician .ContentTwo .HolidaySchedule p {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 0.8125rem;
+    line-height: 110%;
+    margin: 0;
+    color: #000000;
+}
+
+#Physician .ContentTwo .HolidaySchedule .HolidayScheduleList {
+    margin: 0.875rem 0rem 1.4375rem 0rem;
+}
+
+#Physician .ContentTwo .HolidaySchedule .add h2 {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 0.875rem;
+    line-height: 110%;
+    cursor: pointer;
+    color: #713BDB;
+}
+
+#Physician .ContentTwo .DailyBusyHours .DeleteIcon {
+    position: absolute;
+    right: -0.3125rem;
+    top: -0.5rem;
+}
+
+#Physician .ContentTwo .DailyBusyHours select {
+    padding: 0.8125rem 0.75rem 0.25rem 0.5625rem;
+    height: 100% !important;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 0.6875rem;
+    line-height: 107%;
+    color: #713BDB;
+    outline: none;
+    width: 100%;
+    background-position: calc(100% - 0.375rem) 1.1875rem;
+    background-size: 0.5625rem;
+    -webkit-appearance: none !important;
+    appearance: none !important;
+}
+
+.selectedFormValue label {
+    padding: 0.4375rem 0.4375rem 0.0625rem 0.5rem !important;
+    transition: 0.3s;
+    font-size: 0.5625rem !important;
+    opacity: 0.5;
+}
+
+#Physician .ContentTwo .DailyBusyHours h3 {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 0.6875rem;
+    line-height: 110%;
+    text-align: center;
+    color: #323232;
+    margin: 0;
+    width: 2.75rem;
+}
+
+.holidayDescription input {
+    height: 2.8125rem;
+    width: 98%;
+    padding: 0.625rem 0rem 0.125rem 0.5rem;
+    background: rgba(255, 255, 255, 0.79);
+    border: 2px solid rgba(174, 140, 239, 0.54);
+    box-shadow: 0px 0.75rem 53px -24px rgb(134 87 226 / 63%);
+    border-radius: 0.5625rem;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 0.75rem;
+    line-height: 110%;
+    outline: none;
+    color: #000000;
+}
+
+.holidayDescription label {
+    padding: 1.0625rem 0.5rem;
+    font-size: 0.75rem;
+}
+
+#Physician .ContentTwo .DailyBusyHours i {
+    color: #713BDB;
+    font-size: 1rem;
+    line-height: 0;
+    cursor: pointer;
+}
+
+#Physician .ContentTwo .DailyBusyHours #time {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 0.5625rem;
+    line-height: 110%;
+    color: #713BDB;
+    padding: 1rem 0.8125rem 0.9375rem 0.3125rem;
+}
+
+#Physician .ContentTwo .DailyBusyHours .margin--left {
+    margin-right: 5%;
+}
+
+.doctorAllDetails {
+    padding: 0.75rem 1.125rem;
+    background: #F2ECFF;
+    border: 1px solid rgba(113, 59, 219, 0.19);
+    box-shadow: 1px 8px 4px -6px rgb(113 59 219 / 19%);
+    border-radius: 0.5625rem;
+    position: relative;
+}
+
+.doctorAllDetails i {
+    position: absolute;
+    cursor: pointer;
+    color: #C00000 !important;
+    right: -0.5rem;
+    top: -0.6875rem;
+    font-size: 1.25rem;
+}
+
+#Physician .ContentTwo .DailyBusyHours .BusyHourschedule {
+    width: 100%;
+    padding: 0.9375rem 0.875rem;
+    background: rgba(255, 255, 255, 0.79);
+    border: 2px solid rgba(174, 140, 239, 0.54);
+    box-shadow: 0px 0.75rem 53px -24px rgba(134, 87, 226, 0.63);
+    border-radius: 0.5625rem;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-bottom: 0.625rem;
+    position: relative;
+}
+
+#Physician .ContentTwo .DailyBusyHours input {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 0.6875rem;
+    padding: 1.1875rem 0.75rem 0.5625rem 0.5rem;
+    width: 100%;
+    background: #F2ECFF;
+    border: 1px solid rgba(113, 59, 219, 0.18);
+    box-shadow: 0px 0.6875rem 34px -5px rgb(113 59 219 / 21%);
+    border-radius: 6px;
+    line-height: 107%;
+    color: #713BDB;
+    outline: none;
+    height: 100% !important;
+}
+
+.w-50 input {
+    padding: 0.8125rem 0.125rem !important;
+    text-align: center;
+}
+
+#Physician .ContentTwo .DailyBusyHours .add h2 {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 0.875rem;
+    line-height: 1;
+    cursor: pointer;
+    color: #713BDB;
+    margin-top: 1.5rem;
+}
+
+#Physician .ConsultationTime {
+    width: 100%;
+    padding: 0.875rem 1.25rem;
+    background: #F2ECFF;
+    border: 1px solid rgba(113, 59, 219, 0.19);
+    box-shadow: 0px 1rem 34px rgba(113, 59, 219, 0.19);
+    border-radius: 0.625rem;
+    margin-top: 1.3125rem;
+}
+
+#Physician .ConsultationTime h6 {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 0.875rem;
+    line-height: 110%;
+    color: #323232;
+    margin: 0;
+}
+
+#Physician .ConsultationTime p {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 0.875rem;
+    line-height: 110%;
+    color: #713BDB;
+    margin: 0.25rem;
+}
+
+#Physician .ConsultationTime input {
+    width: 3.1875rem;
+    padding: 0.5rem 0.6875rem;
+    background: rgba(255, 255, 255, 0.79);
+    border: 2px solid rgba(174, 140, 239, 0.54);
+    box-shadow: 0px 0.75rem 53px -24px rgba(134, 87, 226, 0.63);
+    border-radius: 0.5625rem;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 1.1875rem;
+    line-height: 110%;
+    color: #713BDB;
+    outline: none;
+}
+
+#Physician .ContentTwo .SaveBtn {
+    padding: 13px 20px;
+    background: #713BDB;
+    box-shadow: 0px 0.6875rem 34px -5px rgba(113, 59, 219, 0.4);
+    border-radius: 6px;
+    border: none;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 0.875rem;
+    line-height: 110%;
+    color: #FFFFFF;
+}
+
+.submit {
+    background: #713BDB;
+    box-shadow: 0px 0.6875rem 34px -5px rgba(113, 59, 219, 0.4);
+    border-radius: 6px;
+    border: none;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 0.75rem;
+    line-height: 110%;
+    color: #FFFFFF;
+    padding: 0.625rem;
+}
+
+.calendar {
+    width: 100%;
+    background: #F2ECFF;
+    border: 1px solid rgba(113, 59, 219, 0.19);
+    box-shadow: 0px 1rem 34px rgb(113 59 219 / 19%);
+    border-radius: 0.625rem;
+    padding: 0.9375rem;
+}
+
+.calendar h2 {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 1.25rem;
+    line-height: 1.7;
+    color: #484747;
+    margin: 0;
+    text-align: center;
+}
+
+.calendar .active {
+    background: #99999940;
+    cursor: pointer;
+}
+
+.calendar td {
+    padding: 0.3125rem;
+    text-align: center;
+    border-radius: 0.3125rem;
+}
+
+.calendar th {
+    text-align: center;
+    padding: 0.5625rem;
+}
+
+@media (max-width: 1024px) {
+    .holidayDescription {
+        width: 96%;
+        margin-top: 1.5%;
+        margin: auto;
+    }
+
+    .startDate {
+        width: 50%;
+        margin-bottom: 2%;
+    }
+
+    .endDate {
+        width: 50%;
+        margin-bottom: 2%;
+    }
+
+    #DiagnosticCentre .content .HolidaySchedule h2 {
+        font-size: 0.75rem;
+    }
+
+    #matDateInput {
+        padding: 0.6875rem 1.4375rem 0.6875rem 3px;
+    }
+
+    .holidayDescription input {
+        height: 2.5625rem;
+    }
+
+    .dateAndtime .addtext {
+        width: 100%;
+        margin-top: 0.5rem;
+    }
+
+    .weekDay {
+        width: 50%
+    }
+
+    .timing {
+        width: 41%;
+    }
+
+    .border-botton {
+        border-bottom: 1px solid #703bdb1f;
+        padding: 0.9375rem 0rem;
+    }
+
+    .startDate {
+        width: 100%;
+    }
+}
+
+.doctorDetails .CollapsePrescribed .m-d.expand-list>li {
+    list-style-type: none;
+    padding: 1.25rem 0.9375rem 0.625rem 0.9375rem;
+    position: relative;
+    background: #fff6e3;
+    border: 1px solid rgb(231 168 20 / 59%);
+    box-shadow: 0.5rem 0.5rem 0.6875rem rgb(231 168 20 / 36%);
+    border-radius: 0.625rem;
+    margin: 0px;
+    z-index: 10;
+}
+
+.doctorDetails .CollapsePrescribed .m-d.expand-list>li label h5 {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 1.125rem;
+    line-height: 1.3;
+    color: #3a3a3a;
+    margin: 0;
+}
+
+.doctorDetails .doctorCard {
+    margin: 0.9375rem 0rem 0rem 0rem;
+    border: 1px solid rgb(231 168 20 / 39%);
+    border-radius: 5px;
+    padding: 0.3125rem 0.625rem;
+}
+
+.doctorDetails .profileImg {
+    height: 100px;
+    width: 100px;
+    border-radius: 7%;
+    overflow: hidden;
+}
+
+.doctorDetails .profileImg img {
+    height: 100%;
+    width: 100%;
+}
+
+.doctorDetails .dropdown ul {
+    width: 100%;
+}
+
+.doctorDetails .dropdown a {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 1.125rem;
+    line-height: 1.3;
+    color: #3a3a3a !important;
+    margin: 0;
+    background: none;
+    border: none;
+    outline: none;
+    width: 100%;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.doctorDetails .dropdown a span {
+    font-size: 0.75rem !important;
+    color: #EDB738;
+}
+
+.doctorDetails .dropdown li a:hover {
+    background: #e7dbc2;
+}
+
+.doctorDetails .doctorCard p {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 0.8125rem;
+    line-height: 140.5%;
+    color: #484747;
+    margin: 0;
+}
+
+.doctorDetails .doctorCard p i {
+    color: #e7a814;
+    padding-right: 0.25rem;
+}
+
+.doctorDetails .doctorCard h5 {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 1.125rem;
+    line-height: 1.3;
+    color: #3a3a3a !important;
+}
+
+.doctorDetails .Confirm {
+    background: #EDB738;
+    box-shadow: 0px 6px 6px -5px rgb(187 153 74 / 79%);
+    border: none;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 0.8125rem;
+    line-height: 110%;
+    color: #FFFFFF;
+    letter-spacing: 0.5px;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    margin-top: 0.625rem;
+}
+
+.doctorDetails {
+    position: absolute;
+}
+
+.date::ng-deep .mat-datepicker-toggle {
+    position: absolute;
+    top: -0.0625rem;
+    right: 0.3125rem;
+}
+
+.date::ng-deep .mat-datepicker-toggle {
+    background: rgba(255, 0, 0, 0);
+}
+
+.date::ng-deep .mat-calendar-body-label {
+    color: #713BDB;
+    font-weight: 700;
+}
+
+.date::ng-deep .mat-calendar-body-cell-content {
+    color: #713BDB;
+}
+
+.date::ng-deep .mat-button-wrapper {
+    color: #713BDB;
+    font-weight: 700;
+    padding-left: 0.9375rem;
+}
+
+.date::ng-deep .mat-datepicker-toggle-default-icon {
+    width: 1.125rem;
+}
+
+.date::ng-deep .mat-calendar-table-header {
+    color: #000;
+    font-weight: 700;
+}
+
+.date::ng-deep .mat-datepicker-content .mat-calendar-next-button {
+    color: #713BDB;
+}
+
+.date::ng-deep .mat-datepicker-content .mat-calendar-previous-button {
+    color: #713BDB;
+}
+
+.date::ng-deep .mat-icon-button.mat-button-disabled.mat-button-disabled {
+    color: #703bdb81;
+}
+
+.date::ng-deep .cdk-program-focused {
+    background: none !important;
+}
+
+.date::ng-deep .mat-button-focus-overlay {
+    background: #FFFFFF;
+}
+
+.date::ng-deep .mat-calendar-body-selected {
+    color: #fff !important;
+}
+
+.date::ng-deep .mat-icon-button {
+    /* padding-right: 0.5rem !important; */
+}
+
+.BusyHourschedule .form-group input {
+    padding: 0;
+    height: initial;
+    width: initial;
+    margin-bottom: 0;
+    display: none;
+    cursor: pointer;
+}
+
+.BusyHourschedule .form-group label {
+    position: relative;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    margin: 0;
+    overflow: hidden;
+    border-radius: 50%;
+    padding: 0;
+}
+
+.BusyHourschedule .form-group label:before {
+    content: '';
+    -webkit-appearance: none;
+    background-color: transparent;
+    border: 2px solid #713bdb;
+    box-shadow: 0 1px 2px rgb(0 0 0 / 5%), inset 0px -0.9375rem 0.625rem -0.75rem rgb(0 0 0 / 5%);
+    padding: 0.375rem;
+    display: inline-block;
+    position: relative;
+    vertical-align: middle;
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+.BusyHourschedule .form-group input:checked+label:after {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0.25rem;
+    left: 0.405rem;
+    width: 0.2188rem;
+    height: 0.4375rem;
+    border: solid #ffffff;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+    box-shadow: 0px 0px 0px 6px rgb(72, 28, 161);
+    background: rgb(72, 28, 161);
+}
+
+label {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 0.625rem !important;
+    line-height: 110%;
+    color: rgb(146 90 255);
+    width: 100%;
+    padding: 1.0625rem 0.5rem 0.75rem 0.5rem;
+    transition: 0.3s;
+}
+
+input,
+select {
+    color: rgb(53, 12, 136);
+}
+
+::placeholder {
+    font-size: 0.625rem !important;
+    color: rgb(146 90 255);
+}
+
+.form-floating::placeholder {
+    color: unset !important;
+}
+
+.errorDiv {
+    font-size: 0.75rem;
+    color: red;
+    height: 0.75rem;
+    margin-left: 0.3125rem;
+    display: flex;
+    align-items: center;
+}
+
+.search {
+    position: absolute;
+    right: 0.5625rem;
+    top: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.datepickerColor {
+    color: transparent !important;
+}
+
+.calendar {
+    border: 1px solid rgba(113, 59, 219, 0.19);
+    padding: .3875rem 1.25rem 1.25rem 1.25rem;
+    border-radius: 0.625rem;
+}
+
+.borderbottom {
+    border-bottom: 1px solid rgba(113, 59, 219, 0.19);
+    padding: 0.5625rem 0px;
+}
+
+#Physician ::ng-deep .mat-option {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 0.6875rem;
+    height: 20.5625rem !important;
+}
+
+.viewClinic {
+    background: #F2ECFF;
+    border: 1px solid rgba(113, 59, 219, 0.19);
+    box-shadow: 0px 1rem 34px rgba(113, 59, 219, 0.19);
+    border-radius: 0.625rem;
+    padding: 1.25rem;
+    margin-bottom: 0.9375rem;
+    position: relative;
+}
+
+.viewClinic h2 {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 0.875rem !important;
+    line-height: 110%;
+    color: rgb(146 90 255);
+    margin-bottom: 0rem;
+}
+
+.viewClinic h6 {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 0.875rem;
+    line-height: 1;
+    color: #474545;
+    margin: 0;
+}
+
+.viewClinic p {
+    font-size: 0.6875rem !important;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    line-height: 1;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.7;
+    color: #474545;
+    margin: 0;
+}
+
+.viewClinic b {
+    font-size: 0.75rem;
+}
+
+.viewClinic i {
+    color: #5225ac !important;
+    cursor: pointer;
+    font-size: 0.75rem;
+}
+
+.viewClinic .borderrow {
+    border-bottom: 1px solid rgba(112, 59, 219, 0.336);
+    border-style: dashed;
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    padding-bottom: 0.125rem;
+    padding-top: 0.3125rem;
+}
+
+.viewClinic b span {
+    color: rgb(146 90 255);
+    font-size: 0.625rem;
+}
+
+.form-floating {
+    min-height: unset !important;
+    height: 45px;
+}
+
+.borderMargin {
+    padding-top: 0.3125rem;
+}
+
+.consulMargin {
+    margin-right: 40.5625rem;
+    margin-left: -1rem;
+}
+
+.ScheduleDetails {
+    height: 2rem;
+    display: flex;
+    align-items: center;
+}
+
+::ng-deep .mat-option-text {
+    display: inline-block;
+    flex-grow: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 0.875rem;
+    color: #000;
+}
+
+.cutName {
+    position: absolute;
+    top: 0;
+    right: 0.375rem;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    color: #713bdb;
+}
+
+.DeleteIcon {
+    margin-bottom: 0.25rem;
+    color: #713bdb;
+}
+
+.customErrMSG {
+    margin-left: -0.6875rem !important;
+}
+
+
+@media (max-width:768px) {
+    #Physician .ContentOne {
+        padding: 0.625rem;
+    }
+
+    .doctorAllDetails {
+        padding: 0.375rem 0.6875rem;
+    }
+
+    #Physician .ContentOne h2 {
+        font-size: 1rem;
+    }
+
+    #Physician .ContentOne p {
+        font-size: 0.75rem;
+    }
+
+    #Physician .ContentTwo .NewHealthClinic {
+        padding: 1.875rem 0.625rem 0.625rem 0.625rem;
+    }
+
+    .DeleteHC {
+        font-size: 0.9375rem;
+    }
+
+    .physicianWidth,
+    .physicianWidth {
+        width: 100%;
+    }
+
+    #Physician .ContentTwo .SaveBtn {
+        margin-bottom: 10px;
+    }
+}
+
+@media (min-width:769px) and (max-width:1024px) {
+    #Physician .ContentTwo .NewHealthClinic input[type=submit] {
+        width: 130px;
+        height: 45px;
+        padding: 7px;
+        font-size: 9.5px;
+    }
+
+    #Physician .ContentTwo .NewHealthClinic {
+        background: #F2ECFF;
+        border: 1px solid rgba(113, 59, 219, 0.19);
+        box-shadow: 0px 1rem 34px rgba(113, 59, 219, 0.19);
+        border-radius: 0.625rem;
+        padding: 25px 10px 10px 9px;
+    }
+
+    .DeleteHC {
+        font-size: 1.0625rem;
+    }
+
+    #Physician select {
+        width: 100%;
+    }
+
+    #Physician .ContentTwo .NewHealthClinic .feeRow input {
+        width: 4rem;
+    }
+
+    #Physician .ContentTwo .SaveBtn {
+        padding: 17px 7px !important;
+        font-size: 11px;
+    }
+
+    #Physician .ContentTwo .NewHealthClinic .feeRow p {
+        font-size: 9px;
+    }
+
+    .calendar {
+        padding: 8px;
+    }
+
+}
+
+@media (max-width:820px) {
+    #Physician .ContentOne {
+        padding: 0.625rem;
+    }
+
+    .doctorAllDetails {
+        padding: 0.375rem 0.6875rem;
+    }
+
+    #Physician .ContentOne h2 {
+        font-size: 1rem;
+    }
+
+    #Physician .ContentOne p {
+        font-size: 0.75rem;
+    }
+
+    #Physician .ContentTwo .NewHealthClinic {
+        padding: 1.875rem 0.625rem 0.625rem 0.625rem;
+    }
+
+    .DeleteHC {
+        font-size: 0.9375rem;
+    }
+
+    .physicianWidth,
+    .physicianWidth {
+        width: 100%;
+    }
+
+    #Physician .ContentTwo .SaveBtn {
+        margin-bottom: 10px;
+    }
+}
+
+@media (min-width:821px) and (max-width:1180px) {
+    #Physician .ContentTwo .NewHealthClinic input[type=submit] {
+        width: 130px;
+        height: 45px;
+        padding: 7px;
+        font-size: 9.5px;
+    }
+
+    #Physician .ContentTwo .NewHealthClinic {
+        background: #F2ECFF;
+        border: 1px solid rgba(113, 59, 219, 0.19);
+        box-shadow: 0px 1rem 34px rgba(113, 59, 219, 0.19);
+        border-radius: 0.625rem;
+        padding: 25px 10px 10px 9px;
+    }
+
+    .DeleteHC {
+        font-size: 1.0625rem;
+    }
+
+    #Physician select {
+        width: 100%;
+    }
+
+    #Physician .ContentTwo .NewHealthClinic .feeRow input {
+        width: 4rem;
+    }
+
+    #Physician .ContentTwo .SaveBtn {
+        padding: 17px 7px !important;
+        font-size: 11px;
+    }
+
+    #Physician .ContentTwo .NewHealthClinic .feeRow p {
+        font-size: 9px;
+    }
+
+    .calendar {
+        padding: 8px;
+    }
+}

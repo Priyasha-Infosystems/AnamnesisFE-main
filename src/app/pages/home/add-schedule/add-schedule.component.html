@@ -1,0 +1,649 @@
+<router-outlet>
+    <ngx-spinner bdColor="rgba(51,51,51,0.8)" size="medium" color="#fff" type="ball-circus" [fullScreen]="true">
+    </ngx-spinner>
+</router-outlet>
+<div id="AddSchedule" class="tabcontent">
+    <div class="content">
+        <div *ngIf="labTestView || consultationView" class="AddScheduleFirst" id="AddScheduleFirst">
+            <div class="d-flex justify-content-center top-btn mb-4">
+                <button [ngClass]="{active : consultationView}" id="Consultation" value="active"
+                    (click)="setConsultationView(true)">Consultation</button>
+                <button [ngClass]="{active : labTestView}" id="Laboratory" value="active"
+                    (click)="setConsultationView(false)">Laboratory Test</button>
+            </div>
+        </div>
+        <!-- --------------------------------------- DoctorDetails Pages ------------------------------------ -->
+        <div *ngIf="consultationView" class="LaboratoryDetailstime" id="DoctorDetails">
+            <div class="row">
+                <div class="col-md-12 timeTable">
+                    <div class="timeTab" *ngIf="0">
+                        <div class="col-md-12">
+                            <div class="calendar">
+                                <input type="date" name="calendar" id="calendar">
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="DoctorTime">
+                                <div class="row">
+                                    <div class="col-md-4 text-center">
+                                        <button class="laboratoryTimes 1" id="Morningtime">
+                                            Morning <span>Upto 12 noon</span>
+                                        </button>
+                                    </div>
+                                    <div class="col-md-4 text-center">
+                                        <button class="laboratoryTimes 2 activeTime" id="Afternoontime">
+                                            Afternoon <span>12 noon upto 6pm</span>
+                                        </button>
+                                    </div>
+                                    <div class="col-md-4 text-center">
+                                        <button class="laboratoryTimes 3" id="Eveningtime">
+                                            Evening <span>6pm to midnight</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div id="Morningtime" class="LaboratoryDetailstime Morningtime">
+                                    <div class="row">
+                                        <div class="col-md-4 p-0">
+                                            <div class="timer timeTableActive">
+                                                12:00
+                                                <div id="Progress_Status">
+                                                    <div id="myprogressBar" style="width: 74%;">
+                                                        <div id="text">74%</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 p-0">
+                                            <div class="timer">
+                                                12:00
+                                                <div id="Progress_Status">
+                                                    <div id="myprogressBar" style="width: 91%;">
+                                                        <div id="text">91%</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 p-0">
+                                            <div class="timer timeTableActive">
+                                                12:00
+                                                <div id="Progress_Status">
+                                                    <div id="myprogressBar" style="width: 74%;">
+                                                        <div id="text">74%</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 p-0">
+                                            <div class="timer timeTableActive">
+                                                12:00
+                                                <div id="Progress_Status">
+                                                    <div id="myprogressBar" style="width: 74%;">
+                                                        <div id="text">74%</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 p-0">
+                                            <div class="timer ">
+                                                12:00
+                                                <div id="Progress_Status">
+                                                    <div id="myprogressBar" style="width: 15%;">
+                                                        <div id="text">15%</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 p-0">
+                                            <div class="timer ">
+                                                12:00
+                                                <div id="Progress_Status">
+                                                    <div id="myprogressBar" style="width: 80%;">
+                                                        <div id="text">80%</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 p-0">
+                                            <div class="timer timeTableActive">
+                                                12:00
+                                                <div id="Progress_Status">
+                                                    <div id="myprogressBar" style="width: 74%;">
+                                                        <div id="text">74%</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 p-0">
+                                            <div class="timer ">
+                                                12:00
+                                                <div id="Progress_Status">
+                                                    <div id="myprogressBar" style="width: 50%;">
+                                                        <div id="text">50%</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 p-0">
+                                            <div class="timer timeTableActive">
+                                                12:00
+                                                <div id="Progress_Status">
+                                                    <div id="myprogressBar" style="width: 74%;">
+                                                        <div id="text">74%</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 p-0">
+                                            <div class="timer">
+                                                12:00
+                                                <div id="Progress_Status">
+                                                    <div id="myprogressBar" style="width: 10%;">
+                                                        <div id="text">10%</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 p-0">
+                                            <div class="timer timeTableActive">
+                                                12:00
+                                                <div id="Progress_Status">
+                                                    <div id="myprogressBar" style="width: 74%;">
+                                                        <div id="text">74%</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 p-0">
+                                            <div class="timer">
+                                                12:00
+                                                <div id="Progress_Status">
+                                                    <div id="myprogressBar" style="width: 20%;">
+                                                        <div id="text">20%</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div id="Afternoontime" class="LaboratoryDetailstime timetabActive Afternoontime">
+                                    <div class="row">
+                                        <div class="col-md-4 p-0">
+                                            <div class="timer timeTableActive">
+                                                12:00
+                                                <div id="Progress_Status">
+                                                    <div id="myprogressBar" style="width: 74%;">
+                                                        <div id="text">74%</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 p-0">
+                                            <div class="timer">
+                                                12:00
+                                                <div id="Progress_Status">
+                                                    <div id="myprogressBar" style="width: 91%;">
+                                                        <div id="text">91%</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 p-0">
+                                            <div class="timer timeTableActive">
+                                                12:00
+                                                <div id="Progress_Status">
+                                                    <div id="myprogressBar" style="width: 74%;">
+                                                        <div id="text">74%</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 p-0">
+                                            <div class="timer timeTableActive">
+                                                12:00
+                                                <div id="Progress_Status">
+                                                    <div id="myprogressBar" style="width: 74%;">
+                                                        <div id="text">74%</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 p-0">
+                                            <div class="timer ">
+                                                12:00
+                                                <div id="Progress_Status">
+                                                    <div id="myprogressBar" style="width: 15%;">
+                                                        <div id="text">15%</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 p-0">
+                                            <div class="timer ">
+                                                12:00
+                                                <div id="Progress_Status">
+                                                    <div id="myprogressBar" style="width: 80%;">
+                                                        <div id="text">80%</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 p-0">
+                                            <div class="timer timeTableActive">
+                                                12:00
+                                                <div id="Progress_Status">
+                                                    <div id="myprogressBar" style="width: 74%;">
+                                                        <div id="text">74%</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 p-0">
+                                            <div class="timer ">
+                                                12:00
+                                                <div id="Progress_Status">
+                                                    <div id="myprogressBar" style="width: 50%;">
+                                                        <div id="text">50%</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 p-0">
+                                            <div class="timer timeTableActive">
+                                                12:00
+                                                <div id="Progress_Status">
+                                                    <div id="myprogressBar" style="width: 74%;">
+                                                        <div id="text">74%</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 p-0">
+                                            <div class="timer">
+                                                12:00
+                                                <div id="Progress_Status">
+                                                    <div id="myprogressBar" style="width: 10%;">
+                                                        <div id="text">10%</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 p-0">
+                                            <div class="timer timeTableActive">
+                                                12:00
+                                                <div id="Progress_Status">
+                                                    <div id="myprogressBar" style="width: 74%;">
+                                                        <div id="text">74%</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 p-0">
+                                            <div class="timer">
+                                                12:00
+                                                <div id="Progress_Status">
+                                                    <div id="myprogressBar" style="width: 20%;">
+                                                        <div id="text">20%</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div id="Eveningtime" class="LaboratoryDetailstime Eveningtime">
+                                    <div class="row">
+                                        <div class="col-md-4 p-0">
+                                            <div class="timer timeTableActive">
+                                                12:00
+                                                <div id="Progress_Status">
+                                                    <div id="myprogressBar" style="width: 74%;">
+                                                        <div id="text">74%</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 p-0">
+                                            <div class="timer">
+                                                12:00
+                                                <div id="Progress_Status">
+                                                    <div id="myprogressBar" style="width: 91%;">
+                                                        <div id="text">91%</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 p-0">
+                                            <div class="timer timeTableActive">
+                                                12:00
+                                                <div id="Progress_Status">
+                                                    <div id="myprogressBar" style="width: 74%;">
+                                                        <div id="text">74%</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 p-0">
+                                            <div class="timer timeTableActive">
+                                                12:00
+                                                <div id="Progress_Status">
+                                                    <div id="myprogressBar" style="width: 74%;">
+                                                        <div id="text">74%</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 p-0">
+                                            <div class="timer ">
+                                                12:00
+                                                <div id="Progress_Status">
+                                                    <div id="myprogressBar" style="width: 15%;">
+                                                        <div id="text">15%</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 p-0">
+                                            <div class="timer ">
+                                                12:00
+                                                <div id="Progress_Status">
+                                                    <div id="myprogressBar" style="width: 79%;">
+                                                        <div id="text">79%</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 p-0">
+                                            <div class="timer">
+                                                12:00
+                                                <div id="Progress_Status">
+                                                    <div id="myprogressBar" style="width: 63%;">
+                                                        <div id="text">63%</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 p-0">
+                                            <div class="timer timeTableActive">
+                                                12:00
+                                                <div id="Progress_Status">
+                                                    <div id="myprogressBar" style="width: 50%;">
+                                                        <div id="text">50%</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 p-0">
+                                            <div class="timer ">
+                                                12:00
+                                                <div id="Progress_Status">
+                                                    <div id="myprogressBar" style="width: 33%;">
+                                                        <div id="text">33%</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 p-0">
+                                            <div class="timer timeTableActive">
+                                                12:00
+                                                <div id="Progress_Status">
+                                                    <div id="myprogressBar" style="width: 10%;">
+                                                        <div id="text">10%</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 p-0">
+                                            <div class="timer ">
+                                                12:00
+                                                <div id="Progress_Status">
+                                                    <div id="myprogressBar" style="width: 44%;">
+                                                        <div id="text">44%</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 p-0">
+                                            <div class="timer timeTableActive">
+                                                12:00
+                                                <div id="Progress_Status">
+                                                    <div id="myprogressBar" style="width: 25%;">
+                                                        <div id="text">25%</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12 text-end">
+                                <button class="Proceed">Proceed &gt;&gt;</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div *ngIf="1" class="timeTab EntrySchedule">
+                        <div class="row">
+                            <div class="col-md-6 mt-4 mb-4" style="z-index: 1;">
+                                <div class="map">
+                                    <app-load-map></app-load-map>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mt-4 mb-4">
+                                <form [formGroup]="scheduleFormParam" role="form">
+                                    <div class="row">
+                                        <div class="col-md-11 m-auto">
+                                            <div class="form-floating">
+                                                <input [readonly]="this.routeData?.isReschedule ? true : false"
+                                                    formControlName="healthClinicName" autofocus="" id="floatingInput"
+                                                    type="text" name="healthClinicName" placeholder="healthClinicName"
+                                                    class="form-control frInput">
+                                                <label for="floatingInput">Health Clinic Name</label>
+                                            </div>
+                                            <div class="regErrorDiv">
+                                                <div *ngIf="setClientError" class="error">Please enter Health Clinic
+                                                    Name</div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-11 m-auto">
+                                            <div class="form-floating">
+                                                <input [readonly]="this.routeData?.isReschedule ? true : false"
+                                                    formControlName="physicianName" autofocus="" id="floatingInput"
+                                                    type="text" name="physicianName" placeholder="physicianName"
+                                                    class="form-control frInput">
+                                                <label for="floatingInput">Physician Name or Specialisation</label>
+                                            </div>
+                                            <div class="regErrorDiv">
+                                                <div *ngIf="setClientError" class="error">Please enter Physician Name or
+                                                    Specialisation</div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-11 m-auto">
+                                            <div class="form-floating">
+                                                <input formControlName="appointmentDate" type="date"
+                                                    (focusout)="checkValidDate()"
+                                                    min="{{ currentDate | date:'yyyy-MM-dd' }}" autofocus=""
+                                                    name="appointmentDate" placeholder="appointmentDate"
+                                                    id="floatingInput" class="form-control frInput">
+                                                <label for="floatingInput">Appointment Date</label>
+                                            </div>
+                                            <div class="regErrorDiv">
+                                                <app-validation-message
+                                                    [control]="scheduleFormParam.controls['appointmentDate']"
+                                                    [messages]="errorMessage.appointmentDate">
+                                                </app-validation-message>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-11 m-auto">
+                                            <select name="slots" formControlName="selectedSlot"
+                                                (change)="setTimeSlots()" class="" id="floatingSelect"
+                                                aria-label="Floating label select example">
+                                                <option *ngFor="let option of slotOptions" [value]="option.value">
+                                                    {{option.label}}</option>
+                                            </select>
+                                            <div class="regErrorDiv"></div>
+                                        </div>
+                                        <div class="col-md-11 m-auto">
+                                            <div class="timedisplay">
+                                                <div class="row px-2">
+                                                    <div *ngFor="let slot of timeSlots" class="col-md-3 px-2 mb-2">
+                                                        <div [ngClass]="{'timeTableActive': checkIsSelected(slot) }"
+                                                            (click)="setSelectedTimeSlot(slot)" class="timer">
+                                                            {{slot}} 
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="regErrorDiv">
+                                                <app-validation-message
+                                                    [control]="scheduleFormParam.controls['appointmentTime']"
+                                                    [messages]="errorMessage.appointmentTime">
+                                                </app-validation-message>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12 text-end">
+                                            <button
+                                                (click)="submitSchedule(scheduleFormParam.value, scheduleFormParam.valid)"
+                                                class="Proceed mt-4">Proceed ></button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- ------------------------------------- DoctorDetails Pages END ------------------------------------ -->
+        <div *ngIf="labTestView" class="LaboratoryDetailstime" id="LaboratoryDetailstime">
+            <div class="row">
+                <div class="col-md-12 timeTable">
+                    <div *ngIf="1" class="timeTab EntrySchedule">
+                        <div class="row">
+                            <div class="col-md-12 mt-4 mb-4">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="map">
+                                            <app-load-map></app-load-map>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <form [formGroup]="scheduleLabFormParam" role="form">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="form-floating">
+                                                        <input formControlName="diagnosticCentreName" autofocus=""
+                                                            id="floatingInput" type="text" name="diagnosticCentreName"
+                                                            placeholder="diagnosticCentreName"
+                                                            class="form-control frInput">
+                                                        <label for="floatingInput">Diagnostic Centre Name</label>
+                                                    </div>
+                                                    <div class="regErrorDiv"></div>
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <div class="form-floating">
+                                                        <input autofocus="" id="floatingInput" type="text" name="test"
+                                                            placeholder="tests" formControlName="test"
+                                                            [matAutocomplete]="testNameauto"
+                                                            class="form-control frInput"
+                                                            (keyup)="filterLabtestList(scheduleLabFormParam.getRawValue().test)">
+                                                        <label for="floatingInput">Tests</label>
+                                                        <mat-autocomplete #testNameauto="matAutocomplete">
+                                                            <mat-option (click)="selectLabtest(item)"
+                                                                *ngFor="let item of filteredLabTestList"
+                                                                [value]="scheduleLabFormParam.getRawValue().test">
+                                                                <p>{{item.laboratoryTestPackageDescription}}</p>
+                                                            </mat-option>
+                                                        </mat-autocomplete>
+                                                    </div>
+                                                    <div *ngIf="!setTestError" class="regErrorDiv">
+                                                        <small>{{labtestSelectionErrMSG}}</small>
+                                                    </div>
+                                                    <div *ngIf="setTestError" class="regErrorDiv">
+                                                        <small>Please select atleast one test</small>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <div class="Selected">
+                                                        <label for="" style="padding-left: 9px">Selected Tests</label>
+                                                        <div class="srcl">
+                                                            <div class="d-flex align-items-center py-1"
+                                                                *ngFor="let selectedLabTest of selectedLabTests; let selectedLabTestIndex = index">
+                                                                <p>{{selectedLabTest.laboratoryTestPackageDescription}}
+                                                                </p> <i class="bi-x-circle-fill" *ngIf="!routeData"
+                                                                    (click)="removelabtest(selectedLabTestIndex)"></i>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <div class="form-floating">
+                                                        <input formControlName="appointmentDate" type="date"
+                                                            min="{{ currentDate | date:'yyyy-MM-dd' }}" autofocus=""
+                                                            name="appointmentDate" placeholder="appointmentDate"
+                                                            (focusout)="checkLabValidDate()" id="floatingInput"
+                                                            class="form-control frInput">
+                                                        <label for="floatingInput">appointment Date</label>
+                                                    </div>
+                                                    <div class="regErrorDiv">
+                                                        <app-validation-message
+                                                            [control]="scheduleLabFormParam.controls['appointmentDate']"
+                                                            [messages]="errorMessage.appointmentDate">
+                                                        </app-validation-message>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <select name="slots" formControlName="selectedSlot"
+                                                        (change)="setLabTimeSlots()" class="" id="floatingSelect"
+                                                        aria-label="Floating label select example">
+                                                        <option *ngFor="let option of slotOptions"
+                                                            [value]="option.value">
+                                                            {{option.label}}</option>
+                                                    </select>
+                                                    <div class="regErrorDiv"></div>
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <div class="timedisplay">
+                                                        <div class="row px-2">
+                                                            <div *ngFor="let slot of labTimeSlots"
+                                                                class="col-md-3 px-2 mb-2">
+                                                                <div [ngClass]="{'timeTableActive': checkIsLabSelected(slot)}"
+                                                                    (click)="setSelectedLabTimeSlot(slot)"
+                                                                    class="timer">
+                                                                    {{slot}}
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="regErrorDiv">
+                                                        <app-validation-message
+                                                            [control]="scheduleLabFormParam.controls['appointmentTime']"
+                                                            [messages]="errorMessage.appointmentTime">
+                                                        </app-validation-message>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-12 "
+                                                    [ngClass]="{labtestProceedButtonDiv:!routeData,labtestProceedAndCancelButtonDiv:routeData}">
+                                                    <button *ngIf="routeData" (click)="cancelLabSchedule()"
+                                                        class="Proceed mt-3">{{'< Cancel'}}</button>
+                                                            <button
+                                                                (click)="submitLabSchedule(scheduleLabFormParam.value, scheduleLabFormParam.valid)"
+                                                                class="Proceed mt-3">Proceed ></button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

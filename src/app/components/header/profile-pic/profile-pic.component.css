@@ -1,0 +1,216 @@
+h2 {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 22px;
+    color: #000;
+    margin: 0;
+    text-align: center;
+}
+
+.Dr-list {
+    background: #fff9db;
+    border: 1px solid #fcc419;
+    box-shadow: 0px 11px 34px -5px rgba(215, 167, 55, 0.19);
+    border-radius: 10px;
+    padding: 15px 17px 17px 17px;
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    align-items: center;
+    position: relative;
+    width: 100%;
+    margin-top: 19px;
+}
+
+.Dr-list h6 {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 110%;
+    color: #414141;
+    margin: 0px 8px 0px 8px;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    width: 69%;
+    text-align: left;
+}
+
+.Dr-list i {
+    float: right;
+    background: #e67700;
+    box-shadow: 0px 4px 8px rgb(225 173 50 / 79%);
+    border-radius: 100%;
+    height: 25px;
+    width: 25px;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    position: absolute;
+    right: 8px;
+    cursor: pointer;
+    padding: 4px;
+    font-size: 17px;
+}
+
+.Dr-list img {
+    vertical-align: revert !important;
+    max-width: 16px;
+}
+
+.Dr-list p {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 110%;
+    color: #000;
+}
+
+.Dr-list .file-kb {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    line-height: 110%;
+    color: #D9B359;
+    display: block;
+    position: absolute;
+    bottom: 2px;
+    left: 45px;
+    font-size: 12px;
+}
+
+.Dr-list i.bi-check2 {
+    background: #65B167 !important;
+    box-shadow: 0px 4px 8px rgb(101 177 103 / 54%) !important;
+}
+
+.massage {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    color: #CD0707;
+}
+
+.massage-box {
+    border: 1px solid #fcc419;
+    box-shadow: 0px 11px 34px -5px rgba(219, 59, 59, 0.21);
+}
+
+.List h4 {
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 110%;
+    color: #484747;
+    padding: 12px 0px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+::file-selector-button {
+    display: none;
+}
+
+#Progress_Status {
+    width: 78%;
+    margin-left: 25px;
+    height: 5px;
+    left: 497px;
+    top: 380px;
+    background: #FBD478;
+    border-radius: 8px;
+}
+
+#myprogressBar {
+    height: 5px;
+    background: linear-gradient(180deg, #91F0A2 0%, rgba(101, 177, 103, 0.71) 100%);
+    border-radius: 8px;
+}
+
+#text {
+    float: right;
+    margin-top: -20px;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 110%;
+    color: #000;
+}
+
+.save {
+    padding: 12px 26px;
+    background: #e67700;
+    box-shadow: 0px 11px 34px -5px rgba(113, 59, 219, 0.45);
+    border-radius: 6px;
+    border: none;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 13px;
+    line-height: 110%;
+    color: #FFFFFF;
+    margin-top: 13px;
+}
+
+.massage {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    color: #CD0707;
+}
+
+.img {
+    width: 165px;
+    margin: auto;
+}
+
+.Dp img {
+    width: 100%;
+    height: 100%;
+}
+
+.removeDp {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background: #0000008c;
+    backdrop-filter: blur(2px);
+    opacity: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.Dp {
+    width: 165px;
+    height: 160px;
+    border-radius: 80px;
+    position: relative;
+    overflow: hidden;
+    transition: 0.3s;
+}
+
+.removeDpI {
+    color: rgb(255, 255, 255);
+    font-size: 26px;
+}
+
+.removeDp i {
+    cursor: pointer;
+}
+
+.Dp:hover .removeDp {
+    opacity: 1;
+    transition: 0.3s;
+}
+
+.errorMargin {
+    margin-top: -24px;
+}

@@ -1,0 +1,43 @@
+<div class="modal-dialog">
+  <div class="modal-content">
+    <!-- <span class="close"><i class="bi-x-lg" (click)="openAuthSignModal()"></i></span> -->
+    <div class="modal-body">
+      <div class="CaseLog">
+        <h2 *ngIf="!somthingWentWrong">Case Log</h2>
+        <div class="close">
+          <i class="bi-x-circle-fill" (click)="closeCaseLog()"></i>
+        </div>
+        <div class="row" *ngIf="!somthingWentWrong">
+          <div class="LogScroll">
+            <div class="col-md-12 mt-3"
+              *ngFor="let caseLogInformation of caseLogInformationList; let caseIndex = index">
+              <h5>{{caseLogInformation.caseLogUserName}} commented at
+                {{getTimeStamp(caseLogInformation.caseLogTimestamp)
+                |
+                date:'d-MMM-y @ h:m a'}}</h5>
+              <p>{{caseLogInformation.caseLogText}}</p>
+            </div>
+          </div>
+          <div class="col-md-12 mt-1">
+            <h6>Your Comments</h6>
+            <div class="position-relative">
+              <form [formGroup]="caseLogForm">
+                <textarea name="Description" id="Description" cols="30" rows="10"
+                  placeholder="Case Log description should go here….." class="form-control"
+                  formControlName="comments"></textarea>
+              </form>
+              <button class="send" (click)="commentsSend()"><i class="fa fa-paper-plane"
+                  aria-hidden="true"></i></button>
+            </div>
+            <div class="regErrorDiv">
+              <span>{{comentsError}}</span>
+            </div>
+          </div>
+        </div>
+        <div class=" d-flex justify-content-center" *ngIf="somthingWentWrong">
+          <p style="color: red;">Something went wrong, Please try after sometime</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,44 @@
+<div id="Security" class="tabcontent">
+    <router-outlet>
+        <ngx-spinner bdColor="rgba(51,51,51,0.8)" size="medium" color="#fff" type="ball-circus" [fullScreen]="true">
+        </ngx-spinner>
+    </router-outlet>
+    <div class="col-md-12 mt-4">
+        <div class="Questions-box">
+            <form [formGroup]="securityQuestionForm">
+                <div formArrayName="securityQuestionsList">
+                    <div class="All-box text-center" *ngFor="
+                    let securityQuestionform of getSecurityQuestionformList()
+                      .controls;
+                    let securityQuestionIndex = index">
+                        <ng-container formGroupName="{{ securityQuestionIndex }}">
+                            <img src="../../../assets/images/qna.png">
+                            <select name="question" id="question" formControlName="secQuestionID"
+                                (change)="onChangeQuestion(securityQuestionIndex)">
+                                <option value="0" disabled>Select security Question from the list</option>
+                                <option *ngFor="let question of questionsList" [value]="question.secQuestionID"
+                                    [hidden]="isSelectedQuestion(question.secQuestionID)">{{
+                                    question.secQuestionDescription }}</option>
+                            </select>
+                            <div class="ans-input">
+                                <input type="text" name="ans" formControlName="secQuestionAnswer"
+                                    [placeholder]="getPlaceholder(securityQuestionIndex) ? '************************' : 'Answer'"
+                                    (change)="onChangeAnswer(securityQuestionIndex)">
+                            </div>
+                            <div class="secQuesErrorDiv">
+                                <app-validation-message
+                                    [control]="getController(securityQuestionIndex, 'secQuestionAnswer')"
+                                    [messages]="errorMessage.secQuestionAnswer">
+                                </app-validation-message>
+                            </div>
+                        </ng-container>
+                    </div>
+                </div>
+                <button id="myBtn1"
+                    (click)="handleSubmit(securityQuestionForm.value, securityQuestionForm.valid)">Submit
+                    Answer</button>
+                <button class="add-qa" (click)="addSecQuestion()">Add Another Question</button>
+            </form>
+        </div>
+    </div>
+</div>

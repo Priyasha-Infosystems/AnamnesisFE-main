@@ -1,0 +1,116 @@
+<router-outlet>
+  <ngx-spinner bdColor="rgba(51,51,51,0.8)" size="medium" color="#fff" type="ball-circus" [fullScreen]="true">
+  </ngx-spinner>
+  <section id="LaboratoryTestModal">
+    <div class="modal-content">
+      <div class="close" data-bs-dismiss="modal" aria-label="Close">
+        <i class="bi-x-circle-fill" (click)="closeLabTestPopup()"></i>
+      </div>
+      <div class="modal-body">
+        <div class="MedicineBox mt-4 LaboratoryTest">
+          <div class="row mt-1">
+            <div class="col-md-10 mb-1">
+              <h2>Laboratory Test</h2>
+            </div>
+            <div class="col-md-2 text-center mb-3 d-flex justify-content-center align-items-center flex-column">
+              <button (click)="addToCart()" class="saveBtn">Add To Cart</button>
+              <small>{{customErrorAddToCartMsg}}</small>
+            </div>
+            <div class="LaboratoryTestNameParents">
+              <div class="LaboratoryTestName d-flex position-relative"
+                *ngFor="let selectedLabtest of selectedLabtests; let selectedLabtestIndex = index;">
+                <div class="col-md-11 pt-2 pb-2 d-flex">
+                  <i class="bi-hand-index-thumb-fill"></i>
+                  <div>
+                    <h3>{{selectedLabtest.test}}</h3>
+                    <div *ngIf="selectedLabtest.childTests.length">
+                      <p>{{selectedLabtest.displayText}}<span *ngIf="selectedLabtest.hidenItem > 0"
+                          (click)="viewAllChild(selectedLabtestIndex)">+{{selectedLabtest.hidenItem}}
+                          More</span></p>
+                    </div>
+                    <div *ngIf="selectedLabtest.openViewMoreTextPopup && selectedLabtest.hidenItem > 0"
+                      id="viewMoreText">
+                      <app-view-more-text-component (close)="viewMorTextPopupClose(selectedLabtestIndex)"
+                        [viewMoreText]="selectedLabtest.fullDisplayText"></app-view-more-text-component>
+                    </div>
+                    <div *ngIf="!selectedLabtest.childTests.length">
+                      <p>{{selectedLabtest.testDescription}}<span *ngIf="selectedLabtest.fullTestDescription.length > 0"
+                          (click)="viewAllChild(selectedLabtestIndex)">View More</span></p>
+                    </div>
+                    <div *ngIf="selectedLabtest.openViewMoreTextPopup && selectedLabtest.fullTestDescription.length > 0"
+                      id="viewMoreText">
+                      <app-view-more-text-component (close)="viewMorTextPopupClose(selectedLabtestIndex)"
+                        [viewMoreText]="selectedLabtest.fullTestDescription"></app-view-more-text-component>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-1 text-end pt-2 pb-2 d-flex align-items-center justify-content-end">
+                  <div class="DayBox">
+                    <div class="noOfQty">
+                      <i class="bi-check"></i>
+                    </div>
+                    <i class="bi-pencil-fill" (click)="editLabTest(selectedLabtest.testCode)"></i>
+                    <i class="bi-trash-fill" (click)="deleteLabtest(selectedLabtestIndex)"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-12 p-0">
+              <div class="selectBox pinkbox">
+                <div class="LaboratoryTestName border-0 text-inline">
+                  <form [formGroup]="searchFormGroup" role="form">
+                    <div class="d-flex">
+                      <input type="text" name="LaboratoryTestName" placeholder="Laboratory Test Name"
+                        formControlName="searchKey" (keyup)="changeValidator()">
+                      <button class="Reset" (click)="resetForm()"><i class="bi-x"></i></button>
+                    </div>
+                    <div class="validation-div errorDiv" style="margin-top: -20px; margin-bottom: 10px;">
+                      <app-validation-message [control]="searchFormGroup.controls['searchKey']"
+                        [messages]="errorMessage.searchKey">
+                      </app-validation-message>
+                    </div>
+                  </form>
+                </div>
+                <div class='faq ' [ngClass]="{'d-block':optins().controls.length}">
+                  <form [formGroup]="optionFormGroup" role="form">
+                    <div formArrayName="options" class="options">
+                      <div for='faq-a d-none' id="faq-bg"
+                        *ngFor="let option of optins().controls; let optionIndex = index">
+                        <ng-container formGroupName="{{optionIndex}}">
+                          <div class="faq-heading d-flex">
+                            <label> <input type="checkbox" id='test{{optionIndex}}' formControlName="testCheck"
+                                (change)="optionChecked(optionIndex,option.get('testCheck')?.value)">
+                              {{option.get('test')?.value}}
+                            </label>
+                          </div>
+                          <div *ngIf="childTests(optionIndex).controls.length" class="parentfaq-text">
+                            <div formArrayName="childTests">
+                              <div class="faq-text"
+                                *ngFor="let childTest of childTests(optionIndex).controls; let childTestIndex = index">
+                                <ng-container formGroupName="{{childTestIndex}}">
+                                  <label> <input type="checkbox" id='test{{childTestIndex}}'
+                                      formControlName="childCheck" (change)="childCheck(optionIndex)">
+                                    {{childTest.get('childTest')?.value}}
+                                  </label>
+                                </ng-container>
+                              </div>
+                            </div>
+                          </div>
+                        </ng-container>
+                      </div>
+                    </div>
+                    <div class="row mt-1">
+                      <small>{{customErrMsg}}</small>
+                      <div class="col-md-12 text-center">
+                        <button (click)="save(optionFormGroup.value)" class="saveBtn">Save</button>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>

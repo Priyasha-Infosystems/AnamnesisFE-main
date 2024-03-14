@@ -1,0 +1,314 @@
+td,
+p {
+    color: #713BDB !important;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 107%;
+    background: none;
+    margin: 0;
+}
+
+th {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 13px;
+    line-height: 107%;
+    color: #713BDB;
+}
+
+h2 {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 107%;
+    color: #ffffff;
+}
+
+
+.content select {
+    outline: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+/* to change arrow fill color, add %23 infront of hex color */
+.content select {
+    background: url("../../../../assets/images/selectArrow.png") no-repeat;
+    background-color: #F2ECFF;
+    font-family: 'Poppins';
+    transition: 0.3s;
+    width: 100%;
+    border: 1px solid rgba(113, 59, 219, 0.18);
+    border-radius: 6px;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 107%;
+    outline: none;
+    padding: 0px 15px 0px 7px !important;
+    min-height: unset;
+    height: 35px;
+}
+
+.content select {
+    background-size: 9px;
+    background-position: calc(100% - 3px) 12px;
+    background-repeat: no-repeat;
+}
+
+i {
+    color: #713BDB;
+    font-size: 14px;
+}
+
+.box {
+    background: #ffffff;
+    border: 1px solid #845ef78f;
+    box-shadow: 2px 4px 6px 0px rgb(113 59 219 / 5%);
+    border-radius: 5px;
+    margin-bottom: 5px;
+    padding: 10px 15px;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    height: 100%;
+}
+
+.content {
+    background: #F2ECFF;
+    border: 1px solid rgba(113, 59, 219, 0.19);
+    box-shadow: 0px 16px 34px rgb(113 59 219 / 19%);
+    border-radius: 5px;
+    margin-bottom: 15px;
+    padding: 10px 15px;
+}
+
+.S_no input {
+    width: unset !important;
+    margin-right: 10px;
+}
+
+.S_no {
+    display: flex;
+    align-items: center;
+}
+
+.Address p {
+    width: 340px;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    line-height: normal !important;
+    margin: 0;
+}
+
+.header button {
+    width: 130px;
+    height: 30px;
+    text-align: center;
+    background: none;
+    border: 1px solid #713BDB;
+    box-shadow: 0px 12px 53px -24px rgba(134, 87, 226, 0.63);
+    border-radius: 5px;
+    font-weight: 500;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-size: 13px;
+    line-height: 110%;
+    color: #713BDB;
+}
+
+.DeliveryMan {
+    width: 130px;
+    height: 60px;
+    padding: 12px 6px 9px 6px;
+    background: none;
+    border: 1px solid #713BDB;
+    box-shadow: 0px 12px 53px -24px rgba(134, 87, 226, 0.63);
+    border-radius: 5px;
+    display: inline-flex;
+    margin-right: 15px;
+    white-space: normal;
+    justify-content: center;
+    position: relative;
+}
+
+.DeliveryMan p {
+    text-align: center;
+    font-weight: 500;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-size: 13px;
+    line-height: 2.4;
+    color: #713BDB;
+    word-break: break-all;
+    margin: 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    width: 100%;
+}
+
+.DeliveryMan i {
+    position: absolute;
+    left: 5px;
+    bottom: -13px;
+    font-size: 33px;
+}
+
+.Deliverys {
+    height: 87px;
+    overflow-y: auto;
+    overflow-x: auto;
+    white-space: nowrap;
+    margin-top: 5px;
+    display: flex;
+}
+
+.Deliverys .red i {
+    color: red !important;
+}
+
+.Deliverys .yellow i {
+    color: #d99800 !important;
+}
+
+.Deliverys .green i {
+    color: green !important;
+}
+
+/* width */
+#Delivery-agent ::-webkit-scrollbar {
+    width: 0.3125rem;
+    height: 10px;
+    margin: 0.3125rem;
+}
+
+/* Track */
+#Delivery-agent ::-webkit-scrollbar-track {
+    background: #be86ff;
+    border-radius: 32px;
+}
+
+/* Handle */
+#Delivery-agent ::-webkit-scrollbar-thumb {
+    background: #713bdb;
+    border-radius: 10px;
+}
+
+/* Handle on hover */
+#Delivery-agent ::-webkit-scrollbar-thumb:hover {
+    background: #361775;
+}
+
+.tables {
+    max-height: 410px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+thead {
+    position: sticky;
+    width: 100%;
+    top: 0;
+    height: 35px;
+}
+
+.header .active {
+    background-color: #713BDB;
+    color: #fff;
+}
+
+button {
+    width: 108px;
+    height: 42px;
+    text-align: center;
+    background-color: #713BDB;
+    color: #fff;
+    border: 1px solid #713BDB;
+    box-shadow: 0px 12px 53px -24px rgba(134, 87, 226, 0.63);
+    border-radius: 5px;
+    font-weight: 500;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-size: 13px;
+    line-height: 110%;
+}
+
+.activeDelivery {
+    background-color: #713BDB;
+    color: #fff;
+}
+
+.topHeader {
+    background: #673AB7;
+    padding: 12px 0px 3px 0px;
+    border-radius: 3px;
+    margin-bottom: 10px;
+}
+
+.DataPrint {
+    background: #f7f2ff;
+    padding: 10px 0px 5px 0px;
+    border-radius: 3px;
+    margin-bottom: 10px;
+}
+
+.green .activeDelivery {
+    background-color: green !important;
+    color: #fff !important;
+    border: 1px solid green !important;
+}
+
+.green .activeDelivery p,
+.green .activeDelivery i {
+    color: #ffffff !important;
+}
+
+.green .DeliveryMan {
+    border: 1px solid green !important;
+}
+
+.yellow .DeliveryMan {
+    border: 1px solid #d99800;
+}
+
+.yellow .activeDelivery {
+    background-color: #d99800 !important;
+    color: #fff !important;
+    border: 1px solid #d99800 !important;
+}
+
+.yellow .activeDelivery p,
+.yellow .activeDelivery i {
+    color: #ffffff !important;
+}
+
+.red .DeliveryMan {
+    border: 1px solid #ff0000;
+}
+
+.red .activeDelivery {
+    background-color: #ff0000 !important;
+    color: #fff !important;
+    border: 1px solid #ff0000 !important;
+}
+
+.red .activeDelivery p,
+.red .activeDelivery i {
+    color: #ffffff !important;
+}
+
+.Address p {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    width: 100%;
+    word-wrap: break-word;
+    word-break: break-all;
+}

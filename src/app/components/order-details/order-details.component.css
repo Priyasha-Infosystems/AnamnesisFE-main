@@ -1,0 +1,1270 @@
+/* ---------------------------------------  OrderDetails Content Start  ------------------------------------------------  */
+.tabcontent {
+    padding: 2% !important;
+}
+
+#OrderDetails .CollapsePrescribed .m-d.expand-list {
+    margin: 0;
+    padding: 0;
+}
+
+#OrderDetails .right .CollapsePrescribed .m-d.expand-list>li {
+    margin-bottom: 2.4375rem;
+}
+
+#OrderDetails .CollapsePrescribed .m-d.expand-list>li {
+    list-style-type: none;
+    padding: 1.25rem 0.9375rem;
+    position: relative;
+    background: #F2ECFF;
+    border: 1px solid rgb(113 59 219 / 59%);
+    border-radius: 5px;
+    margin-bottom: 1.25rem;
+}
+
+#OrderDetails .CollapsePrescribed .m-d.expand-list>li label {
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+#OrderDetails .CollapsePrescribed .m-d.expand-list>li label h5 {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 1.125rem;
+    line-height: 1.3;
+    color: #3a3a3a;
+    margin: 0;
+}
+
+#OrderDetails .CollapsePrescribed .m-d input[class^="tabCollapse"] {
+    width: 100%;
+    height: 4.0625rem;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 1;
+}
+
+#OrderDetails .CollapsePrescribed .m-d input {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+#OrderDetails .CollapsePrescribed .m-d .open-close-icon {
+    display: inline-block;
+    position: absolute;
+    right: 2.9375rem;
+    top: 0.375rem;
+    transform: translatey(2px);
+}
+
+#OrderDetails .CollapsePrescribed .m-d .open-close-icon .bi-caret-up-fill {
+    transform: rotate(180deg);
+    transition: transform 150ms ease-in-out 0ms;
+}
+
+#OrderDetails .CollapsePrescribed .m-d .open-close-icon i {
+    position: absolute;
+    left: 0;
+    color: #713BDB;
+    font-size: 1.75rem;
+}
+
+#OrderDetails .content .nameDetails {
+    width: 100%;
+}
+
+#OrderDetails .CollapsePrescribed .m-d.expand-list>li label {
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+#OrderDetails .content .nameDetails label {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 0.8125rem;
+    line-height: 1.3;
+    color: #484747;
+}
+
+#OrderDetails .content .nameDetails p {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 0.8125rem;
+    line-height: 1.3;
+    color: #3F3F3F;
+    margin: 0;
+}
+
+#OrderDetails .content .nameDetails p {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 0.8125rem;
+    line-height: 1.3;
+    color: #3F3F3F;
+    margin: 0;
+}
+
+#OrderDetails .content .nameDetails label {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 0.8125rem;
+    line-height: 1.3;
+    color: #484747;
+}
+
+#OrderDetails .CollapsePrescribed .m-d.expand-list>li label h5 {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 1rem;
+    line-height: 1.3;
+    color: #3a3a3a;
+    margin: 0;
+}
+
+#OrderDetails .CollapsePrescribed .m-d.expand-list>li label h5 span {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 0.8125rem;
+    line-height: 1;
+    color: #713BDB;
+}
+
+#OrderDetails .CollapsePrescribed .m-d.expand-list>li label .Amount label {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 0.75rem;
+    color: #242222;
+}
+
+#OrderDetails .CollapsePrescribed .m-d.expand-list>li label .Amount b {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 0.75rem;
+    color: #713BDB;
+    margin-left: 3px;
+}
+
+#OrderDetails .CollapsePrescribed .m-d.expand-list>li label .Amount b span {
+    color: #1DAC34;
+}
+
+#OrderDetails .content .PricingDetails {
+    width: 100%;
+    height: 100%;
+    padding: 0.0625rem 0.25rem;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+#OrderDetails .content .PricingDetails h2 {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 0.9375rem;
+    line-height: 110%;
+    color: #484747;
+}
+
+#OrderDetails .content .PricingDetails label {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 0.75rem;
+    line-height: 1.5;
+    color: #3F3F3F;
+}
+
+#OrderDetails .content .PricingDetails .bottom-border {
+    border-top: 1px solid rgb(113 59 219 / 59%);
+    border-bottom: 1px solid rgb(113 59 219 / 10%);
+
+}
+
+#OrderDetails .content .PricingDetails .margin-top td {
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid rgb(113 59 219 / 10%);
+}
+
+#OrderDetails .content .PricingDetails .margin-bottom td {
+    padding-top: 0.75rem;
+}
+
+#OrderDetails .content .PricingDetails .bottom-border td {
+    padding: 0.75rem 0rem;
+}
+
+td p {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 10px;
+    line-height: 1;
+    color: #262626;
+    text-align: right;
+    margin-right: -17px;
+}
+
+/* .middleLine{
+    position: absolute;
+    border: 0;
+    height: 1px;
+    background: #c3a0e3;
+    z-index: 10;
+    width: 50%;
+    left: 0;
+    right: 0;
+    top: 40.5625rem;
+    margin: auto;
+  } */
+
+#OrderDetails .content .PricingDetails table {
+    width: 100%;
+}
+
+#OrderDetails .content .PricingDetails h2 {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 0.75rem;
+    line-height: 110%;
+    color: #484747;
+    margin: 0;
+    text-align: right;
+}
+
+#OrderDetails .content .PricingDetails span {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 0.75rem;
+    line-height: 110%;
+    text-align: right;
+    color: #1DAC34;
+    display: block;
+}
+
+#OrderDetails .content .PricingDetails .Discount i {
+    color: #1DAC34;
+}
+
+#OrderDetails .content .PricingDetails .Total h3 {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 1rem;
+    line-height: 110%;
+    color: #484747;
+    margin: 0;
+}
+
+#OrderDetails .content .PricingDetails .Total .total {
+    line-height: 0;
+}
+
+#OrderDetails .content .PricingDetails .Total .saving h4 {
+    font-size: 1rem;
+    text-align: right;
+    color: #1DAC34;
+}
+
+#OrderDetails .content .PricingDetails .Total .saving h5,
+#OrderDetails .content .PricingDetails .Total .saving i {
+    color: #1DAC34;
+}
+
+#OrderDetails .content .PricingDetails .Total h5 {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 1rem;
+    line-height: 110%;
+    color: #484747;
+    margin: 0;
+}
+
+#OrderDetails .content .PricingDetails .Total h4 {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 1rem;
+    line-height: 110%;
+    color: #484747;
+    margin: 0;
+    text-align: right;
+}
+
+#OrderDetails .content .PricingDetails .Total {
+    padding: 0.9375rem 0.5625rem;
+}
+
+#OrderDetails .content .Proceed {
+    padding: 0.8125rem 2.5rem;
+    background: #713BDB;
+    box-shadow: 0px 0.75rem 53px -24px rgb(134 87 226 / 63%);
+    border-radius: 0.375rem;
+    border: none;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 0.75rem;
+    line-height: 110%;
+    color: #FEFEFF;
+    margin: 0rem 0rem 0.75rem 0rem;
+    letter-spacing: 1px;
+}
+
+#OrderDetails .content {
+    width: 100%;
+    height: 100%;
+    background: #FFFFFF;
+    border-radius: 1.375rem;
+    padding: 1.5625rem 0.8125rem 0rem 0.8125rem;
+}
+
+#OrderDetails .content .DeliveryBox {
+    width: 100%;
+    background: #FFFFFF;
+    border: 1px solid rgb(113 59 219 / 59%);
+    box-shadow: 0px 1rem 34px rgba(113, 59, 219, 0.19);
+    border-radius: 0.4375rem;
+    padding: 1rem 1.5625rem;
+    margin-bottom: 0.4375rem;
+}
+
+#OrderDetails .content .middle {
+    width: 100%;
+    height: auto;
+    background: #f2ecffb3;
+    border: 1px solid rgb(113 59 219 / 59%);
+    box-shadow: 0px 1rem 34px rgba(113, 59, 219, 0.19);
+    border-radius: 5px;
+}
+
+#OrderDetails .content .Date {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 0.75rem;
+    line-height: 0.9375rem;
+    color: #713BDB;
+    margin: 0;
+}
+
+#OrderDetails .content .location {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 0.75rem;
+    line-height: 0.9375rem;
+    color: #484848;
+    margin: 0;
+}
+
+#OrderDetails .content .order-track {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    background: #f2ecffb3;
+    border: 1px solid rgb(113 59 219 / 59%);
+    box-shadow: 0px 1rem 34px rgba(113, 59, 219, 0.19);
+    border-radius: 5px;
+    min-height: 19rem;
+    padding: 0.5rem;
+}
+
+#OrderDetails .content .order-track h5 {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 0.875rem;
+    line-height: 1.3;
+    color: #3a3a3a;
+    margin-left: 0.5rem;
+    margin-top: 0.5rem;
+}
+
+#OrderDetails .content .order-track-step {
+    display: flex;
+    height: auto;
+}
+
+#OrderDetails .content .order-track-step:last-child {
+    height: auto;
+}
+
+#OrderDetails .content .order-track-step:last-child .order-track-status span:last-of-type {
+    display: none;
+}
+
+#OrderDetails .content .order-track-status {
+    position: absolute;
+    padding: 1.3125rem 0.75rem;
+}
+
+#OrderDetails .content .order-track-status-dot {
+    display: block;
+    width: 0.5rem;
+    height: 0.5rem;
+    background: #8655E6;
+    border-radius: 50%;
+    box-shadow: 0px 0px 0px 2px #AE86FD;
+}
+
+#OrderDetails .content .order-track-status-line {
+    display: block;
+    margin: 0 auto;
+    width: 0.125rem;
+    height: 5rem;
+    background: rgba(113, 59, 219, 0.75);
+}
+
+#OrderDetails .content .order-track-text-stat {
+    font-size: 1.3rem;
+    font-weight: 500;
+    margin-bottom: 0.1875rem;
+}
+
+#OrderDetails .content .order-track-text-sub {
+    font-size: 1rem;
+    font-weight: 300;
+}
+
+#OrderDetails .content .order-track {
+    transition: all .3s height 0.3s;
+    transform-origin: top center;
+}
+
+#OrderDetails .content .Status {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 0.625rem;
+    color: #DDA520;
+    margin: 0;
+    margin-top: 0.5rem;
+    line-height: 1;
+}
+
+#OrderDetails .content .middle {
+    padding: 0.4375rem 0.5625rem 0.5625rem 0.5625rem;
+    margin-bottom: 10px;
+}
+
+#OrderDetails .content .middle .OrderId {
+    width: 100%;
+    background: #FFFFFF;
+    border: 1px solid rgba(113, 59, 219, 0.19);
+    box-shadow: -3px 27px 34px rgba(113, 59, 219, 0.19);
+    border-radius: 5px;
+    margin-bottom: 1.25rem;
+}
+
+#OrderDetails .content .middle .OrderId label {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 0.75rem;
+    line-height: 1;
+    color: #4b4b4b;
+    width: 100%;
+    margin: 0;
+}
+
+#OrderDetails .content .middle .OrderId p {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 0.75rem;
+    line-height: 1;
+    color: #713BDB;
+    margin: 0;
+}
+
+#OrderDetails .content .middle .OrderId b {
+    display: block;
+}
+
+#OrderDetails .content .middle .OrderId .DeliveryDate p {
+    font-weight: 500;
+}
+
+#OrderDetails .content .middle .list h2 {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 1rem;
+    line-height: 110%;
+    color: #434242;
+}
+
+#OrderDetails .content .middle .list .listDetails {
+    padding: 0.4375rem 0.6875rem;
+    border-bottom: 1px solid #ff922b;
+}
+
+#OrderDetails .content .middle .list label {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 0.6875rem;
+    line-height: 1.5;
+    color: #2a2a2a;
+}
+
+#OrderDetails .content .middle .list h2 {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 0.75rem;
+    line-height: 1;
+    color: #4F4F4F;
+    margin: 0;
+}
+
+#OrderDetails .content .middle .list p {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 0.6875rem;
+    line-height: 136%;
+    color: #4F4F4F;
+    margin: 0px;
+}
+
+#OrderDetails .content .middle .list span {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 0.75rem;
+    line-height: 110%;
+    color: #713BDB;
+    display: block;
+}
+
+
+#OrderDetails .content .fullname {
+    width: 100%;
+    background: #F2ECFF;
+    border: 1px solid rgba(113, 59, 219, 0.19);
+    box-shadow: 0px 1rem 34px rgba(113, 59, 219, 0.19);
+    border-radius: 5px;
+    padding: 0.75rem 1.625rem 1.4375rem 1.625rem;
+}
+
+#OrderDetails .content .fullname label {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 0.875rem;
+    line-height: 224%;
+    color: #3F3F3F;
+}
+
+#OrderDetails .content .fullname h2 {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 0.875rem;
+    line-height: 1.4;
+    color: #484747;
+    margin: 0;
+}
+
+#OrderDetails .content .fullname .address {
+    border-top: 1px solid rgba(113, 59, 219, 0.19);
+    padding-top: 0.4375rem;
+    margin-top: 0.625rem;
+}
+
+#OrderDetails .CollapsePrescribed .m-d.expand-list>li {
+    width: 100%;
+    padding: 0.75rem 0.4375rem;
+    background: #F2ECFF;
+    border-radius: 5px;
+}
+
+#OrderDetails .right .CollapsePrescribed .m-d.expand-list>li {
+    margin-bottom: 1.25rem;
+}
+
+#OrderDetails .CollapsePrescribed .m-d.expand-list>li label {
+    -webkit-user-select: none;
+    /* Safari */
+    -ms-user-select: none;
+    /* IE 10 and IE 11 */
+    user-select: none;
+    /* Standard syntax */
+}
+
+#OrderDetails .CollapsePrescribed .m-d.expand-list>li label h5 {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 0.875rem;
+    line-height: 1.3;
+    color: #3a3a3a;
+    margin: 0;
+}
+
+#OrderDetails .CollapsePrescribed .m-d.expand-list>li label h5 span {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 0.8125rem;
+    line-height: 1;
+    color: #713BDB;
+}
+
+#OrderDetails .CollapsePrescribed .m-d.expand-list>li label .Amount label {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 0.6875rem;
+    color: #242222;
+}
+
+#OrderDetails .CollapsePrescribed .m-d.expand-list>li label .Amount i {
+    font-size: 0.75rem;
+    padding-left: 0.1875rem;
+}
+
+#OrderDetails .CollapsePrescribed .m-d.expand-list>li label .Amount b {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 0.6875rem;
+    color: #713BDB;
+    margin-left: 0.1875rem;
+}
+
+#OrderDetails .CollapsePrescribed .m-d.expand-list>li label .Amount b span {
+    color: #1DAC34;
+}
+
+#OrderDetails .CollapsePrescribed .m-d label[class^="tabCollapse"]:hover {
+    cursor: pointer;
+}
+
+#OrderDetails .CollapsePrescribed .m-d input {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+#OrderDetails .CollapsePrescribed .m-d input[class^="tabCollapse"] {
+    width: 100%;
+    height: 3rem;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 1;
+    outline: none;
+}
+
+#OrderDetails .CollapsePrescribed .m-d input[class^="tabCollapse"]:hover {
+    cursor: pointer;
+}
+
+#OrderDetails .CollapsePrescribed .m-d label[class^="tabCollapse"] {
+    font-weight: bold;
+}
+
+#OrderDetails .CollapsePrescribed .m-d .contentCollapse {
+    height: auto;
+    max-height: 0;
+    overflow: hidden;
+    transform: translateY(6px);
+    transition: all 180ms ease-in-out 0ms;
+}
+
+#OrderDetails .CollapsePrescribed .m-d li[data-md-content="100"] input[class^="tabCollapse"]:checked~.contentCollapse {
+    max-height: 100%;
+    transition: all 150ms ease-in-out 0ms;
+}
+
+#OrderDetails .CollapsePrescribed .m-d li[data-md-content="200"] input[class^="tabCollapse"]:checked~.contentCollapse {
+    max-height: 100%;
+}
+
+#OrderDetails .CollapsePrescribed .m-d li[data-md-content="300"] input[class^="tabCollapse"]:checked~.contentCollapse {
+    max-height: 100%;
+    transition: all 250ms ease-in-out 0ms;
+}
+
+#OrderDetails .CollapsePrescribed .m-d li[data-md-content="400"] input[class^="tabCollapse"]:checked~.contentCollapse {
+    max-height: 100%;
+    transition: all 250ms ease-in-out 0ms;
+}
+
+#OrderDetails .CollapsePrescribed .m-d li[data-md-content="500"] input[class^="tabCollapse"]:checked~.contentCollapse {
+    max-height: 100%;
+    transition: all 250ms ease-in-out 0ms;
+}
+
+#OrderDetails .CollapsePrescribed .m-d li[data-md-content="600"] input[class^="tabCollapse"]:checked~.contentCollapse {
+    max-height: 100%;
+    transition: all 250ms ease-in-out 0ms;
+}
+
+#OrderDetails .CollapsePrescribed .m-d li[data-md-content="700"] input[class^="tabCollapse"]:checked~.contentCollapse {
+    max-height: 100%;
+    transition: all 300ms ease-in-out 0ms;
+}
+
+#OrderDetails .CollapsePrescribed .m-d li[data-md-content="800"] input[class^="tabCollapse"]:checked~.contentCollapse {
+    max-height: 100%;
+    transition: all 300ms ease-in-out 0ms;
+}
+
+#OrderDetails .CollapsePrescribed .m-d li[data-md-content="900"] input[class^="tabCollapse"]:checked~.contentCollapse {
+    max-height: 100%;
+    transition: all 300ms ease-in-out 0ms;
+}
+
+#OrderDetails .CollapsePrescribed .m-d li[data-md-content="1000"] input[class^="tabCollapse"]:checked~.contentCollapse {
+    max-height: 100%;
+    transition: all 350ms ease-in-out 0ms;
+}
+
+#OrderDetails .CollapsePrescribed .m-d li[data-md-content=""] input[class^="tabCollapse"]:checked~.contentCollapse {
+    max-height: 100%;
+    transition: all 250ms ease-in-out 0ms;
+}
+
+#OrderDetails .CollapsePrescribed .m-d input[class^="tabCollapse"]:checked~.contentCollapse {
+    margin-bottom: 0.5rem;
+}
+
+#OrderDetails .CollapsePrescribed .m-d .open-close-icon {
+    display: inline-block;
+    position: absolute;
+    right: 1.6875rem;
+    top: 0.75rem;
+    transform: translatey(2px);
+}
+
+#OrderDetails .CollapsePrescribed .m-d .open-close-icon i {
+    position: absolute;
+    left: 0;
+    color: #713BDB;
+    font-size: 1.375rem;
+}
+
+#OrderDetails .CollapsePrescribed .m-d .open-close-icon .bi-caret-up-fill {
+    transform: rotate(180deg);
+    transition: transform 150ms ease-in-out 0ms;
+}
+
+#OrderDetails .CollapsePrescribed .m-d input[class^="tabCollapse"]:checked~.open-close-icon .bi-caret-up-fill {
+    transform: rotate(0deg);
+    transition: transform 150ms ease-in-out 0ms;
+}
+
+#OrderDetails .CollapsePrescribed .Medicine {
+    background: #fff4e6 !important;
+    box-shadow: 1px solid rgb(235 164 0) !important;
+    border: 1px solid #ff922b !important;
+}
+
+#OrderDetails .CollapsePrescribed .Medicine h5 {
+    color: #d9480f !important;
+}
+
+#OrderDetails .CollapsePrescribed .Medicine .open-close-icon i {
+    color: #d9480f !important;
+}
+
+#OrderDetails .CollapsePrescribed .Medicine span {
+    color: #d9480f !important;
+}
+
+.LaboratoryTest .CollapsePrescribed .m-d.expand-list>li {
+    border-color: #5c7cfa !important;
+    background: #edf2ff !important;
+    box-shadow: unset !important;
+}
+
+.LaboratoryTest h5 {
+    color: #364fc7 !important;
+}
+
+.LaboratoryTest label {
+    color: #4c6ef5 !important;
+    font-weight: 500 !important;
+}
+
+.LaboratoryTest span {
+    color: #364fc7 !important;
+}
+
+.LaboratoryTest i {
+    color: #364fc7 !important;
+}
+
+
+#OrderDetails .CollapsePrescribed .Medicine .MedicinePrescription {
+    background: #fff !important;
+    border: 1px solid #ff922b !important;
+    border-radius: 5px;
+    margin-top: 0.5rem;
+    max-height: 475px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+#OrderDetails .CollapsePrescribed .Medicine label {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500 !important;
+    font-size: 0.6875rem;
+    line-height: 1.5;
+    color: #fd7e14 !important;
+}
+
+#OrderDetails .content .middle .list .listDetails:last-child {
+    border: none;
+}
+
+#OrderDetails .CollapsePrescribed .Laboratory span {
+    color: #713BDB;
+}
+
+#OrderDetails .CollapsePrescribed .Laboratory .LaboratoryTest {
+    background: #fff;
+    border: 1px solid #5c7cfa;
+    border-radius: 5px;
+    margin-top: 0.5rem;
+    max-height: 475px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+#OrderDetails .CollapsePrescribed .Laboratory .listDetails {
+    border-bottom: 1px solid #5c7cfa !important;
+}
+
+#OrderDetails .CollapsePrescribed .PhysicianConsultation {
+    background: #fff9db !important;
+    box-shadow: 1px solid rgb(235 164 0) !important;
+    border: 1px solid #fcc419 !important;
+}
+
+#OrderDetails .CollapsePrescribed .PhysicianConsultation h5 {
+    color: #e67700 !important;
+}
+
+#OrderDetails .CollapsePrescribed .PhysicianConsultation .open-close-icon i {
+    color: #e67700 !important;
+}
+
+#OrderDetails .CollapsePrescribed .PhysicianConsultation span {
+    color: #e67700 !important;
+}
+
+#OrderDetails .CollapsePrescribed .PhysicianConsultation .MedicinePrescription {
+    border: 1px solid #fcc419 !important;
+    background: #fff !important;
+}
+
+#OrderDetails .CollapsePrescribed .PhysicianConsultation i {
+    color: #e67700 !important;
+}
+
+#OrderDetails .CollapsePrescribed .PhysicianConsultation label {
+    color: #fab005 !important;
+}
+
+#OrderDetails .content .middle .list .PhysicianConsultation .listDetails {
+    border-color: #fcc419 !important;
+}
+
+#OrderDetails .CollapsePrescribed .HealthcareEquipment {
+    background: #f4fce3 !important;
+    border: 1px solid #94d82d !important;
+}
+
+#OrderDetails .CollapsePrescribed .HealthcareEquipment h5 {
+    color: #5c940d !important;
+}
+
+#OrderDetails .CollapsePrescribed .HealthcareEquipment label {
+    color: #82c91e !important;
+}
+
+#OrderDetails .CollapsePrescribed .HealthcareEquipment .open-close-icon i {
+    color: #5c940d !important;
+}
+
+#OrderDetails .CollapsePrescribed .HealthcareEquipment span {
+    color: #5c940d !important;
+}
+
+#OrderDetails .CollapsePrescribed .HealthcareEquipment .Equipment {
+    background: #fff !important;
+    border: 1px solid #94d82d !important;
+    border-radius: 5px;
+    margin-top: 0.5rem;
+    max-height: 475px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+#OrderDetails .CollapsePrescribed .HealthcareEquipment label {
+    font-weight: 500;
+    color: #82c91e;
+}
+
+#OrderDetails .CollapsePrescribed .HealthcareEquipment .listDetails {
+    border-color: #94d82d !important;
+}
+
+#OrderDetails .CollapsePrescribed .HealthcareEquipment .LaboratoryTestDetails h2 {
+    color: #242323 !important;
+}
+
+i {
+    color: #713BDB;
+    font-size: 1rem;
+    line-height: 0;
+}
+
+.orderDetailsPopup {
+    min-width: 61.875rem;
+    overflow: auto;
+    height: 1000px;
+}
+
+#OrderDetails::-webkit-scrollbar {
+    display: none;
+}
+
+.somthingWentWrong {
+    display: flex;
+    justify-content: center;
+    margin-top: 30.75rem;
+}
+
+.content .PricingDetails {
+    width: 100%;
+    height: 100%;
+    padding: 1px 4px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.content .PricingDetails h2 {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 15px;
+    line-height: 110%;
+    color: #484747;
+}
+
+
+.couponCode {
+    font-family: 'Proza Libre';
+    font-style: italic;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 110%;
+    color: #000;
+    margin: 0;
+}
+
+.quantityErr {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 11px;
+    color: #e74607 !important;
+    margin: 0;
+    height: 12px;
+    padding-top: 5px;
+}
+
+.content .PricingDetails .bottom-border {
+    border-top: 1px solid rgb(113 59 219 / 59%);
+    border-bottom: 1px solid rgb(113 59 219 / 10%);
+}
+
+.content .PricingDetails .margin-top td {
+    padding-bottom: 12px;
+    border-bottom: 1px solid rgb(113 59 219 / 10%);
+}
+
+.content .PricingDetails .margin-bottom td {
+    padding-top: 12px;
+}
+
+.content .PricingDetails .bottom-border td {
+    padding: 12px 0px;
+}
+
+/* .middleLine{
+    position: absolute;
+    border: 0;
+    height: 1px;
+    background: #c3a0e3;
+    z-index: 10;
+    width: 50%;
+    left: 0;
+    right: 0;
+    top: 49px;
+    margin: auto;
+  } */
+
+.content .PricingDetails table {
+    width: 100%;
+}
+
+.content .PricingDetails h2 {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 15px;
+    line-height: 110%;
+    color: #484747;
+    margin: 0;
+    text-align: right;
+}
+
+.content .PricingDetails span {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 15px;
+    line-height: 110%;
+    text-align: right;
+    color: #1DAC34;
+    display: block;
+}
+
+.content .PricingDetails .Discount i {
+    color: #1DAC34;
+}
+
+.content .PricingDetails .Total h3 {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 110%;
+    color: #484747;
+    margin: 0;
+}
+
+.content .PricingDetails .Total .total {
+    line-height: 0;
+}
+
+.content .PricingDetails .Total .saving h4 {
+    font-size: 16px;
+    text-align: right;
+    color: #1DAC34;
+}
+
+.content .PricingDetails .Total .saving h5,
+.content .PricingDetails .Total .saving i {
+    color: #1DAC34;
+}
+
+.content .PricingDetails .Total h5 {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 110%;
+    color: #484747;
+    margin: 0;
+}
+
+.content .PricingDetails .Total h4 {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 110%;
+    color: #484747;
+    margin: 0;
+    text-align: right;
+}
+
+.Savings {
+    border: none !important;
+    box-shadow: unset !important;
+    background: none !important;
+    border-radius: 8px !important;
+    padding: 9px 9px !important;
+}
+
+.Proceed {
+    padding: 1rem 3.125rem;
+    background: #713BDB;
+    box-shadow: 0px 0.75rem 53px -24px rgba(134, 87, 226, 0.63);
+    border-radius: 0.375rem;
+    border: none;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 0.875rem;
+    line-height: 110%;
+    color: #FEFEFF;
+    margin: 0rem 0rem 0.75rem 0rem;
+    letter-spacing: 1px;
+}
+
+.closebtn {
+    padding: 0.5625rem 0.875rem;
+    background: #713BDB;
+    box-shadow: 0px 11px 34px -5px rgba(113, 59, 219, 0.4);
+    border-radius: 0.375rem;
+    border: none;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 0.75rem;
+    line-height: 110%;
+    color: #FFFFFF;
+    margin-right: 0.5rem;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    right: 0.375rem;
+    top: 0.375rem;
+    cursor: pointer;
+    margin-top: 0.3125rem;
+    z-index: 1;
+}
+
+.Generate {
+    background: #a684ea;
+    border: none;
+    padding: 0.375rem 4.4rem;
+    border-radius: 3px;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 0.75rem;
+    line-height: 140.5%;
+    color: #f2ecff;
+    display: inline;
+    letter-spacing: 0.7px;
+    margin-top: 0.25rem;
+    margin-left: 0.4rem;
+    cursor: pointer;
+}
+
+.download {
+    font-size: 12px;
+    font-family: 'Poppins';
+    color: #7137d6;
+    cursor: pointer;
+    margin-left: 0.5rem;
+}
+
+
+.MedicinePrescription::-webkit-scrollbar,
+.Equipment::-webkit-scrollbar,
+.LaboratoryTest::-webkit-scrollbar {
+    width: 4px;
+}
+
+/* Track */
+.MedicinePrescription::-webkit-scrollbar-track,
+.Equipment::-webkit-scrollbar-track,
+.LaboratoryTest::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px rgb(206, 206, 206);
+    border-radius: 3px;
+}
+
+/* Handle */
+.MedicinePrescription::-webkit-scrollbar-thumb {
+    background: #d9480f;
+    border-radius: 3px;
+}
+
+.LaboratoryTest::-webkit-scrollbar-thumb {
+    background: #5c7cfa;
+}
+
+.Equipment::-webkit-scrollbar-thumb {
+    background: #94d82d;
+}
+
+.OTP .otpBox {
+    width: 30px;
+    height: 30px;
+    border-radius: 3px;
+    box-shadow: 0px 3px 7px -5px #000;
+    margin: 4px;
+    border: 1px solid #a684ea;
+    outline: none;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 1;
+    color: #262626;
+    text-align: center;
+    background: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.contentCollapse small {
+    color: red;
+    font-size: 12px;
+}
+
+.bold {
+    font-weight: 700 !important;
+}
+
+.pl label {
+    padding-left: 10px;
+    font-weight: 600 !important;
+    font-size: 12px !important;
+}
+
+.pl h2 {
+    padding-left: 10px;
+    font-weight: 600 !important;
+    font-size: 12px !important;
+}
+
+.bi-patch-question-fill {
+    font-size: 10px !important;
+    color: grey !important;
+    padding: 0px 5px !important;
+}
+
+.Includes {
+    border: 1px solid #3F51B5;
+    border-radius: 5px;
+    padding: 0px 10px;
+    margin-top: 12px;
+    background: #ffff;
+    box-shadow: 0px 8px 6px -6px #00000091;
+}
+
+.selectProduct {
+    box-shadow: 0px 8px 7px -6px #00000091;
+    border: 2px solid #ff922b !important;
+}
+

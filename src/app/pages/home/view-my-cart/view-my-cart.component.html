@@ -1,0 +1,1011 @@
+<router-outlet>
+  <ngx-spinner bdColor="rgba(51,51,51,0.8)" size="medium" color="#fff" type="ball-circus" [fullScreen]="true">
+  </ngx-spinner>
+</router-outlet>
+<div id="Manage">
+  <div id="myModal" class="modal" *ngIf="openLabTestSelectionModal && cartAddressID" tabindex="-1" role="dialog">
+    <div class="container">
+      <app-lab-test-selection [addressID]="cartAddressID" [couponCode]="cuponCode"
+        (close)="closePopupLabTestSelection($event)"></app-lab-test-selection>
+    </div>
+  </div>
+  <div id="myModal" class="modal" *ngIf="openMedicineSelectionModal && cartAddressID" tabindex="-1" role="dialog">
+    <div class="container">
+      <app-medicine-selection [addressID]="cartAddressID" [couponCode]="cuponCode"
+        (close)="closePopupMedicineSelection($event)"></app-medicine-selection>
+    </div>
+  </div>
+  <div id="myModal" class="modal" *ngIf="openHealthcareEquipmentSelectionModal && cartAddressID" tabindex="-1"
+    role="dialog">
+    <div class="container">
+      <app-healthcare-equipment-selection [addressID]="cartAddressID" [couponCode]="cuponCode"
+        (close)="closePopupHealthcareEquipmentSelection($event)">
+      </app-healthcare-equipment-selection>
+    </div>
+  </div>
+  <div id="myModal" class="modal" *ngIf="openOrderWithPrescriptinSelectionModal && cartAddressID" tabindex="-1"
+    role="dialog">
+    <div class="container">
+      <app-order-with-prescription [addressID]="cartAddressID" [couponCode]="cuponCode"
+        (close)="closePopupOrderWithPrescriptionSelection($event)">
+      </app-order-with-prescription>
+    </div>
+  </div>
+  <div id="myModal" class="modal" *ngIf="showCartAddress" tabindex="-1" role="dialog">
+    <div class="container">
+      <app-cart-address (close)="closeCartAddress($event)"></app-cart-address>
+    </div>
+  </div>
+  <div id="myModal" class="modal " *ngIf="openmedicineDetailsModal" tabindex="-1" role="dialog">
+    <div id="Manage1" class="position-absolute medicineDetailsModal container">
+      <app-medicine-details [medicineCode]="showMedicineCode" (close)="closePopupMedicineDetails($event)">
+      </app-medicine-details>
+    </div>
+  </div>
+  <div id="myModal" class="modal " *ngIf="openHouseHoldItemDetailsModal" tabindex="-1" role="dialog">
+    <div class="container">
+      <app-healthcare-equipment-details [HouseholdItemCode]="showHouseHoldItemCode"
+        (close)="closeHouseHoldItemDetails($event)"></app-healthcare-equipment-details>
+    </div>
+  </div>
+</div>
+<div id="ViewCart" class="tabcontent">
+  <div class="content" *ngIf="catrDetails && !somthingWentWrong">
+    <div class="d-flex align-items-center justify-content-between cartProceedButton mb-2">
+      <button class="Proceed" (click)="placeOrder()"
+        [ngClass]="{disable:addressDetails.deliveryServiceIndicator === 'N'}">Proceed</button>
+    </div>
+    <div class="row">
+      <div class="col-md-7">
+        <div class="PaymentCart" *ngIf="1">
+          <button [ngClass]="{actives :UpiBox}" (click)="PaymentCart('Upi')"><img
+              src="../../../../assets/images/UPI.gif">
+            UPI</button>
+          <button [ngClass]="{actives :WalletsBox}" (click)="PaymentCart('Wallets')"><img
+              src="../../../../assets/images/wallets.gif">Wallets</button>
+          <button [ngClass]="{actives :CardBox}" (click)="PaymentCart('Card')">Credit / Debit</button>
+          <button [ngClass]="{actives :NetBox}" (click)="PaymentCart('Net')">Net Banking</button>
+        </div>
+
+        <div class="PaymentDetails" *ngIf="UpiBox || WalletsBox || CardBox || NetBox">
+          <div class="UpiBox" *ngIf="UpiBox">
+            <h2>Choose an option</h2>
+            <div>
+              <div class="d-flex align-items-center my-2">
+                <input type="checkbox" name="PhonePe" id="PhonePe">
+                <label for="PhonePe">PhonePe</label>
+              </div>
+              <button class="CONTINUE" type="button" *ngIf="0">CONTINUE</button>
+            </div>
+            <div>
+              <div class="d-flex align-items-center">
+                <input type="checkbox" name="Your_UPI_ID" id="Your_UPI_ID">
+                <label for="Your_UPI_ID">Your UPI ID</label>
+              </div>
+              <div class="d-flex align-items-center my-2" *ngIf="0">
+                <div class="form-floating">
+                  <input type="text" class="form-control" id="floatingInput" placeholder="name@example.com">
+                  <label for="floatingInput">Enter UPI ID</label>
+                  <span>Verify</span>
+                </div>
+                <button class="PAY" tabindex="2" disabled="" type="button">PAY ₹31,892</button>
+              </div>
+            </div>
+            <label for="" class="m-0 mt-2" style="opacity: 0.8;">Pay by any UPI app</label>
+          </div>
+          <div class="WalletsBox" *ngIf="WalletsBox">
+            <div>
+              <div class="d-flex align-items-center">
+                <input type="checkbox" name="Phonepe_Wallet" id="Phonepe_Wallet">
+                <label for="Phonepe_Wallet">Phonepe Wallet</label>
+              </div>
+              <label for="" class="m-0 mt-2" style="opacity: 0.8;">Coming soon.</label>
+            </div>
+          </div>
+          <div class="CardBox" *ngIf="CardBox">
+            <form>
+              <div class="form-floating">
+                <input type="text" class="form-control" id="floatingInput" placeholder="name@example.com"
+                  name="cardNumber" maxlength="16" required="" tabindex="1" value="">
+                <label for="floatingInput">Enter Card Number</label>
+              </div>
+              <div class="d-flex">
+                <div class="expr">
+                  <span>Valid thru</span>
+                  <select class="" name="month" required="" tabindex="4">
+                    <option disabled="" value="MM">MM</option>
+                    <option value="01">01</option>
+                    <option value="02">02</option>
+                    <option value="03">03</option>
+                  </select>
+                  <select class="" name="year" required="" tabindex="5">
+                    <option disabled="" value="YY">YY</option>
+                    <option value="24">24</option>
+                    <option value="25">25</option>
+                    <option value="25">26</option>
+                  </select>
+                </div>
+                <div class="form-floating cvv">
+                  <input type="password" class="form-control" id="floatingInput" placeholder="name@example.com"
+                    maxlength="4" name="cvv" required="" tabindex="6">
+                  <label for="floatingInput">CVV</label>
+                  <span>? </span>
+                </div>
+              </div>
+              <button class="PAY m-0" tabindex="7" type="button" style="width: 180px;">PAY ₹31,892</button>
+              <label for="" style="opacity: 0.8;">Add and secure cards as per RBI guidelines</label>
+            </form>
+          </div>
+          <div class="NetBox" *ngIf="NetBox">
+            <h2>Popular Banks</h2>
+            <div class="row">
+              <div class="col-md-6">
+                <div class="d-flex align-items-center my-2">
+                  <input type="checkbox" name="PhonePe" id="PhonePe">
+                  <label for="PhonePe"><img
+                      src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNiIgaGVpZ2h0PSIyNiI+PGcgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj48cGF0aCBkPSJNLTctN2g0MHY0MEgtN3oiLz48cGF0aCBmaWxsPSIjRUQyMzJBIiBkPSJNMCAwaDI2djI2SDAiLz48cGF0aCBmaWxsPSIjRkZGIiBkPSJNNC42IDQuNmgxNi44djE2LjhINC42Ii8+PHBhdGggZmlsbD0iI0ZGRiIgZD0iTTExLjcgMGgyLjZ2MjZoLTIuNiIvPjxwYXRoIGZpbGw9IiNGRkYiIGQ9Ik0wIDExLjdoMjZ2Mi42SDAiLz48cGF0aCBmaWxsPSIjMDA0QzhGIiBkPSJNOSA5aDh2OEg5Ii8+PC9nPjwvc3ZnPg=="
+                      class="R_IlUx">HDFC Bank</label>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="d-flex align-items-center my-2">
+                  <input type="checkbox" name="PhonePe" id="PhonePe">
+                  <label for="PhonePe"><img
+                      src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNiIgaGVpZ2h0PSIyOCI+PGcgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj48cGF0aCBkPSJNLTctNmg0MHY0MEgtN3oiLz48cGF0aCBmaWxsPSIjRjk5RDI3IiBkPSJNNy41IDZjNi4zLTYuMiAxNC04IDE3LTMuNiAzIDQuMy40IDEzLTYgMTkuMi02LjIgNi4zLTE0IDgtMTcgMy42LTMtNC4zLS4zLTEzIDYtMTkuMiIvPjxwYXRoIGZpbGw9IiNCMDJBMzAiIGQ9Ik0xMS43IDIuN2MtLjcuNS0xLjQgMS0yIDEuOC01LjYgNS41LTggMTMtNS4yIDE2LjcgMi44IDMuOCA5LjYgMi40IDE1LjMtMyAzLTMgNS02LjUgNi05LjcgMC0yLjQtLjItNC41LTEuMy02QzIyLTEgMTctLjUgMTEuNyAyLjUiLz48cGF0aCBmaWxsPSIjRkZGIiBkPSJNMTkuMyAyLjVjLjcuNy4zIDIuNC0xIDMuNi0xLjMgMS43LTMgMi0zLjYgMS0uOC0uMy0uMy0yIDEtMy4yIDEuMi0xLjMgMy0xLjcgMy42LTF6bS00LjUgMjIuMmMtMyAyLjItNiAzLjMtOSAzIDEuMyAwIDIuMy0xLjQgMy0zLjMgMS0yIDEuNS0zLjcgMi01LjQuNS0yLjYuNS00LjUuMi01LS41LS42LTEuNy0uNC0zIC40LS42LjMtMS40IDAtLjQtMSAxLTEuMyA1LTQuMiA2LjMtNC42IDEuMi0uNSAzIDAgMi4zIDEuOC0uNCAxLjMtNS44IDE1LjYtMS44IDE0eiIvPjwvZz48L3N2Zz4="
+                      class="R_IlUx">ICICI Bank</label>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="d-flex align-items-center my-2">
+                  <input type="checkbox" name="PhonePe" id="PhonePe">
+                  <label for="PhonePe"><img
+                      src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNyIgaGVpZ2h0PSIyNyI+PGcgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj48cGF0aCBkPSJNLTctN2g0MHY0MEgtN3oiLz48cGF0aCBmaWxsPSIjMTZEIiBkPSJNMTIuNiAyN0M1LjQgMjYuNS0uMiAyMC40IDAgMTMgLjIgNiA2LjIgMCAxMy41IDBTMjYuOCA1LjggMjcgMTNjLjIgNy40LTUuNCAxMy41LTEyLjYgMTRWMTZjMS0uNSAxLjctMS42IDEuNS0yLjgtLjQtMS4yLTEuNC0yLTIuNi0ycy0yLjIuOC0yLjQgMmMwIDEuMi41IDIuMyAxLjYgMi43Ii8+PC9nPjwvc3ZnPg=="
+                      class="R_IlUx">State Bank of India</label>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="d-flex align-items-center my-2">
+                  <input type="checkbox" name="PhonePe" id="PhonePe">
+                  <label for="PhonePe"><img
+                      src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyOCIgaGVpZ2h0PSIyNCI+PGcgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj48cGF0aCBkPSJNLTYtOGg0MHY0MEgtNnoiLz48cGF0aCBmaWxsPSIjQkM0MTcwIiBkPSJNMjggMjRoLTguN0wxNCAxNWg4LjdtLTQuNC03LjZMOC43IDI0SDBMMTQgMCIvPjwvZz48L3N2Zz4="
+                      class="R_IlUx">Axis Bank</label>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="d-flex align-items-center my-2">
+                  <input type="checkbox" name="PhonePe" id="PhonePe">
+                  <label for="PhonePe"><img
+                      src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyOCIgaGVpZ2h0PSIyNCIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiPjxkZWZzPjxwYXRoIGlkPSJhIiBkPSJNMjggMEgwdjIzLjhoMjhWMHoiLz48L2RlZnM+PGcgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj48cGF0aCBkPSJNLTYtOGg0MHY0MEgtNnoiLz48bWFzayBpZD0iYiIgZmlsbD0iI2ZmZiI+PHVzZSB4bGluazpocmVmPSIjYSIvPjwvbWFzaz48cGF0aCBmaWxsPSIjMDAzODc0IiBkPSJNMCAxMkMwIDUuMiA2LjMgMCAxNCAwczE0IDUuMyAxNCAxMmMwIDYuNS02LjMgMTEuOC0xNCAxMS44cy0xNC01LjMtMTQtMTIiIG1hc2s9InVybCgjYikiLz48cGF0aCBmaWxsPSIjRUQxQzI0IiBkPSJNMTIuMyAzLjhsMy4yLTFWMjBsLTMuMiAxLjIiIG1hc2s9InVybCgjYikiLz48cGF0aCBmaWxsPSIjRkZGIiBkPSJNMTQuMiAxNC43QzEyLjggMTYuMyAxMS40IDE4IDkgMThjLTMuNyAwLTUuNC0zLjQtNS40LTYuMyAwLTIuOCAxLjMtNiA0LjgtNiAxLjUgMCAzIDEgNCAyVjEwYy0xLS43LTIuNS0xLTMuNi0xLTIuMiAwLTQuMi43LTQgMyAwIDEuNCAxLjQgMi40IDMgMi40IDIuMiAwIDMuNi0yIDQuNy0zLjZMMTQgOWMxLTEuNiAyLjYtMy4yIDUtMy4yIDMgMCA0LjcgMi40IDUuMiA1SDIzYy0uNS0xLTEuNS0xLjQtMi42LTEuNC0yLjMgMC0zLjggMi01IDMuN2wtMS4yIDJ6TTI0LjUgMTNjLS4zIDIuNi0xLjcgNS00LjggNS0xLjggMC0zLjItMS00LjItMi42di0xLjdjMS4zLjYgMi40IDEuMiAzLjggMS4yIDEuNyAwIDMuMi0xIDMuOC0yaDJ6IiBtYXNrPSJ1cmwoI2IpIi8+PC9nPjwvc3ZnPg=="
+                      class="R_IlUx">Kotak Mahindra Bank</label>
+                </div>
+              </div>
+              <h2 class="mt-2">Other Banks</h2>
+              <select class="_1kwp-i">
+                <option value="SELECT_BANK">---Select Bank---</option>
+                <option value="AIRTELMONEY">Airtel Payments Bank</option>
+                <option value="AUSMALLFINBANK">AU Small Finance Bank</option>
+                <option value="BANDHAN">Bandhan Bank</option>
+                <option value="BASSIENCATHOLICCOOPB">Bassien Catholic Co-Operative Bank</option>
+                <option value="BNPPARIBAS">BNP Paribas</option>
+                <option value="BOBAHRAIN">Bank of Bahrain and Kuwait</option>
+                <option value="BOBARODA">Bank of Baroda</option>
+                <option value="BOBARODAC">Bank of Baroda Corporate</option>
+                <option value="BOBARODAR">Bank of Baroda Retail</option>
+                <option value="BOI">Bank of India</option>
+                <option value="BOM">Bank of Maharashtra</option>
+                <option value="CANARA">Canara Bank</option>
+                <option value="CATHOLICSYRIAN">Catholic Syrian Bank</option>
+                <option value="CBI">Central Bank</option>
+                <option value="CITYUNION">City Union Bank</option>
+                <option value="CORPORATION">Corporation Bank</option>
+                <option value="COSMOS">Cosmos Co-op Bank</option>
+                <option value="DBS">digibank by DBS</option>
+                <option value="DCB">DCB BANK LTD</option>
+                <option value="DENA">Dena Bank</option>
+                <option value="DEUTSCHE">Deutsche Bank</option>
+                <option value="DHANBANK">Dhanalakshmi Bank</option>
+                <option value="FEDERALBANK">Federal Bank</option>
+                <option value="HSBC">HSBC</option>
+                <option value="IDBI">IDBI Bank</option>
+                <option value="IDFC">IDFC FIRST Bank</option>
+                <option value="INDIANBANK">Indian Bank</option>
+                <option value="INDUSIND">IndusInd Bank</option>
+                <option value="IOB">Indian Overseas Bank</option>
+                <option value="JANATABANKPUNE">JANATA SAHAKARI BANK LTD PUNE</option>
+                <option value="JKBANK">J&amp;K Bank</option>
+                <option value="KARNATAKA">Karnataka Bank</option>
+                <option value="KARURVYSYA">Karur Vysya Bank</option>
+                <option value="LAKSHMIVILAS">Lakshmi Vilas Bank - Retail</option>
+                <option value="LAKSHMIVILASC">Lakshmi Vilas Bank - Corporate</option>
+                <option value="PNB">Punjab National Bank</option>
+                <option value="PNBC">Punjab National Bank Corporate</option>
+                <option value="PNSB">Punjab &amp; Sind Bank</option>
+                <option value="PUNJABMAHA">Punjab &amp; Maharashtra Co-op Bank</option>
+                <option value="RATNAKAR">RBL Bank Limited</option>
+                <option value="RBS">RBS</option>
+                <option value="SARASWAT">Saraswat Co-op Bank</option>
+                <option value="SHAMRAOVITHAL">Shamrao Vithal Co-op Bank</option>
+                <option value="SHIVAMERCOOP">Shivalik Mercantile Co-op Bank</option>
+                <option value="SOUTHINDIAN">The South Indian Bank</option>
+                <option value="STANC">Standard Chartered Bank</option>
+                <option value="TMBANK">Tamilnad Mercantile Bank Limited</option>
+                <option value="TNMERCANTILE">Tamil Nadu Merchantile Bank</option>
+                <option value="TNSC">TNSC Bank</option>
+                <option value="UCO">UCO Bank</option>
+                <option value="UNIONBANK">Union Bank of India</option>
+                <option value="YESBANK">Yes Bank</option>
+                <option value="ZOROACOPBANK">The Zoroastrian Co-Operative Bank</option>
+              </select>
+              <button class="PAY w-50 m-0 mt-3" tabindex="2" type="button">PAY ₹31,892</button>
+              <label for="" class="m-0 p-0">This instrument has low success, use UPI or cards for better experience</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="CollapsePrescribed" *ngIf="0">
+          <ul class="m-d expand-list">
+            <li data-md-content="200" class="Prescription">
+              <label name="tab" for="tab1" tabindex="-1" class="tab_lab w-100" role="tab">
+                <h5>Order with Prescription <span>({{catrDetails?.orderWithPrescriptionsTotalCount}})</span></h5>
+                <div class="d-flex Amount align-items-center justify-content-between">
+                  <div class="d-flex AmountPrice align-items-center justify-content-between">
+                    <label for="Amount">Amount :</label>
+                    <i class="fa fa-rupee"></i>
+                    <b>{{catrDetails?(catrDetails.orderWithPrescriptionsTotalPrice|truncPrice):0.00}}</b>
+                  </div>
+                  <button class="AddOrder" (click)="onClickPopupOrderWithPrescriptionSelection()">+Add More
+                    Order</button>
+                </div>
+              </label>
+              <input type="checkbox" class="tabCollapse" id="tab1" tabindex="0" />
+              <span class="open-close-icon">
+                <i class="bi-caret-up-fill"></i>
+              </span>
+              <div class="contentCollapse">
+                <div class="PrescribedPhysician mb-3"
+                  *ngFor="let orderWithPrescriptionDetails of catrDetails?.orderWithPrescriptionDetailsList let orderWithPrescriptionDetailsIndex = index ">
+                  <div class="prescriptionMedicine">
+                    <div>
+                      <label for="Name">{{orderWithPrescriptionDetails.physicianName }},
+                        {{orderWithPrescriptionDetails.physicianQualification}}</label>
+                      <p>{{orderWithPrescriptionDetails.physicianSpecialisation}}</p>
+                    </div>
+                    <!-- <span>Date: <b>{{dateFormat(orderWithPrescriptionDetails.prescriptionDate) | date:'dd-MMM-yyyy'}}</b></span> -->
+                  </div>
+                  <div class="p-2">
+                    <div class="prescriptionMedicineBox "
+                      *ngFor="let medicineOrderDetails of orderWithPrescriptionDetails?.medicineOrderDetailsList let OrderWithPesMedicineOrderDetails = index">
+                      <div class="d-flex justify-content-between align-items-center">
+                        <div class="d-flex align-items-start flex-column">
+                          <div class="d-flex mb-3">
+                            <div class="Name">
+                              <div class="d-flex align-items-center">
+                                <h6 (click)="showMedicineDetails(medicineOrderDetails.cartItemCode)">
+                                  {{medicineOrderDetails.medicineName}}</h6>
+                                <img src="../../../../assets/images/deleteicon.png" alt=""
+                                  (click)="ItemDelete(medicineOrderDetails.cartItemSeqNo)">
+                              </div>
+                              <p>{{medicineOrderDetails.medicineComposition}}</p>
+                              <!-- <p>{{medicineOrderDetails.medicineDescription}}</p> -->
+                            </div>
+                          </div>
+                          <div class="d-flex align-items-center justify-content-between">
+                            <div>
+                              <div class="qty d-flex align-items-center">
+                                <label for="UnitPrice">Unit Price:</label>
+                                <p>Rs. {{medicineOrderDetails.medicineUnitPrice|truncPrice}}</p>
+                              </div>
+                              <div class="DeliveryDate d-flex">
+                                <label>Expected Delivery Date:</label>
+                                <p><b>{{getExpectedDeliveryDate()|date:'dd-MMM-yyyy'}}</b></p>
+
+                              </div>
+                              <div class="quantityErr" *ngIf="medicineOrderDetails.quantityErrMsg">
+                                <p>{{medicineOrderDetails.quantityErrMsg}}</p>
+                              </div>
+                            </div>
+                            <img src="../../../../assets/images/OutOfSt.png" alt="" class="OutOfStock"
+                              *ngIf="medicineOrderDetails.availability ==='U'">
+                          </div>
+                        </div>
+                        <div>
+                          <div class="DayBox row">
+                            <div class="noOfQty col-md-6">
+                              <h2>{{medicineOrderDetails.medicineQuantity}}</h2>
+                            </div>
+                            <div class="col-md-6 p-0">
+                              <i class="bi-plus-lg iconborder" style="padding-bottom:5px !important;"
+                                (click)="ItemQuantityChange(medicineOrderDetails.cartItemSeqNo,'I',medicineOrderDetails.medicineQuantity,'MD',OrderWithPesMedicineOrderDetails,medicineOrderDetails.medicineQuantityLimit,true,OrderWithPesMedicineOrderDetails)"></i>
+                              <i class="bi-dash-lg"
+                                (click)="ItemQuantityChange(medicineOrderDetails.cartItemSeqNo,'D',medicineOrderDetails.medicineQuantity,'MD',OrderWithPesMedicineOrderDetails,medicineOrderDetails.medicineQuantityLimit,true,OrderWithPesMedicineOrderDetails)"></i>
+                            </div>
+                          </div>
+                          <div class="qtyPrice d-flex align-items-center justify-content-end">
+                            <label for="UnitPrice"><i class="fa fa-rupee"></i></label>
+                            <p>{{medicineOrderDetails.medicineTotalPrice|truncPrice}}</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="medicineBox LabTest"
+                      *ngFor="let laboratoryTestOrderDetails of orderWithPrescriptionDetails?.laboratoryTestOrderDetailsList">
+                      <div class="d-flex justify-content-between align-items-center">
+                        <div class="d-flex align-items-start flex-column">
+                          <div class="d-flex mb-3">
+                            <div class="Name">
+                              <div class="d-flex align-items-center mb-1">
+                                <h6>{{laboratoryTestOrderDetails.laboratoryTestName}}</h6>
+                                <img src="../../../../assets/images/labtest.png" alt=""
+                                  (click)="ItemDelete(laboratoryTestOrderDetails.cartItemSeqNo)">
+                              </div>
+                              <p>{{laboratoryTestOrderDetails.laboratoryTestDescription}}</p>
+                            </div>
+                            <div class="remove">
+                              <img src="assets/removeBtn.png" alt="">
+                            </div>
+                          </div>
+                          <div class="d-flex align-items-center justify-content-between">
+                            <div>
+                              <div class="qty d-flex align-items-center">
+                                <label for="UnitPrice">Unit Price:</label>
+                                <p>Rs.
+                                  {{laboratoryTestOrderDetails.scheduleIndicator==='Y'?(laboratoryTestOrderDetails.laboratoryTestUnitPrice|truncPrice):''}}
+                                </p>
+                              </div>
+                              <div class="DeliveryDate d-flex">
+                                <label>Schedule Date:</label>
+                                <p *ngIf="laboratoryTestOrderDetails.scheduleIndicator==='Y'">
+                                  {{laboratoryTestOrderDetails.scheduleDate?(dateFormat(laboratoryTestOrderDetails.scheduleDate)|
+                                  date: 'dd MMM, yyyy'):''}}</p>
+                                <p *ngIf="laboratoryTestOrderDetails.scheduleIndicator==='N'">Not scheduled</p>
+                                <p *ngIf="laboratoryTestOrderDetails.scheduleIndicator==='P'">Pending</p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div>
+                          <div class="mt-3 qtyPrice d-flex align-items-center justify-content-end">
+                            <label for="UnitPrice"><i class="fa fa-rupee"></i></label>
+                            <p *ngIf="laboratoryTestOrderDetails.scheduleIndicator==='Y'">
+                              {{laboratoryTestOrderDetails.laboratoryTestTotalPrice|truncPrice}}</p>
+                            <p
+                              *ngIf="laboratoryTestOrderDetails.scheduleIndicator==='N' || laboratoryTestOrderDetails.scheduleIndicator==='P'">
+                              --</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-12 text-end">
+                      <button class="schedule"
+                        *ngIf="catrDetails && showOrderWithPrescriptionLabtestScheduleButton(orderWithPrescriptionDetailsIndex)"
+                        (click)="openlabtestSchedule(true,orderWithPrescriptionDetailsIndex)">Schedule</button>
+                    </div>
+                    <div class="prescriptionHouseholdItem"
+                      *ngFor="let householdItem of orderWithPrescriptionDetails?.householdItemOrderDetailsList">
+                      <div class="d-flex justify-content-between align-items-center">
+                        <div class="d-flex align-items-start flex-column">
+                          <div class="d-flex ">
+                            <div class="Name">
+                              <div class="d-flex align-items-start flex-column">
+                                <div class="d-flex mb-3">
+                                  <div class="Name">
+                                    <div class="d-flex align-items-center">
+                                      <h6 (click)="showHouseHoldItemDetails(householdItem.cartItemCode)">
+                                        {{householdItem.householdItemName}}</h6>
+                                      <img src="../../../../assets/images/Itemsdelete.png" alt=""
+                                        (click)="ItemDelete(householdItem.cartItemSeqNo)">
+                                    </div>
+                                    <p>{{householdItem.householdItemManufacturer}}</p>
+                                  </div>
+                                </div>
+                                <div class="d-flex align-items-center justify-content-between">
+                                  <div>
+                                    <div class="qty d-flex align-items-center">
+                                      <label for="UnitPrice">Unit
+                                        Price:</label>
+                                      <p>Rs. {{householdItem.householdItemUnitPrice|truncPrice}}</p>
+                                    </div>
+                                    <div class="DeliveryDate d-flex">
+                                      <label>Expected Delivery
+                                        Date:</label>
+                                      <p>{{getExpectedDeliveryDate()|date:'dd-MMM-yyyy'}}</p>
+
+                                    </div>
+                                    <div class="quantityErr" *ngIf="householdItem.quantityErrMsg">
+                                      <p>{{householdItem.quantityErrMsg}}</p>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <!-- <div class="remove">
+                                                    <img src="assets/removeBtn.png" alt="">
+                                                </div> -->
+                          </div>
+                        </div>
+                        <div>
+                          <div class="DayBox row">
+                            <div class="noOfQty .col-md-6">
+                              <h2>{{householdItem.householdItemQuantity}}</h2>
+                            </div>
+                            <div class="col-md-6 p-0">
+                              <!-- <i class="bi-plus-lg iconborder" style="padding-bottom: 5px !important;"
+                                (click)="ItemQuantityChange(householdItem.cartItemSeqNo,'I',householdItem.householdItemQuantity,'HI')"></i>
+                              <i class="bi-dash-lg"
+                                (click)="ItemQuantityChange(householdItem.cartItemSeqNo,'D',householdItem.householdItemQuantity,'HI')"></i> -->
+                            </div>
+                          </div>
+                          <div class="qtyPrice d-flex align-items-center justify-content-end">
+                            <label for="UnitPrice"><i class="fa fa-rupee"></i></label>
+                            <p>{{householdItem.householdItemTotalPrice|truncPrice}}</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li data-md-content="200" class="Medicine">
+              <label name="tab" for="tab2" tabindex="-1" class="tab_lab w-100" role="tab">
+                <h5>Medicine<span>({{catrDetails?.medicinesTotalCount}})</span></h5>
+                <div class="d-flex Amount align-items-center justify-content-between">
+                  <div class="d-flex AmountPrice align-items-center justify-content-between">
+                    <label for="Amount">Amount :</label>
+                    <i class="fa fa-rupee"></i>
+                    <b>{{catrDetails?(catrDetails?.medicinesTotalPrice|truncPrice):0.00}}</b>
+                  </div>
+                  <button class="AddOrder" (click)="onclickMedicineSelection()">+Add More Order</button>
+                </div>
+              </label>
+              <input type="checkbox" class="tabCollapse" id="tab2" tabindex="0" />
+              <span class="open-close-icon">
+                <i class="bi-caret-up-fill"></i>
+              </span>
+              <div class="contentCollapse">
+                <div class="MedicinePrescription" *ngIf="catrDetails?.medicineOrderDetailsList.length">
+                  <div class="medicineBox"
+                    *ngFor="let medicineOrderDetails of catrDetails?.medicineOrderDetailsList let medicineIndex = index">
+                    <div class="d-flex justify-content-between align-items-center">
+                      <div class="d-flex align-items-start flex-column">
+                        <div class="d-flex mb-2">
+                          <div class="Name">
+                            <div class="d-flex align-items-center">
+                              <h6 (click)="showMedicineDetails(medicineOrderDetails.cartItemCode)">
+                                {{medicineOrderDetails.medicineName}} </h6>
+                              <img src="../../../../assets/images/deleteicon.png" alt=""
+                                (click)="ItemDelete(medicineOrderDetails.cartItemSeqNo)">
+                            </div>
+                            <p>{{medicineOrderDetails.medicineComposition}}</p>
+                            <!-- <p>{{medicineOrderDetails.medicineDescription}}</p> -->
+                          </div>
+                          <div class="remove">
+                            <img src="assets/removeBtn.png" alt="">
+                          </div>
+                        </div>
+                        <div class="d-flex align-items-center justify-content-between">
+                          <div style="padding-right: 15px">
+                            <div class="qty d-flex align-items-center">
+                              <label for="UnitPrice">Unit Price:</label>
+                              <p>Rs. {{medicineOrderDetails.medicineUnitPrice|truncPrice}}</p>
+                            </div>
+                            <div class="DeliveryDate d-flex">
+                              <label>Expected Delivery Date:</label>
+                              <p>{{getExpectedDeliveryDate()|date:'dd-MMM-yyyy'}}</p>
+
+                            </div>
+                            <div class="quantityErr" *ngIf="medicineOrderDetails.quantityErrMsg">
+                              <p>{{medicineOrderDetails.quantityErrMsg}}</p>
+                            </div>
+
+                          </div>
+                          <img src="../../../../assets/images/OutOfSt.png" alt="" class="OutOfStock"
+                            *ngIf="medicineOrderDetails.availability ==='U'">
+                        </div>
+                      </div>
+                      <div class="px-0">
+                        <div class="DayBox row">
+                          <div class="noOfQty col-md-6">
+                            <h2>{{medicineOrderDetails.medicineQuantity}}</h2>
+                          </div>
+                          <div class="col-md-6 p-0">
+                            <i class="bi-plus-lg iconborder"
+                              (click)="ItemQuantityChange(medicineOrderDetails.cartItemSeqNo,'I',medicineOrderDetails.medicineQuantity,'MD',medicineIndex,medicineOrderDetails.medicineQuantityLimit)"></i>
+                            <i class="bi-dash-lg"
+                              (click)="ItemQuantityChange(medicineOrderDetails.cartItemSeqNo,'D',medicineOrderDetails.medicineQuantity,'MD',medicineIndex,medicineOrderDetails.medicineQuantityLimit)"></i>
+                          </div>
+                        </div>
+                        <div class="qtyPrice d-flex align-items-center justify-content-end">
+                          <label for="UnitPrice"><i class="fa fa-rupee"></i></label>
+                          <p>{{medicineOrderDetails.medicineTotalPrice|truncPrice}}</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li data-md-content="200">
+              <label name="tab" for="tab3" tabindex="-1" class="tab_lab w-100" role="tab">
+                <h5>Laboratory Test<span>({{catrDetails?catrDetails?.laboratoryTestOrderDetailsList?.length:0}})</span>
+                </h5>
+                <div class="d-flex Amount align-items-center justify-content-between">
+                  <div class="d-flex AmountPrice align-items-center justify-content-between">
+                    <label for="Amount">Amount :</label>
+                    <i class="fa fa-rupee"></i>
+                    <b>{{catrDetails?(catrDetails?.labtestsTotalPrice|truncPrice):0.00}}</b>
+                  </div>
+                  <button class="AddOrder" (click)="onclickLabTestSelection()">+Add More Order</button>
+                </div>
+              </label>
+              <input type="checkbox" class="tabCollapse" id="tab3" tabindex="0" />
+              <span class="open-close-icon">
+                <i class="bi-caret-up-fill"></i>
+              </span>
+              <div class="contentCollapse">
+                <div class="MedicinePrescription" *ngIf="catrDetails?.laboratoryTestOrderDetailsList.length">
+                  <div class="medicineBox LabTest  border-0"
+                    *ngFor="let laboratoryTestOrderDetails of catrDetails?.laboratoryTestOrderDetailsList">
+                    <div class="d-flex justify-content-between align-items-center">
+                      <div class="d-flex align-items-start flex-column">
+                        <div class="d-flex mb-3">
+                          <div class="Name">
+                            <div class="d-flex align-items-center mb-1">
+                              <h6>{{laboratoryTestOrderDetails.laboratoryTestName}}</h6>
+                              <img src="../../../../assets/images/Labdelete.png" alt=""
+                                (click)="ItemDelete(laboratoryTestOrderDetails.cartItemSeqNo)">
+                            </div>
+                            <p>{{laboratoryTestOrderDetails.laboratoryTestDescription}}</p>
+                          </div>
+                          <div class="remove">
+                            <img src="assets/removeBtn.png" alt="">
+                          </div>
+                        </div>
+                        <div class="d-flex align-items-center justify-content-between">
+                          <div>
+                            <div class="qty d-flex align-items-center">
+                              <label for="UnitPrice">Unit Price:</label>
+                              <p>Rs.
+                                {{laboratoryTestOrderDetails.scheduleIndicator==='Y'?(laboratoryTestOrderDetails.laboratoryTestUnitPrice|truncPrice):''}}
+                              </p>
+                            </div>
+                            <div class="DeliveryDate d-flex">
+                              <label>Schedule Date:</label>
+                              <p *ngIf="laboratoryTestOrderDetails.scheduleIndicator==='Y'">
+                                {{laboratoryTestOrderDetails.scheduleDate?(dateFormat(laboratoryTestOrderDetails.scheduleDate)|
+                                date: 'dd MMM, yyyy'):''}}</p>
+                              <p *ngIf="laboratoryTestOrderDetails.scheduleIndicator==='N'">Not scheduled</p>
+                              <p *ngIf="laboratoryTestOrderDetails.scheduleIndicator==='P'">Pending</p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div>
+                        <div class="mt-3 qtyPrice d-flex align-items-center justify-content-end">
+                          <label for="UnitPrice"><i class="fa fa-rupee"></i></label>
+                          <p *ngIf="laboratoryTestOrderDetails.scheduleIndicator==='Y'">
+                            {{laboratoryTestOrderDetails.laboratoryTestTotalPrice|truncPrice}}</p>
+                          <p
+                            *ngIf="laboratoryTestOrderDetails.scheduleIndicator==='N' || laboratoryTestOrderDetails.scheduleIndicator==='P'">
+                            --</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-12 text-end mt-3">
+                  <button class="schedule" *ngIf="showLabtestScheduleButton()"
+                    (click)="openlabtestSchedule(false)">Schedule</button>
+                </div>
+              </div>
+            </li>
+            <li data-md-content="200" class="Physician">
+              <label name="tab" for="tab4" tabindex="-1" class="tab_lab w-100" role="tab">
+                <h5>Physician Schedule
+                  <span>({{catrDetails?catrDetails?.physicianConsultationOrderDetailsList?.length:0}})</span>
+                </h5>
+                <div class="d-flex Amount align-items-center justify-content-between">
+                  <div class="d-flex AmountPrice align-items-center justify-content-between">
+                    <label for="Amount">Amount :</label>
+                    <i class="fa fa-rupee"></i>
+                    <b>{{catrDetails?(catrDetails.physiciansTotalPrice|truncPrice):0.00}}</b>
+                  </div>
+                  <button class="AddOrder" (click)="openPhysicianSchedule()">+Add More Order</button>
+                </div>
+              </label>
+              <input type="checkbox" class="tabCollapse" id="tab4" tabindex="0" />
+              <span class="open-close-icon">
+                <i class="bi-caret-up-fill"></i>
+              </span>
+              <div class="contentCollapse">
+                <div class="MedicinePrescription" *ngIf="catrDetails?.physicianConsultationOrderDetailsList?.length">
+                  <div class="medicineBox "
+                    *ngFor="let physicianConsultationOrderDetails of catrDetails?.physicianConsultationOrderDetailsList">
+                    <div class="d-flex justify-content-between align-items-center">
+                      <div class="d-flex align-items-start flex-column">
+                        <div class="d-flex ">
+                          <div class="Name">
+                            <div class="d-flex mb-3">
+                              <div class="Name">
+                                <div class="d-flex align-items-center mb-1">
+                                  <h3>{{physicianConsultationOrderDetails.physicianName}}</h3>
+                                  <img src="../../../../assets/images/deleteicon.png" alt=""
+                                    (click)="ItemDelete(physicianConsultationOrderDetails.cartItemSeqNo)">
+                                </div>
+                                <p>{{physicianConsultationOrderDetails.physicianDegree}}</p>
+                                <p>{{physicianConsultationOrderDetails.physicianSpecialisation}}</p>
+                                <h6>{{physicianConsultationOrderDetails.healthClinicName}}</h6>
+                              </div>
+                              <div class="remove">
+                                <img src="assets/removeBtn.png" alt="">
+                              </div>
+                            </div>
+                            <div class="d-flex align-items-center justify-content-between">
+                              <div>
+                                <div class="qty d-flex align-items-center">
+                                  <label for="UnitPrice">Consultation
+                                    Fees:</label>
+                                  <p>Rs. {{physicianConsultationOrderDetails.consultationFee|truncPrice}}</p>
+                                </div>
+                                <div class="DeliveryDate d-flex">
+                                  <label for="Schedule Date">Schedule
+                                    Date: </label>
+                                  <p>
+                                    {{physicianConsultationOrderDetails.schduleDate?(dateFormat(physicianConsultationOrderDetails.schduleDate)|
+                                    date:'dd MMM, yyyy'):''}}
+                                  </p>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div>
+                        <div class="DayBox">
+                          <div class="noOfQty">
+                            <h2><i class="bi-check"></i></h2>
+                          </div>
+                          <i class="bi-pencil-fill"></i>
+                        </div>
+                        <div class="qtyPrice d-flex align-items-center justify-content-end">
+                          <label for="UnitPrice"><i class="fa fa-rupee"></i></label>
+                          <p>{{physicianConsultationOrderDetails.consultationFee|truncPrice}}</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li data-md-content="200" class="healthcare">
+              <label name="tab" for="tab5" tabindex="-1" class="tab_lab w-100" role="tab">
+                <h5>Household Item
+                  <span>({{catrDetails?catrDetails?.houseHoldItemsCount:0}})</span>
+                </h5>
+                <div class="d-flex Amount align-items-center justify-content-between">
+                  <div class="d-flex AmountPrice align-items-center justify-content-between">
+                    <label for="Amount">Amount :</label>
+                    <i class="fa fa-rupee"></i>
+                    <b>{{catrDetails?(catrDetails?.houseHoldItemsTotalPrice|truncPrice):0.00}}</b>
+                  </div>
+                  <button class="AddOrder" (click)="onClickPopupHealthcareEquipmentSelection()">+Add More Order</button>
+                </div>
+              </label>
+              <input type="checkbox" class="tabCollapse" id="tab5" tabindex="0" />
+              <span class="open-close-icon">
+                <i class="bi-caret-up-fill"></i>
+              </span>
+              <div class="contentCollapse">
+                <div class="MedicinePrescription" *ngIf="catrDetails?.householdItemOrderDetailsList
+                ?.length">
+                  <div class="medicineBox" *ngFor="let householdItem of catrDetails?.householdItemOrderDetailsList let houseHoldIndex = index
+                    ">
+                    <div class="d-flex justify-content-between align-items-center">
+                      <div class="d-flex align-items-start flex-column">
+                        <div class="d-flex ">
+                          <div class="Name">
+                            <div class="d-flex align-items-start flex-column">
+                              <div class="d-flex mb-3">
+                                <div class="Name">
+                                  <div class="d-flex align-items-center">
+                                    <h6 (click)="showHouseHoldItemDetails(householdItem.cartItemCode)">
+                                      {{householdItem.householdItemName}}</h6>
+                                    <img src="../../../../assets/images/Itemsdelete.png" alt=""
+                                      (click)="ItemDelete(householdItem.cartItemSeqNo)">
+                                  </div>
+                                  <p>{{householdItem.householdItemManufacturer}}</p>
+                                </div>
+                              </div>
+                              <div class="d-flex align-items-center justify-content-between">
+                                <div>
+                                  <div class="qty d-flex align-items-center">
+                                    <label for="UnitPrice">Unit
+                                      Price:</label>
+                                    <p>Rs. {{householdItem.householdItemUnitPrice|truncPrice}}</p>
+                                  </div>
+                                  <div class="DeliveryDate d-flex">
+                                    <label>Expected Delivery
+                                      Date:</label>
+                                    <p>{{getExpectedDeliveryDate()|date:'dd-MMM-yyyy'}}</p>
+
+                                  </div>
+                                  <div class="quantityErr" *ngIf="householdItem.quantityErrMsg">
+                                    <p>{{householdItem.quantityErrMsg}}</p>
+                                  </div>
+                                </div>
+                                <img src="../../../../assets/images/OutOfSt.png" alt="" class="OutOfStock"
+                                  *ngIf="householdItem.availability ==='U'">
+                              </div>
+                            </div>
+                          </div>
+                          <!-- <div class="remove">
+                                                      <img src="assets/removeBtn.png" alt="">
+                                                  </div> -->
+                        </div>
+                      </div>
+                      <div>
+                        <div class="DayBox row">
+                          <div class="noOfQty col-md-6">
+                            <h2>{{householdItem.householdItemQuantity}}</h2>
+                          </div>
+                          <div class="col-md-6 p-0">
+                            <i class="bi-plus-lg iconborder"
+                              (click)="ItemQuantityChange(householdItem.cartItemSeqNo,'I',householdItem.householdItemQuantity,'HI',houseHoldIndex)"></i>
+                            <i class="bi-dash-lg"
+                              (click)="ItemQuantityChange(householdItem.cartItemSeqNo,'D',householdItem.householdItemQuantity,'HI',houseHoldIndex)"></i>
+                          </div>
+                        </div>
+
+                        <div class="qtyPrice d-flex align-items-center justify-content-end">
+                          <label for="UnitPrice"><i class="fa fa-rupee"></i></label>
+                          <p>{{householdItem.householdItemTotalPrice|truncPrice}}</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-md-5 right">
+        <div class="CollapsePrescribed">
+          <ul class="m-d expand-list">
+            <li data-md-content="200">
+              <label name="tab" for="tabAddress" tabindex="-1" class="tab_lab w-100" role="tab">
+                <h5>Address Details</h5>
+              </label>
+              <input type="checkbox" class="tabCollapse" id="tabAddress" tabindex="0"
+                [checked]="addressDetails.deliveryServiceErrMsg?true:false" />
+              <span class="open-close-icon">
+                <i class="bi-caret-up-fill"></i>
+              </span>
+              <div class="contentCollapse">
+                <div class="nameDetails" *ngIf="addressDetails">
+                  <div class="d-flex justify-content-between align-items-center">
+                    <label for="FullName">Full Name:</label>
+                    <div class="edit">
+                      <i class="bi-pencil-fill" (click)="openCartAddress()"></i>
+                    </div>
+                  </div>
+                  <p>{{addressDetails.customerName}}</p>
+                  <p>+91 {{addressDetails.customerContactNo}}</p>
+                  <label for="DeliveryAddress" class="mt-3">Delivery Address:</label>
+                  <p [innerHTML]="addressDetails.customerAddress |addressLine"></p>
+                  <p>{{addressDetails.customerLandmark}}</p>
+                  <p>{{addressDetails.customerCity}}, {{addressDetails.customerStateName}} -
+                    {{addressDetails.customerPincode}}</p>
+                </div>
+                <small>{{addressDetails.deliveryServiceErrMsg}}</small>
+              </div>
+            </li>
+            <li data-md-content="200">
+              <label name="tab" for="Pricing" tabindex="-1" class="tab_lab w-100" role="tab">
+                <h5 *ngIf="pricingDetails">Pricing Details <span>({{pricingDetails.cartItemCount}})</span></h5>
+                <div class="d-flex Amount flex-column" *ngIf="pricingDetails">
+                  <div class="d-flex Amount align-items-center justify-content-between">
+                    <div class="d-flex AmountPrice align-items-center justify-content-between">
+                      <label for="Amount">Total Amount:</label>
+                      <b><i class="fa fa-rupee"></i> {{pricingDetails.totalDiscountedPrice|truncPrice}} <span>(Savings:
+                          <i class="fa fa-rupee"></i>
+                          {{pricingDetails.totalDiscountAmount|truncPrice}})</span></b>
+                    </div>
+                  </div>
+                </div>
+              </label>
+              <input type="checkbox" checked class="tabCollapse" id="Pricing" tabindex="0" />
+              <span class="open-close-icon">
+                <i class="bi-caret-up-fill"></i>
+              </span>
+              <div class="contentCollapse">
+                <div class="PricingDetails">
+                  <div class="row" *ngIf="pricingDetails">
+                    <div class="col-md-12 p-0">
+                      <div class="CouponCode">
+                        <label for="CouponCode">Coupon Code<i class="bi bi-patch-question-fill"
+                            *ngIf="cuponcodeIsApplied" [ngbTooltip]="pricingDetails.couponCodeDescription"></i></label>
+                        <input type="text" name="Coupon_Code" placeholder="Add Coupon Code here...."
+                          [(ngModel)]="cuponCode" [ngClass]="{disable:cuponcodeIsApplied}">
+                        <i class="bi-question-circle-fill" *ngIf="!cuponcodeIsApplied"
+                          (click)="applycuponCode(cuponCode)"></i>
+                        <i class="bi bi-x-circle-fill" *ngIf="cuponcodeIsApplied" (click)="deleteCouponCode()"
+                          [ngbTooltip]="'Remove this cupon code'"></i>
+                      </div>
+                    </div>
+                    <div class="col-md-12 mt-2">
+                      <div class="Includes">
+                        <table class="mt-2">
+                          <tr>
+                            <td>
+                              <div class="middleLine"></div>
+                              <label for="Totalmrp">Total Item </label>
+                            </td>
+                            <td></td>
+                            <td>
+                              <h2>{{pricingDetails.cartItemCount}}</h2>
+                            </td>
+                          </tr>
+                          <tr class="margin-top margin-bottom">
+                            <td><label for="Totalmrp">Total MRP:</label></td>
+                            <td><i class="fa fa-rupee"></i></td>
+                            <td>
+                              <h2>{{pricingDetails.totalOrderAmount|truncPrice}}</h2>
+                            </td>
+                            <td>{{!checkPriceIsNegative(pricingDetails.totalOrderAmount)?'-':''}}</td>
+                          </tr>
+                          <tr class="margin-bottom Discount">
+                            <td><label for="Anamnesis">{{pricingDetails.discountDescription1}}
+                                ({{pricingDetails.totalDiscountPercent1}}%)</label></td>
+                            <td><i class="fa fa-rupee"></i></td>
+                            <td>
+                              <span>{{pricingDetails.totalDiscountAmount1|truncPrice}}</span>
+                            </td>
+                            <td>-</td>
+                          </tr>
+                          <tr class="Discount" [ngClass]="{'margin-top':!pricingDetails.couponCode}">
+                            <td><label for="TotalItem">{{pricingDetails.discountDescription2}}
+                                ({{pricingDetails.totalDiscountPercent2}}%)</label></td>
+                            <td><i class="fa fa-rupee"></i></td>
+                            <td>
+                              <span>{{pricingDetails.totalDiscountAmount2|truncPrice}}</span>
+                            </td>
+                            <td>-</td>
+                          </tr>
+                          <tr class="Discount" *ngIf="pricingDetails.couponCode">
+                            <td><label for="TotalItem">Coupon Code
+                                applied</label>
+                            </td>
+                            <td></td>
+                            <td>
+                              <p class="couponCode">{{pricingDetails.couponCode}}</p>
+                            </td>
+
+                          </tr>
+                          <tr class="margin-top Discount" *ngIf="pricingDetails.couponCode">
+                            <td><label for="TotalItem">{{pricingDetails.discountDescription3}}</label>
+                            </td>
+                            <td><i class="fa fa-rupee"></i></td>
+                            <td>
+                              <span>{{pricingDetails.totalDiscountAmount3|truncPrice}}</span>
+                            </td>
+                            <td>-</td>
+                          </tr>
+                          <tr class="margin-bottom">
+                            <td><label
+                                for="TotalItem">{{pricingDetails.chargeDescription1}}({{pricingDetails.totalChargePercent1}}%)</label>
+                            </td>
+                            <td><i class="fa fa-rupee"></i></td>
+                            <td>
+                              <h2>{{pricingDetails.totalChargeAmount1|truncPrice}}</h2>
+                            </td>
+                            <td>{{!checkPriceIsNegative(pricingDetails.totalChargeAmount1)?'-':''}}</td>
+                          </tr>
+                          <tr>
+                            <td><label
+                                for="TotalItem">{{pricingDetails.chargeDescription2}}({{pricingDetails.totalChargePercent2}}%)</label>
+                            </td>
+                            <td><i class="fa fa-rupee"></i></td>
+                            <td>
+                              <h2>{{pricingDetails.totalChargeAmount2|truncPrice}}</h2>
+                            </td>
+                            <td>{{!checkPriceIsNegative(pricingDetails.totalChargeAmount2)?'-':''}}</td>
+                          </tr>
+                          <tr class="margin-top">
+                            <td><label for="TotalItem">Tax on charges</label>
+                            </td>
+                            <td><i class="fa fa-rupee"></i></td>
+                            <td>
+                              <h2>{{pricingDetails.totalTaxOnChargeAmount|truncPrice}}</h2>
+                            </td>
+                            <td>{{!checkPriceIsNegative(pricingDetails.totalChargeAmount2)?'-':''}}</td>
+                          </tr>
+                        </table>
+                        <div class="col-md-12 p-0">
+                          <div class="Total d-flex">
+                            <table>
+                              <tr class="total">
+                                <td>
+                                  <h3>Total Amount</h3>
+                                </td>
+                                <td><i class="fa fa-rupee"></i></td>
+                                <td>
+                                  <h4>{{pricingDetails.finalOrderAmount|truncPrice}}</h4>
+                                </td>
+                              </tr>
+                              <tr class="saving">
+                                <td>
+                                  <h5>Savings</h5>
+                                </td>
+                                <td><i class="fa fa-rupee"></i></td>
+                                <td>
+                                  <h4>{{pricingDetails.totalDiscountAmount|truncPrice}}</h4>
+                                </td>
+                              </tr>
+                            </table>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="Includes">
+                        <table>
+                          <tr class="margin-bottom">
+                            <td><label for="TotalItem" class="bold">Tax Amount Includes</label>
+                            </td>
+                            <td><i class="fa fa-rupee"></i></td>
+                            <td>
+                              <h2>{{pricingDetails.totalTaxAmount|truncPrice}}</h2>
+                            </td>
+                            <td>{{!checkPriceIsNegative(pricingDetails.totalTaxAmount)?'-':''}}</td>
+                          </tr>
+                          <tr class="pl">
+                            <td><label for="TotalItem">CGST Amount</label></td>
+                            <td><i class="fa fa-rupee"></i></td>
+                            <td>
+                              <h2>{{pricingDetails.totalCGSTAmount|truncPrice}}</h2>
+                            </td>
+                            <td>{{!checkPriceIsNegative(pricingDetails.totalCGSTAmount)?'-':''}}</td>
+                          </tr>
+                          <tr class="pl">
+                            <td><label for="TotalItem">SGST Amount</label></td>
+                            <td><i class="fa fa-rupee"></i></td>
+                            <td>
+                              <h2>{{pricingDetails.totalSGSTAmount|truncPrice}}</h2>
+                            </td>
+                            <td>{{!checkPriceIsNegative(pricingDetails.totalSGSTAmount)?'-':''}}</td>
+                          </tr>
+                          <tr class="pl">
+                            <td><label for="TotalItem">IGST Amount</label></td>
+                            <td><i class="fa fa-rupee"></i></td>
+                            <td>
+                              <h2>{{pricingDetails.totalIGSTAmount|truncPrice}}</h2>
+                            </td>
+                            <td>{{!checkPriceIsNegative(pricingDetails.totalIGSTAmount)?'-':''}}</td>
+                          </tr>
+                          <tr class="margin-top" class="pl">
+                            <td><label for="TotalItem">CESS Amount</label></td>
+                            <td><i class="fa fa-rupee"></i></td>
+                            <td>
+                              <h2>{{pricingDetails.totalCessAmount|truncPrice}}</h2>
+                            </td>
+                            <td>{{!checkPriceIsNegative(pricingDetails.totalCessAmount)?'-':''}}</td>
+                          </tr>
+                        </table>
+                      </div>
+                    </div>
+                    <div class="col-md-12 text-center mt-4">
+                      <button class="Proceed" (click)="placeOrder()"
+                        [ngClass]="{disable:(addressDetails.deliveryServiceIndicator === 'N'|| cartError)}">Proceed</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-12 somthingWentWrong" *ngIf="somthingWentWrong">
+    <p style="color: red;">Something went wrong, Please try after sometime</p>
+  </div>
+</div>

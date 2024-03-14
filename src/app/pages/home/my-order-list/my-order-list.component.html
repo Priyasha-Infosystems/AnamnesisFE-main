@@ -1,0 +1,172 @@
+<div id="MyOrderList" class="tabcontent">
+    <div class="topHeader d-flex justify-content-between">
+        <div class="d-flex justify-content-between align-items-center">
+            <button (click)="getOrderList()">Refresh</button>
+            <label for="Pending">
+                <input type="checkbox" name="Pending" id="Pending" [(ngModel)]="filterArray.status.pending">
+                Pending
+            </label>
+            <label for="Canceled">
+                <input type="checkbox" name="Canceled" id="Canceled" [(ngModel)]="filterArray.status.calceled">
+                Canceled
+            </label>
+        </div>
+    </div>
+    <div class="contnet">
+        <div class="row">
+            <div class="col-md-2">
+                <div class="filter">
+                    <div class="filterHeader">
+                        <img src="../../../../assets/images/filterIcon.jpg" alt="">
+                        <h2>Filter By</h2>
+                    </div>
+                    <span>Custom Date</span>
+                    <label for="LastDay" (click)="onfilterChange('coustomDate','L30D')">
+                        <input type="checkbox" name="Last 30 days" id="LastDay" [checked]="CustomDate ==='L30D'">
+                        Last 30 days
+                    </label>
+                    <label for="LastMonth" (click)="onfilterChange('coustomDate','L6M')">
+                        <input type="checkbox" name="Last 6 months" id="LastMonth" [checked]="CustomDate ==='L6M'">
+                        Last 6 months
+                    </label>
+                    <label for="CurrentYear" (click)="onfilterChange('coustomDate','CY')">
+                        <input type="checkbox" name="Last 6 months" id="CurrentYear" [checked]="CustomDate ==='CY'">
+                        {{currentDate.getFullYear()}}
+                    </label>
+                    <label for="LastYear" (click)="onfilterChange('coustomDate','LY')">
+                        <input type="checkbox" name="Last 6 months" id="LastYear" [checked]="CustomDate ==='LY'">
+                        {{currentDate.getFullYear()-1}}
+                    </label>
+                    <span>Date</span>
+                    <input type="date" id="StartDate" placeholder="Start Date" [(ngModel)]="formDate"
+                        (change)="onfilterChange('date')">
+                    <input type="date" id="EndDate" placeholder="End Date" [(ngModel)]="toDate"
+                        (change)="onfilterChange('date')">
+                    <div class="OrderType">
+                        <span class="m-0">Order Type</span>
+                        <label for="Appointment">
+                            <input type="checkbox" name="Appointment" id="Appointment"
+                                [(ngModel)]="filterArray.orderType.appoinmentment">
+                            Appointment
+                        </label>
+                        <label for="BloodTest">
+                            <input type="checkbox" name="BloodTest" id="BloodTest"
+                                [(ngModel)]="filterArray.orderType.labTest">
+                            Lab Test
+                        </label>
+                        <label for="Medicine">
+                            <input type="checkbox" name="Medicine" id="Medicine"
+                                [(ngModel)]="filterArray.orderType.medicine">
+                            Medicine
+                        </label>
+                        <label for="MedicalEquipment">
+                            <input type="checkbox" name="MedicalEquipment" id="MedicalEquipment"
+                                [(ngModel)]="filterArray.orderType.houseHoldItem">
+                            Household Item
+                        </label>
+                    </div>
+                    <span>Keywords</span>
+                    <input type="text" name="SugarFasting" placeholder="Sugar Fasting"
+                        [(ngModel)]="filterArray.searchKeyword">
+                </div>
+            </div>
+            <div class="col-md-10">
+                <div class="OrderContent">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div *ngIf="apiError.length" class="apiErr">
+                                <p>{{apiError}}</p>
+                            </div>
+                            <div *ngIf="!apiError.length">
+                                <div class="orderDetailsList" *ngFor="let order of orderList">
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <div class="orderDate">
+                                                <label for="">Order Date:</label>
+                                                <p *ngIf="order.orderDate">{{convertTimeStamp(order.orderDate)|date:'dd
+                                                    MMM,yyyy'}}</p>
+                                                <label for="">Order ID:</label>
+                                                <p>{{order.orderID}}</p>
+                                                <label for="">Status:</label>
+                                                <p>{{order.orderStatusDescription}}</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-7 d-flex align-items-center">
+                                            <div class="medicineNameList"
+                                                *ngFor="let package of order.packageList let packageIndex = index"
+                                                [ngClass]="{DrNameDate:packageIndex<order.packageList.length-1}"
+                                                (click)="openOrderDetails(order.orderID,package.packageID)">
+                                                <div>
+                                                    <div class="d-flex align-items-center mb-2 medicinelistes"
+                                                        *ngFor="let medicine of getPackage(package.packageID)?.medicineOrderList?getPackage(package.packageID)?.medicineOrderList:[]">
+                                                        <img src="../../../../assets/images/medicine.png" alt="">
+                                                        <h2>{{medicine.medicineName}}</h2>
+                                                    </div>
+                                                    <div class="d-flex align-items-center mb-2 labtestlistes"
+                                                        *ngFor="let labtest of getPackage(package.packageID)?.labtestOrderList?getPackage(package.packageID)?.labtestOrderList:[]">
+                                                        <img src="../../../../assets/images/labtest.png" alt="">
+                                                        <h2>{{labtest.labtestName}}</h2>
+                                                    </div>
+                                                    <div class="DrNameDate d-flex flex-column physicianOrderlistes"
+                                                        *ngFor="let physicianOrder of getPackage(package.packageID)?.physicianOrderList?getPackage(package.packageID)?.physicianOrderList:[]">
+                                                        <div class="DrNameFee">
+                                                            <div class="d-flex align-items-center">
+                                                                <img src="../../../../assets/images/Doctor.png" alt="">
+                                                                <div>
+                                                                    <h2>{{physicianOrder.physicianName}}</h2>
+                                                                    <p>{{physicianOrder.physicianSpecialisation}}</p>
+                                                                    <p>Fees:
+                                                                        <span><i class="fa fa-rupee"></i>
+                                                                            {{physicianOrder.physicianFees|truncPrice}}</span>
+                                                                    </p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="ExpectedDelivery  Date">
+                                                            <label for="">Appointment Date:</label>
+                                                            <p>{{convertTimeStamp(physicianOrder.appoinmentDate)|date:'dd-MMM-yyyy'}}
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="d-flex align-items-center mb-2 householdItemlistes"
+                                                        *ngFor="let householdItem of getPackage(package.packageID)?.householdItemOrderList?getPackage(package.packageID)?.householdItemOrderList:[]">
+                                                        <img src="../../../../assets/images/itemIcon.png" alt="">
+                                                        <h2>{{householdItem.householdItemName}}</h2>
+                                                    </div>
+                                                    <span *ngIf="package.totalItemCount>3">+{{package.totalItemCount-3}}
+                                                        More...</span>
+                                                </div>
+                                                <div class="Date ExpectedDelivery"
+                                                    *ngIf="(!package.labtestOrderList.length && !package.physicianOrderList.length)&&(order.orderStatus===0||order.orderStatus===3||order.orderStatus===9)">
+                                                    <label for="" class="m-0">Expected Delivery By:</label>
+                                                    <p *ngIf="order.expDeliveryDate">
+                                                        {{convertTimeStamp(order.expDeliveryDate)|date:'dd-MMM-yyyy'}}
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <div class="ExpectedDelivery d-flex align-items-center">
+                                                <div class="totalCost">
+                                                    <label for="">Total Cost</label>
+                                                    <p><i class="fa fa-rupee"></i> {{order.totalPrice|truncPrice}}</p>
+                                                </div>
+                                            </div>
+                                            <button class="cancel-btn"
+                                                *ngIf="order.orderStatusDescription !== 'Cancelled'"
+                                                (click)="orderCancel(order.orderID,order.packageList[0].packageID)">Cancel</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div *ngIf="showOrderDetails" class="orderdetailsOpen">
+    <app-order-details [packageID]="ShowPackageID" [orderID]="ShowOrderID"
+        (close)="closeOrderDetails()"></app-order-details>
+</div>

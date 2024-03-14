@@ -1,0 +1,112 @@
+<div id="myProfile" class="Information">
+    <div class="row">
+        <div class="col-md-12 mb-3">
+            <div class="d-flex align-items-center">
+                <span>{{ profileIndex }}</span>
+                <h1>Family Medical History</h1>
+            </div>
+        </div>
+    </div>
+    <form [formGroup]="medicalHistoryParam">
+        <div formArrayName="familyMedicalHistoryDetailList">
+            <div *ngFor="
+                let medicalHistoryForm of getMedicalHistoryList()
+                  .controls;
+                let medicalHistoryIndex = index
+              ">
+                <ng-container formGroupName="{{ medicalHistoryIndex }}">
+                    <div class="row" *ngIf="isdeleted(medicalHistoryIndex)">
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-md-10">
+                                    <div class="row">
+                                        <div class="col-md-4 my-2">
+                                            <div class="form-floating selectBox"
+                                                [ngClass]="{selectedFormValue : medicalHistoryForm.value.relation}">
+                                                <select (focusout)="checkValidData(medicalHistoryIndex)"
+                                                    [attr.disabled]="isDisbaled(medicalHistoryIndex) ? '' : null"
+                                                    [ngClass]="{'addColor' : medicalHistoryForm.value.relation !== '', disable : isDisbaled(medicalHistoryIndex)}"
+                                                    name="relation" class="form-select" id="floatingSelect relation"
+                                                    aria-label="Floating label select example"
+                                                    formControlName="relation">
+                                                    <option ></option>
+                                                    <option [value]="option.relationshipCode" *ngFor="let option of relationOptionList">
+                                                        {{option.relationshipDescription}}
+                                                    </option>
+                                                </select>
+                                                <label for="floatingSelect">Relation</label>
+                                            </div>
+                                            <div class="regErrorDiv">
+                                                <app-validation-message
+                                                    [control]="getController(medicalHistoryIndex, 'relation')"
+                                                    [messages]="errorMessage.relation">
+                                                </app-validation-message>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 my-2">
+                                            <div class="form-floating">
+                                                <input (focusout)="checkValidData(medicalHistoryIndex)"
+                                                    [readonly]="isDisbaled(medicalHistoryIndex) ? true : false"
+                                                    [ngClass]="isDisbaled(medicalHistoryIndex) ? 'disable' : ''"
+                                                    formControlName="diseaseName" type="text" name="diseaseName"
+                                                    placeholder="Disease" id="diseaseName" class="form-control">
+                                                <label for="diseaseName">Disease</label>
+                                                <div class="regErrorDiv">
+                                                    <app-validation-message
+                                                        [control]="getController(medicalHistoryIndex, 'diseaseName')"
+                                                        [messages]="errorMessage.diseaseName">
+                                                    </app-validation-message>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 my-2">
+                                            <div class="form-floating">
+                                                <input (focusout)="checkValidData(medicalHistoryIndex)"
+                                                    [readonly]="isDisbaled(medicalHistoryIndex) ? true : false"
+                                                    [ngClass]="isDisbaled(medicalHistoryIndex) ? 'disable' : ''"
+                                                    formControlName="historyNotes" type="text" name="historyNotes"
+                                                    placeholder="Reason" id="historyNotes" class="form-control">
+                                                <label for="historyNotes">Notes</label>
+                                                <div class="regErrorDiv">
+                                                    <app-validation-message
+                                                        [control]="getController(medicalHistoryIndex, 'historyNotes')"
+                                                        [messages]="errorMessage.historyNotes">
+                                                    </app-validation-message>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-2 my-2">
+                                    <div [ngClass]="isDisbaled(medicalHistoryIndex) ? 'addButtonFlex' : ''">
+                                        <div *ngIf="!isDisbaled(medicalHistoryIndex)" class="d-flex align-items-center">
+                                            <button
+                                                (click)="addMedicalHistory(medicalHistoryIndex, medicalHistoryForm.valid)"
+                                                class="add">{{ getLabel(medicalHistoryIndex) }}</button>
+                                            <i (click)="deleteMedicalHistory(medicalHistoryIndex)"
+                                                style="cursor: pointer; margin-left: 15px;" class="bi-trash-fill"></i>
+                                        </div>
+                                        <div *ngIf="isDisbaled(medicalHistoryIndex)"
+                                            class="form-floating editableActions" style="margin-left: 8px;">
+                                            <i (click)="editMedicalHistory(medicalHistoryIndex)"
+                                                style="cursor: pointer;" class="bi-pencil-fill"></i>
+                                            <i (click)="deleteMedicalHistory(medicalHistoryIndex)"
+                                                style="cursor: pointer; margin-left: 15px;" class="bi-trash-fill"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </ng-container>
+            </div>
+            <div class="col-md-12 my-2 d-flex align-items-end flex-column text-end">
+                <div class="col-md-4">
+                    <h3 (click)="addMedicalHistoryDetails()">+Add Medical History</h3>
+                </div>
+                <input (click)="save(medicalHistoryParam.value, medicalHistoryParam.valid)" class="mt-2" type="submit"
+                    value="Save & Continue">
+            </div>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,30 @@
+<section class="services-cards" id="services-cards">
+    <div class="col-md-5 text-center m-auto mb-4">
+        <div class="title-header">
+            <h2>Our Services</h2>
+            <p>Our main service is the project “Anamnesis: Myhealthbook” and “Senescence Care”
+                that aims healthcare digitisation.</p>
+        </div>
+    </div>
+    <div class="container mt-4" data-aos="fade-up">
+
+        <div class="row list">
+            <div class="col-md-11 m-auto " *ngFor="let Secrives of service; let SecrivesIndex = index;">
+                <div class="d-flex " [ngClass]="{reverse:evenCheck(SecrivesIndex)}">
+                    <div class="w-100 p-4 d-flex justify-content-center">
+                        <div class="img-box">
+                            <img src='{{"assets/img/service/"+ Secrives.image +".png"}}'>
+                        </div>
+                    </div>
+
+                        <div class="content-box w-100">
+                            <h2>{{Secrives.headLine}}</h2>
+                            <p>{{Secrives.Description}}</p>
+                            <p>{{Secrives.DescriptionText}}</p>
+                        </div>
+                </div>
+            </div>
+        </div> 
+
+    </div>
+</section>

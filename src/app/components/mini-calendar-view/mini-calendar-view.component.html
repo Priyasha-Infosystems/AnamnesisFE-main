@@ -1,0 +1,222 @@
+<section class="calendar">
+  <div class="row text-center mt-2">
+    <div class="col-md-7">
+      <div class="d-flex justify-content-between align-items-center h-100">
+        <i class="bi-caret-left-fill" style="cursor: pointer;" mwlCalendarPreviousView [view]="view"
+          [(viewDate)]="viewDate" (viewDateChange)="closeOpenMonthViewDay()"></i>
+        <h6>{{ viewDate | calendarDate:(view + 'ViewTitle'):'en' }}</h6>
+        <i class="bi-caret-right-fill" style="cursor: pointer;" mwlCalendarNextView [view]="view"
+          [(viewDate)]="viewDate" (viewDateChange)="closeOpenMonthViewDay()"></i>
+      </div>
+    </div>
+    <div class="col-md-5 arrow">
+      <div class="d-flex justify-content-between align-items-center h-100">
+        <button mwlCalendarToday [(viewDate)]="viewDate">Today</button>
+      </div>
+    </div>
+  </div>
+  <br />
+  <div *ngIf="isHolidayListFetched && isBusyHoursFetched" [ngSwitch]="view">
+    <mwl-calendar-month-view style="cursor: pointer" *ngSwitchCase="CalendarView.Month" [viewDate]="viewDate"
+      [events]="events" [refresh]="refresh" (dayClicked)="dayClicked($event.day, $event)"
+      (eventClicked)="handleEvent('Clicked', $event.event)" (beforeViewRender)="beforeMonthViewRender($event)"
+      (eventTimesChanged)="eventTimesChanged($event)">
+    </mwl-calendar-month-view>
+    <!-- <mwl-calendar-week-view *ngSwitchCase="CalendarView.Week" [viewDate]="viewDate" [events]="events"
+            [refresh]="refresh" (eventClicked)="handleEvent('Clicked', $event.event)"
+            (eventTimesChanged)="eventTimesChanged($event)">
+        </mwl-calendar-week-view>
+        <mwl-calendar-day-view *ngSwitchCase="CalendarView.Day" [viewDate]="viewDate" [events]="events"
+            [refresh]="refresh" (eventClicked)="handleEvent('Clicked', $event.event)"
+            (eventTimesChanged)="eventTimesChanged($event)">
+        </mwl-calendar-day-view> -->
+  </div>
+  <div id="calendarEventModal" class="modal" *ngIf="openHolidayPopup" tabindex="-1" role="dialog">
+    <div class="container">
+      <div class="modal-content">
+        <div class="close" (click)="closeHolidayPopup()">
+          <i class="bi-x-circle-fill"></i>
+        </div>
+        <div class="displayDetails">
+          <div class="row scroll">
+            <div *ngFor="let selectedDayEvent of selectedDayEvents; let selectedDayEventIndex = index">
+              <div *ngIf="selectedDayEvent.evType === 'H'">
+                <div class="text-start">
+                  <p>Holiday</p>
+                </div>
+                <div class="Holidayschedule mb-2">
+                  <div class="DailyBusyHours Holiday mb-3">
+                    <div class="row">
+                      <div class="col-md-6 mb-2">
+                        <div class="form-floating">
+                          <label for="">Holiday</label>
+                          <p>{{selectedDayEvent.start | date:'dd-MMM-yyyy'}} to
+                            {{selectedDayEvent.end |
+                            date:'dd-MMM-yyyy'}}</p>
+                        </div>
+                      </div>
+                      <div class="col-md-6 mb-2">
+                        <div class="form-floating">
+                          <label for="">Event Day</label>
+                          <p>{{selectedDayEvent.title}}</p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-12 text-start">
+                      <label for="DeleteEvent">
+                        <input type="checkbox" id="DeleteEvent" name="DeleteEvent" value="DeleteEvent"
+                          (click)="checkEventsForDelete(selectedDayEventIndex)" [checked]="selectedDayEvent.check">
+                        Delete This Event
+                      </label>
+                    </div>
+                  </div>
+                  <div class="text-end w-100">
+                    <button class="save" (click)="deleteEvents()">Update</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div *ngIf="dailyBusyHoursList().length">
+              <form [formGroup]="busyHoursform">
+                <div class="text-start">
+                  <p>Daily Busy Hours</p>
+                </div>
+                <div class="DailyBusyHours" formArrayName="dailyBusyHoursList">
+                  <div class="row">
+                    <div class="col-md-12"
+                      *ngFor="let dailyBusyHours of dailyBusyHoursList().controls; let dailyBusyHoursIndex = index">
+                      <div class="BusyHourschedule"
+                        *ngIf="dailyBusyHours.value.isDelete !==true && dailyBusyHours.value.isAdd !==true">
+                        <div class="DeleteIcon p-0 holidayDelete">
+                          <i class="bi-x-circle-fill" *ngIf="dailyBusyHours.value.isdataFill"
+                            (click)="deleteBusyHours(dailyBusyHoursIndex,dailyBusyHours.value.isAdd)"></i>
+                        </div>
+                        <div class="row" formGroupName="{{dailyBusyHoursIndex}}">
+                          <div class="col-md-12 ">
+                            <div class="row">
+                              <div class="col-md-4 px-1">
+                                <div class="form-floating selectBox"
+                                  [ngClass]="{selectedFormValue : dailyBusyHours.getRawValue().weekDay}">
+                                  <select name="Day" id="Day floatingSelect" class="width" formControlName="weekDay"
+                                    (change)="busyHoursChangeWeakDay(dailyBusyHoursIndex,dailyBusyHours.value.isAdd,dailyBusyHours.value.weekDay)"
+                                    aria-label="Floating label select example">
+                                    <option *ngFor='let weekDay of weekDays$ | async' [value]="weekDay.dayCode">
+                                      {{weekDay.dayName}}</option>
+                                  </select>
+                                  <label for="floatingSelect">Week Day</label>
+                                </div>
+                                <div class="validation-div errorDiv"
+                                  *ngIf="!dailyBusyHours.getRawValue().startTimeErrMsg">
+                                  <app-validation-message
+                                    [control]="getBusyHoursController(dailyBusyHoursIndex,'weekDay')"
+                                    [messages]="errorMessage.busyHoursError.weekDay">
+                                  </app-validation-message>
+                                </div>
+                              </div>
+                              <div class="col-md-4 px-1">
+                                <div class="w-100 margin--left form-floating selectBox"
+                                  [ngClass]="{selectedFormValue : dailyBusyHours.getRawValue().startTime}">
+                                  <input matInput [ngxTimepicker]="StartBusyHoureTimePicker" name="holidayEndDate"
+                                    id="matDateInput" formControlName="startTime" />
+                                  <label for="matDateInput">Start time</label>
+                                  <div class="validation-div errorDiv"
+                                    *ngIf="!dailyBusyHours.getRawValue().startTimeErrMsg">
+
+                                    <app-validation-message
+                                      [control]="getBusyHoursController(dailyBusyHoursIndex,'startTime')"
+                                      [messages]="errorMessage.busyHoursError.startTime">
+                                    </app-validation-message>
+                                  </div>
+                                  <ngx-material-timepicker [minutesGap]="5" [theme]="timePickerTheme"
+                                    (timeSet)="busyHoursChangeTime(dailyBusyHoursIndex,dailyBusyHours.value.isAdd,$event,dailyBusyHours.getRawValue().weekDay,true)"
+                                    [defaultTime]="'12:00 AM'" #StartBusyHoureTimePicker>
+                                  </ngx-material-timepicker>
+                                </div>
+                              </div>
+                              <div class="col-md-4 px-1">
+                                <div class="w-100 margin--left form-floating selectBox"
+                                  [ngClass]="{selectedFormValue : dailyBusyHours.getRawValue().endTime}">
+                                  <input matInput [ngxTimepicker]="endBusyHoureTimePicker" name="holidayEndDate"
+                                    [min]="dailyBusyHours.getRawValue().startTime" id="matDateInput"
+                                    formControlName="endTime" />
+                                  <label for="matDateInput">End time</label>
+                                  <div class="validation-div errorDiv"
+                                    *ngIf="!dailyBusyHours.getRawValue().startTimeErrMsg">
+                                    <small>{{dailyBusyHours.getRawValue().endTimeErrMsg}}</small>
+                                    <app-validation-message
+                                      [control]="getBusyHoursController(dailyBusyHoursIndex,'endTime')"
+                                      [messages]="errorMessage.busyHoursError.endTime">
+                                    </app-validation-message>
+                                  </div>
+                                  <ngx-material-timepicker [minutesGap]="5" [theme]="timePickerTheme"
+                                    (timeSet)="busyHoursChangeTime(dailyBusyHoursIndex,dailyBusyHours.value.isAdd,$event,dailyBusyHours.getRawValue().weekDay,false)"
+                                    [defaultTime]="'12:00 AM'" #endBusyHoureTimePicker>
+                                  </ngx-material-timepicker>
+                                </div>
+                              </div>
+                              <div class="validation-div errorDiv" *ngIf="dailyBusyHours.getRawValue().startTimeErrMsg">
+                                <small>{{dailyBusyHours.getRawValue().startTimeErrMsg}}</small>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-md-8 px-1 d-flex align-items-center">
+                            <div class="form-floating w-100">
+                              <input type="text" name="EventDescription" placeholder="Event Description....."
+                                id="matDateInput" class="form-control" formControlName="eventDescription"
+                                (keyup)="busyHoursChange(dailyBusyHoursIndex,dailyBusyHours.value.isAdd)">
+                              <label for="Laboratory">Event Description.....</label>
+                            </div>
+                          </div>
+                          <div class="col-md-4 px-1 d-flex justify-content-center align-items-center">
+                            <h3>Do Not Disturb</h3>
+                            <div class="form-group px-1">
+                              <input type="checkbox" name="DND" id="DND{{dailyBusyHoursIndex}}"
+                                formControlName="dndIndicator"
+                                (change)="busyHoursChange(dailyBusyHoursIndex,dailyBusyHours.value.isAdd)">
+                              <label for="DND{{dailyBusyHoursIndex}}">
+                              </label>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-12 d-flex justify-content-end add">
+                      <button class="save" (click)="saveDaliBusyHours(busyHoursform.getRawValue(),busyHoursform.valid)">
+                        Update
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="calendarEventModal" class="modal" *ngIf="openBusyHoursPopup" tabindex="-1" role="dialog">
+    <div class="container">
+      <div class="modal-content">
+        <div class="close">
+          <i class="bi-x-circle-fill" (clicl)="closeBusyHoursPopUp()"></i>
+        </div>
+        <div class="displayDetails">
+          <p>Selected Date :- <span>06-04-2023</span></p>
+          <p>Event Name :- <span>PremiumPlans</span></p>
+          <p>Event Duration :- <span>Before tuning event duration time.</span></p>
+          <div class="d-flex justify-content-around mt-3">
+            <label for="DeleteEvent">
+              <input type="checkbox" id="DeleteEvent" name="DeleteEvent" value="DeleteEvent">
+              Delete This Event
+            </label>
+          </div>
+        </div>
+        <div class="text-end w-100">
+          <button class="save">Save</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

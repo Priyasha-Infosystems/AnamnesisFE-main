@@ -1,0 +1,207 @@
+<div id="Authorize" class="tabcontent">
+    <router-outlet>
+        <ngx-spinner bdColor="rgba(51,51,51,0.8)" size="medium" color="#fff" type="ball-circus" [fullScreen]="true">
+        </ngx-spinner>
+    </router-outlet>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="List">
+                <h4>List of all Prescription</h4>
+                <div class="srl">
+                    <div class="Dr-list"
+                        *ngFor="let prescriptionFile of prescriptionFiles; let prescriptionFileIndex = index">
+                        <div class="d-flex flex-column align-items-center">
+                            <img src="../../../assets/images/dr.svg">
+                            <i style="position: relative;" class="bi-eye-fill"
+                                (click)="openPrescriptionFile(prescriptionFile)"></i>
+                        </div>
+                        <div class="d-flex flex-column w-100">
+                            <div class="d-flex flex-column">
+                                <h6>{{prescriptionFile.physicianName}}</h6>
+                                <h5 *ngIf="prescriptionFile?.physicianSpecialisation">
+                                    {{prescriptionFile.physicianSpecialisation ?
+                                    ', ' + prescriptionFile.physicianSpecialisation : ''}}</h5>
+                            </div>
+                            <p>{{prescriptionFile.prescriptionDate}}</p>
+                        </div>
+                        <i *ngIf="showAuthorizedPhysician"
+                            (click)="addPrescToAuthorizedList(prescriptionFile, prescriptionFileIndex)"
+                            class="fa fa-chevron-right"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="Test-Reports">
+                <h4>List of all Lab Reports</h4>
+                <div class="scroll-Test">
+                    <div class="Dr-list" *ngFor="let labReportsFile of labReportsFiles; let labReportsIndex = index">
+                        <img src="assets/../../../assets/images/dr-prpl.png">
+                        <div class="d-flex flex-column w-100">
+                            <h6>{{labReportsFile.diagnosticCentreName}}</h6>
+                            <p>{{labReportsFile.laboratoryTestReportDate}}</p>
+                        </div>
+                        <i *ngIf="showAuthorizedPhysician"
+                            (click)="addLabrToAuthorizedList(labReportsFile, labReportsIndex)"
+                            class="fa fa-chevron-right"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="d-flex" style="align-items: center;">
+                <div class="Check">
+                    <form [formGroup]="formGroup">
+                        <div class="form-floating mb-3 position-relative">
+                            <input type="email" formControlName="physician" matInput [matAutocomplete]="auto"
+                                class="form-control" id="floatingInput" placeholder="name@example.com">
+                            <label for="floatingInput">Search Physician</label>
+                            <div class="searchicn">
+                                <i class="bi-search"></i>
+                            </div>
+                        </div>
+                        <mat-autocomplete #auto="matAutocomplete">
+                            <mat-option *ngFor="let item of physicianList" [value]="searchedPhysician"
+                                (click)="tempSelectPhysician(item)">
+                                <p>{{item.physicianName}} <span
+                                        style="font-size: 12px !important; color: #713bdb;">{{item.physicianUserCode}}</span>
+                            </mat-option>
+                        </mat-autocomplete>
+                        <!-- </mat-form-field> -->
+                    </form>
+                </div>
+            </div>
+            <div *ngIf="showAuthorizedPhysician">
+                <div class="Dr-name">
+                    <div class="d-flex justify-content-between">
+                        <h1>Authorise To :</h1>
+                        <i class="bi-x-circle-fill" (click)="cancelPhysician()"></i>
+                    </div>
+                    <h5>{{selectedPhysicianDetails.physicianName}}</h5>
+                    <h6>{{selectedPhysicianDetails.physicianQualification}}</h6>
+                    <h6>Reg - <span>{{selectedPhysicianDetails.physicianRegistrationNo}}</span></h6>
+                    <div class="idNo">
+                        <h6>{{selectedPhysicianDetails.physicianUserCode}}</h6>
+                    </div>
+                </div>
+                <div class="List-2">
+                    <div class="scroll-2">
+                        <div *ngFor="let authorizeList of authorizedList; let authorizeListIndex = index">
+                            <div *ngIf="authorizeList.actionIndicator !== 'DEL'">
+                                <div *ngIf="authorizeList.isPrescription" class="Dr-list px-5">
+                                    <i style="padding: 10px" class="fa fa-chevron-left"
+                                        (click)="removeAuthorizedList(authorizeList, authorizeListIndex)"></i>
+                                    <div class="d-flex flex-column w-100">
+                                        <h6>{{authorizeList.physicianName}}, {{authorizeList.physicianSpecialisation}}
+                                        </h6>
+                                        <p>{{authorizeList.prescriptionDate}}</p>
+                                    </div>
+                                    <div class="d-flex flex-column align-items-center">
+                                        <img src="../../../assets/images/dr.svg">
+                                        <div style="height: 0.875rem;">
+                                            <i class="bi-eye-fill p-0 viewIcon"
+                                                (click)="openPrescriptionFile(authorizeList)"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div *ngIf="!authorizeList.isPrescription" class="Dr-list px-5 Suraks">
+                                    <i style="padding: 10px" class="fa fa-chevron-left"
+                                        (click)="removeAuthorizedList(authorizeList, authorizeListIndex)"></i>
+                                    <img src="assets/../../../assets/images/dr-prpl.png">
+                                    <div class="d-flex flex-column w-100">
+                                        <h6>{{authorizeList.diagnosticCentreName}}</h6>
+                                        <p>{{authorizeList.laboratoryTestReportDate}}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div *ngIf="authorizedList.length === 0">
+                            <h6>No records found</h6>
+                        </div>
+                    </div>
+                </div>
+                <button (click)="submitAuthorization()" class="submit-btn mt-1">Submit Authorization</button>
+            </div>
+            <div *ngIf="showPhysicianDetails" class="doctorDetails">
+                <div class="row">
+                    <div class="col-md-10">
+                        <div class="CollapsePrescribed">
+                            <ul class="m-d expand-list p-0">
+                                <li data-md-content="200">
+                                    <label name="tab" for="tabAddress" tabindex="-1" class="tab_lab w-100" role="tab">
+                                        <div>
+                                            <div id="dropdownMenuLink" style="display: flex;">
+                                                <div>
+                                                    <span>{{selectedPhysicianDetails.physicianName}}</span>
+                                                    <span
+                                                        style="font-size: 12px !important; color: #713bdb;">&nbsp;({{selectedPhysicianDetails.physicianUserCode}})</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </label>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="doctorCard">
+                                                <div class="row">
+                                                    <div class="col-md-5">
+                                                        <div class="profileImg">
+                                                            <img
+                                                                [src]="selectedPhysicianDetails.physicianProfilePictureFileName|getFile:selectedPhysicianDetails.physicianProfilePictureFileType">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-7">
+                                                        <table>
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td></td>
+                                                                    <td>{{selectedPhysicianDetails.physicianSpecialisation}}
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td></td>
+                                                                    <td>{{selectedPhysicianDetails.physicianQualification}}
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td></td>
+                                                                    <td>{{selectedPhysicianDetails.physicianRegistrationNo}}({{selectedPhysicianDetails.physicianRegistrationAuthority}})
+                                                                    </td>
+                                                                </tr>
+                                                                <tr
+                                                                    *ngIf="selectedPhysicianDetails.physicianPrimaryContactNo">
+                                                                    <td><i class="bi-telephone-fill"></i></td>
+                                                                    <td><b>(P)</b> +91
+                                                                        {{selectedPhysicianDetails.physicianPrimaryContactNo}}
+                                                                    </td>
+                                                                </tr>
+                                                                <tr
+                                                                    *ngIf="selectedPhysicianDetails.physicianSecondaryContactNo">
+                                                                    <td><i class="bi-telephone-fill"></i></td>
+                                                                    <td><b>(s)</b> +91
+                                                                        {{selectedPhysicianDetails.physicianSecondaryContactNo}}
+                                                                    </td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12 d-flex justify-content-between">
+                                            <button class="Confirm" (click)="selectPhysician()">Confirm</button>
+                                            <button class="Confirm" (click)="cancelPhysician()">Cancel</button>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="myModal" class="modal" *ngIf="showPrescription">
+    <div class="container-fluid">
+        <app-prescription-view [prescriptionID]="showPrescriptionID" (close)="prescriptionClose()">
+        </app-prescription-view>
+    </div>
+</div>

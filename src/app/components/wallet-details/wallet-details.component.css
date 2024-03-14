@@ -1,0 +1,276 @@
+h2 {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 1rem;
+    line-height: 20px;
+    color: #000000;
+    margin: 0;
+    padding-bottom: 7px;
+}
+
+p {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: normal;
+    color: #373737;
+    margin: 0;
+}
+
+label {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: normal;
+    color: #373737;
+    margin: 0;
+}
+
+input,
+select {
+    color: #131313 !important;
+}
+
+hr {
+    margin: 0rem 0;
+}
+
+h6 {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: normal;
+    color: #000000;
+    margin: 0;
+}
+
+h5 {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: normal;
+    color: #000000;
+    margin: 0;
+}
+
+.balanceBox {
+    border: 1px solid #6589ff;
+    border-radius: 5px;
+    padding: 10px 0px;
+    margin: 25px 0px 20px 0px;
+}
+
+.icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    background-color: #6589ff;
+    width: 50px;
+    height: 50px;
+    border-radius: 5px;
+}
+
+.icon i {
+    font-size: 24px;
+    color: #fff;
+}
+
+
+.CollapsePrescribed .m-d.expand-list {
+    margin: 0;
+    padding: 0;
+}
+
+.CollapsePrescribed label h5 {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 122%;
+    color: #6589ff;
+    margin: 0;
+}
+
+.CollapsePrescribed .m-d.expand-list>li {
+    list-style-type: none;
+    padding: 9px 8px 8px 35px;
+    position: relative;
+    border: 1px solid #6589ff;
+    border-radius: 6px;
+    margin-bottom: 20px;
+    display: flex;
+}
+
+.right .CollapsePrescribed .m-d.expand-list>li {
+    margin-bottom: 26px;
+}
+
+.CollapsePrescribed .m-d label[class^="tabCollapse"]:hover {
+    cursor: pointer;
+}
+
+.CollapsePrescribed .m-d input {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+.CollapsePrescribed .m-d input[class^="tabCollapse"] {
+    width: 80%;
+    height: 45px;
+    position: absolute;
+    left: 0;
+    top: 0px;
+    z-index: 1;
+    outline: none;
+    border-radius: 8px;
+}
+
+.CollapsePrescribed .m-d input[class^="tabCollapse"]:hover {
+    cursor: pointer;
+}
+
+.CollapsePrescribed .m-d label[class^="tabCollapse"] {
+    font-weight: bold;
+}
+
+.CollapsePrescribed .m-d .contentCollapse {
+    height: auto;
+    max-height: 0;
+    overflow: hidden;
+    transform: translateY(6px);
+    transition: all 180ms ease-in-out 0ms;
+}
+
+.CollapsePrescribed .m-d li[data-md-content="200"] input[class^="tabCollapse"]:checked~.contentCollapse {
+    max-height: 100%;
+}
+
+.CollapsePrescribed .m-d input[class^="tabCollapse"]:checked~.contentCollapse {
+    margin-bottom: 20px;
+}
+
+.CollapsePrescribed .m-d .open-close-icon {
+    display: inline-block;
+    position: absolute;
+    left: 9px;
+    top: 4px;
+    transform: translatey(2px);
+}
+
+.CollapsePrescribed .m-d .open-close-icon i {
+    position: absolute;
+    left: 0;
+    color: #6589ff;
+    font-size: 19px;
+    top: 6px;
+}
+
+.CollapsePrescribed .m-d .open-close-icon .bi-caret-up-fill {
+    transform: rotate(180deg);
+    transition: transform 150ms ease-in-out 0ms;
+}
+
+.CollapsePrescribed .m-d input[class^="tabCollapse"]:checked~.open-close-icon .bi-caret-up-fill {
+    transform: rotate(0deg);
+    transition: transform 150ms ease-in-out 0ms;
+}
+
+.CollapsePrescribed p {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    line-height: 151%;
+    font-size: 12px;
+}
+
+.CollapsePrescribed h2 {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 800;
+    font-size: 24px;
+    line-height: 112%;
+    color: #343333;
+    padding-bottom: 10px;
+}
+
+select {
+    position: absolute;
+    right: 6px;
+    top: 6px;
+    height: 29px;
+    background: none;
+    padding: 1px 3px;
+    border: 1px solid #6589ff;
+    border-radius: 5px;
+    outline: none;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    line-height: 151%;
+    font-size: 12px;
+    color: #6589ff;
+    cursor: pointer;
+}
+
+span {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 15px;
+    line-height: 110%;
+    color: #484747;
+    margin: 0;
+    text-align: right;
+}
+
+.Item {
+    justify-content: space-between;
+    width: 338px;
+    margin-top: 7px;
+}
+
+.btmborder {
+    border-bottom: 1px solid #6589ff5e;
+    padding-bottom: 7px;
+}
+
+.contentCollapse i {
+    font-size: 11px;
+    margin-top: 4px;
+    padding: 0px 3px;
+}
+
+.btmborder i {
+    font-size: 13px !important;
+    margin-top: 2px;
+    padding: 0px 3px;
+}
+
+.close {
+    position: absolute;
+    background: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50px;
+    width: 2.05rem;
+    height: 2rem;
+    right: -0.9375rem;
+    top: -0.9375rem;
+    cursor: pointer;
+    border: 1px solid #557af3;
+    z-index: 999;
+}
+
+.close i {
+    color: #6589ff;
+    font-size: 1.2rem;
+    line-height: 0;
+}

@@ -1,0 +1,98 @@
+<div class="modal-dialog">
+    <div class="modal-content">
+        <div class="close" (click)="closePopup()">
+            <i class="bi-x-circle-fill"></i>
+        </div>
+        <div class="modal-body">
+            <div class="display">
+                <div class="header">
+                    <div class="d-flex">
+                        <Label>Number Of Items :</Label>
+                        <p>{{supplierRequestData?supplierRequestData.itemList.length:0}}</p>
+                    </div>
+                    <div class="d-flex">
+                        <label for="">Item Delivered :</label>
+                        <p>{{supplierRequestData.totalItemCount}}</p>
+                    </div>
+                </div>
+                <div class="MedicineModify">
+                    <div class="row bottom-border">
+                        <div class="col-md-1">
+                            <p>S.No</p>
+                        </div>
+                        <div class="col-md-7">
+                            <p>Medicine Name</p>
+                        </div>
+                        <div class="col-md-2 text-center">
+                            <p>Ordered Quantity</p>
+                        </div>
+                        <div class="col-md-2 text-center">
+                            <p>Delivered Quantity</p>
+                        </div>
+                    </div>
+                    <div class="scrollMedicine">
+                        <div *ngIf="supplierRequestData">
+                            <div class="row position-relative bottom-borders w-100 m-auto"
+                                *ngFor="let item of supplierRequestData.itemList; let itemIndex = index">
+                                <div class="col-md-1">
+                                    <p>{{itemIndex+1}}</p>
+                                </div>
+                                <div class="col-md-7">
+                                    <h6>{{item.itemName}}</h6>
+                                </div>
+                                <div class="col-md-2 text-center">
+                                    <div class="form-floating">
+                                        <p>{{item.quantity}}</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-2 text-center">
+                                    <div class="form-floating">
+                                        <p>{{item.updatedQuantity?item.updatedQuantity:item.quantity}}
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row w-100 m-auto">
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <p>signature & Conformation</p>
+                                    <div class="row">
+                                        <div class="col-md-5">
+                                            <div class="d-flex pt-2 align-items-start">
+                                                <input type="checkbox" name="" id="re" class="mt-1"
+                                                    [checked]="confirmationCheck" (click)="chengeConfirmationCheck()"  (click)="clearSignPad()">
+                                                <h2>I hereby declare that all the information given above is true and
+                                                    correct to the best of my knowledge and I take full responsibility
+                                                    for its correctness. In case any of the information comes out
+                                                    incorrect, I will rectify according to mutual agreement with
+                                                    Anamnesis Representative. </h2>
+                                            </div>
+                                            <div class="validation-div errorDiv">
+                                                <small>{{confirmationErrMsg}}</small>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-5">
+                                            <div class="canvasBox" [ngClass]="{disable:!confirmationCheck}">
+                                                <i class="bi bi-arrow-counterclockwise" (click)="clearSignPad()"></i>
+                                                <canvas #signPadCanvas (touchstart)="startSignPadDrawing($event)"
+                                                    (touchmove)="movedFinger($event)"></canvas>
+                                            </div> 
+                                        </div>
+                                        <div class="col-md-2 d-flex align-items-end justify-content-center">
+                                            <div class="Proceed">
+                                                <button (click)="save()">Submit</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

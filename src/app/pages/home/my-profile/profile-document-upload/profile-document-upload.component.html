@@ -1,0 +1,149 @@
+<div id="myProfile" class="Information">
+    <div class="row">
+        <div class="col-md-12 mb-3">
+            <div class="d-flex align-items-center">
+                <span>{{ profileIndex }}</span>
+                <h1>Document Upload</h1>
+            </div>
+        </div>
+    </div>
+    <form [formGroup]="profileDcUploadParam" role="form">
+        <div formArrayName="documentList">
+            <div *ngFor=" let profileDocForm of getProfileDocumentList()
+                    .controls;
+                    let profileDocIndex = index ">
+                <ng-container formGroupName="{{ profileDocIndex }}">
+                    <div *ngIf="isdeleted(profileDocIndex)" class="row">
+                        <div class="col-md-3 my-2">
+                            <div *ngIf="isDocTypeDisabled(profileDocIndex)">
+                                <div class="form-floating selectBox selectPrint"
+                                    [ngClass]="{viewDisable : getProfileDocumentList().at(profileDocIndex).get('fileType')?.value}">
+                                    <label for="floatingSelect">Document Type</label>
+                                    <p>{{getController(profileDocIndex, 'fileType')?.getRawValue()}}</p>
+
+                                </div>
+                                <div class="regErrorDiv">
+                                    <app-validation-message [control]="getController(profileDocIndex, 'fileType')"
+                                        [messages]="errorMessage.fileType">
+                                    </app-validation-message>
+                                </div> 
+                            </div>
+                            <div *ngIf="!isDocTypeDisabled(profileDocIndex)" class="form-floating selectBox "
+                                [ngClass]="{selectedFormValue : getProfileDocumentList().at(profileDocIndex).get('fileType')?.value}">
+                                <select (change)="onValueChange(profileDocIndex, true)" class="one"
+                                    [ngClass]="{addColor : getControllerValue(profileDocIndex, 'fileType'), viewDisable: isDocTypeDisabled(profileDocIndex)}"
+                                    name="fileType" class="form-select" id="floatingSelect fileType"
+                                    aria-label="Floating label select example" formControlName="fileType">
+                                    <option *ngFor="let documentType of documentTypeDetailsList"
+                                        [value]="documentType.documentType"
+                                        [hidden]="isSelectedDocType(documentType.documentType, getProfileDocumentList().at(profileDocIndex).get('fileType')?.value)">
+                                        {{
+                                        documentType.documentTypeDescription }}</option>
+                                </select>
+                                <label for="floatingSelect">Document Type</label>
+                                <div class="regErrorDiv">
+                                    <app-validation-message [control]="getController(profileDocIndex, 'fileType')"
+                                        [messages]="errorMessage.fileType">
+                                    </app-validation-message>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 my-2">
+                            <div class="form-floating ">
+                                <input *ngIf="isDisabled(profileDocIndex)" readonly formControlName="documentNumber"
+                                    autofocus="" type="text" name="documentNumber" placeholder="Document Number"
+                                    id="documentNumber" 
+                                    class="form-control">
+                                <input *ngIf="!isDisabled(profileDocIndex)"
+                                    (focusout)="onFocusOutEvent(profileDocIndex)"
+                                    (input)="onValueChange(profileDocIndex)" formControlName="documentNumber"
+                                    autofocus="" type="text" name="documentNumber" placeholder="Document Number"
+                                    id="documentNumber" [ngClass]="{viewDisable: isDisabled(profileDocIndex)}"
+                                    class="form-control">
+                                <label for="documentNumber">Document Number</label>
+                                <div *ngIf="getControllerValue(profileDocIndex, 'docError')" class="regErrorDiv"
+                                    style="width: max-content;">
+                                    <small>{{getControllerValue(profileDocIndex, 'docError')}}</small>
+                                </div>
+                                <div class="regErrorDiv">
+                                    <app-validation-message [control]="getController(profileDocIndex, 'documentNumber')"
+                                        [messages]="errorMessage.documentNumber">
+                                    </app-validation-message>
+                                </div>
+                            </div>
+                        </div>
+                        <div *ngIf="isDataSaved(profileDocIndex)" class="col-md-5 my-2">
+                            <div class="form-group file-area position-relative">
+                                <div>
+                                    <div>
+                                        <p>{{getControllerValue(profileDocIndex, 'fileName')}}</p>
+                                    </div>
+                                    <div *ngIf="!isDisabled(profileDocIndex)">
+                                        <i class="bi-x removeSavedItem" (click)="removeSavedItem(profileDocIndex)"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div *ngIf="!isDataSaved(profileDocIndex)" class="col-md-5 my-2">
+                            <div class="form-group file-area">
+                                <div *ngIf="getControllerValue(profileDocIndex, 'document')">
+                                    <div *ngIf="!getControllerValue(profileDocIndex, 'error')" class="Dr-list mt-3">
+                                        <img src="../../../assets/images/PrescriptionPink.png">
+                                        <h6>{{getControllerValue(profileDocIndex, 'fileName')}}</h6>
+                                        <i class="bi-x" (click)="removeItem(profileDocIndex)"></i>
+                                        <div id="Progress_Status">
+                                            <div *ngIf="getControllerValue(profileDocIndex, 'progress')" id="text">
+                                                {{ getControllerValue(profileDocIndex, 'progress') }} %
+                                            </div>
+                                            <div [style.width]="getControllerValue(profileDocIndex, 'progress') + '%'"
+                                                id="myprogressBar"></div>
+                                        </div>
+                                    </div>
+                                    <div *ngIf="getControllerValue(profileDocIndex, 'error')">
+                                        <div>
+                                            <img src="../../../assets/images/dr.svg">
+                                            <h6>{{getControllerValue(profileDocIndex, 'fileName')}}</h6>
+                                            <i class="bi-x" (click)="removeItem(profileDocIndex)"></i>
+                                        </div>
+                                    </div>
+                                    <div *ngIf="getControllerValue(profileDocIndex, 'error')">
+                                        <label class="massage errorDocLabel">Couldn't upload the file</label>
+                                    </div>
+                                </div>
+                                <div *ngIf="!getControllerValue(profileDocIndex, 'document')">
+                                    <label autofocus="" for="document">No File Choosen ....</label>
+                                    <input [ngClass]="isDocDisabled(profileDocIndex) ? 'disable' : ''"
+                                        formControlName="fileSource" type="file" name="document" id="document"
+                                        required="required" multiple="multiple"
+                                        (change)="onFileUpload($event, profileDocIndex)" />
+                                    <div *ngIf="isFileError(profileDocIndex)" class="regErrorDiv">
+                                        <small>{{isFileError(profileDocIndex)}}</small>
+                                    </div>
+                                </div>
+                            </div>
+                            <div *ngIf="!isFileError(profileDocIndex)" class="regErrorDiv">
+                                <app-validation-message [control]="getController(profileDocIndex, 'fileID')"
+                                    [messages]="errorMessage.fileID">
+                                </app-validation-message>
+                            </div>
+                        </div>
+                        <div class="col-md-1 d-flex flex-column justify-content-center">
+                            <i *ngIf="isDisabled(profileDocIndex)" (click)="enableDocUpdate(profileDocIndex)"
+                                class="bi-pencil-fill enableDocUpdate pb-2"></i>
+                            <!-- <i class="bi-check-square-fill ok"></i> -->
+                            <i (click)="deleteDocRow(profileDocIndex)" style="cursor: pointer;"
+                                class="bi-trash-fill"></i>
+                        </div>
+                    </div>
+                </ng-container>
+            </div>
+        </div>
+        <div class="col-md-12 my-2 d-flex align-items-end flex-column text-end">
+            <div *ngIf="isAddDocAvailable()" class="col-md-4">
+                <h3 (click)="addDocument()">+Add Another Document</h3>
+            </div>
+            <input (click)="save(profileDcUploadParam.value, profileDcUploadParam.valid)" class="mt-2" type="submit"
+                value="Save & Continue">
+        </div>
+    </form>
+</div>

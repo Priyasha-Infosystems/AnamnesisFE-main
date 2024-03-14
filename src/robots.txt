@@ -1,0 +1,8 @@
+# Created for search bots and restricted only the open paths dt : 01-09-2023
+
+User-agent: *
+
+Allow: /
+Disallow: /images/
+
+Sitemap: https://anamnesis.in/sitemap.xml

@@ -1,0 +1,712 @@
+.header {
+    background: #d0bfff;
+    padding: 8px 12px;
+    border-bottom: 1px solid #845ef7;
+    border-top: 1px solid #845ef7;
+
+}
+
+.medicalName {
+    background: #fff;
+    border-radius: 5px;
+    border: 1px solid #845ef7;
+    padding: 10px 20px;
+}
+
+.header h2 {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    color: #713bdb;
+}
+
+.header h6 {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 12px;
+    color: #212529;
+}
+
+.header i {
+    color: #713bdb;
+    font-size: 12px;
+    margin: 3px 2px;
+}
+
+.display {
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    border: 1px solid #845ef7;
+    border-radius: 6px;
+    padding: 10px 0px;
+    z-index: 1;
+    position: relative;
+}
+
+.display label {
+    font-weight: 600;
+    font-size: 0.875rem;
+    margin: 0;
+}
+
+.selectorBox {
+    margin-bottom: 0.5rem;
+}
+
+select {
+    background-color: #fff;
+    font-family: 'Poppins';
+    transition: 0.3s;
+    width: 100%;
+    border: 1px solid rgb(113 59 219 / 51%);
+    box-shadow: 0px 11px 34px -5px rgb(113 59 219 / 21%);
+    border-radius: 6px;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 107%;
+    outline: none;
+    padding: 13px 18px 2px 8px !important;
+    cursor: pointer;
+    min-height: 3rem;
+}
+
+.selectorBox label {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px !important;
+    line-height: 110%;
+    color: rgb(146 90 255);
+    transition: 0.3s;
+}
+
+input,
+select {
+    color: rgb(53, 16, 128) !important;
+}
+
+.selectBox label {
+    padding-top: 15px !important;
+}
+
+.selectBox i {
+    color: #7137d6;
+    position: absolute;
+    top: 12px;
+    right: 5px;
+    background-color: #fff;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.noItem {
+    min-height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.selectedFormValue label {
+    padding: 7px 7px 1px 12px !important;
+    transition: 0.3s;
+    font-size: 10px !important;
+    opacity: 0.6;
+}
+
+.MedicineModify i {
+    color: #713bdb;
+    font-size: 20px;
+    cursor: pointer;
+    padding: 0px 5px 0px 0px; 
+}
+
+.MedicineModify p {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 13px;
+    line-height: 110%;
+    color: rgb(113 59 219);
+    margin: 11px 0px;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.medicineRow .fa-rupee {
+    font-size: 13px !important;
+    padding-right: 7px;
+    margin: 12px 0px;
+}
+
+.medicineRow table {
+    padding: 0px 34px;
+    display: flex;
+    margin: auto;
+}
+
+.medicineRow table p {
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    width: 85px;
+    word-wrap: break-word;
+}
+
+.MedicineModify h6 {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 110%;
+    color: rgb(42 42 42 / 74%);
+    margin: 0;
+}
+
+
+.MedicineModify input[type="text"],
+.MedicineModify input[type="month"] {
+    font-family: 'Poppins';
+    margin: 0;
+    height: 35px;
+    min-height: unset;
+    width: 100%;
+    background: #F2ECFF;
+    border: 1px solid rgba(113, 59, 219, 0.18);
+    border-radius: 4px;
+    padding: 12px 10px 11px 10px;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 107%;
+    color: #713BDB;
+    outline: none;
+    margin-top: 5px;
+}
+
+.MedicineModify input[type="Number"]::-webkit-outer-spin-button,
+.MedicineModify input[type="Number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.form-control:focus {
+    box-shadow: unset !important;
+}
+
+
+.linePortrait {
+    width: 2px;
+    height: 50%;
+    background: #713bdb;
+    margin-left: 13px;
+}
+
+.yaa::before {
+    content: "";
+    width: 2px;
+    height: 18px;
+    background: #713bdb;
+    margin-left: 13px;
+    margin-top: -17px;
+    display: block;
+    position: absolute;
+}
+
+.lineLandSpace {
+    border-bottom: 2px solid #713bdb;
+    position: absolute;
+    width: 83.2%;
+    left: -10px;
+    bottom: 50%;
+}
+
+.form-floating {
+    z-index: 99;
+}
+
+.medicineRow {
+    background: #d0bfff;
+    margin: 10px 0px 5px 0px;
+    height: 38px; 
+}
+
+.clickHare {
+    width: 28%;
+    font-family: 'Poppins';
+    height: 35px;
+    min-height: unset;
+    background: #ffffff;
+    border-radius: 4px;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 107%;
+    color: #713BDB;
+    outline: none;
+    z-index: 1;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+}
+
+.allInvoice {
+    height: 0px;
+    overflow: hidden;
+    transition: height 0.5s;
+    margin-top: -13px;
+}
+ 
+
+.clickHare a {
+    color: rgb(31, 31, 206);
+    cursor: pointer;
+}
+
+::ng-deep .errorDiv small div {
+    font-size: 9px !important;
+    text-shadow: 0px 0px 0px #000;
+    line-height: 1.1;
+}
+
+.errorDiv {
+    height: 9px;
+    color: red;
+    font-size: 9px;
+}
+
+span {
+    font-size: 10px;
+    color: #713bdb;
+    font-weight: 600;
+}
+
+.requisitionLineEntry {
+    font-size: 12px;
+    color: red;
+    height: 14px;
+    display: block;
+    font-weight: 500;
+}
+
+.Dateinput {
+    font-family: 'Poppins';
+    margin: 0;
+    height: 35px;
+    min-height: unset;
+    width: 100%;
+    background: #F2ECFF;
+    border: 1px solid rgba(113, 59, 219, 0.18);
+    border-radius: 4px;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 107%;
+    color: #713BDB;
+    outline: none;
+    align-items: center;
+}
+
+.Dateinput input {
+    background: none !important;
+    border: none !important;
+    padding: unset !important;
+    text-align: center;
+}
+
+.Save {
+    height: 41px;
+    padding: 10px 20px;
+    background: #713bdb;
+    border: none;
+    box-shadow: 0px 11px 34px -5px rgb(113 59 219 / 79%);
+    border-radius: 6px;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 0.875rem;
+    line-height: 21px;
+    color: #FFFFFF;
+    display: flex !important;
+    align-items: center;
+    float: right;
+    margin: 3px 16px;
+}
+
+h6 b {
+    font-weight: 700;
+    padding-right: 10px;
+}
+
+.medicineRow i {
+    padding-bottom: 0 !important;
+}
+
+.Dr-list {
+    background: #f3f0ff;
+    color: #713bdb;
+    border: 1px solid #713bdb;
+    box-shadow: 0px 11px 34px -5px rgb(113 59 219 / 19%);
+    border-radius: 10px;
+    padding: 0.8125rem 1.0625rem 0.6875rem 1.0625rem;
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    align-items: center;
+    position: relative;
+    width: 293px;
+    height: 46px;
+    padding-top: 0.75rem !important;
+    font-size: 0.875rem;
+    overflow: hidden;
+}
+
+.Dr-list img {
+    vertical-align: revert !important;
+    max-width: 1rem;
+}
+
+.Dr-list h6,
+.Dr-list label {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 0.8125rem;
+    line-height: 110%;
+    color: #703bdb75 !important;
+    margin: 0px 0.5rem 0px 0.5rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    width: 180px;
+    word-wrap: break-word;
+}
+
+.Dr-list i {
+    background: #713bdb;
+    box-shadow: 0px 4px 8px rgb(113 59 219 / 51%);
+    float: right;
+    border-radius: 100%;
+    height: 1.5625rem;
+    width: 1.5625rem;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    position: absolute;
+    right: 0.5rem;
+    cursor: pointer;
+    padding: 0.25rem;
+    font-size: 1.0625rem;
+}
+
+
+.Dr-list #Progress_Status {
+    width: 100%;
+    margin-left: 0.5625rem;
+    height: 0.3125rem;
+    background: #DEE2FF;
+    border-radius: 8px;
+    margin-top: 5px;
+}
+
+.Dr-list #Progress_Status #text {
+    color: #713bdb;
+    position: absolute;
+    top: 12px;
+    right: 40px;
+    font-size: 11px;
+    font-weight: 600;
+}
+
+input[type="file"] {
+    opacity: 0;
+    cursor: pointer;
+    z-index: 99;
+    width: 293px;
+    height: 46px;
+    position: absolute;
+    left: 0;
+}
+
+.firstinput input {
+    border: 1px solid rgb(113 59 219 / 51%);
+    height: 47px;
+    min-height: unset;
+    padding: 20px 10px 3px 13px !important;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 110%;
+    color: #713bdb !important;
+}
+
+.firstinput label {
+    padding: 12px 10px !important;
+}
+
+.invoiceLineEntryList label {
+    font-size: 9px !important;
+    color: #713bdb !important;
+    padding: 10px 6px !important;
+}
+
+.disable {
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+.input {
+    font-family: 'Poppins';
+    margin: 0;
+    height: 35px;
+    min-height: unset;
+    width: 100%;
+    background: #F2ECFF;
+    border: 1px solid rgba(113, 59, 219, 0.18);
+    border-radius: 4px;
+    padding: 3px 8px 3px 8px;
+
+}
+
+.input p,
+.input label {
+    padding: 0 !important;
+}
+
+.filltotalPrice {
+    padding: 1px 8px 3px 8px;
+    font-size: 1px;
+}
+
+.filltotalPrice p {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 107%;
+    color: #713BDB;
+    margin: 0;
+}
+
+.finalinput {
+    width: 18%;
+    font-family: 'Poppins';
+    height: 46px;
+    min-height: unset;
+    background: #F2ECFF;
+    border: 1px solid rgba(113, 59, 219, 0.18);
+    border-radius: 4px;
+    margin: 0px 9px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.massage {
+    color: red;
+    font-size: 12px;
+}
+
+#myprogressBar {
+    height: 0.3125rem;
+    background: linear-gradient(180deg, #91F0A2 0%, rgba(101, 177, 103, .71) 100%);
+    border-radius: 8px;
+}
+
+.MedicineModify .input {
+    height: 35px;
+    width: 100%;
+    background: #F2ECFF;
+    border: 1px solid rgba(113, 59, 219, 0.18);
+    border-radius: 4px;
+    padding: 12px 10px 11px 10px;
+    min-height: unset;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    font-family: 'Poppins' !important;
+    font-style: normal !important;
+    font-weight: 600 !important;
+    font-size: 11px !important;
+    line-height: 107% !important;
+    color: #713BDB !important;
+    outline: none !important;
+}
+
+.MedicineModify input[type="Number"]::-webkit-outer-spin-button,
+.MedicineModify input[type="Number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.form-control:focus {
+    box-shadow: unset !important;
+}
+
+.input label {
+    font-size: 7.2px !important;
+    color: #713bdb;
+    padding: 3px 0px 3px 0px !important;
+}
+
+
+.input {
+    z-index: 99;
+    position: sticky;
+}
+
+.input p {
+    font-family: 'Poppins' !important;
+    font-style: normal !important;
+    font-weight: 600 !important;
+    font-size: 11px !important;
+    line-height: 107% !important;
+    color: #713BDB !important;
+    outline: none !important;
+    padding: 0px !important;
+    margin: 0 !important;
+}
+
+.allInvoice {
+    height: 0px;
+    overflow: hidden;
+    transition: height 0.5s;
+    margin-top: -13px;
+}
+
+.allInvoiceOpen {
+    transition: height 0.5s;
+    overflow: hidden; 
+}
+
+.clickHare a {
+    color: rgb(31, 31, 206);
+    cursor: pointer;
+}
+
+
+
+.input {
+    border: none;
+    background: none;
+    margin: 2px -2px;
+    outline: none;
+}
+
+textarea {
+    width: 100%;
+    margin: 20px 0 0px 0;
+    background: #fff;
+    border: 1px solid #845ef7;
+    border-radius: 6px;
+    padding: 10px;
+    outline: none;
+    margin-left: 15px;
+}
+
+.submit {
+    width: 80px;
+    height: 36px;
+    background: #713BDB;
+    box-shadow: 0px 11px 34px -5px rgba(113, 59, 219, 0.4);
+    border-radius: 6px;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 13px;
+    line-height: 110%;
+    color: #FFFFFF;
+    border: none;
+    margin-bottom: 7px;
+}
+
+@media (min-width: 768px) {
+    .allInvoiceOpen .col-md-1 {
+        flex: 0 0 auto;
+        width: 8.333333%;
+    }
+
+    .allInvoiceOpen .col-md-11 {
+        flex: 0 0 auto;
+        width: 95.666667%;
+    }
+
+}
+
+.Save {
+    padding: 10px 20px;
+    background: #713bdb;
+    border: none;
+    box-shadow: 0px 11px 34px -5px rgb(113 59 219 / 79%);
+    border-radius: 6px;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 0.875rem;
+    line-height: 21px;
+    color: #FFFFFF;
+    display: flex !important;
+    align-items: center;
+    float: right;
+    margin: 3px 16px;
+}
+
+.form-floating i {
+    color: #7137d6;
+    position: absolute;
+    top: 12px;
+    right: 4px;
+    background-color: #fff;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.invoiceLineEntryList label {
+    font-size: 9px !important;
+    color: #713bdb !important;
+    padding: 10px 5px;
+}
+
+.Add {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 13px;
+    line-height: 110%;
+    color: rgb(113 59 219);
+    margin: 10px 17px;
+}
+
+.AllLabel label {
+    margin: 0;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 10px;
+    line-height: 107%;
+    color: #291b50;
+}
+
+.AllLabel {
+    background: #d0bfff;
+    border-radius: 3px;
+    padding: 8px 0px 4px 0px;
+}
+
+.inputs input {
+    height: 28px !important;
+}
+
+.noItem p {
+    color: red;
+}

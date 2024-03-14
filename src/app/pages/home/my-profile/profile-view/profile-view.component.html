@@ -1,0 +1,515 @@
+<div id="Profile" class="tabcontent">
+    <div class="ProfileContent">
+        <div class="row">
+            <div class="col-md-12 text-end">
+                <button class="Edit" (click)="setEdit()">Edit</button>
+            </div>
+            <div *ngIf="getProfileIndex('PINF') > 0" class="col-md-12 mb-3">
+                <div class="displayInformation InformationBox headertitle">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="GeneralMBoxs InformationDetailsBox h-100 m-0">
+                                <h2><i class="bi-file-person-fill"></i> Personal Information</h2>
+                                <div class="tabpadding">
+                                    <table>
+                                        <tr>
+                                            <td><label for="Full_Name">Full Name :</label></td>
+                                            <td>
+                                                <p>{{ getFullName(personalData?.firstName, personalData?.middleName,
+                                                    personalData?.lastName) }}</p>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><label for="Display_Name">Display Name :</label></td>
+                                            <td>
+                                                <p>{{ personalData?.displayName }}</p>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><label for="Gender">Gender :</label></td>
+                                            <td>
+                                                <p>{{ genderData[personalData?.gender] }}</p>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><label for="Date_of_Birth">Date of Birth :</label></td>
+                                            <td>
+                                                <p>{{ formatDate(personalData?.dateOfBirth) }}</p>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><label for="MaritalStatus">Marital Status :</label></td>
+                                            <td>
+                                                <p>{{ maritialStatusData[personalData?.maritialStatus] }}</p>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><label for="Emailid">Email Id :</label></td>
+                                            <td>
+                                                <p>{{ personalData?.emailID }}</p>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="GeneralMBoxs InformationDetailsBox h-100 m-0">
+                                <h2>
+                                    <div style="display: flex;
+                                    justify-content: space-between;">
+                                        <div><i class="bi-house-fill"></i> Home Address </div>
+                                        <div><i class="bi-pen-fill addressEdit" (click)="openAddress(homeAddress)"></i>
+                                        </div>
+                                    </div>
+                                </h2>
+                                <div class="tabpadding" >
+                                    <div class="d-flex align-items-start flex-column mb-2">
+                                        <div class="w-50"><label for="Primary">Contact Person :</label></div>
+                                        <div class="w-50">
+                                            <p>{{homeAddress?.customerName}}</p>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex align-items-start flex-column mb-2">
+                                        <div class="w-100" *ngIf="homeAddress" >
+                                            <label for="Street">Address :</label>
+                                            <p [innerHTML]="homeAddress.customerAddress |addressLine" ></p>
+                                            <p>{{homeAddress?.customerLandmark}}</p>
+                                            <p>{{homeAddress?.customerCity}}, {{homeAddress?.customerStateName}} -
+                                                {{homeAddress?.customerPincode}}</p>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex align-items-start flex-column mb-2" *ngIf=" homeAddress && (homeAddress?.customerContactNo || homeAddress?.customerSecondaryContactNo)">
+                                        <div class="w-50"><label for="Primary_Contact_Number">Contact Details :</label>
+                                        </div>
+                                        <div class="w-50">
+                                            <p *ngIf="homeAddress?.customerContactNo">
+                                                <b>(P)</b>&nbsp;+91&nbsp;{{homeAddress?.customerContactNo}}
+                                            </p>
+                                            <p *ngIf="homeAddress?.customerSecondaryContactNo">
+                                                <b>(S)</b>&nbsp;+91&nbsp;{{homeAddress?.customerSecondaryContactNo}}
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div *ngIf="getProfileIndex('BUSI') > 0" class="col-md-12 mb-3">
+                <div class="displayInformation InformationBox headertitle">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="InformationDetailsBox GeneralMBoxs h-100">
+                                <h2><i class="bi-briefcase-fill"></i> Business Information</h2>
+                                <div class="px-4">
+                                    <table>
+                                        <tr>
+                                            <td><label for="Business Name">Business Name :</label></td>
+                                            <td>
+                                                <p>{{ businessData?.businessName }}</p>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><label for="Open_Time">Open Time :</label></td>
+                                            <td>
+                                                <p>{{ getTime(businessData?.openHourStart) }}</p>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><label for="Close_Time">Close Time :</label></td>
+                                            <td>
+                                                <p>{{ getTime(businessData?.openHourEnd) }}</p>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><label for="Open_Days">Open Days :</label></td>
+                                            <td>
+                                                <p>{{getOpeningDays(businessData?.openDays)}}</p>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><label for="Commercial_Type">Commercial Type :</label></td>
+                                            <td>
+                                                <p>{{ businessData?.commercialTypeDescription }}</p>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="InformationDetailsBox GeneralMBoxs h-100">
+                                <h2>
+                                    <div style="display: flex;
+                                        justify-content: space-between;">
+                                        <div><i class="bi-house-fill"></i> Business Address </div>
+                                        <!-- <div><i class="bi-pen-fill addressEdit" (click)="navigateAddress()"></i>
+                                        </div> -->
+                                    </div>
+                                </h2>
+                                <div class="px-4"> 
+                                    <div class="d-flex align-items-start flex-column mb-2">
+                                        <div class="w-100">
+                                            <label for="Street">Business Name :</label> 
+                                            <p>{{businessData?.businessName}}</p> 
+                                        </div>
+                                    </div>
+                                    <div class="d-flex align-items-start flex-column mb-2">
+                                        <div class="w-100">
+                                            <label for="Street">Business Address :</label>
+                                            <p [innerHTML]="businessData?.businessAddress.customerAddress |addressLine" *ngIf="businessData?.businessAddress.customerAddress">
+                                            </p>
+                                            <p>{{businessData?.businessAddress.customerLandmark}}</p>
+                                            <p>{{businessData?.businessAddress.customerCity}},{{businessData?.businessAddress.customerStateName}}
+                                                - {{businessData?.businessAddress.customerPincode}}</p>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex align-items-start flex-column mb-2" *ngIf="businessData?.businessAddress.customerContactNo || businessData?.businessAddress.customerSecondaryContactNo">
+                                        <div class="w-50"><label for="Primary_Contact_Number">Contact Details :</label>
+                                        </div>
+                                        <div class="w-50">
+                                            <p *ngIf="businessData?.businessAddress.customerContactNo">
+                                                <b>(P)</b>&nbsp;+91&nbsp;{{businessData?.businessAddress.customerContactNo}}
+                                            </p>
+                                            <p *ngIf="businessData?.businessAddress.customerSecondaryContactNo">
+                                                <b>(S)</b>&nbsp;+91&nbsp;{{businessData?.businessAddress.customerSecondaryContactNo}}
+                                            </p>
+                                        </div>
+                                    </div>
+                                     
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div *ngIf="getProfileIndex('CINF') > 0" class="col-md-12 mb-3">
+                <div class="displayInformation InformationBox headertitle">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="GeneralMBoxs InformationDetailsBox h-100">
+                                <h2><i class="fa fa-building-o" aria-hidden="true"></i> Company Information</h2>
+                                <div class="px-4 pb-4">
+                                    <table>
+                                        <tr>
+                                            <td><label for="Legal">Legal Business Name :</label></td>
+                                            <td>
+                                                <p>{{companyData?.legalBusinessName}}</p>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><label for="CompanyPAN">Company PAN :</label></td>
+                                            <td>
+                                                <p>{{companyData?.companyPAN}}</p>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><label for="CompanyGSTN">Company GSTN :</label></td>
+                                            <td>
+                                                <p>{{companyData?.companyGSTNNo}}</p>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><label for="CIN">Corporate Identity Number (CIN) :</label></td>
+                                            <td>
+                                                <p>{{companyData?.companyCINno}}</p>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><label for="Tan">Tan Number :</label></td>
+                                            <td>
+                                                <p>{{companyData?.companyTAN}}</p>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                                <h2>🏢Commercial Entity</h2>
+                                <div class="px-4">
+                                    <div *ngIf="companyData && companyData.commercialEntityDetailsList.length">
+                                        <div class="row EntityDisplay"
+                                            *ngFor="let commercialEntityDetail of companyData.commercialEntityDetailsList;">
+                                            <div class="col-md-12 mb-1">
+                                                <h6>{{commercialEntityDetail.commercialEntityName}}</h6>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <p>{{commercialEntityDetail.commercialType==='DGCTR'?'Diagnostic
+                                                    Center':commercialEntityDetail.commercialType==='HLCLN'?'Health
+                                                    Clinic':'Pharmacy'}} ( {{commercialEntityDetail.commercialID}} )</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="GeneralMBoxs InformationDetailsBox h-100">
+                                <h2>
+                                    <div style="display: flex;
+                                        justify-content: space-between;">
+                                        <div><i class="bi-house-fill"></i> Company Address </div>
+                                        <div><i class="bi-pen-fill addressEdit"
+                                                (click)="openAddress(companyAddress)"></i>
+                                        </div>
+                                    </div>
+                                </h2>
+                                <div class="px-4">
+                                    <div class="d-flex align-items-start flex-column mb-2"
+                                        *ngIf="companyAddress?.customerName">
+                                        <div class="w-50"><label for="Primary">Contact Person :</label></div>
+                                        <div class="w-50">
+                                            <p>{{companyAddress?.customerName}}</p>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex align-items-start flex-column mb-2">
+                                        <div class="w-100">
+                                            <label for="Street">Address :</label>
+                                            <p [innerHTML]="companyAddress?.customerAddress |addressLine" *ngIf="companyAddress?.customerAddress">
+                                                {{companyAddress?.customerAddress}}</p>
+                                            <p>{{companyAddress?.customerLandmark}}</p>
+                                            <p>{{companyAddress?.customerCity}} ,
+                                                {{companyAddress?.customerStateName}} -
+                                                {{companyAddress?.customerPincode}}</p>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex align-items-start flex-column mb-2">
+                                        <div class="w-50"><label for="Primary_Contact_Number">Contact Details :</label>
+                                        </div>
+                                        <div class="w-50">
+                                            <p *ngIf="companyAddress?.customerContactNo">
+                                                <b>(P)</b>&nbsp;+91&nbsp;{{companyAddress?.customerContactNo}}
+                                            </p>
+                                            <p *ngIf="companyAddress?.customerSecondaryContactNo">
+                                                <b>(S)</b>&nbsp;+91&nbsp;{{companyAddress?.customerSecondaryContactNo}}
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div *ngIf="getProfileIndex('PCRD') > 0" class="col-md-12 mb-3">
+                <div class="headertitle">
+                    <h2><i class="fa fa-user-md"></i> Physician Credentials</h2>
+                </div>
+                <div class="displayInformation InformationBox headertitle">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="GeneralMBoxs InformationDetailsBox">
+                                <div class="px-4">
+                                    <table>
+                                        <tr>
+                                            <td><label for="Degree">Degree :</label></td>
+                                            <td>
+                                                <p>{{ physicanCredentials?.physicianQualification }}</p>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><label for="Specialisation">Specialisation :</label></td>
+                                            <td>
+                                                <p>{{ physicanCredentials?.physicianSpecialisation }}</p>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><label for="RegistrationNumber">Registration Number :</label></td>
+                                            <td>
+                                                <p>{{ physicanCredentials?.registrationNumber }}</p>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><label for="RegistrationAuthority">Registration Authority :</label></td>
+                                            <td>
+                                                <p>{{ physicanCredentials?.registrationAuthority }}</p>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div *ngIf="getProfileIndex('DOCU') > 0" class="col-md-12 mb-3">
+                <div class="headertitle">
+                    <h2><i class="fa fa-book" aria-hidden="true"></i> Document Upload</h2>
+                </div>
+                <div class="displayInformation InformationBox headertitle">
+                    <div class="document col-md-12">
+                        <div class="row">
+                            <div class="col-md-4 mb-3" *ngFor="let profileDocument of profileDocumentList">
+                                <div *ngIf="profileDocument.documentStatus !== 1"
+                                    class="documentBox d-flex align-items-center">
+                                    <div class="d-flex nameDisplay align-items-center">
+                                        <div class="d-flex flex-column align-items-center">
+                                            <i class="bi-file-earmark-pdf-fill"
+                                                *ngIf="profileDocument.contentType === 'application/pdf'"></i>
+                                            <i class="bi bi-images"
+                                                *ngIf="profileDocument.contentType !== 'application/pdf'"></i>
+                                            <!-- <i class="bi-eye-fill"></i> -->
+                                        </div>
+                                        <div class="d-flex flex-column px-2">
+                                            <label for="AdhaarNo.">{{
+                                                getDocumentName(profileDocument.fileType)}}</label>
+                                            <p>{{profileDocument.documentNumber}}</p>
+                                        </div>
+                                    </div>
+                                    <i class="bi-check-circle-fill" *ngIf="profileDocument.documentStatus === 0"></i>
+                                    <i class="bi-question-circle-fill" *ngIf="profileDocument.documentStatus === 2"></i>
+                                    <i class="bi-x-circle-fill" *ngIf="profileDocument.documentStatus === 3"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div *ngIf="getProfileIndex('GMED') > 0" class="col-md-12 mb-3 position-relative">
+                <div class="headertitle">
+                    <h2><i class="fa fa-stethoscope" aria-hidden="true"></i> General Medical Information</h2>
+                </div>
+                <div class="displayInformation InformationBox headertitle">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="GeneralMedical">
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <div class="GeneralMBoxs">
+                                            <label for="Height">Height</label>
+                                            <p>{{ generalData?.HT }}</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="GeneralMBoxs">
+                                            <label for="Weight">Weight</label>
+                                            <p>{{ generalData?.WT }}</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="GeneralMBoxs">
+                                            <label for="BG">Blood Group</label>
+                                            <p>{{ generalData?.BG }}</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="GeneralMBoxs">
+                                            <label for="Diabetic">Diabetic</label>
+                                            <p>{{ generalData?.DB }}</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="GeneralMBoxs">
+                                            <label for="Thyroid">Thyroid</label>
+                                            <p>{{ generalData?.TH }}</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="GeneralMBoxs">
+                                            <label for="Smoking">Smoking</label>
+                                            <p>{{ generalData?.SM }}</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="GeneralMBoxs">
+                                            <label for="Blood_Group">Alcohol</label>
+                                            <p>{{ generalData?.AL }}</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="GeneralMBoxs">
+                                            <label for="BP">Blood Pressure</label>
+                                            <p>{{ generalData?.BP }}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div *ngIf="getProfileIndex('HOSP') > 0" class="col-md-12 mb-3">
+                <div class="headertitle">
+                    <h2><i class="fa fa-bed" aria-hidden="true"></i> Previous hospitalization Details</h2>
+                </div>
+                <div *ngIf="hospitalisationDetails && hospitalisationDetails.length"
+                    class="displayInformation InformationBox headertitle">
+                    <div class="GeneralMBoxs">
+                        <div class="hospitalization">
+                            <div class="row" style="border-bottom: 1px solid #845ef7;">
+                                <div class="col-md-4 p-0">
+                                    <label for="Hospitalisation">Hospitalisation Date</label>
+                                </div>
+                                <div class="col-md-8 p-0">
+                                    <label for="Reason">Reason</label>
+                                </div>
+                            </div>
+                            <div *ngIf="isDataFetched(hospitalisationDetails)">
+                                <div *ngFor="let hospitalisation of hospitalisationDetails; let last = last"
+                                    class="row">
+                                    <div class="col-md-4 p-0">
+                                        <div class="DetaPrint" [ngClass]="!last ? 'bottomBorder' : ''">
+                                            <p>{{ formatDate(hospitalisation?.hospitalisationDate) }}</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-8 p-0">
+                                        <div class="DetaPrint" [ngClass]="!last ? 'bottomBorder' : ''">
+                                            <p>{{ hospitalisation?.hospitalisationReason }}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div *ngIf="getProfileIndex('FMMD') > 0" class="col-md-12 mb-3">
+                <div class="headertitle">
+                    <h2><i class="fa fa-medkit" aria-hidden="true"></i> Family Medical History</h2>
+                </div>
+                <div *ngIf="medicalHistoryDetails && medicalHistoryDetails.length && relationOptionList.length"
+                    class="displayInformation InformationBox headertitle">
+                    <div class="hospitalization GeneralMBoxs">
+                        <div class="row" style="border-bottom: 1px solid #845ef7;">
+                            <div class="col-md-3 p-0">
+                                <label for="Relationship">Relationship</label>
+                            </div>
+                            <div class="col-md-3 p-0">
+                                <label for="Disease">Disease</label>
+                            </div>
+                            <div class="col-md-6 p-0">
+                                <label for="Notes">Notes</label>
+                            </div>
+                        </div>
+                        <div *ngIf="isDataFetched(medicalHistoryDetails) ">
+                            <div *ngFor="let medicalHistory of medicalHistoryDetails; let last = last" class="row">
+                                <div class="col-md-3 p-0">
+                                    <div class="DetaPrint" [ngClass]="!last ? 'bottomBorder' : ''">
+                                        <p>{{ getRelation(medicalHistory.relation) }}</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 p-0">
+                                    <div class="DetaPrint" [ngClass]="!last ? 'bottomBorder' : ''">
+                                        <p>{{ medicalHistory.diseaseName }}</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 p-0 r">
+                                    <div class="DetaPrint" [ngClass]="!last ? 'bottomBorder' : ''">
+                                        <p>{{ medicalHistory.historyNotes }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="myModal" class="modal" *ngIf="openModal" tabindex="-1" role="dialog">
+        <div class="container">
+            <app-address-modal [stateList]="stateList" [isProfile]="true" [newAddress]="false"
+                [selectedAddress]="selectedAddress" (close)="closePopup()">
+            </app-address-modal>
+        </div>
+    </div>
+</div>

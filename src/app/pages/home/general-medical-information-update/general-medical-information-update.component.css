@@ -1,0 +1,375 @@
+#GeneralMedicineInformation {
+    width: 100%;
+    height: 100%;
+    padding: 27px 20px;
+    background: #FFFFFF;
+    border-radius: 22px;
+}
+
+#GeneralMedicineInformation .GeneralMedicinecontent .medicineEntry {
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 244, 219, 0.79);
+    border: 1px solid rgb(227 204 153);
+    box-shadow: 6px 6px 10px 0px rgb(205 191 160 / 73%);
+    padding: 16px;
+    border-radius: 10px;
+}
+
+#GeneralMedicineInformation .GeneralMedicinecontent .medicineEntry input[type="text"] {
+    width: 100%;
+    padding: 15px 15px;
+    background: rgba(255, 255, 255, 0.79);
+    border: 2px solid rgb(221 196 140);
+    box-shadow: 0px 12px 53px -24px rgb(134 87 226 / 63%);
+    border-radius: 7px;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 110%;
+    color: rgb(149 103 1);
+    outline: none;
+}
+
+#GeneralMedicineInformation .GeneralMedicinecontent .medicineEntry select {
+    background-size: 13px !important;
+    background-position: calc(100% - 10px) 18px !important;
+    background-repeat: no-repeat !important;
+}
+
+#GeneralMedicineInformation .GeneralMedicinecontent .medicineEntry select {
+    background: url(../../../../assets/images/select-icon-yellow.png) no-repeat;
+    width: 100%;
+    padding: 15px 15px;
+    background-color: rgba(255, 255, 255, 0.79);
+    border: 2px solid rgb(221 196 140);
+    box-shadow: 0px 12px 53px -24px rgb(134 87 226 / 63%);
+    border-radius: 7px;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 110%;
+    color: rgb(149 103 1);
+}
+
+#GeneralMedicineInformation .GeneralMedicinecontent .medicineEntry select {
+    outline: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+#GeneralMedicineInformation .GeneralMedicinecontent .medicineEntry i {
+    color: rgb(149 103 1);
+    padding-left: 6px;
+    cursor: pointer;
+}
+
+#GeneralMedicineInformation .GeneralMedicinecontent .medicineEntry .addList button {
+    border: none;
+    background: none;
+    color: rgb(149 103 1);
+    font-weight: 600;
+    font-size: 14px;
+}
+
+#GeneralMedicineInformation .GeneralMedicinecontent .medicineEntry .checkBtn {
+    background: rgb(149 103 1);
+    box-shadow: 0px 11px 34px -5px rgb(113 59 219 / 40%);
+    border-radius: 6px;
+    border: none;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 110%;
+    color: #FFFFFF;
+    padding: 16px 26px;
+}
+
+#GeneralMedicineInformation .GeneralMedicinecontent .medicineEntry .save button {
+    background: rgb(149 103 1 / 69%);
+    box-shadow: 0px 11px 34px -5px rgb(182 147 71 / 40%);
+    border-radius: 4px;
+    border: none;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 110%;
+    color: #FFFFFF;
+    padding: 12px 25px;
+}
+
+#GeneralMedicineInformation .GeneralMedicinecontent .DoctorList {
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 244, 219, 0.79);
+    border: 1px solid rgb(227 204 153);
+    box-shadow: 6px 6px 10px 0px rgb(205 191 160 / 73%);
+    padding: 16px;
+    border-radius: 10px;
+    min-height: 500px;
+}
+
+#GeneralMedicineInformation .GeneralMedicinecontent .DoctorName h2 {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 110%;
+    color: #fff;
+    margin-bottom: 2px;
+}
+
+#GeneralMedicineInformation .GeneralMedicinecontent .DoctorName .header {
+    width: 100%;
+    border-bottom: 1px solid rgb(227 204 153);
+    background: #bba87d;
+    padding: 6px 8px;
+    border-radius: 4px;
+}
+
+#GeneralMedicineInformation .GeneralMedicinecontent .DoctorName .header span {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 11px;
+    line-height: 110%;
+    color: #000;
+    cursor: pointer;
+}
+
+#GeneralMedicineInformation .GeneralMedicinecontent .DoctorName .header p {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 300 !important;
+    font-size: 12px !important;
+    line-height: 110%;
+    color: #fff !important;
+    padding: unset;
+}
+
+#GeneralMedicineInformation .GeneralMedicinecontent .DoctorName p {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 1.6;
+    color: #3E3C3C;
+    margin: 0;
+    letter-spacing: 0.2px;
+    cursor: pointer;
+    padding: 6px 8px;
+}
+
+#GeneralMedicineInformation .GeneralMedicinecontent .DoctorName {
+    background: rgb(255 255 255);
+    border: 1px solid rgb(227 204 153);
+    box-shadow: 7px 7px 20px rgb(235 217 176);
+    padding: 10px 12px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    overflow: hidden;
+}
+
+#GeneralMedicineInformation .GeneralMedicinecontent .medicineEntry .DoctorName p {
+    font-size: 14px;
+    font-weight: 600;
+    color: rgb(185 130 8);
+    cursor: unset !important;
+    letter-spacing: 0.3px;
+}
+
+#GeneralMedicineInformation .GeneralMedicinecontent .medicineEntry .DoctorName {
+    border: unset !important;
+    padding: unset !important;
+    background: unset;
+    box-shadow: inset 0px 0px 2px 2px rgb(235 217 176);
+}
+
+#GeneralMedicineInformation .box:focus-visible {
+    display: none;
+}
+
+#GeneralMedicineInformation .box {
+    width: 100%;
+    position: relative;
+    padding: 10px 12px;
+}
+
+#GeneralMedicineInformation .border-top,
+#GeneralMedicineInformation .border-bottom {
+    width: 0%;
+    height: 3px;
+    background: rgb(185 130 8);
+    position: absolute;
+    transition: all .3s ease;
+}
+
+#GeneralMedicineInformation .border-top {
+    top: 0;
+    left: 0;
+}
+
+#GeneralMedicineInformation .border-bottom {
+    bottom: 0;
+    right: 0;
+}
+
+#GeneralMedicineInformation .GeneralMedicinecontent .medicineEntry:hover .border-top,
+#GeneralMedicineInformation .GeneralMedicinecontent .medicineEntry:hover .border-bottom {
+    width: 100%;
+}
+
+#GeneralMedicineInformation .border-right,
+#GeneralMedicineInformation .border-left {
+    width: 2px;
+    height: 0%;
+    background: rgb(185 130 8);
+    position: absolute;
+    transition: all .3s ease .3s;
+}
+
+#GeneralMedicineInformation .border-right {
+    top: 0;
+    right: 0;
+}
+
+#GeneralMedicineInformation .border-left {
+    bottom: 0;
+    left: 0;
+}
+
+#GeneralMedicineInformation .GeneralMedicinecontent .medicineEntry:hover .border-right,
+#GeneralMedicineInformation .GeneralMedicinecontent .medicineEntry:hover .border-left {
+    height: 100%;
+}
+
+#GeneralMedicineInformation .GeneralMedicinecontent .bi-hand-index-thumb-fill {
+    transform: rotate(90deg);
+    font-size: 14px;
+    margin-right: 3px;
+    color: #bba87d;
+    display: inline-block;
+}
+
+#GeneralMedicineInformation .GeneralMedicinecontent .patientStatus {
+    margin-right: 30px;
+}
+
+#GeneralMedicineInformation .GeneralMedicinecontent .patientStatus i {
+    color: #bba87d;
+    font-size: 16px;
+}
+
+#GeneralMedicineInformation .GeneralMedicinecontent .patientStatus .bi-check-square-fill {
+
+    color: #1e9848;
+}
+
+#GeneralMedicineInformation .GeneralMedicinecontent .patientStatus .bi-exclamation-square-fill {
+
+    color: #ffb100;
+}
+
+#GeneralMedicineInformation .GeneralMedicinecontent .patientStatus .bi-question-square-fill {
+
+    color: #e7674a;
+}
+
+#GeneralMedicineInformation .GeneralMedicinecontent .patientArrived {
+    background: none;
+    border: none;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 110%;
+    color: #0d3b7e;
+    outline: none;
+}
+
+#GeneralMedicineInformation .GeneralMedicinecontent .arrived p {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500 !important;
+    font-size: 13px !important;
+    line-height: 110%;
+    color: #8b7f7f !important;
+    padding: 0 !important;
+}
+
+#GeneralMedicineInformation .form-group input {
+    padding: 0;
+    height: initial;
+    width: initial;
+    margin-bottom: 0;
+    display: none;
+    cursor: pointer;
+}
+
+#GeneralMedicineInformation .form-group label {
+    position: relative;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    margin: 0;
+}
+
+#GeneralMedicineInformation .form-group label:before {
+    content: '';
+    -webkit-appearance: none;
+    background-color: transparent;
+    border: 2px solid rgb(185 130 8);
+    box-shadow: 0 1px 2px rgb(0 0 0 / 5%), inset 0px -15px 10px -12px rgb(0 0 0 / 5%);
+    padding: 6px;
+    display: inline-block;
+    position: relative;
+    vertical-align: middle;
+    cursor: pointer;
+    border-radius: 2px;
+}
+
+#GeneralMedicineInformation .form-group input:checked+label:after {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 3px;
+    left: 6px;
+    width: 4px;
+    height: 9px;
+    border: solid rgb(185 130 8);
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+
+.bi-check-square-fill {
+    color: #25c55d !important;
+}
+
+.form-floating {
+    width: 100%;
+    height: 50px;
+    background: #FFFFFF;
+    border: 1px solid rgba(231, 168, 20, 0.19);
+    box-shadow: 0px 16px 34px -6px rgb(199 148 29 / 19%);
+    border-radius: 10px;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 110%;
+    color: #484747;
+}
+
+.err {
+    line-height: 1;
+    font-size: 12px;
+    height: 8px;
+    padding-left: 4px;
+    color: red;
+    position: absolute;
+}

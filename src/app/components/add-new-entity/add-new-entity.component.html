@@ -1,0 +1,244 @@
+<div class="width">
+    <div class="row w-100 m-auto">
+        <div class="col-md-6"></div>
+        <div class="col-md-6">
+            <div class="tabpane" id="Physician">
+                <h2>Add New Health Clinic</h2>
+                <form [formGroup]="DiagnosticCenterFormGroup">
+                    <div class="box">
+                        <div class="row">
+                            <div class="col-md-7">
+                                <div class="form-floating">
+                                    <input type="text" name="Diagnostic" id="Diagnostic"
+                                        placeholder="Enter Diagnostic Centre Name"
+                                        formControlName="commercialEntityName" class="form-control">
+                                    <label for="">Enter Diagnostic Centre Name</label>
+                                </div>
+                                <div class="validation-div errorDiv">
+                                    <app-validation-message
+                                        [control]="DiagnosticCenterFormGroup.controls['commercialEntityName']"
+                                        [messages]="errorMessage.diagnosticCenterForm.commercialEntityName">
+                                    </app-validation-message>
+                                </div>
+                            </div>
+                            <div class="col-md-5">
+                                <div class="form-floating  selectBox"
+                                    [ngClass]="{selectedFormValue : DiagnosticCenterFormGroup.getRawValue().commercialType}">
+                                    <select name="commercialType" id="CommercialType floatingSelect"
+                                        formControlName="commercialType" class="form-select ">
+                                        <option value="HLCLN"> Health Clinic </option>
+                                        <option value="DGCTR"> Diagnostic Centre </option>
+                                        <option value="PHRMC"> Pharmacy </option>
+                                    </select>
+                                    <label for="floatingSelect">Commercial Type</label>
+                                </div>
+                                <div class="validation-div errorDiv">
+                                    <app-validation-message
+                                        [control]="DiagnosticCenterFormGroup.controls['commercialType']"
+                                        [messages]="errorMessage.diagnosticCenterForm.commercialType">
+                                    </app-validation-message>
+                                </div>
+                            </div>
+                            <div class="col-md-7 h-100">
+                                <div class="form-floating  pt-4 pb-1 h-100 textarea">
+                                    <textarea class="form-control" placeholder="Leave a comment here"
+                                        id="floatingTextarea2" formControlName="commercialEntityAddressLine"></textarea>
+                                    <label for="floatingTextarea2"> Address Line</label>
+                                </div>
+                                <div class="validation-div errorDiv">
+                                    <app-validation-message
+                                        [control]="DiagnosticCenterFormGroup.controls['commercialEntityAddressLine']"
+                                        [messages]="errorMessage.diagnosticCenterForm.commercialEntityAddressLine">
+                                    </app-validation-message>
+                                </div>
+                            </div>
+                            <div class="col-md-5">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-floating">
+                                            <input type="text" name="City" id="City" placeholder="City"
+                                                formControlName="commercialEntityCity" class="form-control">
+                                            <label for="">City / District</label>
+                                        </div>
+                                        <div class="validation-div errorDiv">
+                                            <app-validation-message
+                                                [control]="DiagnosticCenterFormGroup.controls['commercialEntityCity']"
+                                                [messages]="errorMessage.diagnosticCenterForm.commercialEntityCity">
+                                            </app-validation-message>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="form-floating">
+                                            <input type="text" name="PinCode" id="PinCode" placeholder="PinCode"
+                                                formControlName="commercialEntityPincode" class="form-control">
+                                            <label for="">PinCode</label>
+                                        </div>
+                                        <div class="validation-div errorDiv">
+                                            <app-validation-message
+                                                [control]="DiagnosticCenterFormGroup.controls['commercialEntityPincode']"
+                                                [messages]="errorMessage.diagnosticCenterForm.commercialEntityPincode">
+                                            </app-validation-message>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-7">
+                                <div class="form-floating">
+                                    <input type="text" name="landmark" id="landmark" placeholder="landmark"
+                                        formControlName="commercialEntityLandmark" class="form-control">
+                                    <label for="">Landmark</label>
+                                </div>
+                                <div class="validation-div errorDiv">
+                                    <app-validation-message
+                                        [control]="DiagnosticCenterFormGroup.controls['commercialEntityLandmark']"
+                                        [messages]="errorMessage.diagnosticCenterForm.commercialEntityLandmark">
+                                    </app-validation-message>
+                                </div>
+                            </div>
+                            <div class="col-md-5">
+                                <div class="form-floating selectBox"
+                                    [ngClass]="{ selectedFormValue : DiagnosticCenterFormGroup.value.commercialEntityStateCode}">
+                                    <select class="form-select" name="state" id="state floatingSelect"
+                                        formControlName="commercialEntityStateCode"
+                                        (change)="selectStaeForDiagnosticCenter()">
+                                        <option [value]="state.stateCode" *ngFor="let state of stateList">
+                                            {{state.stateName}}
+                                        </option>
+                                    </select>
+                                    <label for="floatingSelect">State</label>
+                                </div>
+                                <div class="validation-div errorDiv">
+                                    <app-validation-message
+                                        [control]="DiagnosticCenterFormGroup.controls['commercialEntityStateCode']"
+                                        [messages]="errorMessage.diagnosticCenterForm.commercialEntityStateCode">
+                                    </app-validation-message>
+                                </div>
+                            </div>
+                            <div class="col-md-7">
+                                <div class="form-floating">
+                                    <input type="text" name="Contact_Number" id="Contact_Number"
+                                        placeholder="Enter Contact Number" formControlName="commercialEntityContactNo"
+                                        class="form-control">
+                                    <label for="">Enter Contact Number</label>
+                                </div>
+                                <div class="validation-div errorDiv">
+                                    <app-validation-message
+                                        [control]="DiagnosticCenterFormGroup.controls['commercialEntityContactNo']"
+                                        [messages]="errorMessage.diagnosticCenterForm.commercialEntityContactNo">
+                                    </app-validation-message>
+                                </div>
+                            </div>
+                            <div class="col-md-5">
+                                <div class="form-floating">
+                                    <input type="text" name="Email" id="Email" placeholder="Enter Email Id"
+                                        formControlName="commercialEntityEmailID" class="form-control">
+                                    <label for="">Enter Email Id</label>
+                                </div>
+                                <div class="validation-div errorDiv">
+                                    <app-validation-message
+                                        [control]="DiagnosticCenterFormGroup.controls['commercialEntityEmailID']"
+                                        [messages]="errorMessage.diagnosticCenterForm.commercialEntityEmailID">
+                                    </app-validation-message>
+                                </div>
+                            </div>
+                            <div class="col-md-7">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-floating">
+                                            <input type="text" name="Opening" id="Opening"
+                                                placeholder="Enter Opening Time" [ngxTimepicker]="endTimePicker"
+                                                formControlName="commercialEntityOpenTime" class="form-control">
+                                            <ngx-material-timepicker [minutesGap]="5" [theme]="timePickerTheme"
+                                                [defaultTime]="'12:00 AM'" #endTimePicker>
+                                            </ngx-material-timepicker>
+                                            <label for="">Enter Opening Time</label>
+                                        </div>
+                                        <div class="validation-div errorDiv">
+                                            <app-validation-message
+                                                [control]="DiagnosticCenterFormGroup.controls['commercialEntityOpenTime']"
+                                                [messages]="errorMessage.diagnosticCenterForm.commercialEntityOpenTime">
+                                            </app-validation-message>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="form-floating">
+                                            <input type="text" name="Closing_Time" id="Closing_Time"
+                                                placeholder="Enter Closing Time" [ngxTimepicker]="startTimePicker"
+                                                formControlName="commercialEntityCloseTime" class="form-control">
+                                            <ngx-material-timepicker [minutesGap]="5" [theme]="timePickerTheme"
+                                                [defaultTime]="'12:00 AM'" #startTimePicker>
+                                            </ngx-material-timepicker>
+                                            <label for="">Enter Closing Time</label>
+                                        </div>
+                                        <div class="validation-div errorDiv">
+                                            <app-validation-message
+                                                [control]="DiagnosticCenterFormGroup.controls['commercialEntityCloseTime']"
+                                                [messages]="errorMessage.diagnosticCenterForm.commercialEntityCloseTime">
+                                            </app-validation-message>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-5">
+                                <div class="textarea">
+                                    <div class="selectDate">
+                                        <label for="">Open Days</label>
+                                        <div class="d-flex justify-content-between">
+                                            <div>
+                                                <div>
+                                                    <button [ngClass]="isDaysSelected(0) ? 'slected' : ''"
+                                                        (click)="setSelectedDay(0)">MONDAY</button>
+                                                </div>
+                                                <div>
+                                                    <button [ngClass]="isDaysSelected(1) ? 'slected' : ''"
+                                                        (click)="setSelectedDay(1)">TUESDAY</button>
+                                                </div>
+                                                <div>
+                                                    <button [ngClass]="isDaysSelected(2) ? 'slected' : ''"
+                                                        (click)="setSelectedDay(2)">WEDNESDAY</button>
+                                                </div>
+                                                <div>
+                                                    <button [ngClass]="isDaysSelected(3) ? 'slected' : ''"
+                                                        (click)="setSelectedDay(3)">THURSDAY</button>
+                                                </div>
+                                                <div>
+                                                    <button [ngClass]="isDaysSelected(4) ? 'slected' : ''"
+                                                        (click)="setSelectedDay(4)">FRIDAY</button>
+                                                </div>
+                                            </div>
+                                            <div class="holiday">
+                                                <div class="my-2">
+                                                    <button [ngClass]="isDaysSelected(5) ? 'slected' : 'my-2'"
+                                                        (click)="setSelectedDay(5)">SATURDAY</button>
+                                                </div>
+                                                <div class="my-2">
+                                                    <button [ngClass]="isDaysSelected(6) ? 'slected' : 'my-2'"
+                                                        (click)="setSelectedDay(6)">SUNDAY</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="validation-div errorDiv">
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="errorDiv">
+                                    <small>{{addNewEntityMSG}}</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <div class="row">
+                    <div class="col-md-6 text-center">
+                        <button class="p-2" (click)="saveCommercialEntity()">Confirm</button>
+                    </div>
+                    <div class="col-md-6 text-center">
+                        <button class="p-2" (click)="closePopup()">Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

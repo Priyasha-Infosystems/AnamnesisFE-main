@@ -1,0 +1,1232 @@
+<router-outlet>
+  <ngx-spinner bdColor="rgba(51,51,51,0.8)" size="medium" color="#fff" type="ball-circus" [fullScreen]="true">
+  </ngx-spinner>
+</router-outlet>
+<div class="modal-dialog">
+  <div class="modal-content">
+    <div class="closes" (click)="closePopup()">
+      <i class="bi-x-circle-fill"></i>
+    </div>
+    <div class="modal-body">
+      <div class="DataEntryDisplay">
+        <div class="row" *ngIf="WorkRequestDetails.wrAttachmentDetailsList.length">
+          <div class="col-md-6 px-1">
+            <div class="row h-100">
+              <div class="col-md-1 p-0">
+                <div class="tab">
+                  <button class="tablinks" onclick="consultationdataentry(event, '2')" id="defaultOpen"
+                    *ngFor="let wrAttachmentDetails of WorkRequestDetails.wrAttachmentDetailsList;let i = index"
+                    (click)="changeFileView(i)" [ngClass]="{active: i === viewFileIndex}">
+                    <i class="bi-file-earmark-pdf-fill"
+                      *ngIf="wrAttachmentDetails.contentType === 'application/pdf'"></i>
+                    <i class="bi bi-images" *ngIf="wrAttachmentDetails.contentType !== 'application/pdf'"></i></button>
+                </div>
+              </div>
+              <div class="col-md-11">
+                <div class="ViewPDF">
+                  <div id="{{i}}"
+                    *ngFor="let wrAttachmentDetails of WorkRequestDetails.wrAttachmentDetailsList;let i = index">
+                    <div *ngIf="i === viewFileIndex && requestKeyDetails">
+                      <div *ngIf="wrAttachmentDetails.contentType === 'application/pdf'">
+                        <div class="row">
+                          <div class="col-md-12 pt-5">
+                            <div class="d-flex justify-content-center align-items-center zoomPdf">
+                              <pdf-viewer [src]="getFile(wrAttachmentDetails)" [rotation]="0" [original-size]="false"
+                                [show-all]="true" [fit-to-page]="true" [zoom]="pdfZoom" [zoom-scale]="'page-fit'"
+                                [stick-to-page]="false" [render-text]="true" [external-link-target]="'blank'"
+                                [autoresize]="false" [show-borders]="true" style="width: 100%; height: 780px;">
+                              </pdf-viewer>
+                            </div>
+                          </div>
+                          <div class="col-md-4 m-auto mt-5">
+                            <div class="d-flex justify-content-around pdfZoom">
+                              <i class="bi bi-zoom-in" (click)="zoomIn(false)"></i>
+                              <i class="bi bi-zoom-out" (click)="zoomOut(false)"></i>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div *ngIf="wrAttachmentDetails.contentType !== 'application/pdf'" class="content">
+                        <div class="row position-relative">
+                          <div class="col-md-12 pt-5">
+                            <div class="img-wrapper" id="img-wrapper">
+                              <div class="w-100 h-100"
+                                [ngClass]="{rotateImg0:rotateDeegre===0,rotateImg90:rotateDeegre===90,rotateImg180:rotateDeegre===180,rotateImg360:rotateDeegre===360}">
+                                <img id="image" class="my-image"
+                                  [src]="wrAttachmentDetails.fileName | getFile:wrAttachmentDetails.documentType" />
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-md-4 m-auto mt-5">
+                            <div class="d-flex align-items-center pdfZoom">
+                              <i class="bi bi-zoom-in" (click)="zoomIn(true)"></i>
+                              <div class="rotate"> <i class="bi-arrow-clockwise" (click)="rotateImg()"></i></div>
+                              <i class="bi bi-zoom-out" (click)="zoomOut(true)"></i>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- ------------------------------------- DetaEntery ------------------------------------ -->
+          <div class="col-md-6 d-flex px-1 position-relative" *ngIf="prescriptionList().length">
+            <div class="row">
+              <div class="col-md-11">
+                <form [formGroup]="prescriptionForm">
+                  <div formArrayName="prescriptionList">
+                    <div class="DetaEntery">
+                      <div *ngFor="let prescription of prescriptionList().controls; let prescriptionIndex = index"
+                        [ngClass]="{formDisabled:WorkRequestDetails.isDisabled}">
+                        <div *ngIf="prescriptionShowIndex === prescriptionIndex && showPrescription(prescriptionIndex)">
+                          <ng-container formGroupName="{{prescriptionIndex}}">
+                            <div class="close" (click)="deletePrescription(prescriptionIndex,prescription.value)">
+                              <img src="../../../../assets/images/DeletePrescription.png" alt="">
+                            </div>
+                            <div class="modal-body">
+                              <div class="row">
+                                <div class="col-md-6 text-start">
+                                  <h4>Generate Prescription </h4>
+                                </div>
+                              </div>
+                              <div class="MedicineBox">
+                                <div class="row">
+                                  <div class="col-md-12 mb-2 d-flex align-items-center justify-content-between">
+                                    <div class="PhysicianSearch w-100">
+                                      <div class="form-floating">
+                                        <input name="PhysicianName" placeholder="Physician Name" type="text"
+                                          id="Laboratory" class="form-control" formControlName="physicianName"
+                                          [matAutocomplete]="physicianNameauto" #trigger="matAutocompleteTrigger"
+                                          [ngClass]="{'disable':prescriptionList().at(prescriptionIndex).get('physicianName')?.disabled === true}"
+                                          (keyup)="onTypephysicianName(prescriptionIndex)">
+                                        <mat-autocomplete #physicianNameauto="matAutocomplete">
+                                          <mat-option *ngFor="let item of physicianList" [value]="searchedPhysician"
+                                            (click)="selectPhysician(prescriptionIndex,item)">
+                                            <p>{{item.physicianName}} <span
+                                                style="font-size: 12px !important; color: #713bdb;">{{item.physicianUserCode}}</span>
+                                            </p>
+                                          </mat-option>
+                                        </mat-autocomplete>
+                                        <label for="Laboratory">Physician Name</label>
+                                        <button class="Delete"
+                                          *ngIf="prescriptionList().at(prescriptionIndex).get('physicianUserID')?.value.length"
+                                          (click)="unSelectPhysicianForPrescription(prescriptionIndex)"><i
+                                            class="bi-x-circle-fill"></i></button>
+                                        <div *ngIf="showPhysicianDetails" class="doctorDetails">
+                                          <div class="row">
+                                            <div class="col-md-8">
+                                              <div class="CollapsePrescribed">
+                                                <ul class="m-d expand-list p-0">
+                                                  <li data-md-content="200">
+                                                    <div name="tab" for="tabAddress" tabindex="-1"
+                                                      class="tab_lab mb-1 w-100" role="tab">
+                                                      <div>
+                                                        <div id="dropdownMenuLink" style="display: flex;">
+                                                          <div>
+                                                            <span>{{selectedPhysicianDetails.physicianName}}</span>
+                                                            <span
+                                                              style="font-size: 12px !important; color: #713bdb;">&nbsp;({{selectedPhysicianDetails.physicianUserCode}})</span>
+                                                          </div>
+                                                        </div>
+                                                      </div>
+                                                    </div>
+                                                    <div class="row">
+                                                      <div class="col-md-12">
+                                                        <div class="doctorCard">
+                                                          <div class="row">
+                                                            <div class="col-md-5">
+                                                              <div class="profileImg">
+                                                                <img
+                                                                  [src]="selectedPhysicianDetails.physicianProfilePictureFileName | getFile: selectedPhysicianDetails.physicianProfilePictureFileType">
+                                                              </div>
+                                                            </div>
+                                                            <div class="col-md-7">
+                                                              <table>
+                                                                <tbody>
+                                                                  <tr>
+                                                                    <td> </td>
+                                                                    <td>
+                                                                      {{selectedPhysicianDetails.physicianSpecialisation}}
+                                                                    </td>
+                                                                  </tr>
+                                                                  <tr>
+                                                                    <td> </td>
+                                                                    <td>
+                                                                      {{selectedPhysicianDetails.physicianQualification}}
+                                                                    </td>
+                                                                  </tr>
+                                                                  <tr>
+                                                                    <td> </td>
+                                                                    <td>
+                                                                      {{selectedPhysicianDetails.physicianRegistrationNo}}({{selectedPhysicianDetails.physicianRegistrationAuthority}})
+                                                                    </td>
+                                                                  </tr>
+                                                                  <tr
+                                                                    *ngIf="selectedPhysicianDetails.physicianPrimaryContactNo">
+                                                                    <td><i class="bi-telephone-fill"></i></td>
+                                                                    <td> <b>(P)</b> +91
+                                                                      {{selectedPhysicianDetails.physicianPrimaryContactNo}}
+                                                                    </td>
+                                                                  </tr>
+                                                                  <tr
+                                                                    *ngIf="selectedPhysicianDetails.physicianSecondaryContactNo">
+                                                                    <td><i class="bi-telephone-fill"></i></td>
+                                                                    <td> <b>(s)</b> +91
+                                                                      {{selectedPhysicianDetails.physicianSecondaryContactNo}}
+                                                                    </td>
+                                                                  </tr>
+                                                                </tbody>
+                                                              </table>
+                                                            </div>
+                                                          </div>
+                                                        </div>
+                                                      </div>
+                                                      <div class="col-md-12 d-flex justify-content-between">
+                                                        <button class="Confirm"
+                                                          (click)="selectPhysicianForPrescription(prescriptionIndex)">Confirm</button>
+                                                        <button class="Confirm"
+                                                          (click)="unSelectPhysician(prescriptionIndex)">Cancel</button>
+                                                      </div>
+                                                    </div>
+                                                  </li>
+                                                </ul>
+                                              </div>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                      <div class="validation-div errorDiv">
+                                        <app-validation-message
+                                          [control]="getPrescriptionFormController(prescriptionIndex,'physicianUserID')"
+                                          [messages]="errorMessage.prescriptionForm.physicianUserID">
+                                        </app-validation-message>
+                                      </div>
+                                    </div>
+                                    <i class="bi-plus-circle-fill" (click)="openAddPhysicianPopup()"></i>
+                                  </div>
+                                  <div class="col-md-12 mb-2 d-flex align-items-center justify-content-between">
+                                    <div class="PhysicianSearch w-100">
+                                      <div class="form-floating">
+                                        <input name="HealthClinicName" placeholder="Health Clinic" id="Laboratory"
+                                          class="form-control" formControlName="healthClinicName"
+                                          [matAutocomplete]="healthClinicNameauto"
+                                          [ngClass]="{'disable':prescriptionList().at(prescriptionIndex).get('healthClinicName')?.disabled === true}"
+                                          (keyup)="onTypeHealthClinicName(prescriptionIndex)">
+                                        <mat-autocomplete #healthClinicNameauto="matAutocomplete">
+                                          <mat-option *ngFor="let item of healthClinicList"
+                                            [value]="searcHedhealthClinic"
+                                            (click)="selectHealthClinic(prescriptionIndex,item)">
+                                            <p>{{item.healthClinicName}} <span
+                                                style="font-size: 12px !important; color: #713bdb;">{{item.healthClinicID}}</span>
+                                            </p>
+                                          </mat-option>
+                                        </mat-autocomplete>
+                                        <label for="Laboratory">Health Clinic</label>
+                                        <button class="Delete"
+                                          *ngIf="prescriptionList().at(prescriptionIndex).get('healthClinicID')?.value.length"
+                                          (click)="unSelectHealthClinicForPrescription(prescriptionIndex)"><i
+                                            class="bi-x-circle-fill"></i></button>
+                                        <div *ngIf="showHealthClinicDetails" class="doctorDetails">
+                                          <div class="row">
+                                            <div class="col-md-8">
+                                              <div class="CollapsePrescribed">
+                                                <ul class="m-d expand-list p-0">
+                                                  <li data-md-content="200">
+                                                    <label name="tab" for="tabAddress" tabindex="-1"
+                                                      class="tab_lab w-100" role="tab">
+                                                      <div>
+                                                        <div id="dropdownMenuLink" style="display: flex;">
+                                                          <div>
+                                                            <span>{{selectedHealthClinicDetails.healthClinicName}}</span>
+                                                            <span
+                                                              style="font-size: 12px !important; color: #713bdb;">&nbsp;({{selectedHealthClinicDetails.healthClinicID
+                                                              }})</span>
+                                                          </div>
+                                                        </div>
+                                                      </div>
+                                                    </label>
+                                                    <div class="row">
+                                                      <div class="col-md-12">
+                                                        <div class="doctorCard">
+                                                          <div class="row">
+                                                            <div class="col-md-5">
+                                                              <div class="profileImg">
+                                                                <img
+                                                                  [src]="selectedHealthClinicDetails.profilePictureFileName|getFile:selectedHealthClinicDetails.profilePictureFileType">
+                                                              </div>
+                                                            </div>
+                                                            <div class="col-md-7">
+                                                              <table>
+                                                                <tbody>
+                                                                  <tr>
+                                                                    <td><i class="bi-geo-alt-fill"></i></td>
+                                                                    <td>
+                                                                      <div class="d-flex flex-column">
+                                                                        <p>
+                                                                          {{selectedHealthClinicDetails.addressLine}}
+                                                                        </p>
+                                                                        <p>{{selectedHealthClinicDetails.landmark}}
+                                                                        </p>
+                                                                        <p>{{selectedHealthClinicDetails.city}} ,
+                                                                          {{selectedHealthClinicDetails.stateName}}
+                                                                          -
+                                                                          {{selectedHealthClinicDetails.pincode}}
+                                                                        </p>
+                                                                      </div>
+                                                                    </td>
+                                                                  </tr>
+                                                                  <tr>
+                                                                    <td><i class="bi-telephone-fill"></i></td>
+                                                                    <td>
+                                                                      <b>(P)</b>+91{{selectedHealthClinicDetails.primaryContactNo}}
+                                                                    </td>
+                                                                  </tr>
+                                                                  <tr
+                                                                    *ngIf="selectedHealthClinicDetails.secondaryContactNo">
+                                                                    <td></td>
+                                                                    <td>
+                                                                      <b>(S)</b>+91{{selectedHealthClinicDetails.secondaryContactNo}}
+                                                                    </td>
+                                                                  </tr>
+                                                                  <tr
+                                                                    *ngIf="selectedHealthClinicDetails.openHoureStart">
+                                                                    <td><i class="bi-clock"></i></td>
+                                                                    <td>
+                                                                      <b>Open -
+                                                                      </b>{{selectedHealthClinicDetails.openHoureStart}}
+                                                                    </td>
+                                                                  </tr>
+                                                                  <tr *ngIf="selectedHealthClinicDetails.openHoureEnd">
+                                                                    <td><i class="bi-clock"></i></td>
+                                                                    <td>
+                                                                      <b>Close -
+                                                                      </b>{{selectedHealthClinicDetails.openHoureEnd}}
+                                                                    </td>
+                                                                  </tr>
+                                                                  <tr>
+                                                                </tbody>
+                                                              </table>
+                                                            </div>
+                                                          </div>
+                                                        </div>
+                                                      </div>
+                                                      <div class="col-md-12 d-flex justify-content-between">
+                                                        <button class="Confirm"
+                                                          (click)="selectHealthClinicForPrescription(prescriptionIndex)">Confirm</button>
+                                                        <button class="Confirm"
+                                                          (click)="unSelectHealthClinic(prescriptionIndex)">Cancel</button>
+                                                      </div>
+                                                    </div>
+                                                  </li>
+                                                </ul>
+                                              </div>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                      <div class="validation-div errorDiv">
+                                        <app-validation-message
+                                          [control]="getPrescriptionFormController(prescriptionIndex,'healthClinicID')"
+                                          [messages]="errorMessage.prescriptionForm.healthClinicID">
+                                        </app-validation-message>
+                                      </div>
+                                    </div>
+                                    <i class="bi-plus-circle-fill" (click)="openAddNewetityPopup()"></i>
+                                  </div>
+                                  <div class="col-md-12">
+                                    <div class="row">
+                                      <div class="col-md-9">
+                                        <div class="PhysicianSearch">
+                                          <div class="form-floating">
+                                            <input name="peasantSearch" placeholder="peasant search"
+                                              [matAutocomplete]="patientNameauto"
+                                              [ngClass]="{'disable':prescriptionList().at(prescriptionIndex).get('patientName')?.disabled === true}"
+                                              id="Laboratory" class="form-control" formControlName="patientName"
+                                              (keyup)="onTypePatientName(prescriptionIndex)">
+                                            <mat-autocomplete #patientNameauto="matAutocomplete">
+                                              <mat-option *ngFor="let item of patientList" [value]="searcPatient"
+                                                (click)="selectPatient(prescriptionIndex,item)">
+                                                <p>{{item.displayName}} <span
+                                                    style="font-size: 12px !important; color: #713bdb;">{{item.userCode}}</span>
+                                                </p>
+                                              </mat-option>
+                                            </mat-autocomplete>
+                                            <label for="Laboratory">patient search</label>
+                                            <button class="Delete"
+                                              (click)="unSelectPatientForPrescription(prescriptionIndex)"
+                                              *ngIf="prescriptionList().at(prescriptionIndex).get('patientUserCode')?.value.length"><i
+                                                class="bi-x-circle-fill"></i></button>
+                                            <div *ngIf="showPatientDetails" class="doctorDetails">
+                                              <div class="row">
+                                                <div class="col-md-12">
+                                                  <div class="CollapsePrescribed">
+                                                    <ul class="m-d expand-list p-0">
+                                                      <li data-md-content="200">
+                                                        <label name="tab" for="tabAddress" tabindex="-1"
+                                                          class="tab_lab w-100" role="tab">
+                                                          <div>
+                                                            <div id="dropdownMenuLink" style="display: flex;">
+                                                              <div>
+                                                                <span>{{selectedPatientDetails.displayName}}</span>
+                                                                <span
+                                                                  style="font-size: 12px !important; color: #713bdb;">&nbsp;({{selectedPatientDetails.userCode}})</span>
+                                                              </div>
+                                                            </div>
+                                                          </div>
+                                                        </label>
+                                                        <div class="row">
+                                                          <div class="col-md-12">
+                                                            <div class="doctorCard">
+                                                              <div class="row">
+                                                                <div class="col-md-5">
+                                                                  <div class="profileImg">
+                                                                    <img
+                                                                      [src]="selectedPatientDetails.profilePictureFileName|getFile:selectedPatientDetails.profilePictureFileType">
+                                                                  </div>
+                                                                </div>
+                                                                <div class="col-md-7">
+                                                                  <table>
+                                                                    <tbody>
+                                                                      <tr>
+                                                                        <td></td>
+                                                                        <td>
+                                                                          {{commonService.calculateGender(selectedPatientDetails.gender)}},
+                                                                          {{commonService.calculateAge(selectedPatientDetails.dateOfBirth)}}
+                                                                        </td>
+                                                                      </tr>
+                                                                      <tr *ngIf="selectedPatientDetails.primaryPhoneno">
+                                                                        <td><i class="bi-telephone-fill"></i></td>
+                                                                        <td><b>(P)</b>
+                                                                          +91
+                                                                          {{selectedPatientDetails.primaryPhoneno}}</td>
+                                                                      </tr>
+                                                                      <tr
+                                                                        *ngIf="selectedPatientDetails.secondaryPhoneNo">
+                                                                        <td><i class="bi-telephone-fill"></i></td>
+                                                                        <td><b>(s)</b> +91
+                                                                          {{selectedPatientDetails.secondaryPhoneNo}}
+                                                                        </td>
+                                                                      </tr>
+                                                                    </tbody>
+                                                                  </table>
+                                                                </div>
+                                                              </div>
+                                                            </div>
+                                                          </div>
+                                                          <div class="col-md-12 d-flex justify-content-between">
+                                                            <button class="Confirm"
+                                                              (click)="selectPatientForPrescription(prescriptionIndex)">Confirm</button>
+                                                            <button class="Confirm"
+                                                              (click)="unSelectPatient(prescriptionIndex)">Cancel</button>
+                                                          </div>
+                                                        </div>
+                                                      </li>
+                                                    </ul>
+                                                  </div>
+                                                </div>
+                                              </div>
+                                            </div>
+                                          </div>
+                                          <div class="validation-div errorDiv">
+                                            <app-validation-message
+                                              [control]="getPrescriptionFormController(prescriptionIndex,'patientUserCode')"
+                                              [messages]="errorMessage.prescriptionForm.patientUserCode">
+                                            </app-validation-message>
+                                          </div>
+                                        </div>
+                                      </div>
+                                      <div class="col-md-3">
+                                        <div class="date text-end">
+                                          <div class="dateInput  form-floating selectValue">
+                                            <label>Visit Date</label>
+                                            <input type="date" (focusout)="checkValidDate(prescriptionIndex)"
+                                              formControlName="visitDate" id="matDateInput"
+                                              max="{{currentDate| date:'yyyy-MM-dd' }}">
+                                          </div>
+                                          <div class="errorDiv">
+                                            <app-validation-message
+                                              [control]="getPrescriptionFormController(prescriptionIndex,'visitDate')"
+                                              [messages]="errorMessage.prescriptionForm.visitDate">
+                                            </app-validation-message>
+                                            <small>{{getPrescriptionFormController(prescriptionIndex,'visitDateErrorMsg').value}}</small>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="row multipleBoxs">
+                                <div class="col-md-3 mt-2">
+                                  <div class="form-floating">
+                                    <input type="text" name="Temperature" placeholder="Temperature"
+                                      formControlName="temperature" class="form-control">
+                                    <label for="">Temperature(F°)</label>
+                                  </div>
+                                </div>
+                                <div class="col-md-3 mt-2">
+                                  <div class="form-floating">
+                                    <input type="text" name="Pulse" placeholder="Pulse" formControlName="pulse"
+                                      class="form-control">
+                                    <label for="">Pulse(minute)</label>
+                                  </div>
+                                </div>
+                                <div class="col-md-3 mt-2">
+                                  <div class="form-floating">
+                                    <input type="text" name="Pressure" placeholder="Pressure" formControlName="pressure"
+                                      class="form-control">
+                                    <label for="">Pressure(mmHg)</label>
+                                    <div class="validation-div errorDiv">
+                                      <app-validation-message
+                                        [control]="getPrescriptionFormController(prescriptionIndex,'pressure')"
+                                        [messages]="errorMessage.prescriptionForm.pressure">
+                                      </app-validation-message>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="col-md-3 mt-2">
+                                  <div class="form-floating">
+                                    <input type="number" name=" Weight" placeholder=" Weight" formControlName="weight"
+                                      class="form-control">
+                                    <label for="">Weight(Kgs)</label>
+                                  </div>
+                                </div>
+                                <div class="col-md-3 mt-2">
+                                  <div class="form-floating">
+                                    <input type="text" name="Height" placeholder="Height" formControlName="hight"
+                                      class="form-control">
+                                    <label for="">Height(cm)</label>
+                                  </div>
+                                </div>
+                                <div class="col-md-3 mt-2">
+                                  <div class="form-floating"
+                                    [ngClass]="{'selectValue': prescription.value.diabetics !== 'X' }">
+                                    <select name="PostPrandial" placeholder="Post Prandial" formControlName="diabetics"
+                                      class="form-control pt-3 py-2 h-100 select">
+                                      <option class="d-none" [value]="'X'"></option>
+                                      <option [value]="'Y'">Yes</option>
+                                      <option [value]="'N'">No</option>
+                                    </select>
+                                    <label for="">Diabetics</label>
+                                  </div>
+                                </div>
+                                <div class="col-md-3 mt-2">
+                                  <div class="form-floating"
+                                    [ngClass]="{'selectValue': prescription.value.thyroid !== 'X' }">
+                                    <select name="Fasting" placeholder="Thyroid" formControlName="thyroid"
+                                      class="form-control pt-3 py-2 h-100 select">
+                                      <option class="d-none" [value]="'X'"></option>
+                                      <option [value]="'N'">Normal</option>
+                                      <option [value]="'H'">Hypo</option>
+                                      <option [value]="'R'">Hyper</option>
+                                    </select>
+                                    <label for="">Thyroid</label>
+                                  </div>
+                                </div>
+                                <div class="col-md-3 mt-2">
+                                  <div class="form-floating"
+                                    [ngClass]="{'selectValue': prescription.value.alchol !== 'X' }">
+                                    <select name="Thyroid" placeholder="Alchol" formControlName="alchol"
+                                      class="form-control pt-3 py-2 h-100 select">
+                                      <option class="d-none" [value]="'X'"></option>
+                                      <option [value]="'Y'">Yes</option>
+                                      <option [value]="'N'">No</option>
+                                    </select>
+                                    <label for="">Alchol</label>
+                                  </div>
+                                </div>
+                                <div class="col-md-3 mt-2">
+                                  <div class="form-floating"
+                                    [ngClass]="{'selectValue': prescription.value.smoking !== 'X' }">
+                                    <select name="Thyroid" placeholder="Smoking" formControlName="smoking"
+                                      class="form-control pt-3 py-2 h-100 select">
+                                      <option class="d-none" [value]="'X'"></option>
+                                      <option [value]="'Y'">Yes</option>
+                                      <option [value]="'N'">No</option>
+                                    </select>
+                                    <label for="">Smoking</label>
+                                  </div>
+                                </div>
+                                <div class="col-md-3 mt-2">
+                                  <div class="form-floating"
+                                    [ngClass]="{'selectValue': prescription.value.pressureRange !== 'X' }">
+                                    <select name="Thyroid" placeholder="Pressure" formControlName="pressureRange"
+                                      class="form-control pt-3 py-2 h-100 select">
+                                      <option class="d-none" [value]="'X'"></option>
+                                      <option [value]="'N'">Normal</option>
+                                      <option [value]="'L'">Low</option>
+                                      <option [value]="'H'">High</option>
+                                    </select>
+                                    <label for="">Pressure</label>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="row mt-4">
+                                <div class="col-md-6">
+                                  <textarea class="AddBox" placeholder="+Add Symptoms"
+                                    formControlName="symptoms"></textarea>
+                                </div>
+                                <div class="col-md-6">
+                                  <textarea class="AddBox" placeholder="+Add Diagnosis"
+                                    formControlName="diagnosis"></textarea>
+                                </div>
+                                <div class="col-md-12 text-end">
+                                    <p (click)="savePrescriptionForDrawing()" class="addPhy">Add Physical Assesment</p>
+                                </div>
+                              </div>
+                              <div class="MedicineBox Medicine mt-4">
+                                <div class="row">
+                                  <div class="col-md-12 mb-1">
+                                    <h2>Medicine</h2>
+                                  </div>
+                                  <div class="medicinesList">
+                                    <div class="col-md-12 bottom-border"
+                                      *ngFor="let medicin of prescription.value.medicines, let medicineIndex = index">
+                                      <div *ngIf="!medicin.isDelete" class="row my-2 mx-0 py-2">
+                                        <div class="col-md-8 d-flex align-items-center">
+                                          <i class="bi-hand-index-thumb-fill"></i>
+                                          <div>
+                                            <h3>{{medicin.medicineName}}</h3>
+                                            <p>{{medicin.medicineComposition}}</p>
+                                          </div>
+                                        </div>
+                                        <div class="col-md-4 d-flex flex-column flex-end">
+                                          <div class="row">
+                                            <div class="col-md-9">
+                                              <div class="d-flex flex-column">
+                                                <div>
+                                                  <!-- <h6>{{medicin.dose}}
+                                                    {{medicin.dose.length===0?'':+medicin.dose
+                                                    <=1?'Time':'Times'}} </h6>
+                                                      <h6>{{medicin.frequency}}</h6>
+                                                      <h6>{{medicin.medicineTiming}}</h6> -->
+                                                  <h6 *ngIf="medicin.dose?.length">
+                                                    {{+medicin.dose>3?medicin.dose:+medicin.dose===1?'Once':+medicin.dose===2?'Twice':+medicin.dose===3?'Thrice':''}}
+                                                    {{medicin.dose.length===0?'':+medicin.dose>3?'Times':''}} </h6>
+                                                  <h6 *ngIf="medicin.frequency.length">{{medicin.frequency}}
+                                                  </h6>
+                                                  <h6 *ngIf="medicin.medicineTiming.length">
+                                                    {{medicin.medicineTiming}}</h6>
+                                                </div>
+                                                <h6>{{medicin.spcialNotes}}</h6>
+                                                <div class="foodTime"
+                                                  *ngIf="medicin.medicineTiming ==='After Meal' || medicin.medicineTiming ==='Before Meal'">
+                                                  <p>{{medicin.breakfast? '1' : '0'}}</p>
+                                                  <p>{{medicin.lunch? '1' : '0'}}</p>
+                                                  <p>{{medicin.snacks? '1' : '0'}}</p>
+                                                  <p>{{medicin.dinner? '1' : '0'}}</p>
+                                                </div>
+                                              </div>
+                                            </div>
+                                            <div class="col-md-3 p-0">
+                                              <div class="DayBox">
+                                                <div class="d-flex">
+                                                  <div class="Days">
+                                                    <h2>{{medicin.durationText?medicin.durationText:'N/A'}}</h2>
+                                                  </div>
+                                                </div>
+                                                <i class="bi-pencil-fill"
+                                                  (click)="editMedicine(prescriptionIndex,medicineIndex)"></i>
+                                                <i class="bi-trash-fill"
+                                                  (click)="deleteMedecine(prescriptionIndex,medicineIndex)"></i>
+                                              </div>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="col-md-12">
+                                    <div class="selectBox" formGroupName="tempmedicineForm">
+                                      <div class="row">
+                                        <div class="col-md-12 position-relative mb-2">
+                                          <div class="MedicineName">
+                                            <div class="form-floating">
+                                              <input type="text" name="MedicineName" placeholder="Medicine Name"
+                                                class="form-control" id="floatingInput" formControlName="medicineName"
+                                                [matAutocomplete]="autoGroup" autofocus
+                                                (keyup)="onTypeMedicine(prescriptionIndex)">
+                                              <label for="floatingInput">Medicine Name</label>
+                                            </div>
+                                            <div class="validation-div errorDiv">
+                                              <app-validation-message
+                                                [control]="getTempmedicineFormController(prescriptionIndex,'medicineName')"
+                                                [messages]="errorMessage.medicineForm.medicineName">
+                                              </app-validation-message>
+                                            </div>
+                                            <small
+                                              style="position: absolute;">{{prescriptionList().at(prescriptionIndex).get('tempmedicineForm')?.get('errMsg')?.value}}</small>
+                                            <div class="validation-div errorDiv"
+                                              *ngIf="!prescriptionList().at(prescriptionIndex).get('tempmedicineForm')?.get('medicineCode')?.value && prescriptionList().at(prescriptionIndex).get('tempmedicineForm')?.get('medicineName')?.value?.length>2">
+                                              <app-validation-message
+                                                [control]="getTempmedicineFormController(prescriptionIndex,'medicineCode')"
+                                                [messages]="errorMessage.medicineForm.medicineCode">
+                                              </app-validation-message>
+                                            </div>
+                                            <mat-autocomplete #autoGroup="matAutocomplete" class="abc"
+                                              (optionSelected)="medcineOptionSelected(prescriptionIndex,prescriptionList().at(prescriptionIndex).get('tempmedicineForm')?.get('medicineName')?.value)">
+                                              <mat-option *ngFor="let medicine of medicineGroupOptions"
+                                                [value]="medicine.medicineName">
+                                                {{medicine.medicineName}}
+                                              </mat-option>
+                                            </mat-autocomplete>
+                                          </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                          <div class="form-floating">
+                                            <input type="text" name="Dose" placeholder="Dose" class="form-control"
+                                              id="floatingInput" formControlName="dose"
+                                              [ngClass]="{'disable':prescriptionList().at(prescriptionIndex).get('tempmedicineForm')?.get('dose')?.disabled === true}">
+                                            <label for="floatingInput">Dose</label>
+                                          </div>
+                                          <div class="validation-div errorDiv">
+                                            <app-validation-message
+                                              [control]="getTempmedicineFormController(prescriptionIndex,'dose')"
+                                              [messages]="errorMessage.medicineForm.dose">
+                                            </app-validation-message>
+                                          </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                          <div class="form-floating"
+                                            [ngClass]="{'selectValue': prescriptionList().at(prescriptionIndex).get('tempmedicineForm')?.get('frequency')?.value != ''}">
+                                            <select class="select1" formControlName="frequency"
+                                              [ngClass]="{'disable':prescriptionList().at(prescriptionIndex).get('tempmedicineForm')?.get('frequency')?.disabled === true}">
+                                              <option value=""></option>
+                                              <option value="Daily">Daily</option>
+                                              <option value="Weekly">Weekly</option>
+                                              <option value="Monthly">Monthly</option>
+                                              <option value="SOS">SOS</option>
+                                            </select>
+                                            <label for="">Frequency</label>
+                                          </div>
+                                          <div class="validation-div errorDiv">
+                                            <app-validation-message
+                                              [control]="getTempmedicineFormController(prescriptionIndex,'frequency')"
+                                              [messages]="errorMessage.medicineForm.frequency">
+                                            </app-validation-message>
+                                          </div>
+                                        </div>
+                                        <div class="col-md-3 p-0">
+                                          <div class="form-floating"
+                                            [ngClass]="{'selectValue': prescriptionList().at(prescriptionIndex).get('tempmedicineForm')?.get('medicineTiming')?.value != ''}">
+                                            <select class="select1" formControlName="medicineTiming"
+                                              [ngClass]="{'disable':prescriptionList().at(prescriptionIndex).get('tempmedicineForm')?.get('medicineTiming')?.disabled === true}">
+                                              <option value=""></option>
+                                              <option value="After Meal">After Meal</option>
+                                              <option value="Before Meal">Before Meal</option>
+                                            </select>
+                                            <label for="">Medicine Timing</label>
+                                          </div>
+                                          <div class="validation-div errorDiv">
+                                            <app-validation-message
+                                              [control]="getTempmedicineFormController(prescriptionIndex,'medicineTiming')"
+                                              [messages]="errorMessage.medicineForm.medicineTiming">
+                                            </app-validation-message>
+                                          </div>
+                                        </div>
+                                        <div class="col-md-3 d-flex align-items-center pt-2"
+                                          *ngIf="prescriptionList().at(prescriptionIndex).get('tempmedicineForm')?.get('medicineTiming')?.value">
+                                          <div class="d-flex flex-column align-items-center">
+                                            <input type="checkbox" name="BreakFast" id="BF{{prescriptionIndex}}"
+                                              formControlName="breakfast">
+                                            <label for="BF">BF</label>
+                                          </div>
+                                          <div class="d-flex flex-column align-items-center">
+                                            <input type="checkbox" name="Lunch" id="L{{prescriptionIndex}}"
+                                              formControlName="lunch">
+                                            <label for="L">L</label>
+                                          </div>
+                                          <div class="d-flex flex-column align-items-center">
+                                            <input type="checkbox" name="Snack" id="S{{prescriptionIndex}}"
+                                              formControlName="snacks">
+                                            <label for="S">S</label>
+                                          </div>
+                                          <div class="d-flex flex-column align-items-center">
+                                            <input type="checkbox" name="Dinner" id="D{{prescriptionIndex}}"
+                                              formControlName="dinner">
+                                            <label for="D">D</label>
+                                          </div>
+                                        </div>
+                                        <small
+                                          class="text-end">{{prescriptionList().at(prescriptionIndex).get('tempmedicineForm')?.get('eatingTimingErrMsg')?.value}}</small>
+                                        <div class="col-md-12 mt-2">
+                                          <div class="specialNotes">
+                                            <!-- <label>
+                                              <input type="checkbox" id="{{'medCheck'+prescriptionIndex}}"
+                                                name="specialNotesCheck" formControlName="spcialNoteCheck">
+                                              Special Notes
+                                            </label> -->
+                                            <div class="form-floating">
+                                              <textarea name="specialNotes" formControlName="spcialNotes"
+                                                id="floatingTextarea" class="form-control" placeholder="spcial Notes"
+                                                [ngClass]="{'disable':prescriptionList().at(prescriptionIndex).get('tempmedicineForm')?.get('spcialNotes')?.disabled === true}"></textarea>
+                                              <label for="floatingTextarea">spcial Notes</label>
+                                            </div>
+                                            <div class="validation-div errorDiv">
+                                              <app-validation-message
+                                                [control]="getTempmedicineFormController(prescriptionIndex,'spcialNotes')"
+                                                [messages]="errorMessage.medicineForm.spcialNotes">
+                                              </app-validation-message>
+                                            </div>
+                                          </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                          <div class="row">
+                                            <div class="col-md-4">
+                                              <div class="form-floating">
+                                                <input type="text" name="Day" placeholder="Day" class="form-control"
+                                                  id="floatingInput" formControlName="dayCount">
+                                                <label for="floatingInput">Day</label>
+                                              </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                              <div class="form-floating"
+                                                [ngClass]="{'selectValue': prescriptionList().at(prescriptionIndex).get('tempmedicineForm')?.get('duration')?.value != ''}">
+                                                <select class="select1" formControlName="duration">
+                                                  <option [value]="''"></option>
+                                                  <option [value]="'D'">Day(s)</option>
+                                                  <option [value]="'W'">Week(s)</option>
+                                                  <option [value]="'M'">Month(s)</option>
+                                                  <option [value]="'Y'">Year(s)</option>
+                                                </select>
+                                                <label for="">Duration</label>
+                                              </div>
+                                            </div>
+                                            <div class="col-md-4 position-relative">
+                                              <div class="d-flex  align-items-end position-absolute ">
+                                                <button class="save"
+                                                  *ngIf="!prescription.value.tempmedicineForm.updateMode"
+                                                  (click)="medicineSave(prescriptionIndex,prescriptionList().at(prescriptionIndex).get('tempmedicineForm')?.value)">Save</button>
+                                                <button class="save mt-2"
+                                                  *ngIf="prescription.value.tempmedicineForm.updateMode"
+                                                  (click)="medicineSave(prescriptionIndex,prescriptionList().at(prescriptionIndex).get('tempmedicineForm')?.value)">Update</button>
+                                                <button class="reset"
+                                                  (click)="medicineFormClear(prescriptionIndex)">Reset</button>
+                                              </div>
+                                            </div>
+                                            <div class="validation-div errorDiv" style="margin-left: 6px;">
+                                              <app-validation-message
+                                                [control]="getTempmedicineFormController(prescriptionIndex,'durationText')"
+                                                [messages]="errorMessage.medicineForm.durationText">
+                                              </app-validation-message>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <!-- -------------------------------------------------- -----------------------------------------------------------
+                                                                      Pink version
+                            -------------------------------------------------------------------------------------------------------------- -->
+                              <div class="MedicineBox mt-4 LaboratoryTest">
+                                <div class="row mt-1">
+                                  <div class="col-md-12 mb-1">
+                                    <h2>Laboratory Test</h2>
+                                  </div>
+                                  <div class="row mx-1 LaboratoryTestList">
+                                    <div class="col-md-12 bottom-border"
+                                      *ngFor="let labtestGroup of labTeses(prescriptionIndex).value; let labtestGroupIndex = index">
+                                      <div class="row mx-1" *ngIf="!labtestGroup.isDelete">
+                                        <div class="col-md-8 d-flex flex-wrap align-items-center pt-2 pb-2 p-0">
+                                          <i class="bi-hand-index-thumb-fill"></i>
+                                          <h3>{{labtestGroup.labtest.test}}</h3>
+                                          <div *ngIf="labtestGroup.labtest.childTests.length">
+                                            <div class="position-relative">
+                                              <div class="d-flex align-items-center">
+                                                <p>{{labtestGroup.labtest.displayText}}</p>
+                                                <span *ngIf="labtestGroup.labtest.hidenItem > 0"
+                                                  (click)="viewAllChild(prescriptionIndex,labtestGroupIndex)">+{{labtestGroup.labtest.hidenItem}}
+                                                  More
+                                                </span>
+                                              </div>
+                                              <div
+                                                *ngIf="labtestGroup.labtest.openViewMoreTextPopup && labtestGroup.labtest.hidenItem > 0">
+                                                <div id="viewMoreText">
+                                                  <i class="bi-x-circle-fill"
+                                                    (click)="viewMorTextPopupClose(prescriptionIndex,labtestGroupIndex)"></i>
+                                                  <app-view-more-text-component
+                                                    [viewMoreText]="labtestGroup.labtest.fullDisplayText">
+                                                  </app-view-more-text-component>
+                                                </div>
+                                              </div>
+                                            </div>
+                                          </div>
+                                          <div *ngIf="!labtestGroup.labtest.childTests.length">
+                                            <p>{{labtestGroup.labtest.testDescription}}
+                                              <span *ngIf="labtestGroup.labtest.fullTestDescription.length > 0"
+                                                (click)="viewAllChild(prescriptionIndex,labtestGroupIndex)">View
+                                                More</span>
+                                            </p>
+                                          </div>
+                                          <p class="d-block w-100">{{labtestGroup.specialInstructionOnTime}}</p>
+                                          <div
+                                            *ngIf="labtestGroup.labtest.openViewMoreTextPopup && labtestGroup.labtest.fullTestDescription.length > 0"
+                                            id="viewMoreText">
+                                            <app-view-more-text-component
+                                              (close)="viewMorTextPopupClose(prescriptionIndex,labtestGroupIndex)"
+                                              [viewMoreText]="labtestGroup.labtest.fullTestDescription">
+                                            </app-view-more-text-component>
+                                          </div>
+                                        </div>
+                                        <div
+                                          class="col-md-4 text-end pt-2 pb-2 d-flex align-items-center justify-content-end">
+                                          <h6>After</h6>
+                                          <div class="DayBox">
+                                            <div class="Days">
+                                              <h2>{{labtestGroup.durationText}}</h2>
+                                            </div>
+                                            <i class="bi-pencil-fill"
+                                              (click)="editLabtest(prescriptionIndex,labtestGroupIndex)"></i>
+                                            <i class="bi-trash-fill"
+                                              (click)="deleteLabtest(prescriptionIndex,labtestGroupIndex)"></i>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="col-md-12">
+                                    <div class="selectBox pinkbox" formGroupName="templabTestFormGroup">
+                                      <div class="LaboratoryTestName mb-1">
+                                        <div class="form-floating">
+                                          <input type="text" name="LaboratoryTestName" class="form-control"
+                                            formControlName="labtestSearch" placeholder="Laboratory Test Name"
+                                            (keyup)="onLabtestSearchType(prescriptionIndex)" id="floatingInputValue"
+                                            [ngClass]="{'disable':prescriptionList().at(prescriptionIndex).get('templabTestFormGroup')?.get('labtestSearch')?.disabled === true}">
+                                          <label for="floatingInputValue">Laboratory Test Name</label>
+                                        </div>
+                                        <div class="validation-div errorDiv">
+                                          <app-validation-message
+                                            [control]="getTemplabTestFormController(prescriptionIndex,'labtest').controls.testCode"
+                                            [messages]="errorMessage.labtestForm.testCode">
+                                          </app-validation-message>
+                                        </div>
+                                        <div class="d-flex">
+                                          <div
+                                            *ngIf="prescriptionList().at(prescriptionIndex).get('templabTestFormGroup')?.get('labtest')?.value.childTests">
+                                            <p>
+                                              {{prescriptionList().at(prescriptionIndex).get('templabTestFormGroup')?.get('labtest')?.value.displayText}}
+                                              <span
+                                                *ngIf="prescriptionList().at(prescriptionIndex).get('templabTestFormGroup')?.get('labtest')?.value.hidenItem > 0">
+                                                ...</span>
+                                            </p>
+                                          </div>
+                                          <div
+                                            *ngIf="!prescriptionList().at(prescriptionIndex).get('templabTestFormGroup')?.get('labtest')?.value.childTests.length">
+                                            <p
+                                              *ngIf="prescriptionList().at(prescriptionIndex).get('templabTestFormGroup')?.get('labtest')?.value.testDescription">
+                                              {{prescriptionList().at(prescriptionIndex).get('templabTestFormGroup')?.get('labtest')?.value.testDescription}}<span
+                                                *ngIf="prescriptionList().at(prescriptionIndex).get('templabTestFormGroup')?.get('labtest')?.value.fullTestDescription.length > 0">...</span>
+                                            </p>
+                                          </div>
+                                          <i class="bi-x-circle-fill"
+                                            *ngIf="prescriptionList().at(prescriptionIndex).get('templabTestFormGroup')?.get('labtest')?.value.testCode && !prescriptionList().at(prescriptionIndex).get('templabTestFormGroup')?.get('updateMode')?.value"
+                                            (click)="removeSelecetedLabTest(prescriptionIndex)"></i>
+                                        </div>
+                                        <small>{{prescriptionList().at(prescriptionIndex).get('templabTestFormGroup')?.get('errMsg')?.value}}</small>
+                                      </div>
+                                      <div class='faq ' [ngClass]="{'d-block':optins().controls.length}">
+                                        <div class="LaboratoryDisplayBox">
+                                          <form [formGroup]="labtestOptionForm">
+                                            <div formArrayName="options">
+                                              <div for='faq-a d-none' id="faq-bg"
+                                                *ngFor="let option of optins().controls; let optionIndex = index">
+                                                <ng-container formGroupName="{{optionIndex}}">
+                                                  <div class="faq-heading d-flex">
+                                                    <label> <input type="checkbox" id='test{{optionIndex}}'
+                                                        formControlName="testCheck"
+                                                        (change)="optionChecked(optionIndex,option.get('testCheck')?.value)">
+                                                      {{option.get('test')?.value}}
+                                                    </label>
+                                                  </div>
+                                                  <div *ngIf="childTests(optionIndex).controls.length"
+                                                    class="parentfaq-text">
+                                                    <div formArrayName="childTests">
+                                                      <div class="faq-text"
+                                                        *ngFor="let childTest of childTests(optionIndex).controls; let childTestIndex = index">
+                                                        <ng-container formGroupName="{{childTestIndex}}">
+                                                          <label> <input type="checkbox" id='test{{childTestIndex}}'
+                                                              formControlName="childCheck"
+                                                              (change)="childCheck(optionIndex)">
+                                                            {{childTest.get('childTest')?.value}}
+                                                          </label>
+                                                        </ng-container>
+                                                      </div>
+                                                    </div>
+                                                  </div>
+                                                </ng-container>
+                                              </div>
+                                            </div>
+                                          </form>
+                                        </div>
+                                        <small class="text-start">{{customeLabtestFormErrorMsg}}</small>
+                                        <div class="col-md-12 d-flex justify-content-between px-3">
+                                          <button class="save"
+                                            (click)="optionChoose(prescriptionIndex,labtestOptionForm.value)">Save</button>
+                                          <button class="save" (click)="clearLabTestOptionForm()">Cancel</button>
+                                        </div>
+                                      </div>
+                                      <div class="form-floating mb-3">
+                                        <input type="text" class="  form-control" id="floatingInput"
+                                          placeholder="Special Instructions on Timings"
+                                          formControlName="specialInstructionOnTime">
+                                        <label for="floatingInput">Special Instructions on Timings</label>
+                                      </div>
+                                      <div class="row mt-2">
+                                        <div class="col-md-2 d-flex align-items-center">
+                                          <label>After</label>
+                                        </div>
+                                        <div class="col-md-3 px-1">
+                                          <div class="form-floating mb-3">
+                                            <input type="text" placeholder="Day" class="Day form-control"
+                                              id="floatingInput" formControlName="durationCount">
+                                            <label for="floatingInput">Day</label>
+                                          </div>
+                                        </div>
+                                        <div class="col-md-3 px-1">
+                                          <div class="form-floating selectBox"
+                                            [ngClass]="{'selectValue': prescriptionList().at(prescriptionIndex).get('templabTestFormGroup')?.get('durationUnit')?.value != ''}">
+                                            <select class="select1 " formControlName="durationUnit" id="floatingSelect"
+                                              aria-label="Floating label select example">
+                                              <option [value]="'D'">Day(s)</option>
+                                              <option [value]="'W'">Week(s)</option>
+                                              <option [value]="'M'">Month(s)</option>
+                                              <option [value]="'Y'">Year(s)</option>
+                                            </select>
+                                            <label for="floatingSelect">Duration</label>
+                                          </div>
+                                          <div class="validation-div errorDiv">
+                                            <app-validation-message
+                                              [control]="getTemplabTestFormController(prescriptionIndex,'durationText')"
+                                              [messages]="errorMessage.labtestForm.durationText">
+                                            </app-validation-message>
+                                          </div>
+                                        </div>
+                                        <div class="col-md-2 px-1 d-flex align-items-center">
+                                          <input type="checkbox" placeholder="Now" id="durationNowCheck"
+                                            formControlName="durationNowCheck">
+                                          <label for="durationNowCheck">Now</label>
+                                        </div>
+                                        <div class="col-md-2 ">
+                                          <input type="submit" value="Save"
+                                            *ngIf="!prescription.value.templabTestFormGroup.updateMode"
+                                            (click)="labtestSave(prescriptionIndex,prescriptionList().at(prescriptionIndex).get('templabTestFormGroup')?.value)">
+                                          <input type="submit" value="Update"
+                                            *ngIf="prescription.value.templabTestFormGroup.updateMode"
+                                            (click)="labtestSave(prescriptionIndex,prescriptionList().at(prescriptionIndex).get('templabTestFormGroup')?.value)">
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="MedicineBox mt-4 HouseholdItem">
+                                <div class="row">
+                                  <div class="col-md-12 mb-1">
+                                    <h2>Household Item</h2>
+                                  </div>
+                                  <div class="medicinesList">
+                                    <div class="col-md-12 bottom-border"
+                                      *ngFor="let houseHoldItem of prescription.value.houseHoldItemList, let houseHoldItemIndex = index">
+                                      <div *ngIf="!houseHoldItem.isDelete" class="row my-2 mx-0 py-2">
+                                        <div class="col-md-10">
+                                          <div class="d-flex flex-column">
+                                            <div class="d-flex align-items-center">
+                                              <i class="bi-hand-index-thumb-fill"></i>
+                                              <h3>{{houseHoldItem.householdItemName}}</h3>
+                                            </div>
+                                            <p>{{houseHoldItem.comments}}</p>
+                                          </div>
+                                        </div>
+                                        <div class="col-md-2 d-flex justify-content-end">
+                                          <div class="DayBox">
+                                            <div class="d-flex">
+                                              <div class="Days">
+                                                <i class="bi-check"></i>
+                                              </div>
+                                            </div>
+                                            <i class="bi-pencil-fill"
+                                              (click)="editHouseHoldItem(prescriptionIndex,houseHoldItemIndex,houseHoldItem.isAdd)"></i>
+                                            <i class="bi-trash-fill"
+                                              (click)="deleteHouseHoldItem(prescriptionIndex,houseHoldItemIndex,houseHoldItem.isAdd)"></i>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="col-md-12">
+                                    <div class="selectBox" formGroupName="tempHouseHoldItemGroup">
+                                      <div class="row">
+                                        <div class="col-md-12 position-relative mb-2">
+                                          <div class="MedicineName">
+                                            <div class="form-floating">
+                                              <input type="text" class="form-control" id="floatingInput"
+                                                name="MedicineName" placeholder="Household Name"
+                                                formControlName="householdItemName" [matAutocomplete]="HouseHoldGroup"
+                                                autofocus (keyup)="onTypeHouseHoldItemName(prescriptionIndex)">
+                                              <label for="floatingInput">Household Name</label>
+                                            </div>
+                                            <div class="validation-div errorDiv">
+                                              <app-validation-message
+                                                [control]="getTempHouseHoldFormController(prescriptionIndex,'householdItemCode')"
+                                                [messages]="errorMessage.houseHoldItem.householdItemCode">
+                                              </app-validation-message>
+                                            </div>
+                                            <small
+                                              style="position: absolute;">{{prescriptionList().at(prescriptionIndex).get('tempHouseHoldItemGroup')?.get('errMsg')?.value}}</small>
+                                            <mat-autocomplete #HouseHoldGroup="matAutocomplete" class="abc">
+                                              <mat-option *ngFor="let houseHoldItem of healthEquipmentGroupOptions"
+                                                (click)="houseHoldItemSelected(prescriptionIndex,houseHoldItem)"
+                                                [value]="houseHoldItem.householdItemName">
+                                                {{houseHoldItem.householdItemName}}
+                                              </mat-option>
+                                            </mat-autocomplete>
+                                          </div>
+                                        </div>
+                                        <div class="col-md-12 mt-2">
+                                          <div class="specialNotes">
+                                            <!-- <label>
+                                              <input type="checkbox" id="{{'medCheck'+prescriptionIndex}}"
+                                                name="specialNotesCheck" formControlName="spcialNoteCheck">
+                                              Special Notes
+                                            </label> -->
+                                            <div class="form-floating">
+                                              <textarea name="specialNotes" formControlName="comments"
+                                                placeholder="spcial Notes" class="form-control"
+                                                id="floatingTextarea2"></textarea>
+                                              <label for="floatingTextarea2">spcial Notes</label>
+                                            </div>
+                                            <div class="validation-div errorDiv">
+                                              <app-validation-message
+                                                [control]="getTempHouseHoldFormController(prescriptionIndex,'comments')"
+                                                [messages]="errorMessage.houseHoldItem.comments">
+                                              </app-validation-message>
+                                            </div>
+                                          </div>
+                                        </div>
+                                        <div class="col-md-4 d-flex flex-column">
+                                          <button class="save"
+                                            *ngIf="!prescription.value.tempHouseHoldItemGroup.updateMode"
+                                            (click)="saveHouseHoldItem(prescriptionIndex,prescriptionList().at(prescriptionIndex).get('tempHouseHoldItemGroup')?.getRawValue(),prescriptionList().at(prescriptionIndex).get('tempHouseHoldItemGroup')?.valid)">Save</button>
+                                          <button class="save mt-2"
+                                            *ngIf="prescription.value.tempHouseHoldItemGroup.updateMode"
+                                            (click)="saveHouseHoldItem(prescriptionIndex,prescriptionList().at(prescriptionIndex).get('tempHouseHoldItemGroup')?.getRawValue(),prescriptionList().at(prescriptionIndex).get('tempHouseHoldItemGroup')?.valid)">Update</button>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="row mt-4">
+                                <div class="col-md-2 d-flex align-items-center">
+                                  <label class="NextVisit">Next Visit</label>
+                                </div>
+                                <div class="col-md-3">
+                                  <div class="form-floating">
+                                    <input type="text" class="form-control" placeholder="Visit Count"
+                                      formControlName="nextVisitCount" min="1" id="floatingInput">
+                                    <label for="floatingInput">Visit Count</label>
+                                  </div>
+                                </div>
+                                <div class="col-md-3 d-flex align-items-center">
+                                  <div class="form-floating selectBox"
+                                    [ngClass]="{'selectValue': prescriptionList().at(prescriptionIndex).get('nextVisitUnit')?.value}">
+                                    <select class="select1" formControlName="nextVisitUnit" class=" "
+                                      id="floatingSelect">
+                                      <option [value]="'D'">Day(s)</option>
+                                      <option [value]="'M'">Month(s)</option>
+                                      <option [value]="'Y'">Year(s)</option>
+                                    </select>
+                                    <label for="floatingSelect">Works with selects</label>
+                                  </div>
+                                </div>
+                                <div class="col-md-3 d-flex align-items-center justify-content-end count">
+                                  <p class="DatePrint" *ngIf="prescription.value.nextVisitDate">
+                                    {{prescription.value.nextVisitDate|date:'dd MMM yyyy' }}</p>
+                                </div>
+                                <div class="col-md-12 mt-2">
+                                  <div class="form-floating h-100 border-0">
+                                    <textarea name="Special Instruction(If Any)"
+                                      placeholder="Special Instruction(If Any)" class="Special form-control"
+                                      formControlName="prescriptionSpecialInstruction"></textarea>
+                                    <label for="floatingTextarea2">Comments</label>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </ng-container>
+                        </div>
+                      </div>
+                      <div class="d-flex justify-content-between p-3 w-100" *ngIf="!WorkRequestDetails.isDisabled">
+                        <button class="save mt-2" (click)="closePopup()">Cancel</button>
+                        <div class=" d-flex justify-content-end w-100" *ngIf="!WorkRequestDetails.isDisabled">
+                          <button class="save mt-2 mx-3"
+                            *ngIf="WorkRequestDetails.wrStatus === 2 || WorkRequestDetails.wrStatus ===8"
+                            (click)="savePrescriptions(prescriptionForm.value,prescriptionForm.valid,'T',false)">Save</button>
+                          <button class="save mt-2" style="width: 150px;" *ngIf="WorkRequestDetails.wrStatus === 2"
+                            (click)="savePrescriptions(prescriptionForm.value,prescriptionForm.valid,'R',false)">Submit
+                            For
+                            Review</button>
+                          <button class="save mt-2" *ngIf="WorkRequestDetails.wrStatus === 8"
+                            (click)="savePrescriptions(prescriptionForm.value,prescriptionForm.valid,'F',false)">Final
+                            Submit</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+              </div>
+              <div class="col-md-1 p-0">
+                <div class="px-1 py-4">
+                  <div class="EditFile">
+                    <div *ngFor="let prescription of prescriptionList().controls; let prescriptionIndex = index">
+                      <div class="activePrescription position-relative" *ngIf="showPrescription(prescriptionIndex)"
+                        [ngClass]="{activePrescription:prescriptionShowIndex === prescriptionIndex}">
+                        <button (click)="viewPrescription(prescriptionIndex)">
+                          <img src="../../../assets/images/EditFile.png">
+                          <img src="../../../assets/images/EditFileActive.png" class="activeImage">
+                        </button>
+                      </div>
+                    </div>
+                    <button (click)="addPrescription()" *ngIf="!WorkRequestDetails.isDisabled"><i
+                        class="bi-plus-circle-fill"></i></button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div id="myModal" class="modal deletePopup" *ngIf="deleteConfirmationBox" tabindex="-1" role="dialog"
+              style="z-index: 13;">
+              <div class="modal-dialog w-25">
+                <div class="modal-content">
+                  <div class="modal-body">
+                    <p>This Lab test report will delete permanently</p>
+                    <div class="d-flex w-100 justify-content-around">
+                      <button class="save" (click)="confirmDelete()">Confirm</button>
+                      <button class="saveCancel" (click)="cancelDelete()">Cancel</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 somthingWentWrong px-1 " *ngIf="somthingWentWrong">
+            <p>Something went wrong, Please try after sometime</p>
+          </div>
+          <div id="myModal" class="modal" *ngIf="addPhysicianPopup" tabindex="-1" role="dialog">
+            <app-physician-edition (close)="closeAddPhysicianPopup()"></app-physician-edition>
+          </div>
+          <div id="myModal" class="modal" *ngIf="addNewetityPopup" tabindex="-1" role="dialog">
+            <app-add-new-entity (close)="closeAddNewetityPopup()"></app-add-new-entity>
+          </div>
+          <div id="myModal" class="modal" *ngIf="drawinPopup" tabindex="-1" role="dialog">
+            <app-drawing [presctiptionIndex]="presctiptionIndexForDrawing" [presctiptionIDForDrawing]="presctiptionIDForDrawing" [exsistingFile]="existingFile" (close)="closeDrawinPopup($event)"></app-drawing>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

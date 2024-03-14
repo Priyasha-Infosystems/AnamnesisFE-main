@@ -1,0 +1,227 @@
+.DeliveryAgent .modal-dialog {
+    max-width: 54%;
+    padding: 30px 22px;
+}
+
+.DeliveryAgent .DeliveryAgentDetails {
+    width: 100%;
+    background: #F2ECFF;
+    border: 1px solid rgba(113, 59, 219, 0.19);
+    box-shadow: 0px 16px 34px rgba(113, 59, 219, 0.19);
+    padding: 17px 20px;
+    border-radius: 10px;
+}
+
+.DeliveryAgent .DeliveryAgentDetails .img {
+    width: 208px;
+    height: 208px;
+    margin: auto;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 1px solid rgba(113, 59, 219, 0.5);
+    filter: drop-shadow(0px 4px 8px rgba(113, 59, 219, 0.25));
+}
+
+.DeliveryAgent .DeliveryAgentDetails .img img {
+    width: 100%;
+    height: 100%;
+}
+
+/* .DeliveryAgent .DeliveryAgentDetails .displayAllDetails {
+    display: flex;
+    flex-wrap: wrap;
+} */
+
+.DeliveryAgent .DeliveryAgentDetails .displayAllDetails h2 {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 21px;
+    line-height: 110%;
+    color: #484747;
+    width: 100%;
+    text-align: center;
+    padding: 9px;
+    background: #F2ECFF;
+    border-radius: 5px;
+}
+
+.DeliveryAgent .DeliveryAgentDetails .displayAllDetails label {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 110%;
+    color: rgba(113, 59, 219, 0.51);
+    margin-right: 8px;
+}
+
+.DeliveryAgent .DeliveryAgentDetails .displayAllDetails p {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 110%;
+    color: #323232;
+    margin-bottom: 8px;
+}
+
+.DeliveryAgent .document {
+    width: 100%;
+    padding: 32px 30px 10px 30px;
+}
+
+.DeliveryAgent .document .documentBox {
+    width: 93%;
+    height: 100%;
+    margin: auto;
+    background: #FFFFFF;
+    border: 1px solid rgba(113, 59, 219, 0.18);
+    box-shadow: 0px 11px 34px -5px rgba(113, 59, 219, 0.21);
+    border-radius: 10px;
+    display: flex;
+    padding: 8px 9px;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.DeliveryAgent .document .documentBox .bi-file-earmark-pdf-fill {
+    color: red;
+    font-size: 26px;
+    line-height: 0;
+}
+
+.DeliveryAgent .document .documentBox .bi-eye-fill {
+    color: #713BDB;
+    font-size: 17px;
+    line-height: 0;
+    cursor: pointer;
+}
+
+.DeliveryAgent .document .documentBox label {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 1.8;
+    color: #474646;
+    width: 202px;
+}
+
+.DeliveryAgent .document .documentBox p {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 15px;
+    line-height: 110%;
+    color: #323232;
+    margin: 0;
+}
+
+.DeliveryAgent .document .documentBox button {
+    padding: 5px 9px;
+    background: #1e9848;
+    box-shadow: 0px 11px 34px -5px rgb(32 175 55 / 62%);
+    border-radius: 5px;
+    border: none;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 10px;
+    line-height: 15px;
+    color: #FFFFFF;
+}
+
+.DeliveryAgent .document .documentBox .Decline {
+    background: #c21616;
+    box-shadow: 0px 11px 34px -5px rgba(235, 13, 13, 0.5);
+    margin-top: 5px;
+}
+
+.DeliveryAgent .names {
+    background: #FFFFFF;
+    border: 1px solid rgba(113, 59, 219, 0.18);
+    box-shadow: 0px 11px 34px -5px rgb(113 59 219 / 21%);
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    padding: 21px 25px;
+}
+
+.DeliveryAgent .form-floating {
+    width: 100%;
+}
+
+.DeliveryAgent .form-floating .form-control:focus {
+    box-shadow: unset;
+}
+
+.DeliveryAgent .form-floating textarea {
+    resize: none;
+    width: 100%;
+    height: 100px;
+    background: #FFFFFF;
+    border: 1px solid rgba(113, 59, 219, 0.18);
+    box-shadow: 0px 11px 34px -5px rgba(113, 59, 219, 0.21);
+    border-radius: 10px;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 1.5;
+    color: rgba(40, 29, 63, 0.974);
+}
+
+.DeliveryAgent .form-floating label {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 110%;
+    color: rgba(113, 59, 219, 0.51);
+}
+
+.DeliveryAgent .document .footer-btn button {
+    border: none;
+    padding: 15px 22px;
+    background: #713BDB;
+    box-shadow: 0px 11px 34px -5px rgba(113, 59, 219, 0.45);
+    border: 1px solid rgba(113, 59, 219, 0.64);
+    border-radius: 8px;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    letter-spacing: 1px;
+    font-size: 17px;
+    line-height: 110%;
+    color: #FFFFFF;
+}
+
+.DeliveryAgent .document .footer-btn .Reject {
+    background: none;
+    color: #713BDB;
+    box-shadow: unset;
+}
+
+.DeliveryAgent .bi-check-circle-fill {
+    color: #19CC56;
+    font-size: 36px;
+    margin-left: 23px;
+    line-height: 0;
+}
+
+.DeliveryAgent .bi-x-circle-fill {
+    color: #EB0D0D;
+    font-size: 36px;
+    margin-left: 23px;
+    line-height: 0;
+}
+
+.DeliveryAgent .Name p {
+    font-weight: 700 !important;
+}
+
+.DeliveryAgent .displayAllDetails {
+    border: 1px solid rgb(113 59 219 / 30%);
+    border-radius: 5px;
+    box-shadow: 3px 5px 6px 0px rgb(113 59 219 / 24%);
+}

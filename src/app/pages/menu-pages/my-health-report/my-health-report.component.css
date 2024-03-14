@@ -1,0 +1,1419 @@
+ #MyHealthReport {
+     /* margin-top: 20px; */
+ }
+
+ #MyHealthReport .contentDisplay {
+     width: 100%;
+     height: 1360px;
+     padding: 15px 39px 49px 39px;
+     background: #FFFFFF;
+     border: 1px solid rgba(113, 59, 219, 0.46);
+     box-shadow: 0px 4px 4px rgba(113, 59, 219, 0.03);
+     border-radius: 27px;
+     overflow: hidden;
+ }
+
+ #MyHealthReport h2 {
+     font-family: 'Poppins';
+     font-style: normal;
+     font-weight: 700;
+     font-size: 28px;
+     line-height: 33px;
+     color: #434242;
+     margin-bottom: 11px;
+ }
+
+ .patientDetails {
+     width: 100%;
+     height: auto;
+     background: #FFFFFF;
+     border: 1px solid rgba(231, 168, 20, 0.19);
+     box-shadow: 0px 16px 34px -6px rgba(199, 148, 29, 0.19);
+     border-radius: 10px;
+ }
+
+ #MyHealthReport .contentDisplay .name h3 {
+     font-family: 'Poppins';
+     font-style: normal;
+     font-weight: 700;
+     font-size: 22px;
+     line-height: 110%;
+     color: #484747;
+ }
+
+ #MyHealthReport .contentDisplay .name p {
+     font-family: 'Poppins';
+     font-style: normal;
+     font-weight: 400;
+     font-size: 15px;
+     line-height: 110%;
+     color: #484747;
+     margin: 0;
+ }
+
+ #MyHealthReport .contentDisplay .patientDetails label {
+     font-family: 'Poppins';
+     font-style: normal;
+     font-weight: 400;
+     font-size: 14px;
+     line-height: 110%;
+     color: #484747;
+     padding: 2px 0px;
+ }
+
+ .Pressure td {
+     line-height: 0 !important;
+ }
+
+ .Pressure table {
+     width: 100% !important;
+ }
+
+ #MyHealthReport .contentDisplay .patientDetails h6 {
+     font-family: 'Poppins';
+     font-style: normal;
+     font-weight: 600;
+     font-size: 14px;
+     line-height: 110%;
+     color: #484747;
+     padding: 0px 7px;
+     margin: 0;
+     text-align: center;
+ }
+
+ #MyHealthReport .contentDisplay .patientDetails .Pressure {
+     border-left: 1px solid rgba(237, 183, 56, 0.4);
+     height: 125px;
+     width: 100%;
+     padding: 8px 4px;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     flex-direction: column;
+     position: relative;
+ }
+
+ #MyHealthReport .contentDisplay .patientDetails .Pressure p {
+     font-size: 20px;
+ }
+
+ #MyHealthReport .contentDisplay .patientDetails .Pressure span {
+     font-size: 14px;
+     font-weight: 400;
+     margin: 0px 0px 0px 3px;
+ }
+
+
+ #MyHealthReport .contentDisplay .patientDetails .Pressure i {
+     font-size: 29px;
+     padding-left: 10px;
+ }
+
+ #MyHealthReport .contentDisplay .patientDetails .name {
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     justify-content: center;
+     height: 91.3%;
+     width: 100%;
+ }
+
+ #DateFilter .price-range-slider {
+     width: 100%;
+     padding: 5px 0px 47px 12px;
+ }
+
+ #DateFilter .range-value {
+     margin: 0;
+ }
+
+ #DateFilter input {
+     width: 100%;
+     background: none;
+     box-shadow: none;
+     border: none;
+     margin: 0px 0 15px 0;
+     outline: none;
+     font-family: 'Inter';
+     font-style: normal;
+     font-weight: 600;
+     font-size: 12px;
+     line-height: 15px;
+     color: #3B68DB;
+ }
+
+ #DateFilter .range-bar {
+     height: 14px;
+     width: 100%;
+     background: rgba(59, 104, 219, 0.21);
+     box-shadow: 0px 4px 4px rgb(59 104 219 / 11%);
+     border-radius: 8px;
+ }
+
+ #DateFilter .ui-slider-range {
+     background: #3B68DB;
+     border-radius: 8px;
+ }
+
+ #DateFilter .ui-slider-handle {
+     border-radius: 25px;
+     top: -0.52em;
+     cursor: pointer;
+     width: 28px;
+     height: 28px;
+     background: #FFFFFF;
+     border: 1px solid #3B68DB;
+     box-shadow: 0px 4px 4px rgb(59 104 219 / 20%);
+ }
+
+ #DateFilter .ui-slider-handle+span {
+     background: #06b9c0;
+ }
+
+ .MyHealthTab {
+     float: left;
+     background: #713BDB;
+     box-shadow: 0px 11px 34px -5px rgba(113, 59, 219, 0.4);
+     border-radius: 7px;
+     width: 49px;
+     height: 1048px;
+ }
+
+ .MyHealthTab button {
+     display: block;
+     background-color: inherit;
+     color: black;
+     padding: 22px 16px;
+     width: 100%;
+     border: none;
+     outline: none;
+     text-align: left;
+     cursor: pointer;
+     transition: 0.3s;
+     font-size: 17px;
+     height: 100%;
+     border-radius: 7px;
+     position: relative;
+ }
+
+ .MyHealthTab button p {
+     width: 417px;
+     transform: rotate(270deg);
+     left: -183px;
+     bottom: 250px;
+     position: absolute;
+     font-family: 'Poppins';
+     font-style: normal;
+     font-weight: 500;
+     font-size: 14px;
+     line-height: 154%;
+     color: #FFFFFF;
+ }
+
+ .MyHealthTab button.Healthactive {
+     display: none;
+ }
+
+ .MyHealthTabcontent {
+     float: left;
+     padding: 25px 0px;
+     width: 100%;
+     height: 100%;
+ }
+
+ .MyHealthTabcontent h3 {
+     font-family: 'Poppins';
+     font-style: normal;
+     font-weight: 700;
+     font-size: 21px;
+     line-height: 110%;
+     color: #3E3C3C;
+     padding-top: 15px;
+ }
+
+ .MyHealthTabcontent label {
+     font-family: 'Inter';
+     font-style: normal;
+     font-weight: 500;
+     font-size: 13px;
+     line-height: 16px;
+     color: rgba(105, 102, 102, 0.74);
+ }
+
+ #Physician .form-control:focus {
+     box-shadow: unset;
+ }
+
+ #Physician .form-floating input {
+     font-family: 'Inter';
+     font-style: normal;
+     font-weight: 500;
+     font-size: 13px;
+     line-height: 16px;
+     color: rgba(16, 15, 15, 0.988);
+ }
+
+ #Physician .DoctorList {
+     width: 100%;
+     height: auto;
+     background: rgba(255, 255, 255, 0.79);
+     border: 1px solid rgba(234, 229, 243, 0.54);
+     box-shadow: 0px 12px 53px -24px rgb(134 87 226 / 63%);
+     border-radius: 12px;
+     padding: 20px 16px;
+     margin-top: 53px;
+ }
+
+ #Physician .DoctorList .accordion-button:focus {
+     box-shadow: unset;
+ }
+
+ #Physician .DoctorList #accordionExample {
+     width: 100%;
+     background: rgba(255, 244, 219, 0.79);
+     box-shadow: 0px 11px 34px -5px rgb(215 167 55 / 19%);
+     border-radius: 10px;
+ }
+
+ #Physician .DoctorList .accordion-button {
+     box-shadow: unset !important;
+ }
+
+ #Physician .DoctorList .collapsed {
+     border-top: 1px solid rgba(231, 168, 20, 0.51);
+     border-bottom: 0px solid rgba(231, 168, 20, 0.51);
+     border-right: unset !important;
+     border-left: unset !important;
+     background: rgba(255, 255, 255, 0.79) !important;
+     box-shadow: unset !important;
+     border-radius: unset !important;
+     padding: 28px 20px !important;
+ }
+
+ #Physician .DoctorList .accordion-button {
+     background: rgba(255, 244, 219, 0.79);
+     border-top: 1px solid rgba(231, 168, 20, 0.51);
+     border-left: 1px solid rgba(231, 168, 20, 0.51);
+     border-right: 1px solid rgba(231, 168, 20, 0.51);
+     box-shadow: 0px 11px 34px -5px rgb(215 167 55 / 19%);
+     border-top-left-radius: 10px;
+     border-top-right-radius: 10px;
+ }
+
+ #Physician .DoctorList .accordion-button:not(.collapsed) {
+     background-color: unset !important;
+ }
+
+ #Physician .DoctorList .show {
+     border-bottom: 1px solid rgba(231, 168, 20, 0.51);
+     border-left: 1px solid rgba(231, 168, 20, 0.51);
+     border-right: 1px solid rgba(231, 168, 20, 0.51);
+     border-bottom-left-radius: 10px;
+     border-bottom-right-radius: 10px;
+ }
+
+ #Physician .DoctorList .accordion-button::after {
+     content: "\f107";
+     background-color: #E7A814;
+     box-shadow: 0px 4px 8px rgb(225 173 50 / 79%);
+     border-radius: 50px;
+     width: 24px;
+     height: 24px;
+     padding: 4px 6px;
+     background-image: unset !important;
+     transition: 0.6s !important;
+     display: inline-block;
+     font: normal normal normal 14px/1 FontAwesome;
+     font-size: inherit;
+     text-rendering: auto;
+     -webkit-font-smoothing: antialiased;
+     color: #fff;
+     font-size: 18px;
+ }
+
+ #Physician .DoctorList .accordion-button:not(.collapsed)::after {
+     background-image: unset !important;
+     box-shadow: 0px -4px 8px rgb(225 173 50 / 79%) !important;
+     transition: 0.6s !important;
+ }
+
+ #Physician .DoctorList .accordion-button h4 {
+     font-family: 'Poppins';
+     font-style: normal;
+     font-weight: 700;
+     font-size: 18px;
+     line-height: 110%;
+     color: #404040;
+ }
+
+ #Physician .DoctorList .accordion-button p {
+     font-family: 'Poppins';
+     font-style: normal;
+     font-weight: 300;
+     font-size: 14px;
+     line-height: 110%;
+     color: #545050;
+     margin: 0;
+ }
+
+ #Physician .DoctorList .accordion-button span {
+     font-family: 'Poppins';
+     font-style: normal;
+     font-weight: 600;
+     font-size: 13px;
+     line-height: 110%;
+     color: #000000;
+ }
+
+ #Physician .DoctorList .accordion-button .w-100 {
+     padding-right: 63px;
+ }
+
+ #Physician .DoctorList .accordion-body label {
+     font-family: 'Poppins';
+     font-style: normal;
+     font-weight: 700;
+     font-size: 15px;
+     line-height: 138.5%;
+     color: #404040;
+ }
+
+ #Physician .DoctorList .accordion-body div {
+     margin-bottom: 20px;
+ }
+
+ #Physician .DoctorList .accordion-body p {
+     display: inline;
+     font-family: 'Poppins';
+     font-style: normal;
+     font-weight: 300;
+     font-size: 14px;
+     line-height: 154%;
+     color: #404040;
+ }
+
+ #Physician .DoctorList .accordion-body {
+     padding: 1px 20px !important;
+ }
+
+ .Schedule {
+     width: 100%;
+     height: auto;
+     background: #F2ECFF;
+     border: 1px solid rgba(113, 59, 219, 0.19);
+     box-shadow: 0px 16px 34px -6px rgba(113, 59, 219, 0.19);
+     border-radius: 10px;
+     padding: 18px 0px 0px 0px;
+     overflow: hidden;
+ }
+
+ .Schedule h3 {
+     padding: 0px 26px;
+ }
+
+ .Schedule .accordion {
+     --bs-accordion-bg: unset;
+ }
+
+ .Schedule .accordion-item {
+     border: none;
+     border-bottom: 1px solid rgba(113, 59, 219, 0.19);
+     border-radius: unset;
+ }
+
+ .Schedule .accordion-button:not(.collapsed) {
+     background-color: unset;
+     box-shadow: unset;
+     padding: 12px 26px 15px 26px;
+     color: #404040;
+ }
+
+ .Schedule .accordion-item:last-of-type .accordion-button.collapsed {
+     padding: 12px 0px 15px 0px;
+ }
+
+ .Schedule .accordion-body {
+     padding: 3px 26px 27px 26px;
+ }
+
+ .Schedule .accordion-button span {
+     font-family: 'Poppins';
+     font-style: normal;
+     font-weight: 600;
+     font-size: 13px;
+     line-height: 110%;
+     color: #713BDB;
+     display: block;
+ }
+
+ .Schedule .accordion-button h6 {
+     font-family: 'Poppins';
+     font-style: normal;
+     font-weight: 600;
+     font-size: 14px;
+     line-height: 116.5%;
+     color: #404040;
+ }
+
+ .accordion-button::after {
+     display: none;
+ }
+
+ .Schedule .accordion-body button {
+     padding: 18px 19px;
+     background: #713BDB;
+     box-shadow: 0px 11px 34px -5px rgba(113, 59, 219, 0.4);
+     border-radius: 7px;
+     border: none;
+     font-family: 'Poppins';
+     font-style: normal;
+     font-weight: 500;
+     font-size: 12px;
+     line-height: 110%;
+     letter-spacing: 1px;
+     color: #FFFFFF;
+ }
+
+ .Schedule .accordion-body .Cancel {
+     background: none;
+     border: 1px solid rgba(113, 59, 219, 0.74);
+     box-shadow: 0px 11px 34px -5px rgba(113, 59, 219, 0.4);
+     border-radius: 7px;
+     color: #713BDB;
+ }
+
+ .Schedule .accordion-button {
+     padding: 12px 26px 15px 26px;
+ }
+
+ .Schedule .missing {
+     border-color: rgba(255, 200, 200, 0.79) !important;
+ }
+
+ .Schedule .missing .collapsed {
+     background: unset !important;
+     border-radius: unset !important;
+ }
+
+ .Schedule .missing .show {
+     background: rgba(255, 200, 200, 0.79);
+     border-bottom-left-radius: 12px;
+     border-bottom-right-radius: 12px;
+ }
+
+ .Schedule .missing span {
+     color: #E65A66;
+ }
+
+ .Schedule .missing .accordion-button {
+     background: rgba(255, 200, 200, 0.79);
+     border: 0px solid rgba(218, 218, 218, 0.46);
+     /* border-top-left-radius: 12px;
+     border-top-right-radius: 12px; */
+ }
+
+ .Schedule .missing button {
+     background: #EE5765;
+     box-shadow: 0px 11px 34px -5px #FCCFD3;
+ }
+
+ .Schedule .missing .Cancel {
+     border: 1px solid #EE5765;
+     box-shadow: 0px 11px 34px -5px rgba(113, 59, 219, 0.4);
+     color: #E65A66;
+ }
+
+ .Schedule .missing .accordion-button:not(.collapsed)::after {
+     background: #FFFFFF;
+     box-shadow: 0px 4px 8px rgba(252, 207, 211, 0.78);
+     color: #E65A66;
+     box-shadow: unset !important;
+ }
+
+ .Schedule .missing .accordion-button::after {
+     background: #FFFFFF;
+     box-shadow: 0px 4px 8px rgba(252, 207, 211, 0.78);
+     color: #E65A66;
+     box-shadow: unset !important;
+ }
+
+ .Schedule .accordion-item:last-child {
+     border: none !important;
+ }
+
+ #MyHealthReport #Laboratory .dateSchedule .calendar {
+     width: 100%;
+     background: #F6F7FF;
+     box-shadow: 0px 4px 5px rgba(113, 59, 219, 0.12);
+     border-radius: 12px;
+     padding: 41px 22px 82px 22px;
+     position: relative;
+ }
+
+ #MyHealthReport #Laboratory .dateSchedule .calendar .day {
+     width: 76px;
+     height: 59px;
+     background: rgba(255, 255, 255, 0.79);
+     border: 1px solid rgba(166, 161, 175, 0.54);
+     box-shadow: 0px 12px 53px -24px rgba(134, 87, 226, 0.63);
+     border-radius: 9px;
+     text-align: center;
+     margin-bottom: 10px;
+     font-family: 'Poppins';
+     font-style: normal;
+     font-weight: 600;
+     font-size: 14px;
+     line-height: 110%;
+     text-align: center;
+     color: #3E3E3F;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+ }
+
+ #MyHealthReport #Laboratory .dateSchedule .calendar button {
+     background: none;
+     border: none;
+     position: absolute;
+     bottom: 8px;
+     right: 17px;
+     font-family: 'Poppins';
+     font-style: normal;
+     font-weight: 600;
+     font-size: 14px;
+     line-height: 184.5%;
+     text-align: center;
+     color: #713BDB;
+ }
+
+ #MyHealthReport #Laboratory .dateSchedule .footer-btn button {
+     padding: 17px 31px;
+     background: none;
+     color: #713BDB;
+     border: 1px solid rgba(113, 59, 219, 0.74);
+     box-shadow: 0px 11px 34px -5px rgba(113, 59, 219, 0.4);
+     margin-left: 6px;
+     border-radius: 7px;
+     font-family: 'Poppins';
+     font-style: normal;
+     font-weight: 500;
+     letter-spacing: 0.5px;
+     font-size: 12px;
+     line-height: 110%;
+ }
+
+ #MyHealthReport #Laboratory .dateSchedule .footer-btn .active {
+     background: #713BDB;
+     color: #fff;
+     border-color: #713BDB;
+ }
+
+ #MyHealthReport #Laboratory .dateSchedule .calendarSchedule {
+     width: 100%;
+     height: auto;
+     background: rgba(255, 255, 255, 0.79);
+     border: 2px solid rgba(174, 140, 239, 0.54);
+     box-shadow: 0px 12px 53px -24px rgba(134, 87, 226, 0.63);
+     border-radius: 12px;
+     padding: 11px 11px 79px 11px;
+ }
+
+ #MyHealthReport #Laboratory .dateSchedule .calendarSchedule .accordion-button:focus {
+     box-shadow: unset !important;
+ }
+
+ #MyHealthReport #Laboratory .dateSchedule .calendarSchedule .accordion-button:not(.collapsed) {
+     box-shadow: unset !important;
+     background-color: unset !important;
+     color: #404040;
+     margin-bottom: 15px;
+ }
+
+ #MyHealthReport #Laboratory .dateSchedule .calendarSchedule .accordion-button {
+     padding: 0;
+     background-color: unset;
+     font-family: 'Poppins';
+     font-style: normal;
+     font-weight: 600;
+     font-size: 16px;
+     line-height: 110%;
+     color: #404040;
+ }
+
+ #MyHealthReport #Laboratory .dateSchedule .calendarSchedule .accordion-body {
+     padding: 0;
+ }
+
+ #MyHealthReport #Laboratory .dateSchedule .calendarSchedule .accordion-item {
+     width: 100%;
+     background: #F6F7FF;
+     border: 1px solid rgba(174, 140, 239, 0.35);
+     box-shadow: 0px 12px 53px -24px rgb(134 87 226 / 63%);
+     border-radius: 9px;
+     padding: 11px 11px;
+     margin-bottom: 10px;
+ }
+
+ #MyHealthReport #Laboratory .dateSchedule .calendarSchedule .accordion-button i {
+     padding-right: 4px;
+     color: #713BDB;
+     font-size: 20px;
+ }
+
+ #MyHealthReport #Laboratory .dateSchedule .calendarSchedule h2 {
+     font-family: 'Poppins';
+     font-style: normal;
+     font-weight: 700;
+     font-size: 16px;
+     line-height: 110%;
+     color: #404040;
+     margin-top: 25px;
+ }
+
+ #MyHealthReport #Laboratory .dateSchedule .calendarSchedule .Biochemistry {
+     width: 100%;
+     background: rgba(255, 255, 255, 0.79);
+     border: 1px solid rgba(174, 140, 239, 0.35);
+     box-shadow: 0px 12px 53px -24px rgba(134, 87, 226, 0.63);
+     border-radius: 12px;
+     padding: 11px 11px 20px 11px;
+     margin-bottom: 5px;
+ }
+
+ #MyHealthReport #Laboratory .dateSchedule .calendarSchedule .Biochemistry h6 {
+     font-family: 'Poppins';
+     font-style: normal;
+     font-weight: 600;
+     font-size: 14px;
+     line-height: 110%;
+     color: #713BDB;
+ }
+
+ #MyHealthReport #Laboratory .dateSchedule .calendarSchedule .Biochemistry p,
+ #MyHealthReport #Laboratory .dateSchedule .calendarSchedule .Biochemistry label {
+     font-family: 'Poppins';
+     font-style: normal;
+     font-weight: 400;
+     font-size: 11px;
+     line-height: 167.5%;
+     color: #545050;
+     margin: 0;
+ }
+
+ #MyHealthReport #Laboratory .dateSchedule .calendarSchedule .Biochemistry label::before {
+     content: "\f633";
+     display: inline-block;
+     font-display: block;
+     font-family: bootstrap-icons !important;
+     font-style: normal;
+     font-weight: normal !important;
+     font-variant: normal;
+     text-transform: none;
+     line-height: 1;
+     vertical-align: -0.260em;
+     -webkit-font-smoothing: antialiased;
+     -moz-osx-font-smoothing: grayscale;
+     padding-right: 2px;
+     font-size: 14px;
+     color: #713BDB;
+ }
+
+ #MyHealthReport #Laboratory .dateSchedule .calendarSchedule .Biochemistry p::after {
+     content: "\f519";
+     display: inline-block;
+     font-family: bootstrap-icons !important;
+     font-style: normal;
+     font-weight: normal !important;
+     font-variant: normal;
+     text-transform: none;
+     line-height: 1;
+     vertical-align: -0.260em;
+     -webkit-font-smoothing: antialiased;
+     color: #F24848;
+     font-size: 14px;
+     padding-left: 2px;
+ }
+
+ #MyHealthReport #Laboratory .dateSchedule .calendar .testCategory {
+     padding: 36px 0px;
+ }
+
+ #MyHealthReport #Laboratory .dateSchedule .calendar .testCategory label {
+     font-family: 'Inter';
+     font-style: normal;
+     font-weight: 600;
+     font-size: 12px;
+     line-height: 15px;
+     color: #713BDB;
+     cursor: pointer;
+ }
+
+ #MyHealthReport #Laboratory .dateSchedule .calendar .testCategory input[type="checkbox"] {
+     vertical-align: -0.09em;
+     cursor: pointer;
+ }
+
+ #MyHealthReport #Laboratory .dateSchedule .testDetails p::after {
+     content: unset !important;
+ }
+
+ #MyHealthReport #Laboratory .dateSchedule .testDetails span {
+     font-family: 'Poppins';
+     font-style: normal;
+     font-weight: 700;
+     font-size: 12px;
+     line-height: 184.5%;
+     text-align: center;
+     color: #713BDB;
+ }
+
+ .Schedule h3 {
+     padding: 0px 26px;
+     font-family: 'Poppins';
+     font-style: normal;
+     font-weight: 700;
+     font-size: 21px;
+     line-height: 110%;
+     color: #3E3C3C;
+ }
+
+ .Schedule .accordion {
+     --bs-accordion-bg: unset;
+ }
+
+ .Schedule .accordion-item {
+     border: none;
+     border-bottom: 1px solid rgba(113, 59, 219, 0.19);
+     border-radius: unset;
+ }
+
+ .Schedule .accordion-button:not(.collapsed) {
+     background-color: unset;
+     box-shadow: unset;
+     padding: 12px 26px 15px 26px;
+     color: #404040;
+     display: flex;
+     justify-content: space-between;
+     align-items: center;
+ }
+
+ .border-btm {
+     border: none;
+     border-bottom: 1px solid rgba(113, 59, 219, 0.19);
+     border-radius: unset;
+ }
+
+ .missing .border-btm {
+     border: none;
+     border-bottom: 1px solid rgb(253, 185, 185) !important;
+     border-radius: unset !important;
+ }
+
+ .Schedule .accordion-item:last-of-type .accordion-button.collapsed {
+     padding: 12px 26px 15px 26px;
+ }
+
+ .Schedule .accordion-body {
+     padding: 3px 26px 27px 26px;
+ }
+
+ .Schedule .accordion-button span {
+     font-family: 'Poppins';
+     font-style: normal;
+     font-weight: 600;
+     font-size: 13px;
+     line-height: 110%;
+     color: #713BDB;
+     display: block;
+ }
+
+ .Schedule .accordion-button h6 {
+     font-family: 'Poppins';
+     font-style: normal;
+     font-weight: 600;
+     font-size: 14px;
+     line-height: 116.5%;
+     color: #404040;
+ }
+
+ .Schedule .accordion-body button {
+     padding: 18px 19px;
+     background: #713BDB;
+     box-shadow: 0px 11px 34px -5px rgba(113, 59, 219, 0.4);
+     border-radius: 7px;
+     border: none;
+     font-family: 'Poppins';
+     font-style: normal;
+     font-weight: 500;
+     font-size: 12px;
+     line-height: 110%;
+     letter-spacing: 1px;
+     color: #FFFFFF;
+ }
+
+ .Schedule .accordion-body .Cancel {
+     background: none;
+     border: 1px solid rgba(113, 59, 219, 0.74);
+     box-shadow: 0px 11px 34px -5px rgba(113, 59, 219, 0.4);
+     border-radius: 7px;
+     color: #713BDB;
+ }
+
+ .Schedule .accordion-button {
+     padding: 12px 26px 15px 26px;
+ }
+
+ .Schedule .missing {
+     border-color: rgba(255, 200, 200, 0.79) !important;
+ }
+
+ .Schedule .missing .collapsed {
+     background: unset !important;
+     border-radius: unset !important;
+ }
+
+ .Schedule .missing .accordion-body {
+     background: rgba(255, 200, 200, 0.79);
+     /* border-bottom-left-radius: 12px;
+     border-bottom-right-radius: 12px; */
+ }
+
+ .Schedule .missing span {
+     color: #E65A66;
+ }
+
+ .Schedule .missing i {
+     background-color: unset !important;
+     color: #ee5765;
+     box-shadow: 0px 4px 8px rgb(238 87 101 / 51%);
+     border: 1px solid;
+ }
+
+ .Schedule .missing button {
+     background: #EE5765;
+     box-shadow: 0px 11px 34px -5px #FCCFD3;
+ }
+
+ .Schedule .missing .Cancel {
+     border: 1px solid #EE5765;
+     box-shadow: 0px 11px 34px -5px rgba(113, 59, 219, 0.4);
+     color: #E65A66;
+ }
+
+ .Laboratory {
+     height: 100%;
+     background: #F2ECFF;
+     border: 1px solid rgba(113, 59, 219, 0.19);
+     box-shadow: 0px 16px 34px -6px rgba(113, 59, 219, 0.19);
+     border-radius: 10px;
+     padding: 11px 9px 39px 9px;
+     position: relative;
+ }
+
+ .LaboratoryTest {
+     width: 100%;
+     height: 100%;
+     background: rgba(255, 255, 255, 0.79);
+     border: 1px solid rgba(174, 140, 239, 0.54);
+     box-shadow: 0px 12px 53px -24px rgba(134, 87, 226, 0.63);
+     border-radius: 12px;
+     padding: 25px 14px 67px 14px;
+ }
+
+ .LaboratoryTest h6 {
+     font-family: 'Poppins';
+     font-style: normal;
+     font-weight: 700;
+     font-size: 18px;
+     line-height: 110%;
+     color: #3E3C3C;
+ }
+
+ .LaboratoryTest input {
+     background: rgba(255, 255, 255, 0.79);
+     border: 1px solid rgba(218, 218, 218, 0.46);
+     border-radius: 12px;
+     font-family: 'Inter';
+     font-style: normal;
+     font-weight: 500;
+     font-size: 12px;
+     line-height: 15px;
+ }
+
+ .LaboratoryTest label {
+     font-family: 'Inter';
+     font-style: normal;
+     font-weight: 500;
+     font-size: 12px;
+     line-height: 15px;
+     color: rgba(105, 102, 102, 0.74);
+     padding: 20px 13px;
+ }
+
+ .LaboratoryTest .form-control:focus {
+     box-shadow: unset;
+     border-color: rgba(174, 140, 239, 0.54);
+ }
+
+ .LaboratoryTest #DateFilter .ui-slider-handle {
+     width: 20px;
+     height: 20px;
+     top: -6px;
+ }
+
+ .LaboratoryTest #DateFilter .range-bar {
+     height: 11px;
+ }
+
+ .LaboratoryTest #DateFilter .price-range-slider {
+     padding: 5px 0px 26px 12px;
+ }
+
+ .LaboratoryTest .LaboratoryTestlist {
+     width: 100%;
+     background: #F6F7FF;
+     box-shadow: 0px 4px 5px rgba(113, 59, 219, 0.12);
+     border-radius: 12px;
+     margin-top: 10px;
+     padding: 3px 3px 90px 3px;
+ }
+
+ .LaboratoryTest .LaboratoryTestlist .byList {
+     display: flex;
+     border-bottom: 1px solid rgba(113, 59, 219, 0.37);
+     padding: 13px 8px;
+     height: 79px;
+     align-items: center;
+ }
+
+ .LaboratoryTest .LaboratoryTestlist .byList h3 {
+     font-family: 'Poppins';
+     font-style: normal;
+     font-weight: 700;
+     font-size: 16px;
+     line-height: 110%;
+     color: #404040;
+ }
+
+ .LaboratoryTest .LaboratoryTestlist .byList p {
+     font-family: 'Poppins';
+     font-style: normal;
+     font-weight: 400;
+     font-size: 12px;
+     line-height: 110%;
+     color: #545050;
+     margin: 0;
+ }
+
+ .LaboratoryTest .LaboratoryTestlist .byList span {
+     font-family: 'Poppins';
+     font-style: normal;
+     font-weight: 600;
+     font-size: 12px;
+     line-height: 110%;
+     color: #713BDB;
+     padding-right: 6px;
+ }
+
+ .LaboratoryTest .LaboratoryTestlist .byList i {
+     background: #713BDB;
+     padding: 2px 6px;
+     color: #fff;
+     border-radius: 50px;
+     font-size: 15px;
+     cursor: pointer;
+ }
+
+ .LaboratoryTest .LaboratoryTestlist .byList .listname {
+     width: 60%;
+ }
+
+ .LaboratoryTest .LaboratoryTestlist .byList .listdate {
+     width: 40%;
+     display: flex;
+     align-items: center;
+     justify-content: flex-end;
+ }
+
+ .LaboratoryTest .PhysicianTestlist {
+     background: rgba(255, 244, 219, 0.79) !important;
+     box-shadow: 0px 4px 5px rgb(113 59 219 / 12%) !important;
+ }
+
+ .LaboratoryTest .PhysicianTestlist span {
+     color: #D19811 !important;
+ }
+
+ .LaboratoryTest .PhysicianTestlist i {
+     background: #E7A814 !important;
+ }
+
+ .LaboratoryTest .PhysicianTestlist .byList {
+     border-bottom: 1px solid rgba(237, 183, 56, 0.62) !important;
+ }
+
+ .Laboratory .close {
+     position: absolute;
+     top: -23px;
+     right: -7px;
+     cursor: pointer;
+ }
+
+ .Laboratory .close i {
+     color: #F81414;
+     font-size: 34px;
+ }
+
+ .dualOpen {
+     width: 21px;
+     height: 21px;
+     background: #FFFFFF;
+     box-shadow: 0px 12px 53px -24px rgb(134 87 226 / 63%);
+     border-radius: 3px;
+     display: block;
+     cursor: pointer;
+     margin: auto;
+     margin-top: 19px;
+ }
+
+ /* @media (min-width: 768px) {
+    .col-md-1 {
+        flex: 0 0 auto;
+        width: 6%;
+    }
+
+    .col-md-11 {
+        flex: 0 0 auto;
+        width: 94%;
+    }
+} */
+
+ #MyHealthReport ::ng-deep .ngx-slider .ngx-slider-bar {
+     left: 0;
+     z-index: 1;
+     height: 14px !important;
+     width: 100%;
+     background: rgba(59, 104, 219, 0.21) !important;
+     box-shadow: 0px 4px 4px rgb(59 104 219 / 11%);
+     border-radius: 8px !important;
+ }
+
+ #MyHealthReport ::ng-deep .ngx-slider .ngx-slider-pointer {
+     z-index: 3 !important;
+     border-radius: 25px !important;
+     top: -0.52em !important;
+     cursor: pointer !important;
+     width: 28px !important;
+     height: 28px !important;
+     background: #FFFFFF !important;
+     border: 1px solid #3B68DB !important;
+     box-shadow: 0px 4px 4px rgb(59 104 219 / 20%) !important;
+ }
+
+ #MyHealthReport ::ng-deep .ngx-slider .ngx-slider-pointer:after {
+     display: none;
+ }
+
+ #MyHealthReport ::ng-deep .ngx-slider .ngx-slider-selection {
+     z-index: 2;
+     background: #3B68DB !important;
+     border-radius: 8px !important;
+ }
+
+ #MyHealthReport ::ng-deep .ngx-slider .ngx-slider-bubble {
+     border: none !important;
+     margin: 0px 0 3px 0 !important;
+     outline: none !important;
+     font-family: 'Inter' !important;
+     font-style: normal !important;
+     font-weight: 600 !important;
+     font-size: 12px !important;
+     line-height: 15px !important;
+     color: #3B68DB !important;
+ }
+
+ #MyHealthReport ::ng-deep .ngx-slider {
+     margin: 35px 0 30px !important;
+ }
+
+ .Schedule i {
+     background-color: #713BDB;
+     box-shadow: 0px 4px 8px rgba(113, 59, 219, 0.51);
+     border-radius: 50px;
+     width: 24px;
+     height: 24px;
+     color: #ffff;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     font-size: 14px;
+ }
+
+ .noRecords {
+     margin-left: 6.5% !important;
+     margin: 5%;
+     margin-bottom: 7%;
+ }
+
+ #MyHealthReport .modal {
+     display: block;
+     position: fixed;
+     padding-top: 73px;
+     left: 0;
+     top: 0;
+     width: 100%;
+     height: 100%;
+     overflow: auto;
+     background-color: rgb(0, 0, 0);
+     background-color: rgba(0, 0, 0, 0.4);
+ }
+
+ #MyHealthReport .modal-content {
+     background-color: #fefefe;
+     margin: auto;
+     padding: 26px 30px 35px 30px;
+     border: 1px solid #888;
+     width: 28%;
+ }
+
+ #MyHealthReport .modal-content h2 {
+     font-family: 'Poppins';
+     font-style: normal;
+     font-weight: 700;
+     font-size: 26px;
+     line-height: 50px;
+     color: #434242;
+ }
+
+ #MyHealthReport .modal-content input[type="text"] {
+     width: 100%;
+     height: 80px;
+     left: 266px;
+     top: 388px;
+     background: rgba(255, 255, 255, 0.79);
+     border: 2px solid rgba(174, 140, 239, 0.54);
+     box-shadow: 0px 12px 53px -24px rgb(134 87 226 / 63%);
+     border-radius: 12px;
+     padding: 15px;
+     margin-bottom: 10px;
+     outline: none;
+ }
+
+ #MyHealthReport .modal-content textarea {
+     width: 100%;
+     height: 169px;
+     left: 267px;
+     top: 573px;
+     background: rgba(255, 255, 255, 0.79);
+     border: 2px solid rgba(174, 140, 239, 0.54);
+     box-shadow: 0px 12px 53px -24px rgb(134 87 226 / 63%);
+     border-radius: 12px;
+     padding: 15px;
+     outline: none;
+     margin-bottom: 4px;
+ }
+
+ #MyHealthReport .modal-content select {
+     width: 100%;
+     height: 80px;
+     left: 830px;
+     top: 573px;
+     background: rgba(255, 255, 255, 0.79);
+     border: 2px solid rgba(174, 140, 239, 0.54);
+     box-shadow: 0px 12px 53px -24px rgb(134 87 226 / 63%);
+     border-radius: 12px;
+     padding: 15px;
+     outline: none;
+     margin-bottom: 10px;
+     color: rgba(113, 59, 219, 0.51);
+ }
+
+ #MyHealthReport .modal-content .Address-Type {
+     width: 100%;
+     height: 80px;
+     top: 388px;
+     padding: 30px;
+     margin-bottom: 10px;
+ }
+
+ #MyHealthReport .modal-content .Address-Type input[type="radio"] {
+     margin-left: 30px;
+     background: #FFFFFF;
+     border: 1px solid #AE88F9;
+     box-shadow: 0px 4px 9px rgba(191, 161, 250, 0.58);
+     outline: none;
+     cursor: pointer;
+ }
+
+ #MyHealthReport .close {
+     color: #aaaaaa;
+     float: right;
+     font-size: 28px;
+     font-weight: bold;
+ }
+
+ #MyHealthReport .close i {
+     float: right;
+     font-size: 20px;
+ }
+
+ #MyHealthReport .close:hover,
+ #MyHealthReport .close:focus {
+     color: #000;
+     text-decoration: none;
+     cursor: pointer;
+ }
+
+ #MyHealthReport .modal-content ::placeholder {
+     color: rgba(113, 59, 219, 0.51);
+ }
+
+ #confirmModal .twoBtn button {
+     padding: 12px 14px;
+     margin: 0px 12px;
+     background: #713BDB;
+     box-shadow: 0px 11px 34px -5px rgba(113, 59, 219, 0.4);
+     border-radius: 7px;
+     border: none;
+     font-family: 'Poppins';
+     font-style: normal;
+     font-weight: 600;
+     font-size: 12px;
+     line-height: 110%;
+     color: #FFFFFF;
+ }
+
+ #confirmModal .popup {
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     height: 80%;
+ }
+
+ #confirmModal .Cancel {
+     background: #878585 !important;
+ }
+
+ #confirmModal .popup p {
+     font-family: 'Poppins';
+     font-style: normal;
+     font-weight: 600;
+     font-size: 14px;
+     line-height: 122.5%;
+     color: #404040;
+     margin-bottom: 22px;
+ }
+
+ #confirmModal .close {
+     position: absolute;
+     background: #fff;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     border-radius: 50px;
+     width: 25px;
+     height: 25px;
+     right: -10px;
+     top: -8px;
+     cursor: pointer;
+     border: 1px solid rgba(113, 59, 219, .8);
+ }
+
+ #confirmModal .close i {
+     color: #713BDB;
+     font-size: 14px !important;
+     line-height: 0;
+ }
+
+ .modal {
+     display: block;
+     position: fixed;
+     left: 0;
+     top: 0;
+     width: 100%;
+     height: 100%;
+     overflow: auto;
+     background-color: rgb(26 24 42 / 78%);
+ }
+
+ #myModal::-webkit-scrollbar {
+     width: 0px;
+ }
+
+ .contentDisplay i.bi.bi-pencil-square {
+     margin-bottom: 0.75rem;
+     margin-left: 0.5rem;
+     color: #7137d6;
+     font-size: 25px;
+ }
+
+ @media (min-width: 768px) {
+     .col-md-2 {
+         flex: 0 0 auto;
+         width: 14%;
+     }
+ }
+
+ .Temperature h6 {
+     font-size: 18px !important;
+ }
+
+ .mainText {
+     margin-top: 8px;
+     border-top: 1px solid #f8e2af80;
+ }
+
+ .mainText label {
+     font-weight: 500 !important;
+     font-size: 16px !important;
+     color: #606060 !important;
+ }
+
+ .mainText h6 {
+     font-weight: 700 !important;
+     font-size: 16px !important;
+ }
+
+ .hideBox {
+     margin-top: -77px;
+     height: 77px;
+     width: 100%;
+     transition: 0.3s;
+     background: #fff8e5;
+     border-radius: 5px;
+     padding: 9px 5px;
+     box-shadow: 3px 3px 3px #00000029;
+     border: 1px solid #ddbf79;
+     display: flex;
+     align-items: center;
+     transform: translateY(-109px);
+     opacity: 0;
+     position: relative;
+ }
+
+ .Show {
+     transform: translateY(0px) !important;
+     opacity: 1 !important;
+ }
+
+ .hideBox .bi-x-lg {
+     font-size: 12px !important;
+     position: absolute;
+     top: 2px;
+     right: 5px;
+     color: #646464;
+     cursor: pointer;
+ }
+
+ .bi-info-lg {
+     position: absolute;
+     bottom: 10px;
+     right: 10px;
+     font-size: 12px !important;
+     color: #713bdb;
+     cursor: pointer;
+ }
+
+ td label {
+     font-size: 12px !important;
+ }

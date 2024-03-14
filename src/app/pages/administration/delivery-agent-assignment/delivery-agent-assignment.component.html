@@ -1,0 +1,100 @@
+<router-outlet>
+    <ngx-spinner bdColor="rgba(51,51,51,0.8)" size="medium" color="#fff" type="ball-circus" [fullScreen]="true">
+    </ngx-spinner>
+</router-outlet>
+<div id="Delivery-agent" class="tabcontent p-4">
+    <form [formGroup]="orderAssignmentForm">
+        <div class="content">
+            <div class="box d-flex justify-content-around header">
+                <div
+                    *ngFor=" let deliveryZoneWorkLoad of deliveryZoneWorkLoadList().value; let deliveryZoneWorkLoadIndex = index">
+                    <button (click)="chooseDeliveryZone(deliveryZoneWorkLoadIndex)"
+                        [ngClass]="{active:deliveryZoneWorkLoadIndex === orderAssignmentForm.value.activeDeliveryZoneWorkLoadIndex}">{{deliveryZoneWorkLoad.deliveryZone}}</button>
+                </div>
+            </div>
+            <div formArrayName="deliveryZoneWorkLoadList">
+                <div
+                    *ngFor=" let deliveryZoneWorkLoad of deliveryZoneWorkLoadList().controls let deliveryZoneWorkLoadIndex = index">
+                    <ng-container formGroupName="{{deliveryZoneWorkLoadIndex}}"
+                        *ngIf="deliveryZoneWorkLoadIndex === orderAssignmentForm.value.activeDeliveryZoneWorkLoadIndex">
+                        <div class="tables box ">
+                            <div formArrayName="orderDeliveryInformationList">
+                                <div class="row topHeader">
+                                    <div class="col-md-1">
+                                        <h2>SL No.</h2>
+                                    </div>
+                                    <div class="col-md-2 p-0">
+                                        <h2>Order ID</h2>
+                                    </div>
+                                    <div class="col-md-2" style="width: 12.5%;">
+                                        <h2>Order Date</h2>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <h2>Delivery Address</h2>
+                                    </div>
+                                    <div class="col-md-2" style="width: 20.8%">
+                                        <h2>Landmark</h2>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <h2>Delivery Agent</h2>
+                                    </div>
+                                </div>
+                                <div class="row DataPrint"
+                                    *ngFor=" let orderDeliveryInformation of orderDeliveryInformationList(deliveryZoneWorkLoadIndex).controls; let orderDeliveryInformationIndex = index">
+                                    <ng-container formGroupName="{{orderDeliveryInformationIndex}}">
+                                        <div class="col-md-1">
+                                            <div class="d-flex align-items-center">
+                                                <input type="checkbox" class="mx-1" formControlName="check"
+                                                    style="width: 18px; height: 18px;">
+                                                <p>{{orderDeliveryInformationIndex+1}}</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2 p-0">
+                                            <p>{{orderDeliveryInformation.value.packageID}}
+                                            </p>
+                                        </div>
+                                        <div class="col-md-2" style="width: 12.5%;">
+                                            <p>{{dateFormat(orderDeliveryInformation.value.orderDate)|date:'dd-MMM-yyyy'}}
+                                            </p>
+                                        </div>
+                                        <div class="col-md-3 Address">
+                                            <p>
+                                                {{orderDeliveryInformation.value.orderDeliveryAddress?.customerAddress}}
+                                            </p>
+                                            <p>{{getCustomerAddress(orderDeliveryInformation.value.orderDeliveryAddress)}}
+                                            </p>
+                                        </div>
+                                        <div class="col-md-2" style="width: 20.8%">
+                                            <p>{{orderDeliveryInformation.value.orderDeliveryAddress?.customerLandmark}}
+                                            </p>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <p>{{getDeliveryAgentUserName(orderDeliveryInformation.value.deliveryAgentUserCode,deliveryZoneWorkLoadIndex)}}
+                                            </p>
+                                        </div>
+                                    </ng-container>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="content mt-2">
+                            <div class="Deliverys" formArrayName="deliveryAgentAssignmentList">
+                                <div [ngClass]="{red:deliveryAgentAssignment.value.orderAssignmentType === 'H',yellow:deliveryAgentAssignment.value.orderAssignmentType === 'M',green:deliveryAgentAssignment.value.orderAssignmentType === 'L'}"
+                                    *ngFor="let deliveryAgentAssignment of deliveryAgentAssignmentList(deliveryZoneWorkLoadIndex).controls; let deliveryAgentAssignmentIndex = index">
+                                    <div class="DeliveryMan"
+                                        (click)="chooseDeleveryPerson(deliveryZoneWorkLoadIndex,deliveryAgentAssignmentIndex)"
+                                        [ngClass]="{activeDelivery:deliveryAgentAssignment.value.assigne}">
+                                        <p>{{deliveryAgentAssignment.value.deliveryAgentName}}</p>
+                                        <i class="bi-bicycle"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </ng-container>
+                </div>
+            </div>
+            <div class="text-end w-100">
+                <button (click)="save()">Assign</button>
+            </div>
+        </div>
+    </form>
+</div>

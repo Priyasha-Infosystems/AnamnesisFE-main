@@ -1,0 +1,184 @@
+.content {
+    background: #F2ECFF;
+    border: 1px solid rgba(113, 59, 219, 0.19);
+    box-shadow: 0px 16px 34px rgb(113 59 219 / 19%);
+    border-radius: 5px;
+    margin-bottom: 15px;
+    padding: 10px 15px;
+}
+
+.box {
+    background: #ffffff;
+    border: 1px solid #845ef78f;
+    box-shadow: 2px 4px 6px 0px rgb(113 59 219 / 19%);
+    border-radius: 5px;
+    margin-bottom: 15px;
+    padding: 10px 15px;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+}
+
+.input {
+    width: 100%;
+    background: #F2ECFF;
+    border: 1px solid rgba(113, 59, 219, 0.18);
+    box-shadow: 0px 11px 34px -5px rgb(113 59 219 / 21%);
+    border-radius: 6px;
+    padding: 0.1rem 0.875rem 9px 0.875rem;
+    outline: none;
+    min-height: 48px;
+}
+
+p {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 107%;
+    color: #713BDB;
+    margin-bottom: 4px;
+}
+
+.input label {
+    color: #a07ce8 !important;
+    width: 100%;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 107%;
+}
+
+.table label {
+    color: #713BDB !important;
+    width: 100%;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 107%;
+    background: none;
+}
+
+input,
+select {
+    color: #31156b !important;
+}
+
+.content select {
+    outline: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+/* to change arrow fill color, add %23 infront of hex color */
+.content select {
+    background: url("../../../../assets/images/selectArrow.png") no-repeat;
+    background-color: #F2ECFF;
+    font-family: 'Poppins';
+    transition: 0.3s;
+    width: 100%;
+    border: 1px solid rgba(113, 59, 219, 0.18);
+    border-radius: 6px;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 107%;
+    outline: none;
+    padding: 0px 15px 0px 7px !important;
+    min-height: unset;
+    height: 35px;
+}
+
+.content select {
+    background-size: 9px;
+    background-position: calc(100% - 3px) 12px;
+    background-repeat: no-repeat;
+}
+
+.col-md-1 i {
+    color: #713BDB;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+.noData {
+    min-height: 30rem;
+}
+
+.noData p {
+    color: rgb(255, 3, 3);
+}
+
+.save button {
+    width: 108px;
+    height: 42px;
+    text-align: center;
+    background: #713BDB;
+    border: none;
+    box-shadow: 0px 12px 53px -24px rgba(134, 87, 226, 0.63);
+    border-radius: 5px;
+    font-weight: 500;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-size: 13px;
+    line-height: 110%;
+    color: #fff;
+    margin-left: 10px;
+    outline: none;
+}
+
+.labels {
+    background-color: #713bdb82;
+    padding: 6px 10px;
+    border-radius: 3px;
+}
+
+.labels label {
+    color: #000 !important;
+    font-weight: 600;
+    font-size: 12px !important;
+}
+
+.Alltable {
+    border: 1px solid #b79bed;
+    border-radius: 5px 5px 5px 5px;
+    box-shadow: 1px 4px 13px -5px #0000008c;
+    margin-bottom: 20px;
+}
+
+
+.inputPart p {
+    width: 100%;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 107%;
+    color: #713BDB;
+    outline: none;
+    margin: 0px;
+}
+
+.col-md-5,
+.col-md-3,
+.col-md-4 {
+    background-color: unset;
+}
+
+.inputPart {
+    width: 100%;
+    background: #F2ECFF;
+    border-bottom: none;
+    border-radius: 0;
+    padding: 0.1rem 0.875rem 9px 0.875rem;
+    outline: none;
+    min-height: 48px;
+}
+
+.errorDiv {
+    font-size: 12px;
+    font-weight: 600;
+    color: red;
+    margin: -4px 11px 2px 30px;
+    height: 17px;
+    padding-top: 2px;
+}

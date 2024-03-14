@@ -1,0 +1,205 @@
+<div id="myProfile" class="Information">
+    <div class="row">
+        <div class="col-md-12 mb-3">
+            <div class="d-flex align-items-center">
+                <span>{{ profileIndex }}</span>
+                <h1>Personal Information</h1>
+            </div>
+        </div>
+    </div>
+    <form [formGroup]="personalInformationParam" role="form">
+        <div class="row">
+            <div class="col-md-4 my-2">
+                <div class="form-floating ">
+                    <input formControlName="firstName" autofocus="" type="text" name="firstName"
+                        placeholder="First Name" id="firstName" class="form-control">
+                    <label for="firstName">First Name</label>
+                    <div class="regErrorDiv">
+                        <app-validation-message [control]="personalInformationParam.controls['firstName']"
+                            [messages]="errorMessage.firstName">
+                        </app-validation-message>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 my-2">
+                <div class="form-floating ">
+                    <input formControlName="middleName" autofocus="" type="text" name="MiddleName"
+                        placeholder="Middle Name" id="middleName" class="form-control">
+                    <label for="middleName">Middle Name</label>
+                </div>
+                <div class="regErrorDiv">
+                    <app-validation-message [control]="personalInformationParam.controls['middleName']"
+                        [messages]="errorMessage.middleName">
+                    </app-validation-message>
+                </div>
+            </div>
+            <div class="col-md-4 my-2">
+                <div class="form-floating ">
+                    <input formControlName="lastName" autofocus="" type="text" name="LastName" placeholder="Last Name"
+                        id="lastName" class="form-control">
+                    <label for="lastName">Last Name</label>
+                </div>
+                <div class="regErrorDiv">
+                    <app-validation-message [control]="personalInformationParam.controls['lastName']"
+                        [messages]="errorMessage.lastName">
+                    </app-validation-message>
+                </div>
+            </div>
+            <div class="col-md-4 my-2">
+                <div class="form-floating ">
+                    <input formControlName="displayName" autofocus="" type="text" name="DisplayName"
+                        placeholder="Display Name" id="displayName" class="form-control">
+                    <label for="displayName">Display Name</label>
+                </div>
+                <div class="regErrorDiv">
+                    <app-validation-message [control]="personalInformationParam.controls['displayName']"
+                        [messages]="errorMessage.displayName">
+                    </app-validation-message>
+                </div>
+            </div>
+            <div class="col-md-4 my-2">
+                <div class="form-floating date selectBox selectedFormValue">
+                    <input formControlName="dateOfBirth" type="date" max="{{ currentDate | date:'yyyy-MM-dd' }}"
+                        name="dateOfBirth" placeholder="Date Of Birth" required aria-required="true"
+                        class="form-control" id="date" />
+                    <label for="displayName">Date Of Birth</label>
+                </div>
+                <div class="regErrorDiv">
+                    <app-validation-message [control]="personalInformationParam.controls['dateOfBirth']"
+                        [messages]="errorMessage.dateOfBirth">
+                    </app-validation-message>
+                </div>
+            </div>
+            <div class="col-md-4 my-2">
+                <div class="form-floating selectBox "
+                    [ngClass]="{selectedFormValue : personalInformationParam.value.gender}">
+                    <select [ngClass]="personalInformationParam.value.gender !== '' ? 'addColor' : 'selectvalue'"
+                        class="form-select" name="gender" id="floatingSelect gender"
+                        aria-label="Floating label select example" formControlName="gender">
+                        <option selected value="" class="d-none"></option>
+                        <option value="M">Male</option>
+                        <option value="F">Female</option>
+                        <option value="O">Others</option>
+                    </select>
+                    <label for="Gender">Gender</label>
+                </div>
+                <div class="regErrorDiv">
+                    <app-validation-message [control]="personalInformationParam.controls['gender']"
+                        [messages]="errorMessage.gender">
+                    </app-validation-message>
+                </div>
+            </div>
+            <div class="col-md-4 my-2">
+                <div class="form-floating selectBox"
+                    [ngClass]="{selectedFormValue : personalInformationParam.value.maritialStatus}">
+                    <select formControlName="maritialStatus"
+                        [ngClass]="personalInformationParam.value.maritialStatus !== '' ? 'addColor' : ''"
+                        name="maritialStatus" class="form-select" id="floatingSelect maritialStatus"
+                        aria-label="Floating label select example">
+                        <!-- <option value="" disabled></option> -->
+                        <option value="S">Single</option>
+                        <option value="M">Married</option>
+                        <option value="O">Others</option>
+                    </select>
+                    <label for="floatingSelect">Maritial Status</label>
+                </div>
+                <div class="regErrorDiv">
+                    <app-validation-message [control]="personalInformationParam.controls['maritialStatus']"
+                        [messages]="errorMessage.maritialStatus">
+                    </app-validation-message>
+                </div>
+            </div>
+            <div class="col-md-4 my-2">
+                <div class="form-floating ">
+                    <input formControlName="emailID" autofocus="" email type="text" name="Emailid" placeholder="Emailid"
+                        id="emailID" class="form-control">
+                    <label for="emailID">Email Id</label>
+                </div>
+                <div class="regErrorDiv">
+                    <app-validation-message [control]="personalInformationParam.controls['emailID']"
+                        [messages]="errorMessage.emailID">
+                    </app-validation-message>
+                </div>
+            </div>
+            <div *ngIf="showProfileAddress" class="col-md-12">
+                <ng-container formGroupName="addressDetails">
+                    <div class="row">
+                        <div class="col-md-8 my-2">
+                            <div class="form-floating">
+                                <textarea formControlName="customerAddress" autofocus="" name="Street" id="Street"
+                                    cols="50" rows="20" placeholder="Street" class="form-control"></textarea>
+                                <label for="Street">Address</label>
+                                <div class="regErrorDiv">
+                                    <app-validation-message [control]="getControl('customerAddress')"
+                                        [messages]="errorMessage.customerAddress">
+                                    </app-validation-message>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="row">
+                                <div class="col-md-12 my-2">
+                                    <div class="form-floating">
+                                        <input type="text" formControlName="customerCity" name="City" placeholder="City"
+                                            class="form-control">
+                                        <label for="Laboratory">City</label>
+                                    </div>
+                                    <div class="regErrorDiv">
+                                        <app-validation-message [control]="getControl('customerCity')"
+                                            [messages]="errorMessage.customerCity">
+                                        </app-validation-message>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 my-2">
+                                    <div class="form-floating selectBox" [ngClass]="{selectedFormValue:getControl('customerStateName').value}" >
+                                        <select name="State" id="floatingSelect State"
+                                            aria-label="Floating label select example"
+                                            formControlName="customerStateName" class="form-select">
+                                            <option [value]="state.stateName" *ngFor="let state of stateList">{{
+                                                state.stateName }}
+                                            </option>
+                                        </select>
+                                        <label for="floatingSelect">State/Union Territory</label>
+                                    </div>
+                                    <div class="regErrorDiv">
+                                        <app-validation-message [control]="getControl('customerStateName')"
+                                            [messages]="errorMessage.customerStateName">
+                                        </app-validation-message>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 my-2">
+                                    <div class="form-floating">
+                                        <input formControlName="customerPincode" type="text" name="Pincode"
+                                            placeholder="Pincode" class="form-control">
+                                        <label for="Laboratory">Pincode</label>
+                                    </div>
+                                    <div class="regErrorDiv">
+                                        <app-validation-message [control]="getControl('customerPincode')"
+                                            [messages]="errorMessage.customerPincode">
+                                        </app-validation-message>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-8 my-2">
+                            <div class="form-floating">
+                                <input type="text" formControlName="customerLandmark" name="customerLandmark"
+                                    placeholder="Landmark" class="form-control">
+                                <label for="Laboratory">Landmark</label>
+                            </div>
+                            <div class="regErrorDiv">
+                                <app-validation-message [control]="getControl('customerLandmark')"
+                                    [messages]="errorMessage.customerLandmark">
+                                </app-validation-message>
+                            </div>
+                        </div>
+                    </div>
+                </ng-container>
+            </div>
+            <div class="col-md-12 my-2 text-end">
+                <input (click)="save(personalInformationParam.value, personalInformationParam.valid)" type="submit"
+                    value="Save & Continue">
+            </div>
+        </div>
+    </form>
+</div>

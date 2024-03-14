@@ -1,0 +1,114 @@
+<div id="myProfile" class="Information General">
+    <div class="row">
+        <div class="col-md-12 mb-3">
+            <div class="d-flex align-items-center">
+                <span>{{ profileIndex }}</span>
+                <h1>General Information</h1>
+            </div>
+        </div>
+    </div>
+    <form [formGroup]="generalInformationParam" role="form">
+        <div class="row">
+            <div class="col-md-3 my-2">
+                <div class="form-floating ">
+                    <input formControlName="HT" autofocus="" type="text" name="Height" placeholder="Height" id="HT"
+                        class="form-control" (keyup)="onValueChanges('HT')">
+                    <label for="HT">Height(cm)</label>
+                </div>
+                <div class="regErrorDiv">
+                    <app-validation-message [control]="generalInformationParam.controls['HT']"
+                        [messages]="errorMessage.HT">
+                    </app-validation-message>
+                </div>
+            </div>
+            <div class="col-md-3 my-2">
+                <div class="form-floating ">
+                    <input formControlName="WT" autofocus="" type="text" name="Weight" placeholder="Weight" id="WT"
+                        class="form-control" (keyup)="onValueChanges('WT')">
+                    <label for="WT">Weight(Kgs)</label>
+                </div>
+                <div class="regErrorDiv">
+                    <app-validation-message [control]="generalInformationParam.controls['WT']"
+                        [messages]="errorMessage.WT">
+                    </app-validation-message>
+                </div>
+            </div>
+            <div class="col-md-3 my-2">
+                <div class="form-floating selectBox" [ngClass]="{ selectedFormValue : generalInformationParam.value.BG }">
+                    <select formControlName="BG" class="form-select" id="BG" aria-label="Floating label select example"
+                    (change)="onValueChanges('BG')">
+                        <option value="A+">A+</option>
+                        <option value="A-">A-</option>
+                        <option value="B+">B+</option>
+                        <option value="O+">O+</option>
+                        <option value="O-">O-</option>
+                        <option value="AB+">AB+</option>
+                        <option value="AB-">AB-</option>
+                    </select>
+                    <label for="BG">Blood Group</label>
+                </div>
+            </div>
+            <div class="col-md-3 my-2">
+                <div class="form-floating selectBox" [ngClass]="{ selectedFormValue : generalInformationParam.value.DB }">
+                    <select formControlName="DB" class="form-select" id="Db" aria-label="Floating label select example"
+                    (change)="onValueChanges('DB')">
+                        <option selected class="d-none"></option>
+                        <option value="N">No</option>
+                        <option value="Y">Yes</option>
+                    </select>
+                    <label for="Db">Diabetic</label>
+                </div>
+            </div>
+            <div class="col-md-3 my-2">
+                <div class="form-floating selectBox" [ngClass]="{ selectedFormValue : generalInformationParam.value.TH }">
+                    <select formControlName="TH" class="form-select" id="Th" aria-label="Floating label select example"
+                    (change)="onValueChanges('TH')">
+                        <option selected class="d-none"></option>
+                        <option value="N">Normal</option>
+                        <option value="H">Hypo</option>
+                        <option value="R">Hyper</option>
+                    </select>
+                    <label for="Th">Thyroid</label>
+                </div>
+            </div>
+            <div class="col-md-3 my-2">
+                <div class="form-floating selectBox" [ngClass]="{ selectedFormValue : generalInformationParam.value.SM }">
+                    <select formControlName="SM" class="form-select" id="SM" aria-label="Floating label select example"
+                    (change)="onValueChanges('SM')">
+                        <option selected class="d-none"></option>
+                        <option value="N">No</option>
+                        <option value="Y">Yes</option>
+                    </select>
+                    <label for="SM">Smoking</label>
+                </div>
+            </div>
+            <div class="col-md-3 my-2">
+                <div class="form-floating selectBox" [ngClass]="{ selectedFormValue : generalInformationParam.value.AL }">
+                    <select formControlName="AL" class="form-select" id="AL" aria-label="Floating label select example"
+                    (change)="onValueChanges('AL')">
+                        <option selected class="d-none"></option>
+                        <option value="N">No</option>
+                        <option value="Y">Yes</option>
+                    </select>
+                    <label for="AL">Alcohol</label>
+                </div>
+            </div>
+            <div class="col-md-3 my-2">
+                <div class="form-floating selectBox" [ngClass]="{ selectedFormValue : generalInformationParam.value.BP }">
+                    <select formControlName="BP" class="form-select" id="BP" aria-label="Floating label select example"
+                    (change)="onValueChanges('BP')">
+                        <option selected class="d-none"></option>
+                        <option value="H">High</option>
+                        <option value="N">Normal</option>
+                        <option value="L">Low</option>
+                    </select>
+                    <label for="BP">Blood Pressure</label>
+                </div>
+            </div>
+            <div class="col-md-12 my-2 text-end mt-4">
+                <input (click)="save(generalInformationParam.value, generalInformationParam.valid)" type="submit"
+                    value="Save & Continue">
+            </div>
+        </div>
+    </form>
+</div>

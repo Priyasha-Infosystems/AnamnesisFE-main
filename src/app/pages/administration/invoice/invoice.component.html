@@ -1,0 +1,437 @@
+<router-outlet>
+    <ngx-spinner bdColor="rgba(51,51,51,0.8)" size="medium" color="#fff" type="ball-circus" [fullScreen]="true">
+    </ngx-spinner>
+</router-outlet>
+<div class="tabcontent">
+    <div class="display">
+        <form [formGroup]="currentRequisitionNoSelectForm">
+            <div class="row m-auto w-100 justify-content-between">
+                <div class="col-md-4">
+                    <div class="form-floating firstinput"
+                        *ngIf="currentRequisitionNoSelectForm.getRawValue().currentRequisitionNo">
+                        <input type="text" class="form-control" id="floatingInput" placeholder="Invoice Reference No"
+                            formControlName="invoiceReferenceNumber">
+                        <label for="floatingInput"> Invoice Reference No</label>
+                        <div class="validation-div errorDiv">
+                            <app-validation-message
+                                [control]="currentRequisitionNoSelectForm.controls['invoiceReferenceNumber']"
+                                [messages]="errorMessage.invoiceReferenceNumber">
+                            </app-validation-message>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="row">
+                        <div class="col-md-4 d-flex align-items-center">
+                            <label for="">Requisition No</label>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="selectorBox w-100">
+                                <div class="form-floating selectBox"
+                                    [ngClass]="{selectedFormValue : currentRequisitionNoSelectForm.getRawValue().currentRequisitionNo?true:false}">
+                                    <select name="Current Status" id="CurrentStatus"
+                                        formControlName="currentRequisitionNo">
+                                        <option value=""></option>
+                                        <option [value]="requisition.requisitionNumber"
+                                            *ngFor="let requisition of requisitionNoList">
+                                            {{requisition.requisitionNumber}}</option>
+                                    </select>
+                                    <label for="Laboratory">Requisition No</label>
+                                    <i class="bi-x-circle-fill deleteName" (click)="unselectRequisitionNo()"
+                                        *ngIf="currentRequisitionNoSelectForm.getRawValue().currentRequisitionNo"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <div class="header"
+            *ngIf="pharmacyDetails && this.currentRequisitionNoSelectForm.getRawValue().currentRequisitionNo">
+            <div class="medicalName">
+                <div class="row">
+                    <div class="col-md-7">
+                        <h2>{{pharmacyDetails.diagnosticCentreName}}</h2>
+                        <h6 [innerHTML]="pharmacyDetails.addressLine |addressLine" *ngIf="pharmacyDetails.addressLine">
+                        </h6>
+                        <h6>{{pharmacyDetails.landmark}}</h6>
+                        <h6 *ngIf="pharmacyDetails.city">{{pharmacyDetails.city}}, {{pharmacyDetails.stateName}} -
+                            {{pharmacyDetails.pincode}}</h6>
+                    </div>
+                    <div class="col-md-5">
+                        <div class="d-flex mb-2">
+                            <i class="bi-telephone-fill"></i>
+                            <div class="px-1">
+                                <label for="phone-No">Phone No</label>
+                                <h6>{{pharmacyDetails.contactNo}}</h6>
+                            </div>
+                        </div>
+                        <div class="d-flex">
+                            <i class="bi-clock-fill"></i>
+                            <div class="px-1">
+                                <label for="Hours">Hours</label>
+                                <h6 *ngIf="pharmacyDetails.openHourEnd"><b>{{getOpeningDays(pharmacyDetails.openDays)}}
+                                    </b>
+                                    {{pharmacyDetails.openHourStart?utilityService.timeFormateInto12Hours(pharmacyDetails.openHourStart):''}}
+                                    -
+                                    {{pharmacyDetails.openHourEnd?utilityService.timeFormateInto12Hours(pharmacyDetails.openHourEnd):''}}
+                                </h6>
+                            </div>
+                        </div>
+                        <div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <form [formGroup]="itemSupplierForm">
+            <div class="MedicineModify" *ngIf="this.currentRequisitionNoSelectForm.getRawValue().currentRequisitionNo">
+                <div class="row w-100 m-auto">
+                    <div class="col-md-1"></div>
+                    <div class="col-md-5"><label for="">Medicine Name</label></div>
+                    <div class="col-md-1"><label for=""></label></div>
+                    <div class="col-md-1"><label for="">Quantity</label></div>
+                    <div class="col-md-2 text-center"><label for="">MRP</label></div>
+                    <div class="col-md-2 text-center"><label for="">Total Price</label></div>
+                </div>
+                <div formArrayName="requisitionLineEntryList"
+                    [ngClass]="{disable:itemSupplierForm.get('invoiceID')?.value}">
+                    <div
+                        *ngFor="let requisitionLineEntry of requisitionLineEntryList().controls; let requisitionLineEntryIndex= index">
+                        <ng-container formGroupName="{{requisitionLineEntryIndex}}">
+                            <div class="row w-100 m-auto">
+                                <div class="col-md-12 medicineRow ">
+                                    <div class="row">
+                                        <div class="col-md-1 d-flex align-items-center justify-content-start">
+                                            <i (click)="requisitionLineEntryOpen(requisitionLineEntryIndex)" class=""
+                                                [ngClass]="requisitionLineEntry.value.isOpen ? 'bi-dash-circle-fill' : 'bi-plus-circle-fill'"></i>
+                                        </div>
+                                        <div class="col-md-5">
+                                            <p>{{requisitionLineEntry.value.itemName}}</p>
+                                        </div>
+                                        <div class="col-md-1">
+                                            <!-- <p>{{requisitionLineEntry.value.itemCode}}</p> -->
+                                        </div>
+                                        <div class="col-md-1">
+                                            <p>{{requisitionLineEntry.value.itemQuantity}}</p>
+                                        </div>
+                                        <div class="col-md-2 rupee text-center">
+                                            <i class="fa fa-rupee"></i>
+                                            <p>{{(!invoiceLineEntryList(requisitionLineEntryIndex).length?requisitionLineEntry.value.itemMRP:invoiceLineEntryList(requisitionLineEntryIndex).getRawValue()[0].itemMRP
+                                                &&
+                                                invoiceLineEntryList(requisitionLineEntryIndex).getRawValue()[0].itemQuantity?getItemMrp(requisitionLineEntryIndex):requisitionLineEntry.value.itemMRP)|truncPrice}}
+                                            </p>
+                                        </div>
+                                        <div class="col-md-2 rupee">
+                                            <i class="fa fa-rupee"></i>
+                                            <p>{{(!invoiceLineEntryList(requisitionLineEntryIndex).length?requisitionLineEntry.value.totalPrice:invoiceLineEntryList(requisitionLineEntryIndex).getRawValue()[0].itemMRP
+                                                &&
+                                                invoiceLineEntryList(requisitionLineEntryIndex).getRawValue()[0].itemQuantity?getItemTotalMrp(requisitionLineEntryIndex):requisitionLineEntry.value.totalPrice)|truncPrice}}
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12"
+                                    [ngClass]="requisitionLineEntry.value.isOpen ? 'allInvoiceOpen' : 'allInvoice'">
+                                    <div class="row">
+                                        <div class="col-md-12 text-center">
+                                            <div class="row position-relative mb-2 mt-3"
+                                                *ngIf="!requisitionLineEntry.value.isInvoiceEntry">
+                                                <div class="col-md-1 text-center">
+                                                    <div class="linePortrait"></div>
+                                                </div>
+                                                <div class="col-md-11">
+                                                    <div class="clickHare">
+                                                        <h6>To Add invoice Entry,
+                                                            <a
+                                                                (click)="addAnotherInvoiceLineEntry(requisitionLineEntryIndex)">
+                                                                Click Here</a>
+                                                        </h6>
+                                                    </div>
+                                                    <div class="validation-div errorDiv">
+                                                        <small
+                                                            class="requisitionLineEntry">{{requisitionLineEntry.value.errMsg}}</small>
+                                                    </div>
+                                                </div>
+                                                <div class="lineLandSpace"></div>
+                                            </div>
+                                        </div>
+                                        <div class="mt-3" *ngIf="requisitionLineEntry.value.isInvoiceEntry">
+                                            <div formArrayName="invoiceLineEntryList">
+                                                <div class="col-md-12 mb-2 invoiceLineEntryList"
+                                                    *ngFor="let invoiceLineEntry of invoiceLineEntryList(requisitionLineEntryIndex).controls let invoiceLineEntryIndex = index">
+                                                    <ng-container formGroupName="{{invoiceLineEntryIndex}}">
+                                                        <div class="row position-relative">
+                                                            <div class="col-md-1 text-center">
+                                                                <div class="linePortrait"></div>
+                                                            </div>
+                                                            <div class="col-md-2 p-0">
+                                                                <div class="form-floating">
+                                                                    <input type="text" class="form-control"
+                                                                        id="floatingInput" placeholder="batch Number"
+                                                                        formControlName="batchNo"
+                                                                        (keyup)="itemValueChange(requisitionLineEntryIndex,invoiceLineEntryIndex,'batchNo',invoiceLineEntry.getRawValue().batchNo)">
+                                                                    <label for="floatingInput">Batch Number</label>
+                                                                    <div class="validation-div errorDiv">
+                                                                        <app-validation-message
+                                                                            *ngIf="!invoiceLineEntry.getRawValue().errMsg"
+                                                                            [control]="invoiceLineEntrycontroll(requisitionLineEntryIndex,invoiceLineEntryIndex,'batchNo')"
+                                                                            [messages]="errorMessage.batchNo">
+                                                                        </app-validation-message>
+                                                                        <small
+                                                                            *ngIf="invoiceLineEntry.getRawValue().errMsg">{{invoiceLineEntry.getRawValue().errMsg}}</small>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-2 " style="width: 8%;">
+                                                                <div class="form-floating Dateinput">
+                                                                    <div class=" d-flex align-items-center">
+                                                                        <input type="text" name="" id=""
+                                                                            formControlName="expMonth" placeholder="MM"
+                                                                            (keyup)="itemValueChange(requisitionLineEntryIndex,invoiceLineEntryIndex,'expMonth',invoiceLineEntry.getRawValue().expMonth,$event)">
+                                                                        /<input type="text" name="" id=""
+                                                                            formControlName="expYear" placeholder="YY"
+                                                                            (keyup)="itemValueChange(requisitionLineEntryIndex,invoiceLineEntryIndex,'expYear',invoiceLineEntry.getRawValue().expYear,$event)">
+                                                                    </div>
+                                                                    <div class="validation-div errorDiv">
+                                                                        <app-validation-message
+                                                                            [control]="invoiceLineEntrycontroll(requisitionLineEntryIndex,invoiceLineEntryIndex,'expiryDate')"
+                                                                            [messages]="errorMessage.expiryDate">
+                                                                        </app-validation-message>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-2 p-0" style="width:7.5%">
+                                                                <div class="form-floating">
+                                                                    <input type="text" class="form-control"
+                                                                        id="floatingInput" placeholder="Quantity"
+                                                                        formControlName="itemQuantity"
+                                                                        (keyup)="itemValueChange(requisitionLineEntryIndex,invoiceLineEntryIndex,'itemQuantity',invoiceLineEntry.getRawValue().itemQuantity)">
+                                                                    <label for="floatingInput">Quantity</label>
+                                                                    <div class="validation-div errorDiv">
+                                                                        <app-validation-message
+                                                                            [control]="invoiceLineEntrycontroll(requisitionLineEntryIndex,invoiceLineEntryIndex,'itemQuantity')"
+                                                                            [messages]="errorMessage.itemQuantity">
+                                                                        </app-validation-message>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-2" style="width: 9.5%;">
+                                                                <div class="form-floating">
+                                                                    <input type="text" class="form-control"
+                                                                        id="floatingInput" placeholder="HSN"
+                                                                        formControlName="hsnCode"
+                                                                        (keyup)="itemValueChange(requisitionLineEntryIndex,invoiceLineEntryIndex,'hsnCode',invoiceLineEntry.getRawValue().hsnCode)">
+                                                                    <label for="floatingInput">HSN Code</label>
+                                                                    <div class="validation-div errorDiv">
+                                                                        <app-validation-message
+                                                                            [control]="invoiceLineEntrycontroll(requisitionLineEntryIndex,invoiceLineEntryIndex,'hsnCode')"
+                                                                            [messages]="errorMessage.hsnCode">
+                                                                        </app-validation-message>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-1 p-0 text-center">
+                                                                <div class="form-floating">
+                                                                    <input type="text" class="form-control"
+                                                                        id="floatingInput" placeholder="GST %"
+                                                                        formControlName="gstPercentage"
+                                                                        (keyup)="itemValueChange(requisitionLineEntryIndex,invoiceLineEntryIndex,'gstPercentage',invoiceLineEntry.getRawValue().gstPercentage)">
+                                                                    <label for="floatingInput">GST %</label>
+                                                                    <div class="validation-div errorDiv">
+                                                                        <app-validation-message
+                                                                            [control]="invoiceLineEntrycontroll(requisitionLineEntryIndex,invoiceLineEntryIndex,'gstPercentage')"
+                                                                            [messages]="errorMessage.gstPercentage">
+                                                                        </app-validation-message>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-1 p-0 text-center"
+                                                                style="margin-left: 4px;">
+                                                                <div class="form-floating">
+                                                                    <input type="text" class="form-control"
+                                                                        id="floatingInput" placeholder="Cess %"
+                                                                        formControlName="cessPercentage"
+                                                                        (keyup)="itemValueChange(requisitionLineEntryIndex,invoiceLineEntryIndex,'cessPercentage',invoiceLineEntry.getRawValue().cessPercentage)">
+                                                                    <label for="floatingInput">Cess %</label>
+                                                                    <div class="validation-div errorDiv">
+                                                                        <app-validation-message
+                                                                            [control]="invoiceLineEntrycontroll(requisitionLineEntryIndex,invoiceLineEntryIndex,'cessPercentage')"
+                                                                            [messages]="errorMessage.cessPercentage">
+                                                                        </app-validation-message>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-2">
+                                                                <div class="form-floating">
+                                                                    <input type="text" class="form-control"
+                                                                        id="floatingInput" placeholder="MRP"
+                                                                        formControlName="itemMRP"
+                                                                        (keyup)="itemValueChange(requisitionLineEntryIndex,invoiceLineEntryIndex,'itemMRP',invoiceLineEntry.getRawValue().itemMRP)">
+                                                                    <label for="floatingInput">MRP</label>
+                                                                    <div class="validation-div errorDiv">
+                                                                        <app-validation-message
+                                                                            [control]="invoiceLineEntrycontroll(requisitionLineEntryIndex,invoiceLineEntryIndex,'itemMRP')"
+                                                                            [messages]="errorMessage.itemMRP">
+                                                                        </app-validation-message>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-2 p-0">
+                                                                <div class="form-floating">
+                                                                    <input type="text" class="form-control"
+                                                                        id="floatingInput" placeholder="Discount Amount"
+                                                                        formControlName="discountAmount"
+                                                                        (keyup)="itemValueChange(requisitionLineEntryIndex,invoiceLineEntryIndex,'discountAmount',invoiceLineEntry.getRawValue().discountAmount)">
+                                                                    <label for="floatingInput">Discount Amount</label>
+                                                                    <div class="validation-div errorDiv">
+                                                                        <app-validation-message
+                                                                            [control]="invoiceLineEntrycontroll(requisitionLineEntryIndex,invoiceLineEntryIndex,'discountAmount')"
+                                                                            [messages]="errorMessage.discountAmount">
+                                                                        </app-validation-message>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-2 ">
+                                                                <div class="form-floating">
+                                                                    <input type="text" class="form-control"
+                                                                        id="floatingInput" placeholder="Tax Amount"
+                                                                        formControlName="taxAmount"
+                                                                        (keyup)="itemValueChange(requisitionLineEntryIndex,invoiceLineEntryIndex,'taxAmount',invoiceLineEntry.getRawValue().taxAmount)">
+                                                                    <label for="floatingInput">Tax Amount</label>
+                                                                    <div class="validation-div errorDiv">
+                                                                        <app-validation-message
+                                                                            [control]="invoiceLineEntrycontroll(requisitionLineEntryIndex,invoiceLineEntryIndex,'taxAmount')"
+                                                                            [messages]="errorMessage.taxAmount">
+                                                                        </app-validation-message>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="col-md-2 p-0 d-flex align-items-center justify-content-around"
+                                                                style="width: 13.3%;">
+                                                                <div class="form-floating">
+                                                                    <div class="input"
+                                                                        [ngClass]="{filltotalPrice:invoiceLineEntry.getRawValue().totalPrice}">
+                                                                        <label for="floatingInput">Total Price</label>
+                                                                        <p
+                                                                            *ngIf="invoiceLineEntry.getRawValue().totalPrice">
+                                                                            {{invoiceLineEntry.getRawValue().totalPrice|truncPrice}}
+                                                                        </p>
+                                                                    </div>
+                                                                    <div class="validation-div errorDiv">
+                                                                    </div>
+                                                                </div>
+                                                                <i class="bi-plus-circle-dotted"
+                                                                    (click)="addAnotherInvoiceLineEntry(requisitionLineEntryIndex)"></i>
+                                                                <i class="bi-arrow-repeat"
+                                                                    (click)="clearInvoiceLineEntry(requisitionLineEntryIndex,invoiceLineEntryIndex)"></i>
+                                                            </div>
+                                                            <div class="lineLandSpace"></div>
+                                                        </div>
+                                                    </ng-container>
+                                                </div>
+                                                <small
+                                                    class="requisitionLineEntry">{{requisitionLineEntry.value.errMsg}}</small>
+                                                <div class="noItem "
+                                                    *ngIf="!invoiceLineEntryList(requisitionLineEntryIndex).length">
+                                                    <p>No item is there</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </ng-container>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <form [formGroup]="documentForm">
+            <div class="px-3 py-2 d-flex justify-content-between"
+                *ngIf="this.currentRequisitionNoSelectForm.getRawValue().currentRequisitionNo">
+                <div>
+                    <div class="" *ngIf="getDocumentControllerValue('document')">
+                        <div *ngIf="!getDocumentControllerValue('error')" class="Dr-list">
+                            <div class="d-flex" *ngIf="!getDocumentControllerValue('preSaveInd')">
+                                <img src="../../../assets/images/PrescriptionPink.png">
+                                <div class="d-flex flex-column">
+                                    <h6>{{getDocumentControllerValue('fileName')}}</h6>
+                                    <i class="bi-x" (click)="removeItem(false)"></i>
+                                    <div id="Progress_Status">
+                                        <div *ngIf="getDocumentControllerValue('progress')" id="text">
+                                            {{ getDocumentControllerValue('progress') }} %
+                                        </div>
+                                        <div [style.width]="getDocumentControllerValue('progress') + '%'"
+                                            id="myprogressBar">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class=" d-flex align-items-center" *ngIf="getDocumentControllerValue('preSaveInd')">
+                                <img src="../../../assets/images/PrescriptionPink.png">
+                                <div class="d-flex flex-column">
+                                    <h6>{{currentRequisitionNoSelectForm.getRawValue().invoiceReferenceNumber}}</h6>
+                                    <i class="bi-check" (click)="removeItem(true)"></i>
+                                    <div id="Progress_Status">
+                                        <div *ngIf="getDocumentControllerValue('progress')" id="text">
+                                            {{ getDocumentControllerValue('progress') }} %
+                                        </div>
+                                        <div [style.width]="getDocumentControllerValue('progress') + '%'"
+                                            id="myprogressBar">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div *ngIf="getDocumentControllerValue('error')">
+                            <div class="Dr-list">
+                                <img src="../../../assets/images/PrescriptionPink.png">
+                                <h6>{{getDocumentControllerValue('fileName')}}</h6>
+                                <i class="bi-x" (click)="removeItem(false)"></i>
+                            </div>
+                        </div>
+                        <div class="error" *ngIf="getDocumentControllerValue('error')">
+                            <small>Couldn't upload the file</small>
+                        </div>
+                    </div>
+                    <div class=" Dr-list massage-box inputDefaultColor"
+                        *ngIf="!getDocumentControllerValue('document') && !currentRequisitionNoSelectForm.getRawValue().invoiceReferenceNumber"
+                        (click)="fileErrorShow()" style="height: 52px;">
+                        <label for="file" style="position: absolute;">File chosen</label>
+                    </div>
+                    <div class=" Dr-list massage-box inputDefaultColor"
+                        *ngIf="!getDocumentControllerValue('document') && currentRequisitionNoSelectForm.getRawValue().invoiceReferenceNumber">
+                        <input formControlName="fileSource" type="file" name="document" id="document"
+                            required="required" multiple="multiple" (change)="onFileUpload($event)" />
+                        <label for="file" style="position: absolute;">File chosen</label>
+                    </div>
+                    <div class="error">
+                        <small>{{getDocumentControllerValue('fileError')}}</small>
+                        <small>{{getDocumentControllerValue('fileError')}}</small>
+                    </div>
+                    <div class="regErrorDiv">
+                        <app-validation-message [control]="getDocumentController('fileID')"
+                            [messages]="errorMessage.fileID">
+                        </app-validation-message>
+                    </div>
+                </div>
+                <div class="finalinput filltotalPrice">
+                    <label for="floatingInput">Total Item Quantity</label>
+                    <p>{{getAllItemCount()}}</p>
+                </div>
+                <div class="finalinput filltotalPrice">
+                    <label for="floatingInput">Total Price</label>
+                    <p><i class="fa fa-rupee"></i>{{getAllitemPrice() |truncPrice}}</p>
+                </div>
+                <button class="Save" (click)="save()"
+                    [ngClass]="{disable:itemSupplierForm.get('invoiceID')?.value}">Save</button>
+                <button class="Save" (click)="StayLogin()">Stay Login</button>
+            </div>
+        </form>
+        <div class="noItem " *ngIf="!this.currentRequisitionNoSelectForm.getRawValue().currentRequisitionNo">
+            <p>Please select requisition number</p>
+        </div>
+    </div>
+</div>

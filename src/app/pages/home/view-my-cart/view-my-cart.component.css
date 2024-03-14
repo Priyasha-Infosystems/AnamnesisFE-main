@@ -1,0 +1,1972 @@
+/* ---------------------------------------  ViewCart Content start  ------------------------------------------------ */
+#ViewCart {
+  padding: 0px 12px;
+}
+
+#ViewCart h3 {
+  font-size: 22px;
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 700;
+  line-height: 33px;
+  color: #434242;
+}
+
+#ViewCart .content {
+  width: 100%;
+  height: 100%;
+  background: #FFFFFF;
+  border-radius: 22px;
+  padding: 11px 20px 50px 20px;
+}
+
+#ViewCart .content .PrescribedPhysician {
+  width: 100%;
+  background: #fff4e6;
+  border: 1px solid #e67700;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+#ViewCart .content .prescriptionMedicine {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding: 8px 20px;
+  justify-content: space-between;
+  background: #e67700;
+}
+
+#ViewCart .content .prescriptionMedicine label {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 800;
+  font-size: 15px;
+  line-height: 110%;
+  color: #fff;
+  letter-spacing: 0.8px;
+}
+
+#ViewCart .content .prescriptionMedicine p {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 110%;
+  color: #fff;
+  margin: 0;
+}
+
+#ViewCart .content .prescriptionMedicine span {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 110%;
+  color: #fff;
+  letter-spacing: 0.5px;
+}
+
+#ViewCart .content .PrescribedPhysician .medicineBox {
+  width: 100%;
+  padding: 17px 20px;
+  position: relative;
+  border-bottom: 1px solid rgba(113, 59, 219, 0.19);
+}
+
+#ViewCart .content .PrescribedPhysician .LabTest {
+  background: #edf2ff;
+  border: 1px solid #5c7cfa !important;
+  border-radius: 6px;
+  width: 100%;
+  padding: 17px 12px;
+  position: relative;
+  margin: 10px 0px;
+}
+
+#ViewCart .content .PrescribedPhysician .LabTest .DeliveryDate label {
+  color: #364fc7 !important;
+}
+
+#ViewCart .content .PrescribedPhysician .LabTest .DeliveryDate p {
+  color: #364fc7 !important;
+  font-weight: 600 !important;
+}
+
+#ViewCart .content .PrescribedPhysician .medicineBox:last-child {
+  border: none;
+}
+
+#ViewCart .content .PrescribedPhysician .medicineBox .remove img {
+  max-width: 23px;
+  margin-left: 6px;
+  cursor: pointer;
+}
+
+#ViewCart .content .PrescribedPhysician .medicineBox .Name {
+  cursor: pointer;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+#ViewCart .content .PrescribedPhysician .medicineBox h6 {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1.3;
+  color: #000000;
+  margin: 0;
+  padding-right: 5px;
+}
+
+#ViewCart .content .PrescribedPhysician .medicineBox p {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 10px;
+  line-height: 1.3;
+  color: #3F3F3F;
+  margin: 0;
+}
+
+#ViewCart .content .PrescribedPhysician .medicineBox h5 {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1;
+  color: #3F3F3F;
+  margin: 0;
+}
+
+#ViewCart .content .PrescribedPhysician .medicineBox .DeliveryDate label,
+#ViewCart .content .PrescribedPhysician .medicineBox .DeliveryDate p {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1;
+  color: #713BDB;
+  padding-right: 3px;
+}
+
+#ViewCart .content .PrescribedPhysician .medicineBox .qty label {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 1;
+  color: #000000;
+}
+
+#ViewCart .content .PrescribedPhysician .medicineBox .qty p {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 110%;
+  color: #000000;
+  margin-left: 5px;
+}
+
+#ViewCart .content .PrescribedPhysician .medicineBox .qtyPrice label,
+#ViewCart .content .PrescribedPhysician .medicineBox .qtyPrice p {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 1;
+  padding-left: 5px;
+  margin-top: 12px;
+}
+
+#ViewCart .content .PrescribedPhysician .medicineBox .DayBox {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  width: 41px;
+  height: 41px;
+  background: #FFFFFF;
+  border: 1px solid #713bdb38;
+  box-shadow: 0px 16px 34px -6px rgb(113 59 219 / 22%);
+  border-radius: 6px;
+  position: relative;
+  margin-left: 40px;
+  align-items: flex-end;
+}
+
+#ViewCart .content .PrescribedPhysician .medicineBox .qtyLab .DayBox {
+  height: 20px;
+}
+
+#ViewCart .content .PrescribedPhysician .medicineBox .noOfQty {
+  width: 41px;
+  height: 41px;
+  position: absolute;
+  left: -22px;
+  top: -1px;
+  background: #713BDB;
+  border: 1px solid #713BDB;
+  box-shadow: 0px 4px 9px rgb(134 87 226 / 63%);
+  border-radius: 50px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#ViewCart .content .PrescribedPhysician .medicineBox .noOfQty h2 i {
+  color: #fff;
+  font-size: 20px;
+}
+
+.noOfQty i {
+  color: #fff;
+  font-size: 50px !important;
+}
+
+#ViewCart .content .PrescribedPhysician .medicineBox .DayBox h2 {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1;
+  color: #FFFFFF;
+  text-align: left;
+  margin: 0;
+}
+
+#ViewCart .content .PrescribedPhysician .DayBox i {
+  color: #713BDB;
+  font-size: 11px;
+  padding: 0px 8px;
+  cursor: pointer;
+}
+
+#ViewCart .content .AddOrder {
+  background: none;
+  border: none;
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 110%;
+  color: #364fc7;
+  float: right;
+  z-index: 2;
+}
+
+#ViewCart .content .nameDetails {
+  width: 100%;
+  border-radius: 10px;
+  padding: 0px 0px;
+}
+
+#ViewCart .content .nameDetails label {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 13px;
+  line-height: 1.3;
+  color: #484747;
+}
+
+#ViewCart .content .nameDetails p {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 1.3;
+  color: #3F3F3F;
+  margin: 0;
+}
+
+#ViewCart .content .PricingDetails {
+  width: 100%;
+  height: 100%;
+  padding: 1px 4px;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+#ViewCart .content .PricingDetails h2 {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 15px;
+  line-height: 110%;
+  color: #484747;
+}
+
+#ViewCart .content .PricingDetails label {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: normal;
+  color: #3F3F3F;
+}
+
+.couponCode {
+  font-family: 'Proza Libre';
+  font-style: italic;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 110%;
+  color: #000;
+  margin: 0;
+}
+
+.quantityErr {
+  position: absolute;
+  background-color: white;
+  border-radius: 4px;
+  height: 34px;
+  padding: 5px;
+  top: 4px;
+  right: 58px;
+  display: flex;
+  justify-content: center;
+  border: 2px solid #b9b9b929;
+  box-shadow: 1px #e11111;
+  box-shadow: 6px 5px 10px #74747445;
+}
+
+.quantityErr p {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 11px;
+  color: #e74607 !important;
+  margin: 0;
+  height: 12px;
+  padding-top: 5px;
+}
+
+#ViewCart .content .PricingDetails .bottom-border {
+  border-top: 1px solid rgb(113 59 219 / 59%);
+  border-bottom: 1px solid rgb(113 59 219 / 10%);
+}
+
+#ViewCart .content .PricingDetails .margin-top td {
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgb(113 59 219 / 10%);
+}
+
+#ViewCart .content .PricingDetails .margin-bottom td {
+  padding-top: 12px;
+}
+
+#ViewCart .content .PricingDetails .bottom-border td {
+  padding: 12px 0px;
+}
+
+/* .middleLine{
+  position: absolute;
+  border: 0;
+  height: 1px;
+  background: #c3a0e3;
+  z-index: 10;
+  width: 50%;
+  left: 0;
+  right: 0;
+  top: 49px;
+  margin: auto;
+} */
+
+#ViewCart .content .PricingDetails table {
+  width: 100%;
+}
+
+#ViewCart .content .PricingDetails h2 {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 15px;
+  line-height: 110%;
+  color: #484747;
+  margin: 0;
+  text-align: right;
+}
+
+#ViewCart .content .PricingDetails span {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 15px;
+  line-height: 110%;
+  text-align: right;
+  color: #1DAC34;
+  display: block;
+}
+
+#ViewCart .content .PricingDetails .Discount i {
+  color: #1DAC34;
+}
+
+#ViewCart .content .PricingDetails .Total {
+  width: auto;
+  padding: 22px 9px;
+  margin: 0px 12px 4px 12px;
+  border-radius: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#ViewCart .content .PricingDetails .Total h3 {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 110%;
+  color: #484747;
+  margin: 0;
+}
+
+#ViewCart .content .PricingDetails .Total .total {
+  line-height: 0;
+}
+
+#ViewCart .content .PricingDetails .Total .saving h4 {
+  font-size: 16px;
+  text-align: right;
+  color: #1DAC34;
+}
+
+#ViewCart .content .PricingDetails .Total .saving h5,
+#ViewCart .content .PricingDetails .Total .saving i {
+  color: #1DAC34;
+}
+
+#ViewCart .content .PricingDetails .Total h5 {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 110%;
+  color: #484747;
+  margin: 0;
+}
+
+#ViewCart .content .PricingDetails .Total h4 {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 110%;
+  color: #484747;
+  margin: 0;
+  text-align: right;
+}
+
+#ViewCart .content .PricingDetails .Total {
+  width: auto;
+  padding: 15px 9px;
+  margin: 0px;
+  border-radius: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#ViewCart .Savings {
+  border: none !important;
+  box-shadow: unset !important;
+  background: none !important;
+  border-radius: 8px !important;
+  padding: 9px 9px !important;
+}
+
+#ViewCart .CouponCode {
+  width: auto;
+  background: #F8F8FF;
+  box-shadow: 0px 4px 5px rgba(113, 59, 219, 0.12);
+  border-radius: 5px;
+  margin: 10px 12px 4px 12px;
+  padding: 14px 9px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+#ViewCart .content .PricingDetails .CouponCode label {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 110%;
+  color: #713BDB;
+}
+
+#ViewCart .content .PricingDetails .CouponCode input {
+  background: #fff;
+  border: none;
+  padding: 10px;
+  font-family: 'Proza Libre';
+  font-style: italic;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 110%;
+  color: #4A4A4A;
+  outline: none;
+}
+
+#ViewCart .content .PricingDetails .CouponCode i {
+  font-size: 24px;
+  color: #713BDB;
+}
+
+#ViewCart .content .Proceed {
+  padding: 16px 50px;
+  background: #713BDB;
+  box-shadow: 0px 12px 53px -24px rgba(134, 87, 226, 0.63);
+  border-radius: 6px;
+  border: none;
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 110%;
+  color: #FEFEFF;
+  margin: 0px 0px 12px 0px;
+  letter-spacing: 1px;
+}
+
+#ViewCart .content .MedicinePrescription {
+  width: 100%;
+  background: #dbe4ff;
+  border: 1px solid #5c7cfa;
+  border-radius: 10px;
+  margin-top: 21px;
+}
+
+#ViewCart .content .MedicinePrescription h2 {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 110%;
+  color: #434242;
+  margin: 0;
+  margin: 20px 20px 0px 20px;
+}
+
+#ViewCart .content .MedicinePrescription .medicineBox label {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 800;
+  font-size: 15px;
+  line-height: 110%;
+  letter-spacing: 0.8px;
+}
+
+#ViewCart .content .MedicinePrescription .medicineBox p {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 110%;
+  color: #fff;
+  margin: 0;
+}
+
+#ViewCart .content .MedicinePrescription .medicineBox span {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 110%;
+  color: #fff;
+  letter-spacing: 0.5px;
+}
+
+#ViewCart .content .MedicinePrescription .medicineBox {
+  width: 100%;
+  padding: 17px 20px;
+  position: relative;
+  border-bottom: 1px solid rgba(113, 59, 219, 0.19);
+}
+
+#ViewCart .content .MedicinePrescription .medicineBox:last-child {
+  border: none;
+}
+
+#ViewCart .content .MedicinePrescription .medicineBox .remove img {
+  max-width: 23px;
+  margin-left: 6px;
+  cursor: pointer;
+}
+
+#ViewCart .content .MedicinePrescription .medicineBox .Name {
+  cursor: pointer;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  width: 350px;
+}
+
+#ViewCart .content .MedicinePrescription .medicineBox h6 {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1.3;
+  color: #000000;
+  margin: 0;
+  padding-right: 5px;
+}
+
+#ViewCart .content .MedicinePrescription .medicineBox p {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 11px;
+  color: #3F3F3F;
+  margin: 0;
+}
+
+#ViewCart .content .MedicinePrescription .medicineBox h5 {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1;
+  color: #3F3F3F;
+  margin: 0;
+}
+
+#ViewCart .content .MedicinePrescription .medicineBox .DeliveryDate label,
+#ViewCart .content .MedicinePrescription .medicineBox .DeliveryDate p {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1;
+  color: #364fc7;
+  padding-right: 3px;
+  padding-top: 2px;
+}
+
+#ViewCart .content .MedicinePrescription .medicineBox .DeliveryDate p {
+  font-weight: 700 !important;
+}
+
+#ViewCart .content .MedicinePrescription .medicineBox .qty label {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 11px;
+  line-height: 1;
+  color: #000000;
+}
+
+#ViewCart .content .MedicinePrescription .medicineBox .qty p {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 11px;
+  line-height: 110%;
+  color: #000000;
+  margin-left: 5px;
+}
+
+#ViewCart .content .MedicinePrescription .medicineBox .qtyPrice label,
+#ViewCart .content .MedicinePrescription .medicineBox .qtyPrice p {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 1;
+  padding-left: 5px;
+  margin-top: 12px;
+  color: #000;
+}
+
+#ViewCart .content .MedicinePrescription .medicineBox .DayBox {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  width: 41px;
+  height: 41px;
+  background: #FFFFFF;
+  border: 1px solid #713bdb38;
+  box-shadow: 0px 16px 34px -6px rgb(113 59 219 / 22%);
+  border-radius: 6px;
+  position: relative;
+  align-items: flex-end;
+}
+
+#ViewCart .content .MedicinePrescription .medicineBox .noOfQty {
+  width: 41px;
+  height: 41px;
+  position: absolute;
+  left: -19px;
+  top: -1px;
+  background: #713BDB;
+  border: 1px solid #713BDB;
+  box-shadow: 0px 4px 9px rgb(134 87 226 / 63%);
+  border-radius: 50px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#ViewCart .content .MedicinePrescription .medicineBox .DayBox h2 {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1;
+  color: #FFFFFF;
+  text-align: left;
+  margin: 0;
+}
+
+#ViewCart .content .MedicinePrescription .DayBox i {
+  color: #000;
+  font-size: 9px;
+  padding: 0px 4px;
+  cursor: pointer;
+}
+
+#ViewCart .content .MedicinePrescription .deletemed {
+  color: rgb(213 3 3) !important;
+  font-size: 12px;
+  margin-left: 5px;
+  cursor: pointer;
+}
+
+#ViewCart .content .MedicinePrescription label {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 127.5%;
+  color: #3F3F3F;
+  padding-right: 5px;
+}
+
+#ViewCart .content .MedicinePrescription .medicineBox h6 {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 13px;
+  line-height: 1.3;
+  color: #2C2C2C;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+#ViewCart .content .MedicinePrescription .medicineBox h3 {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 13px;
+  line-height: 1.3;
+  margin: 0;
+  color: #2C2C2C;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+#ViewCart .CollapsePrescribed .m-d.expand-list {
+  margin: 0;
+  padding: 0;
+}
+
+#ViewCart .CollapsePrescribed .Medicine {
+  background: #fff4e6 !important;
+  box-shadow: 8px 8px 11px rgb(217 72 15 / 36%) !important;
+  border: 1px solid #ff922b !important;
+}
+
+#ViewCart .CollapsePrescribed .Medicine h5 span {
+  color: #d9480f !important;
+}
+
+#ViewCart .CollapsePrescribed .Medicine .AddOrder {
+  color: #d9480f !important;
+}
+
+#ViewCart .CollapsePrescribed .Medicine .Amount b {
+  color: #d9480f !important;
+}
+
+#ViewCart .CollapsePrescribed .Medicine .open-close-icon i {
+  color: #d9480f !important;
+}
+
+#ViewCart .CollapsePrescribed .Medicine .MedicinePrescription {
+  background: #ffe8cc !important;
+  border: 1px solid #ff922b !important;
+}
+
+#ViewCart .CollapsePrescribed .Medicine .DeliveryDate label,
+#ViewCart .CollapsePrescribed .Medicine .DeliveryDate p {
+  color: #d9480f !important;
+}
+
+#ViewCart .CollapsePrescribed .Medicine .medicineBox .noOfQty {
+  background: #d9480f !important;
+  box-shadow: 8px 8px 11px rgb(235 164 0 / 36%) !important;
+  border: 1px solid #d9480f !important;
+}
+
+#ViewCart .CollapsePrescribed .Physician {
+  background: #f8f0fc !important;
+  box-shadow: 8px 8px 11px rgb(134 46 156 / 36%) !important;
+  border: 1px solid #cc5de8 !important;
+}
+
+#ViewCart .CollapsePrescribed .Physician h5 span {
+  color: #862e9c !important;
+}
+
+#ViewCart .CollapsePrescribed .Physician .AddOrder {
+  color: #862e9c !important;
+}
+
+#ViewCart .CollapsePrescribed .Physician .Amount b {
+  color: #862e9c !important;
+}
+
+#ViewCart .CollapsePrescribed .Physician .open-close-icon i {
+  color: #862e9c !important;
+}
+
+#ViewCart .CollapsePrescribed .Physician .MedicinePrescription {
+  background: #f3d9fa !important;
+  border: 1px solid #cc5de8 !important;
+}
+
+#ViewCart .CollapsePrescribed .Physician .DeliveryDate label,
+#ViewCart .CollapsePrescribed .Physician .DeliveryDate p {
+  color: #862e9c !important;
+}
+
+#ViewCart .CollapsePrescribed .Physician .medicineBox .noOfQty {
+  background: #862e9c !important;
+  box-shadow: 8px 8px 11px rgb(134 46 156 / 36%) !important;
+  border: 1px solid #cc5de8 !important;
+}
+
+#ViewCart .CollapsePrescribed .Physician .MedicinePrescription .medicineBox .DayBox {
+  height: 41px;
+  margin-bottom: 14px;
+}
+
+#ViewCart .CollapsePrescribed .Physician .MedicinePrescription .medicineBox .DayBox i {
+  color: #862e9c !important;
+}
+
+#ViewCart .CollapsePrescribed .healthcare {
+  background: #f4fce3 !important;
+  box-shadow: 8px 8px 11px rgb(92 148 13 / 36%) !important;
+  border: 1px solid #94d82d !important;
+}
+
+#ViewCart .CollapsePrescribed .healthcare h5 span {
+  color: #5c940d !important;
+}
+
+#ViewCart .CollapsePrescribed .healthcare .AddOrder {
+  color: #5c940d !important;
+}
+
+#ViewCart .CollapsePrescribed .healthcare .Amount b {
+  color: #5c940d !important;
+}
+
+#ViewCart .CollapsePrescribed .healthcare .open-close-icon i {
+  color: #5c940d !important;
+}
+
+#ViewCart .CollapsePrescribed .healthcare .MedicinePrescription {
+  background: #e9fac8 !important;
+  border: 1px solid #94d82d !important;
+}
+
+#ViewCart .CollapsePrescribed .healthcare .DeliveryDate label,
+#ViewCart .CollapsePrescribed .healthcare .DeliveryDate p {
+  color: #5c940d !important;
+}
+
+#ViewCart .CollapsePrescribed .healthcare .medicineBox .noOfQty {
+  background: #5c940d !important;
+  box-shadow: 8px 8px 11px rgb(92 148 13 / 36%) !important;
+  border: 1px solid #94d82d !important;
+}
+
+#ViewCart .CollapsePrescribed .Prescription {
+  background: #fff9db !important;
+  box-shadow: 8px 8px 11px rgb(230 119 0 / 36%) !important;
+  border: 1px solid #fcc419 !important;
+}
+
+#ViewCart .CollapsePrescribed .Prescription h5 span {
+  color: #d9480f !important;
+}
+
+#ViewCart .CollapsePrescribed .Prescription .AddOrder {
+  color: #e67700 !important;
+}
+
+#ViewCart .CollapsePrescribed .Prescription .Amount b {
+  color: #d9480f !important;
+}
+
+#ViewCart .CollapsePrescribed .Prescription .open-close-icon i {
+  color: #e67700 !important;
+}
+
+#ViewCart .CollapsePrescribed .Prescription .PrescribedPhysician .DayBox i {
+  color: #000;
+}
+
+#ViewCart .CollapsePrescribed .m-d.expand-list>li {
+  list-style-type: none;
+  padding: 20px 15px;
+  position: relative;
+  background: #edf2ff;
+  border: 1px solid #5c7cfa;
+  box-shadow: 8px 8px 11px rgb(54 79 199 / 36%);
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+#ViewCart .right .CollapsePrescribed .m-d.expand-list>li {
+  margin-bottom: 26px;
+}
+
+#ViewCart .CollapsePrescribed .m-d.expand-list>li label {
+  -webkit-user-select: none;
+  /* Safari */
+  -ms-user-select: none;
+  /* IE 10 and IE 11 */
+  user-select: none;
+  /* Standard syntax */
+}
+
+#ViewCart .CollapsePrescribed .m-d.expand-list>li label h5 {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 1.3;
+  color: #3a3a3a;
+  margin: 0;
+}
+
+#ViewCart .CollapsePrescribed .m-d.expand-list>li label h5 span {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 13px;
+  line-height: 1;
+  color: #364fc7;
+}
+
+#ViewCart .CollapsePrescribed .m-d.expand-list>li label .Amount label {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  color: #242222;
+}
+
+#ViewCart .CollapsePrescribed .m-d.expand-list>li label .Amount i {
+  font-size: 12px;
+  padding-left: 3px;
+}
+
+#ViewCart .CollapsePrescribed .m-d.expand-list>li label .Amount b {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 12px;
+  color: #364fc7;
+  margin-left: 3px;
+}
+
+#ViewCart .CollapsePrescribed .m-d.expand-list>li label .Amount b span {
+  color: #1DAC34;
+}
+
+#ViewCart .CollapsePrescribed .m-d label[class^="tabCollapse"]:hover {
+  cursor: pointer;
+}
+
+#ViewCart .CollapsePrescribed .m-d input {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+#ViewCart .CollapsePrescribed .m-d input[class^="tabCollapse"] {
+  width: 100%;
+  height: 23px;
+  position: absolute;
+  left: 0;
+  top: 19px;
+  z-index: 1;
+  outline: none;
+}
+
+#ViewCart .CollapsePrescribed .m-d input[class^="tabCollapse"]:hover {
+  cursor: pointer;
+}
+
+#ViewCart .CollapsePrescribed .m-d label[class^="tabCollapse"] {
+  font-weight: bold;
+}
+
+#ViewCart .CollapsePrescribed .m-d .contentCollapse {
+  height: auto;
+  max-height: 0;
+  overflow: hidden;
+  transform: translateY(6px);
+  transition: all 180ms ease-in-out 0ms;
+}
+
+#ViewCart .CollapsePrescribed .m-d li[data-md-content="100"] input[class^="tabCollapse"]:checked~.contentCollapse {
+  max-height: 100%;
+  transition: all 150ms ease-in-out 0ms;
+}
+
+#ViewCart .CollapsePrescribed .m-d li[data-md-content="200"] input[class^="tabCollapse"]:checked~.contentCollapse {
+  max-height: 100%;
+}
+
+#ViewCart .CollapsePrescribed .m-d li[data-md-content="300"] input[class^="tabCollapse"]:checked~.contentCollapse {
+  max-height: 100%;
+  transition: all 250ms ease-in-out 0ms;
+}
+
+#ViewCart .CollapsePrescribed .m-d li[data-md-content="400"] input[class^="tabCollapse"]:checked~.contentCollapse {
+  max-height: 100%;
+  transition: all 250ms ease-in-out 0ms;
+}
+
+#ViewCart .CollapsePrescribed .m-d li[data-md-content="500"] input[class^="tabCollapse"]:checked~.contentCollapse {
+  max-height: 100%;
+  transition: all 250ms ease-in-out 0ms;
+}
+
+#ViewCart .CollapsePrescribed .m-d li[data-md-content="600"] input[class^="tabCollapse"]:checked~.contentCollapse {
+  max-height: 100%;
+  transition: all 250ms ease-in-out 0ms;
+}
+
+#ViewCart .CollapsePrescribed .m-d li[data-md-content="700"] input[class^="tabCollapse"]:checked~.contentCollapse {
+  max-height: 100%;
+  transition: all 300ms ease-in-out 0ms;
+}
+
+#ViewCart .CollapsePrescribed .m-d li[data-md-content="800"] input[class^="tabCollapse"]:checked~.contentCollapse {
+  max-height: 100%;
+  transition: all 300ms ease-in-out 0ms;
+}
+
+#ViewCart .CollapsePrescribed .m-d li[data-md-content="900"] input[class^="tabCollapse"]:checked~.contentCollapse {
+  max-height: 100%;
+  transition: all 300ms ease-in-out 0ms;
+}
+
+#ViewCart .CollapsePrescribed .m-d li[data-md-content="1000"] input[class^="tabCollapse"]:checked~.contentCollapse {
+  max-height: 100%;
+  transition: all 350ms ease-in-out 0ms;
+}
+
+#ViewCart .CollapsePrescribed .m-d li[data-md-content=""] input[class^="tabCollapse"]:checked~.contentCollapse {
+  max-height: 100%;
+  transition: all 250ms ease-in-out 0ms;
+}
+
+#ViewCart .CollapsePrescribed .m-d input[class^="tabCollapse"]:checked~.contentCollapse {
+  margin-bottom: 20px;
+}
+
+#ViewCart .CollapsePrescribed .m-d .open-close-icon {
+  display: inline-block;
+  position: absolute;
+  right: 47px;
+  top: 6px;
+  transform: translatey(2px);
+}
+
+#ViewCart .CollapsePrescribed .m-d .open-close-icon i {
+  position: absolute;
+  left: 0;
+  color: #364fc7;
+  font-size: 28px;
+}
+
+#ViewCart .CollapsePrescribed .m-d .open-close-icon .bi-caret-up-fill {
+  transform: rotate(180deg);
+  transition: transform 150ms ease-in-out 0ms;
+}
+
+#ViewCart .CollapsePrescribed .m-d input[class^="tabCollapse"]:checked~.open-close-icon .bi-caret-up-fill {
+  transform: rotate(0deg);
+  transition: transform 150ms ease-in-out 0ms;
+}
+
+.schedule {
+  padding: 11px 10px;
+  background: #364fc7;
+  border-radius: 6px;
+  border: none;
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 11px;
+  line-height: 119%;
+  color: #FEFEFF;
+  letter-spacing: 1px;
+}
+
+#Manage .modal {
+  display: block;
+  position: fixed;
+  padding-top: 80px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+#Manage .modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 30px 30px 60px 30px;
+  border: 1px solid #888;
+  width: 80%;
+}
+
+#Manage .modal-content h2 {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 26px;
+  line-height: 50px;
+  color: #434242;
+}
+
+#Manage .modal-content input[type="text"] {
+  width: 100%;
+  height: 80px;
+  left: 266px;
+  top: 388px;
+  background: rgba(255, 255, 255, 0.79);
+  border: 2px solid rgba(174, 140, 239, 0.54);
+  box-shadow: 0px 12px 53px -24px rgb(134 87 226 / 63%);
+  border-radius: 12px;
+  padding: 15px;
+  margin-bottom: 10px;
+  outline: none;
+}
+
+#Manage .modal-content textarea {
+  width: 100%;
+  height: 169px;
+  left: 267px;
+  top: 573px;
+  background: rgba(255, 255, 255, 0.79);
+  border: 2px solid rgba(174, 140, 239, 0.54);
+  box-shadow: 0px 12px 53px -24px rgb(134 87 226 / 63%);
+  border-radius: 12px;
+  padding: 15px;
+  outline: none;
+  margin-bottom: 4px;
+}
+
+#Manage .modal-content select {
+  width: 100%;
+  height: 80px;
+  left: 830px;
+  top: 573px;
+  background: rgba(255, 255, 255, 0.79);
+  border: 2px solid rgba(174, 140, 239, 0.54);
+  box-shadow: 0px 12px 53px -24px rgb(134 87 226 / 63%);
+  border-radius: 12px;
+  padding: 15px;
+  outline: none;
+  margin-bottom: 10px;
+  color: rgba(113, 59, 219, 0.51);
+}
+
+#Manage .modal-content .Address-Type {
+  width: 100%;
+  height: 80px;
+  top: 388px;
+  padding: 30px;
+  margin-bottom: 10px;
+}
+
+#Manage .modal-content .Address-Type input[type="radio"] {
+  margin-left: 30px;
+  background: #FFFFFF;
+  border: 1px solid #AE88F9;
+  box-shadow: 0px 4px 9px rgba(191, 161, 250, 0.58);
+  outline: none;
+  cursor: pointer;
+}
+
+#Manage .close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+#Manage .close i {
+  float: right;
+  font-size: 20px;
+}
+
+#Manage .close:hover,
+#Manage .close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+#Manage .modal-content ::placeholder {
+  color: rgba(113, 59, 219, 0.51);
+}
+
+#myModal::-webkit-scrollbar {
+  width: 0px;
+}
+
+.CollapsePrescribed .edit {
+  cursor: pointer;
+  color: #713BDB;
+  font-size: 12px;
+  padding-right: 10px;
+}
+
+.cartProceedButton {
+  display: flex !important;
+  flex-direction: row-reverse;
+}
+
+.qtyPrice {
+  position: absolute;
+  right: 12px;
+  bottom: 5px;
+}
+
+#ViewCart .CollapsePrescribed .Physician .MedicinePrescription .medicineBox .DayBox .bi-check {
+  color: #fff !important;
+  font-size: 41px !important;
+  line-height: 0;
+}
+
+.PrescriptionMedicine .prescriptionMedicine {
+  background: #d9480f !important;
+}
+
+.PrescriptionMedicine .prescriptionMedicine label {
+  font-weight: 600 !important;
+}
+
+.PrescriptionMedicine {
+  background: #fff4e6;
+  border: 1px solid #d9480f;
+  border-radius: 7px;
+  overflow: hidden;
+}
+
+.PrescriptionMedicine .medicineBox {
+  background: #ffe8cc !important;
+  border: 1px solid #ff922b !important;
+  margin: 10px;
+  border-radius: 6px;
+  padding: 10px;
+  position: relative;
+}
+
+.PrescriptionMedicine .medicineBox .Name h6 {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 1.3;
+  color: #161616;
+  margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  width: 90%;
+  cursor: pointer;
+}
+
+.PrescriptionMedicine .medicineBox .Name p {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.3;
+  color: #161616;
+  margin: 0;
+}
+
+.PrescriptionMedicine .medicineBox .qty label {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.3;
+  color: #161616;
+  margin: 0;
+}
+
+.PrescriptionMedicine .medicineBox .qty p {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 1.3;
+  color: #161616;
+  margin: 0;
+  padding-left: 5px;
+}
+
+.PrescriptionMedicine .medicineBox .DeliveryDate label {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.3;
+  color: #d9480f !important;
+  margin: 0;
+}
+
+.PrescriptionMedicine .medicineBox .DeliveryDate p {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.3;
+  color: #d9480f !important;
+  margin: 0;
+  padding-left: 5px;
+}
+
+.PrescriptionMedicine .medicineBox .DayBox {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  width: 41px;
+  height: 41px;
+  background: #FFFFFF;
+  border: 1px solid #713bdb38;
+  box-shadow: 0px 16px 34px -6px rgb(113 59 219 / 22%);
+  border-radius: 6px;
+  position: relative;
+  align-items: flex-end;
+}
+
+.PrescriptionMedicine .medicineBox .noOfQty {
+  width: 41px;
+  height: 41px;
+  position: absolute;
+  left: -19px;
+  top: -1px;
+  background: #d9480f;
+  box-shadow: 0px 4px 9px rgb(217 72 15 / 63%);
+  border-radius: 50px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.PrescriptionMedicine .medicineBox .noOfQty h2 {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1;
+  color: #FFFFFF;
+  text-align: left;
+  margin: 0;
+}
+
+.PrescriptionMedicine .medicineBox .DayBox i {
+  color: #000;
+  font-size: 9px;
+  padding: 0px 4px;
+  cursor: pointer;
+}
+
+.iconborder {
+  border-bottom: 2px solid #000;
+  padding-bottom: 5px !important;
+}
+
+.PrescriptionMedicine .medicineBox .qtyPrice p {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 1;
+  padding-left: 5px;
+  color: #000;
+  margin: 0;
+}
+
+.qtyPrice i {
+  font-size: 14px;
+  color: #000;
+  line-height: 0;
+}
+
+.deletemed {
+  color: rgb(213 3 3) !important;
+  font-size: 12px;
+  margin-left: 5px;
+  cursor: pointer;
+}
+
+/* .medicineDetailsModal {
+  padding: 25px 32px;
+  background: #fff;
+  border-radius: 5px;
+  left: 0;
+  right: 0;
+  top: 15px;
+} */
+
+.medicineDetailsModal .close {
+  position: absolute;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50px;
+  width: 35px;
+  height: 34px;
+  right: -10px;
+  top: -11px;
+  cursor: pointer;
+  border: 1px solid #d9480f8f;
+  z-index: 1;
+}
+
+.medicineDetailsModal .close i {
+  color: #d9480f;
+  font-size: 22px;
+  line-height: 0;
+}
+
+.somthingWentWrong {
+  min-height: 284px;
+  margin-top: 195px;
+  display: flex;
+  justify-content: center;
+}
+
+.prescriptionMedicineBox {
+  background: #ffe8cc !important;
+  border: 1px solid #ff922b !important;
+  width: 100%;
+  border-radius: 10px;
+  margin-top: 10px;
+  padding: 17px 20px;
+  position: relative;
+}
+
+.prescriptionMedicineBox h6 {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 13px;
+  line-height: 1.3;
+  color: #2C2C2C;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  width: 90%;
+  margin: 0;
+}
+
+.prescriptionMedicineBox p {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 11px;
+  color: #3F3F3F;
+  margin: 0;
+}
+
+.prescriptionMedicineBox .qty label {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 11px;
+  line-height: 1;
+  color: #000000;
+}
+
+.prescriptionMedicineBox .DeliveryDate label,
+.prescriptionMedicineBox .DeliveryDate p {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1;
+  color: #d9480f;
+  padding-right: 3px;
+  padding-top: 2px;
+}
+
+.prescriptionMedicineBox .DayBox {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  width: 41px;
+  height: 41px;
+  background: #FFFFFF;
+  border: 1px solid #713bdb38;
+  box-shadow: 0px 16px 34px -6px rgb(113 59 219 / 22%);
+  border-radius: 6px;
+  position: relative;
+  align-items: flex-end;
+}
+
+.prescriptionMedicineBox .noOfQty {
+  width: 41px;
+  height: 41px;
+  position: absolute;
+  left: -19px;
+  top: -1px;
+  background: #d9480f;
+  box-shadow: 8px 8px 11px rgb(235 164 0 / 36%);
+  border: 1px solid #d9480f;
+  border-radius: 50px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.prescriptionMedicineBox .DayBox h2 {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1;
+  color: #FFFFFF;
+  text-align: left;
+  margin: 0;
+}
+
+.prescriptionMedicineBox .DayBox i {
+  color: #000 !important;
+  font-size: 9px !important;
+  padding: 0px 4px !important;
+  cursor: pointer !important;
+}
+
+.prescriptionMedicineBox .qtyPrice {
+  position: absolute;
+  right: 12px;
+  bottom: 5px;
+}
+
+.prescriptionMedicineBox .qtyPrice p {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 1;
+  padding-left: 5px;
+  color: #000;
+}
+
+.prescriptionHouseholdItem {
+  background: #f4fce3 !important;
+  border: 1px solid #94d82d !important;
+  width: 100%;
+  border-radius: 10px;
+  margin-top: 10px;
+  padding: 17px 20px;
+  position: relative;
+}
+
+.prescriptionHouseholdItem h6 {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 13px;
+  line-height: 1.3;
+  color: #2C2C2C;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  width: 90%;
+  margin: 0;
+}
+
+.prescriptionHouseholdItem p {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 11px;
+  color: #3F3F3F;
+  margin: 0;
+}
+
+.prescriptionHouseholdItem .qty label {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 11px;
+  line-height: 1;
+  color: #000000;
+}
+
+.prescriptionHouseholdItem .DeliveryDate label,
+.prescriptionHouseholdItem .DeliveryDate p {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1;
+  color: #5c940d;
+  padding-right: 3px;
+  padding-top: 2px;
+}
+
+.prescriptionHouseholdItem .DayBox {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  width: 41px;
+  height: 41px;
+  background: #FFFFFF;
+  border: 1px solid #713bdb38;
+  box-shadow: 0px 16px 34px -6px rgb(113 59 219 / 22%);
+  border-radius: 6px;
+  position: relative;
+  align-items: flex-end;
+}
+
+.prescriptionHouseholdItem .noOfQty {
+  width: 41px;
+  height: 41px;
+  position: absolute;
+  left: -19px;
+  top: -1px;
+  background: #5c940d;
+  box-shadow: 8px 8px 11px rgb(92 148 13 / 36%);
+  border: 1px solid #5c940d;
+  border-radius: 50px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.prescriptionHouseholdItem .DayBox h2 {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1;
+  color: #FFFFFF;
+  text-align: left;
+  margin: 0;
+}
+
+.prescriptionHouseholdItem .DayBox i {
+  color: #000 !important;
+  font-size: 9px !important;
+  padding: 0px 4px !important;
+  cursor: pointer !important;
+}
+
+.prescriptionHouseholdItem .qtyPrice {
+  position: absolute;
+  right: 12px;
+  bottom: 5px;
+}
+
+.prescriptionHouseholdItem .qtyPrice p {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 1;
+  padding-left: 5px;
+  color: #000;
+}
+
+.Name img {
+  max-height: 20px;
+}
+
+.contentCollapse small {
+  color: red;
+  font-size: 12px;
+}
+
+.bold {
+  font-weight: 700 !important;
+}
+
+.pl label {
+  padding-left: 10px;
+  font-weight: 600 !important;
+  font-size: 12px !important;
+}
+
+.pl h2 {
+  padding-left: 10px;
+  font-weight: 600 !important;
+  font-size: 12px !important;
+}
+
+.bi-patch-question-fill {
+  font-size: 10px !important;
+  color: grey !important;
+  padding: 0px 5px !important;
+}
+
+.Includes {
+  border: 1px solid #3F51B5;
+  border-radius: 5px;
+  padding: 0px 10px;
+  margin-top: 12px;
+  background: #ffff;
+  box-shadow: 0px 8px 6px -6px #00000091;
+}
+
+.OutOfStock {
+  max-width: 96px;
+  color: #e70000 !important;
+  text-decoration: underline;
+  font-weight: 700 !important;
+  letter-spacing: 0.3px;
+  margin-top: -15px;
+}
+
+.PaymentCart {
+  display: flex;
+  justify-content: center;
+  padding: 10px 0px 0px 0px;
+}
+
+.PaymentCart button {
+  width: 123px;
+  background: none;
+  border: 1px solid #713bdb8c;
+  box-shadow: inset 1px -1px 2px 0px #713bdb6e;
+  padding: 4px 15px;
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 120.5%;
+  color: #713bdb;
+  transition: 0.3s;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.PaymentCart .actives {
+  background: #713bdb !important;
+  color: #fff !important;
+  box-shadow: 1px 1px 9px 0px #34107a80;
+}
+
+.PaymentCart button img {
+  width: 21px;
+  height: 21px;
+  margin-right: 16px;
+  border-radius: 2px;
+}
+
+.PaymentDetails button:disabled {
+  color: #fff;
+  background-color: #878787;
+  cursor: not-allowed;
+}
+
+.PaymentDetails .CONTINUE {
+  background: #6589ff;
+  border: none;
+  padding: 7px 21px;
+  border-radius: 2px;
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 120.5%;
+  color: #ffffff;
+  margin: -5px 0px 20px 67px;
+  letter-spacing: 0.6px;
+}
+
+.PaymentDetails label {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  color: #1f1f1f;
+  margin: 3px 1px 0px 5px;
+}
+
+.PaymentDetails h2 {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 120.5%;
+  color: #131313;
+}
+
+.PaymentDetails input[type="text"],
+.PaymentDetails input[type="password"] {
+  width: 100%;
+  height: 47px;
+  min-height: unset !important;
+  font-size: 14px;
+  border: 1px solid #e0e0e0;
+  outline: none;
+  border-radius: 2px;
+  padding: 20px 16px 0 13px;
+  box-shadow: none;
+}
+
+.PaymentDetails .form-floating label {
+  font-size: 14px !important;
+  padding: 14px 7px !important;
+  margin: 0;
+}
+
+.PaymentDetails .form-floating {
+  width: 290px;
+  margin-bottom: 12px;
+}
+
+.PaymentDetails .form-floating span {
+  position: absolute;
+  right: 13px;
+  top: 13px;
+  color: #2874f0;
+  text-transform: uppercase;
+  cursor: pointer;
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.PaymentDetails .PAY {
+  background: #6589ff;
+  border: none;
+  padding: 7px 12px;
+  height: 47px;
+  border-radius: 2px;
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 120.5%;
+  color: #ffffff;
+  margin-left: 20px;
+}
+
+.PaymentDetails input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  border-radius: 50%;
+  width: 12px;
+  height: 12px;
+  box-shadow: 0 0 0px 2px #2874f0;
+}
+
+.PaymentDetails input[type="checkbox"]:checked {
+  background-color: #2874f0;
+  border: 2px solid #ffff;
+}
+
+.PaymentDetails .expr {
+  width: 180px;
+  height: 47px;
+  min-height: unset !important;
+  font-size: 14px;
+  border: 1px solid #e0e0e0;
+  outline: none;
+  border-radius: 2px;
+  box-shadow: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 10px;
+  background: #fff;
+}
+
+.PaymentDetails .expr span {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  color: #878787;
+  margin-right: 4px;
+}
+
+.PaymentDetails .expr select {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  color: #1f1f1f;
+  border: none;
+  background: none;
+  outline: none;
+}
+
+.PaymentDetails .cvv {
+  width: 112px !important;
+}
+
+.cvv span {
+  border-radius: 50% 50%;
+  background: #c2c2c2;
+  padding: 0 5px;
+  cursor: pointer;
+  line-height: 1.3;
+  color: #fff !important;
+}
+
+.PaymentDetails {
+  background: #f5faff;
+  padding: 10px;
+}
+
+.col-md-6 img {
+  max-width: 17px;
+  margin: -3px 7px 1px 4px;
+}

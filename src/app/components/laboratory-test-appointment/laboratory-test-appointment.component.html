@@ -1,0 +1,230 @@
+<div class="modal-dialog">
+  <div class="modal-content">
+    <div class="close" (click)="closePopup()">
+      <i class="bi-x-circle-fill"></i>
+    </div>
+    <div class="modal-body" *ngIf="!somthingWentWrong">
+      <h2>Laboratory Test Appointment</h2>
+      <div class="display" *ngIf="displayData">
+        <div class="row">
+          <div class="col-md-8 mt-4 mb-4">
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <div class="drName print"><label for="FullName">Diagnostic Centre Name</label>
+                  <p>{{displayData.diagnosticCentreName}}</p>
+                </div>
+              </div>
+              <div class="col-md-6 mb-3">
+                <div class="drName print"><label for="FullName">Customer Name</label>
+                  <p>{{displayData.customerName}}</p>
+                </div>
+              </div>
+              <div class="col-md-6 mb-3">
+                <div class="drName print"><label for="FullName">Appointment Date</label>
+                  <p>{{displayData.appointmentDate|date:'dd-MMM-yyyy'}}</p>
+                </div>
+              </div>
+              <div class="col-md-6 mb-3">
+                <div class="drName print"><label for="FullName">Appointment Time</label>
+                  <p>{{displayData.appointmentTime}}</p>
+                </div>
+              </div>
+              <div class="col-md-12 mb-3" *ngIf="caseLogdetails && WorkRequestDetails.isDisabled">
+                <div class="CaseLog">
+                  <h2>Case Log</h2>
+                  <div class="row">
+                    <div class="col-md-12 my-2" *ngFor="let wrCaseLogEntry of caseLogdetails.caseLogInformationList">
+                      <p>{{wrCaseLogEntry.caseLogUserName}} add at
+                        {{dateFormat(wrCaseLogEntry.caseLogTimestamp)|date:'d-MMM-y @
+                        h:m a'}}</p>
+                      <p>{{wrCaseLogEntry.caseLogText}}</p>
+                    </div>
+                    <div *ngIf="!caseLogdetails.caseLogInformationList.length">
+                      <p>No caselog is there</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 mt-4 mb-4">
+            <div class="Selected"><label for="" style="padding-left: 9px;">Selected Tests</label>
+              <div class="srcl">
+                <div class="d-flex align-items-center py-1" *ngFor=" let labtest of selectedLabTests">
+                  <p>{{labtest.labtestName}}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="1" class="LaboratoryDetailstime" id="LaboratoryDetailstime">
+        <div class="row">
+          <div class="col-md-12 timeTable">
+            <div *ngIf="1" class="timeTab EntrySchedule">
+              <div class="row">
+                <div class="col-md-8 mt-4 mb-4" [ngClass]="{formDisabled:WorkRequestDetails.isDisabled}">
+                  <form [formGroup]="scheduleLabFormParam">
+                    <div class="row position-relative">
+                      <div class="col-md-6">
+                        <div class="form-floating">
+                          <input formControlName="diagnosticCentreName" autofocus="" id="floatingInput" type="text"
+                            name="healthClinicName" placeholder="Diagnostic Centre Name" class="form-control frInput"
+                            [matAutocomplete]="diagnosticCentreNameauto" (keyup)="onTypeDiagnosticCentreName()">
+                          <label for="floatingInput">Diagnostic Centre Name</label>
+                          <mat-autocomplete #diagnosticCentreNameauto="matAutocomplete">
+                            <mat-option *ngFor="let item of diagnosticCentreList" [value]="searcDiagnosticCentre"
+                              (click)="selectDiagnosticCentre(item)">
+                              <p>{{item.diagnosticCentreName}} <span
+                                  style="font-size: 12px !important; color: #713bdb;">{{item.diagnosticCentreID}}</span>
+                              </p>
+                            </mat-option>
+                          </mat-autocomplete>
+                          <button class="Delete" (click)="unSelectDiagnosticCentreSchedule()"
+                            *ngIf="scheduleLabFormParam.get('diagnosticCentreID')?.value"><i
+                              class="bi-x-circle-fill"></i></button>
+                        </div>
+                        <div class="regErrorDiv"></div>
+                      </div>
+                      <div *ngIf="showDiagnosticCentreDetails" class="doctorDetails">
+                        <div class="row">
+                          <div class="col-md-8">
+                            <div class="CollapsePrescribed">
+                              <ul class="m-d expand-list p-0">
+                                <li data-md-content="200">
+                                  <label name="tab" for="tabAddress" tabindex="-1" class="tab_lab w-100" role="tab">
+                                    <div>
+                                      <div id="dropdownMenuLink" style="display: flex;">
+                                        <div>
+                                          <span>{{selectedDiagnosticCentreDetails.diagnosticCentreName}}</span>
+                                          <span
+                                            style="font-size: 12px !important; color: #713bdb;">&nbsp;({{selectedDiagnosticCentreDetails.diagnosticCentreID}})</span>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </label>
+                                  <div class="row">
+                                    <div class="col-md-12">
+                                      <div class="doctorCard">
+                                        <div class="row">
+                                          <div class="col-md-5">
+                                            <div class="profileImg">
+                                              <img
+                                                [src]="selectedDiagnosticCentreDetails.profilePictureFileName | getFile:selectedDiagnosticCentreDetails.profilePictureFileType">
+                                            </div>
+                                          </div>
+                                          <div class="col-md-7">
+                                            <table>
+                                              <tr>
+                                                <td></td>
+                                                <td>
+                                                  <p
+                                                    [innerHTML]="selectedDiagnosticCentreDetails.addressLine |addressLine" *ngIf="selectedDiagnosticCentreDetails">
+                                                  </p>
+                                                </td>
+                                                <td>{{selectedDiagnosticCentreDetails.landmark}}
+                                                  {{selectedDiagnosticCentreDetails.city}} ,
+                                                  {{selectedDiagnosticCentreDetails.stateName}} -
+                                                  {{selectedDiagnosticCentreDetails.pincode}}</td>
+                                              </tr>
+                                              <tr>
+                                                <td><i class="bi-telephone-fill"></i></td>
+                                                <td><b>(P)</b>+91{{selectedDiagnosticCentreDetails.primaryContactNo}}
+                                                </td>
+                                              </tr>
+                                              <tr *ngIf="selectedDiagnosticCentreDetails.secondaryContactNo">
+                                                <td><i class="bi-telephone-fill"></i></td>
+                                                <td><b>(S)</b>+91{{selectedDiagnosticCentreDetails.secondaryContactNo}}
+                                                </td>
+                                              </tr>
+                                              <tr *ngIf="selectedDiagnosticCentreDetails.openHoureStart">
+                                                <td><i class="bi-clock"></i></td>
+                                                <td><b>Open - </b>{{selectedDiagnosticCentreDetails.openHoureStart}}
+                                                </td>
+                                              </tr>
+                                              <tr *ngIf="selectedDiagnosticCentreDetails.openHoureEnd">
+                                                <td><i class="bi-clock"></i></td>
+                                                <td><b>Close - </b>{{selectedDiagnosticCentreDetails.openHoureEnd}}
+                                                </td>
+                                              </tr>
+                                            </table>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <div class="col-md-12 text-end">
+                                      <button class="Confirm"
+                                        (click)="selectDiagnosticCentreSchedule()">Confirm</button>
+                                      <button class="Confirm" (click)="unSelectDiagnosticCentre()">Cancel</button>
+                                    </div>
+                                  </div>
+                                </li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-floating">
+                          <input formControlName="appointmentDate" type="date" (focusout)="checkValidLabDate()"
+                            min="{{ currentDate | date:'yyyy-MM-dd' }}" autofocus="" name="appointmentDate"
+                            placeholder="appointmentDate" id="floatingInput" class="form-control frInput">
+                          <label for="floatingInput">appointment Date</label>
+                        </div>
+                        <div class="regErrorDiv">
+                          <app-validation-message [control]="scheduleLabFormParam.controls['appointmentDate']"
+                            [messages]="errorMessage.appointmentDate">
+                          </app-validation-message>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <select name="slots" formControlName="selectedSlot" (change)="setLabTimeSlots()" class=""
+                          id="floatingSelect" aria-label="Floating label select example">
+                          <option *ngFor="let option of slotOptions" [value]="option.value">
+                            {{option.label}}</option>
+                        </select>
+                        <div class="regErrorDiv"></div>
+                      </div>
+                      <div class="col-md-12">
+                        <div class="timedisplay">
+                          <div class="row px-2">
+                            <div *ngFor="let slot of labTimeSlots" class="col-md-2 mb-2">
+                              <div [ngClass]="{'timeTableActive': checkIsLabSelected(slot) }"
+                                (click)="setSelectedLabTimeSlot(slot)" class="timer">
+                                {{slot}}
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="regErrorDiv"></div>
+                      </div>
+                      <div class="col-md-12 text-end" *ngIf="!WorkRequestDetails.isDisabled">
+                        <button class="Proceed mt-3"
+                          (click)="submitLabSchedule(scheduleLabFormParam.getRawValue(),scheduleLabFormParam.valid)">Proceed
+                          ></button>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+                <div class="col-md-4 mt-4 mb-4">
+                  <div class="Selected">
+                    <label for="" style="padding-left: 9px">Selected Tests</label>
+                    <div class="srcl">
+                      <div class="d-flex align-items-center py-1"
+                        *ngFor="let selectedLabTest of selectedLabTests; let selectedLabTestIndex = index">
+                        <p>{{selectedLabTest.labtestName}}</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal-body somthingWentWrong" *ngIf="somthingWentWrong">
+      <p>Something went wrong, Please try after sometime</p>
+    </div>
+  </div>
+</div>

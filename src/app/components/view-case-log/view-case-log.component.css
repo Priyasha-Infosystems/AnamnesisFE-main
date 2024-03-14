@@ -1,0 +1,163 @@
+.CaseLog {
+  width: 100%;
+  margin-top: 29px;
+  padding: 23px 19px;
+  background: #F2ECFF;
+  border: 1px solid rgba(113, 59, 219, 0.19);
+  box-shadow: 0px 16px 34px -6px rgba(113, 59, 219, 0.19);
+  border-radius: 10px;
+}
+
+.modal-dialog {
+  max-width: 70%;
+  margin-top: 118px;
+}
+
+.CaseLog h2 {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 33px;
+  color: #434242;
+  margin: 0;
+}
+
+.CaseLog p {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 110%;
+  color: #000000;
+  margin: 0;
+}
+
+.CaseLog span {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 110%;
+  color: rgba(113, 59, 219, 0.78);
+}
+
+.CaseLog h6 {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 110%;
+  color: #713bdb;
+  margin-top: 10px;
+}
+
+.CaseLog h5 {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 110%;
+  color: #272626;
+}
+
+.CaseLog textarea {
+  width: 100%;
+  padding: 15px 49px 6px 15px;
+  height: 116px;
+  background: #FFFFFF;
+  border: 1px solid rgba(113, 59, 219, 0.19);
+  box-shadow: 0px 16px 34px -6px rgb(113 59 219 / 19%);
+  border-radius: 10px;
+  resize: none;
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 144.5%;
+  color: #393939;
+}
+
+.CaseLog ::placeholder {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 110%;
+  color: rgba(0, 0, 0, 0.38);
+}
+
+.CaseLog .send {
+  background: none;
+  border: none;
+  color: #713BDB;
+  font-size: 26px;
+  position: absolute;
+  bottom: 13px;
+  right: 18px;
+}
+
+#viewMoreText {
+  width: 33%;
+  height: 200px;
+  overflow: auto;
+  font-size: 12px;
+  border-radius: 6px;
+  border: 1px solid #999;
+  padding: 10px;
+  position: absolute;
+  z-index: 9;
+  background: #fff;
+  right: 128px;
+  top: 60px;
+}
+
+.close {
+  right: -10px;
+  top: -11px;
+  position: absolute;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50px;
+  width: 35px;
+  height: 34px;
+  cursor: pointer;
+  box-shadow: 0px 4px 4px rgb(113 59 219 / 50%);
+}
+
+.close i {
+  color: #713bdb;
+  font-size: 22px;
+  line-height: 0;
+}
+
+.LogScroll {
+  overflow: auto;
+  max-height: 250px;
+}
+
+.LogScroll::-webkit-scrollbar {
+  width: 6px;
+}
+
+.LogScroll::-webkit-scrollbar-thumb {
+  background: #713bdb;
+  border-radius: 10px;
+}
+
+.LogScroll::-webkit-scrollbar-track {
+  background: #d1bff652;
+  border-radius: 10px;
+}
+
+.regErrorDiv {
+  height: 12px;
+}
+
+.regErrorDiv span {
+  color: red !important;
+  font-size: 12px !important;
+  font-weight: 500 !important;
+}

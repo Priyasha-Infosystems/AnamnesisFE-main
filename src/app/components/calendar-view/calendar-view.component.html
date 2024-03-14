@@ -1,0 +1,172 @@
+<section class="zoomcalendar">
+    <div class="row text-center mt-2">
+        <div class="col-md-3 arrow">
+            <div class="d-flex justify-content-center align-items-center h-100">
+                <button mwlCalendarToday [(viewDate)]="viewDate">Today</button>
+            </div>
+        </div>
+        <div class="col-md-5">
+            <div class="d-flex justify-content-between align-items-center h-100">
+                <i class="bi-caret-left-fill" style="cursor: pointer;" mwlCalendarPreviousView [view]="view"
+                    [(viewDate)]="viewDate" (viewDateChange)="closeOpenMonthViewDay()"></i>
+                <h6>{{ viewDate | calendarDate:(view + 'ViewTitle'):'en' }}</h6>
+                <i class="bi-caret-right-fill" style="cursor: pointer;" mwlCalendarNextView [view]="view"
+                    [(viewDate)]="viewDate" (viewDateChange)="closeOpenMonthViewDay()"></i>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="d-flex justify-content-end align-items-center h-100 rightBtn">
+                <button (click)="setView(CalendarView.Month)"
+                    [class.active]="view === CalendarView.Month">Month</button>
+                <button (click)="setView(CalendarView.Week)" [class.active]="view === CalendarView.Week">Week</button>
+                <button (click)="setView(CalendarView.Day)" [class.active]="view === CalendarView.Day">Day</button>
+            </div>
+        </div>
+    </div>
+    <br />
+    <div *ngIf="isHolidayListFetched && isBusyHoursFetched && isScheduleFetched" [ngSwitch]="view">
+        <mwl-calendar-month-view style="cursor: pointer" *ngSwitchCase="CalendarView.Month" [viewDate]="viewDate"
+            [events]="events" [refresh]="refresh" (dayClicked)="dayClicked($event.day, $event)"
+            (eventClicked)="handleEvent('Clicked', $event.event)" (beforeViewRender)="beforeMonthViewRender($event)"
+            (eventTimesChanged)="eventTimesChanged($event)">
+        </mwl-calendar-month-view>
+        <mwl-calendar-week-view *ngSwitchCase="CalendarView.Week" [viewDate]="viewDate" [events]="events"
+            [refresh]="refresh" (eventClicked)="handleEvent('Clicked', $event.event)"
+            (eventTimesChanged)="eventTimesChanged($event)">
+        </mwl-calendar-week-view>
+        <mwl-calendar-day-view *ngSwitchCase="CalendarView.Day" [viewDate]="viewDate" [events]="events"
+            [refresh]="refresh" (eventClicked)="handleEvent('Clicked', $event.event)"
+            (eventTimesChanged)="eventTimesChanged($event)">
+        </mwl-calendar-day-view>
+    </div>
+    <br /><br /><br />
+    <div class="displayPopup p-0 d-flex align-items-center" *ngIf="openModal" tabindex="-1" role="dialog">
+        <div class="container">
+            <div class="modal-content " style="margin-right: 213px;">
+                <div class="close" (click)="closeModal()">
+                    <i class="bi-x-circle-fill"></i>
+                </div>
+                <div class="displayDetails">
+                    <div class="row">
+                        <div *ngFor="let selectedDayEvent of selectedDayEvents; let selectedDayEventIndex = index">
+                            <div *ngIf="selectedDayEvent.evType === 'H'">
+                                <div class="text-start">
+                                    <p>Holiday</p>
+                                </div>
+                                <div class="DailyBusyHours mb-3">
+                                    <div class="row">
+                                        <div class="col-md-6 mb-2">
+                                            <div class="form-floating">
+                                                <label for="">Holiday</label>
+                                                <p>{{selectedDayEvent.start | date:'dd-MMM-yyyy'}} to
+                                                    {{selectedDayEvent.end |
+                                                    date:'dd-MMM-yyyy'}}</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 mb-2">
+                                            <div class="form-floating">
+                                                <label for="">Event Day</label>
+                                                <p>{{selectedDayEvent.title}}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div *ngIf="selectedDayEvent.evType === 'B'">
+                                <p>Daily Busy Hours</p>
+                                <div class="DailyBusyHours mb-3">
+                                    <div class="row">
+                                        <div class="col-md-4 mb-2">
+                                            <div class="form-floating">
+                                                <label for="">Week Day</label>
+                                                <p>{{getWeakDayNameFormCode(selectedDayEvent.weekDay)}}</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 mb-2">
+                                            <div class="form-floating">
+                                                <label for="">Start time</label>
+                                                <p>{{utilityService.timeFormateInto12Hours(selectedDayEvent.startTime)}}
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 mb-2">
+                                            <div class="form-floating">
+                                                <label for="">End time</label>
+                                                <p>{{utilityService.timeFormateInto12Hours(selectedDayEvent.endTime)}}
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-8">
+                                            <div class="form-floating">
+                                                <label for="">Event Description</label>
+                                                <p>{{selectedDayEvent.eventDescription}}</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 text-center DND">
+                                            <h3>Do Not Disturb</h3>
+                                            <div class="form-group m-auto px-1">
+                                                <!-- <input type="checkbox" name="DND" [checked]="selectedDayEvent.dndIndicator ==='Y'" disabled> -->
+                                                <i class="bi-check-circle-fill"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="displayPopup" *ngIf="openEventPopup" tabindex="-1" role="dialog">
+        <div class="container">
+            <div class="modal-content" style="width: 65%;">
+                <div class="close" (click)="closeEventPopup()">
+                    <i class="bi-x-circle-fill"></i>
+                </div>
+                <div class="displayDetails">
+                    <div class="AllBoxs">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="row">
+                                    <div class="col-md-2 p-0" *ngFor="let selectedEvent of selectedDayEvents">
+                                        <div class="square p-1">
+                                            <div class="content">
+                                                <div *ngIf="selectedEvent.evType === 'H' || selectedEvent.evType === 'B'"
+                                                    [class]="getClass(selectedEvent)">
+                                                    <div class="DatePrint">
+                                                        <span>{{getFromTimeRange(selectedEvent)}}</span>
+                                                    </div>
+                                                    <h5 *ngIf="selectedEvent.evType === 'H'" class="pb-2">Holiday</h5>
+                                                    <h5 *ngIf="selectedEvent.evType === 'B'">{{selectedEvent.title}}
+                                                    </h5>
+                                                </div>
+                                                <div *ngIf="selectedEvent.evType === 'A'" class="box GreenBox">
+                                                    <h5>{{getScheduleTimeRange(selectedEvent)}}</h5>
+                                                    <h4>{{selectedEvent.healthClinicName}}</h4>
+                                                    <div class="mt-1">
+                                                        <div class="d-flex align-items-center"
+                                                            *ngFor="let appointment of selectedEvent.appointmentInformationList">
+                                                            <i class="check"></i>
+                                                            <p class="patientDisplayName">{{appointment.displayName}}
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div *ngIf="selectedEvent.evType === 'N'" class="box whiteBox">
+                                                    <div class="DatePrint">
+                                                        <span>{{getFromTimeRange(selectedEvent)}}</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

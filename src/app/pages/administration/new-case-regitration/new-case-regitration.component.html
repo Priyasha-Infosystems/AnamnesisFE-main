@@ -1,0 +1,266 @@
+<router-outlet>
+  <ngx-spinner bdColor="rgba(51,51,51,0.8)" size="medium" color="#fff" type="ball-circus" [fullScreen]="true">
+  </ngx-spinner>
+</router-outlet>
+<div id="NewCaseRegistration" class="tabcontent">
+  <div class="content">
+    <form [formGroup]="caseRegistrationForm">
+      <div class="RequestDetails">
+        <h2>Request Details</h2>
+        <div class="row">
+          <div class="col-md-12 mb-3">
+            <div class="form-floating ">
+              <input type="text" name="Problem_Summary" placeholder="Problem Summary" id="Laboratory"
+                class="form-control" formControlName="wrSummary">
+              <label for="Laboratory">Problem Summary</label>
+              <div class="validation-div errorDiv">
+                <app-validation-message [control]="caseRegistrationForm.controls['wrSummary']"
+                  [messages]="errorMessage.caseRegistrationForm.wrSummary">
+                </app-validation-message>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-8 mb-3  selectBox form-floating" [ngClass]="{selectedFormValue : true}">
+            <select name="workRequestType" id="workRequestType" formControlName="workRequestType" class="form-select"
+              aria-label="Floating label select example">
+              <option [value]="'CSR'">Coustomer Service Request</option>
+            </select>
+            <label for="workRequestType">Request Type</label>
+            <div class="validation-div errorDiv">
+              <app-validation-message [control]="caseRegistrationForm.controls['workRequestType']"
+                [messages]="errorMessage.caseRegistrationForm.workRequestType">
+              </app-validation-message>
+            </div>
+          </div>
+          <div class="col-md-5 mb-3 position-relative">
+            <div class="form-floating ">
+              <input type="text" name="Problem_Summary" placeholder="Coustomer " id="Laboratory" class="form-control"
+                formControlName="wrCustomerName" [matAutocomplete]="patientNameauto">
+              <label for="Laboratory">Coustomer</label>
+              <!-- <i class="bi-search search" *ngIf="!caseRegistrationForm.value.wrCustomerID && userIsAdminHelpDesk"></i> -->
+              <button class="Delete" (click)="unSelectCoustomerForForm()"
+                *ngIf="caseRegistrationForm.value.wrCustomerID && userIsAdminHelpDesk">
+                <i class="bi-x-circle-fill"></i></button>
+              <mat-autocomplete #patientNameauto="matAutocomplete">
+                <mat-option *ngFor="let item of customerList" [value]="searchCustomer" (click)="selectCoustomer(item)">
+                  <div class="d-flex flex-column">
+                    <p>{{item.displayName}}</p>
+                    <span>{{item.userCode}}</span>
+                  </div>
+                </mat-option>
+              </mat-autocomplete>
+            </div>
+            <div class="validation-div errorDiv">
+              <app-validation-message [control]="caseRegistrationForm.controls['wrCustomerID']"
+                [messages]="errorMessage.caseRegistrationForm.wrCustomerID">
+              </app-validation-message>
+            </div>
+            <div *ngIf="showCustomerDetails" class="doctorDetails col-md-12">
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="CollapsePrescribed">
+                    <ul class="m-d expand-list p-0">
+                      <li data-md-content="200">
+                        <div name="tab" for="tabAddress" tabindex="-1" class="tab_lab w-100" role="tab">
+                          <div>
+                            <div id="dropdownMenuLink" style="display: flex;">
+                              <div>
+                                <span>{{customerDetails.displayName}}</span>
+                                <span
+                                  style="font-size: 12px !important; color: #713bdb;">&nbsp;({{customerDetails.userCode}})</span>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-md-12">
+                            <div class="doctorCard">
+                              <div class="row">
+                                <div class="col-md-5">
+                                  <div class="profileImg">
+                                    <img [src]="customerDetails.profilePictureFileName|getFile:customerDetails.profilePictureFileType">
+                                  </div>
+                                </div>
+                                <div class="col-md-7">
+                                  <table>
+                                    <tbody>
+                                      <tr>
+                                        <td></td>
+                                        <td>{{commonService.calculateGender(customerDetails.gender)}},
+                                          {{commonService.calculateAge(customerDetails.dateOfBirth)}}</td>
+                                      </tr>
+                                      <tr *ngIf="customerDetails.primaryPhoneno">
+                                        <td><i class="bi-telephone-fill"></i></td>
+                                        <td><b>(P)</b> +91
+                                          {{customerDetails.primaryPhoneno}}</td>
+                                      </tr>
+                                      <tr *ngIf="customerDetails.secondaryPhoneNo">
+                                        <td><i class="bi-telephone-fill"></i></td>
+                                        <td><b>(s)</b> +91
+                                          {{customerDetails.secondaryPhoneNo}}</td>
+                                      </tr>
+                                    </tbody>
+                                  </table>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-md-12 d-flex justify-content-between">
+                            <button class="Confirm" (click)="selectCoustomerForForm()">Confirm</button>
+                            <button class="Confirm" (click)="unSelectCoustomer()">Cancel</button>
+                          </div>
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-2 mb-3 d-flex align-items-center justify-content-evenly">
+            <i class="bi-check-circle-fill"
+              [ngClass]="{'bi-question-circle-fill':!caseRegistrationForm.value.wrCustomerID}"></i>
+            <p>{{caseRegistrationForm.value.wrCustomerID?'Checked':'Check'}}</p>
+          </div>
+          <div class="col-md-5 mb-3 selectBox form-floating" [ngClass]="{selectedFormValue : true}">
+            <select name="Current Status" id="CurrentStatus" class="form-select"
+              aria-label="Floating label select example">
+              <option [value]="1">New</option>
+            </select>
+            <label for="CurrentStatus">Current Status</label>
+          </div>
+          <div class="col-md-12 mb-3">
+            <div class="form-floating ">
+              <textarea name="ProblemDescription" id="ProblemDescription" cols="30" rows="10"
+                placeholder="Problem Summary" class="form-control" formControlName="wrDescription"></textarea>
+              <label for="ProblemDescription">Problem Description</label>
+              <div class="validation-div errorDiv">
+                <app-validation-message [control]="caseRegistrationForm.controls['wrDescription']"
+                  [messages]="errorMessage.caseRegistrationForm.wrDescription">
+                </app-validation-message>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- <div class="CaseLog">
+        <h2>Case Log</h2>
+        <div class="row">
+          <div class="col-md-12 my-2" *ngFor="let wrCaseLogEntry of wrCaseLogEntryList().controls">
+            <p>{{displayName}} add at {{wrCaseLogEntry.value.currentDate|date:'d-MMM-y @ h:m a'}}</p>
+            <p>{{wrCaseLogEntry.value.wrCaseLog}}</p>
+          </div>
+          <div class="col-md-12 ">
+            <h6>Your Comments</h6>
+            <div class="form-floating ">
+              <textarea name="Description" id="Description" cols="30" rows="10" placeholder=" Summary"
+                class="form-control" formControlName="wrCaseLog"></textarea>
+              <label for="Description">Case Log description should go here…..</label>
+              <button class="send" (click)="addAnotherCaseLog(caseRegistrationForm.value.wrCaseLog)"><i
+                  class="fa fa-paper-plane"></i></button>
+            </div>
+          </div>
+        </div>
+      </div> -->
+      <div class="text-end my-2 col-md-3" style="float: right;">
+        <p class="add" *ngIf="!wrDocumentAttachmentList().length" (click)="addAnotherWRDocumentAttachment()">Add
+          Document </p>
+      </div>
+      <div class="RequestDetails mt-3" *ngIf="wrDocumentAttachmentList().length"
+        formArrayName="wrDocumentAttachmentList">
+        <div class="row">
+          <div class="col-md-6"
+            *ngFor="let wrDocumentAttachment of wrDocumentAttachmentList().controls; let wrDocumentAttachmentIndex = index">
+            <ng-container formGroupName="{{wrDocumentAttachmentIndex}}">
+              <!-- <div class="col-md-3 my-2">
+                    <div class="form-floating selectBox ">
+                        <select name="fileType" class="form-select" id="floatingSelect fileType"
+                            aria-label="Floating label select example" formControlName="fileType">
+                            <option value="MSC">Miscellaneous</option>
+                        </select>
+                        <label for="floatingSelect">Document Type</label>
+                    </div>
+                </div>
+                <div class="col-md-4 my-2">
+                    <div class="form-floating ">
+                        <input formControlName="documentNumber" type="text" name="documentNumber" placeholder="Document Number"
+                            id="documentNumber" class="form-control">
+                        <label for="documentNumber">Document Number</label>
+                    </div>
+                </div> -->
+              <div class="row">
+                <div class="col-md-11 my-2">
+                  <div class="form-group file-area">
+                    <div *ngIf="getwrDocumentAttachmentControllerValue(wrDocumentAttachmentIndex, 'document')">
+                      <div *ngIf="!getwrDocumentAttachmentControllerValue(wrDocumentAttachmentIndex, 'error')"
+                        class="Dr-list">
+                        <img src="../../../assets/images/PrescriptionPink.png">
+                        <h6>{{getwrDocumentAttachmentControllerValue(wrDocumentAttachmentIndex, 'fileName')}}</h6>
+                        <i class="bi-x" (click)="removeItem(wrDocumentAttachmentIndex)"></i>
+                        <div id="Progress_Status">
+                          <div *ngIf="getwrDocumentAttachmentControllerValue(wrDocumentAttachmentIndex, 'progress')"
+                            id="text">
+                            {{ getwrDocumentAttachmentControllerValue(wrDocumentAttachmentIndex, 'progress') }} %
+                          </div>
+                          <div
+                            [style.width]="getwrDocumentAttachmentControllerValue(wrDocumentAttachmentIndex, 'progress') + '%'"
+                            id="myprogressBar"></div>
+                        </div>
+                      </div>
+                      <div *ngIf="getwrDocumentAttachmentControllerValue(wrDocumentAttachmentIndex, 'error')">
+                        <div>
+                          <img src="../../../assets/images/dr.svg">
+                          <h6>{{getwrDocumentAttachmentControllerValue(wrDocumentAttachmentIndex, 'fileName')}}</h6>
+                          <i class="bi-x" (click)="removeItem(wrDocumentAttachmentIndex)"></i>
+                        </div>
+                      </div>
+                      <div *ngIf="getwrDocumentAttachmentControllerValue(wrDocumentAttachmentIndex, 'error')">
+                        <label class="massage errorDocLabel">Couldn't upload the file</label>
+                      </div>
+                    </div>
+                    <div *ngIf="!getwrDocumentAttachmentControllerValue(wrDocumentAttachmentIndex, 'document')">
+                      <label autofocus="" for="document">No File Choosen ....</label>
+                      <input [ngClass]="isDisabled(wrDocumentAttachmentIndex) ? 'disable' : ''"
+                        formControlName="fileSource" type="file" name="document" id="document" required="required"
+                        multiple="multiple" (change)="onFileUpload($event,wrDocumentAttachmentIndex)" />
+                      <small style="color: red;">{{wrDocumentAttachment.value.fileError}}</small>
+                      <small style="color: red;"
+                        *ngIf="wrDocumentAttachment.value.customErrMsg">{{wrDocumentAttachment.value.customErrMsg}}</small>
+                      <div class="regErrorDiv">
+                        <app-validation-message
+                          [control]="wrDocumentAttachmentController(wrDocumentAttachmentIndex, 'fileID')"
+                          [messages]="errorMessage.caseRegistrationForm.wrDocumentAttachmentList.fileID">
+                        </app-validation-message>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-1 d-flex align-items-center">
+                  <i class="bi-trash-fill" (click)="deleteWRDocumentAttachment(wrDocumentAttachmentIndex)"></i>
+                </div>
+              </div>
+            </ng-container>
+          </div>
+        </div>
+        <div class="col-md-12 text-end">
+          <p class="add" (click)="addAnotherWRDocumentAttachment()">+Add Another Document</p>
+        </div>
+      </div>
+      <div class="Resolution">
+        <div class="row">
+          <div class="col-md-12">
+            <h2>Resolution</h2>
+            <div class="form-floating ">
+              <textarea name="ResolutionComments" id="ResolutionComments" cols="30" rows="10" placeholder=" Summary"
+                class="form-control" formControlName="wrResolutionNotes"></textarea>
+              <label for="ResolutionComments">Case Log Resolution Comments....</label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+    <div class="col md-12 text-end mt-3">
+      <button class="submit" (click)="saveNewCase()">Submit</button>
+    </div>
+  </div>
+</div>

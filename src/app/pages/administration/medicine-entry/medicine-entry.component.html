@@ -1,0 +1,431 @@
+<router-outlet>
+  <ngx-spinner bdColor="rgba(51,51,51,0.8)" size="medium" color="#fff" type="ball-circus" [fullScreen]="true">
+  </ngx-spinner>
+</router-outlet>
+<div id="medicineEntry" class="tabcontent">
+  <div class="content">
+    <form *ngIf="medicineEntryForm" [formGroup]="medicineEntryForm">
+      <div class="row">
+        <div class="col-md-6 mb-2">
+          <div class="row">
+            <div class="col-md-12 mb-2">
+              <div class="form-floating">
+                <input type="text" name="medicineName " placeholder="Medicine Name" id="Laboratory" class="form-control"
+                  formControlName="medicineName"
+                  [ngClass]="{'disable':medicineEntryForm.get('medicineName')?.disabled}">
+                <label for="Laboratory">Medicine Name </label>
+                <div class="search">
+                  <i class="bi bi-search" *ngIf="medicineEntryForm.controls['isAdd'].value"
+                    (click)="medicineListFetch(medicineEntryForm.controls['medicineName'].value)"></i>
+                  <i class="bi-x-circle-fill" *ngIf="!medicineEntryForm.controls['isAdd'].value"
+                    (click)="medicineFormReset()"></i>
+                </div>
+              </div>
+              <div class="validation-div errorDiv">
+                <app-validation-message [control]="medicineEntryForm.controls['medicineName']"
+                  [messages]="errorMessage.medicineName">
+                </app-validation-message>
+              </div>
+            </div>
+            <div class="col-md-12 position-relative">
+              <div class="faq " [ngClass]="{'d-block':medicineList.length}">
+                <div *ngFor="let medicine of medicineList" (click)="optionSelected(medicine)"
+                  class="medicineList d-flex justify-content-between align-items-center">
+                  <p>{{medicine.medicineName}}</p>
+                  <span>{{medicine.medicineCode}}</span>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-12 mb-2">
+              <div class="form-floating selectBox" [ngClass]="{selectedFormValue: medicineEntryForm.value.medicineType}">
+                <select class="form-select" id="floatingSelect" aria-label="Floating label select example"
+                  formControlName="medicineType">
+                  <option></option>
+                  <option [value]="medicinetype" *ngFor="let medicinetype of medicinetypeList">{{medicinetype}}</option>
+                </select>
+                <label for="floatingSelect">MedicineType</label>
+              </div>
+              <div class="validation-div errorDiv">
+                <app-validation-message [control]="medicineEntryForm.controls['medicineType']"
+                  [messages]="errorMessage.medicineType">
+                </app-validation-message>
+              </div>
+            </div>
+            <div class="col-md-12 mb-2">
+              <div class="form-floating ">
+                <input type="text" name="Composition" placeholder="Composition" id="Laboratory" class="form-control"
+                  formControlName="composition" (keyup)="changeMedicine()">
+                <label for="Laboratory">Composition </label>
+              </div>
+              <div class="validation-div errorDiv">
+                <app-validation-message [control]="medicineEntryForm.controls['composition']"
+                  [messages]="errorMessage.composition">
+                </app-validation-message>
+              </div>
+            </div>
+            <div class="col-md-12 mb-2">
+              <div class="form-floating">
+                <input type="text" name="medicineShortName " placeholder="Medicine Short Name" id="Laboratory"
+                  class="form-control" formControlName="medicineShortName" (keyup)="changeMedicine()">
+                <label for="Laboratory">Medicine Short Name </label>
+              </div>
+              <div class="validation-div errorDiv">
+                <app-validation-message [control]="medicineEntryForm.controls['medicineShortName']"
+                  [messages]="errorMessage.medicineShortName">
+                </app-validation-message>
+              </div>
+            </div>
+            <div class="col-md-12">
+              <div class="form-floating selectBox" [ngClass]="{selectedFormValue: medicineEntryForm.value.restrictedDrugsCategory}">
+                <select class="form-select" id="floatingSelect" aria-label="Floating label select example"
+                formControlName="restrictedDrugsCategory" (change)="changeMedicine()">
+                  <option></option>
+                  <option [value]="restrictedDrugs.restrictedDrugsCategory" *ngFor="let restrictedDrugs of restrictedDrugsList">{{restrictedDrugs.categoryDescription}}</option>
+                </select>
+                <label for="floatingSelect">Restricted Drugs Category</label>
+              </div>
+              <div class="validation-div errorDiv">
+                <!-- <app-validation-message [control]="medicineEntryForm.controls['restrictedDrugsCategory']"
+                  [messages]="errorMessage.restrictedDrugsCategory">
+                </app-validation-message> -->
+              </div>
+          </div>
+            <div class="col-md-12 mb-2">
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-floating ">
+                    <input type="number" name="Price" placeholder="Price" id="Laboratory" class="form-control"
+                      formControlName="price" (keyup)="changeMedicine()">
+                    <label for="Laboratory">Price</label>
+                  </div>
+                  <div class="validation-div errorDiv">
+                    <app-validation-message [control]="medicineEntryForm.controls['price']"
+                      [messages]="errorMessage.price">
+                    </app-validation-message>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-floating selectBox" [ngClass]="{selectedFormValue: medicineEntryForm.value.medicineStatus}">
+                    <select class="form-select" id="floatingSelect" aria-label="Floating label select example"
+                    formControlName="medicineStatus" (change)="changeMedicine()">
+                      <option></option>
+                      <option value="A" >Active</option>
+                      <option value="D" >Duplicate</option>
+                      <option value="O" >Obsolete</option>
+                      <option value="U" >Out of Stock</option>
+                    </select>
+                    <label for="floatingSelect">Medicine Status</label>
+                  </div>
+                  <div class="validation-div errorDiv">
+                    <app-validation-message [control]="medicineEntryForm.controls['medicineStatus']"
+                      [messages]="errorMessage.medicineStatus">
+                    </app-validation-message>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="col-md-12 mb-2 h-100">
+              <div class="form-floating pt-4 pb-1 h-100">
+                <textarea name="MedicineDescription" id="Laboratory" cols="60" rows="20"
+                  placeholder="MedicineDescription" class="form-control" formControlName="medicineDescription"
+                  (keyup)="changeMedicine()"></textarea>
+                <label for="Laboratory">Medicine Description</label>
+              </div>
+              <div class="validation-div errorDiv">
+                <app-validation-message [control]="medicineEntryForm.controls['medicineDescription']"
+                  [messages]="errorMessage.medicineDescription">
+                </app-validation-message>
+              </div>
+            </div>
+            <div class="col-md-12 mb-2">
+              <div class="SideEffects">
+                <h2>Side Effects</h2>
+                <div class="row" formArrayName="sideEffectList">
+                  <div class="col-md-12 mb-2">
+                    <div class="row">
+                      <div style="width: 50%;"
+                        *ngFor="let sideEffect of sideEffectList().controls; let sideEffectIndex = index">
+                        <div class="col-md-12 mb-2" formGroupName="{{ sideEffectIndex }}">
+                          <input type="text" placeholder="Enter Side Effects" class="form-control"
+                            name="medicineCompany " formControlName="sideEffect" (keyup)="changeMedicine()">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-12 mb-2 mt-3">
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="form-group file-area" *ngIf="medicineEntryForm.get('medicineCode')?.getRawValue()">
+                    <label for="images"><i class="bi-cloud-arrow-up-fill"></i> No File Choosen....</label>
+                    <input id="file" type="file" multiple (change)="onPfFileChange($event)">
+                    <div *ngIf="fileError">
+                      <span class="massage">{{fileError}}</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="row">
+            <div class="col-md-12 mb-2">
+              <div class="form-floating ">
+                <input type="text" name="medicineManufacturer " placeholder="Medicine Manufacturer" id="Laboratory"
+                  class="form-control" formControlName="medicineManufacturer" (keyup)="changeMedicine()">
+                <label for="Laboratory">Medicine Manufacturer </label>
+              </div>
+              <div class="validation-div errorDiv">
+                <app-validation-message [control]="medicineEntryForm.controls['medicineManufacturer']"
+                  [messages]="errorMessage.medicineManufacturer">
+                </app-validation-message>
+              </div>
+            </div>
+            <div class="col-md-12 mb-2">
+              <div class="form-floating ">
+                <input type="text" name="ManufacturerAddress " placeholder="Manufacturer Address" id="Laboratory"
+                  class="form-control" formControlName="medicineManufacturerAddress" (keyup)="changeMedicine()">
+                <label for="Laboratory">Manufacturer Address</label>
+              </div>
+              <div class="validation-div errorDiv">
+                <app-validation-message [control]="medicineEntryForm.controls['medicineManufacturerAddress']"
+                  [messages]="errorMessage.medicineManufacturerAddress">
+                </app-validation-message>
+              </div>
+            </div>
+            <div class="col-md-12 mb-3">
+              <div class="row">
+                <div class="col-md-6 indicatorcheckbox">
+                  <div class="form-group">
+                    <input type="checkbox" id="check2" formControlName="medicineCategory" (change)="changeMedicine()">
+                    <label for="check2">
+                    </label>
+                    <p>Generic</p>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-floating ">
+                    <input type="number" name="medicinequantity" placeholder="Medicine Quantity" id="Laboratory"
+                      class="form-control" formControlName="medicineQuantityLimit" (keyup)="changeMedicine()">
+                    <label for="Laboratory">Medicine Quantity Limit</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-12">
+              <div class="col-md-12 mb-3 indicatorcheckbox">
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <input type="checkbox" id="check" formControlName="prescriptionRequired"
+                        (change)="changeMedicine()">
+                      <label for="check">
+                      </label>
+                      <p>Prescription Required</p>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <select name="" id="check1" formControlName="StoreTemperatureRequird" (change)="changeMedicine()"
+                        class="form-control">
+                        <option value="Y">Store below 2°C - 8°C</option>
+                        <option value="N">Store below 30°C</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-12 mb-2">
+                <div class="form-floating ">
+                  <input type="text" name="Uses " placeholder="Uses" id="Laboratory" class="form-control"
+                    formControlName="usesDescription" (keyup)="changeMedicine()">
+                  <label for="Laboratory">Uses </label>
+                </div>
+                <div class="validation-div errorDiv">
+                  <app-validation-message [control]="medicineEntryForm.controls['usesDescription']"
+                    [messages]="errorMessage.usesDescription">
+                  </app-validation-message>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-12 mb-2">
+              <div class="safetyMeasures" formGroupName="safetyMeasures">
+                <h2>Safety Measures</h2>
+                <div class="row">
+                  <div class="col-md-6 mb-2" formGroupName="Alcohol">
+                    <p>Alcohol</p>
+                    <div class="row">
+                      <div class="col-md-12 mb-2">
+                        <div class="form-floating ">
+                          <input type="text" name="Alcohol " placeholder="Alcohol" id="Laboratory" class="form-control"
+                            formControlName="safetyAdviceDetails" (focusout)="changeSideEffect('Alcohol')">
+                          <label for="Laboratory">Safety Advice Details</label>
+                        </div>
+                      </div>
+                      <div class="col-md-12 mb-2">
+                        <div class="form-floating ">
+                          <input type="text" name="Alcohol " placeholder="Alcohol" id="Laboratory" class="form-control"
+                            formControlName="safetyAdviceInteraction" (focusout)="changeSideEffect('Alcohol')">
+                          <label for="Laboratory">Safety Advice Interaction</label>
+                          <div class="validation-div errorDiv">
+                            <app-validation-message [control]="getSafetyAdviceInteractioncontroll('Alcohol')"
+                              [messages]="errorMessage.safetyAdviceInteraction">
+                            </app-validation-message>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6 mb-2" formGroupName="Driving">
+                    <p>Driving</p>
+                    <div class="row">
+                      <div class="col-md-12 mb-2">
+                        <div class="form-floating ">
+                          <input type="text" name="Alcohol " placeholder="Alcohol" id="Laboratory" class="form-control"
+                            formControlName="safetyAdviceDetails" (focusout)="changeSideEffect('Driving')">
+                          <label for="Laboratory">Safety Advice Details</label>
+                        </div>
+                      </div>
+                      <div class="col-md-12 mb-2">
+                        <div class="form-floating ">
+                          <input type="text" name="Alcohol " placeholder="Alcohol" id="Laboratory" class="form-control"
+                            formControlName="safetyAdviceInteraction" (focusout)="changeSideEffect('Driving')">
+                          <label for="Laboratory">Safety Advice Interaction</label>
+                          <div class="validation-div errorDiv">
+                            <app-validation-message [control]="getSafetyAdviceInteractioncontroll('Driving')"
+                              [messages]="errorMessage.safetyAdviceInteraction">
+                            </app-validation-message>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6 mb-2" formGroupName="Pregnancy">
+                    <p>Pregnancy</p>
+                    <div class="row">
+                      <div class="col-md-12 mb-2">
+                        <div class="form-floating ">
+                          <input type="text" name="Alcohol " placeholder="Alcohol" id="Laboratory" class="form-control"
+                            formControlName="safetyAdviceDetails" (focusout)="changeSideEffect('Pregnancy')">
+                          <label for="Laboratory">Safety Advice Details</label>
+                        </div>
+                      </div>
+                      <div class="col-md-12 mb-2">
+                        <div class="form-floating ">
+                          <input type="text" name="Alcohol " placeholder="Alcohol" id="Laboratory" class="form-control"
+                            formControlName="safetyAdviceInteraction" (focusout)="changeSideEffect('Pregnancy')">
+                          <label for="Laboratory">Safety Advice Interaction</label>
+                          <div class="validation-div errorDiv">
+                            <app-validation-message [control]="getSafetyAdviceInteractioncontroll('Pregnancy')"
+                              [messages]="errorMessage.safetyAdviceInteraction">
+                            </app-validation-message>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6 mb-2" formGroupName="Breastfeeding">
+                    <p>Breastfeeding</p>
+                    <div class="row">
+                      <div class="col-md-12 mb-2">
+                        <div class="form-floating ">
+                          <input type="text" name="Alcohol " placeholder="Alcohol" id="Laboratory" class="form-control"
+                            formControlName="safetyAdviceDetails" (focusout)="changeSideEffect('Breastfeeding')">
+                          <label for="Laboratory">Safety Advice Details</label>
+                        </div>
+                      </div>
+                      <div class="col-md-12 mb-2">
+                        <div class="form-floating ">
+                          <input type="text" name="Alcohol " placeholder="Alcohol" id="Laboratory" class="form-control"
+                            formControlName="safetyAdviceInteraction" (focusout)="changeSideEffect('Breastfeeding')">
+                          <label for="Laboratory">Safety Advice Interaction</label>
+                          <div class="validation-div errorDiv">
+                            <app-validation-message [control]="getSafetyAdviceInteractioncontroll('Breastfeeding')"
+                              [messages]="errorMessage.safetyAdviceInteraction">
+                            </app-validation-message>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6 mb-2" formGroupName="Kidney">
+                    <p>Kidney</p>
+                    <div class="row">
+                      <div class="col-md-12 mb-2">
+                        <div class="form-floating ">
+                          <input type="text" name="Alcohol " placeholder="Alcohol" id="Laboratory" class="form-control"
+                            formControlName="safetyAdviceDetails" (focusout)="changeSideEffect('Kidney')">
+                          <label for="Laboratory">Safety Advice Details</label>
+                        </div>
+                      </div>
+                      <div class="col-md-12 mb-2">
+                        <div class="form-floating ">
+                          <input type="text" name="Alcohol " placeholder="Alcohol" id="Laboratory" class="form-control"
+                            formControlName="safetyAdviceInteraction" (focusout)="changeSideEffect('Kidney')">
+                          <label for="Laboratory">Safety Advice Interaction</label>
+                          <div class="validation-div errorDiv">
+                            <app-validation-message [control]="getSafetyAdviceInteractioncontroll('Kidney')"
+                              [messages]="errorMessage.safetyAdviceInteraction">
+                            </app-validation-message>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6 mb-2" formGroupName="Liver">
+                    <p>Liver</p>
+                    <div class="row">
+                      <div class="col-md-12 mb-2">
+                        <div class="form-floating ">
+                          <input type="text" name="Alcohol " placeholder="Alcohol" id="Laboratory" class="form-control"
+                            formControlName="safetyAdviceDetails" (focusout)="changeSideEffect('Liver')">
+                          <label for="Laboratory">Safety Advice Details</label>
+                        </div>
+                      </div>
+                      <div class="col-md-12 mb-2">
+                        <div class="form-floating ">
+                          <input type="text" name="Alcohol " placeholder="Alcohol" id="Laboratory" class="form-control"
+                            formControlName="safetyAdviceInteraction" (focusout)="changeSideEffect('Liver')">
+                          <label for="Laboratory">Safety Advice Interaction</label>
+                          <div class="validation-div errorDiv">
+                            <app-validation-message [control]="getSafetyAdviceInteractioncontroll('Liver')"
+                              [messages]="errorMessage.safetyAdviceInteraction">
+                            </app-validation-message>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-12 d-flex justify-content-around mb-2 mt-3">
+              <button class="Save" (click)="save(medicineEntryForm.getRawValue(),medicineEntryForm.valid)"
+                *ngIf="(medicineEntryForm.getRawValue().isAdd && !medicineEntryForm.getRawValue().medicineCode)||(!medicineEntryForm.getRawValue().isAdd && medicineEntryForm.getRawValue().medicineCode)">Save</button>
+              <button class="Save" (click)="medicineFormReset()"
+                *ngIf="medicineEntryForm.getRawValue().isAdd && medicineEntryForm.getRawValue().medicineCode">Complete</button>
+              <button class="Save" (click)="medicineFormReset()">Reset</button>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-12">
+          <div class="row">
+            <div class="col-md-1 p-0 mb-2" *ngFor="let file of myFiles; let i = index" [attr.data-index]="i">
+              <div class="img" *ngIf="!file.isDelete">
+                <img [src]="file.response[0].fileName|getFile:file.response[0].fileType" *ngIf="file.response.length">
+                <i class="bi-x-circle-fill" (click)="removeFile(i)"></i>
+                <div *ngIf="!file.error" id="Progress_Status">
+                  <div [style.width]="file.progress + '%'" id="myprogressBar"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

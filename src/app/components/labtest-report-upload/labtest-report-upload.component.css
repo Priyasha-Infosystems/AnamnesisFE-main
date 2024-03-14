@@ -1,0 +1,1280 @@
+.DataEntryDisplay {
+  width: 100%;
+  height: 100%;
+  padding: 30px 24px;
+}
+
+.selectedFormValue label {
+  padding: 8px 12px 1px 10px !important;
+  transition: 0.3s;
+  font-size: 10px !important;
+}
+
+/* Style the tab */
+.tab {
+  float: left;
+  width: 100%;
+}
+
+.tab i {
+  font-size: 45px;
+  color: rgb(184, 20, 20);
+}
+
+/* Style the buttons inside the tab */
+.tab button {
+  display: block;
+  background-color: inherit;
+  color: black;
+  width: 100%;
+  border: none;
+  outline: none;
+  text-align: right;
+  cursor: pointer;
+  transition: 0.3s;
+  border-radius: 5px;
+  padding: 0;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover i {
+  color: #ddd;
+}
+
+/* Create an active/current "tab button" class */
+.tab button.active i {
+  color: #ccc;
+}
+
+.active {
+  color: #ccc;
+}
+
+/* Style the tab content */
+.tabcontent {
+  float: left;
+  width: 100%;
+  border-left: none;
+}
+
+/* img {
+  width: 100% !important;
+} */
+
+
+.ViewPDF {
+  width: 100%;
+  height: 100%;
+  background: rgba(253, 253, 255, 0.85);
+  border: 1px solid rgb(59 77 201 / 37%);
+  box-shadow: 4px 4px 4px -2px rgb(55 78 200 / 32%);
+  border-radius: 5px;
+  padding: 15px;
+}
+
+.EditFile button img {
+  max-width: 40px;
+}
+
+.EditFile button {
+  display: block;
+  background: none;
+  border: none;
+  text-align: left;
+}
+
+.EditFile button i {
+  font-size: 30px;
+  padding: 0px 4px;
+  color: #364fc7;
+}
+
+.DetaEntery {
+  width: 100%;
+  height: 100%;
+  padding: 20px 15px 60px 15px;
+  background: #FFFFFF;
+  border: 1px solid rgb(59 77 201 / 37%);
+  box-shadow: 4px 4px 4px -2px rgb(55 78 200 / 32%);
+  border-radius: 5px;
+  position: relative;
+}
+
+.DetaEntery .close {
+  width: 46px;
+  height: 46px;
+  background: #fff;
+  border: 1px solid rgb(54 79 199 / 49%);
+  box-shadow: 2px 2px 5px rgb(54 79 199 / 37%);
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: -20px;
+  right: -2px;
+  cursor: pointer;
+  z-index: 1;
+}
+
+.close img {
+  max-width: 30px;
+  color: #fff;
+}
+
+.DetaEntery .topContent .col-md-7 {
+  padding: 0px 0px 0px 12.5px !important
+}
+
+.DetaEntery .topContent .SearchBar {
+  height: 100%;
+  background: #FFFFFF;
+  border: 1px solid rgb(54 79 199 / 18%);
+  box-shadow: -1px 7px 4px -5px rgb(54 79 199 / 42%);
+  border-radius: 5px;
+  padding: 10px 10px 10px 10px;
+}
+
+.DetaEntery .topContent .nameDisplay {
+  width: 100%;
+  height: 100%;
+  background: #FFFFFF;
+  border: 1px solid rgba(113, 59, 219, 0.18);
+  box-shadow: 0px 11px 34px -5px rgba(113, 59, 219, 0.21);
+  border-radius: 5px;
+  padding: 12px 11px 12px 11px;
+  display: flex;
+  align-content: flex-start;
+  flex-direction: column;
+}
+
+.DetaEntery .topContent .nameDisplay h6 {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 124.5%;
+  color: #333232;
+  margin: 0;
+}
+
+.DetaEntery .topContent .nameDisplay #referredName {
+  font-weight: 400;
+}
+
+.SearchBar small {
+  font-size: 8px;
+  color: #ff0000;
+  height: 0px;
+  background: #fff;
+}
+
+.DetaEntery .topContent .nameDisplay #age {
+  font-weight: 400;
+}
+
+.DetaEntery .topContent .SearchBar .form-control {
+  padding: 11px 19px 2px 12px;
+  height: 45px !important;
+  height: unset;
+  background: rgba(255, 255, 255, 0.79);
+  border: 2px solid rgb(59 77 201 / 37%);
+  box-shadow: 4px 4px 4px -2px rgb(55 78 200 / 32%);
+  border-radius: 5px;
+  font-family: 'Poppins';
+  color: #000;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 107%;
+}
+
+.patientName {
+  position: relative;
+}
+
+.patientName .form-control {
+  padding: 11px 19px 2px 12px;
+  height: 45px !important;
+  background: rgba(255, 255, 255, 0.79);
+  border: 2px solid rgb(59 77 201 / 37%);
+  box-shadow: 4px 4px 4px -2px rgb(55 78 200 / 32%);
+  border-radius: 5px;
+  font-family: 'Poppins';
+  color: #000;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 11px;
+  line-height: 107%;
+}
+
+.patientName .form-floating label {
+  height: unset;
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 11px;
+  line-height: 107%;
+  color: #364fc7;
+}
+
+.patientName .doctorDetails {
+  position: absolute;
+  top: 35px;
+}
+
+.drName {
+  display: flex;
+  background: rgba(255, 255, 255, 0.79);
+  border: 2px solid rgb(59 77 201 / 37%);
+  box-shadow: 4px 4px 4px -2px rgb(55 78 200 / 32%);
+  border-radius: 5px;
+  position: relative;
+  margin-bottom: 3px;
+  margin-top: 7px;
+}
+
+.drName input {
+  background: rgba(255, 255, 255, 0.79) !important;
+  border: none !important;
+  box-shadow: unset !important;
+}
+
+.drName .drNameDelete {
+  position: absolute;
+  right: -18px;
+  font-size: 14px !important;
+  color: #364fc7;
+  cursor: pointer;
+  padding: 0;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.Signatoryicon {
+  background: rgba(255, 255, 255) !important;
+  border-radius: 5px;
+}
+
+.drName i {
+  font-size: 14px !important;
+  padding: 0px 2px;
+}
+
+.drName .fa-search {
+  cursor: pointer;
+  right: 16px;
+  top: 3px;
+  color: #364fc7;
+}
+
+input[type="date"] {
+  padding: 11px 14px 4px 11px !important;
+  cursor: pointer;
+}
+
+input {
+  width: 100%;
+  height: 45px !important;
+  outline: none;
+  padding: 18px 8px 7px 11px;
+  height: unset;
+  background: rgba(255, 255, 255, 0.79);
+  border: 2px solid rgb(59 77 201 / 37%);
+  box-shadow: 4px 4px 4px -2px rgb(55 78 200 / 32%);
+  border-radius: 5px;
+  font-family: 'Poppins';
+  color: #000;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 11px;
+  line-height: 107%;
+}
+
+.dateInput label {
+  padding: 10px 14px 4px 11px;
+}
+
+.DetaEntery .topContent .SearchBar .form-floating label {
+  /* padding: 12px 12px 9px 12px; */
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 11px;
+  line-height: 107%;
+  color: #364fc7;
+}
+
+.DetaEntery .topContent .SearchBar button {
+  /* width: 90%;
+  height: 100%;
+  background: rgba(113, 59, 219, 0.79);
+  border: 2px solid rgba(174, 140, 239, 0.54);
+  box-shadow: 0px 12px 53px -24px rgb(134 87 226 / 63%);
+  border-radius:5px; 
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 9px;
+  line-height: 110%;
+  color: #FFFFFF; */
+}
+
+
+.MiddleContent {
+  width: 100%;
+  height: auto;
+  position: relative;
+  background: #eaedff;
+  border: 1px solid rgb(59 77 201 / 37%);
+  box-shadow: 4px 4px 4px -2px rgb(55 78 200 / 32%);
+  border-radius: 5px;
+  margin-top: 14px;
+  padding: 40px 20px 28px 20px;
+}
+
+.MiddleContent .closeMiddleContent {
+  position: absolute;
+  right: -10px;
+  top: -10px;
+  color: #364fc7;
+  font-size: 25px;
+  background: #ffff;
+  border-radius: 5px;
+  line-height: 0;
+  cursor: pointer;
+}
+
+.MiddleContent select {
+  width: 100%;
+  height: 100%;
+  padding: 13px 16px;
+  background: #FFFFFF;
+  border: 1px solid rgba(113, 59, 219, 0.19);
+  box-shadow: 0px 16px 34px -6px rgba(113, 59, 219, 0.19);
+  border-radius: 5px;
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 10px;
+  line-height: 110%;
+  color: #484747;
+}
+
+.MiddleContent .form-floating .form-control {
+  padding: 16px 19px 9px 12px;
+  height: unset;
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 11px;
+  line-height: 110%;
+  color: #000;
+  box-shadow: unset;
+  border-radius: 5px;
+  border: 2px solid rgb(59 77 201 / 37%);
+  box-shadow: 4px 4px 4px -2px rgb(55 78 200 / 32%);
+}
+
+.MiddleContent .form-floating label {
+  height: unset;
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 11px;
+  line-height: 107%;
+  color: #364fc7;
+}
+
+.MiddleContent h3 {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 700 !important;
+  font-size: 12px !important;
+  line-height: 110% !important;
+  color: #364fc7 !important;
+}
+
+.pageswitchBox {
+  position: absolute;
+  right: 6px;
+  top: 7px;
+}
+
+.closeTestName {
+  color: #364fc7;
+  cursor: pointer;
+  font-size: 15px !important;
+  line-height: 1.9;
+  margin: -2px;
+}
+
+.Numeric input[type="checkbox"] {
+  width: unset !important;
+  box-shadow: unset !important;
+  height: unset !important;
+}
+
+.Numeric p {
+  font-size: 12px !important;
+  font-weight: 500 !important;
+  display: -webkit-box;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  line-height: 1.2 !important;
+  white-space: pre-wrap;
+}
+
+.Switch {
+  padding-right: 5px;
+}
+
+.MiddleContent h5 {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 10px;
+  line-height: 110%;
+  color: #364fc7;
+  margin-bottom: 0;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.MiddleContent textarea {
+  width: 100%;
+  background: #FFFFFF;
+  border: 1px solid rgba(113, 59, 219, 0.19);
+  box-shadow: 0px 16px 34px -6px rgba(113, 59, 219, 0.19);
+  border-radius: 5px;
+  margin-top: 12px;
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 110%;
+  color: #484747;
+  padding: 28px 18px;
+  resize: none;
+  outline: none;
+}
+
+.RightSignature,
+.LeftSignature {
+  width: 100%;
+  height: auto;
+  background: #F2ECFF;
+  border: 1px solid rgba(113, 59, 219, 0.19);
+  box-shadow: 0px 16px 34px -6px rgb(113 59 219 / 19%);
+  border-radius: 5px;
+  padding: 5px 10px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.imgDisplay {
+  margin-bottom: 14px;
+}
+
+.imgDisplay img {
+  width: 100%;
+  height: 100%;
+  border: 1px solid rgba(113, 59, 219, 0.19);
+  box-shadow: 0px 16px 34px -6px rgba(113, 59, 219, 0.19);
+}
+
+.MiddleContent h4 {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 9px;
+  line-height: 1;
+  text-align: center;
+  color: #414040;
+}
+
+.MiddleContent p {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 10px;
+  margin: 0;
+  line-height: 1;
+  color: #000000;
+}
+
+.LastContent {
+  width: 100%;
+  height: auto;
+  background: #F2ECFF;
+  border: 1px solid rgba(113, 59, 219, 0.19);
+  box-shadow: 0px 16px 34px -6px rgba(113, 59, 219, 0.19);
+  border-radius: 5px;
+  margin-top: 29px;
+  padding: 64px 38px 42px 38px;
+}
+
+.footer button {
+  background: #364fc7;
+  box-shadow: 0px 11px 34px -5px rgb(113 59 219 / 40%);
+  border-radius: 5px;
+  border: none;
+  padding: 13px 24px;
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 11px;
+  line-height: 110%;
+  color: #FFFFFF;
+}
+
+select {
+  outline: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+select.one {
+  background: url("../../../assets/images/selectArrow.png") no-repeat;
+  background-color: #fff;
+  border-radius: 5px;
+}
+
+select.one {
+  background-size: 11px;
+  background-position: calc(100% - 10px) 16px;
+  background-repeat: no-repeat;
+}
+
+select.two {
+  background-size: 11px;
+  background-position: calc(100% - 34px) 14px;
+  background-repeat: no-repeat;
+}
+
+.ContentDisplay i {
+  font-size: 10px;
+  line-height: 2;
+
+}
+
+.ContentDisplay .bi-check-circle-fill {
+  color: #06c406;
+}
+
+.ContentDisplay .bi-question-circle-fill {
+  color: #364fc7;
+  margin-top: 2px;
+}
+
+.addAnotherAuthorisedSignatory {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 8px;
+  line-height: 110%;
+  color: #364fc7;
+  margin: 0;
+  cursor: pointer;
+  margin-left: 8px;
+}
+
+.addAnotherPage {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 110%;
+  color: #364fc7;
+  text-align: left;
+  position: relative;
+  right: 15px;
+  bottom: -17px;
+  cursor: pointer;
+}
+
+.Numeric input {
+  margin-right: 3px;
+}
+
+.Numeric label {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 9px;
+  line-height: 110%;
+  color: #364fc7;
+  letter-spacing: 0.3px;
+}
+
+.Test_Result_List p {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 10px;
+  line-height: 110%;
+  color: #201f20;
+  margin: 0;
+  padding-left: 10px;
+}
+
+.Test_Result_List {
+  background: #FFFFFF;
+  border: 1px solid rgba(113, 59, 219, 0.18);
+  box-shadow: 0px 11px 34px -5px rgb(113 59 219 / 21%);
+  border-radius: 20px;
+  padding: 10px;
+  position: absolute;
+  z-index: 1;
+  top: -15px;
+  display: none;
+}
+
+.Test_Result_List .row:last-child {
+  margin-bottom: 0 !important;
+}
+
+.Switch input[type='checkbox'] {
+  -moz-appearance: none;
+  -ms-progress-appearance: none;
+  -webkit-appearance: none;
+  outline: none;
+  cursor: pointer;
+  position: relative;
+  display: inline-block;
+  width: 43px;
+  padding: unset !important;
+  height: 24px !important;
+  border-radius: 20px;
+  background: #8b8787;
+  transition: background 0.4s ease-in-out;
+}
+
+.Switch input[type='checkbox']::before {
+  content: '';
+  text-align: center;
+  vertical-align: middle;
+  position: absolute;
+  top: 2px;
+  left: 3px;
+  width: 15px;
+  height: 15px;
+  background: #fff;
+  border-radius: 20px;
+  transition: left 0.4s ease-in-out;
+}
+
+.Switch input[type='checkbox']:checked {
+  background: #364fc7;
+}
+
+.Switch input[type='checkbox']:checked::before {
+  left: 20px;
+}
+
+.form-floating i {
+  font-size: 12px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  border-radius: 5px;
+}
+
+.search {
+  font-size: 12px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  border-radius: 5px;
+  position: absolute;
+  right: 10px;
+  top: -5px;
+  height: 100%;
+}
+
+button:disabled,
+button[disabled] {
+  opacity: 0.6;
+}
+
+.modal-dialog {
+  max-width: 90% !important;
+}
+
+.Delete {
+  background: none;
+  border: none;
+  position: absolute;
+  top: 0;
+  right: 0px;
+  bottom: 0;
+  padding: 0;
+}
+
+.Delete i {
+  font-size: 14px;
+  color: #364fc7;
+  margin: -11px 4px 0px 0px;
+}
+
+.doctorDetails {
+  position: absolute;
+  top: 78px;
+}
+
+.doctorDetails .CollapsePrescribed .m-d.expand-list>li {
+  list-style-type: none;
+  padding: 8px 15px 0px 15px;
+  position: relative;
+  background: rgb(247 243 255);
+  border: 1px solid rgb(113 59 219 / 59%);
+  box-shadow: 6px 6px 15px rgb(113 59 219 / 36%);
+  border-radius: 5px;
+  z-index: 10;
+}
+
+.doctorDetails .CollapsePrescribed .m-d.expand-list>li label h5 {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 1.3;
+  color: #3a3a3a;
+  margin: 0;
+}
+
+.doctorDetails .doctorCard {
+  margin: 3px 0px 0px 0px;
+  border: 1px solid rgb(113 59 219 / 39%);
+  border-radius: 5px;
+  padding: 5px 10px;
+}
+
+.doctorDetails .profileImg {
+  height: 100px;
+  width: 100px;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.doctorDetails .profileImg img {
+  height: 100%;
+  width: 100%;
+}
+
+.doctorDetails .dropdown ul {
+  width: 100%;
+}
+
+.doctorDetails .dropdown a {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 1.3;
+  color: #3a3a3a !important;
+  margin: 0;
+  background: none;
+  border: none;
+  outline: none;
+  width: 100%;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.doctorDetails .dropdown a span {
+  font-size: 12px !important;
+  color: #EDB738;
+}
+
+.doctorDetails .dropdown li a:hover {
+  background: #e7dbc2;
+}
+
+.doctorDetails .doctorCard p {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 140.5%;
+  color: #484747;
+  margin: 0;
+}
+
+.doctorDetails .doctorCard p i {
+  color: #364fc7;
+  padding-right: 4px;
+}
+
+.doctorDetails .doctorCard h5 {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 1.3;
+  color: #3a3a3a !important;
+}
+
+.doctorDetails .Confirm {
+  background: #364fc7;
+  box-shadow: 0px 6px 6px -5px rgb(113 59 219 / 79%);
+  border: none;
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 110%;
+  color: #FFFFFF;
+  letter-spacing: 0.5px;
+  padding: 8px 16px;
+  border-radius: 5px;
+  margin: 5px;
+}
+
+.Signatoryvalue span {
+  font-size: 12px;
+  color: #364fc7;
+  font-weight: 700;
+}
+
+.Signatoryvalue {
+  height: 25px;
+}
+
+.date {
+  position: relative;
+}
+
+.date label {
+  height: unset;
+  transition: 0.3s;
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 11px;
+  line-height: 107%;
+  color: #364fc7;
+}
+
+.date::ng-deep .mat-datepicker-toggle {
+  position: absolute;
+  top: -1px;
+  right: 5px;
+}
+
+.date::ng-deep .mat-datepicker-toggle {
+  background: rgba(255, 0, 0, 0);
+}
+
+.date::ng-deep .mat-calendar-body-label {
+  color: #364fc7;
+  font-weight: 700;
+}
+
+.date::ng-deep .mat-calendar-body-cell-content {
+  color: #364fc7;
+}
+
+.date::ng-deep .mat-button-wrapper {
+  color: #364fc7;
+  font-weight: 700;
+}
+
+.date::ng-deep .mat-datepicker-toggle-default-icon {
+  width: 18px;
+}
+
+.date::ng-deep .mat-calendar-table-header {
+  color: #000;
+  font-weight: 700;
+}
+
+.date::ng-deep .mat-datepicker-content .mat-calendar-next-button {
+  color: #364fc7;
+}
+
+.date::ng-deep .mat-datepicker-content .mat-calendar-previous-button {
+  color: #364fc7;
+}
+
+.date::ng-deep .mat-icon-button.mat-button-disabled.mat-button-disabled {
+  color: #703bdb81;
+}
+
+.date::ng-deep .cdk-program-focused {
+  background: none !important;
+}
+
+.date::ng-deep .mat-button-focus-overlay {
+  background: #FFFFFF;
+}
+
+.date::ng-deep .mat-calendar-body-selected {
+  color: #fff !important;
+}
+
+.date::ng-deep .mat-icon-button {
+  padding-right: 8px !important;
+}
+
+input .largerCheckbox {
+  width: 40px !important;
+  height: 40px !important;
+}
+
+.DataEntryDisplay ::ng-deep .cdk-overlay-pane {
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+/* width */
+.DataEntryDisplay ::ng-deep .cdk-overlay-pane ::-webkit-scrollbar {
+  width: 6px;
+}
+
+/* Track */
+.DataEntryDisplay ::ng-deep .cdk-overlay-pane ::-webkit-scrollbar-track {
+  background: #d1bff652;
+  border-radius: 5px;
+}
+
+/* Handle */
+.DataEntryDisplay ::ng-deep .cdk-overlay-pane ::-webkit-scrollbar-thumb {
+  background: #364fc7;
+  border-radius: 5px;
+}
+
+/* Handle on hover */
+.DataEntryDisplay ::ng-deep .cdk-overlay-pane ::-webkit-scrollbar-thumb:hover {
+  background: #421f8a;
+}
+
+.DataEntryDisplay ::ng-deep .mat-option-text p {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 10px;
+  line-height: 110%;
+  color: #414141;
+  margin: 0;
+  height: 29px;
+  padding: 8px 16px 8px 16px;
+}
+
+.DataEntryDisplay ::ng-deep .mat-option {
+  height: 30px !important;
+  padding: 0 !important;
+}
+
+.DataEntryDisplay ::ng-deep .mat-autocomplete-panel {
+  max-height: 272px !important;
+}
+
+#dropdownMenuLink span {
+  font-size: 12px;
+}
+
+.datelabel label {
+  top: 0px !important;
+  opacity: .65;
+  transform: scale(0.9) translateY(0rem) translateX(0rem);
+}
+
+input,
+select {
+  color: #172c8e;
+}
+
+.ConfirmPopupDiv {
+  position: absolute;
+  width: 90%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding-top: 200px;
+  background: #000000b8;
+  border-radius: 5px;
+}
+
+.ConfirmPopup {
+  display: flex;
+  width: 49%;
+  height: 150px;
+  background: #fff;
+  -webkit-backdrop-filter: blur(2px);
+  backdrop-filter: blur(2px);
+  border-radius: 5px;
+  border: 1px solid #a979ff;
+  align-items: center;
+  padding: 24px 27px;
+  box-shadow: 4px 5px 10px 0px #00000059;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.ConfirmPopup button {
+  background: #364fc7;
+  box-shadow: 0px 11px 34px -5px rgb(113 59 219 / 40%);
+  border-radius: 5px;
+  border: none;
+  padding: 13px 16px;
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 11px;
+  line-height: 110%;
+  color: #FFFFFF;
+}
+
+.ConfirmPopup p {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 110%;
+  color: #000;
+}
+
+.errorDiv {
+  font-size: 10px;
+  height: 10px;
+  text-align: left;
+  padding-left: 4px;
+}
+
+
+small {
+  font-size: 7px;
+  line-height: 0;
+  text-align: left;
+  color: red;
+  padding: 0;
+  margin: 0;
+}
+
+.SignatoryBox {
+  background: #fff;
+  padding: 5px;
+  border-radius: 5px;
+  overflow: auto;
+  position: absolute;
+  max-height: 81px;
+  box-shadow: 0px 6px 3px 0px #0000002b;
+}
+
+.authorisedSignatoryList {
+  max-width: 33.3%;
+}
+
+.authorisedPadding {
+  padding-right: 20px;
+}
+
+.benchmarkData p {
+  font-family: 'Poppins' !important;
+  font-style: normal !important;
+  font-weight: 500 !important;
+  font-size: 11px !important;
+  line-height: 110% !important;
+  color: #000 !important;
+  letter-spacing: 0.3px !important;
+}
+
+.labtestList {
+  width: 100%;
+  margin: auto;
+  padding: 11px 11px 0px 11px;
+  margin-bottom: 10px;
+  background: #FFFFFF;
+  border: 1px solid rgb(54 79 199 / 18%);
+  box-shadow: 0px 11px 7px -5px rgb(54 79 199 / 21%);
+  border-radius: 5px;
+  position: relative;
+}
+
+.labtestListClose {
+  text-align: end;
+  position: absolute;
+  font-size: 20px !important;
+  top: -12px;
+  right: -4px;
+  color: #364fc7;
+  cursor: pointer;
+}
+
+.closePopUp {
+  background: #364fc7;
+  box-shadow: 0px 11px 34px -5px rgb(113 59 219 / 40%);
+  border-radius: 5px;
+  border: none;
+  padding: 8px 10px;
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 110%;
+  color: #FFFFFF;
+  position: absolute;
+  top: -41px;
+  right: -23px;
+}
+
+.close {
+  right: -10px;
+  top: -11px;
+  position: absolute;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 30px;
+  width: 35px;
+  height: 34px;
+  cursor: pointer;
+  box-shadow: 0px 4px 4px rgb(113 59 219 / 50%);
+}
+
+.close i {
+  color: #364fc7;
+  font-size: 22px;
+  line-height: 0;
+}
+
+.somthingWentWrong {
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
+}
+
+.somthingWentWrong p {
+  color: red;
+}
+
+.formDisabled {
+  pointer-events: none;
+}
+
+td {
+  font-size: 11px;
+}
+
+::ng-deep .mat-option-text p {
+  font-size: 12px !important;
+  margin: 0;
+  line-height: 1;
+}
+
+::ng-deep .mat-option-text span {
+  font-size: 10px !important;
+  color: #364fc7 !important;
+  line-height: 1;
+  margin: 0;
+}
+
+::ng-deep .mat-option {
+  padding: 13px !important;
+}
+
+::ng-deep .mat-option-text {
+  padding: 10px 0px;
+}
+
+table i {
+  color: #364fc7;
+}
+
+body {
+  background: #666666;
+}
+
+.content {
+  width: 95%;
+  height: 100%;
+  margin: auto;
+  overflow: hidden;
+}
+
+.img-wrapper {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  overflow: auto;
+  margin: 0 auto;
+  position: relative;
+}
+
+.pdfZoom i {
+  font-weight: 300;
+  font-size: 15px;
+  color: #364fc7;
+  cursor: pointer;
+}
+
+.slidecontainer {
+  bottom: 50px;
+  left: 47%;
+  background: #0b1e2a;
+}
+
+.content ::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+.content ::-webkit-scrollbar-thumb {
+  background: #364fc7 !important;
+  border-radius: 5px;
+}
+
+.content ::-webkit-scrollbar-track {
+  background: #edf2ff !important;
+}
+
+.rotateImg0 {
+  transform: rotate(0deg) !important;
+}
+
+.rotateImg90 {
+  transform: rotate(90deg) !important;
+}
+
+.rotateImg180 {
+  transform: rotate(180deg) !important;
+}
+
+.rotateImg360 {
+  transform: rotate(360deg) !important;
+}
+
+.rotate {
+  /* position: absolute; */
+  bottom: 0;
+  left: auto;
+  right: auto;
+  text-align: center;
+  width: 100%;
+}
+
+.rotate i {
+  font-size: 27px;
+  cursor: pointer;
+}
+
+.my-image {
+  height: 100%;
+  width: 100%;
+  transform-origin: unset !important;
+}
+
+::ng-deep .mat-option {
+  height: 24px !important;
+  padding: 2px 9px !important;
+}

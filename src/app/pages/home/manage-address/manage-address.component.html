@@ -1,0 +1,63 @@
+<div id="Manage" class="tabcontent">
+    <router-outlet>
+        <ngx-spinner bdColor="rgba(51,51,51,0.8)" size="medium" color="#fff" type="ball-circus" [fullScreen]="true">
+        </ngx-spinner>
+    </router-outlet>
+    <div class="d-flex mb-3 w-100 justify-content-end align-items-center ">
+        <button class="Add-Address" id="myBtn" (click)="openPopup(true)">+ Add Address</button>
+    </div>
+    <div class="AddressBox">
+        <div class="AddressScrollBox">
+            <div class="row">
+                <div *ngIf="blankAddress" class="d-flex mx-2 mt-3"
+                    style="justify-content: space-between; align-items: center;">
+                    <h5 style="color: red">No saved address found, please add one by clicking + Add Address</h5>
+                </div>
+                <div *ngFor="let address of addressDetails" class="col-md-6 mb-3">
+                    <div class="home-box">
+                        <div *ngIf="address.customerDefault" class="Default">Default</div>
+                        <div [style.width]="address.customerDefault ? '102%' : '100%'" class="row" id="border-b">
+                            <div class="col-md-8 home d-flex align-items-center">
+                                <img src={{setAddressImg(address.addressType)}} id="home-img">
+                                <h4 class="headerWrap">{{address.addressIdentifier ? address.addressIdentifier :
+                                    "Other"}}</h4>
+                            </div>
+                            <div class="col-md-4 icon">
+                                <i style="margin-right: 9%" class="bi-pen-fill" (click)="openPopup(false, address)"></i>
+                                <i style="margin-right: 9%" class="bi-trash-fill"
+                                    (click)="deleteAddress(address.addressID)"></i>
+                                <img *ngIf="!address.customerDefault" style="padding-bottom: 3.5px"
+                                    (click)="manageAddress(address.addressID)" src="../../../assets/images/setting.svg">
+                            </div>
+                        </div>
+                        <div class="content">
+                            <h4 class="pb-2">{{address.customerName}}</h4>
+                            <div class="d-flex"> 
+                                <div class="w-100">
+                                    <div class="addressDetailsDiv">
+                                        <p><b>Address : </b></p>
+                                        <p [innerHTML]="address.customerAddress |addressLine" *ngIf="address.customerAddress"></p>
+                                        <p>{{address.customerLandmark}}</p>
+                                        <p> {{address.customerCity}}, {{address.customerStateName}} - {{address.customerPincode}}</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <p><b>Contact Number: </b></p> 
+                            </div>
+                            <p *ngIf="address.customerContactNo">(P)&nbsp;+91&nbsp;{{address.customerContactNo}}</p>
+                            <p *ngIf="address?.customerSecondaryContactNo">(S)&nbsp;+91&nbsp;{{address.customerSecondaryContactNo}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="myModal" class="modal" *ngIf="openModal" tabindex="-1" role="dialog">
+        <div class="container">
+            <app-address-modal [stateList]="stateList" [newAddress]="addNewAddress" [selectedAddress]="selectedAddress"
+                (close)="closePopup()">
+            </app-address-modal>
+        </div>
+    </div>
+</div>

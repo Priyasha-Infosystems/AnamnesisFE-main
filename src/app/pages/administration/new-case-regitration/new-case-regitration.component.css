@@ -1,0 +1,628 @@
+ .RequestDetails {
+   width: 100%;
+   background: #ffffff;
+   border: 1px solid #845ef7;
+   border-radius: 6px;
+   padding: 7px 19px 15px 19px;
+ }
+
+ #NewCaseRegistration .content select {
+   outline: none;
+ }
+
+ #NewCaseRegistration .content .RequestDetails h2 {
+   font-family: 'Poppins';
+   font-style: normal;
+   font-weight: 700;
+   font-size: 22px;
+   line-height: 33px;
+   color: #434242;
+ }
+
+ #NewCaseRegistration .content .RequestDetails input {
+   width: 100%;
+   background: #F2ECFF;
+   border: 1px solid #845ef7;
+   border-radius: 6px;
+   padding: 12px 14px 9px 15px;
+   font-style: normal;
+   font-weight: 600;
+   font-size: 12px;
+   line-height: 107%;
+   color: #713BDB;
+   outline: none;
+ }
+
+ #NewCaseRegistration .content .RequestDetails label {
+   color: #7950f2 !important;
+   width: 100%;
+   padding: 18px 15px;
+   font-style: normal;
+   font-weight: 500;
+   font-size: 14px;
+   line-height: 107%;
+ }
+
+ input,
+ select {
+   color: #301680 !important;
+ }
+
+ .form-control:focus {
+   box-shadow: unset !important;
+ }
+
+ #NewCaseRegistration .content .RequestDetails select {
+   outline: none;
+   -webkit-appearance: none;
+   -moz-appearance: none;
+   appearance: none;
+ }
+
+ /* to change arrow fill color, add %23 infront of hex color */
+ #NewCaseRegistration .content .RequestDetails select {
+   background: url("../../../../assets/images/selectArrow.png") no-repeat;
+   background-color: #F2ECFF;
+   font-family: 'Poppins';
+   transition: 0.3s;
+   width: 100%;
+   border: 1px solid rgba(113, 59, 219, 0.18);
+   box-shadow: 0px 11px 34px -5px rgb(113 59 219 / 21%);
+   border-radius: 6px;
+   font-style: normal;
+   font-weight: 500;
+   font-size: 14px;
+   line-height: 107%;
+   outline: none;
+   padding: 28px 29px 13px 14px !important;
+ }
+
+ #NewCaseRegistration .content .RequestDetails select {
+   background-size: 11px;
+   background-position: calc(100% - 11px) 22px;
+   background-repeat: no-repeat;
+ }
+
+ #NewCaseRegistration .content .RequestDetails .selectBox label {
+   padding: 32px 14px 1px 31px !important;
+ }
+
+ #NewCaseRegistration .content .RequestDetails .selectedFormValue label {
+   padding: 19px 26px 0px 29px !important;
+   transition: 0.3s;
+   opacity: .65 !important;
+ }
+
+ .form-select:focus {
+   box-shadow: unset !important;
+ }
+
+ #NewCaseRegistration .content .RequestDetails .col-md-2 p {
+   font-family: 'Poppins';
+   font-style: normal;
+   font-weight: 700;
+   font-size: 16px;
+   line-height: 110%;
+   color: #713BDB;
+   margin-bottom: 10px;
+ }
+
+ #NewCaseRegistration .content .RequestDetails .col-md-2 .bi-check-circle-fill {
+   color: #19CC56;
+   line-height: 0;
+   font-size: 26px;
+   padding-right: 5px;
+   margin-bottom: 10px;
+ }
+
+ #NewCaseRegistration .content .RequestDetails .col-md-2 .bi-question-circle-fill {
+   color: #713BDB;
+   line-height: 0;
+   font-size: 26px;
+   padding-right: 5px;
+ }
+
+ #NewCaseRegistration .content .RequestDetails textarea {
+   width: 100%;
+   height: 294px;
+   padding: 27px 16px;
+   width: 100%;
+   background: #F2ECFF;
+   border: 1px solid #845ef7;
+   border-radius: 6px;
+   font-style: normal;
+   font-weight: 600;
+   font-size: 12px;
+   line-height: 107%;
+   color: #713BDB;
+   outline: none;
+   resize: none;
+ }
+
+ #NewCaseRegistration .content .CaseLog {
+   width: 100%;
+   margin-top: 29px;
+   padding: 6px 19px 23px 19px;
+   background: #fff;
+   border: 1px solid #845ef7;
+   box-shadow: 0px 16px 34px -6px rgba(113, 59, 219, 0.19);
+   border-radius: 6px;
+ }
+
+ #NewCaseRegistration .content .CaseLog h2 {
+   font-family: 'Poppins';
+   font-style: normal;
+   font-weight: 700;
+   font-size: 22px;
+   line-height: 33px;
+   color: #434242;
+ }
+
+ #NewCaseRegistration .content .CaseLog p {
+   font-family: 'Poppins';
+   font-style: normal;
+   font-weight: 500;
+   font-size: 12px;
+   line-height: 110%;
+   color: #000000;
+   margin: 0;
+ }
+
+ #NewCaseRegistration .content .CaseLog span {
+   font-family: 'Poppins';
+   font-style: normal;
+   font-weight: 400;
+   font-size: 13px;
+   line-height: 110%;
+   color: rgba(113, 59, 219, 0.78);
+ }
+
+ #NewCaseRegistration .content .CaseLog h6 {
+   font-family: 'Poppins';
+   font-style: normal;
+   font-weight: 600;
+   font-size: 14px;
+   line-height: 110%;
+   color: #484747;
+ }
+
+ #NewCaseRegistration .content .CaseLog .form-floating label {
+   color: #7950f2 !important;
+   width: 100%;
+   padding: 18px 15px;
+   font-style: normal;
+   font-weight: 500;
+   font-size: 14px;
+   line-height: 107%;
+ }
+
+ #NewCaseRegistration .content .CaseLog .form-floating textarea {
+   width: 100%;
+   height: 116px;
+   padding: 27px 16px;
+   width: 100%;
+   background: #F2ECFF;
+   border: 1px solid #845ef7;
+   border-radius: 6px;
+   font-style: normal;
+   font-weight: 600;
+   font-size: 12px;
+   line-height: 107%;
+   color: #713BDB;
+   outline: none;
+   resize: none;
+ }
+
+ #NewCaseRegistration .content .CaseLog .form-floating .send {
+   background: none;
+   border: none;
+   color: #713BDB;
+   font-size: 26px;
+   position: absolute;
+   bottom: 13px;
+   right: 18px;
+ }
+
+ #NewCaseRegistration .content .Resolution {
+   width: 100%;
+   margin-top: 29px;
+   padding: 6px 19px 23px 19px;
+   background: #fff;
+   border: 1px solid #845ef7;
+   box-shadow: 0px 16px 34px -6px rgba(113, 59, 219, 0.19);
+   border-radius: 10px;
+ }
+
+ #NewCaseRegistration .content .Resolution h2 {
+   font-family: 'Poppins';
+   font-style: normal;
+   font-weight: 700;
+   font-size: 22px;
+   line-height: 33px;
+   color: #434242;
+ }
+
+ #NewCaseRegistration .content .Resolution textarea {
+   width: 100%;
+   height: 116px;
+   padding: 27px 16px;
+   width: 100%;
+   background: #F2ECFF;
+   border: 1px solid #845ef7;
+   border-radius: 6px;
+   font-style: normal;
+   font-weight: 600;
+   font-size: 12px;
+   line-height: 107%;
+   color: #713BDB;
+   outline: none;
+   resize: none;
+ }
+
+ #NewCaseRegistration .content .Resolution .form-floating label {
+   color: #7950f2 !important;
+   width: 100%;
+   padding: 18px 15px;
+   font-style: normal;
+   font-weight: 500;
+   font-size: 14px;
+   line-height: 107%;
+ }
+
+ #NewCaseRegistration .content .submit {
+   width: 175px;
+   height: 69px;
+   background: #713BDB;
+   box-shadow: 0px 11px 34px -5px rgba(113, 59, 219, 0.4);
+   border-radius: 12px;
+   font-family: 'Poppins';
+   font-style: normal;
+   font-weight: 700;
+   font-size: 16px;
+   line-height: 110%;
+   color: #FFFFFF;
+   border: none;
+ }
+
+ #NewCaseRegistration select {
+   background-size: 11px;
+   background-position: calc(100% - 11px) 22px;
+   background-repeat: no-repeat;
+ }
+
+ input[type=file] {
+   position: absolute;
+   width: 100%;
+   height: 100%;
+   top: 0;
+   left: 0;
+   right: 0;
+   bottom: 0;
+   opacity: 0;
+   cursor: pointer;
+ }
+
+ .file-area {
+   width: 100%;
+   height: 53px;
+   background: #f3f0ff;
+   border: 1px solid #845ef7;
+   border-radius: 6px;
+   font-style: normal;
+   font-weight: 500;
+   font-size: 14px;
+   line-height: 107%;
+   color: #713BDB;
+   outline: none;
+   position: relative;
+ }
+
+ .bi-trash-fill {
+   font-size: 20px !important;
+   color: #713BDB;
+   cursor: pointer;
+ }
+
+ .add {
+   font-family: 'Poppins';
+   font-style: normal;
+   font-weight: 700;
+   font-size: 16px;
+   line-height: 110%;
+   color: #713BDB;
+   cursor: pointer;
+   margin: 0;
+ }
+
+ #myprogressBar {
+   width: 225px;
+   height: 5px;
+   background: linear-gradient(180deg, #91F0A2 0%, rgba(101, 177, 103, 0.71) 100%);
+   border-radius: 8px;
+ }
+
+ #Progress_Status {
+   width: 78%;
+   margin-left: 25px;
+   height: 5px;
+   left: 497px;
+   top: 380px;
+   background: #DEE2FF;
+   border-radius: 8px;
+ }
+
+ .doctorDetails .CollapsePrescribed .m-d.expand-list>li {
+   list-style-type: none;
+   padding: 20px 15px 10px 15px;
+   position: relative;
+   background: #fff;
+   border: 1px solid #845ef7;
+   box-shadow: 8px 8px 9px #673ab72e;
+   border-radius: 10px;
+   margin: 0px;
+   z-index: 10;
+ }
+
+ .doctorDetails .CollapsePrescribed .m-d.expand-list>li label h5 {
+   font-family: 'Poppins';
+   font-style: normal;
+   font-weight: 700;
+   font-size: 18px;
+   line-height: 1.3;
+   color: #3a3a3a;
+   margin: 0;
+ }
+
+ .doctorDetails .doctorCard {
+   margin: 5px 0px 0px 0px;
+   background: #f3f0ff;
+   border: 1px solid #845ef7;
+   border-radius: 5px;
+   padding: 5px 10px;
+ }
+
+ .doctorDetails .profileImg {
+   height: 100px;
+   width: 100px;
+   border-radius: 7%;
+   overflow: hidden;
+ }
+
+ .doctorDetails .profileImg img {
+   height: 100%;
+   width: 100%;
+ }
+
+ .doctorDetails .dropdown ul {
+   width: 100%;
+ }
+
+ .doctorCard i {
+   color: #713bdb;
+ }
+
+ .doctorDetails .dropdown a {
+   font-family: 'Poppins';
+   font-style: normal;
+   font-weight: 700;
+   font-size: 18px;
+   line-height: 1.3;
+   color: #3a3a3a !important;
+   margin: 0;
+   background: none;
+   border: none;
+   outline: none;
+   width: 100%;
+   text-decoration: none;
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+ }
+
+ .doctorDetails .dropdown a span {
+   font-size: 12px !important;
+   color: #EDB738;
+ }
+
+ .doctorDetails .dropdown li a:hover {
+   background: #e7dbc2;
+ }
+
+ .doctorDetails .doctorCard p {
+   font-family: 'Poppins';
+   font-style: normal;
+   font-weight: 500;
+   font-size: 13px;
+   line-height: 140.5%;
+   color: #484747;
+   margin: 0;
+ }
+
+ .doctorDetails .doctorCard p i {
+   color: #5f3dc4;
+   padding-right: 4px;
+ }
+
+ .doctorDetails .doctorCard h5 {
+   font-family: 'Poppins';
+   font-style: normal;
+   font-weight: 700;
+   font-size: 18px;
+   line-height: 1.3;
+   color: #3a3a3a !important;
+ }
+
+ .doctorDetails .Confirm {
+   background: #5f3dc4;
+   border: none;
+   font-family: 'Poppins';
+   font-style: normal;
+   font-weight: 500;
+   font-size: 13px;
+   line-height: 110%;
+   color: #FFFFFF;
+   letter-spacing: 0.5px;
+   padding: 8px 16px;
+   border-radius: 5px;
+   margin-top: 10px;
+ }
+
+ .Delete {
+   background: none;
+   border: none;
+   position: absolute;
+   top: 0;
+   right: 0px;
+   bottom: 0;
+   padding: 0;
+ }
+
+ .Delete i {
+   font-size: 16px;
+   color: #673ab7;
+   padding: 0px 5px;
+ }
+
+ .search {
+   font-size: 16px;
+   color: #673ab7;
+   position: absolute;
+   right: 12px;
+   top: 0;
+   bottom: 0;
+   display: flex;
+   align-items: center;
+   cursor: pointer;
+ }
+
+ .doctorDetails {
+   position: absolute;
+   top: 64px;
+ }
+
+ p {
+   width: 100%;
+   font-style: normal;
+   font-weight: 500;
+   font-size: 14px;
+   line-height: 107%;
+ }
+
+ .Dr-list {
+   background: #edf2ff;
+   border: 1px solid #5f3dc4;
+   border-radius: 6px;
+   padding: 8px 10px 11px 15px;
+   display: flex;
+   justify-content: flex-start;
+   flex-wrap: wrap;
+   align-items: center;
+   position: relative;
+   width: 100%;
+ }
+
+ .file-kb {
+   color: #BCC2F7 !important;
+ }
+
+ .Dr-list #Progress_Status {
+   width: 78%;
+   margin-left: 25px;
+   height: 5px;
+   left: 497px;
+   top: 380px;
+   background: #DEE2FF;
+   border-radius: 8px;
+ }
+
+ .Dr-list #Progress_Status #text {
+   color: #5f3dc4;
+   float: right;
+   margin-top: -20px;
+   font-family: 'Poppins';
+   font-style: normal;
+   font-weight: 500;
+   font-size: 13px;
+   line-height: 110%;
+ }
+
+ .Dr-list h6 {
+   font-family: 'Poppins';
+   font-style: normal;
+   font-weight: 500;
+   font-size: 13px;
+   line-height: 110%;
+   color: #5f3dc4;
+   margin: 0px 8px 0px 8px;
+   display: -webkit-box;
+   -webkit-line-clamp: 1;
+   -webkit-box-orient: vertical;
+   overflow: hidden;
+   width: 65%;
+ }
+
+ .Dr-list i {
+   background: #5f3dc4;
+   box-shadow: 0px 4px 8px rgb(113 59 219 / 51%);
+   float: right;
+   border-radius: 100%;
+   height: 25px;
+   width: 25px;
+   color: #fff;
+   display: flex;
+   align-items: center;
+   position: absolute;
+   right: 8px;
+   cursor: pointer;
+   padding: 4px;
+   font-size: 17px;
+ }
+
+ ::file-selector-button {
+   display: none;
+ }
+
+ .Dr-list img {
+   max-width: 20px;
+ }
+
+ .Dr-list p {
+   font-family: 'Poppins';
+   font-style: normal;
+   font-weight: 600;
+   font-size: 13px;
+   line-height: 110%;
+   color: #713BDB;
+ }
+
+ .errorDiv {
+   padding-top: 3px;
+   height: 12px;
+   font-size: 12px;
+   color: red;
+ }
+
+ td {
+   font-size: 11px;
+ }
+
+ ::ng-deep .mat-option-text p {
+   font-size: 12px !important;
+   margin: 0;
+   line-height: 1;
+ }
+
+ ::ng-deep .mat-option-text span {
+   font-size: 10px !important;
+   color: #713bdb !important;
+   line-height: 1;
+   margin: 0;
+ }
+
+ ::ng-deep .mat-option {
+   padding: 13px !important;
+ }
+
+ ::ng-deep .mat-option-text {
+   padding: 10px 0px;
+ }

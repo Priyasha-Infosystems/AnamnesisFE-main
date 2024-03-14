@@ -1,0 +1,9 @@
+.paddingContainer {
+    padding-top: 6.5%; 
+    padding-bottom: 20px;
+}
+
+body {
+    background-color: #EAECFC !important;
+    font-family: 'Poppins', sans-serif;
+}

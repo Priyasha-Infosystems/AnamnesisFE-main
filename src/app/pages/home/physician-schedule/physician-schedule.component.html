@@ -1,0 +1,612 @@
+<router-outlet>
+  <ngx-spinner bdColor="rgba(51,51,51,0.8)" size="medium" color="#fff" type="ball-circus" [fullScreen]="true">
+  </ngx-spinner>
+</router-outlet>
+<div id="Physician" class="tabcontent">
+  <div class="ContentOne">
+    <div class="doctorAllDetails">
+      <div class="row justify-content-between align-items-center">
+        <div class="col-md-5">
+          <form [formGroup]="searchPhysicianForm">
+            <div class=" position-relative" id="DoctorID">
+              <div>
+                <div class="form-floating">
+                  <input type="text" name="DoctorID" class="form-control" placeholder="Doctor's ID"
+                    [matAutocomplete]="physicianNameauto" formControlName="physicianName"
+                    (keyup)="searchPhysician(searchPhysicianForm.value.physicianName)">
+                  <label for="floatingInput">Doctor's ID</label>
+                  <!-- <i class="bi-search search" *ngIf="userIsHCU"></i> -->
+                </div>
+                <small>{{physicianErrMsg}}</small>
+                <mat-autocomplete #physicianNameauto="matAutocomplete">
+                  <mat-option *ngFor="let item of physicianList" [value]="searchedPhysician"
+                    (click)="selectPhysician(item)">
+                    <p>{{item.physicianName}} <span
+                        style="font-size: 12px !important; color: #713bdb;">{{item.physicianUserCode}}</span>
+                    </p>
+                  </mat-option>
+                </mat-autocomplete>
+                <div *ngIf="showPhysicianDetails" class="doctorDetails">
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="CollapsePrescribed">
+                        <ul class="m-d expand-list p-0">
+                          <li data-md-content="200">
+                            <label name="tab" for="tabAddress" tabindex="-1" class="tab_lab w-100" role="tab">
+                              <div>
+                                <div id="dropdownMenuLink" style="display: flex;">
+                                  <div>
+                                    <span>{{physicianDetails.physicianName}}</span>
+                                    <span
+                                      style="font-size: 12px !important; color: #713bdb;">&nbsp;({{physicianDetails.physicianUserCode}})</span>
+                                  </div>
+                                </div>
+                              </div>
+                            </label>
+                            <div class="row">
+                              <div class="col-md-12">
+                                <div class="doctorCard">
+                                  <div class="row">
+                                    <div class="col-md-4">
+                                      <div class="profileImg">
+                                        <img
+                                          [src]="physicianDetails.physicianProfilePictureFileName|getFile:physicianDetails.physicianProfilePictureFileType">
+                                      </div>
+                                    </div>
+                                    <div class="col-md-8">
+                                      <div class="d-flex flex-column">
+                                        <p>{{physicianDetails.physicianSpecialisation}}
+                                        </p>
+                                        <p>{{physicianDetails.physicianQualification}}
+                                        </p>
+                                        <p>
+                                          {{physicianDetails.physicianRegistrationNo}}({{physicianDetails.physicianRegistrationAuthority}})
+                                        </p>
+                                        <div *ngIf="physicianDetails.physicianPrimaryContactNo">
+                                          <p>
+                                            <i class="bi-telephone-fill"></i> <b>(P)</b> +91
+                                            {{physicianDetails.physicianPrimaryContactNo}}
+                                          </p>
+                                        </div>
+                                        <div *ngIf="physicianDetails.physicianSecondaryContactNo">
+                                          <p>
+                                            <i class="bi-telephone-fill"></i> <b>(s)</b> +91
+                                            {{physicianDetails.physicianSecondaryContactNo}}
+                                          </p>
+                                        </div>
+
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="col-md-12 d-flex justify-content-between">
+                                <button class="Confirm" (click)="selectPhysicianForSchedule()">Confirm</button>
+                                <button class="Confirm" (click)="unSelectPhysician()">Cancel</button>
+                              </div>
+                            </div>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="col-md-6">
+          <div *ngIf="selectedPhysicianDetails">
+            <i class="bi-x-circle-fill " (click)="clearPhysician()" *ngIf="userIsHCU"></i>
+            <h2>{{selectedPhysicianDetails.physicianName}}</h2>
+            <p>{{selectedPhysicianDetails.physicianQualification}}</p>
+            <p>{{selectedPhysicianDetails.physicianSpecialisation}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="ContentTwo mt-4 date" *ngIf="selectedPhysicianDetails">
+    <div class="row">
+      <div class="col-md-7 physicianWidth">
+        <div class="col-md-12">
+        </div>
+        <div class="col-md-12">
+          <form [formGroup]="physicianScheduleForm">
+            <div formArrayName="physicianScheduleHealthClinicList">
+              <div
+                *ngFor="let physicianScheduleHealthClinic of physicianScheduleHealthClinicList().controls let physicianScheduleHealthClinicIndex = index">
+                <div class="NewHealthClinic"
+                  *ngIf="!physicianScheduleHealthClinic.value.isDelete && !physicianScheduleHealthClinic.value.isSave">
+                  <ng-container formGroupName="{{physicianScheduleHealthClinicIndex}}">
+                    <div class="row">
+                      <div class="col-md-7">
+                        <!-- <select name="ClinicName" id="ClinicName" formControlName="healthClinicID"
+                        (change)="changeHealtClinic(physicianScheduleHealthClinic.value.healthClinicID,physicianScheduleHealthClinicIndex,physicianScheduleHealthClinic.value.isAdd)">
+                        <option [value]="healthClinic.healthClinicID" *ngFor="let healthClinic of healthClinicList"
+                          [hidden]="isSelectedPreviousHealthClinic(healthClinic.healthClinicID,physicianScheduleHealthClinic.value.healthClinicID)">
+                          {{healthClinic.healthClinicName}}</option>
+                      </select> -->
+                        <div class="form-floating">
+                          <input type="text" name="ClinicName" class="form-control" placeholder="ClinicName"
+                            id="ClinicName floatingInput" formControlName="healthClinicName"
+                            [matAutocomplete]="autoGroup"
+                            (keyup)="getHealthClinicList(physicianScheduleHealthClinic.getRawValue().healthClinicName)">
+                          <label for="floatingInput">Clinic Name</label>
+                          <i class="bi-x-circle-fill cutName"
+                            (click)="unselectHealthClinic(physicianScheduleHealthClinicIndex)"
+                            *ngIf="physicianScheduleHealthClinic.getRawValue().healthClinicID"></i>
+                        </div>
+                        <small>{{physicianScheduleHealthClinic.value.healthClinicErrMsg}}</small>
+                        <div class="validation-div errorDiv">
+                          <app-validation-message
+                            [control]="physicianScheduleHealthCliniccontroller(physicianScheduleHealthClinicIndex,'healthClinicID')"
+                            [messages]="errorMessage.ScheduleError.physicianScheduleHealthClinic.healthClinicID">
+                          </app-validation-message>
+                        </div>
+                        <mat-autocomplete #autoGroup="matAutocomplete" class="abc">
+                          <mat-option *ngFor="let healthClinic of healthClinicList"
+                            (click)="selectHealthClinic(healthClinic,physicianScheduleHealthClinicIndex)">
+                            {{healthClinic.healthClinicName}}
+                          </mat-option>
+                        </mat-autocomplete>
+                      </div>
+                      <div class="col-md-5">
+                        <input type="submit" value="Set Up New Health Clinic">
+                      </div>
+                    </div>
+                    <div formArrayName="physicianScheduleDetailsList">
+                      <div class="AnotherScheduleList"
+                        *ngFor="let physicianScheduleDetails of physicianScheduleDetailsList(physicianScheduleHealthClinicIndex).controls let physicianScheduleDetailsIndex = index">
+                        <div class="row" formGroupName="{{physicianScheduleDetailsIndex}}"
+                          *ngIf="!physicianScheduleDetails.value.isDelete">
+                          <div class="col-md-7">
+                            <div class="row">
+                              <div class="col-md-5">
+                                <div class="wrap">
+                                  <div class="form-floating selectBox"
+                                    [ngClass]="{selectedFormValue : physicianScheduleDetails.value.weekDay}">
+                                    <select name="Days" id="Days floatingSelect" class="width" formControlName="weekDay"
+                                      (change)="physicianScheduleDetailsWeakDayChange(physicianScheduleHealthClinicIndex,physicianScheduleDetailsIndex,physicianScheduleDetails.value.isAdd,physicianScheduleDetails.value.weekDay)"
+                                      aria-label="Floating label select example">
+                                      <option *ngFor='let weekDay of weekDays$ | async' [value]="weekDay.dayCode">
+                                        {{weekDay.dayName}}</option>
+                                    </select>
+                                    <label for="floatingSelect">Week Day</label>
+                                  </div>
+                                  <div class="validation-div errorDiv"
+                                    *ngIf="physicianScheduleDetails.value.startTimeErrMsg ==='' ">
+                                    <app-validation-message
+                                      [control]="physicianscheduleDetailsController(physicianScheduleHealthClinicIndex,physicianScheduleDetailsIndex,'weekDay')"
+                                      [messages]="errorMessage.ScheduleError.physicianScheduleHealthClinic.physicianScheduleDetailsList.weekDay">
+                                    </app-validation-message>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="col-md-7">
+                                <div class="row">
+                                  <div class="col-md-5 p-0 form-floating selectBox"
+                                    [ngClass]="{selectedFormValue : physicianScheduleDetails.value.startTime}">
+                                    <input class="timePicker" name="labtestScheduleStartTime" #labtestScheduleStartTime
+                                      [ngxTimepicker]="startTimePicker" [format]="12" formControlName="startTime" />
+                                    <label for="Laboratory">Start time</label>
+                                    <ngx-material-timepicker [minutesGap]="5" [theme]="timePickerTheme"
+                                      (timeSet)="physicianScheduleDetailsTimeChange(physicianScheduleHealthClinicIndex,physicianScheduleDetailsIndex,physicianScheduleDetails.value.isAdd,$event,physicianScheduleDetails.value.weekDay,true)"
+                                      #startTimePicker>
+                                    </ngx-material-timepicker>
+                                    <div class="validation-div errorDiv"
+                                      *ngIf="physicianScheduleDetails.value.startTimeErrMsg ===''">
+                                      <app-validation-message
+                                        [control]="physicianscheduleDetailsController(physicianScheduleHealthClinicIndex,physicianScheduleDetailsIndex,'startTime')"
+                                        [messages]="errorMessage.ScheduleError.physicianScheduleHealthClinic.physicianScheduleDetailsList.startTime">
+                                      </app-validation-message>
+                                    </div>
+                                  </div>
+                                  <div class="col-md-2 p-0 pb-2 d-flex align-items-center justify-content-center">
+                                    <p>To</p>
+                                  </div>
+                                  <div class="col-md-5 p-0 form-floating selectBox"
+                                    [ngClass]="{selectedFormValue : physicianScheduleDetails.value.endTime}">
+                                    <input class="timePicker" name="labtestScheduleEndTime" #labtestScheduleEndTime
+                                      [ngxTimepicker]="endTimePicker" [format]="12"
+                                      [min]="physicianScheduleDetails.value.startTime" formControlName="endTime" />
+                                    <label for="Laboratory">End time</label>
+                                    <ngx-material-timepicker [minutesGap]="5" [theme]="timePickerTheme"
+                                      (timeSet)="physicianScheduleDetailsTimeChange(physicianScheduleHealthClinicIndex,physicianScheduleDetailsIndex,physicianScheduleDetails.value.isAdd,$event,physicianScheduleDetails.value.weekDay,false)"
+                                      #endTimePicker>
+                                    </ngx-material-timepicker>
+                                    <div class="validation-div errorDiv"
+                                      *ngIf="physicianScheduleDetails.value.startTimeErrMsg ===''">
+                                      <app-validation-message
+                                        [control]="physicianscheduleDetailsController(physicianScheduleHealthClinicIndex,physicianScheduleDetailsIndex,'endTime')"
+                                        [messages]="errorMessage.ScheduleError.physicianScheduleHealthClinic.physicianScheduleDetailsList.endTime">
+                                      </app-validation-message>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="validation-div errorDiv"
+                              *ngIf="physicianScheduleDetails.value.startTimeErrMsg ">
+                              <small>{{physicianScheduleDetails.value.startTimeErrMsg}}</small>
+                            </div>
+
+                          </div>
+                          <div class="col-md-5 d-flex align-items-center justify-content-around">
+                            <div>
+                              <div class="form-floating ">
+                                <input type="text" name="firstName" placeholder="First Name" id="Laboratory"
+                                  class="form-control" formControlName="eventDescription"
+                                  (keyup)="physicianScheduleDetailsTimeChange(physicianScheduleHealthClinicIndex,physicianScheduleDetailsIndex,physicianScheduleDetails.value.isAdd)">
+                                <label for="Laboratory">Event Description.....</label>
+                              </div>
+                              <div class="validation-div errorDiv">
+                              </div>
+                            </div>
+                            <div class="DeleteIcon"
+                              (click)="deletePhysicianScheduleDetails(physicianScheduleHealthClinicIndex,physicianScheduleDetailsIndex,physicianScheduleHealthClinic.value.isAdd,physicianScheduleDetails.value.isAdd)">
+                              <i class="bi-trash-fill"></i>
+                            </div>
+                          </div>
+                          <div class="validation-div errorDiv">
+                            <div class="" *ngIf="physicianScheduleDetails.value.customErrMSG">
+                              <small>{{physicianScheduleDetails.value.customErrMSG}}</small>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-12 d-flex justify-content-end feeRow">
+                        <h2
+                          (click)="addAnotherPhysicianScheduleDetails(physicianScheduleHealthClinicIndex,physicianScheduleHealthClinic.value.isAdd)">
+                          +Add Another Schedule</h2>
+                        <i class="bi-trash-fill  DeleteHC" *ngIf="userIsPhysician"
+                          (click)="deletePhysicianScheduleHealthClinic(physicianScheduleHealthClinicIndex,physicianScheduleHealthClinic.value.isAdd)"></i>
+                      </div>
+                    </div>
+                    <div class="feeRow">
+                      <div class="row">
+                        <div class="col-md-5">
+                          <div class="row">
+                            <div class="col-md-7 d-flex align-items-center">
+                              <p>Consultation Fee</p>
+                            </div>
+                            <div class="col-md-5 p-0">
+                              <div class="form-floating ">
+                                <input type="text" name="Fee" placeholder="Fee" id="Laboratory" class="form-control"
+                                  formControlName="consultationFee"
+                                  (keyup)="changeConsultationFee(physicianScheduleHealthClinic.value.consultationFee,physicianScheduleHealthClinicIndex,physicianScheduleHealthClinic.value.isAdd)">
+                                <label for="floatingInput">Fee ₹</label>
+                              </div>
+                            </div>
+                            <div class="col-md-12">
+                              <div class="validation-div errorDiv p-0 m-0">
+                                <app-validation-message
+                                  [control]="physicianScheduleHealthCliniccontroller(physicianScheduleHealthClinicIndex,'consultationFee')"
+                                  [messages]="errorMessage.ScheduleError.physicianScheduleHealthClinic.consultationFee">
+                                </app-validation-message>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-md-5">
+                          <div class="row">
+                            <div class="col-md-7 p-0 d-flex align-items-center">
+                              <p>Consultation Time</p>
+                            </div>
+                            <div class="col-md-5 p-0">
+                              <div class="form-floating ">
+                                <input type="text" name="Consultation_Time" placeholder="Consultation_Time"
+                                  id="Laboratory" class="form-control" formControlName="consultationTime"
+                                  (keyup)="changeConsutingTime(physicianScheduleHealthClinic.value.consultationTime,physicianScheduleHealthClinicIndex,physicianScheduleHealthClinic.value.isAdd)">
+                                <label for="floatingInput">mins</label>
+                              </div>
+                            </div>
+                            <div class="col-md-12 p-0">
+                              <div class="validation-div errorDiv p-0 m-0">
+                                <app-validation-message
+                                  [control]="physicianScheduleHealthCliniccontroller(physicianScheduleHealthClinicIndex,'consultationTime')"
+                                  [messages]="errorMessage.ScheduleError.physicianScheduleHealthClinic.consultationTime">
+                                </app-validation-message>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-md-2 p-0">
+                          <button (click)="savePhysicianSchedule(physicianScheduleHealthClinicIndex)"
+                            class="SaveBtn ">Save</button>
+                        </div>
+                      </div>
+                    </div>
+                  </ng-container>
+                </div>
+                <div class="viewClinic "
+                  *ngIf="!physicianScheduleHealthClinic.value.isDelete && physicianScheduleHealthClinic.value.isSave">
+                  <div class="row">
+                    <div class="col-md-12 mb-2">
+                      <div class="d-flex align-items-center">
+                        <h2>{{physicianScheduleHealthClinic.getRawValue().healthClinicName}}</h2>
+                        <b class="px-2">Fee
+                          <span>({{physicianScheduleHealthClinic.getRawValue().consultationFee}})</span> - Time
+                          <span>({{physicianScheduleHealthClinic.getRawValue().consultationTime}} Min)</span></b>
+                        <i class="bi-pencil-fill"
+                          (click)="editphysicianSchedule(physicianScheduleHealthClinicIndex)"></i>
+                        <i class="bi-trash-fill  DeleteHC" *ngIf="userIsPhysician"
+                          (click)="deletePhysicianScheduleHealthClinic(physicianScheduleHealthClinicIndex,physicianScheduleHealthClinic.value.isAdd)"></i>
+                      </div>
+                    </div>
+                    <div class=""
+                      [ngClass]="showBorder(physicianScheduleHealthClinicIndex,physicianScheduleDetailsIndex) ? 'borderrow' : 'borderMargin'"
+                      *ngFor="let physicianScheduleDetails of physicianScheduleDetailsList(physicianScheduleHealthClinicIndex).controls let physicianScheduleDetailsIndex = index">
+                      <div class="row" *ngIf="!physicianScheduleDetails.getRawValue().isDelete">
+                        <div class="col-md-6">
+                          <div class="ScheduleDetails">
+                            <div class="row">
+                              <div class="col-md-12">
+                                <h6>{{getWeakDayNameFormCode(physicianScheduleDetails.getRawValue().weekDay)}}</h6>
+                              </div>
+                              <div class="col-md-12">
+                                <p>{{physicianScheduleDetails.getRawValue().eventDescription}}</p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-md-6 d-flex align-items-center">
+                          <b>{{physicianScheduleDetails.getRawValue().startTime}} -
+                            {{physicianScheduleDetails.getRawValue().endTime}}</b>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="validation-div errorDiv">
+                  <small>{{physicianScheduleHealthClinic.value.customErrMSG}}</small>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12 d-flex justify-content-end" *ngIf="userIsPhysician">
+                  <p class="AddHealthClinic" (click)="addAnotherPhysicianScheduleHealthClinic()">+Add Another Health
+                    Clinic</p>
+                </div>
+                <div class="col-md-12 text-end">
+                  <button class="SaveBtn"
+                    (click)="physicianScheduleFormSubmit(physicianScheduleForm.getRawValue(),physicianScheduleForm.valid)">Save
+                    & Submit</button>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="col-md-5 physicianWidth">
+        <div class="col-md-12">
+          <div class="row">
+            <div class="col-md-12 mb-4">
+              <div class="calendar" *ngIf="userIsPhysician ">
+                <app-mini-calendar-view (preHoliDayArray)='getPreHoliDayList($event)'
+                  (refreshBusyHours)="refreshBusyHours($event)"></app-mini-calendar-view>
+              </div>
+            </div>
+            <div class="col-md-12 mb-4" *ngIf="userIsPhysician">
+              <div class="HolidaySchedule">
+                <h2>Holiday Schedule</h2>
+                <form [formGroup]="holidayForm">
+                  <div class="dateandtimeList" formArrayName="holidayDetailsList">
+                    <div class="row mt-1">
+                      <div class="col-md-12 my-1 borderbottom" *ngFor=" let holidayDetails of holidayDetailsList().controls;
+                                let holidayDetailsIndex = index">
+                        <ng-container formGroupName="{{ holidayDetailsIndex }}">
+                          <div class="row">
+                            <div class="col-md-12">
+                              <div class="row">
+                                <div class="col-md-6">
+                                  <div class="form-floating selectBox selectedFormValue">
+                                    <input type="date" name="holidayStartDate" id="matDateInput"
+                                      (change)="holiDayChange(holidayDetailsIndex)"
+                                      (focusout)="checkValidDate(holidayDetailsIndex,true)"
+                                      min="{{currentDate| date:'yyyy-MM-dd' }}"
+                                      [max]="holidayDetailsList().at(holidayDetailsIndex).get('holidayEndDate')?.value"
+                                      formControlName="holidayStartDate" />
+                                    <label for="Laboratory">Start Date</label>
+                                  </div>
+                                  <div class="validation-div errorDiv"
+                                    *ngIf="holidayDetails.value.startDateErrMsg === ''">
+                                    <app-validation-message
+                                      [control]="getHolidayController(holidayDetailsIndex,'holidayStartDate')"
+                                      [messages]="errorMessage.holidaysError.holidayStartDate">
+                                    </app-validation-message>
+                                  </div>
+                                </div>
+                                <div class="col-md-6">
+                                  <div class="form-floating selectBox selectedFormValue">
+                                    <input type="date" name="holidayEndDate" id="matDateInput"
+                                      (change)="holiDayChange(holidayDetailsIndex)"
+                                      (focusout)="checkValidDate(holidayDetailsIndex,false)"
+                                      [min]="holidayDetailsList().at(holidayDetailsIndex).get('holidayStartDate')?.value?holidayDetailsList().at(holidayDetailsIndex).get('holidayStartDate')?.value:(currentDate| date:'yyyy-MM-dd')"
+                                      formControlName="holidayEndDate" />
+                                    <label for="Laboratory">End Date</label>
+                                  </div>
+                                  <div class="validation-div errorDiv"
+                                    *ngIf="holidayDetails.value.startDateErrMsg === ''">
+                                    <app-validation-message
+                                      [control]="getHolidayController(holidayDetailsIndex,'holidayEndDate')"
+                                      [messages]="errorMessage.holidaysError.holidayEndDate">
+                                    </app-validation-message>
+                                  </div>
+                                </div>
+                                <div class="validation-div errorDiv" *ngIf="holidayDetails.value.startDateErrMsg">
+                                  <small>{{holidayDetails.value.startDateErrMsg}}</small>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col-md-12">
+                              <div class="row">
+                                <div class="col-md-11 holidayDescription">
+                                  <div class="form-floating holidayDescription">
+                                    <input type="text" name="holidayDescription" #holidayDescription
+                                      (keyup)="holiDayChange(holidayDetailsIndex)"
+                                      placeholder="Holiday Information....." id="Laboratory" class="form-control"
+                                      formControlName="holidayDescription" />
+                                    <label for="Laboratory">Additional Information.....</label>
+                                  </div>
+                                </div>
+                                <div class="col-md-1 p-0 d-flex align-items-center">
+                                  <div class="DeleteIcon p-0 holidayDelete">
+                                    <i class="bi-x-circle-fill" *ngIf="holidayDetails.value.isdataFill"
+                                      (click)="holidayDetailsDelete(holidayDetailsIndex)"></i>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="validation-div errorDiv">
+                              <app-validation-message
+                                [control]="getHolidayController(holidayDetailsIndex,'holidayDescription')"
+                                [messages]="errorMessage.holidaysError.holidayDescription">
+                              </app-validation-message>
+                            </div>
+                          </div>
+                        </ng-container>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- <div class="d-flex justify-content-end">
+                    <span (click)="addAnotherholidayDetails()">
+                      + Add Another Holiday
+                    </span>
+                  </div> -->
+                  <div class="text-end mt-1">
+                    <button class="submit" (click)="holidayFormSubmit(holidayForm.getRawValue(),holidayForm.valid)">
+                      Submit
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+            <div class="col-md-12" *ngIf="userIsPhysician">
+              <div class="row">
+                <div class="col-md-12">
+                  <form [formGroup]="busyHoursform">
+                    <div class="DailyBusyHours" formArrayName="dailyBusyHoursList">
+                      <h2>Daily Busy Hours</h2>
+                      <div class="row">
+                        <div class="col-md-12"
+                          *ngFor="let dailyBusyHours of dailyBusyHoursList().controls; let dailyBusyHoursIndex = index">
+                          <div class="BusyHourschedule"
+                            *ngIf="dailyBusyHours.value.isDelete !==true && dailyBusyHours.value.isAdd ===true">
+                            <div class="DeleteIcon p-0 holidayDelete">
+                              <i class="bi-x-circle-fill" *ngIf="dailyBusyHours.value.isdataFill"
+                                (click)="deleteBusyHours(dailyBusyHoursIndex,dailyBusyHours.value.isAdd)"></i>
+                            </div>
+                            <div class="row" formGroupName="{{dailyBusyHoursIndex}}">
+                              <div class="col-md-12 ">
+                                <div class="row">
+                                  <div class="col-md-4 px-1">
+                                    <div class="form-floating selectBox"
+                                      [ngClass]="{selectedFormValue : dailyBusyHours.value.weekDay}">
+                                      <select name="Day" id="Day floatingSelect" class="width" formControlName="weekDay"
+                                        (change)="busyHoursChangeWeakDay(dailyBusyHoursIndex,dailyBusyHours.value.isAdd,dailyBusyHours.value.weekDay)"
+                                        aria-label="Floating label select example">
+                                        <option *ngFor='let weekDay of weekDays$ | async' [value]="weekDay.dayCode">
+                                          {{weekDay.dayName}}</option>
+                                      </select>
+                                      <label for="floatingSelect">Week Day</label>
+                                    </div>
+                                    <div class="validation-div errorDiv"
+                                      *ngIf="!dailyBusyHours.getRawValue().startTimeErrMsg">
+                                      <app-validation-message
+                                        [control]="getBusyHoursController(dailyBusyHoursIndex,'weekDay')"
+                                        [messages]="errorMessage.busyHoursError.weekDay">
+                                      </app-validation-message>
+                                    </div>
+                                  </div>
+                                  <div class="col-md-4 px-1">
+                                    <div class="w-100 margin--left form-floating selectBox"
+                                      [ngClass]="{selectedFormValue : dailyBusyHours.getRawValue().startTime}">
+                                      <input matInput [ngxTimepicker]="StartBusyHoureTimePicker" name="holidayEndDate"
+                                        id="matDateInput" formControlName="startTime" />
+                                      <label for="matDateInput">Start time</label>
+                                      <div class="validation-div errorDiv"
+                                        *ngIf="!dailyBusyHours.getRawValue().startTimeErrMsg">
+
+                                        <app-validation-message
+                                          [control]="getBusyHoursController(dailyBusyHoursIndex,'startTime')"
+                                          [messages]="errorMessage.busyHoursError.startTime">
+                                        </app-validation-message>
+                                      </div>
+                                      <ngx-material-timepicker [minutesGap]="5" [theme]="timePickerTheme"
+                                        (timeSet)="busyHoursChangeTime(dailyBusyHoursIndex,dailyBusyHours.value.isAdd,$event,dailyBusyHours.value.weekDay,true)"
+                                        [defaultTime]="'12:00 AM'" #StartBusyHoureTimePicker>
+                                      </ngx-material-timepicker>
+                                    </div>
+                                  </div>
+                                  <div class="col-md-4 px-1">
+                                    <div class="w-100 margin--left form-floating selectBox"
+                                      [ngClass]="{selectedFormValue : dailyBusyHours.getRawValue().endTime}">
+                                      <input matInput [ngxTimepicker]="endBusyHoureTimePicker" name="holidayEndDate"
+                                        [min]="dailyBusyHours.getRawValue().startTime" id="matDateInput"
+                                        formControlName="endTime" />
+                                      <label for="matDateInput">End time</label>
+                                      <div class="validation-div errorDiv"
+                                        *ngIf="!dailyBusyHours.getRawValue().startTimeErrMsg">
+                                        <small>{{dailyBusyHours.getRawValue().endTimeErrMsg}}</small>
+                                        <app-validation-message
+                                          [control]="getBusyHoursController(dailyBusyHoursIndex,'endTime')"
+                                          [messages]="errorMessage.busyHoursError.endTime">
+                                        </app-validation-message>
+                                      </div>
+                                      <ngx-material-timepicker [minutesGap]="5" [theme]="timePickerTheme"
+                                        (timeSet)="busyHoursChangeTime(dailyBusyHoursIndex,dailyBusyHours.value.isAdd,$event,dailyBusyHours.value.weekDay,false)"
+                                        [defaultTime]="'12:00 AM'" #endBusyHoureTimePicker>
+                                      </ngx-material-timepicker>
+                                    </div>
+                                  </div>
+                                  <div class="validation-div errorDiv"
+                                    *ngIf="dailyBusyHours.getRawValue().startTimeErrMsg">
+                                    <small class="customErrMSG">{{dailyBusyHours.getRawValue().startTimeErrMsg}}</small>
+                                  </div>
+                                </div>
+                              </div>
+
+                              <div class="col-md-8 px-1 d-flex align-items-center">
+                                <div class="form-floating w-100">
+                                  <input type="text" name="EventDescription" placeholder="Event Description....."
+                                    id="Laboratory" class="form-control" formControlName="eventDescription"
+                                    (keyup)="busyHoursChange(dailyBusyHoursIndex,dailyBusyHours.value.isAdd)">
+                                  <label for="Laboratory">Event Description.....</label>
+                                </div>
+                              </div>
+                              <div class="col-md-4 px-1 d-flex justify-content-center align-items-center">
+                                <h3>Do Not Disturb</h3>
+                                <div class="form-group px-1">
+                                  <input type="checkbox" name="DND" id="DND{{dailyBusyHoursIndex}}"
+                                    formControlName="dndIndicator"
+                                    (change)="busyHoursChange(dailyBusyHoursIndex,dailyBusyHours.value.isAdd)">
+                                  <label for="DND{{dailyBusyHoursIndex}}">
+                                  </label>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <!-- <div class="text-end add">
+                        <span (click)="addAnotherBusyHour()">+Add Another Busy Hour schedule</span>
+                      </div> -->
+                      <div class="row">
+                        <div class="col-md-12 d-flex justify-content-end add">
+                          <button class="submit"
+                            (click)="saveDaliBusyHours(busyHoursform.getRawValue(),busyHoursform.valid)">
+                            Submit
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

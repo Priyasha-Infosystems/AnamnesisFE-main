@@ -1,0 +1,39 @@
+<div class="width">
+  <div class="row w-100 m-auto">
+    <div class="col-md-6"></div>
+    <div class="col-md-6">
+      <div class="Drawingcontent">
+        <div class="ColorOptionSection">
+          <div class="row">
+            <div class="col-md-6 d-flex">
+              <div class="ColorOption" [style.background-color]="color" *ngFor="let color of colorOprionArray"
+                [ngClass]="{selected : color === selectedColor}" (click)="selectColor(color)" title="choose color">
+              </div>
+            </div>
+            <div class="col-md-6 d-flex align-items-center justify-content-end">
+              <i class="bi-pencil-fill"></i>
+              <div class="ColorOption" [style.background-color]="selectedColor" [style.width.px]="width+8"
+                [style.height.px]="width+8" *ngFor="let width of penclieWidthOptions"
+                [ngClass]="{selected : width === selectedPenclieWidth}" (click)="selectpenclieWidth(width)" title="Pen Size">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="m-signature-pad--body">
+          <canvas #canvas width="754" height="400" style="touch-action: none"> </canvas>
+        </div>
+        <div class="m-signature-pad--footer">
+          <button type="button" class="button clear" data-action="clear" (click)="onClearClick()">
+            Clear
+          </button>
+          <button type="button" class="button clear" data-action="clear" (click)="closePopup(false)">
+            Cancel
+          </button>
+          <button type="button" class="button save" data-action="save" (click)="onSaveClick()">
+            Save
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

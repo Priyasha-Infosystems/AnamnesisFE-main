@@ -1,0 +1,227 @@
+<div id="myProfile" class="Information Business">
+    <div class="row">
+        <div class="col-md-12 mb-3">
+            <div class="d-flex align-items-center">
+                <span>{{ profileIndex }}</span>
+                <h1>Business Information</h1>
+            </div>
+        </div>
+    </div>
+    <form [formGroup]="profileBusinessInformationParam" role="form">
+        <div class="row">
+            <div class="col-md-8 my-2">
+                <div class="form-floating ">
+                    <input formControlName="businessName" autofocus="" type="text" name="Business_Name"
+                        placeholder="Business Name" id="businessName" class="form-control">
+                    <label for="businessName">Business Name</label>
+                    <div class="regErrorDiv">
+                        <app-validation-message [control]="profileBusinessInformationParam.controls['businessName']"
+                            [messages]="errorMessage.businessName">
+                        </app-validation-message>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 my-2">
+                <div class="form-floating selectBox"
+                    [ngClass]="{selectedFormValue:profileBusinessInformationParam.value.commercialType}">
+                    <select formControlName="commercialType" autofocus="" name="CommercialType"
+                        class="form-select one ng-pristine ng-invalid ng-touched" id="floatingSelect"
+                        aria-label="Floating label select example">
+                        <option [value]="commercialType.commercialTypeCode"
+                            *ngFor="let commercialType of commercialTypes">
+                            {{commercialType.commercialTypeDescription }}
+                        </option>
+                    </select>
+                    <label for="floatingSelect">Commercial Type</label>
+                </div>
+                <div class="regErrorDiv">
+                    <app-validation-message [control]="profileBusinessInformationParam.controls['commercialType']"
+                        [messages]="errorMessage.commercialType">
+                    </app-validation-message>
+                </div>
+            </div>
+            <div class="col-md-4 my-2">
+                <div class="form-floating ">
+                    <input formControlName="businessPrimaryContactNo" autofocus="" type="text"
+                        name="Primary_Contact_Number" placeholder="Primary Contact Number" id="contactNumber"
+                        class="form-control">
+                    <label for="contactNumber">Primary Contact Number</label>
+                    <div class="regErrorDiv">
+                        <app-validation-message
+                            [control]="profileBusinessInformationParam.controls['businessPrimaryContactNo']"
+                            [messages]="errorMessage.businessPrimaryContactNo">
+                        </app-validation-message>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 my-2">
+                <div class="form-floating ">
+                    <input formControlName="businessSecondaryContactNo" autofocus="" type="text"
+                        name="Secondary_Contact_Number" placeholder="Secondary Contact Number" id="secondaryPhNo"
+                        class="form-control">
+                    <label for="secondaryPhNo">Secondary Contact Number</label>
+                    <div class="regErrorDiv">
+                        <app-validation-message
+                            [control]="profileBusinessInformationParam.controls['businessSecondaryContactNo']"
+                            [messages]="errorMessage.businessSecondaryContactNo">
+                        </app-validation-message>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 my-2 position-relative d-flex align-items-center">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-floating ">
+                            <input autofocus="" class="timePicker" (change)="resetTime(true)" name="openHourStart" id="openHourStart"
+                                [ngxTimepicker]="startTimePicker" placeholder="Start Time"
+                                formControlName="openHourStart" />
+                            <ngx-material-timepicker [minutesGap]="5" [theme]="timePickerTheme"
+                                (timeSet)="validateTime($event, true)" [defaultTime]="'12:00 AM'" #startTimePicker>
+                            </ngx-material-timepicker>
+                            <div class="regErrorDiv" style="width: 100%;">
+                                <app-validation-message
+                                    [control]="profileBusinessInformationParam.controls['openHourStart']"
+                                    [messages]="errorMessage.openHourStart">
+                                </app-validation-message>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-floating ">
+                            <input autofocus="" class="timePicker" [ngxTimepicker]="endTimePicker" (change)="resetTime()" name="holidayEndDate" [min]="minTime"
+                                id="openHourEnd" formControlName="openHourEnd" placeholder="End Time" />
+                            <ngx-material-timepicker [minutesGap]="5" [theme]="timePickerTheme"
+                                (timeSet)="validateTime($event)" [defaultTime]="'12:00 AM'" #endTimePicker>
+                            </ngx-material-timepicker>
+                            <div class="regErrorDiv">
+                                <app-validation-message
+                                    [control]="profileBusinessInformationParam.controls['openHourEnd']"
+                                    [messages]="errorMessage.openHourEnd">
+                                </app-validation-message>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <ng-container formGroupName="businessAddress">
+                <div class="col-md-8 my-2">
+                    <div class="form-floating ">
+                        <textarea formControlName="customerAddress" autofocus="" name="Street" id="Street" cols="50"
+                            rows="20" placeholder="Street" class="form-control"></textarea>
+                        <label for="Street">Address</label>
+                        <div class="regErrorDiv">
+                            <app-validation-message [control]="getControl('customerAddress')"
+                                [messages]="errorMessage.customerAddress">
+                            </app-validation-message>
+                        </div>
+                    </div>
+                </div>
+            </ng-container>
+            <div class="col-md-4 my-2">
+                <div class="selectDate">
+                    <p class="openDays">Open Days</p>
+                    <div class="d-flex justify-content-evenly align-items-center">
+                        <div>
+                            <div>
+                                <button [ngClass]="isDaysSelected(0) ? 'slected' : ''"
+                                    (click)="setSelectedDay(0)">MONDAY</button>
+                            </div>
+                            <div>
+                                <button [ngClass]="isDaysSelected(1) ? 'slected' : ''"
+                                    (click)="setSelectedDay(1)">TUESDAY</button>
+                            </div>
+                            <div>
+                                <button [ngClass]="isDaysSelected(2) ? 'slected' : ''"
+                                    (click)="setSelectedDay(2)">WEDNESDAY</button>
+                            </div>
+                            <div>
+                                <button [ngClass]="isDaysSelected(3) ? 'slected' : ''"
+                                    (click)="setSelectedDay(3)">THURSDAY</button>
+                            </div>
+                            <div>
+                                <button [ngClass]="isDaysSelected(4) ? 'slected' : ''"
+                                    (click)="setSelectedDay(4)">FRIDAY</button>
+                            </div>
+                        </div>
+                        <div class="holiday">
+                            <div class="my-2">
+                                <button [ngClass]="isDaysSelected(5) ? 'slected' : 'my-2'"
+                                    (click)="setSelectedDay(5)">SATURDAY</button>
+                            </div>
+                            <div class="my-2">
+                                <button [ngClass]="isDaysSelected(6) ? 'slected' : 'my-2'"
+                                    (click)="setSelectedDay(6)">SUNDAY</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="regErrorDiv">
+                    <app-validation-message [control]="profileBusinessInformationParam.controls['openDays']"
+                        [messages]="errorMessage.openDays">
+                    </app-validation-message>
+                </div>
+            </div>
+            <ng-container formGroupName="businessAddress">
+                <div class="col-md-8 my-2">
+                    <div class="form-floating ">
+                        <input formControlName="customerLandmark" autofocus="" type="text" name="Landmark"
+                            placeholder="Landmark" id="landmark" class="form-control">
+                        <label for="landmark">Landmark</label>
+                        <div class="regErrorDiv">
+                            <app-validation-message [control]="getControl('customerLandmark')"
+                                [messages]="errorMessage.customerLandmark">
+                            </app-validation-message>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 my-2">
+                    <div class="form-floating selectBox"
+                        [ngClass]="{selectedFormValue:getControl('customerStateName').value}">
+                        <select class="form-select one" id="floatingSelect State"
+                            aria-label="Floating label select example" formControlName="customerStateName" autofocus=""
+                            name="State">
+                            <option [value]="state.stateName" *ngFor="let state of stateList">
+                                {{
+                                state.stateName }}
+                            </option>
+                        </select>
+                        <label for="floatingSelect">State</label>
+                    </div>
+                    <div class="regErrorDiv">
+                        <app-validation-message [control]="getControl('customerStateName')"
+                            [messages]="errorMessage.customerStateName">
+                        </app-validation-message>
+                    </div>
+                </div>
+                <div class="col-md-4 my-2">
+                    <div class="form-floating ">
+                        <input formControlName="customerCity" autofocus="" type="text" name="City" placeholder="City"
+                            id="city" class="form-control">
+                        <label for="city">City</label>
+                        <div class="regErrorDiv">
+                            <app-validation-message [control]="getControl('customerCity')"
+                                [messages]="errorMessage.customerCity">
+                            </app-validation-message>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 my-2">
+                    <div class="form-floating ">
+                        <input formControlName="customerPincode" autofocus="" type="text" name="Pin code"
+                            placeholder="Pin code" id="pincode" class="form-control">
+                        <label for="pincode">Pin Code</label>
+                        <div class="regErrorDiv">
+                            <app-validation-message [control]="getControl('customerPincode')"
+                                [messages]="errorMessage.customerPincode">
+                            </app-validation-message>
+                        </div>
+                    </div>
+                </div>
+            </ng-container>
+            <div class="col-md-12 my-2 text-end  d-flex align-items-center justify-content-end">
+                <input (click)="save(profileBusinessInformationParam.value, profileBusinessInformationParam.valid)"
+                    type="submit" value="Save & Continue">
+            </div>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,153 @@
+<router-outlet>
+    <ngx-spinner bdColor="rgba(51,51,51,0.8)" size="medium" color="#fff" type="ball-circus" [fullScreen]="true">
+    </ngx-spinner>
+</router-outlet>
+<div id="CaseAssignment" class="tabcontent">
+    <div class="content">
+        <form [formGroup]="orderPickupForm">
+            <div class="row w-100 m-auto">
+                <div class="col-md-12 box">
+                    <div class="box d-flex" *ngIf="orderPickupForm.getRawValue().orderID">
+                        <div class="input" *ngIf="orderPickupForm.getRawValue().orderID">
+                            <label for="">Order No</label>
+                            <p>{{orderPickupForm.getRawValue().orderID}}</p>
+                        </div>
+                        <div class="input mx-3" *ngIf="orderPickupForm.getRawValue().orderID">
+                            <label for="">Package No</label>
+                            <p>{{orderPickupForm.getRawValue().packageID}}</p>
+                        </div>
+                        <div class="input" *ngIf="orderPickupForm.getRawValue().orderID">
+                            <label for="">Order Date</label>
+                            <p>{{dateFormat(orderPickupForm.getRawValue().orderDate)?(dateFormat(orderPickupForm.getRawValue().orderDate)|date:'dd-MMM-yyyy'):''}}
+                            </p>
+                        </div>
+                    </div>
+                    <div class="box row m-auto w-100 mb-2"
+                        *ngIf="orderPickupForm.getRawValue().customerDeliveryAddressDetails">
+                        <div class="col-md-8">
+                            <p>{{orderPickupForm.getRawValue().customerDeliveryAddressDetails.customerName}}</p>
+                            <p>{{orderPickupForm.getRawValue().customerDeliveryAddressDetails.customerAddress}}</p>
+                            <p>{{orderPickupForm.getRawValue().customerDeliveryAddressDetails.customerLandmark}}</p>
+                            <p>{{orderPickupForm.getRawValue().customerDeliveryAddressDetails.customerCity}},
+                                {{orderPickupForm.getRawValue().customerDeliveryAddressDetails.customerStateName}},
+                                {{orderPickupForm.getRawValue().customerDeliveryAddressDetails.customerPincode}}
+                            </p>
+                        </div>
+                        <div class="col-md-4">
+                            <p>Contact No</p>
+                            <p><i class="fa fa-phone" aria-hidden="true"></i> (P) :
+                                {{orderPickupForm.getRawValue().customerDeliveryAddressDetails.customerContactNo?orderPickupForm.getRawValue().customerDeliveryAddressDetails.customerContactNo:'-'}}
+                            </p>
+                            <p><i class="fa fa-phone" aria-hidden="true"></i> (S) :
+                                {{orderPickupForm.getRawValue().customerDeliveryAddressDetails.customerSecondaryContactNo?orderPickupForm.getRawValue().customerDeliveryAddressDetails.customerSecondaryContactNo:'-'}}
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row table w-100 m-auto mb-2 labels">
+                        <div class="col-md-1">
+                            <label for="">SL No</label>
+                        </div>
+                        <div class="col-md-8">
+                            <label for="">Medicine</label>
+                        </div>
+                        <div class="col-md-3">
+                            <label for="">Total Quantity</label>
+                        </div>
+                    </div>
+                    <div formArrayName="orderLineEntryList" *ngIf="orderPickupForm.getRawValue().orderID">
+                        <!-- --------------- Medicine Loop -------------------- -->
+                        <div class="Alltable" *ngFor="let item of orderLineEntryList().controls let itemIndex = index">
+                            <ng-container formGroupName="{{itemIndex}}">
+                                <div class="row table w-100 m-auto my-2">
+                                    <div class="col-md-1 px-3 text-center">
+                                        <p>{{itemIndex+1}}</p>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <p>{{item.value.itemName}}</p>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <p>{{item.value.totalQuantity}}</p>
+                                    </div>
+                                </div>
+                                <div class="row table w-100 m-auto labels py-0 px-0"
+                                    style="border-radius: unset !important;">
+                                    <div class="col-md-1" style="background: #9a7bd5;"></div>
+                                    <div class="col-md-5 p-0" style="background: #9a7bd5;">
+                                        <div class="row w-100 m-auto">
+                                            <div class="col-md-5 p-0">
+                                                <label for="">Batch No</label>
+                                            </div>
+                                            <div class="col-md-4 p-0">
+                                                <label for="">Expiry Date</label>
+                                            </div>
+                                            <div class="col-md-3 p-0 text-center">
+                                                <label for="">Quantity</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2 text-center">
+                                        <label for="">Quantity</label>
+                                    </div>
+                                    <div class="col-md-2 text-center">
+                                        <label for="">MRP</label>
+                                    </div>
+                                    <div class="col-md-2 text-center">
+                                        <label for="">Total Price</label>
+                                    </div>
+                                </div>
+                                <div class="p-0" formArrayName="customerOrderItemBatchList"
+                                    *ngFor="let customerOrderItemBatch of customerOrderItemBatchList(itemIndex).controls; let customerOrderItemBatchIndex = index">
+                                    <div class="row w-100 m-auto" formGroupName="{{customerOrderItemBatchIndex}}">
+                                        <div class="col-md-1 d-flex align-items-center justify-content-center"
+                                            style="background: #f2ecff;">
+                                            <input type="checkbox" name="" id="" formControlName="check"
+                                            (change)="selectBatchNo(itemIndex,customerOrderItemBatchIndex,customerOrderItemBatch.value)">
+                                        </div>
+                                        <div class="col-md-5 p-0">
+                                            <div class="form-floating w-100 inputPart p-1 py-2"
+                                                style="min-height: unset !important;">
+                                                <div class="row w-100 m-auto">
+                                                    <div class="col-md-5 p-0">
+                                                        <p>{{customerOrderItemBatch.value.batchNo}}</p>
+                                                    </div>
+                                                    <div class="col-md-4 p-0">
+                                                        <p>{{customerOrderItemBatch.value.expiryDate}}</p>
+                                                    </div>
+                                                    <div class="col-md-3 p-0 text-center">
+                                                        <p>{{customerOrderItemBatch.value.availableItemQuantity}}</p>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                            
+                                        </div>
+                                        <div class="col-md-2 d-flex align-items-center justify-content-center">
+                                            <p *ngIf="customerOrderItemBatch.value.check">{{customerOrderItemBatch.value.itemQuantity}}</p>
+                                        </div>
+                                        <div class="col-md-2 d-flex align-items-center justify-content-center">
+                                            <p *ngIf="customerOrderItemBatch.value.check">{{customerOrderItemBatch.value.itemMRP}}</p>
+                                        </div>
+                                        <div class="col-md-2 d-flex align-items-center justify-content-center">
+                                            <p *ngIf="customerOrderItemBatch.value.check">{{customerOrderItemBatch.value.totalPrice}}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="validation-div errorDiv">
+                                    <small>{{item.value.errMsg}}</small>
+                                </div>
+                            </ng-container>
+                        </div>
+                        <!-- --------------- Medicine Loop -------------------- -->
+                    </div>
+                    <div class="text-center" *ngIf="apiErrorMsg">
+                        <p style="color: red;">{{apiErrorMsg}}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="save d-flex justify-content-end" *ngIf="orderPickupForm.getRawValue().orderID">
+                <button (click)="save()">Save and Next</button>
+                <button (click)="nextOrderDetails()">Skip</button>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,253 @@
+<router-outlet>
+    <ngx-spinner bdColor="rgba(51,51,51,0.8)" size="medium" color="#fff" type="ball-circus" [fullScreen]="true">
+    </ngx-spinner>
+</router-outlet>
+<div id="MyHealthReport">
+    <div class="container p-0">
+        <div class="contentDisplay">
+            <div class="d-flex align-items-center">
+                <h2>My Health Report</h2>
+                <i class="bi bi-pencil-square" (click)="openHealthReportUpdatePopup()"></i>
+            </div>
+
+            <div class="patientDetails mb-4">
+                <div class="row">
+                    <div class="col-md-2">
+                        <div class="name">
+                            <h3>{{personalInfo.firstName}}</h3>
+                            <p>{{genderData[personalInfo?.gender]}}, {{age}}</p>
+                        </div>
+                    </div>
+                    <div class="col-md-2 p-0">
+                        <div class="Pressure">
+                            <table>
+                                <tr>
+                                    <td class="text-end"><label for="Height">Height: </label></td>
+                                    <td>
+                                        <h6>{{genMedInfo.HT?genMedInfo.HT:'-'}}</h6>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="text-end"><label for="Weight">Weight: </label></td>
+                                    <td>
+                                        <h6>{{genMedInfo.WT?genMedInfo.WT:'-'}}</h6>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="col-md-2 p-0">
+                        <div class="Pressure">
+                            <div class="hideBox" [ngClass]="{'Show':showHideOne}">
+                                <table>
+                                    <tr>
+                                        <td><label for="Pressure">Pressure</label></td>
+                                        <td>:</td>
+                                        <td>
+                                            <h6>{{genMedInfo.userPressure?genMedInfo.userPressure:'-'}}</h6>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><label for="Pressure">Pulse</label></td>
+                                        <td>:</td>
+                                        <td>
+                                            <h6>{{genMedInfo.userPulse?genMedInfo.userPulse:'-'}}</h6>
+                                        </td>
+                                    </tr>
+                                </table>
+                                <i class="bi-x-lg" (click)="boxshowHide('One')"></i>
+                            </div>
+                            <div class="w-100 mainText text-center">
+                                <label for="Pressure">Blood Pressure: </label>
+                                <br>
+                                <h6>{{genMedInfo.BP?genMedInfo.BP:'-'}}</h6>
+                                <i title="Show Details..." class="bi-info-lg" (click)="boxshowHide('One')"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-2 p-0">
+                        <div class="Pressure">
+                            <div class="hideBox" [ngClass]="{'Show':showHideTwo}">
+                                <table>
+                                    <tr>
+                                        <td><label for="">T3</label></td>
+                                        <td>:</td>
+                                        <td>
+                                            <h6>{{genMedInfo.GM23019940?genMedInfo.GM23019940:'-'}}</h6>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><label for="">T4</label></td>
+                                        <td>:</td>
+                                        <td>
+                                            <h6>{{genMedInfo.GM23019950?genMedInfo.GM23019950:'-'}}</h6>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><label for="">TSH</label></td>
+                                        <td>:</td>
+                                        <td>
+                                            <h6>{{genMedInfo.GM23019960?genMedInfo.GM23019960:'-'}}</h6>
+                                        </td>
+                                    </tr>
+                                </table>
+                                <i class="bi-x-lg" (click)="boxshowHide('Two')"></i>
+                            </div>
+                            <div class="w-100 mainText text-center">
+                                <label for="Thyroid">Thyroid: </label>
+                                <br>
+                                <h6>{{genMedInfo.TH?genMedInfo.TH:'-'}}</h6>
+                                <i title="Show Details..." class="bi-info-lg" (click)="boxshowHide('Two')"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-2 p-0">
+                        <div class="Pressure">
+                            <div class="hideBox" [ngClass]="{'Show':showHideThree}">
+                                <table>
+                                    <tr *ngIf="genMedInfo.GM23019920 || genMedInfo.GM23019910">
+                                        <td><label for="">Glucose (PP)</label></td>
+                                        <td>:</td>
+                                        <td>
+                                            <h6>{{genMedInfo.GM23019920?genMedInfo.GM23019920:'-'}}</h6>
+                                        </td>
+                                    </tr>
+                                    <tr *ngIf="genMedInfo.GM23019920 || genMedInfo.GM23019910">
+                                        <td><label for="">Glucose (Fasting)</label></td>
+                                        <td>:</td>
+                                        <td>
+                                            <h6>{{genMedInfo.GM23019910?genMedInfo.GM23019910:'-'}}</h6>
+                                        </td>
+                                    </tr>
+                                    <tr *ngIf="!genMedInfo.GM23019920 && !genMedInfo.GM23019910">
+                                        <td><label for="">Glucose (Random)</label></td>
+                                        <td>:</td>
+                                        <td>
+                                            <h6>{{genMedInfo.GM23019930?genMedInfo.GM23019930:'-'}}</h6>
+                                        </td>
+                                    </tr>
+                                </table>
+                                <i class="bi-x-lg" (click)="boxshowHide('Three')"></i>
+                            </div>
+                            <div class="w-100 mainText text-center">
+                                <label for="Diabetic">Diabetic: </label>
+                                <br>
+                                <h6>{{genMedInfo.DB?genMedInfo.DB:'-'}}</h6>
+                                <i title="Show Details..." class="bi-info-lg" (click)="boxshowHide('Three')"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-2 p-0">
+                        <div class="Pressure">
+                            <div class="d-flex align-items-center Temperature">
+                                <h6>{{genMedInfo.userTemperature?genMedInfo.userTemperature:'-'}}<span>°F</span></h6>
+                                <i class="fa fa-thermometer-full"></i>
+                            </div>
+                            <div class="d-flex align-items-center mt-2">
+                                <label for="Thyroid">Blood Group: </label>
+                                <h6>{{genMedInfo.BG?genMedInfo.BG:'-'}}</h6>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-2 p-0">
+                        <div class="Pressure">
+                            <table>
+                                <tr>
+                                    <td class="text-end"><label for="Smoking">Smoking: </label></td>
+                                    <td>
+                                        <h6>{{genMedInfo.SM?genMedInfo.SM:'-'}}</h6>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="text-end"><label for="Alcohol">Alcohol: </label></td>
+                                    <td>
+                                        <h6>{{genMedInfo.AL?genMedInfo.AL:'-'}}</h6>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mainContent">
+                <div class="row">
+                    <div class="col-md-8">
+                        <app-consultation-report [personalInfo]="personalInfo"
+                            [RefreshInd]="patientConsultainComponentRefresh"
+                            (PrescriptionID)="prescriptionView($event)"></app-consultation-report>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="Schedule">
+                            <h3 class="pb-2">Schedule</h3>
+                            <div *ngIf="mySchedule.length > 0" class="accordion" id="regularAccordionRobots">
+                                <div *ngFor="let schedule of mySchedule"
+                                    [ngClass]="{missing: isPastSchedule(schedule.appointmentDate)}">
+                                    <div class="border-btm">
+                                        <div (click)="setAccordion(schedule.uniqueID)" id="ScheduleHeadingFirst"
+                                            class="accordion-button">
+                                            <div class="d-flex flex-wrap" style="flex-direction: column;">
+                                                <h6>Appointment with {{schedule.physicianName}}</h6>
+                                                <!-- <span>04-SEPT-2022 1:00 PM</span> -->
+                                                <span>{{dateFormat(schedule.appointmentDate)| date:
+                                                    'd-MMM-yyyy'}} - {{formatTime(schedule.appointmentTime)}}</span>
+                                            </div>
+                                            <i *ngIf="isAccordionVisible(schedule.uniqueID)" class="bi-caret-up-fill"
+                                                style="cursor: pointer;"></i>
+                                            <i *ngIf="!isAccordionVisible(schedule.uniqueID)" class="bi-caret-down-fill"
+                                                style="cursor: pointer;"></i>
+                                        </div>
+                                        <div *ngIf="isAccordionVisible(schedule.uniqueID)" class="accordion-body">
+                                            <button style="margin-right: 3%"
+                                                (click)="scheduleEvent(schedule)">Reschedule</button>
+                                            <button class="Cancel"
+                                                (click)="scheduleEvent(schedule, true)">Completed</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="noRecords" *ngIf="mySchedule.length === 0">
+                                No upcoming schedule
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- <div>
+        <div class="modal" *ngIf="isCompletedSchedule || isConfirmedSchedule" tabindex="-1" role="dialog">
+            <div class="container">
+                Confirm
+            </div>
+        </div>
+    </div> -->
+    <div id="confirmModal">
+        <div tabindex="-1" *ngIf="isCompletedSchedule || isConfirmedSchedule" tabindex="-1" role="dialog" class="modal">
+            <div class="container popup">
+                <div class="modal-content text-center">
+                    <div class="close" (click)="resetPopup()">
+                        <i class="bi-x-circle-fill"></i>
+                    </div>
+                    <p *ngIf="isConfirmedSchedule">Do you want to Re-Schedule ? </p>
+                    <p *ngIf="isCompletedSchedule">Do you want to Confirm this schedule </p>
+                    <div class="d-flex justify-content-center twoBtn">
+                        <button (click)="confirmSubmission()">Confirm</button>
+                        <button (click)="resetPopup()" class="Cancel">Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="myModal" class="modal" *ngIf="showPrescription">
+    <div class="container-fluid">
+        <app-prescription-view [prescriptionID]="showPrescriptionID" (close)="closePrescription()">
+        </app-prescription-view>
+    </div>
+</div>
+<div id="myModal" class="modal" *ngIf="showHealthReportUpdatePopup">
+    <div class="container-fluid">
+        <app-health-report-update (close)="closeHealthReportUpdatePopup($event)">
+        </app-health-report-update>
+    </div>
+</div>

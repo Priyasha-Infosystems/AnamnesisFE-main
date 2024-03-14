@@ -1,0 +1,644 @@
+.tabcontent {
+    float: left;
+    padding: 2.1875rem 0.75rem;
+    width: 100%;
+    border-left: none;
+    height: 100%;
+}
+
+.tabcontent h3 {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 1.875rem;
+    line-height: 33px;
+    color: #434242;
+    padding-bottom: 3%;
+}
+
+.tabcontent p {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 0.875rem;
+    line-height: 18px;
+    color: #474545;
+}
+
+#Upload .d-flex span {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 0.875rem;
+    line-height: 110%;
+    color: #65B167;
+}
+
+#Upload .List {
+    background: #fff;
+    border: 1px solid #ff922b;
+    box-shadow: 0px 8px 18px 5px rgb(217 72 15 / 33%);
+    border-radius: 11px;
+    padding: 0.12rem 0.9375rem 0.9375rem 0.9375rem ;
+}
+
+#Upload .List .srl {
+    padding: 0.125rem 0.375rem 0.5rem 0rem;
+    height: 24.375rem;
+    overflow-y: scroll;
+}
+
+/* width */
+#Upload ::-webkit-scrollbar {
+    width: 0.3125rem;
+    margin: 0.3125rem;
+}
+
+/* Track */
+#Upload ::-webkit-scrollbar-track {
+    background: #fff4e6;
+    border-radius: 32px;
+}
+
+/* Handle */
+#Upload ::-webkit-scrollbar-thumb {
+    background: #d9480f;
+    border-radius: 10px;
+}
+
+/* Handle on hover */
+#Upload ::-webkit-scrollbar-thumb:hover {
+    background: #8f2c04;
+}
+
+#Upload .Dr-list {
+    background: #fff4e6;
+    border: 1px solid #ff922b;
+    box-shadow: 0px 11px 34px -5px rgb(217 72 15 / 19%);
+    border-radius: 10px;
+    padding: 0.8125rem 1.0625rem 0.6875rem 1.0625rem;
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    align-items: center;
+    position: relative;
+    width: 100%;
+}
+
+#Upload .Dr-list h6 {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 0.8125rem;
+    line-height: 110%;
+    color: #414141;
+    margin: 0rem 0.5rem 0rem 0.5rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    width: 65%;
+}
+
+#Upload .Dr-list i {
+    float: right;
+    background: #d9480f;
+    box-shadow: 0px 4px 8px rgb(217 72 15 / 79%);
+    border-radius: 100%;
+    height: 1.5625rem;
+    width: 1.5625rem;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    position: absolute;
+    right: 0.5rem;
+    cursor: pointer;
+    padding: 0.25rem;
+    font-size: 1.0625rem;
+}
+
+#Upload .Dr-list img {
+    vertical-align: revert !important;
+    max-width: 1rem;
+}
+
+#Upload .Dr-list p {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 0.8125rem;
+    line-height: 110%;
+    color: #000;
+}
+
+#Upload .Dr-list .file-kb {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    line-height: 110%;
+    color: #D9B359;
+    display: block;
+    position: absolute;
+    bottom: 0.125rem;
+    left: 2.8125rem;
+    font-size: 0.75rem;
+}
+
+#Upload .Dr-list i.bi-check2 {
+    background: #65B167 !important;
+    box-shadow: 0px 4px 8px rgb(101 177 103 / 54%) !important;
+}
+
+#Upload .massage {
+    text-align: left !important;
+    height: 0.75rem;
+    font-size: 0.75rem;
+    letter-spacing: 0.5px;
+    padding-left: 0.3125rem;
+    color: red;
+}
+
+#Upload .massage span {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    line-height: 110%;
+}
+
+#Upload .massage-box {
+    border: 1px solid #ff922b;
+    box-shadow: 0px 11px 34px -5px rgb(217 72 15 / 21%);
+}
+
+#Upload .List h4 {
+    font-weight: 700;
+    font-size: 1rem;
+    line-height: 110%;
+    color: #484747;
+    padding: 0.75rem 0rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+#Upload .Suraksha {
+    padding: 0.8125rem 1.0625rem 0rem 1.0625rem;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    position: relative;
+    width: 100%;
+    background: #F2ECFF;
+    border: 1px solid rgba(113, 59, 219, 0.18);
+    box-shadow: 0px 11px 34px -5px rgba(113, 59, 219, 0.21);
+    border-radius: 10px;
+}
+
+#Upload .Suraksha h6 {
+    display: inline-block;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 900;
+    font-size: 0.8125rem;
+    line-height: 110%;
+    color: #404040;
+    margin: 0rem 0.5rem 0rem 0.5rem;
+}
+
+#Upload .Suraksha i {
+    float: right;
+    background: #713BDB;
+    box-shadow: 0px 4px 8px rgba(113, 59, 219, 0.51);
+    border-radius: 100%;
+    height: 1.875rem;
+    width: 1.875rem;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    position: absolute;
+    right: 0.5rem;
+    cursor: pointer;
+    padding: 0.75rem;
+    font-size: 0.75rem;
+}
+
+#Upload .Suraksha img {
+    vertical-align: revert !important;
+}
+
+#Upload .Suraksha p {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 0.8125rem;
+    line-height: 110%;
+    color: #713BDB;
+}
+
+#Upload .Suraksha .fa-chevron-left {
+    left: 0.5rem !important;
+    padding: 0.625rem;
+}
+
+#Upload .List-2 {
+    background: rgba(255, 255, 255, 0.79);
+    border: 1px solid rgba(190, 190, 190, 0.46);
+    border-radius: 0.75rem;
+    padding: 0.5625rem;
+}
+
+#Upload .Dr-name {
+    font-style: normal;
+    font-size: 0.875rem;
+    line-height: 0px;
+    color: #4F4E4E;
+    padding: 1.25rem 0px 0.0625rem 0.5rem;
+}
+
+#Upload .fa-chevron-left {
+    left: 0.5rem !important;
+    padding: 0.625rem;
+}
+
+#Upload .scroll-2 {
+    height: 39rem;
+    padding: 0.5625rem;
+    overflow: auto;
+    margin: 1.0625rem 0rem;
+}
+
+#Upload .Test-Reports {
+    width: 100%;
+    height: 100%;
+    background: #FFFFFF;
+    border: 1px solid #5c7cfa;
+    box-shadow: 0px 4px 28px 5px rgba(113, 59, 219, 0.23);
+    border-radius: 11px;
+    padding: 0.9375rem;
+}
+
+#Upload .Test-Reports .scroll-Test {
+    height: 24.375rem;
+    overflow: auto;
+    padding: 0rem 0.3125rem 0rem 0rem;
+}
+
+#Upload .Test-Reports h4 {
+    font-weight: 700;
+    font-size: 1rem;
+    line-height: 110%;
+    color: #484747;
+    padding: 0rem 0rem 0.75rem 0rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+#Upload .Test-Reports h4 span {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 0.875rem;
+    line-height: 110%;
+    color: #373737;
+    display: block;
+    margin-top: 0.3125rem;
+}
+
+#Upload .Test-Reports .scroll-Test .Dr-list {
+    background: #edf2ff;
+    border: 1px solid #364fc7;
+    box-shadow: 0px 11px 34px -5px rgb(113 59 219 / 21%);
+    border-radius: 10px;
+    padding: 0.8125rem 1.0625rem 0.6875rem 1.0625rem;
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    align-items: center;
+    position: relative;
+    width: 100%;
+}
+
+#Upload .Test-Reports .scroll-Test .file-kb {
+    color: #BCC2F7 !important;
+}
+
+#Upload .Test-Reports .scroll-Test .Dr-list #Progress_Status {
+    width: 78%;
+    margin-left: 1.5625rem;
+    height: 0.3125rem;
+    left: 31.0625rem;
+    top: 23.75rem;
+    background: #DEE2FF;
+    border-radius: 8px;
+}
+
+#Upload .Test-Reports .scroll-Test .Dr-list #Progress_Status #text {
+    color: #364fc7;
+}
+
+#Upload .Test-Reports .scroll-Test .Dr-list h6 {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 0.8125rem;
+    line-height: 110%;
+    color: #364fc7;
+    margin: 0px 0.5rem 0px 0.5rem;
+}
+
+#Upload .Test-Reports .scroll-Test .Dr-list i {
+    background: #364fc7;
+    box-shadow: 0px 4px 8px rgb(113 59 219 / 51%);
+    float: right;
+    border-radius: 100%;
+    height: 1.5625rem;
+    width: 1.5625rem;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    position: absolute;
+    right: 0.5rem;
+    cursor: pointer;
+    padding: 0.25rem;
+    font-size: 1.0625rem;
+}
+
+::file-selector-button {
+    display: none;
+}
+
+#Upload .Test-Reports .scroll-Test .Dr-list img {
+    vertical-align: revert !important;
+}
+
+#Upload .Test-Reports .scroll-Test .Dr-list p {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 0.8125rem;
+    line-height: 110%;
+    color: #713BDB;
+}
+
+#Upload .Test-Reports ::-webkit-scrollbar {
+    width: 0.3125rem;
+    margin: 0.3125rem;
+}
+
+#Upload .Test-Reports ::-webkit-scrollbar-track {
+    background: #EAECFC;
+    box-shadow: 0px 4px 4px rgba(173, 181, 239, 0.58);
+    border-radius: 32px;
+}
+
+#Upload .Test-Reports ::-webkit-scrollbar-thumb {
+    background: #713BDB;
+    border-radius: 8px;
+    transform: rotate(-90deg);
+}
+
+#Upload .Test-Reports ::-webkit-scrollbar-thumb:hover {
+    background: #5624ba;
+}
+
+#Upload .List h4 {
+    font-weight: 700;
+    font-size: 1rem;
+    line-height: 110%;
+    color: #484747;
+    padding: 0.75rem 0px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+#Upload .List h4 span {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 0.875rem;
+    line-height: 110%;
+    color: #373737;
+    display: block;
+    margin-top: 0.3125rem;
+}
+
+#Progress_Status {
+    width: 78%;
+    margin-left: 1.5625rem;
+    height: 0.3125rem;
+    left: 31.0625rem;
+    top: 23.75rem;
+    background: #FBD478;
+    border-radius: 8px;
+}
+
+#myprogressBar {
+    height: 0.3125rem;
+    background: linear-gradient(180deg, #91F0A2 0%, rgba(101, 177, 103, 0.71) 100%);
+    border-radius: 8px;
+}
+
+#text {
+    float: right;
+    margin-top: -1.25rem;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 0.8125rem;
+    line-height: 110%;
+    color: #000;
+}
+
+#Upload .uplod-btn {
+    background: #d9480f;
+    box-shadow: 0px 11px 34px -5px rgb(217 72 15 / 79%);
+    border-radius: 6px;
+    border: none;
+    width: 16rem;
+    height: 4.3125rem;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 1rem;
+    line-height: 110%;
+    color: #FFFFFF;
+}
+
+.inputDefaultColor {
+    color: #e67700;
+    padding-bottom: 25px !important;
+    padding-top: 0.75rem !important;
+    font-size: 0.875rem;
+}
+
+@media (max-width:768px) {
+
+    #Upload .List,
+    #Upload .Test-Reports {
+        padding: 0.625rem;
+    }
+
+    #Upload .List h4,
+    #Upload .Test-Reports h4 {
+        font-size: 0.8125rem;
+    }
+
+    #Upload .List h4 span {
+        font-size: 0.75rem;
+    }
+
+    .inputDefaultColor {
+        padding-bottom: 0.9375rem !important;
+    }
+
+    #Upload .Dr-list,
+    #Upload .Test-Reports .scroll-Test .Dr-list {
+        border-radius: 6px;
+        padding: 0.6875rem 1.4375rem 0.6875rem 0.6875rem;
+    }
+
+    #Upload .uplod-btn {
+        width: 10.375rem;
+        height: 3rem;
+        font-size: 0.875rem;
+    }
+
+    #Upload .Dr-list i {
+        height: 1.125rem;
+        width: 1.125rem;
+        padding: 0.2219rem 0.125rem 0.125rem 0.125rem;
+        font-size: 0.875rem;
+    }
+
+    #Upload .massage {
+        font-size: 0.5625rem;
+    }
+}
+
+@media (min-width:769px) and (max-width:1024px) {
+
+    #Upload .List,
+    #Upload .Test-Reports {
+        padding: 0.625rem;
+    }
+
+    #Upload .List h4,
+    #Upload .Test-Reports h4 {
+        font-size: 0.8125rem;
+    }
+
+    #Upload .List h4 span {
+        font-size: 0.75rem;
+    }
+
+    .inputDefaultColor {
+        padding-bottom: 0.9375rem !important;
+    }
+
+    #Upload .Dr-list,
+    #Upload .Test-Reports .scroll-Test .Dr-list {
+        border-radius: 6px;
+        padding: 0.6875rem 1.4375rem 0.6875rem 0.6875rem;
+    }
+
+    #Upload .uplod-btn {
+        width: 10.375rem;
+        height: 3rem;
+        font-size: 0.875rem;
+    }
+
+    #Upload .Dr-list i {
+        height: 1.125rem;
+        width: 1.125rem;
+        padding: 0.2219rem 0.125rem 0.125rem 0.125rem;
+        font-size: 0.875rem;
+    }
+
+    #Upload .massage {
+        font-size: 0.5625rem;
+    }
+}
+
+@media (max-width:820px) {
+
+    #Upload .List,
+    #Upload .Test-Reports {
+        padding: 0.625rem;
+    }
+
+    #Upload .List h4,
+    #Upload .Test-Reports h4 {
+        font-size: 0.8125rem;
+    }
+
+    #Upload .List h4 span {
+        font-size: 0.75rem;
+    }
+
+    .inputDefaultColor {
+        padding-bottom: 0.9375rem !important;
+    }
+
+    #Upload .Dr-list,
+    #Upload .Test-Reports .scroll-Test .Dr-list {
+        border-radius: 6px;
+        padding: 0.6875rem 1.4375rem 0.6875rem 0.6875rem;
+    }
+
+    #Upload .uplod-btn {
+        width: 10.375rem;
+        height: 3rem;
+        font-size: 0.875rem;
+    }
+
+    #Upload .Dr-list i {
+        height: 1.125rem;
+        width: 1.125rem;
+        padding: 0.2219rem 0.125rem 0.125rem 0.125rem;
+        font-size: 0.875rem;
+    }
+
+    #Upload .massage {
+        font-size: 0.5625rem;
+    }
+}
+
+@media (min-width:821px) and (max-width:1180px) {
+
+    #Upload .List,
+    #Upload .Test-Reports {
+        padding: 0.625rem;
+    }
+
+    #Upload .List h4,
+    #Upload .Test-Reports h4 {
+        font-size: 0.8125rem;
+    }
+
+    #Upload .List h4 span {
+        font-size: 0.75rem;
+    }
+
+    .inputDefaultColor {
+        padding-bottom: 0.9375rem !important;
+    }
+
+    #Upload .Dr-list,
+    #Upload .Test-Reports .scroll-Test .Dr-list {
+        border-radius: 6px;
+        padding: 0.6875rem 1.4375rem 0.6875rem 0.6875rem;
+    }
+
+    #Upload .uplod-btn {
+        width: 10.375rem;
+        height: 3rem;
+        font-size: 0.875rem;
+    }
+
+    #Upload .Dr-list i {
+        height: 1.125rem;
+        width: 1.125rem;
+        padding: 0.2219rem 0.125rem 0.125rem 0.125rem;
+        font-size: 0.875rem;
+    }
+
+    #Upload .massage {
+        font-size: 0.5625rem;
+    }
+}

@@ -1,0 +1,160 @@
+<div class="modal-dialog">
+  <div class="modal-content">
+    <div class="close" (click)="closePopup()">
+      <i class="bi-x-circle-fill"></i>
+    </div>
+    <div class="modal-body">
+      <div class="AuthorisedModal"  *ngIf="!somthingWentWrong">
+        <h2>Authorised Signatory Approval {{WorkRequestDetails.isDisabled?' - '+WorkRequestDetails.caseCode:''}}</h2>
+        <div class="AuthorisedContent" *ngIf="authorisedSignatoryDetails">
+          <div class="Details">
+            <div class="row">
+              <div class="col-md-12 mb-3">
+                <div class="drName print">
+                  <label for="Doctor_Name">Doctor’s Name</label>
+                  <p>{{authorisedSignatoryDetails.physicianName}}</p>
+                </div>
+              </div>
+              <div class="col-md-6 mb-3">
+                <div class="print">
+                  <label for="Medical_Degree">Medical Degree</label>
+                  <p>{{authorisedSignatoryDetails.physicianQualification}}</p>
+                </div>
+              </div>
+              <div class="col-md-6 mb-3">
+                <div class="print">
+                  <label for="Specialization">Specialization</label>
+                  <p>{{authorisedSignatoryDetails.physicianSpecialisation}}</p>
+                </div>
+              </div>
+              <div class="col-md-6 mb-3">
+                <div class="print">
+                  <label for="RegistrationNumber">Registration Number</label>
+                  <p>{{authorisedSignatoryDetails.physicianRegistrationNumber}}</p>
+                </div>
+              </div>
+              <div class="col-md-6 mb-3">
+                <div class="print">
+                  <label for="RegistrationAuthoroty">Registration Authoroty</label>
+                  <p>{{authorisedSignatoryDetails.physicianRegistrationAuthority}}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="document">
+            <div class="row">
+              <div class="col-md-6 " *ngFor="let document of authorisedSignatoryDetails.fileDetailsList">
+                <div class="documentBox">
+                  <div class="d-flex align-items-center">
+                    <div class="d-flex flex-column align-items-center">
+                      <i class="bi-file-earmark-pdf-fill"></i>
+                      <i class="bi-eye-fill" (click)="openFile(document)"></i>
+                    </div>
+                    <div class="d-flex flex-column px-2">
+                      <label for="AdhaarNo.">{{document.fileType==='ADH'?'Adhaar No.':document.fileType==='VOT'?'Voter
+                        No.':document.fileType==='PAN'?'PAN No.':document.fileType==='MRC'?'Registration Certificate
+                        No.':document.fileType==='PDC'?'Physician Degree Certificate No.':''}}</label>
+                      <p>{{document.documentNumber}}</p>
+                    </div>
+                  </div>
+                  <div class="d-flex flex-column">
+                    <i class="bi-x-circle-fill" *ngIf="document.documentStatus === 3"></i>
+                    <i class="bi-check-circle-fill" *ngIf="document.documentStatus === 0"></i>
+                    <i class="bi-question-circle-fill" *ngIf="document.documentStatus === 2"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="documentUpload">
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="row">
+                    <div class="col-md-12 file">
+                      <div id="uploadFile" class="p-0">
+                        <form [formGroup]="documentForm">
+                          <div class="form-group file-area" id="choseFile">
+                            <div *ngIf="getDocumentControllerValue( 'document')">
+                              <div *ngIf="!getDocumentControllerValue('error')" class="Dr-list">
+                                <img src="../../../assets/images/PrescriptionPink.png">
+                                <h6>{{getDocumentControllerValue('fileName')}}</h6>
+                                <i class="bi-x" (click)="removeItem()"></i>
+                                <div id="Progress_Status">
+                                  <div *ngIf="getDocumentControllerValue('progress')" id="text">
+                                    {{ getDocumentControllerValue('progress') }} %
+                                  </div>
+                                  <div [style.width]="getDocumentControllerValue('progress') + '%'" id="myprogressBar">
+                                  </div>
+                                </div>
+                              </div>
+                              <div *ngIf="getDocumentControllerValue('error')">
+                                <div>
+                                  <img src="../../../assets/images/dr.svg">
+                                  <h6>{{getDocumentControllerValue('fileName')}}</h6>
+                                  <i class="bi-x" (click)="removeItem()"></i>
+                                </div>
+                              </div>
+                              <div *ngIf="getDocumentControllerValue('error')">
+                                <label class="massage errorDocLabel">Couldn't upload the file</label>
+                              </div>
+                            </div>
+                            <div *ngIf="!getDocumentControllerValue('document') && !WorkRequestDetails.isDisabled">
+                              <label autofocus="" for="document">No File Choosen ....</label>
+                              <input [ngClass]="isDisabled() ? 'disable' : ''" formControlName="fileSource" type="file"
+                                name="document" id="document" required="required" multiple="multiple"
+                                (change)="onFileUpload($event)" />
+                            </div>
+                          </div>
+                          <div class="error">
+                            <small>{{documentForm.value.fileError}}</small>
+                            <small>{{fileError}}</small>
+                          </div>
+                          <div class="regErrorDiv">
+                            <app-validation-message [control]="documentForm.controls['fileID']"
+                              [messages]="errorMessage.fileID">
+                            </app-validation-message>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                    <div class="col-md-12 text-center">
+                      <div class="Signature" *ngIf="signatureFileID">
+                        <img [src]="signatureFile.fileName |getFile :signatureFile.fileType">
+                        <h2>{{authorisedSignatoryDetails.physicianName}}</h2>
+                        <h2>{{authorisedSignatoryDetails.physicianQualification}},
+                          {{authorisedSignatoryDetails.physicianSpecialisation}}</h2>
+                        <h3>Reg. No : {{authorisedSignatoryDetails.physicianRegistrationNumber}}
+                          ({{authorisedSignatoryDetails.physicianRegistrationAuthority}})</h3>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-12 " *ngIf="!WorkRequestDetails.isDisabled">
+                  <form [formGroup]="rejectionReasonForm">
+                    <div class="print">
+                      <label for="OfficeAddress">Rejection Reason</label>
+                      <textarea name="RejectionReason" id="" cols="30" rows="10" (keyup)="rejectionReasonValuChange()"
+                        formControlName="reason"></textarea>
+
+                    </div>
+                    <div class="error">
+                      <small>{{rejectionReasonError}}</small>
+                    </div>
+                  </form>
+                </div>
+                <div class="col-md-6 text-start mt-3" *ngIf="!WorkRequestDetails.isDisabled">
+                  <button class="Reviewed" (click)="authorisedSignatoryStatuschange('A')" >Reviewed & Approved</button>
+                  <button class="Reviewed Reject" (click)="authorisedSignatoryStatuschange('R')" >Reject</button>
+                </div>
+                <div class="col-md-6 text-end d-flex justify-content-end align-items-center  mt-3">
+                  <button class="Cancel" (click)="closePopup()">Cancel</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="AuthorisedModal"  *ngIf="somthingWentWrong">
+        <p style="color: red;">Something went wrong, Please try after sometime</p>
+      </div>
+    </div>
+  </div>

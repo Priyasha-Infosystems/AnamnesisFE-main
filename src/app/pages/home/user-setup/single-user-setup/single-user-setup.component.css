@@ -1,0 +1,130 @@
+.inputForm form {
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 244, 219, 0.79);
+  border: 1px solid rgba(231, 168, 20, 0.51);
+  box-shadow: 0px 11px 34px -5px rgba(215, 167, 55, 0.19);
+  border-radius: 10px;
+  padding: 15px 20px 15px 20px;
+}
+
+.inputForm form input[type="text"],
+input[type="number"],
+input[type="email"] {
+  width: 100%;
+  height: 57px;
+  background: #FFFFFF;
+  border: 1px solid rgba(231, 168, 20, 0.19);
+  box-shadow: 0px 16px 34px -6px rgb(199 148 29 / 19%);
+  color: #484747;
+  border-radius: 6px;
+  padding: 25px 14px 9px 14px;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 107%;
+  outline: none;
+}
+
+label {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  color: #484747;
+}
+
+input,
+select {
+  color: #000 !important;
+}
+
+
+.selectBox label {
+  transition: 0.3s;
+  opacity: 1;
+}
+
+.selectedFormValue label {
+  padding: 6px 14px 1px 14px !important;
+  transition: 0.3s;
+  opacity: .65 !important;
+  font-size: 12px;
+}
+
+.inputForm form hr {
+  border: 1px solid rgb(0 0 0 / 28%);
+  width: 100%;
+  margin-top: 40px;
+}
+
+form button {
+  width: auto;
+  height: 54px;
+  background: #EDB738;
+  box-shadow: 0px 11px 34px -5px rgb(253 217 134 / 79%);
+  border-radius: 6px;
+  border: none;
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 110%;
+  color: #FFFFFF;
+  margin: 5px 6px;
+  padding: 0px 20px;
+}
+
+.errorDiv {
+  font-size: 12px;
+  height: 18px;
+  line-height: 0;
+}
+
+select {
+  width: 100%;
+  height: 57px;
+  background: #FFFFFF;
+  border: 1px solid rgba(231, 168, 20, 0.19);
+  box-shadow: 0px 16px 34px -6px rgb(199 148 29 / 19%);
+  border-radius: 6px;
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 110%;
+  color: #484747;
+  padding: 18px 16px 16px 13px;
+  outline: none;
+}
+
+.form-select:focus {
+  box-shadow: unset !important;
+  border: unset !important;
+  outline: none !important;
+}
+
+.close {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50px;
+  width: 35px;
+  height: 34px;
+  right: -22px;
+  top: -15px;
+  cursor: pointer;
+  z-index: 1;
+}
+
+.close i {
+  color: #ecac18;
+  font-size: 18px;
+  line-height: 0;
+}
+
+.selectValue label {
+  opacity: .65 !important;
+  transform: scale(0.85) translateY(-0.5rem) translateX(0.15rem) !important;
+}

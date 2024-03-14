@@ -1,0 +1,824 @@
+body {
+    background-color: #EAECFC !important;
+    font-family: 'Poppins', sans-serif;
+}
+
+#header i {
+    color: #713bdb;
+    font-size: 1.375rem;
+    cursor: pointer;
+    padding-right: 0.3125rem;
+}
+
+#header .Profile {
+    background: #713bdb;
+    box-shadow: 0px 11px 34px -5px rgb(113 59 219 / 79%);
+    border-radius: 7px;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 0.875rem;
+    line-height: 21px;
+    color: #FFFFFF;
+    width: 100%;
+    height: 3.375rem;
+    display: flex !important;
+    align-items: center;
+}
+
+button {
+    cursor: pointer;
+}
+
+#header .Profile img {
+    width: 2.5rem;
+    height: 2.5625rem;
+    border-radius: 50px;
+    margin-right: 0.5rem;
+}
+
+#header {
+    position: fixed;
+    width: 100%;
+    top: -0.5rem;
+    z-index: 5;
+}
+
+#header a {
+    color: #ffff;
+    font-weight: 500;
+}
+
+#header .dropdown-menu {
+    background-color: #edb738;
+}
+
+#header .show {
+    border-radius: 13px;
+}
+
+.dropdown-item:focus,
+.dropdown-item:hover {
+    color: #000 !important;
+    background: unset;
+}
+
+.logo {}
+
+.logo img {
+    max-width: 72px;
+    margin-right: 10px;
+}
+
+.logotitle {
+    font-size: 5.625rem;
+    font-family: Michland;
+    color: #713bdb !important;
+    text-decoration: none;
+    line-height: 0.7;
+}
+
+.logotitle small {
+    color: #e7a814;
+    font-size: 6.25rem;
+}
+
+.logotitle span {
+    font-size: 1.25rem;
+    font-family: PalatinoLinotype;
+    margin-left: -1.125rem;
+}
+
+#header .border-btm {
+    background-color: #ffff !important;
+    border: 3px solid #713bdb;
+    padding: 0rem 2.25rem 0rem 6.875rem;
+}
+
+.content-all {
+    margin-top: 6.6875rem;
+}
+
+.modal-dialog {
+    margin-top: 4.0625rem;
+    width: 20rem;
+    position: absolute;
+    right: 0;
+}
+
+.modal-content {
+    background: #FFFCF7;
+    border: 1px solid rgba(193, 193, 193, 0.51);
+    box-shadow: 0px 20px 34px 7px rgba(215, 167, 55, 0.19);
+    border-radius: 14px;
+    padding: 0.9375rem;
+}
+
+.modal-content .profileName {
+    background-color: #fffcf6;
+    border: 1px solid #efc561;
+    border-radius: 0.625rem;
+    padding: 0.25rem 0.5rem;
+    margin-bottom: 0.4375rem;
+    box-shadow: 0px 20px 34px 7px rgb(215 167 55 / 19%);
+}
+
+.modal-content .close {
+    position: absolute;
+    background: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50px;
+    width: 33px;
+    height: 32px;
+    right: -0.9375rem;
+    top: -0.9375rem;
+    cursor: pointer;
+    border: 1px solid #edb7388f;
+    z-index: 999;
+}
+
+.modal-content .close i {
+    color: #ecac18 !important;
+    font-size: 1.375rem !important;
+    line-height: 0 !important;
+}
+
+.modal-content .profileName img {
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50px;
+}
+
+.modal-content .profileName .name {
+    padding-left: 0.3125rem;
+}
+
+.modal-content .profileName h2 {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 1rem;
+    line-height: 20px;
+    color: #434242;
+    margin: 0;
+}
+
+.modal-content .profileName p {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-size: 0.8125rem;
+    line-height: 20px;
+    color: #434242;
+    margin: 0;
+}
+
+.modal-content .listButton {
+    width: 100%;
+    padding: 0.625rem;
+    background-color: #fff;
+    margin: 0.1875rem 0rem;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    height: 2.8125rem;
+    box-shadow: 0px 4px 4px rgb(213 158 29 / 13%);
+    border-radius: 4px;
+}
+
+.modal-content .listButton .icon {
+    background-color: #e7a814;
+    border-radius: 50px;
+    width: 2.1875rem;
+    height: 2.1875rem;
+    color: #fff;
+    font-size: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    padding: 1.125rem;
+}
+
+.openExtraMenu .icon {
+    background: #fff !important;
+    border: 1px solid #e7a814 !important;
+}
+
+.modal-content .listButton .icon img {
+    width: 1.4375rem;
+}
+
+.modal-content .listButton .icon .fa-sign-out {
+    transform: rotate(180deg) !important;
+}
+
+.modal-content .listButton p {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 0.875rem;
+    line-height: 0;
+    color: #373737;
+    margin: 0;
+    padding-left: 0.3125rem;
+}
+
+.headerPadding {
+    padding-right: 0.9375rem;
+}
+
+.Cart-Btn {
+    background: none;
+    margin-right: 1.25rem;
+    border: none;
+    width: auto;
+    height: 3.375rem;
+    transition: 0.3s;
+    z-index: 7;
+    position: relative;
+}
+
+.cartItemNo {
+    position: absolute;
+    background-color: #159300;
+    color: #fff;
+    height: 18px;
+    width: 18px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-width: 2px;
+    top: 4px;
+    left: 16px;
+    font-size: 9px;
+    z-index: 5;
+}
+
+.notifecationItemNo {
+    position: absolute;
+    background-color: #c50404;
+    color: #fff;
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-width: 2px;
+    top: 3px;
+    left: 16px;
+    font-size: 9px;
+    z-index: 5;
+}
+
+.Cart-Btn img {
+    max-width: 1.875rem;
+}
+
+.Cart-Btn:hover {
+    opacity: 0.8;
+}
+
+.dropdown-toggle::after {
+    display: none;
+}
+
+.nav-item {
+    width: 12.0625rem;
+}
+
+.add img {
+    border-radius: 9px;
+    max-width: 23.75rem;
+}
+
+#myModal {
+    display: block;
+    position: fixed;
+    padding-top: 4.5625rem;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0, 0, 0);
+    background-color: rgb(0 0 0 / 72%);
+}
+
+#myModal .modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 1.5625rem 1.5625rem 1.25rem 1.5625rem;
+    border: 1px solid #888;
+    width: 38%;
+    top: 3.125rem;
+}
+
+.extraMenu {
+    position: absolute;
+    background: #fff;
+    width: 100%;
+    right: 18.875rem;
+    border-radius: 3px;
+    bottom: -16.25rem;
+    display: none;
+    transition: 0.3s;
+    box-shadow: 0px 4px 4px rgb(213 158 29 / 13%);
+}
+
+.openExtraMenu:hover .extraMenu {
+    display: block;
+    z-index: 99;
+}
+
+.Cart-Btn i {
+    padding-left: 0px;
+    font-size: 24px !important;
+    padding-top: 3px;
+    display: flex;
+}
+
+.Cart-Btn i b {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 700;
+    padding-left: 9px;
+    text-align: left;
+}
+
+@media (max-width:768px) {
+    .logotitle {
+        font-size: 1.875rem;
+    }
+
+    .logotitle small {
+        font-size: 2.5rem;
+    }
+
+    .logotitle span {
+        font-size: 0.625rem;
+        margin-left: -0.25rem;
+    }
+
+    #header .border-btm {
+        padding: 0rem 2.25rem 0rem 3.8125rem;
+        height: unset !important;
+    }
+
+    .logo img {
+        max-width: 5.3125rem;
+    }
+
+    .collapse:not(.show) {
+        display: block;
+    }
+
+    #header .Profile {
+        height: 2.5rem;
+        font-size: 0.75rem;
+        padding: 0.625rem 0.4375rem;
+        width: 60%;
+        float: right;
+    }
+
+    #header .Profile img {
+        width: 1.875rem;
+        height: 1.875rem;
+    }
+
+    .navbar-nav {
+        margin-bottom: 0rem !important;
+    }
+
+    .modal-content .profileName h2 {
+        font-size: 0.875rem;
+    }
+
+    .Cart-Btn {
+        margin-right: -3.125rem;
+        z-index: 999;
+        cursor: pointer;
+    }
+}
+
+@media (min-width:769px) and (max-width:1024px) {
+    .logotitle {
+        font-size: 4.875rem;
+    }
+
+    .logotitle small {
+        font-size: 6.5rem;
+    }
+
+    .logotitle span {
+        font-size: 1.375rem;
+        margin-left: -0.25rem;
+    }
+
+    #header .border-btm {
+        padding: 0rem 2.25rem 0rem 3.8125rem;
+    }
+
+    .logo img {
+        max-width: 5.3125rem;
+    }
+
+    .collapse:not(.show) {
+        display: block;
+    }
+
+    #header .Profile {
+        height: 2.8125rem;
+        font-size: 0.875rem;
+        padding: 0.625rem 0.4375rem;
+        width: 65%;
+        float: right;
+    }
+
+    #header .Profile img {
+        width: 1.875rem;
+        height: 1.875rem;
+    }
+
+    .navbar-nav {
+        margin-bottom: 0rem !important;
+    }
+
+    .modal-content .profileName h2 {
+        font-size: 0.875rem;
+    }
+
+    .Cart-Btn {
+        margin-right: -1.125rem;
+        z-index: 999;
+        cursor: pointer;
+    }
+}
+
+@media (max-width:820px) {
+    .logotitle {
+        font-size: 2.875rem;
+    }
+
+    .logotitle small {
+        font-size: 4rem;
+    }
+
+    .logotitle span {
+        font-size: 0.9375rem;
+        margin-left: -0.25rem;
+    }
+
+    #header .border-btm {
+        padding: 0rem 2.25rem 0rem 3.8125rem;
+        height: 4.6875rem;
+    }
+
+    .logo img {
+        max-width: 5.3125rem;
+    }
+
+    .collapse:not(.show) {
+        display: block;
+    }
+
+    #header .Profile {
+        height: 2.5rem;
+        font-size: 0.9375rem;
+        padding: 0.625rem 0.4375rem;
+        width: 65%;
+        float: right;
+    }
+
+    #header .Profile img {
+        width: 2rem;
+        height: 2rem;
+    }
+
+    .navbar-nav {
+        margin-bottom: 0rem !important;
+    }
+
+    .modal-content .profileName h2 {
+        font-size: 0.875rem;
+    }
+
+    .Cart-Btn {
+        margin-right: -3.125rem;
+        z-index: 999;
+        cursor: pointer;
+    }
+}
+
+@media (min-width:821px) and (max-width:1180px) {
+    .logotitle {
+        font-size: 3.6rem;
+    }
+
+    .logotitle small {
+        font-size: 5rem;
+    }
+
+    .logotitle span {
+        font-size: 1.375rem;
+        margin-left: -0.25rem;
+    }
+
+    #header .border-btm {
+        padding: 0rem 2.25rem 0rem 3.8125rem;
+        height: 4.6875rem;
+    }
+
+    .logo img {
+        max-width: 5.3125rem;
+    }
+
+    .collapse:not(.show) {
+        display: block;
+    }
+
+    #header .Profile {
+        height: 3.5rem;
+        font-size: 1rem;
+        padding: 0.625rem 0.4375rem;
+        width: 80%;
+        float: right;
+    }
+
+    #header .Profile img {
+        width: 3rem;
+        height: 3rem;
+    }
+
+    .Cart-Btn img {
+        max-width: 2.575rem;
+    }
+}
+
+.notificationOpen {
+    background: #fff;
+    width: 316px;
+    border: 1px solid #673AB7;
+    box-shadow: 0px 12px 16px -8px rgb(80 0 0 / 20%);
+    border-radius: 3px;
+    padding: 8px 3px 8px 8px;
+    transition: 0.3s;
+    float: right;
+    right: -10px;
+    top: -248px;
+    position: relative;
+    transition: 0.3s;
+    z-index: 10;
+}
+
+.notificationOpen .close {
+    position: absolute;
+    background: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50px;
+    width: 26px;
+    height: 26px;
+    right: -8px;
+    top: -9px;
+    cursor: pointer;
+    border: 1px solid #673AB7;
+    z-index: 999;
+}
+
+.close i {
+    font-size: 16px !important;
+    color: #673AB7 !important;
+    padding: 0 !important;
+}
+
+.UP {
+    top: 0 !important;
+}
+
+.closeNotification {
+    width: 100%;
+    height: 100%;
+    background: #0000007a;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 5;
+}
+
+.notificationModal {
+    background-color: #0000 !important;
+}
+
+.CollapsePrescribed .m-d.expand-list {
+    margin: 0;
+    padding: 0;
+}
+
+.CollapsePrescribed .m-d.expand-list>li {
+    list-style-type: none;
+    padding: 8px 13px;
+    position: relative;
+    border: 2px solid #FFF;
+    box-shadow: 0px 6px 9px -8px rgb(3 11 48 / 83%);
+    border-radius: 5px;
+    margin-bottom: 8px;
+    background: #f2ebff;
+}
+
+.CollapsePrescribed .m-d.expand-list>li label {
+    -webkit-user-select: none;
+    user-select: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.CollapsePrescribed .m-d.expand-list>li label h5 {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: normal;
+    color: #3a3a3a;
+    margin: 0px;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    width: 177px;
+    word-wrap: break-word;
+    word-break: break-all;
+}
+
+.CollapsePrescribed .m-d.expand-list>li label h5 span {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 10px;
+    line-height: 1;
+    color: #673AB7;
+}
+
+.CollapsePrescribed .m-d.expand-list>li label .Amount label {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 12px;
+    color: #242222;
+}
+
+.CollapsePrescribed .m-d.expand-list>li label .Amount i {
+    font-size: 12px;
+    padding-left: 3px;
+}
+
+.CollapsePrescribed .m-d.expand-list>li label .Amount b {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 12px;
+    color: #673AB7;
+    margin-left: 3px;
+    line-height: 1;
+}
+
+.CollapsePrescribed .m-d label[class^="tabCollapse"]:hover {
+    cursor: pointer;
+}
+
+.CollapsePrescribed .m-d input {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+.CollapsePrescribed .m-d input[class^="tabCollapse"] {
+    width: 100%;
+    height: 35px;
+    position: absolute;
+    left: 0;
+    top: 0px;
+    z-index: 1;
+    outline: none;
+}
+
+.CollapsePrescribed .m-d input[class^="tabCollapse"]:hover {
+    cursor: pointer;
+}
+
+.CollapsePrescribed .m-d label[class^="tabCollapse"] {
+    font-weight: bold;
+}
+
+.CollapsePrescribed .m-d .contentCollapse {
+    height: auto;
+    max-height: 0;
+    overflow: hidden;
+    transform: translateY(6px);
+    transition: all 180ms ease-in-out 0ms;
+}
+
+.CollapsePrescribed .m-d li[data-md-content="200"] input[class^="tabCollapse"]:checked~.contentCollapse {
+    max-height: 100%;
+    transition: all 150ms ease-in-out 0ms;
+}
+
+.CollapsePrescribed .m-d input[class^="tabCollapse"]:checked~.contentCollapse {
+    margin-bottom: 20px;
+}
+
+.CollapsePrescribed .m-d .open-close-icon {
+    display: inline-block;
+    position: absolute;
+    right: 26px;
+    top: 10px;
+    transform: translatey(2px);
+}
+
+.CollapsePrescribed .m-d .open-close-icon i {
+    position: absolute;
+    left: 6px !important;
+    color: #673AB7;
+    font-size: 18px !important;
+}
+
+.CollapsePrescribed .m-d .open-close-icon .bi-caret-up-fill {
+    transform: rotate(180deg);
+    transition: transform 150ms ease-in-out 0ms;
+}
+
+.CollapsePrescribed .m-d input[class^="tabCollapse"]:checked~.open-close-icon .bi-caret-up-fill {
+    transform: rotate(0deg);
+    transition: transform 150ms ease-in-out 0ms;
+}
+
+.AmountPrice {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.expand-list {
+    padding: 0px 5px 0px 0px !important;
+}
+
+
+.notification ::-webkit-scrollbar {
+    width: 0.3125rem;
+    margin: 0.3125rem;
+    display: none;
+}
+
+.notification ::-webkit-scrollbar-track {
+    background: #EAECFC;
+    box-shadow: 0px 4px 4px rgba(173, 181, 239, 0.58);
+    border-radius: 32px;
+}
+
+.notification ::-webkit-scrollbar-thumb {
+    background: #713BDB;
+    border-radius: 8px;
+    transform: rotate(-90deg);
+}
+
+.notification ::-webkit-scrollbar-thumb:hover {
+    background: #5624ba;
+}
+
+.tab_lab {
+    padding: 0px 11px 0px 0px;
+}
+
+.contentOpen p {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: normal;
+    color: #000000;
+    margin: 0px;
+    letter-spacing: 0.3px;
+}
+
+.notification {
+    position: absolute;
+    right: 35px;
+    top: 70px;
+}
+
+.closeNotification {
+    background-color: #00000021 !important;
+}
+
+.Home {
+    color: #5624ba !important;
+    background: none !important;
+    border: 1px solid #5624ba;
+}

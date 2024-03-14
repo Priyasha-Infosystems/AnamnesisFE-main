@@ -1,0 +1,3 @@
+<small class="form-text text-muted error" *ngIf="shouldShowErrors()">
+    <div *ngFor="let error of listOfErrors()">{{error}}</div>
+</small>

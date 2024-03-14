@@ -1,0 +1,194 @@
+<div id="OrderwithPrescription">
+  <div class="close">
+    <i class="bi-x-circle-fill" (click)="closeOrderWithPrescriptionPopup()"></i>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <h5 *ngIf="!somthingWentWrong">Order with Prescription</h5>
+    </div>
+    <div class="row" *ngIf="!somthingWentWrong">
+      <div class="col-md-6">
+        <div class="List left">
+          <h4>List of all Prescription</h4>
+          <div class="srl">
+            <div *ngFor="let prescription of prescriptionList; let prescriptionIndex = index" class="row"
+              class="d-flex align-items-center mt-3">
+              <div class="col-md-11">
+                <div class="Dr-list selectList" [ngClass]="{active:showPrescriptionIndex === prescriptionIndex}">
+                  <div class="d-flex w-100" (click)="prescriptionSelect(prescriptionIndex)">
+                    <div class="dateBox">
+                      <p>{{prescription.prescriptionDate | date: 'd MMM'}}</p>
+                    </div>
+                    <div class="d-flex flex-column justify-content-center">
+                      <h6>{{prescription.physicianName}}, {{prescription.physicianSpecialisation}}</h6>
+                      <span>{{prescription.qualification}}</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-1 viewPrescription">
+                <i class="bi bi-eye-fill" (click)="prescriptionview(prescription.prescriptionID)"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <form [formGroup]="prescriptionFormGroup" role="form">
+          <div formArrayName="prescriptionDetailsList">
+            <div
+              *ngFor="let prescriptionDetails of prescriptionDetailsList().controls; let prescriptionDetailsIndex = index">
+              <div class="right" *ngIf="showPrescriptionIndex === prescriptionDetailsIndex">
+                <ng-container formGroupName="{{ prescriptionDetailsIndex }}">
+                  <h2>All Prescription</h2>
+                  <div class="List Tablet medicine">
+                    <div class="srl" style="height:282px" formArrayName="medicationDetailsList">
+                      <div
+                        *ngFor="let medication of prescriptionList[prescriptionDetailsIndex].prescriptionMedicineDetailsList; let medicineIndex = index">
+                        <div class="Dr-list "
+                          [ngClass]="{checkedmedicine: medicineList(prescriptionDetailsIndex).controls[medicineIndex].get('check')?.value}">
+                          <ng-container formGroupName="{{ medicineIndex }}">
+                            <div class="form-group">
+                              <div class="row">
+                                <div class="col-md-10">
+                                  <table>
+                                    <tr>
+                                      <td><input type="checkbox" id="medcine{{ medicineIndex }}"
+                                          formControlName="check">
+                                        <label for="medcine{{ medicineIndex }}">
+                                        </label>
+                                      </td>
+                                      <td>
+                                        <h6>{{medication.medicineName}}</h6>
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td></td>
+                                      <td>
+                                        <p>{{medication.medicineComposition}}</p>
+                                      </td>
+                                    </tr>
+                                  </table>
+                                </div>
+                                <div class="col-md-2">
+                                  <div class="DayRound">
+                                    <p>{{medication.medicineDays}}<span> {{medication.medicineDurationUnit
+                                        ==='D'?medication.medicineDays>1?'Days':'Day':medication.medicineDurationUnit
+                                        ==='M'?medication.medicineDays>1?'Months':'Month':medication.medicineDurationUnit
+                                        ==='Y'?medication.medicineDays>1?'Years':'Year':''}}</span></p>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </ng-container>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="List Tablet mt-2 HouseHoldItemList">
+                    <div class="srl" style="height:282px" formArrayName="HouseHoldItemList">
+                      <div
+                        *ngFor="let householdItemDetails of prescriptionList[prescriptionDetailsIndex].prescriptionHouseholdItemDetailsList; let householdItemDetailsIndex = index">
+                        <div class="HI-list "
+                          [ngClass]="{checkedHouseHoldItem: HouseHoldItemList(prescriptionDetailsIndex).controls[householdItemDetailsIndex].get('check')?.value}">
+                          <ng-container formGroupName="{{ householdItemDetailsIndex }}">
+                            <div class="form-group">
+                              <div class="row">
+                                <div class="col-md-9">
+                                  <table>
+                                    <tr>
+                                      <td><input type="checkbox" id="HouseHold{{ householdItemDetailsIndex }}"
+                                          formControlName="check">
+                                        <label for="HouseHold{{ householdItemDetailsIndex }}">
+                                        </label>
+                                      </td>
+                                      <td>
+                                        <h6>{{householdItemDetails.householdItemName}}</h6>
+                                      </td>
+                                    </tr>
+                                  </table>
+                                </div>
+                              </div>
+                            </div>
+                          </ng-container>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="List labTest ">
+                    <div class="srl" style="height:282px" formArrayName="labTestDetailsList">
+                      <div
+                        *ngFor="let labtest of labtestList(prescriptionDetailsIndex).controls; let labtestIndex = index">
+                        <div class="Dr-list checkedLab"
+                          [ngClass]="{checkedLab: labtestList(prescriptionDetailsIndex).controls[labtestIndex].get('check')?.value}">
+                          <div class="form-group" formGroupName="{{labtestIndex}}">
+                            <div class="row">
+                              <div class="col-md-9">
+                                <div class="form-group">
+                                  <table>
+                                    <tr>
+                                      <td><input type="checkbox" id="labtest{{labtestIndex}}" formControlName="check">
+                                        <label for="labtest{{labtestIndex}}">
+                                        </label>
+                                      </td>
+                                      <td>
+                                        <h6>
+                                          {{prescriptionList[prescriptionDetailsIndex].prescriptionLabtestPckageDetailsList[labtestIndex].labtestPackageName}}
+                                        </h6>
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td></td>
+                                      <td>
+                                        <p
+                                          *ngFor="let item of prescriptionList[prescriptionDetailsIndex].prescriptionLabtestPckageDetailsList[labtestIndex]?.laboratoryTestList?prescriptionList[prescriptionDetailsIndex].prescriptionLabtestPckageDetailsList[labtestIndex]?.laboratoryTestList:[]">
+                                          {{item.laboratoryTestName}}</p>
+                                      </td>
+                                    </tr>
+                                  </table>
+                                </div>
+                              </div>
+                              <div
+                                class="col-md-3 text-end pt-2 pb-2 d-flex align-items-center flex-wrap position-relative">
+                                <table>
+                                  <tr>
+                                    <td><span class="afterTxt">After</span></td>
+                                    <td>
+                                      <div class="DayBox">
+                                        <h2>
+                                          {{prescriptionList[prescriptionDetailsIndex].prescriptionLabtestPckageDetailsList[labtestIndex].labtestTimingDate?(formatDate(prescriptionList[prescriptionDetailsIndex].prescriptionLabtestPckageDetailsList[labtestIndex].labtestTimingDate)|date:'d-MMM-yyyy'):''}}
+                                        </h2>
+                                      </div>
+                                    </td>
+                                  </tr>
+                                </table>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </ng-container>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="somthingWentWrong" *ngIf="somthingWentWrong">
+      <p style="color: red;">Something went wrong, Please try after sometime</p>
+    </div>
+  </div>
+  <div class="row" *ngIf="!somthingWentWrong">
+    <div class="col-md-12 text-end">
+      <button class="processBtn" (click)="save()"><i class="bi-cart-plus"></i>Add To Cart</button>
+    </div>
+  </div>
+</div>
+<div id="Manage1" class="prescriptionModal" *ngIf="showPrescription">
+  <div id="myModal" class="modal1" tabindex="-1" role="dialog">
+    <app-prescription-view [prescriptionID]="showPrescriptionID"
+      (close)="viewPrescriptionClose($event)"></app-prescription-view>
+  </div>
+</div>

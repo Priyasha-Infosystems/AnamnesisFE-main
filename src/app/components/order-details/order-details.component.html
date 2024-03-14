@@ -1,0 +1,854 @@
+<div id="OrderDetails" class="tabcontent orderDetailsPopup">
+    <div class="content">
+        <div class="close">
+            <button class="closebtn" style="right: 78px;">Return</button>
+        </div>
+        <div class="close" (click)="closePopup()">
+            <button class="closebtn">Close</button>
+        </div>
+        <div class="row w-100" *ngIf="!somthingWentWrong && orderDetails">
+            <div class="col-md-3">
+                <div class="order-track">
+                    <h5>Location tracking</h5>
+                    <div class="order-track-step"
+                        *ngFor="let orderLocation of orderDetails.orderLocationUpdateList; let orderLocationIndex = index">
+                        <div class="order-track-status">
+                            <span class="order-track-status-dot"></span>
+                            <span class="order-track-status-line"></span>
+                        </div>
+                        <div class="DeliveryBox">
+                            <p class="Date">{{dateFormat(orderLocation.activityDate)|date:'dd MMM,yyyy'}}</p>
+                            <p class="location">{{orderLocation.location}}</p>
+                            <p class="Status">{{orderLocation.acticityCode}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-5 p-0">
+                <div class="middle d-none">
+                    <div class="OrderId">
+                        <div class="row m-auto w-100">
+                            <div class="col-md-6 py-1">
+                                <label for="OrderId:">Order Id:</label>
+                                <p>{{orderDetails.orderID}}</p>
+                            </div>
+                            <div class="col-md-6 py-1">
+                                <label for="PackageId">Package Id:</label>
+                                <p>{{orderDetails.packageID}}</p>
+                            </div>
+                        </div>
+                        <div class="row m-auto w-100">
+                            <div class="col-md-6 py-1">
+                                <label for="OrderDate">Order Date:</label>
+                                <p>{{orderDetails.orderDate?(dateFormat(orderDetails.orderDate)|date :'dd MMM,
+                                    yyyy'):''}}</p>
+                            </div>
+                            <div class="col-md-6 py-1">
+                                <label for="Status">Status:</label>
+                                <p>{{orderStatus(orderDetails.orderStatus)}}</p>
+                            </div>
+                        </div>
+                        <div class="row m-auto w-100"
+                            *ngIf="!orderDetails?.physicianConsultationOrderDetailsList.length && !orderDetails?.physicianConsultationOrderDetailsList.length ">
+                            <div class="col-md-6 py-1 ">
+                                <div *ngIf="orderDetails.expDeliveryDate">
+                                    <label for="">Expected Delivery Date:</label>
+                                    <p>
+                                        {{dateFormat(orderDetails.expDeliveryDate)|date:'dd MMM, yyyy'}}
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="col-md-6 py-1 ">
+                                <div *ngIf="orderDetails.expDeliveryDate">
+                                    <label for="">Actual Delivery Date:</label>
+                                    <p>
+                                        {{dateFormat(orderDetails.expDeliveryDate)|date:'dd MMM, yyyy'}} </p>
+                                </div>
+                            </div>
+                            <div class="col-md-12 py-1">
+                                <div class="d-flex justify-content-between align-items-center OTP">
+                                    <p>OTP</p>
+                                    <div class="d-flex">
+                                        <div class="otpBox">
+                                            <p>9</p>
+                                        </div>
+                                        <div class="otpBox">
+                                            <p>9</p>
+                                        </div>
+                                        <div class="otpBox">
+                                            <p>9</p>
+                                        </div>
+                                        <div class="otpBox">
+                                            <p>9</p>
+                                        </div>
+                                        <div class="otpBox">
+                                            <p>9</p>
+                                        </div>
+                                        <div class="otpBox">
+                                            <p>9</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="list"
+                        *ngIf="orderDetails.medicineOrderDetailsList && orderDetails.medicineOrderDetailsList.length">
+                        <div class="CollapsePrescribed">
+                            <ul class="m-d expand-list">
+                                <li data-md-content="200" class="healthcare Medicine">
+                                    <label name="tab" for="tab1" tabindex="-1" class="tab_lab w-100" role="tab">
+                                        <h5>Medicine</h5>
+                                    </label>
+                                    <input type="checkbox" class="tabCollapse" id="tab1" tabindex="0">
+                                    <span class="open-close-icon">
+                                        <i class="bi-caret-up-fill"></i>
+                                    </span>
+                                    <div class="contentCollapse">
+                                        <div class="MedicinePrescription">
+                                            <div class="MedicineDetails listDetails"
+                                                *ngFor="let medicineOrderDetails of orderDetails?.medicineOrderDetailsList">
+                                                <div class="row">
+                                                    <div class="col-md-7">
+                                                        <label for="MedicineName">Medicine Name:</label>
+                                                        <h2>{{medicineOrderDetails.medicineName}}</h2>
+                                                    </div>
+                                                    <div class="col-md-5">
+                                                        <label for="ReferredBy">Referred By:</label>
+                                                        <h2>{{medicineOrderDetails.prescriptionID?medicineOrderDetails.physicianName:'Self'}}
+                                                        </h2>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-7">
+                                                        <label for="Composition:">Composition:</label>
+                                                        <p>{{medicineOrderDetails.medicineComposition}}</p>
+                                                    </div>
+                                                    <div class="col-md-5">
+                                                        <label for="PrescriptionID&Date:">Prescription
+                                                            ID & Date:</label>
+                                                        <p class="m-0">
+                                                            {{medicineOrderDetails.prescriptionID?medicineOrderDetails.prescriptionID:''}}
+                                                        </p>
+                                                        <p>{{medicineOrderDetails.prescriptionID?(dateFormat(medicineOrderDetails.prescriptionDate)|date
+                                                            :'dd MMM, yyyy'):''}}</p>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-4">
+                                                        <label for="UnitPrice">Unit Price:</label>
+                                                        <span>Rs.
+                                                            {{medicineOrderDetails.medicineUnitPrice|truncPrice}}</span>
+                                                    </div>
+                                                    <div class="col-md-3 text-center">
+                                                        <label for="Qty">Qty:</label>
+                                                        <h2>{{medicineOrderDetails.medicineQuantity}}</h2>
+                                                    </div>
+                                                    <div class="col-md-5">
+                                                        <label for="TotalPrice">Total Price:</label>
+                                                        <span>Rs.
+                                                            {{medicineOrderDetails.medicineTotalPrice|truncPrice}}</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="list LaboratoryTest"
+                        *ngIf="orderDetails.laboratoryTestOrderDetailsList && orderDetails.laboratoryTestOrderDetailsList.length">
+                        <div class="CollapsePrescribed">
+                            <ul class="m-d expand-list">
+                                <li data-md-content="200" class="healthcare Laboratory">
+                                    <label name="tab" for="tab1" tabindex="-1" class="tab_lab w-100" role="tab">
+                                        <h5>Laboratory Test</h5>
+                                    </label>
+                                    <input type="checkbox" class="tabCollapse" id="tab1" tabindex="0">
+                                    <span class="open-close-icon">
+                                        <i class="bi-caret-up-fill"></i>
+                                    </span>
+                                    <div class="contentCollapse">
+                                        <div class="LaboratoryTest">
+                                            <div class="LaboratoryTestDetails listDetails"
+                                                *ngFor="let laboratoryTestOrderDetails of orderDetails?.laboratoryTestOrderDetailsList">
+                                                <div class="row">
+                                                    <div class="col-md-7">
+                                                        <label for="LaboratoryTestName">Laboratory Test
+                                                            Name:</label>
+                                                        <h2>{{laboratoryTestOrderDetails.laboratoryTestName}}</h2>
+                                                    </div>
+                                                    <div class="col-md-5">
+                                                        <label for="ReferredBy">Referred By:</label>
+                                                        <h2>{{laboratoryTestOrderDetails.physicianName}}</h2>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-7 d-flex flex-column justify-content-center">
+                                                        <label for="DiagnosticCentreName">Diagnostic
+                                                            Centre
+                                                            Name:</label>
+                                                        <p>{{laboratoryTestOrderDetails.healthClinicName}}</p>
+                                                    </div>
+                                                    <div class="col-md-5">
+                                                        <label for="ScheduleDate">Schedule Date:</label>
+                                                        <p>{{dateFormat(laboratoryTestOrderDetails.scheduleDate)| date:
+                                                            'dd MMM, yyyy'}}</p>
+                                                        <label for="Status">Status:</label>
+                                                        <p><i class="bi-clipboard-check"></i>
+                                                            {{laboratoryTestOrderDetails.schduleDate?'Scheduleded':'Not
+                                                            Scheduleded'}}
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-4">
+                                                        <label for="UnitPrice">Unit Price:</label>
+                                                        <span>Rs.
+                                                            {{laboratoryTestOrderDetails.laboratoryTestUnitPrice|truncPrice}}</span>
+                                                    </div>
+                                                    <div class="col-md-3 text-center">
+                                                        <label for="Qty">Qty:</label>
+                                                        <h2>{{laboratoryTestOrderDetails.laboratoryTestQuantity}}</h2>
+                                                    </div>
+                                                    <div class="col-md-5">
+                                                        <label for="TotalPrice">Total Price:</label>
+                                                        <span>Rs.
+                                                            {{laboratoryTestOrderDetails.laboratoryTestTotalPrice|truncPrice}}</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="list "
+                        *ngIf="orderDetails.physicianConsultationOrderDetailsList && orderDetails.physicianConsultationOrderDetailsList.length">
+                        <div class="CollapsePrescribed">
+                            <ul class="m-d expand-list">
+                                <li data-md-content="200" class="healthcare Medicine PhysicianConsultation">
+                                    <label name="tab" for="tab1" tabindex="-1" class="tab_lab w-100" role="tab">
+                                        <h5>Physician Consultation</h5>
+                                    </label>
+                                    <input type="checkbox" class="tabCollapse" id="tab1" tabindex="0">
+                                    <span class="open-close-icon">
+                                        <i class="bi-caret-up-fill"></i>
+                                    </span>
+                                    <div class="contentCollapse">
+                                        <div class="MedicinePrescription">
+                                            <div class=" listDetails"
+                                                *ngFor="let physicianConsultationOrderDetails of orderDetails?.physicianConsultationOrderDetailsList">
+                                                <div class="row">
+                                                    <div class="col-md-7">
+                                                        <label for="PhysicianName">Physician
+                                                            Name:</label>
+                                                        <h2>{{physicianConsultationOrderDetails.physicianName}}</h2>
+                                                    </div>
+                                                    <div class="col-md-5">
+                                                        <label for="ScheduleDate&Price">Schedule Date &
+                                                            Price:</label>
+                                                        <h2>{{physicianConsultationOrderDetails.schduleDate?(dateFormat(physicianConsultationOrderDetails.schduleDate)|
+                                                            date:'dd MMM, yyyy'):''}}</h2>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-7">
+                                                        <label for="HealthClinicName">Health Clinic
+                                                            Name:</label>
+                                                        <h2>{{physicianConsultationOrderDetails.healthClinicName}}</h2>
+                                                    </div>
+                                                    <div class="col-md-5">
+                                                        <label for="Status">Status:</label>
+                                                        <p><i class="bi-clipboard-check"></i>
+                                                            {{physicianConsultationOrderDetails.schduleDate?'Scheduleded':'Not
+                                                            Scheduleded'}}
+                                                        </p>
+                                                        <label for="Total Price">Total Price:</label>
+                                                        <span>Rs.
+                                                            {{physicianConsultationOrderDetails.consultationFee|truncPrice}}</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="list HealthcareEquipment"
+                        *ngIf="orderDetails.householdItemOrderDetailsList && orderDetails.householdItemOrderDetailsList.length">
+                        <div class="CollapsePrescribed">
+                            <ul class="m-d expand-list">
+                                <li data-md-content="200" class="healthcare HealthcareEquipment ">
+                                    <label name="tab" for="tab1" tabindex="-1" class="tab_lab w-100" role="tab">
+                                        <h5>Healthcare Equipment</h5>
+                                    </label>
+                                    <input type="checkbox" class="tabCollapse" id="tab1" tabindex="0">
+                                    <span class="open-close-icon">
+                                        <i class="bi-caret-up-fill"></i>
+                                    </span>
+                                    <div class="contentCollapse">
+                                        <div class="Equipment">
+                                            <div class="LaboratoryTestDetails listDetails"
+                                                *ngFor="let householdItem of orderDetails?.householdItemOrderDetailsList">
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <label for="EquipmentName">House Hold Item
+                                                            Name:</label>
+                                                        <h2>{{householdItem.householdItemName}} </h2>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-4">
+                                                        <label for="UnitPrice">Unit Price:</label>
+                                                        <span>Rs. {{householdItem.householdItemUnitPrice}}</span>
+                                                    </div>
+                                                    <div class="col-md-3 text-center">
+                                                        <label for="Qty">Qty:</label>
+                                                        <h2>{{householdItem.householdItemQuantity}}</h2>
+                                                    </div>
+                                                    <div class="col-md-5">
+                                                        <label for="TotalPrice">Total Price:</label>
+                                                        <span>Rs. {{householdItem.householdItemTotalPrice}}</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="middle">
+                    <div class="OrderId">
+                        <div class="row m-auto w-100">
+                            <div class="col-md-6 py-1">
+                                <label for="OrderId:">Order Id:</label>
+                                <p>{{orderDetails.orderID}}</p>
+                            </div>
+                            <div class="col-md-6 py-1">
+                                <label for="PackageId">Package Id:</label>
+                                <p>{{orderDetails.packageID}}</p>
+                            </div>
+                        </div>
+                        <div class="row m-auto w-100">
+                            <div class="col-md-6 py-1">
+                                <label for="OrderDate">Order Date:</label>
+                                <p>{{orderDetails.orderDate?(dateFormat(orderDetails.orderDate)|date :'dd MMM,
+                                    yyyy'):''}}</p>
+                            </div>
+                            <div class="col-md-6 py-1">
+                                <label for="Status">Status:</label>
+                                <p>{{orderStatus(orderDetails.orderStatus)}}</p>
+                            </div>
+                        </div>
+                        <div class="row m-auto w-100"
+                            *ngIf="!orderDetails?.physicianConsultationOrderDetailsList.length && !orderDetails?.physicianConsultationOrderDetailsList.length ">
+                            <div class="col-md-6 py-1 ">
+                                <div *ngIf="orderDetails.expDeliveryDate">
+                                    <label for="">Expected Delivery Date:</label>
+                                    <p>
+                                        {{dateFormat(orderDetails.expDeliveryDate)|date:'dd MMM, yyyy'}}
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="col-md-6 py-1 ">
+                                <div *ngIf="orderDetails.expDeliveryDate">
+                                    <label for="">Actual Delivery Date:</label>
+                                    <p>
+                                        {{dateFormat(orderDetails.expDeliveryDate)|date:'dd MMM, yyyy'}} </p>
+                                </div>
+                            </div>
+                            <div class="col-md-12 py-1">
+                                <div class="d-flex justify-content-between align-items-center OTP">
+                                    <p>OTP</p>
+                                    <div class="d-flex">
+                                        <div class="otpBox">
+                                            <p>9</p>
+                                        </div>
+                                        <div class="otpBox">
+                                            <p>9</p>
+                                        </div>
+                                        <div class="otpBox">
+                                            <p>9</p>
+                                        </div>
+                                        <div class="otpBox">
+                                            <p>9</p>
+                                        </div>
+                                        <div class="otpBox">
+                                            <p>9</p>
+                                        </div>
+                                        <div class="otpBox">
+                                            <p>9</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="list"
+                        *ngIf="orderDetails.medicineOrderDetailsList && orderDetails.medicineOrderDetailsList.length">
+                        <div class="CollapsePrescribed">
+                            <ul class="m-d expand-list">
+                                <li data-md-content="200" class="healthcare Medicine">
+                                    <label name="tab" for="tab1" tabindex="-1" class="tab_lab w-100" role="tab">
+                                        <h5>Medicine</h5>
+                                    </label>
+                                    <input type="checkbox" class="tabCollapse" id="tab1" tabindex="0">
+                                    <span class="open-close-icon">
+                                        <i class="bi-caret-up-fill"></i>
+                                    </span>
+                                    <div class="contentCollapse">
+                                        <div class="MedicinePrescription">
+                                            <div
+                                                *ngFor="let medicineOrderDetails of orderDetails?.medicineOrderDetailsList">
+                                                <div class="MedicineDetails listDetails selectProduct">
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <label for="MedicineName">Medicine Name:</label>
+                                                            <h2>{{medicineOrderDetails.medicineName}}</h2>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-md-4">
+                                                            <label for="UnitPrice">Unit Price:</label>
+                                                            <span>Rs.
+                                                                {{medicineOrderDetails.medicineUnitPrice|truncPrice}}</span>
+                                                        </div>
+                                                        <div class="col-md-3 text-center">
+                                                            <label for="Qty">Qty:</label>
+                                                            <h2>{{medicineOrderDetails.medicineQuantity}}</h2>
+                                                        </div>
+                                                        <div class="col-md-5">
+                                                            <label for="TotalPrice">Total Price:</label>
+                                                            <span>Rs.
+                                                                {{medicineOrderDetails.medicineTotalPrice|truncPrice}}</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="list LaboratoryTest"
+                        *ngIf="orderDetails.laboratoryTestOrderDetailsList && orderDetails.laboratoryTestOrderDetailsList.length">
+                        <div class="CollapsePrescribed">
+                            <ul class="m-d expand-list">
+                                <li data-md-content="200" class="healthcare Laboratory">
+                                    <label name="tab" for="tab1" tabindex="-1" class="tab_lab w-100" role="tab">
+                                        <h5>Laboratory Test</h5>
+                                    </label>
+                                    <input type="checkbox" class="tabCollapse" id="tab1" tabindex="0">
+                                    <span class="open-close-icon">
+                                        <i class="bi-caret-up-fill"></i>
+                                    </span>
+                                    <div class="contentCollapse">
+                                        <div class="LaboratoryTest">
+                                            <div class="LaboratoryTestDetails listDetails"
+                                                *ngFor="let laboratoryTestOrderDetails of orderDetails?.laboratoryTestOrderDetailsList">
+                                                <div class="row">
+                                                    <div class="col-md-7">
+                                                        <label for="LaboratoryTestName">Laboratory Test
+                                                            Name:</label>
+                                                        <h2>{{laboratoryTestOrderDetails.laboratoryTestName}}</h2>
+                                                    </div>
+                                                    <div class="col-md-5">
+                                                        <label for="ReferredBy">Referred By:</label>
+                                                        <h2>{{laboratoryTestOrderDetails.physicianName}}</h2>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-7 d-flex flex-column justify-content-center">
+                                                        <label for="DiagnosticCentreName">Diagnostic
+                                                            Centre
+                                                            Name:</label>
+                                                        <p>{{laboratoryTestOrderDetails.healthClinicName}}</p>
+                                                    </div>
+                                                    <div class="col-md-5">
+                                                        <label for="ScheduleDate">Schedule Date:</label>
+                                                        <p>{{dateFormat(laboratoryTestOrderDetails.scheduleDate)| date:
+                                                            'dd MMM, yyyy'}}</p>
+                                                        <label for="Status">Status:</label>
+                                                        <p><i class="bi-clipboard-check"></i>
+                                                            {{laboratoryTestOrderDetails.schduleDate?'Scheduleded':'Not
+                                                            Scheduleded'}}
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-4">
+                                                        <label for="UnitPrice">Unit Price:</label>
+                                                        <span>Rs.
+                                                            {{laboratoryTestOrderDetails.laboratoryTestUnitPrice|truncPrice}}</span>
+                                                    </div>
+                                                    <div class="col-md-3 text-center">
+                                                        <label for="Qty">Qty:</label>
+                                                        <h2>{{laboratoryTestOrderDetails.laboratoryTestQuantity}}</h2>
+                                                    </div>
+                                                    <div class="col-md-5">
+                                                        <label for="TotalPrice">Total Price:</label>
+                                                        <span>Rs.
+                                                            {{laboratoryTestOrderDetails.laboratoryTestTotalPrice|truncPrice}}</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="list "
+                        *ngIf="orderDetails.physicianConsultationOrderDetailsList && orderDetails.physicianConsultationOrderDetailsList.length">
+                        <div class="CollapsePrescribed">
+                            <ul class="m-d expand-list">
+                                <li data-md-content="200" class="healthcare Medicine PhysicianConsultation">
+                                    <label name="tab" for="tab1" tabindex="-1" class="tab_lab w-100" role="tab">
+                                        <h5>Physician Consultation</h5>
+                                    </label>
+                                    <input type="checkbox" class="tabCollapse" id="tab1" tabindex="0">
+                                    <span class="open-close-icon">
+                                        <i class="bi-caret-up-fill"></i>
+                                    </span>
+                                    <div class="contentCollapse">
+                                        <div class="MedicinePrescription">
+                                            <div class=" listDetails"
+                                                *ngFor="let physicianConsultationOrderDetails of orderDetails?.physicianConsultationOrderDetailsList">
+                                                <div class="row">
+                                                    <div class="col-md-7">
+                                                        <label for="PhysicianName">Physician
+                                                            Name:</label>
+                                                        <h2>{{physicianConsultationOrderDetails.physicianName}}</h2>
+                                                    </div>
+                                                    <div class="col-md-5">
+                                                        <label for="ScheduleDate&Price">Schedule Date &
+                                                            Price:</label>
+                                                        <h2>{{physicianConsultationOrderDetails.schduleDate?(dateFormat(physicianConsultationOrderDetails.schduleDate)|
+                                                            date:'dd MMM, yyyy'):''}}</h2>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-7">
+                                                        <label for="HealthClinicName">Health Clinic
+                                                            Name:</label>
+                                                        <h2>{{physicianConsultationOrderDetails.healthClinicName}}</h2>
+                                                    </div>
+                                                    <div class="col-md-5">
+                                                        <label for="Status">Status:</label>
+                                                        <p><i class="bi-clipboard-check"></i>
+                                                            {{physicianConsultationOrderDetails.schduleDate?'Scheduleded':'Not
+                                                            Scheduleded'}}
+                                                        </p>
+                                                        <label for="Total Price">Total Price:</label>
+                                                        <span>Rs.
+                                                            {{physicianConsultationOrderDetails.consultationFee|truncPrice}}</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="list HealthcareEquipment"
+                        *ngIf="orderDetails.householdItemOrderDetailsList && orderDetails.householdItemOrderDetailsList.length">
+                        <div class="CollapsePrescribed">
+                            <ul class="m-d expand-list">
+                                <li data-md-content="200" class="healthcare HealthcareEquipment ">
+                                    <label name="tab" for="tab1" tabindex="-1" class="tab_lab w-100" role="tab">
+                                        <h5>Healthcare Equipment</h5>
+                                    </label>
+                                    <input type="checkbox" class="tabCollapse" id="tab1" tabindex="0">
+                                    <span class="open-close-icon">
+                                        <i class="bi-caret-up-fill"></i>
+                                    </span>
+                                    <div class="contentCollapse">
+                                        <div class="Equipment">
+                                            <div class="LaboratoryTestDetails listDetails"
+                                                *ngFor="let householdItem of orderDetails?.householdItemOrderDetailsList">
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <label for="EquipmentName">House Hold Item
+                                                            Name:</label>
+                                                        <h2>{{householdItem.householdItemName}} </h2>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-4">
+                                                        <label for="UnitPrice">Unit Price:</label>
+                                                        <span>Rs. {{householdItem.householdItemUnitPrice}}</span>
+                                                    </div>
+                                                    <div class="col-md-3 text-center">
+                                                        <label for="Qty">Qty:</label>
+                                                        <h2>{{householdItem.householdItemQuantity}}</h2>
+                                                    </div>
+                                                    <div class="col-md-5">
+                                                        <label for="TotalPrice">Total Price:</label>
+                                                        <span>Rs. {{householdItem.householdItemTotalPrice}}</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 right">
+                <div class="CollapsePrescribed">
+                    <ul class="m-d expand-list">
+                        <li data-md-content="200" class="healthcare" *ngIf="orderDetails.addressDetails">
+                            <label name="tab" for="tab1" tabindex="-1" class="tab_lab w-100" role="tab">
+                                <h5>Address Details</h5>
+                            </label>
+                            <input type="checkbox" class="tabCollapse" id="tab1" tabindex="0">
+                            <span class="open-close-icon">
+                                <i class="bi-caret-up-fill"></i>
+                            </span>
+                            <!-- </label> -->
+                            <div class="contentCollapse">
+                                <div class="nameDetails">
+                                    <label for="FullName">Full Name:</label>
+                                    <p>{{orderDetails.addressDetails.customerName}}</p>
+                                    <p *ngIf="orderDetails.addressDetails.customerContactNo">+91
+                                        {{orderDetails.addressDetails.customerContactNo}}</p>
+                                    <p *ngIf="orderDetails.addressDetails.customerSecondaryContactNo">+91
+                                        {{orderDetails.addressDetails.customerSecondaryContactNo}}</p>
+                                    <label for="DeliveryAddress" class="mt-2">Delivery Address:</label>
+                                    <p [innerHTML]="orderDetails.addressDetails.customerAddress|addressLine"></p>
+                                    <p>{{orderDetails.addressDetails.customerLandmark}}</p>
+                                    <p>{{orderDetails.addressDetails.customerCity}},
+                                        {{orderDetails.addressDetails.customerStateName}}- {{orderDetails.addressDetails.customerPincode}}</p>
+                                </div>
+                            </div>
+                        </li>
+                        <li data-md-content="200" class="healthcare">
+                            <label name="tab" for="Pricing" tabindex="-1" class="tab_lab w-100" role="tab">
+                                <h5 *ngIf="pricingDetails">Pricing Details
+                                    <span>({{pricingDetails.cartItemCount}})</span>
+                                </h5>
+                                <div class="d-flex Amount flex-column" *ngIf="pricingDetails">
+                                    <div class="d-flex Amount align-items-center justify-content-between">
+                                        <div class="d-flex AmountPrice align-items-center justify-content-between">
+                                            <label for="Amount">Total Amount:</label>
+                                            <b><i class="fa fa-rupee"></i>
+                                                {{pricingDetails.totalDiscountedPrice|truncPrice}} <span>(Savings:
+                                                    <i class="fa fa-rupee"></i>
+                                                    {{pricingDetails.totalDiscountAmount|truncPrice}})</span></b>
+                                        </div>
+                                    </div>
+                                </div>
+                            </label>
+                            <input type="checkbox" class="tabCollapse" id="tab1" tabindex="0">
+                            <span class="open-close-icon">
+                                <i class="bi-caret-up-fill"></i>
+                            </span>
+                            <div class="contentCollapse">
+                                <div class="PricingDetails">
+                                    <div class="row" *ngIf="pricingDetails">
+                                        <div class="col-md-12 mt-2">
+                                            <div class="Includes">
+                                                <table class="mt-2">
+                                                    <tr>
+                                                        <td>
+                                                            <div class="middleLine"></div>
+                                                            <label for="Totalmrp">Total Item </label>
+                                                        </td>
+                                                        <td></td>
+                                                        <td>
+                                                            <h2>{{pricingDetails.cartItemCount}}</h2>
+                                                        </td>
+                                                    </tr>
+                                                    <tr class="margin-top margin-bottom">
+                                                        <td><label for="Totalmrp">Total MRP:</label></td>
+                                                        <td><i class="fa fa-rupee"></i></td>
+                                                        <td>
+                                                            <h2>{{pricingDetails.totalOrderAmount|truncPrice}}</h2>
+                                                        </td>
+                                                        <td>{{!checkPriceIsNegative(pricingDetails.totalOrderAmount)?'-':''}}
+                                                        </td>
+                                                    </tr>
+                                                    <tr class="margin-bottom Discount">
+                                                        <td><label
+                                                                for="Anamnesis">{{pricingDetails.discountDescription1}}
+                                                                ({{pricingDetails.totalDiscountPercent1}}%)</label></td>
+                                                        <td><i class="fa fa-rupee"></i></td>
+                                                        <td>
+                                                            <span>{{pricingDetails.totalDiscountAmount1|truncPrice}}</span>
+                                                        </td>
+                                                        <td>-</td>
+                                                    </tr>
+                                                    <tr class="Discount"
+                                                        [ngClass]="{'margin-top':!pricingDetails.couponCode}">
+                                                        <td><label
+                                                                for="TotalItem">{{pricingDetails.discountDescription2}}
+                                                                ({{pricingDetails.totalDiscountPercent2}}%)</label></td>
+                                                        <td><i class="fa fa-rupee"></i></td>
+                                                        <td>
+                                                            <span>{{pricingDetails.totalDiscountAmount2|truncPrice}}</span>
+                                                        </td>
+                                                        <td>-</td>
+                                                    </tr>
+                                                    <tr class="Discount" *ngIf="pricingDetails.couponCode">
+                                                        <td><label for="TotalItem">Coupon Code
+                                                                applied</label>
+                                                        </td>
+                                                        <td></td>
+                                                        <td>
+                                                            <p class="couponCode">{{pricingDetails.couponCode}}</p>
+                                                        </td>
+
+                                                    </tr>
+                                                    <tr class="margin-top Discount" *ngIf="pricingDetails.couponCode">
+                                                        <td><label
+                                                                for="TotalItem">{{pricingDetails.discountDescription3}}</label>
+                                                        </td>
+                                                        <td><i class="fa fa-rupee"></i></td>
+                                                        <td>
+                                                            <span>{{pricingDetails.totalDiscountAmount3|truncPrice}}</span>
+                                                        </td>
+                                                        <td>-</td>
+                                                    </tr>
+                                                    <tr class="margin-bottom">
+                                                        <td><label
+                                                                for="TotalItem">{{pricingDetails.chargeDescription1}}({{pricingDetails.totalChargePercent1}}%)</label>
+                                                        </td>
+                                                        <td><i class="fa fa-rupee"></i></td>
+                                                        <td>
+                                                            <h2>{{pricingDetails.totalChargeAmount1|truncPrice}}</h2>
+                                                        </td>
+                                                        <td>{{!checkPriceIsNegative(pricingDetails.totalChargeAmount1)?'-':''}}
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><label
+                                                                for="TotalItem">{{pricingDetails.chargeDescription2}}({{pricingDetails.totalChargePercent2}}%)</label>
+                                                        </td>
+                                                        <td><i class="fa fa-rupee"></i></td>
+                                                        <td>
+                                                            <h2>{{pricingDetails.totalChargeAmount2|truncPrice}}</h2>
+                                                        </td>
+                                                        <td>{{!checkPriceIsNegative(pricingDetails.totalChargeAmount2)?'-':''}}
+                                                        </td>
+                                                    </tr>
+                                                    <tr class="margin-top">
+                                                        <td><label for="TotalItem">Tax on charges</label>
+                                                        </td>
+                                                        <td><i class="fa fa-rupee"></i></td>
+                                                        <td>
+                                                            <h2>{{pricingDetails.totalTaxOnChargeAmount|truncPrice}}
+                                                            </h2>
+                                                        </td>
+                                                        <td>{{!checkPriceIsNegative(pricingDetails.totalChargeAmount2)?'-':''}}
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                                <div class="col-md-12 p-0">
+                                                    <div class="Total d-flex">
+                                                        <table>
+                                                            <tr class="total">
+                                                                <td>
+                                                                    <h3>Total Amount</h3>
+                                                                </td>
+                                                                <td><i class="fa fa-rupee"></i></td>
+                                                                <td>
+                                                                    <h4>{{pricingDetails.totalDiscountedPrice|truncPrice}}
+                                                                    </h4>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="saving">
+                                                                <td>
+                                                                    <h5>Savings</h5>
+                                                                </td>
+                                                                <td><i class="fa fa-rupee"></i></td>
+                                                                <td>
+                                                                    <h4>{{pricingDetails.totalDiscountAmount|truncPrice}}
+                                                                    </h4>
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="Includes">
+                                                <table>
+                                                    <tr class="margin-bottom">
+                                                        <td><label for="TotalItem" class="bold">Tax Amount
+                                                                Includes</label>
+                                                        </td>
+                                                        <td><i class="fa fa-rupee"></i></td>
+                                                        <td>
+                                                            <h2>{{pricingDetails.totalTaxAmount|truncPrice}}</h2>
+                                                        </td>
+                                                        <td>{{!checkPriceIsNegative(pricingDetails.totalTaxAmount)?'-':''}}
+                                                        </td>
+                                                    </tr>
+                                                    <tr class="pl">
+                                                        <td><label for="TotalItem">CGST Amount</label></td>
+                                                        <td><i class="fa fa-rupee"></i></td>
+                                                        <td>
+                                                            <h2>{{pricingDetails.totalCGSTAmount|truncPrice}}</h2>
+                                                        </td>
+                                                        <td>{{!checkPriceIsNegative(pricingDetails.totalCGSTAmount)?'-':''}}
+                                                        </td>
+                                                    </tr>
+                                                    <tr class="pl">
+                                                        <td><label for="TotalItem">SGST Amount</label></td>
+                                                        <td><i class="fa fa-rupee"></i></td>
+                                                        <td>
+                                                            <h2>{{pricingDetails.totalSGSTAmount|truncPrice}}</h2>
+                                                        </td>
+                                                        <td>{{!checkPriceIsNegative(pricingDetails.totalSGSTAmount)?'-':''}}
+                                                        </td>
+                                                    </tr>
+                                                    <tr class="pl">
+                                                        <td><label for="TotalItem">IGST Amount</label></td>
+                                                        <td><i class="fa fa-rupee"></i></td>
+                                                        <td>
+                                                            <h2>{{pricingDetails.totalIGSTAmount|truncPrice}}</h2>
+                                                        </td>
+                                                        <td>{{!checkPriceIsNegative(pricingDetails.totalIGSTAmount)?'-':''}}
+                                                        </td>
+                                                    </tr>
+                                                    <tr class="margin-top" class="pl">
+                                                        <td><label for="TotalItem">CESS Amount</label></td>
+                                                        <td><i class="fa fa-rupee"></i></td>
+                                                        <td>
+                                                            <h2>{{pricingDetails.totalCessAmount|truncPrice}}</h2>
+                                                        </td>
+                                                        <td>{{!checkPriceIsNegative(pricingDetails.totalCessAmount)?'-':''}}
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="Generate" (click)="GenerateInvoice()"
+                                *ngIf="orderDetails.orderStatus === 9">Generate Enhance</button>
+                            <a class="download" [href]="orderDetails.fileName |getFile:orderDetails.fileType"
+                                [download]="'Invoice_'+orderDetails.packageID+'.pdf'"
+                                *ngIf="orderDetails.fileName && orderDetails.orderStatus === 9">{{'Invoice_'+orderDetails.packageID+'.pdf'}}
+                                <i class="bi bi-file-earmark-arrow-down"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="somthingWentWrong" *ngIf="somthingWentWrong">
+            <p style="color: red;">Something went wrong, Please try after sometime</p>
+        </div>
+    </div>
+</div>

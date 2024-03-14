@@ -1,0 +1,308 @@
+<div class="modal-dialog">
+  <div class="modal-content">
+    <div class="close">
+      <i class="bi-x-circle-fill" (click)="closePopup()"></i>
+    </div>
+    <div class="modal-body" *ngIf="!somthingWentWrong">
+      <h2>Physician Consultation Appointment {{WorkRequestDetails.isDisabled?' - '+WorkRequestDetails.caseCode:''}}</h2>
+      <div class="display" *ngIf="displayData">
+        <div class="row">
+          <div class="col-md-12 m-auto">
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <div class="drName print"><label for="FullName">Health Clinic Name</label>
+                  <p>{{displayData.healthClinicName}}</p>
+                </div>
+              </div>
+              <div class="col-md-6 mb-3">
+                <div class="drName print"><label for="FullName">Physician Name or Specialisation</label>
+                  <p>{{displayData.physicianName}}</p>
+                </div>
+              </div>
+              <div class="col-md-6 mb-3">
+                <div class="drName print"><label for="FullName">Appointment Date</label>
+                  <p>{{displayData.appointmentDate|date:'dd-MMM-yyyy'}}</p>
+                </div>
+              </div>
+              <div class="col-md-6 mb-3">
+                <div class="drName print"><label for="FullName">Time</label>
+                  <p>{{displayData.appointmentTime}}</p>
+                </div>
+              </div>
+              <div class="col-md-12 mb-3" *ngIf="caseLogdetails && WorkRequestDetails.isDisabled">
+                <div class="CaseLog">
+                    <h2>Case Log</h2>
+                    <div class="row">
+                        <div class="col-md-12 my-2" *ngFor="let wrCaseLogEntry of caseLogdetails.caseLogInformationList">
+                            <p>{{wrCaseLogEntry.caseLogUserName}} add at {{dateFormat(wrCaseLogEntry.caseLogTimestamp)|date:'d-MMM-y @
+                                h:m a'}}</p>
+                              <p>{{wrCaseLogEntry.caseLogText}}</p>
+                        </div>
+                        <div *ngIf="!caseLogdetails.caseLogInformationList.length">
+                            <p>No caselog is there</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="display">
+        <div *ngIf="1" class="timeTab EntrySchedule">
+          <div class="row">
+            <div class="col-md-12 m-auto">
+              <form [formGroup]="scheduleFormParam" role="form">
+                <div class="row" [ngClass]="{formDisabled:WorkRequestDetails.isDisabled}">
+                  <div class="col-md-6">
+                    <div class="form-floating">
+                      <input formControlName="healthClinicName" autofocus="" id="floatingInput" type="text"
+                        name="healthClinicName" placeholder="healthClinicName" class="form-control frInput"
+                        [matAutocomplete]="healthClinicNameauto"
+                        [ngClass]="{'disable':scheduleFormParam.get('healthClinicName')?.disabled === true}"
+                        (keyup)="onTypeHealthClinicName()">
+                      <mat-autocomplete #healthClinicNameauto="matAutocomplete">
+                        <mat-option *ngFor="let item of healthClinicList" [value]="searcHedhealthClinic"
+                          (click)="selectHealthClinic(item)">
+                          <div class="d-flex flex-column">
+                            <p>{{item.healthClinicName}}</p>
+                            <span>{{item.healthClinicID}}</span>
+                          </div>
+                        </mat-option>
+                      </mat-autocomplete>
+                      <label for="floatingInput">Health Clinic Name</label>
+                      <button class="Delete" *ngIf="scheduleFormParam.get('healthClinicID')?.value.length"
+                        (click)="unSelectHealthClinicForPrescription()"><i class="bi-x-circle-fill"></i></button>
+                    </div>
+                    <div class="regErrorDiv">
+                      <app-validation-message [control]="scheduleFormParam.controls['healthClinicID']"
+                        [messages]="errorMessage.healthClinicID">
+                      </app-validation-message>
+                    </div>
+                  </div>
+                  <div *ngIf="showHealthClinicDetails" class="doctorDetails col-md-6">
+                    <div class="row">
+                      <div class="col-md-11">
+                        <div class="CollapsePrescribed">
+                          <ul class="m-d expand-list p-0">
+                            <li data-md-content="200">
+                              <label name="tab" for="tabAddress" tabindex="-1" class="tab_lab w-100" role="tab">
+                                <div>
+                                  <div id="dropdownMenuLink" style="display: flex;">
+                                    <div>
+                                      <span>{{selectedHealthClinicDetails.healthClinicName}}</span>
+                                      <span
+                                        style="font-size: 12px !important; color: #713bdb;">&nbsp;({{selectedHealthClinicDetails.healthClinicID
+                                        }})</span>
+                                    </div>
+                                  </div>
+                                </div>
+                              </label>
+                              <div class="row">
+                                <div class="col-md-12">
+                                  <div class="doctorCard">
+                                    <div class="row">
+                                      <div class="col-md-5">
+                                        <div class="profileImg">
+                                          <img
+                                            [src]="selectedHealthClinicDetails.profilePictureFileName |getFile:selectedHealthClinicDetails.profilePictureFileType">
+                                        </div>
+                                      </div>
+                                      <div class="col-md-7">
+                                        <table>
+                                          <tbody>
+                                            <tr>
+                                              <td><i class="bi-geo-alt-fill"></i></td>
+                                              <td>
+                                                <p [innerHTML]="selectedHealthClinicDetails.addressLine |addressLine" *ngIf="selectedHealthClinicDetails.addressLine"></p>
+                                                <p>{{selectedHealthClinicDetails.landmark}}</p>
+                                                <p>{{selectedHealthClinicDetails.city}} ,
+                                                {{selectedHealthClinicDetails.stateName}} -
+                                                {{selectedHealthClinicDetails.pincode}} </p></td>
+                                            </tr>
+                                            <tr>
+                                              <td><i class="bi-telephone-fill"></i></td>
+                                              <td><b>(P)</b>+91{{selectedHealthClinicDetails.primaryContactNo}}</td>
+                                            </tr>
+                                            <tr *ngIf="selectedHealthClinicDetails.secondaryContactNo">
+                                              <td><i class="bi-telephone-fill"></i></td>
+                                              <td><b>(S)</b>+91{{selectedHealthClinicDetails.secondaryContactNo}}</td>
+                                            </tr>
+                                            <tr *ngIf="selectedHealthClinicDetails.openHoureStart">
+                                              <td><i class="bi-clock"></i></td>
+                                              <td><b>Open -
+                                                </b>{{selectedHealthClinicDetails.openHoureStart}}</td>
+                                            </tr>
+                                            <tr *ngIf="selectedHealthClinicDetails.openHoureEnd">
+                                              <td><i class="bi-clock"></i></td>
+                                              <td><b>Close -
+                                                </b>{{selectedHealthClinicDetails.openHoureEnd}}</td>
+                                            </tr>
+                                          </tbody>
+                                        </table>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="col-md-12 d-flex justify-content-between">
+                                  <button class="Confirm" (click)="selectHealthClinicForPrescription()">Confirm</button>
+                                  <button class="Confirm" (click)="unSelectHealthClinic()">Cancel</button>
+                                </div>
+                              </div>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-floating">
+                      <input formControlName="physicianName" autofocus="" id="floatingInput" type="text"
+                        name="physicianName" placeholder="physicianName" class="form-control frInput"
+                        [matAutocomplete]="physicianNameauto" #trigger="matAutocompleteTrigger"
+                        [ngClass]="{'disable':scheduleFormParam.get('physicianName')?.disabled === true}"
+                        (keyup)="onTypephysicianName()">
+                      <mat-autocomplete #physicianNameauto="matAutocomplete">
+                        <mat-option *ngFor="let item of physicianList" [value]="searchedPhysician"
+                          (click)="selectPhysician(item)">
+                          <p>{{item.physicianName}} <span
+                              style="font-size: 12px !important; color: #713bdb;">{{item.physicianUserCode}}</span>
+                          </p>
+                        </mat-option>
+                      </mat-autocomplete>
+                      <button class="Delete" *ngIf="scheduleFormParam.get('physicianUserCode')?.value"
+                        (click)="unSelectPhysicianForPrescription()"><i class="bi-x-circle-fill"></i></button>
+                      <label for="floatingInput">Physician Name </label>
+                    </div>
+                    <div class="regErrorDiv">
+                      <app-validation-message [control]="scheduleFormParam.controls['physicianUserCode']"
+                        [messages]="errorMessage.physicianUserCode">
+                      </app-validation-message>
+                    </div>
+                  </div>
+                  <div *ngIf="showPhysicianDetails" class="doctorDetails col-md-6" style="right:0;">
+                    <div class="row">
+                      <div class="col-md-11">
+                        <div class="CollapsePrescribed">
+                          <ul class="m-d expand-list p-0">
+                            <li data-md-content="200">
+                              <label name="tab" for="tabAddress" tabindex="-1" class="tab_lab w-100" role="tab">
+                                <div>
+                                  <div id="dropdownMenuLink" style="display: flex;">
+                                    <div>
+                                      <span>{{selectedPhysicianDetails.physicianName}}</span>
+                                      <span
+                                        style="font-size: 12px !important; color: #713bdb;">&nbsp;({{selectedPhysicianDetails.physicianUserCode}})</span>
+                                    </div>
+                                  </div>
+                                </div>
+                              </label>
+                              <div class="row">
+                                <div class="col-md-12">
+                                  <div class="doctorCard">
+                                    <div class="row ">
+                                      <div class="col-md-5">
+                                        <div class="profileImg">
+                                          <img
+                                            [src]="selectedPhysicianDetails.physicianProfilePictureFileName|getFile:selectedPhysicianDetails.physicianProfilePictureFileType">
+                                        </div>
+                                      </div>
+                                      <div class="col-md-7">
+                                        <table>
+                                          <tbody>
+                                            <tr>
+                                              <td></td>
+                                              <td>{{selectedPhysicianDetails.physicianSpecialisation}}</td>
+                                            </tr>
+                                            <tr>
+                                              <td></td>
+                                              <td>{{selectedPhysicianDetails.physicianQualification}}</td>
+                                            </tr>
+                                            <tr>
+                                              <td></td>
+                                              <td>
+                                                {{selectedPhysicianDetails.physicianRegistrationNo}}({{selectedPhysicianDetails.physicianRegistrationAuthority}})
+                                              </td>
+                                            </tr>
+                                            <tr *ngIf="selectedPhysicianDetails.physicianPrimaryContactNo">
+                                              <td><i class="bi-telephone-fill"></i></td>
+                                              <td><b>(P)</b> +91
+                                                {{selectedPhysicianDetails.physicianPrimaryContactNo}}</td>
+                                            </tr>
+                                            <tr *ngIf="selectedPhysicianDetails.physicianSecondaryContactNo">
+                                              <td><i class="bi-telephone-fill"></i></td>
+                                              <td><b>(s)</b> +91
+                                                {{selectedPhysicianDetails.physicianSecondaryContactNo}}</td>
+                                            </tr>
+                                          </tbody>
+                                        </table>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="col-md-12 d-flex justify-content-between">
+                                  <button class="Confirm" (click)="selectPhysicianForPrescription()">Confirm</button>
+                                  <button class="Confirm" (click)="unSelectPhysician()">Cancel</button>
+                                </div>
+                              </div>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-floating">
+                      <input formControlName="appointmentDate" type="date" (focusout)="checkValidDate()"
+                        min="{{ currentDate | date:'yyyy-MM-dd' }}" autofocus="" name="appointmentDate"
+                        placeholder="appointmentDate" id="floatingInput" class="form-control frInput">
+                      <label for="floatingInput">Appointment Date</label>
+                    </div>
+                    <div class="regErrorDiv">
+                      <app-validation-message [control]="scheduleFormParam.controls['appointmentDate']"
+                        [messages]="errorMessage.appointmentDate">
+                      </app-validation-message>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <select name="slots" formControlName="selectedSlot" (change)="setTimeSlots()" class=""
+                      id="floatingSelect" aria-label="Floating label select example">
+                      <option *ngFor="let option of slotOptions" [value]="option.value">
+                        {{option.label}}</option>
+                    </select>
+                    <div class="regErrorDiv"></div>
+                  </div>
+                  <div class="col-md-12">
+                    <div class="timedisplay">
+                      <div class="row px-2">
+                        <div *ngFor="let slot of timeSlots" class="col-md-2 mb-2">
+                          <div [ngClass]="{'timeTableActive': checkIsSelected(slot) }"
+                            (click)="setSelectedTimeSlot(slot)" class="timer">
+                            {{slot}}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="regErrorDiv">
+                      <app-validation-message [control]="scheduleFormParam.controls['appointmentTime']"
+                        [messages]="errorMessage.appointmentTime">
+                      </app-validation-message>
+                    </div>
+                  </div>
+                  <div class="col-md-12 d-flex justify-content-between align-items-center" *ngIf="!WorkRequestDetails.isDisabled">
+                    <small class="apiErr">{{apiErr}}</small>
+                    <button (click)="submitSchedule(scheduleFormParam.value, scheduleFormParam.valid)"
+                      class="Proceed mt-2 mb-1">Proceed </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal-body somthingWentWrong" *ngIf="somthingWentWrong">
+      <p>Something went wrong, Please try after sometime</p>
+    </div>
+  </div>
+</div>

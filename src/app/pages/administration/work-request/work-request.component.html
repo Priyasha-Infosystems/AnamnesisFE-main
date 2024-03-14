@@ -1,0 +1,175 @@
+<router-outlet>
+    <ngx-spinner bdColor="rgba(51,51,51,0.8)" size="medium" color="#fff" type="ball-circus" [fullScreen]="true">
+    </ngx-spinner>
+</router-outlet>
+<div class="tabcontent">
+    <div class="all mt-2">
+        <div class="row">
+            <div class="col-md-9">
+                <div class="display">
+                    <div class="row m-0 header">
+                        <div class="col-md-4">
+                            <p>Work Request ID</p>
+                        </div>
+                        <div class="col-md-4">
+                            <p>Status</p>
+                        </div>
+                        <div class="col-md-4">
+                            <p>Date</p>
+                        </div>
+                        <div class="col-md-4">
+                            <p>Work Request summary</p>
+                        </div>
+                        <div class="col-md-4 mt-1">
+                            
+                        </div>
+                        <div class="col-md-4"></div>
+                    </div>
+                    <div class="srcl">
+                        <div *ngFor="let workRequest of workRequestList" class="row m-0 request"
+                            (click)="openModal(workRequest)">
+                            <div class="col-md-4">
+                                <h6>{{workRequest.workRequestID}}</h6>
+                            </div>
+                            <div class="col-md-4">
+                                <h6>{{workRequest.wrStatus===1?'New'
+                                    :workRequest.wrStatus===2?'Assigned'
+                                    :workRequest.wrStatus===3?'On hold'
+                                    :workRequest.wrStatus===4?'Pending for information'
+                                    :workRequest.wrStatus===5?'Resolved'
+                                    :workRequest.wrStatus===6?'Reopened'
+                                    :workRequest.wrStatus===7?'Pending for Review'
+                                    :workRequest.wrStatus===8?'Assigned for Review'
+                                    :workRequest.wrStatus===9?'Resolved and closed'
+                                    :'Cancel'
+                                    }}</h6>
+                            </div>
+                            <div class="col-md-4">
+                                <h6>{{workRequest.wrOpenTimestamp | date:'dd-MMM-yyyy'}}</h6>
+                            </div>
+                            <div class="col-md-12 mt-1">
+                                <p>{{workRequest.wrSummary}}</p>
+                            </div>
+                        </div>
+                        <div class="noRecord" *ngIf="workRequestList.length === 0">
+                            No Records Found
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="filter">
+                    <form [formGroup]="workReqParam" role="form">
+                        <label for="floatingInput">Date</label>
+                        <div class="form-floating selectBox" [ngClass]="{selectedFormValue:1}">
+                            <input formControlName="searchStartDate" type="Date" id="floatingInput" name="openDate"
+                                placeholder="OpenDate" class=" ">
+                            <label for="">From</label>
+                            <div class="validation-div errorDiv">
+                                <app-validation-message [control]="workReqParam.controls['searchStartDate']"
+                                    [messages]="errorMessage.searchStartDate">
+                                </app-validation-message>
+                            </div>
+                        </div>
+                        <div class="form-floating  selectBox" [ngClass]="{selectedFormValue:1}">
+                            <input formControlName="searchEndDate" type="Date" id="floatingInput" name="closeDate"
+                                placeholder="CloseDate">
+                            <label for="">To</label>
+                            <div class="validation-div errorDiv">
+                                <app-validation-message [control]="workReqParam.controls['searchEndDate']"
+                                    [messages]="errorMessage.searchEndDate">
+                                </app-validation-message>
+                            </div>
+                        </div>
+                        <div class="form-floating selectBox"
+                            [ngClass]="{selectedFormValue:workReqParam.controls['statusSelection'].value!==''}">
+                            <select formControlName="statusSelection" class="" id="floatingSelect"
+                                name="wrRequestStatus" aria-label="Floating label select example">
+                                <option value="0">All</option>
+                                <option value="1">Open</option>
+                                <option value="2">Cancelled</option>
+                                <option value="3">Resolved</option>
+                                <option value="4">Pending (on hold)</option>
+                            </select>
+                            <label for="floatingSelect">Status</label>
+                        </div>
+                        <div class="text-center">
+                            <button class="Refresh"
+                                (click)="getWrRequestList(workReqParam.value, workReqParam.valid)">Refresh</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div *ngIf="activeModal === 'ENR'" class="modal" class="modal" tabindex="-1" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <span class="close"><i class="bi-x-lg" (click)="closeModal($event)"></i></span>
+                <div class="modal-body">
+                    <app-delivery-agent-modal></app-delivery-agent-modal>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="activeModal ==='ASA'" class="modal" tabindex="-1" role="dialog">
+        <div class="container">
+            <app-authorised-signatory-approval (close)="closeModal($event)" [WorkRequestDetails]="passData">
+            </app-authorised-signatory-approval>
+        </div>
+    </div>
+    <div *ngIf="activeModal === 'PCU'" class="modal" class="modal" tabindex="-1" role="dialog">
+        <div class="container-fluid">
+            <app-physician-consultation-prescription-data-entry [WorkRequestDetails]="passData"
+                (close)="closeModal($event)"></app-physician-consultation-prescription-data-entry>
+        </div>
+    </div>
+    <div *ngIf="activeModal === 'CSR'" class="modal" class="modal" tabindex="-1" role="dialog">
+        <div class="container">
+            <app-work-request-popup (close)="closeModal($event)"
+                [WorkRequestDetails]="passData"></app-work-request-popup>
+        </div>
+    </div>
+    <div *ngIf="activeModal === 'LRU'" class="modal" class="modal" tabindex="-1" role="dialog">
+        <div class="container-fluid">
+            <app-labtest-report-upload [WorkRequestDetails]="passData" (close)="closeModal($event)">
+            </app-labtest-report-upload>
+        </div>
+    </div>
+    <div *ngIf="activeModal === 'CIA'" class="modal" class="modal" tabindex="-1" role="dialog">
+        <div class="container">
+            <app-company-information-approval [WorkRequestDetails]="passData" (close)="closeModal($event)">
+            </app-company-information-approval>
+        </div>
+    </div>
+    <div *ngIf="activeModal === 'PIA'" class="modal" class="modal" tabindex="-1" role="dialog">
+        <div class="container">
+            <app-personal-information-approval [WorkRequestDetails]="passData" (close)="closeModal($event)">
+            </app-personal-information-approval>
+        </div>
+    </div>
+    <div *ngIf="activeModal === 'PCA'" class="modal" class="modal" tabindex="-1" role="dialog">
+        <div class="container">
+            <app-physician-credential-approval [WorkRequestDetails]="passData" (close)="closeModal($event)">
+            </app-physician-credential-approval>
+        </div>
+    </div>
+    <div *ngIf="activeModal === 'CASE_LOG'" class="modal fade" class="modal" tabindex="-1" role="dialog">
+        <div class="container">
+            <app-view-case-log [WorkRequestDetails]="passData" (close)="closeModal($event)"></app-view-case-log>
+        </div>
+    </div>
+    <div *ngIf="activeModal === 'PHC'" class="modal fade" class="modal" tabindex="-1" role="dialog">
+        <div class="container">
+            <app-physician-consultation [WorkRequestDetails]="passData"
+                (close)="closeModal($event)"></app-physician-consultation>
+        </div>
+    </div>
+    <div *ngIf="activeModal === 'LTA'" class="modal fade" class="modal" tabindex="-1" role="dialog">
+        <div class="container">
+            <app-laboratory-test-appointment [WorkRequestDetails]="passData"
+                (close)="closeModal($event)"></app-laboratory-test-appointment>
+        </div>
+    </div>
+</div>

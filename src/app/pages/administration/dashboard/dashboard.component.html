@@ -1,0 +1,111 @@
+<router-outlet>
+    <ngx-spinner bdColor="rgba(51,51,51,0.8)" size="medium" color="#fff" type="ball-circus" [fullScreen]="true">
+    </ngx-spinner>
+</router-outlet>
+<div class="tabcontent" >
+    <main id="main" class="main">
+        <section class="section">
+            <div class="row">
+                <div class="col-md-9">
+                    <div class="row">
+                        <div class="col-md-3 mb-3">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Today</h5>
+                                    <div>
+                                        <h6>{{adminDashboardData?.todayOrderCount}}</h6>
+                                        <p>Order</p>
+                                        <p 
+                                        [ngClass]="{up:adminDashboardData?.orderUpDownIndicator==='U',down:adminDashboardData?.orderUpDownIndicator==='D'}">
+                                        <i 
+                                        [ngClass]="{'bi-caret-up-fill':adminDashboardData?.orderUpDownIndicator==='U','bi bi-caret-down-fill':adminDashboardData?.orderUpDownIndicator==='D'}"  >
+                                        </i>
+                                        <span>{{adminDashboardData?.previousWeekOrderCount}}</span>
+                                        vs same day last week
+                                     </p>
+                                    </div>
+                                    <div>
+                                        <h6>{{adminDashboardData?.proccessedOrderCount}}</h6>
+                                        <p>Order</p>
+                                        <p
+                                        [ngClass]="{up:adminDashboardData?.dueOverDayUpDownIndicator==='U',down:adminDashboardData?.dueOverDayUpDownIndicator==='D'}">
+                                        <i 
+                                        [ngClass]="{'bi-caret-up-fill':adminDashboardData?.dueOverDayUpDownIndicator==='U','bi bi-caret-down-fill':adminDashboardData?.dueOverDayUpDownIndicator==='D'}"  >
+                                        </i>
+                                        <span>{{adminDashboardData?.orderDueCount}}</span>
+                                        Due over a day
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-9 mb-3">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Orders today</h5>
+                                    <!-- Orders today --> 
+                                    <canvas id="dayChart" #dayChart></canvas>
+                                    <!-- End Orders today -->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Today</h5>
+                                    <div>
+                                        <h6>{{adminDashboardData?.changesinMRPOrderCount}}</h6>
+                                        <p>Order with changes in MRP</p>
+                                        <p [ngClass]="{up:adminDashboardData?.changesMRPOrderUpDownInd==='U',down:adminDashboardData?.changesMRPOrderUpDownInd==='D'}">
+                                            <i 
+                                            [ngClass]="{'bi-caret-up-fill':adminDashboardData?.changesMRPOrderUpDownInd==='U','bi bi-caret-down-fill':adminDashboardData?.changesMRPOrderUpDownInd==='D'}"  >
+                                            </i><span>{{adminDashboardData?.lastMonthChangesMRPOrderCount}}</span>vs last month</p>
+                                    </div>
+                                    <div>
+                                        <h6>{{adminDashboardData?.tbDrugsOrderCount}}</h6>
+                                        <p>H1, TB drugs in the order</p>
+                                        <p
+                                        [ngClass]="{up:adminDashboardData?.tbDrugsOrderUpDownInd==='U',down:adminDashboardData?.tbDrugsOrderUpDownInd==='D'}">
+                                        <i 
+                                        [ngClass]="{'bi-caret-up-fill':adminDashboardData?.tbDrugsOrderUpDownInd==='U','bi bi-caret-down-fill':adminDashboardData?.tbDrugsOrderUpDownInd==='D'}"  >
+                                        </i><span>{{adminDashboardData?.lastMonthTBDrugsOrder}}</span>vs last month</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-9 mb-3">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Orders this month</h5>
+                                    <!-- Orders this month --> 
+                                    <canvas id="monthchart" #monthchart></canvas>
+                                    <!-- End Orders this month -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Processing</h5>
+                            <div class="Processing">
+                                <h6 style="font-size: 55px;">{{adminDashboardData?.unfulfilledOrder}}</h6>
+                                <p>unfulfilled orders</p>
+                                <i class="bi-info-circle-fill"></i>
+                            </div>
+                            <div class="h-100" style="padding-top: 100px;">
+                                    <canvas id="AvgDelTime" #AvgDelTime></canvas>
+                                    <h5 class="card-title">Avg. Delivery time <span>(past 7days)</span></h5>
+                                <div class="downText">
+                                    <h6>{{adminDashboardData?.deliveryToMadeCount}}</h6>
+                                    <p>Delivery to be made</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+</div>

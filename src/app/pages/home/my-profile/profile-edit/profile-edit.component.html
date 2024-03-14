@@ -1,0 +1,31 @@
+<div id="myProfile" class="container myProfile">
+    <div class="row">
+        <div class="col-md-12 text-end">
+            <button *ngIf="isProfileCompleted" (click)="setEdit()" class="viewProfile">View</button>
+        </div>
+    </div>
+    <app-profile-personal-information *ngIf="getProfileIndex('PINF') > 0" [profileIndex]="getProfileIndex('PINF')"
+        (updateSave)="getLastUpdateInformation()">
+    </app-profile-personal-information>
+    <app-profile-company-information *ngIf="getProfileIndex('CINF') > 0" [profileIndex]="getProfileIndex('CINF')"
+        (updateSave)="getLastUpdateInformation()">
+    </app-profile-company-information>
+    <app-profile-business-information *ngIf="getProfileIndex('BUSI') > 0" [profileIndex]="getProfileIndex('BUSI')"
+        (updateSave)="getLastUpdateInformation()">
+    </app-profile-business-information>
+    <app-profile-physician-credentials *ngIf="getProfileIndex('PCRD') > 0" [profileIndex]="getProfileIndex('PCRD')"
+        (updateSave)="getLastUpdateInformation()">
+    </app-profile-physician-credentials>
+    <app-profile-document-upload *ngIf="getProfileIndex('DOCU') > 0" [isCompanyIndex]="getProfileIndex('CINF') > 0" [profileIndex]="getProfileIndex('DOCU')"
+        (updateSave)="getLastUpdateInformation()">
+    </app-profile-document-upload>
+    <app-profile-general-information *ngIf="getProfileIndex('GMED') > 0" [profileIndex]="getProfileIndex('GMED')"
+        (updateSave)="getLastUpdateInformation()">
+    </app-profile-general-information>
+    <app-profile-hospitilization-details *ngIf="getProfileIndex('HOSP') > 0" [profileIndex]="getProfileIndex('HOSP')"
+        (updateSave)="getLastUpdateInformation()">
+    </app-profile-hospitilization-details>
+    <app-profile-medical-history *ngIf="getProfileIndex('FMMD') > 0" [profileIndex]="getProfileIndex('FMMD')"
+        (updateSave)="getLastUpdateInformation()">
+    </app-profile-medical-history>
+</div>

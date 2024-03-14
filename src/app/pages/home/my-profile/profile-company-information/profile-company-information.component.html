@@ -1,0 +1,265 @@
+<div id="myProfile" class="Information">
+    <div class="row">
+        <div class="col-md-12 mb-3">
+            <div class="d-flex align-items-center">
+                <span>{{ profileIndex }}</span>
+                <h1>Company Information</h1>
+            </div>
+        </div>
+    </div>
+    <form [formGroup]="companyInformationParam" role="form">
+        <div class="row">
+            <div class="col-md-12 my-2">
+                <div class="form-floating ">
+                    <input formControlName="legalBusinessName" autofocus="" type="text" name="legalBusinessName"
+                        placeholder="Legal Business Name" id="legalBusinessName" class="form-control">
+                    <label for="legalBusinessName">Legal Business Name</label>
+                    <div class="regErrorDiv">
+                        <app-validation-message [control]="companyInformationParam.controls['legalBusinessName']"
+                            [messages]="errorMessage.legalBusinessName">
+                        </app-validation-message>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 my-2">
+                <div class="form-floating ">
+                    <input formControlName="companyPAN" autofocus="" type="text" name="Company PAN"
+                        placeholder="Company PAN" id="companyPAN" class="form-control">
+                    <label for="companyPAN">Company PAN</label>
+                    <div class="regErrorDiv">
+                        <app-validation-message [control]="companyInformationParam.controls['companyPAN']"
+                            [messages]="errorMessage.companyPAN">
+                        </app-validation-message>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 my-2">
+                <div class="form-floating ">
+                    <input formControlName="companyTAN" autofocus="" type="text" name="Company TAN"
+                        placeholder="Company PAN" id="companyTAN" class="form-control">
+                    <label for="companyTAN">Company TAN</label>
+                    <div class="regErrorDiv">
+                        <app-validation-message [control]="companyInformationParam.controls['companyTAN']"
+                            [messages]="errorMessage.companyTAN">
+                        </app-validation-message>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 my-2">
+                <div class="form-floating ">
+                    <input formControlName="companyGSTNNo" autofocus="" type="text" name="Company GSTN"
+                        placeholder="Company GSTN" id="companyGSTNNo" class="form-control">
+                    <label for="companyGSTNNo">Company GSTN</label>
+                    <div class="regErrorDiv">
+                        <app-validation-message [control]="companyInformationParam.controls['companyGSTNNo']"
+                            [messages]="errorMessage.companyGSTNNo">
+                        </app-validation-message>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 my-2">
+                <div class="form-floating ">
+                    <input formControlName="companyCINno" autofocus="" type="text" name="CompanyCINNumber"
+                        placeholder="Company CIN Number" id="companyCINno" class="form-control">
+                    <label for="companyCINno">Company CIN Number</label>
+                    <div class="regErrorDiv">
+                        <app-validation-message [control]="companyInformationParam.controls['companyCINno']"
+                            [messages]="errorMessage.companyCINno">
+                        </app-validation-message>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12 top-border mt-2">
+                <h2>Please Add Commercial Entity</h2>
+            </div>
+            <div formArrayName="commercialEntityDetailsList">
+                <div *ngFor="let commercialEntityDetails of commercialEntityDetailsLists().controls;
+                    let commercialEntityDetailsIndex = index">
+                    <ng-container *ngIf="commercialEntityDetails.value.actionIndicator !== 'DEL'"
+                        formGroupName="{{commercialEntityDetailsIndex}}">
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-md-3 my-2">
+                                    <div class="form-floating ">
+                                        <!-- <input
+                                            [ngClass]="{'disable':commercialEntityDetailsLists().at(commercialEntityDetailsIndex).get('commercialID')?.disabled === true}"
+                                            *ngIf="!isDisabled(commercialEntityDetailsIndex)"
+                                            (keyup)="onChangeData(commercialEntityDetailsIndex)"
+                                            formControlName="commercialID" type="text" name="CommercialId"
+                                            placeholder="CommercialIdr" class="form-control"> -->
+                                        <input readonly formControlName="commercialID" type="text" name="CommercialId"
+                                            placeholder="CommercialIdr" class="form-control disable">
+                                        <label for="CommercialId">Commercial ID</label>
+                                        <div class="regErrorDiv">
+                                            <app-validation-message
+                                                [control]="getCommercialController(commercialEntityDetailsIndex,'commercialID')"
+                                                [messages]="errorMessage.commercialID">
+                                            </app-validation-message>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 my-2">
+                                    <div class="form-floating selectBox "
+                                        [ngClass]="{selectedFormValue : commercialEntityDetails.getRawValue().commercialType}">
+                                        <select
+                                            *ngIf="!getCommercialController(commercialEntityDetailsIndex,'commercialType').disabled"
+                                            (change)="onChangeData(commercialEntityDetailsIndex)"
+                                            class="form-select one" id="floatingSelect"
+                                            aria-label="Floating label select example" formControlName="commercialType">
+                                            <option value="DGCTR">Diagnostic Center</option>
+                                            <option value="HLCLN">Health Clinic</option>
+                                            <option value="PHRMC">Pharmacy</option>
+                                        </select>
+                                        <select
+                                            [attr.disabled]="getCommercialController(commercialEntityDetailsIndex,'commercialType').disabled"
+                                            *ngIf="getCommercialController(commercialEntityDetailsIndex,'commercialType').disabled"
+                                            (change)="onChangeData(commercialEntityDetailsIndex)"
+                                            class="form-select one disable" id="floatingSelect"
+                                            aria-label="Floating label select example" formControlName="commercialType">
+                                            <option value="DGCTR">Diagnostic Center</option>
+                                            <option value="HLCLN">Health Clinic</option>
+                                            <option value="PHRMC">Pharmacy</option>
+                                        </select>
+                                        <label for="floatingSelect">Commercial Type</label>
+                                    </div>
+                                    <div class="regErrorDiv">
+                                        <app-validation-message
+                                            [control]="getCommercialController(commercialEntityDetailsIndex,'commercialType')"
+                                            [messages]="errorMessage.commercialType">
+                                        </app-validation-message>
+                                    </div>
+                                </div>
+                                <div class="col-md-5 my-2 position-relative">
+                                    <div class="form-floating ">
+                                        <input
+                                            *ngIf="!getCommercialController(commercialEntityDetailsIndex,'commercialEntityName').disabled"
+                                            (keyup)="onChangeData(commercialEntityDetailsIndex)"
+                                            formControlName="commercialEntityName" type="text"
+                                            name="CommercialEntityName" placeholder="CommercialEntityName"
+                                            class="form-control" [matAutocomplete]="commercialEntityNameauto">
+                                        <input readonly
+                                            *ngIf="getCommercialController(commercialEntityDetailsIndex,'commercialEntityName').disabled"
+                                            formControlName="commercialEntityName" type="text"
+                                            name="commercialEntityName" placeholder="commercialEntityName"
+                                            class="form-control disable">
+                                        <label for="CommercialEntityName">Commercial Entity Name</label>
+                                        <div class="icons">
+                                            <i class="bi-search"
+                                                *ngIf="!getCommercialController(commercialEntityDetailsIndex,'commercialEntityName').disabled"
+                                                (click)="searchCommercialEntity(commercialEntityDetails.getRawValue().commercialEntityName,commercialEntityDetailsIndex)"></i>
+                                            <i class="bi-check-circle-fill"
+                                                *ngIf="getCommercialController(commercialEntityDetailsIndex,'commercialEntityName').disabled"></i>
+                                        </div>
+                                        <div class="regErrorDiv">
+                                            <app-validation-message
+                                                [control]="getCommercialController(commercialEntityDetailsIndex,'commercialEntityName')"
+                                                [messages]="errorMessage.commercialEntityName">
+                                            </app-validation-message>
+                                        </div>
+                                    </div>
+                                    <mat-autocomplete #commercialEntityNameauto="matAutocomplete">
+                                        <div class="commercialEntityOptiom">
+                                            <mat-option
+                                                *ngFor="let option of commercialEntityDetails.getRawValue().commercialEntityOptionList"
+                                                (click)="selectCommercialEntity(option,commercialEntityDetailsIndex)">
+                                                <p>{{option.displayName}}</p>
+                                            </mat-option>
+                                        </div>
+                                    </mat-autocomplete>
+                                    <div *ngIf="commercialEntityDetails.getRawValue().tempCommercialEntityDetails"
+                                        class="doctorDetails">
+                                        <div class="CollapsePrescribed">
+                                            <ul class="m-d expand-list p-0">
+                                                <li data-md-content="200">
+                                                    <div name="tab" for="tabAddress" tabindex="-1"
+                                                        class="tab_lab mb-1 w-100" role="tab">
+                                                        <div>
+                                                            <div id="dropdownMenuLink" style="display: flex;">
+                                                                <div>
+                                                                    <p>{{commercialEntityDetails.getRawValue().tempCommercialEntityDetails.displayName}}</p>
+                                                                    <p style="font-size: 12px !important; color: #713bdb;">&nbsp;({{commercialEntityDetails.getRawValue().tempCommercialEntityDetails.commercialID}})</p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <div class="doctorCard">
+                                                                <div class="row">
+                                                                    <div class="col-md-5">
+                                                                        <div class="profileImg">
+                                                                            <!-- <img
+                                                                [src]="selectedPhysicianDetails.physicianProfilePictureFileName | getFile: selectedPhysicianDetails.physicianProfilePictureFileType"> -->
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-7">
+                                                                        <!-- <table>
+                                                              <tbody>
+                                                                <tr>
+                                                                  <td> </td>
+                                                                  <td>
+                                                                    {{selectedPhysicianDetails.physicianSpecialisation}}
+                                                                  </td>
+                                                                </tr>
+                                                                <tr>
+                                                                  <td> </td>
+                                                                  <td>
+                                                                    {{selectedPhysicianDetails.physicianQualification}}
+                                                                  </td>
+                                                                </tr>
+                                                                <tr>
+                                                                  <td> </td>
+                                                                  <td>
+                                                                    {{selectedPhysicianDetails.physicianRegistrationNo}}({{selectedPhysicianDetails.physicianRegistrationAuthority}})
+                                                                  </td>
+                                                                </tr>
+                                                                <tr
+                                                                  *ngIf="selectedPhysicianDetails.physicianPrimaryContactNo">
+                                                                  <td><i class="bi-telephone-fill"></i></td>
+                                                                  <td> <b>(P)</b> +91
+                                                                    {{selectedPhysicianDetails.physicianPrimaryContactNo}}
+                                                                  </td>
+                                                                </tr>
+                                                                <tr
+                                                                  *ngIf="selectedPhysicianDetails.physicianSecondaryContactNo">
+                                                                  <td><i class="bi-telephone-fill"></i></td>
+                                                                  <td> <b>(s)</b> +91
+                                                                    {{selectedPhysicianDetails.physicianSecondaryContactNo}}
+                                                                  </td>
+                                                                </tr>
+                                                              </tbody>
+                                                            </table> -->
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-12 d-flex justify-content-between">
+                                                            <button class="Confirm"
+                                                                (click)="confirmCommercialEntity(commercialEntityDetailsIndex)">Confirm</button>
+                                                            <button class="Confirm"
+                                                                (click)="cancleCommercialEntity(commercialEntityDetailsIndex)">Cancel</button>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-1 my-2 addicn">
+                                    <i *ngIf="isAddButtonVisible(commercialEntityDetailsIndex)"
+                                        class="bi-plus-circle-fill" (click)="addCommercial()"></i>
+                                    <i class="bi-trash-fill"
+                                        (click)="deleteCommercial(commercialEntityDetailsIndex)"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </ng-container>
+                </div>
+            </div>
+            <div class="col-md-12 my-2 text-end">
+                <input (click)="save(companyInformationParam.getRawValue(), companyInformationParam.valid)"
+                    type="submit" value="Save & Continue">
+            </div>
+        </div>
+    </form>
+</div>

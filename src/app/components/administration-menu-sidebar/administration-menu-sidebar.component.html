@@ -1,0 +1,90 @@
+<div id="menuSidebar" class="tab">
+    <h5>Administration</h5>
+    <div *ngFor="let avlMenu of activeMenuList">
+
+        <button *ngIf="avlMenu==='NCSR'"
+            [ngClass]="activeMenu === 'new-case-registration' ? 'tablinks active' : 'tablinks'"
+            (click)="navigateTo('administration/new-case-registration')"><i style="width: 5%"
+                class="bi-file-earmark-arrow-up-fill"></i> New Request</button>
+        <button *ngIf="avlMenu==='MYAS'" [ngClass]="activeMenu === 'my-assignment' ? 'tablinks active' : 'tablinks'"
+            (click)="navigateTo('administration/my-assignment')"><i style="width: 5%"
+                class="bi-file-earmark-arrow-up-fill"></i> My
+            Assignment</button>
+        <button *ngIf="avlMenu==='CSAS'" [ngClass]="activeMenu === 'case-assignment' ? 'tablinks active' : 'tablinks'"
+            (click)="navigateTo('administration/case-assignment')"><i style="width: 5%" class="bi-clipboard-plus"></i>
+            Request
+            Assignment</button>
+        <button *ngIf="avlMenu==='WRSR'" [ngClass]="activeMenu === 'work-request' ? 'tablinks active' : 'tablinks'"
+            (click)="navigateTo('administration/work-request')"><i style="width: 5%" class="bi-clipboard-plus"></i> View
+            Request</button>
+        <button *ngIf="avlMenu==='ANSU'" [ngClass]="activeMenu === 'anamnesis-setup' ? 'tablinks active' : 'tablinks'"
+            (click)="navigateTo('administration/anamnesis-setup')"><i style="width: 5%" class="bi-gear"></i> Anamnesis
+            Setup</button>
+        <button *ngIf="avlMenu==='MDDE'" [ngClass]="activeMenu === 'medicine-entry' ? 'tablinks active' : 'tablinks'"
+            (click)="navigateTo('administration/medicine-entry')"><i style="width: 5%" class="fa fa-lock"></i> Medicine
+            Entry</button>
+        <button *ngIf="avlMenu==='HIDE'" [ngClass]="activeMenu === 'household-item' ? 'tablinks active' : 'tablinks'"
+            (click)="navigateTo('administration/household-item')"><i style="width: 5%" class="fa fa-shopping-bag"></i>
+            Household
+            Item</button>
+        <button *ngIf="avlMenu==='SPRQ'"
+            [ngClass]="activeMenu === 'supplier-requisition' ? 'tablinks active' : 'tablinks'"
+            (click)="navigateTo('administration/supplier-requisition')"><i style="width: 5%" class="fa fa-industry"></i>
+            Supplier Requisition</button>
+        <button *ngIf="avlMenu==='INVC'"
+            [ngClass]="activeMenu === 'inventory-management' ? 'tablinks active' : 'tablinks'"
+            (click)="navigateTo('administration/inventory-management')"><i style="width: 5%"
+                class="bi-receipt-cutoff"></i>
+            Inventory Management</button>
+        <button *ngIf="avlMenu==='GRNS'"
+            [ngClass]="activeMenu === 'goods-received-nots' ? 'tablinks active' : 'tablinks'"
+            (click)="navigateTo('administration/goods-received-nots')"><i style="width: 5%"
+                class="bi-receipt-cutoff"></i>
+            Goods Received Notes</button>
+        <button *ngIf="avlMenu==='ORPK'" [ngClass]="activeMenu === 'delivery-pickup' ? 'tablinks active' : 'tablinks'"
+            (click)="navigateTo('administration/delivery-pickup')"><i style="width: 5%" class="bi-receipt-cutoff"></i>
+            Delivery Pickup</button>
+        <button *ngIf="avlMenu==='DLAS'"
+            [ngClass]="activeMenu === 'delivery-agent-assignment' ? 'tablinks active' : 'tablinks'"
+            (click)="navigateTo('administration/delivery-agent-assignment')"><i style="width: 5%"
+                class="bi-receipt-cutoff"></i>
+            Delivery Agent Assignment</button>
+        <button *ngIf="avlMenu==='PMVL'" [ngClass]="activeMenu === 'payment-approval' ? 'tablinks active' : 'tablinks'"
+            (click)="navigateTo('administration/payment-approval')"><i style="width: 5%" class="bi-receipt-cutoff"></i>
+            Payment Approval</button>
+        <button *ngIf="avlMenu==='ANSU'" [ngClass]="activeMenu === 'demo' ? 'tablinks active' : 'tablinks'"
+            (click)="navigateTo('administration/demo')"><i style="width: 5%" class="bi-receipt-cutoff"></i>
+            Demo</button>
+    </div>
+    <br><br>
+    <h5 style="margin-bottom: 10%; font-size: 18px;">Report & Dashboard</h5>
+    <div *ngFor="let avlMenu of reportsMenuList">
+        <button *ngIf="avlMenu==='ADDB'" [ngClass]="activeMenu === 'dashboard' ? 'tablinks active' : 'tablinks'"
+            (click)="navigateTo('administration/dashboard')"><i style="width: 5%" class="fa fa-user"></i> Admin
+            Dashboard</button>
+        <button *ngIf="avlMenu==='SLDB'" [ngClass]="activeMenu === 'sales-dashboard' ? 'tablinks active' : 'tablinks'"
+            (click)="navigateTo('administration/sales-dashboard')"><i style="width: 5%" class="fa fa-user"></i> Sales
+            Dashboard</button>
+        <button *ngIf="avlMenu==='INBR'"
+            [ngClass]="activeMenu === 'inventory-balance-report' ? 'tablinks active' : 'tablinks'"
+            (click)="navigateTo('administration/inventory-balance-report')">
+            <i style="width: 5%" class="bi-receipt-cutoff"></i>
+            Inventory Balance Report</button>
+        <button *ngIf="avlMenu==='SLSR'" [ngClass]="activeMenu === 'sales-report' ? 'tablinks active' : 'tablinks'"
+            (click)="navigateTo('administration/sales-report')">
+            <i style="width: 5%" class="bi-shop"></i> Sales Report</button>
+            <button *ngIf="avlMenu==='SLSR'" [ngClass]="activeMenu === 'sales-report' ? 'tablinks active' : 'tablinks'"
+            (click)="navigateTo('administration/work-dashboard')"><i style="width: 5%" class="fa fa-user"></i>Work Dashboard</button>
+    </div>
+    <button (click)="navigateTo('administration/drugs-register-sheet')">
+        <i style="width: 5%" class="bi-shop"></i> Drugs Register Sheet</button>
+
+
+    <!-- <h5 style="margin-bottom: 10%; font-size: 18px;">Privacy Settings</h5>
+    <button [ngClass]="activeMenu === 'security-question' ? 'tablinks active' : 'tablinks'">
+        Report 1</button>
+    <button [ngClass]="activeMenu === 'security-question' ? 'tablinks active' : 'tablinks'">
+        Report 2</button>
+    <button [ngClass]="activeMenu === 'security-question' ? 'tablinks active' : 'tablinks'">
+        Report 3</button> -->
+</div>

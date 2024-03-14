@@ -1,0 +1,104 @@
+<router-outlet>
+  <ngx-spinner bdColor="rgba(51,51,51,0.8)" size="medium" color="#fff" type="ball-circus" [fullScreen]="true">
+  </ngx-spinner>
+</router-outlet>
+<div class="inputForm">
+  <form [formGroup]="userSetupForm">
+    <div formArrayName="bulkUserSetupdetailsList">
+      <div
+        *ngFor="let bulkUserSetupdetails of bulkUserSetupdetailsList().controls ;let bulkUserSetupdetailsIndex = index">
+        <div class="position-relative p-2">
+          <div class="close" (click)="removeBulkUserSetupdetails(bulkUserSetupdetailsIndex)">
+            <i class="bi-trash-fill"></i>
+          </div>
+          <ng-container formGroupName="{{bulkUserSetupdetailsIndex}}">
+            <div class="row">
+              <div class="col-md-4">
+                <div class="form-floating">
+                  <input type="text" name="First_Name" placeholder="First Name" id="floatingInput"
+                    formControlName="firstName" class="form-control">
+                  <label for="floatingInput">First Name</label>
+                </div>
+                <div class="validation-div errorDiv">
+                  <app-validation-message
+                    [control]="bulkUserSetupdetailsControll(bulkUserSetupdetailsIndex,'firstName')"
+                    [messages]="errorMsg.userSetupForm.firstName">
+                  </app-validation-message>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-floating">
+                  <input type="text" name="Middle_Name" placeholder="Middle Name" formControlName="middleName"
+                    class="form-control" id="floatingInput">
+                  <label for="floatingInput">Middle Name</label>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-floating">
+                  <input type="text" name="Last_Name" placeholder="Last Name" formControlName="lastName"
+                    class="form-control" id="floatingInput">
+                  <label for="floatingInput">Last Name</label>
+                </div>
+                <div class="validation-div errorDiv">
+                  <app-validation-message [control]="bulkUserSetupdetailsControll(bulkUserSetupdetailsIndex,'lastName')"
+                    [messages]="errorMsg.userSetupForm.lastName">
+                  </app-validation-message>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-floating">
+                  <input type="text" name="Contact_Numbe" placeholder="Contact Number" formControlName="contactNo"
+                    class="form-control" id="floatingInput"
+                    (keyup)="onContactNoChange(bulkUserSetupdetailsControll(bulkUserSetupdetailsIndex,'contactNo').value,bulkUserSetupdetailsIndex)">
+                  <label for="floatingInput">Contact Number</label>
+                </div>
+                <div class="validation-div errorDiv">
+                  <app-validation-message
+                    [control]="bulkUserSetupdetailsControll(bulkUserSetupdetailsIndex,'contactNo')"
+                    [messages]="errorMsg.userSetupForm.contactNo">
+                  </app-validation-message>
+                </div>
+                <small>{{bulkUserSetupdetails.value.errMsg}}</small>
+              </div>
+              <div class="col-md-4">
+                <div class="form-floating">
+                  <input type="email" name="Email_id" placeholder="Email id" formControlName="emailID"
+                    class="form-control" id="floatingInput">
+                  <label for="floatingInput">Email id</label>
+                </div>
+                <div class="validation-div errorDiv">
+                  <app-validation-message [control]="bulkUserSetupdetailsControll(bulkUserSetupdetailsIndex,'emailID')"
+                    [messages]="errorMsg.userSetupForm.emailID">
+                  </app-validation-message>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-floating" [ngClass]="{'selectValue': bulkUserSetupdetails.getRawValue().commercialID}">
+
+                  <select name="commercialID" id="commercialID" formControlName="commercialID" id="floatingSelect">
+                    <option [value]="item.commercialID" *ngFor="let item of commercialIDList">
+                      {{item.commercialID}}({{item.displayName}})</option>
+                  </select>
+                  <label for="floatingSelect">Commercial ID</label>
+                </div>
+                <div class="validation-div errorDiv">
+                  <app-validation-message
+                    [control]="bulkUserSetupdetailsControll(bulkUserSetupdetailsIndex,'commercialID')"
+                    [messages]="errorMsg.userSetupForm.commercialID">
+                  </app-validation-message>
+                </div>
+              </div>
+            </div>
+            <hr *ngIf="bulkUserSetupdetailsIndex+1 !== bulkUserSetupdetailsList().length">
+          </ng-container>
+        </div>
+      </div>
+    </div>
+    <div class="d-flex justify-content-end">
+      <button class="mt-4" (click)="addAnotherBulkUserSetupdetails()">+Add Another User</button>
+      <button class="mt-4" id="Proceed"
+        (click)="saveBulkUserSetupdetails(userSetupForm.value,userSetupForm.valid)">Proceed</button>
+      <button class="mt-4" id="Proceed" (click)="resetUserSetupForm()">Clear</button>
+    </div>
+  </form>
+</div>

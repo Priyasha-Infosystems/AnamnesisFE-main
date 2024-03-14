@@ -1,0 +1,97 @@
+<router-outlet>
+  <ngx-spinner bdColor="rgba(51,51,51,0.8)" size="medium" color="#fff" type="ball-circus" [fullScreen]="true">
+  </ngx-spinner>
+</router-outlet>
+<section id="HealthcareEquipment">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="close" data-bs-dismiss="modal"><i class="bi-x-circle-fill"
+          (click)="closeHealthcareEquipmentPopup()"></i></div>
+      <div class="modal-body">
+        <div class="HealthcareEquipment">
+          <div class="row mt-1">
+            <div class="col-md-12 mb-1">
+              <h2>Household Item</h2>
+            </div>
+            <div>
+              <div class="medicineName d-flex"
+                *ngFor="let selectedHealthcareEquipment of selectedHealthcareEquipmentList; let selectedHealthcareEquipmentIndex = index">
+                <div class="col-md-6 d-flex flex-column pt-2 pb-2">
+                  <div class="d-flex align-items-center">
+                    <i class="bi-hand-index-thumb-fill"></i>
+                    <h3 (click)="openHouseItemDetails(selectedHealthcareEquipment.householdItemCode)">
+                      {{selectedHealthcareEquipment.householdItemName}}</h3>
+                    <img src="../../../assets/images/Itemsdelete.png" alt=""
+                      (click)="removeHealthcareEquipment(selectedHealthcareEquipmentIndex)">
+                  </div>
+                  <p>{{selectedHealthcareEquipment.householdItemDescription}}</p> 
+                </div>
+                <div class="col-md-6 text-end pt-2 pb-2 d-flex align-items-center justify-content-end">
+                  <span class="quantityErr">{{selectedHealthcareEquipment.errorMsg}}</span>
+                  <div class="DayBox">
+                    <div class="noOfQty">
+                      <h2>{{selectedHealthcareEquipment.count}}</h2>
+                    </div>
+                    <i class="bi-plus-lg" (click)="addOneHealthcareEquipment(selectedHealthcareEquipmentIndex)"></i>
+                    <i class="bi-dash-lg"
+                      (click)="subtractOneHealthcareEquipment(selectedHealthcareEquipmentIndex)"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-12 mt-2">
+              <div class="selectBox">
+                <form [formGroup]="hcEquipmentSeectionFormGroup" role="form">
+                  <div class="row">
+                    <div class="col-md-8 position-relative">
+                      <div class="MedicineName">
+                        <input type="text" name="HealthcareEquipmentName" placeholder="Healthcare Equipment Name"
+                          formControlName="householdItemName" [matAutocomplete]="autoGroup" autofocus> 
+                        <div class="validation-div errorDiv">
+                          <app-validation-message [control]="hcEquipmentSeectionFormGroup.controls['householdItemName']"
+                            [messages]="errorMessage.householdItemName">
+                          </app-validation-message>
+                        </div>
+                        <mat-autocomplete #autoGroup="matAutocomplete" class="abc">
+                          <mat-option *ngFor="let healthEquipment of healthEquipmentGroupOptions"
+                            (click)="optionSelected(healthEquipment)" [value]="healthEquipment.householdItemName">
+                            {{healthEquipment.householdItemName}}
+                          </mat-option>
+                        </mat-autocomplete>
+                      </div>
+                    </div>
+                    <div class="col-md-4"> 
+                      <div class="MedicineName">
+                        <input type="text" name="Quantity" placeholder="Quantity" formControlName="count">
+                      </div>
+                      <div class="validation-div errorDiv">
+                        <app-validation-message [control]="hcEquipmentSeectionFormGroup.controls['count']"
+                          [messages]="errorMessage.quantity">
+                        </app-validation-message>
+                      </div>
+                      <span class="quantityErr">{{customErrorFormMsg}}</span>
+                    </div>
+                    <div class="col-md-12 text-end">
+                      <button class="save mt-2"
+                        (click)="saveHouseHoldItem(hcEquipmentSeectionFormGroup.getRawValue(),hcEquipmentSeectionFormGroup.valid)">Save</button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+            <div class="col-md-12 text-center d-flex justify-content-center align-items-center flex-column">
+              <button class="AddToCart" (click)="addToCart()">Add To Cart</button>
+              <small>{{customErrorAddToCartMsg}}</small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div id="myModal" class="modal" *ngIf="showhouseHoldItemDetails" tabindex="-1" role="dialog">
+  <div class="container">
+    <app-healthcare-equipment-details [HouseholdItemCode]="showHouseholdItemCode"
+      (close)="closeHouseItemDetails()"></app-healthcare-equipment-details>
+  </div>
+</div>

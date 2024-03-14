@@ -1,0 +1,135 @@
+<router-outlet>
+    <ngx-spinner bdColor="rgba(51,51,51,0.8)" size="medium" color="#fff" type="ball-circus" [fullScreen]="true">
+    </ngx-spinner>
+</router-outlet>
+<div class="tabcontent">
+    <div class="display">
+        <form [formGroup]="itemSupplierForm">
+            <div class="header ">
+                <div class="row">
+                    <div class="col-md-8 d-flex align-items-center">
+                        <label for="">Supplier Requisition No</label>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="selectorBox">
+                            <div class="form-floating selectBox"
+                                [ngClass]="{selectedFormValue : itemSupplierForm.value.currentRequisitionNo?true:false}">
+                                <select name="Current Status" id="CurrentStatus" formControlName="currentRequisitionNo">
+                                    <option [value]="requisition.requisitionNo"
+                                        *ngFor="let requisition of requisitionNoList">{{requisition.requisitionNumber}}
+                                    </option>
+                                </select>
+                                <label for="Laboratory">Requisition No</label>
+                                <i class="bi-x-circle-fill deleteName" (click)="unselectRequisitionNo()"
+                                    *ngIf="itemSupplierForm.value.currentRequisitionNo"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="MedicineModify">
+                <div *ngIf="itemSupplierForm.value.currentRequisitionNo">
+                    <div class="medicalName" *ngIf="pharmacyDetails">
+                        <div class="row">
+                            <div class="col-md-7">
+                                <h2>{{pharmacyDetails.diagnosticCentreName}}</h2>
+                                <h6 [innerHTML]="pharmacyDetails.addressLine |addressLine" *ngIf="pharmacyDetails.addressLine"></h6>
+                        <h6>{{pharmacyDetails.landmark}}</h6>
+                        <h6>{{pharmacyDetails.city}}, {{pharmacyDetails.stateName}} - {{pharmacyDetails.pincode}}</h6>
+                            </div>
+                            <div class="col-md-5">
+                                <div class="d-flex mb-2">
+                                    <i class="bi-telephone-fill"></i>
+                                    <div class="px-1">
+                                        <label for="phone-No">Phone No</label>
+                                        <h6>{{pharmacyDetails.contactNo}}</h6>
+                                    </div>
+                                </div>
+                                <div class="d-flex">
+                                    <i class="bi-clock-fill"></i>
+                                    <div class="px-1">
+                                        <label for="Hours">Hours</label>
+                                        <h6><b>{{getOpeningDays(pharmacyDetails.openDays)}}</b>
+                                            {{pharmacyDetails.openHourStart?utilityService.timeFormateInto12Hours(pharmacyDetails.openHourStart):''}}
+                                            -
+                                            {{pharmacyDetails.openHourEnd?utilityService.timeFormateInto12Hours(pharmacyDetails.openHourEnd):''}}
+                                        </h6>
+                                    </div>
+                                </div>
+                                <div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row bottom-border">
+                        <div class="col-md-1 px-1 text-center">
+                            <p>S.No</p>
+                        </div>
+                        <div class="col-md-6">
+                            <p>Medicine Name</p>
+                        </div>
+                        <div class="col-md-1 px-1">
+                            <p>Quantity</p>
+                        </div>
+                        <div class="col-md-1 px-1">
+                            <p>Batech No</p>
+                        </div>
+                        <div class="col-md-2 px-1">
+                            <p>Exp. Date</p>
+                        </div>
+                        <div class="col-md-1 px-1">
+                            <p>Price</p>
+                        </div>
+                    </div>
+                    <div formArrayName="itemList">
+                        <div class="bottom-borders" *ngFor="let item of itemList().controls let itemIndex= index">
+                            <ng-container formGroupName="{{itemIndex}}">
+                                <div class="row position-relative">
+                                    <div
+                                        class="col-md-1 px-1 text-center d-flex align-items-center justify-content-evenly">
+                                        <p>{{itemIndex+1}}</p>
+                                    </div>
+                                    <div class="col-md-6 d-flex align-items-center justify-content-start">
+                                        <h6>{{item.value.itemName}}</h6>
+                                    </div>
+                                    <div class="col-md-1 px-1">
+                                        <div class="form-floating">
+                                            <input type="text" id="floatingInput" placeholder="Quantity"
+                                                class="form-control" formControlName="quantity">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-1 px-1">
+                                        <div class="form-floating updateQuantityInput">
+                                            <input type="text" id="floatingInput" placeholder="Quantity"
+                                                class="form-control" formControlName="batchNo">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2 px-1">
+                                        <div class="form-floating updateQuantityInput">
+                                            <input type="date" id="floatingInput" placeholder="Quantity"
+                                                class="form-control" formControlName="expDate">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-1 px-1">
+                                        <div class="form-floating updateQuantityInput">
+                                            <input type="text" id="floatingInput" placeholder="Quantity"
+                                                class="form-control" formControlName="price">
+                                        </div>
+                                    </div>
+                                </div>
+                            </ng-container>
+                        </div>
+                        <div *ngIf="!itemList().length && itemSupplierForm.value.currentRequisitionNo" class="noItem">
+                            <p>No item is there</p>
+                        </div>
+                    </div>
+                    <div class="text-end px-4 Proceed" *ngIf="itemList().length"><button>Proceed</button>
+                    </div>
+                </div>
+                <div class="noItem" *ngIf="!itemSupplierForm.value.currentRequisitionNo">
+                    <p>Please select requisition number</p>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

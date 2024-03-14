@@ -1,0 +1,126 @@
+.box {
+    border: 4px solid #4472c4;
+    border-radius: 10px 10px 0px 0px;
+}
+
+.header {
+    background: #203864;
+    display: flex;
+    justify-content: center;
+    border-bottom: 4px solid #4472c4;
+    border-radius: 5px 5px 0px 0px;
+    padding: 7px 0px;
+}
+
+.content {
+    padding: 10px 20px;
+}
+
+.ReprtBox {
+    background: #4472c4;
+    width: 150px;
+    height: 120px;
+    border: 1px solid #203864;
+    box-shadow: 1px 1px 7px 4px #4472c4d1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 10px 0px;
+    padding: 8px 10px;
+}
+
+.header h2 {
+    font-family: Algerian;
+    color: #fff;
+    font-weight: 500 !important;
+    margin: 0;
+    font-size: 20px;
+}
+
+.ReprtBox h6 {
+    font-family: 'Poppins';
+    font-size: 50px;
+    font-weight: 600;
+    color: #fff;
+    margin: 0;
+    line-height: 1;
+
+}
+
+.ReprtBox p {
+    font-family: 'Poppins';
+    font-size: 12px;
+    font-weight: 500;
+    color: #fff;
+    text-align: center;
+    margin: 0;
+}
+
+.tableContent {
+    background: #4472c4;
+    margin-top: 9px;
+}
+
+.tableContent p {
+    font-family: 'Poppins';
+    font-size: 12px;
+    font-weight: 500;
+    color: #fff;
+    text-align: center;
+    margin: 0;
+    line-height: 1.4;
+    padding: 2px;
+}
+
+.request {
+    width: 41%;
+    display: flex;
+    align-items: center;
+    border-top: 1px solid #ffff;
+    border-bottom: 1px solid #ffff;
+    justify-content: center;
+}
+
+.tableList p {
+    font-family: 'Poppins';
+    font-size: 12px;
+    font-weight: 500;
+    color: #000;
+    text-align: center;
+    margin: 0;
+    line-height: 1.4;
+    padding: 10px 0px;
+}
+
+.tableList {
+    background: #e9ebf5 !important;
+}
+
+.border {
+    border-color: #fff !important;
+}
+
+/* 
+.tableList {
+    background: #cfd5ea !important;
+} */
+
+.DuratioN .header {
+    background: #843c0c !important;
+    border-color: #ed7d31;
+}
+
+.DuratioN .box {
+    border-color: #ed7d31;
+}
+
+.DuratioN .ReprtBox {
+    background: #ed7d31;
+    border-color: #843c0c;
+    box-shadow: 1px 1px 7px 4px #843c0ca1;
+}
+
+.DuratioN .tableContent {
+    background: #ed7d31;
+}

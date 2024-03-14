@@ -1,0 +1,118 @@
+<div class="LoginDisplay">
+    <div class="container">
+        <router-outlet>
+            <ngx-spinner bdColor="rgba(51,51,51,0.8)" size="medium" color="#fff" type="ball-circus" [fullScreen]="true">
+            </ngx-spinner>
+        </router-outlet>
+        <div class="login-page">
+            <div class="aos-init aos-animate" data-aos="fade-up">
+                <div class="row">
+                    <div class="col-md-6 ">
+                        <div *ngIf="imageList.length > 0" id="carouselExampleIndicators"
+                            class="carousel slide position-relative" data-bs-ride="carousel">
+                            <div class="carousel-inner">
+                                <div *ngFor="let imageFile of imageList; let i = index">
+                                    <div class="carousel-item" [ngClass]="{active:i===0}">
+                                        <img [src]="getUrl(imageFile)" class="d-block w-100" alt="...">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="Movetitle">
+                                <ng-marquee speed="slow" [stopOnHover]="true">
+                                    <mark
+                                        *ngFor="let campaignMessage of campaignMessagesList; let i = index">{{campaignMessage}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</mark>
+                                </ng-marquee>
+                            </div>
+                            <div class="carousel-indicators">
+                                <button #carousel *ngFor="let imageFile of imageList; let i = index" type="button"
+                                    data-bs-target="#carouselExampleIndicators" [attr.data-bs-slide-to]="i"
+                                    [class.active]="i === 0" aria-current="true" aria-label="Slides"></button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="login-panel">
+                            <div *ngIf="isLogin">
+                                <div class="loginform" style="padding: 70px 72px 50px 72px;">
+                                    <h2>Login Your Account</h2>
+                                    <form [formGroup]="loginParam" role="form">
+                                        <div class="row">
+                                            <div class="col-md-12 form-floating">
+                                                <input formControlName="userId" autofocus="" type="text"
+                                                    name="id_number" placeholder="Contact Number or Alternate User ID"
+                                                    class="form-control" id="userId" (keyup)="userIdToLowerCase(loginParam.getRawValue().userId)">
+                                                <label for="userId">Contact Number or Alternate User ID</label>
+                                                <div *ngIf="!passError" class="validation-div errorDiv">
+                                                    <app-validation-message [control]="loginParam.controls['userId']"
+                                                        [messages]="errorMessage.userId">
+                                                    </app-validation-message>
+                                                    <span>{{userError}}</span>
+                                                </div>
+                                                <div *ngIf="passError" class="validation-div errorDiv">
+                                                    <span>{{passError}}</span>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12 form-floating">
+                                                <input formControlName="password"
+                                                    [type]="showPassword === true ? 'text' : 'password'" name="password"
+                                                    placeholder="Password" class="form-control" id="password"
+                                                    onpaste="return false;" ondrop="return false;" oncopy="return false"
+                                                    oncut="return false" ondrag="return false" autocomplete=off />
+                                                <label for="password">Password</label>
+                                                <i [ngClass]="showPassword === true ? 'bi bi-eye' : 'bi bi-eye-slash'"
+                                                    (click)="showHidePassword()" id="Open-eyes"></i>
+                                                <div class="validation-div errorDiv">
+                                                    <app-validation-message [control]="loginParam.controls['password']"
+                                                        [messages]="errorMessage.password">
+                                                    </app-validation-message>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12 position-relative">
+                                                <input type="submit" value="Login"
+                                                    (click)="login(loginParam.value, loginParam.valid)">
+                                                <div *ngIf="loginError" class="validation-div errorDiv"
+                                                    style="margin-bottom: -21px;">
+                                                    <small>{{loginError}}</small>
+                                                </div>
+                                                <!-- <div *ngIf="passError" class="validation-div errorDiv" style="margin-top: 4px;">
+                                            <span>{{passError}}</span>
+                                        </div> -->
+                                                <div class="text-end d-flex flex-column ">
+                                                    <span class="forgetPassLabel" style="padding-top: 3%;">
+                                                        Forgot Password ?
+                                                    </span>
+                                                    <span class="reset">
+                                                        <a data-target="ResetPassword" data-toggle="modal"
+                                                            (click)="openPopup(loginParam.value)">Reset
+                                                            your
+                                                            password here </a>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <h5>Not registered yet? Please <a>Sign-up</a> here</h5>
+                                            <div class="r-user">
+                                                <a (click)="navigate(true)">Regular User</a>
+                                                <a style="margin-left: 5%" (click)="navigate()">Commercial User</a>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                            <div class="h-100" *ngIf="isRegReg">
+                                <app-regular-user-signup (resetLogin)="resetLoginPage()"></app-regular-user-signup>
+                            </div>
+                            <div class="h-100" *ngIf="isComReg">
+                                <app-commercial-user-signup
+                                    (resetLogin)="resetLoginPage()"></app-commercial-user-signup>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- ResetPassword Modal -->
+        <div *ngIf="openModal" class="modal" tabindex="-1" role="dialog">
+            <app-reset-password [userId]="userLoginId" (close)="closePopup()"></app-reset-password>
+        </div>
+    </div>
+</div>

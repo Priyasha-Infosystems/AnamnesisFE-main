@@ -1,0 +1,102 @@
+<div class="modal-content">
+    <div class="close" (click)="closePopup()"><i class="bi-x-circle-fill"></i></div>
+    <div class="modal-body">
+        <div class="row" *ngIf="!somthingWentWrong && houseHoldItemDetails">
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-12 position-relative"
+                        *ngIf="houseHoldItemDetails.householdItemFileDetailsList.length">
+                        <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true">
+                            <div class="carousel-inner">
+                                <div class="carousel-item " [ngClass]="{active:i===0}"
+                                    *ngFor="let householdItemFileDetails of houseHoldItemDetails.householdItemFileDetailsList let i = index">
+                                    <img [src]="householdItemFileDetails.fileName | getFile:householdItemFileDetails.fileType"
+                                        class="d-block" alt="...">
+                                </div>
+                            </div>
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+                            data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+                            data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                    </div>
+                    <div class="col-md-12 position-relative"
+                        *ngIf="!houseHoldItemDetails.householdItemFileDetailsList.length">
+                        <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true">
+                            <div class="carousel-inner">
+                                <div class="carousel-item  active">
+                                    <img src="../../../assets/images/previewNotAvlMed.jpg" class="d-block" alt="...">
+                                </div>
+                            </div>
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+                            data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+                            data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                    </div>
+                    <div class="row">
+
+                    </div>
+                    <div class="col-md-6 p-0 medicineDetails d-flex justify-content-start status align-items-center">
+                        <p *ngIf="houseHoldItemDetails.householdItemStatus=== 'U'">Out Of Stock</p>
+                      </div>
+                    <div class="col-md-6 w-100 text-end">
+                        <button class="add" (click)="addToCart()">{{!isItemAlreadyInCart?'Add To Cart':'Already in cart ...,Add more?'}}</button>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="medicineDetails">
+                            <div class="d-flex justify-content-between w-75 Category">
+                                <p>{{houseHoldItemDetails.householdItemCategory}}</p>
+                                <p>{{houseHoldItemDetails.householdItemSubCategory}}</p>
+                            </div>
+                            <div class="medicinename">
+                                <h2>{{houseHoldItemDetails.householdItemName}}</h2>
+                            </div>
+                            <div class="d-flex justify-content-between">
+                                <div class="company">
+                                    <p>{{houseHoldItemDetails.householdItemManufacturer}}</p>
+                                </div>
+                                <div class="d-flex">
+                                    <h6 class="rup">₹</h6>
+                                    <h6>{{houseHoldItemDetails.householdItemUnitPrice|truncPrice}}</h6>
+                                </div>
+                            </div>
+                            <div class="ManufacturerAddress mb-2">
+                                <p>{{houseHoldItemDetails.householdItemMaufacturerAddress}}</p>
+                            </div>
+                            <div class="w-100 Description">
+                                <label for="">Ingredients</label>
+                                <p>{{houseHoldItemDetails.householdItemIngredients}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="w-100 mb-4 Description">
+                    <label for="">Introduction</label>
+                    <p>{{houseHoldItemDetails.householdItemIntroduction}}</p>
+                </div>
+                <div class="Description">
+                    <label for="">Description</label>
+                    <p>{{houseHoldItemDetails.householdItemDescription}}</p>
+                </div> 
+            </div>
+        </div>
+        <div class="row somthingWentWrong" *ngIf="somthingWentWrong">
+            <p style="color: red;">Something went wrong, Please try after sometime</p>
+        </div>
+    </div>
+</div>

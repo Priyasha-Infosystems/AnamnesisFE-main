@@ -1,0 +1,387 @@
+<router-outlet>
+  <ngx-spinner bdColor="rgba(51,51,51,0.8)" size="medium" color="#fff" type="ball-circus" [fullScreen]="true">
+  </ngx-spinner>
+</router-outlet>
+<div id="DiagnosticCentre" class="tabcontent">
+  <div class="content">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="imgAndcontent" *ngIf="diagnosticCenterDetails">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="Dr-Name">
+                <div class="imgDisplay">
+                  <img [src]="diagnosticCenterDetails.profilePictureName|getFile:diagnosticCenterDetails.profilePictureType">
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="Dr-Name DCHname">
+                <div class="editDCH" *ngIf="userIsDCH">
+                  <div class="dropdown">
+                    <button class="dropbtn"><i class="bi-pencil-fill"></i></button>
+                    <div class="dropdown-content">
+                      <div class="d-flex DCHtext" (click)="changeCommercialID(Commercial.commercialID)"
+                        *ngFor="let Commercial of commercialIDList"
+                        [ngClass]="{'active': isActiveCommercialID(Commercial.commercialID)}">
+                        <h6>{{Commercial.commercialID}}</h6>
+                        <p class="m-0"> ({{Commercial.displayName}})</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="DCHDisplay">
+                  <h2>{{diagnosticCenterDetails.diagnosticCentreName}} - {{diagnosticCenterDetails.landmark}}</h2>
+                  <p class="d-flex">
+                    <i class="bi-geo-alt-fill"></i>{{diagnosticCenterDetails.addressLine}}
+                  </p>
+                  <div class="row">
+                    <div class="col-md-4">
+                      <h6 class="d-flex">
+                        <i class="bi-telephone-fill"></i>
+                        +91 {{diagnosticCenterDetails.contactNo}}
+                      </h6>
+                      <div class="d-flex align-items-center">
+                        <label for="Opens">Opens</label>
+                        <span>{{diagnosticCenterDetails.openHourStart}}</span>
+                      </div>
+                    </div>
+                    <!-- <div class="col-md-8" *ngIf="userIsDCH">
+                    <div class="d-flex" *ngFor="let Commercial of commercialIDList" [ngClass]="{'active': isActiveCommercialID(Commercial.commercialID)}">
+                      <h6 (click)="changeCommercialID(Commercial.commercialID)">{{Commercial.commercialID}}</h6>
+                      <p class="m-0"> ({{Commercial.displayName}})</p>
+                    </div>
+                  </div> -->
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-7 mt-5">
+        <form [formGroup]="diagnosticCentreScheduleForm">
+          <div formArrayName="departmentScheduleDetailsList">
+            <div
+              *ngFor="let departmentScheduleDetails of departmentScheduleDetailsList().controls ;let departmentScheduleDetailsIndex = index">
+              <div class="labtestDisplay" *ngIf="!departmentScheduleDetails.value.isDelete">
+                <div *ngIf="!departmentScheduleDetails.value.editMode">
+                  <div class="d-flex align-items-center">
+                    <h2>{{getDepartmentNameFormCode(departmentScheduleDetails.getRawValue().departmentCode)}}</h2>
+                    <b class="px-2">Testing Time
+                      <span>(30 Min)</span> </b>
+                    <i class="bi-pencil-fill" (click)="editDepertmentSchedule(departmentScheduleDetailsIndex)"></i>
+                    <i class="bi-trash-fill  DeleteHC"
+                      (click)="departmentScheduleDetailsDelete(departmentScheduleDetailsIndex,departmentScheduleDetails.value.isAdd,departmentScheduleDetails.value.editMode)"></i>
+                  </div>
+                  <div class="row mb-2 "
+                    *ngFor="let scheduleDetails of scheduleDetailsList(departmentScheduleDetailsIndex).controls;let scheduleDetailsIndex = index">
+                    <div *ngIf="!scheduleDetails.value.isDelete">
+                      <div class="col-md-12"
+                        [ngClass]="{borderrow:showBorder(departmentScheduleDetailsIndex,scheduleDetailsIndex)}">
+                        <div class="row px-3">
+                          <div class="col-md-6">
+                            <div class="ScheduleDetails">
+                              <div class="row">
+                                <div class="col-md-12">
+                                  <h6>{{getWeakDayNameFormCode(scheduleDetails.getRawValue().weekDay)}}</h6>
+                                </div>
+                                <div class="col-md-12">
+                                  <p>{{scheduleDetails.value.additionalInformation}}</p>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-md-6 p-0 text-center">
+                            <b>{{scheduleDetails.getRawValue().startTime}} -
+                              {{scheduleDetails.getRawValue().endTime}}</b>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="PathologyBox" formGroupName="{{departmentScheduleDetailsIndex}}"
+                  *ngIf="departmentScheduleDetails.value.editMode">
+                  <div class="row">
+                    <div class="col-md-12 d-flex justify-content-end">
+                      <i class="bi-trash-fill  DeleteHC"
+                        (click)="departmentScheduleDetailsDelete(departmentScheduleDetailsIndex,departmentScheduleDetails.value.isAdd,departmentScheduleDetails.value.editMode)"></i>
+                    </div>
+                    <div class="col-md-12 d-block">
+                      <div class="form-floating selectBox"
+                        [ngClass]="{selectedFormValue : departmentScheduleDetails.getRawValue().departmentCode}">
+                        <select name="PathologyName" id="PathologyName" #labTestDepartment
+                          formControlName="departmentCode">
+                          <option *ngFor="let depertment of depertmentCodeList" [value]="depertment.departmentCode"
+                            [hidden]="isSelectedPreviousDepertment(depertment.departmentCode,departmentScheduleDetails.getRawValue().departmentCode)">
+                            {{depertment.departmentDescription}}
+                          </option>
+                        </select>
+                        <label for="Laboratory">Department</label>
+                        <i class="bi-x-circle-fill deleteName" (click)="clearDepertment(departmentScheduleDetailsIndex)"
+                          *ngIf="departmentScheduleDetails.get('departmentCode')?.disabled"></i>
+                      </div>
+                      <div class="validation-div errorDiv">
+                        <app-validation-message
+                          [control]="getDepartmentScheduleController(departmentScheduleDetailsIndex,'departmentCode')"
+                          [messages]="errorMessage.labtestsError.departmentCode">
+                        </app-validation-message>
+                      </div>
+                    </div>
+                    <div formArrayName="scheduleDetailsList">
+                      <div class="col-md-12 dateAndtime" *ngFor=" let scheduleDetails of scheduleDetailsList(departmentScheduleDetailsIndex
+                            ).controls;
+                            let scheduleDetailsIndex = index">
+                        <ng-container formGroupName="{{ scheduleDetailsIndex }}"
+                          *ngIf="!scheduleDetails.value.isDelete">
+                          <div class="row border-botton">
+                            <div class="col-md-8">
+                              <div class="row">
+                                <div class="col-md-6 weekDay">
+                                  <div class="form-floating selectBox"
+                                    [ngClass]="{selectedFormValue : scheduleDetails.value.weekDay}">
+                                    <select name="weekDays" id="days" #days formControlName="weekDay"
+                                      (change)="scheduleDetailsWeakDayChange(departmentScheduleDetailsIndex,scheduleDetailsIndex,scheduleDetails.value.weekDay,departmentScheduleDetails.value.isAdd,scheduleDetails.value.isAdd)">
+                                      <option *ngFor="let weekDay of weekDays$ | async" [value]="weekDay.dayCode">
+                                        {{ weekDay.dayName }}
+                                      </option>
+                                    </select>
+                                    <label for="Laboratory">Day</label>
+                                  </div>
+                                  <div class="validation-div errorDiv"
+                                    *ngIf="scheduleDetails.value.startTimeErrMsg ===''">
+                                    <app-validation-message
+                                      [control]="getScheduleDetailsController(departmentScheduleDetailsIndex,scheduleDetailsIndex,'weekDay')"
+                                      [messages]="errorMessage.labtestsError.labTestSchedules.weekDay">
+                                    </app-validation-message>
+                                  </div>
+                                </div>
+                                <div class="col-md-6 d-flex p-0 timing">
+                                  <div class="form-floating"
+                                    [ngClass]="{selectedFormValue : scheduleDetails.getRawValue().startTime}">
+                                    <input class="timePicker" name="labtestScheduleStartTime" #labtestScheduleStartTime
+                                      [ngxTimepicker]="startTimePicker" [format]="12" formControlName="startTime" />
+                                    <label for="Laboratory">Start time</label>
+                                    <ngx-material-timepicker [minutesGap]="5" [theme]="timePickerTheme"
+                                      (timeSet)="scheduleDetailsTimeChange(departmentScheduleDetailsIndex,scheduleDetailsIndex,$event,scheduleDetails.value.weekDay,true,departmentScheduleDetails.value.isAdd,scheduleDetails.value.isAdd)"
+                                      #startTimePicker>
+                                    </ngx-material-timepicker>
+                                    <div class="validation-div errorDiv"
+                                      *ngIf="scheduleDetails.value.startTimeErrMsg ===''">
+                                      <app-validation-message
+                                        [control]="getScheduleDetailsController(departmentScheduleDetailsIndex,scheduleDetailsIndex,'startTime')"
+                                        [messages]="errorMessage.labtestsError.labTestSchedules.startTime">
+                                      </app-validation-message>
+                                    </div>
+                                  </div>
+                                  <div class="To text-center">
+                                    <p>To</p>
+                                  </div>
+                                  <div class="form-floating "
+                                    [ngClass]="{selectedFormValue : scheduleDetails.getRawValue().endTime}">
+                                    <input class="timePicker" name="labtestScheduleEndTime" #labtestScheduleEndTime
+                                      [min]="scheduleDetails.getRawValue().startTime" [ngxTimepicker]="endTimePicker"
+                                      [format]="12" formControlName="endTime" />
+                                    <label for="Laboratory">End time</label>
+                                    <ngx-material-timepicker [minutesGap]="5" [theme]="timePickerTheme"
+                                      (timeSet)="scheduleDetailsTimeChange(departmentScheduleDetailsIndex,scheduleDetailsIndex,$event,scheduleDetails.value.weekDay,false,departmentScheduleDetails.value.isAdd,scheduleDetails.value.isAdd)"
+                                      #endTimePicker>
+                                    </ngx-material-timepicker>
+                                    <div class="validation-div errorDiv"
+                                      *ngIf="scheduleDetails.value.startTimeErrMsg ===''">
+                                      <app-validation-message
+                                        [control]="getScheduleDetailsController(departmentScheduleDetailsIndex,scheduleDetailsIndex,'endTime')"
+                                        [messages]="errorMessage.labtestsError.labTestSchedules.endTime">
+                                      </app-validation-message>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="validation-div errorDiv" *ngIf="scheduleDetails.value.startTimeErrMsg">
+                                <small style="margin-left: 2px;">{{scheduleDetails.value.startTimeErrMsg}}</small>
+                              </div>
+                            </div>
+                            <div class=" col-md-4 addtext">
+                              <div class=" d-flex align-items-center">
+                                <div class="form-floating p-0 w-100">
+                                  <input type="text" name="additionalInfotmation" #additionalInfotmation
+                                    placeholder="Additional Information....." id="Laboratory" class="form-control"
+                                    formControlName="additionalInformation"
+                                    (keyup)="scheduleDetailsAdditionalInformationChange(departmentScheduleDetailsIndex,scheduleDetailsIndex,departmentScheduleDetails.value.isAdd,scheduleDetails.value.isAdd)" />
+                                  <label for="Laboratory">Additional Information.....</label>
+                                  <div class="validation-div errorDiv">
+                                    <app-validation-message
+                                      [control]="getScheduleDetailsController(departmentScheduleDetailsIndex,scheduleDetailsIndex,'additionalInformation')"
+                                      [messages]="errorMessage.labtestsError.labTestSchedules.additionalInformation">
+                                    </app-validation-message>
+                                  </div>
+                                </div>
+                                <div class="DeleteIcon p-0">
+                                  <i (click)="
+                                        scheduleDetailsDelete(
+                                          departmentScheduleDetailsIndex,
+                                          scheduleDetailsIndex,
+                                          departmentScheduleDetails.value.isAdd,
+                                          scheduleDetails.value.isAdd
+                                        )
+                                      " class="bi-trash-fill"></i>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="validation-div errorDiv">
+                              <small>{{scheduleDetails.value.customErrMSG}}</small>
+                            </div>
+                          </div>
+                        </ng-container>
+                      </div>
+                    </div>
+                    <div class="col-md-12 d-flex justify-content-end mb-2">
+                      <h6
+                        (click)="
+                            addAnotherScheduleDetails(departmentScheduleDetailsIndex,departmentScheduleDetails.value.isAdd,true) ">
+                        +Add another schedule
+                      </h6>
+                    </div>
+                    <div class="col-md-12">
+                      <div class="row">
+                        <div class="col-md-6">
+                          <div class="Approximate d-flex align-items-center">
+                            <p>Approximate Testing Time</p>
+                            <div class="form-floating mx-2">
+                              <input type="text" class="form-control" name="approximate" #approximate
+                                placeholder="10 Mins" formControlName="testingTime"
+                                (keyup)="departmentScheduleDetailsChange(departmentScheduleDetailsIndex,departmentScheduleDetails.value.isAdd)" />
+                              <label for="">Mins</label>
+                            </div>
+                          </div>
+                          <div class="validation-div errorDiv">
+                            <app-validation-message
+                              [control]="getDepartmentScheduleController(departmentScheduleDetailsIndex,'testingTime')"
+                              [messages]="errorMessage.labtestsError.testingTime">
+                            </app-validation-message>
+                          </div>
+                        </div>
+                        <div class="col-md-6 ">
+                          <div class="d-flex justify-content-end">
+                            <button class="submit mx-3"
+                              (click)="saveDepertmentSchedule(departmentScheduleDetailsIndex)">Save</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <small>{{diagnosticCentreScheduleForm.value.errMSG}}</small>
+                </div>
+              </div>
+              <div class="validation-div errorDiv">
+                <small>{{departmentScheduleDetails.value.customErrMSG}}</small>
+              </div>
+            </div>
+            <div class=" AddAnotherDepertment col-md-12 d-flex justify-content-end">
+              <h6 (click)="addAnotherDepartmentScheduleDetails(true)">
+                + Add Another Department
+              </h6>
+            </div>
+          </div>
+        </form>
+        <div class="d-flex footer justify-content-between">
+          <button
+            (click)="departmentScheduleDetailsFormSubmit(diagnosticCentreScheduleForm.getRawValue(),diagnosticCentreScheduleForm.valid)">
+            Submit
+          </button>
+        </div>
+      </div>
+      <div class="col-md-5 mt-5">
+        <div class="Calendar">
+          <app-mini-calendar-view *ngIf="diagnosticCenterDetails"
+            [diagnosticCentreID]="diagnosticCenterDetails.diagnosticCentreID"
+            (preHoliDayArray)='getPreHoliDayList($event)'></app-mini-calendar-view>
+        </div>
+        <div class="HolidaySchedule mt-3">
+          <h2>Holiday Schedule</h2>
+          <form [formGroup]="holidayForm">
+            <div class="dateandtimeList" formArrayName="holidayDetailsList">
+              <div class="row mt-1">
+                <div class="col-md-12 my-1" *ngFor=" let holidayDetails of holidayDetailsList().controls;
+                let holidayDetailsIndex = index">
+                  <ng-container formGroupName="{{ holidayDetailsIndex }}">
+                    <div class="row">
+                      <div class="col-md-12">
+                        <div class="row">
+                          <div class="col-md-6 startDate">
+                            <div class="position-relative form-floating selectBox selectedFormValue">
+                              <input type="date" name="holidayStartDate" id="matDateInput"
+                                (change)="holiDayChange(holidayDetailsIndex)"
+                                (focusout)="checkValidDate(holidayDetailsIndex,true)"
+                                min="{{currentDate| date:'yyyy-MM-dd' }}" formControlName="holidayStartDate" />
+                              <label for="Laboratory">Start Date</label>
+                              <div class="validation-div errorDiv" *ngIf="holidayDetails.value.startDateErrMsg === ''">
+                                <app-validation-message
+                                  [control]="getHolidayController(holidayDetailsIndex,'holidayStartDate')"
+                                  [messages]="errorMessage.holidaysError.holidayStartDate">
+                                </app-validation-message>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-md-6">
+                            <div class="position-relative form-floating selectBox selectedFormValue">
+                              <input type="date" name="holidayEndDate" id="matDateInput"
+                                (change)="holiDayChange(holidayDetailsIndex)"
+                                (focusout)="checkValidDate(holidayDetailsIndex,false)"
+                                [min]="holidayDetailsList().at(holidayDetailsIndex).get('holidayStartDate')?.value?holidayDetailsList().at(holidayDetailsIndex).get('holidayStartDate')?.value:(currentDate| date:'yyyy-MM-dd')"
+                                formControlName="holidayEndDate" />
+                              <label for="Laboratory">End Date</label>
+                              <div class="validation-div errorDiv" *ngIf="holidayDetails.value.startDateErrMsg === ''">
+                                <app-validation-message
+                                  [control]="getHolidayController(holidayDetailsIndex,'holidayEndDate')"
+                                  [messages]="errorMessage.holidaysError.holidayEndDate">
+                                </app-validation-message>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="validation-div errorDiv" *ngIf="holidayDetails.value.startDateErrMsg">
+                            <small>{{holidayDetails.value.startDateErrMsg}}</small>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-11 mt-2">
+                        <div class="form-floating holidayDescription">
+                          <input type="text" name="holidayDescription" #holidayDescription
+                            (keyup)="holiDayChange(holidayDetailsIndex)" placeholder="Holiday Infotmation....."
+                            id="Laboratory" class="form-control" formControlName="holidayDescription" />
+                          <label for="Laboratory">Additional Inform...</label>
+                        </div>
+                        <div class="validation-div errorDiv">
+                          <app-validation-message
+                            [control]="getHolidayController(holidayDetailsIndex,'holidayDescription')"
+                            [messages]="errorMessage.holidaysError.holidayDescription">
+                          </app-validation-message>
+                        </div>
+                      </div>
+                      <div class="col-md-1 p-0 d-flex align-items-center">
+                        <div class="DeleteIcon p-0 holidayDelete">
+                          <i class="bi-trash-fill" *ngIf="holidayDetails.value.isdataFill"
+                            (click)="holidayDetailsDelete(holidayDetailsIndex)"></i>
+                        </div>
+                      </div>
+                      
+                    </div>
+                  </ng-container>
+                </div>
+              </div>
+            </div>
+            <div class="d-flex justify-content-between mt-2">
+              <button class="submit" (click)="holidayFormSubmit(holidayForm.value,holidayForm.valid)">
+                Submit
+              </button>
+              <!-- <span (click)="addAnotherholidayDetails()">
+                + Add Another Holiday
+              </span> -->
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

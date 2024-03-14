@@ -1,0 +1,357 @@
+<div id="MyHealthReport">
+    <div *ngIf="isPhysicianConsultation || isPhysicianLaboratory" class="singleReport">
+        <div class="row">
+            <div class="col-md-1">
+                <div class="MyHealthTab">
+                    <span (click)="closeWindow()" class="dualOpen" id="dualOpen"></span>
+                    <button *ngIf="isPhysicianLaboratory" class="" id="PhysicianBtn">
+                        <p>Physician Consultation of {{getDisplayName()}} </p>
+                    </button>
+                    <button *ngIf="isPhysicianConsultation" class="" id="LaboratoryBtn">
+                        <p>Laboratory Test History of {{getDisplayName()}} </p>
+                    </button>
+                </div>
+            </div>
+            <div class="col-md-11 p-0">
+                <div *ngIf="isPhysicianConsultation" id="Physician" class="MyHealthTabcontent">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h3>Physician Consultation of {{getDisplayName()}}</h3>
+                            <section *ngIf="prescDateValue" id="DateFilter">
+                                <ngx-slider [(value)]="prescDateValue" [(highValue)]="prescHighValue"
+                                    [options]="prescDateOptions" (valueChange)="onPrescValueChange($event, true)"
+                                    (highValueChange)="onPrescHighValueChange($event, true)">
+                                </ngx-slider>
+                            </section>
+                            <div class="form-floating">
+                                <input type="text" (ngModelChange)="onPrescSearchKey($event)" [ngModel]="prescSearchKey"
+                                    name="Use search keywords here……(For Example : Santosh Fever Knee Replacement)"
+                                    placeholder="Use search keywords" class="form-control">
+                                <label for="Laboratory">Use search keywords here……(For Example :
+                                    Santosh
+                                    Fever Knee Replacement)</label>
+                            </div>
+                            <div class="DoctorList">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="accordion" id="accordionExample">
+                                            <div class="prescriptionFileList"
+                                                *ngFor="let prescriptionFile of prescriptionFiles">
+                                                <div (click)="setAccordionPrescription(prescriptionFile.prescriptionDate)"
+                                                    class="clickcolspan">
+                                                    <span
+                                                        style="margin-left: 10px; font-weight: bold;">{{dateFormat(prescriptionFile.prescriptionDate)|
+                                                        date:
+                                                        'd-MMM-yyyy'}}</span>
+                                                    <div>
+                                                        <i *ngIf="isPrescriptionAccordionVisible(prescriptionFile.prescriptionDate)"
+                                                            class="bi-caret-up-fill"></i>
+                                                        <i *ngIf="!isPrescriptionAccordionVisible(prescriptionFile.prescriptionDate)"
+                                                            class="bi-caret-down-fill"></i>
+                                                    </div>
+                                                </div>
+                                                <div class="px-3 pb-3"
+                                                    *ngIf="isPrescriptionAccordionVisible(prescriptionFile.prescriptionDate)">
+                                                    <div class="PrescriptionAccordion">
+                                                        <h4 style="margin-bottom: 10px;">
+                                                            {{prescriptionFile.physicianName}}</h4>
+                                                        <label>Symptoms : </label>
+                                                        <p>{{prescriptionFile.symptoms}}</p>
+                                                        <label>Diagnosis : </label>
+                                                        <p>{{prescriptionFile.diagnosis}}</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div *ngIf="isPhysicianLaboratory" id="Laboratory" class="MyHealthTabcontent">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h3>Laboratory Test Report - {{getDisplayName()}} <i class="bi bi-arrow-clockwise"
+                                    *ngIf="needRefresh" (click)="refresh()"></i></h3>
+                            <section *ngIf="labDateValue" id="DateFilter">
+                                <ngx-slider [(value)]="labDateValue" [(highValue)]="labHighValue"
+                                    [options]="labDateOptions" (valueChange)="onValueChange($event, true)"
+                                    (highValueChange)="onHighValueChange($event, true)">
+                                </ngx-slider>
+                            </section>
+                            <div class="form-floating">
+                                <input type="text" (ngModelChange)="onLabKeyChange($event)" [ngModel]="labSearchKey"
+                                    placeholder="Use search keywords" class="form-control">
+                                <label for="Laboratory">Use search keywords here……(For Example :
+                                    Santosh
+                                    Fever Knee Replacement)</label>
+                            </div>
+                            <div class="dateSchedule mt-3">
+                                <div class="row">
+                                    <div class="col-md-5">
+                                        <div class="calendar">
+                                            <div *ngIf="showByDate" class="byDate " id="byDate">
+                                                <div class="d-flex flex-wrap justify-content-between">
+                                                    <div *ngFor="let dates of availableDates"
+                                                        (click)="filterDates(dates)" class="day"
+                                                        style="cursor: pointer;"
+                                                        [ngClass]="{selectedDates : isDateSelected(dates)}">
+                                                        {{getDateNames(dates)}}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div *ngIf="showByTest" class="testCategory byTest" id="byTest">
+                                                <form>
+                                                    <div *ngFor="let availableTest of availableTests"
+                                                        (click)="filterTests(availableTest)">
+                                                        <input [checked]="isTestSelected(availableTest)"
+                                                            type="checkbox">
+                                                        <label>{{availableTest}}</label><br>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12 footer-btn text-end mt-4">
+                                            <button [ngClass]="showByDate ? 'active' : ''" id="byDatebtn"
+                                                (click)="toggleDateSelect()">By
+                                                Date</button>
+                                            <button [ngClass]="showByTest ? 'active' : ''" class="" id="byTestbtn"
+                                                (click)="toggleTestSelect()">By
+                                                Test</button>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-7">
+                                        <div class="calendarSchedule">
+                                            <div *ngIf="showByDate" class="DateTestDetails" id="DateTestDetails">
+                                                <div class="DateTestDetailsList"
+                                                    *ngFor="let reportDates of availableReportsByDate">
+                                                    <div (click)="setAccordion(reportDates.laboratoryTestDate)"
+                                                        style="cursor:pointer">
+                                                        <div class="d-flex align-items-center justify-content-between">
+                                                            <div class="d-flex align-items-center">
+                                                                <i *ngIf="!isAccordionVisible(reportDates.laboratoryTestDate)"
+                                                                    class="bi-plus-circle"></i>
+                                                                <i *ngIf="isAccordionVisible(reportDates.laboratoryTestDate)"
+                                                                    class="bi-dash-circle"></i>
+                                                                <h4>{{dateFormat(reportDates.laboratoryTestDate)| date:
+                                                                    'd-MMM-yyyy'}}</h4>
+                                                            </div>
+                                                            <i *ngIf="isAccordionVisible(reportDates.laboratoryTestDate)"
+                                                                class="bi-caret-up-fill"></i>
+                                                            <i *ngIf="!isAccordionVisible(reportDates.laboratoryTestDate)"
+                                                                class="bi-caret-down-fill"></i>
+                                                        </div>
+                                                    </div>
+                                                    <div class="pt-2"
+                                                        *ngIf="isAccordionVisible(reportDates.laboratoryTestDate)">
+                                                        <div
+                                                            *ngFor="let byDateByDeptByDCIDLaboratory of reportDates.byDateDCWiseLaboratoryTestReportList">
+                                                            <div class="accordion-body">
+                                                                <div class="row">
+                                                                    <h2>{{byDateByDeptByDCIDLaboratory.dignosticCentreName}}
+                                                                    </h2>
+                                                                    <div *ngFor="let ByDateByDeptLaboratoryTestReport of byDateByDeptByDCIDLaboratory.byDateByDeptLaboratoryTestReportList"
+                                                                        class="col-md-12">
+                                                                        <div class="Biochemistry">
+                                                                            <h6>{{ByDateByDeptLaboratoryTestReport.departmentName}}
+                                                                            </h6>
+                                                                            <table class="w-100">
+                                                                                <tr
+                                                                                    *ngFor="let laboratoryTestResultDetailsList of ByDateByDeptLaboratoryTestReport.laboratoryTestResultDetailsList">
+                                                                                    <td class="firstTd">
+                                                                                        <label>{{laboratoryTestResultDetailsList.laboratoryTestName}}</label>
+                                                                                    </td>
+                                                                                    <td class="secoundTd">:</td>
+                                                                                    <td>
+                                                                                        <p
+                                                                                            *ngIf="laboratoryTestResultDetailsList.numeric">
+                                                                                            {{laboratoryTestResultDetailsList.laboratoryTestValue}}
+                                                                                            {{laboratoryTestResultDetailsList.measurementUnit}}
+                                                                                        </p>
+                                                                                    </td>
+                                                                                    <td><i class="bi-dot bi-dot-green" *ngIf="laboratoryTestResultDetailsList.normal" ></i>
+                                                                                         <i class="bi-dot bi-dot-red" *ngIf="!laboratoryTestResultDetailsList.normal"></i></td>
+                                                                                </tr>
+                                                                            </table>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div *ngIf="showByTest" class="testDetails" id="TestDetails">
+                                                <div *ngFor="let reports of availableReportsByTest"
+                                                    class="DateTestDetailsList ">
+                                                    <div (click)="setAccordionTest(reports.departmentName)">
+                                                        <div class="d-flex justify-content-between DetailsList  ">
+                                                            <div class="d-flex align-items-center">
+                                                                <div class="d-flex align-items-center">
+                                                                    <i *ngIf="!isTestAccordionVisible(reports.departmentName)"
+                                                                        class="bi-plus-circle"></i>
+                                                                    <i *ngIf="isTestAccordionVisible(reports.departmentName)"
+                                                                        class="bi-dash-circle"></i>
+                                                                    <h4>{{reports.departmentName}}</h4>
+                                                                </div>
+                                                            </div>
+                                                            <i *ngIf="isTestAccordionVisible(reports.departmentName)"
+                                                                class="bi-caret-up-fill"></i>
+                                                            <i *ngIf="!isTestAccordionVisible(reports.departmentName)"
+                                                                class="bi-caret-down-fill"></i>
+                                                        </div>
+                                                    </div>
+                                                    <div *ngIf="isTestAccordionVisible(reports.departmentName)"
+                                                        class="row pt-2">
+                                                        <div class="col-md-12">
+                                                            <div class="Biochemistry"
+                                                                *ngFor="let testNames of reports.test">
+                                                                <h6>{{testNames.testName}}</h6>
+                                                                <div *ngFor="let testsDates of testNames.tests">
+                                                                    <div
+                                                                        *ngFor="let observLabTest of testsDates.observationBasedLaboratoryTestReportList">
+                                                                        <table class="w-100">
+                                                                            <tr>
+                                                                                <td class="firstTd">
+                                                                                    <label>{{dateFormat(testsDates.laboratoryTestDate)|
+                                                                                        date:'d-MMM-yyyy'}}</label>
+                                                                                </td>
+                                                                                <td class="secoundTd">:</td>
+                                                                                <td class="lastTd">
+                                                                                    {{observLabTest.laboratoryTestFindings}}
+                                                                                </td>
+                                                                            </tr>
+                                                                        </table>
+                                                                    </div>
+                                                                    <div
+                                                                        *ngFor="let valueLabTest of testsDates.valueBasedLaboratoryTestReportList">
+                                                                        <table class="w-100">
+                                                                            <tr>
+                                                                                <td class="firstTd">
+                                                                                    <label>{{dateFormat(testsDates.laboratoryTestDate)|date:'d-MMM-yyyy'}}</label>
+                                                                                </td>
+                                                                                <td class="secoundTd">:</td>
+                                                                                <td class="lastTd">
+                                                                                    <p *ngIf="testsDates.numeric">
+                                                                                        {{valueLabTest.laboratoryTestValue}}
+                                                                                        {{testsDates.measurementUnit}}
+                                                                                    </p>
+                                                                                    <p *ngIf="!testsDates.numeric">
+                                                                                        {{valueLabTest.laboratoryTestValueChar}}
+                                                                                        {{testsDates.measurementUnit}}
+                                                                                    </p>
+                                                                                </td>
+                                                                            </tr>
+                                                                        </table>
+                                                                    </div>
+
+                                                                </div>
+
+                                                                <div class="text-end">
+                                                                    <p class="trandChart" (click)="ChartModal()"
+                                                                        *ngIf="isTrendChartShow(reports.test,testNames.testName)">
+                                                                        <i class="bi-bar-chart-fill"></i></p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="!isPhysicianConsultation && !isPhysicianLaboratory" id="dualReport">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="Laboratory">
+                    <div class="close" id="Laboratoryclose">
+                        <i class="bi-x-circle-fill" (click)="showPhysicianConsultation()"></i>
+                    </div>
+                    <div class="LaboratoryTest">
+                        <h6>Laboratory Test Report - {{getDisplayName()}}</h6>
+                        <section *ngIf="labDateValue" id="DateFilter">
+                            <ngx-slider [(value)]="labDateValue" [(highValue)]="labHighValue" [options]="labDateOptions"
+                                (valueChange)="onValueChange($event, true)"
+                                (highValueChange)="onHighValueChange($event, true)">
+                            </ngx-slider>
+                        </section>
+                        <div class="form-floating">
+                            <input type="text" (ngModelChange)="onLabKeyChange($event)" [ngModel]="labSearchKey"
+                                name="Use search keywords here……(For Example : Santosh Fever Knee Replacement)"
+                                placeholder="Use search keywords" class="form-control">
+                            <label for="Laboratory">Use search keywords here……</label>
+                        </div>
+                        <div class="LaboratoryTestlist">
+                            <div *ngFor="let labReportsFile of labReportsFiles" class="byList">
+                                <div class="listname">
+                                    <h3>{{labReportsFile.diagnosticCentreName}}</h3>
+                                </div>
+                                <div class="listdate">
+                                    <span>{{dateFormat(labReportsFile.laboratoryTestReportDate)| date:
+                                        'd-MMM-yyyy'}}</span>
+                                    <!-- <div class="eyeIcon">
+                                        <i class="bi-eye-fill"></i>
+                                    </div> -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="Physician Laboratory">
+                    <div class="close" id="Physicianclose">
+                        <i class="bi-x-circle-fill" (click)="showPhysicianLaboratory()"></i>
+                    </div>
+                    <div class="Physician LaboratoryTest">
+                        <h6>Physician Consultation - {{getDisplayName()}}</h6>
+                        <section *ngIf="prescDateValue" id="DateFilter">
+                            <ngx-slider [(value)]="prescDateValue" [(highValue)]="prescHighValue"
+                                [options]="prescDateOptions" (valueChange)="onPrescValueChange($event, true)"
+                                (highValueChange)="onPrescHighValueChange($event, true)">
+                            </ngx-slider>
+                        </section>
+                        <div class="form-floating">
+                            <input type="text" (ngModelChange)="onPrescSearchKey($event)" [ngModel]="prescSearchKey"
+                                name="Use search keywords here……(For Example : Santosh Fever Knee Replacement)"
+                                placeholder="Use search keywords" class="form-control">
+                            <label for="Laboratory">Use search keywords here……</label>
+                        </div>
+                        <div class="PhysicianTestlist LaboratoryTestlist">
+                            <div *ngFor="let prescriptionFile of prescriptionFiles" class="byList">
+                                <div class="listname">
+                                    <h3>{{prescriptionFile.physicianName}}</h3>
+                                </div>
+                                <div class="listdate">
+                                    <span>{{dateFormat(prescriptionFile.prescriptionDate)| date:
+                                        'd-MMM-yyyy'}}</span>
+                                    <div class="eyeIcon">
+                                        <i class="bi-eye-fill"
+                                            (click)="prescriptionView(prescriptionFile.prescriptionID)"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="myModal" class="modal ng-star-inserted" *ngIf="TrandChart">
+        <div class="modal-content">
+            <div class="close" (click)="ChartModal()"><i class="bi-x-circle-fill"></i></div>
+            <i class="bi-download" alt="Download File"></i>
+            <div class="chartPrint">
+
+            </div>
+        </div>
+    </div>
+</div>

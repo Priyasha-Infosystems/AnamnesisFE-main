@@ -1,0 +1,626 @@
+#orderPickup .content {
+    width: 100%;
+    height: 100%;
+    background: #FFFFFF;
+    border-radius: 22px;
+    position: relative;
+}
+
+.medicalName {
+    width: 100%;
+    padding: 15px 17px 17px 17px;
+    background: rgb(0 0 0 / 21%);
+    border: 1px solid #000;
+    /* box-shadow: 7px 6px 8px 0px rgb(64 64 56 / 37%); */
+    /* border-radius: 10px; */
+    margin-bottom: 20px;
+}
+
+.medicalName h2 {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 27px;
+    line-height: 1;
+    color: #242424;
+}
+
+.medicalName h6 {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 1.3;
+    margin: 0;
+    color: #000;
+}
+
+#orderPickup .orderList {
+    width: 100%;
+    height: 100%;
+    background: #FFFFFF;
+    padding: 4px 10px 4px 0px;
+    border: 1px solid rgb(235 164 0 / 19%);
+    box-shadow: -3px 27px 34px rgb(235 164 0 / 19%);
+    border-radius: 10px;
+}
+
+#orderPickup .orderList .sNo {
+    width: 20px;
+    height: 20px;
+    border-radius: 60px;
+    border: 1px solid #713bdb;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 11px;
+    line-height: 0;
+}
+
+#orderPickup .orderList label {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 140.5%;
+    color: #000000;
+    padding-left: 4px;
+}
+
+#orderPickup .orderList p {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 140.5%;
+    color: rgb(235 164 0);
+    display: inline;
+    margin: 0;
+    padding-left: 5px;
+}
+
+#orderPickup .orderList .bottom-border {
+    border-bottom: 1px solid rgb(235 164 0 / 52%);
+}
+
+#orderPickup .orderList .medicalNameList label {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 1.3;
+    color: #000000;
+    margin: 0;
+}
+
+#orderPickup .orderList .medicalNameList span {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 1;
+    color: #434242;
+}
+
+#orderPickup .orderList .medicalNameList h2 {
+    font-size: 10px;
+    font-weight: 400;
+    background: #edb738;
+    border-radius: 50px;
+    height: 20px;
+    width: 20px;
+    display: flex;
+    color: #fff;
+    line-height: 0;
+    margin: 0;
+    justify-content: center;
+    align-items: center;
+    padding-left: 1px;
+    margin-right: 15px;
+}
+
+#orderPickup .orderList .bdr-bottom {
+    border-bottom: 1px solid rgb(237 183 56 / 19%);
+    padding-bottom: 5px;
+}
+
+#orderPickup .orderList .List {
+    border: 2px solid rgb(235 164 0);
+    border-radius: 8px;
+    padding: 10px 10px 9px 10px;
+    margin-bottom: 20px;
+    box-shadow: 6px 6px 9px 0px rgb(235 164 0 / 19%);
+    background: #fcf2da94;
+    transform: scale(0.98);
+    transition: 0.3s;
+}
+
+#orderPickup .orderList .selected {
+    transform: scale(1.02);
+    box-shadow: 0px 1px 14px 2px rgb(235 164 0 / 60%);
+}
+
+#orderPickup .medicalName label {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 140.5%;
+    color: rgb(0 0 0);
+    display: inline;
+    margin: 0;
+}
+
+#orderPickup .medicalName i {
+    color: rgb(0 0 0);
+}
+
+#orderPickup .orderList .List button {
+    border: none;
+    background: none;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 140.5%;
+    color: rgb(235 164 0);
+    cursor: pointer;
+}
+
+
+#orderPickup .form-group input {
+    padding: 0;
+    height: initial;
+    width: initial;
+    margin-bottom: 0;
+    display: none;
+    cursor: pointer;
+}
+
+#orderPickup .form-group label {
+    position: relative;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    margin: 6px 5px 6px -4px;
+}
+
+#orderPickup .form-group label:before {
+    content: '';
+    -webkit-appearance: none;
+    background-color: transparent;
+    border: 2px solid rgb(117 59 219);
+    box-shadow: 0 1px 2px rgb(0 0 0 / 5%), inset 0px -15px 10px -12px rgb(0 0 0 / 5%);
+    padding: 9px;
+    display: inline-block;
+    position: relative;
+    vertical-align: middle;
+    cursor: pointer;
+    border-radius: 2px;
+}
+
+#orderPickup .form-group input:checked+label:after {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 4px;
+    left: 13px;
+    width: 5px;
+    height: 12px;
+    border: solid rgb(117 59 219);
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+
+#orderPickup .scrollList {
+    height: 707px;
+    overflow-x: hidden;
+    padding: 15px 10px 15px 15px;
+}
+
+/* width */
+#orderPickup .scrollList::-webkit-scrollbar {
+    width: 5px;
+}
+
+/* Track */
+#orderPickup .scrollList::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px rgb(235 164 0 / 80%);
+    border-radius: 5px;
+}
+
+/* Handle */
+#orderPickup .scrollList::-webkit-scrollbar-thumb {
+    background: rgb(235 164 0);
+    border-radius: 5px;
+}
+
+/* Handle on hover */
+#orderPickup .scrollList::-webkit-scrollbar-thumb:hover {
+    background: rgb(235 164 0);
+}
+
+#orderPickup .fullMedicine label {
+    width: 100%;
+    padding: 5px 6px;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 1;
+    color: #434242;
+}
+
+#orderPickup .fullMedicine {
+    width: 100%;
+    background: #fdf7ea;
+    box-shadow: 0px 4px 5px rgb(235 164 0 / 12%);
+    border-radius: 12px;
+    border: 1px solid #eba400;
+    padding: 3px 3px 0px 3px;
+}
+
+#orderPickup .medicineBox:last-child {
+    border: none !important;
+}
+
+#orderPickup .medicineBox {
+    width: 100%;
+    padding: 11.6px 17px;
+    position: relative;
+    border-bottom: 1px solid rgb(237 183 56 / 72%);
+}
+
+#orderPickup .medicineBox h6 {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 1.3;
+    color: #000000;
+    margin: 0;
+    padding-right: 5px;
+}
+
+#orderPickup .medicineBox p {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 10px;
+    line-height: 1.3;
+    color: #3F3F3F;
+    margin: 0;
+}
+
+#orderPickup .medicineBox p {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 10px;
+    line-height: 1.3;
+    color: #3F3F3F;
+    margin: 0;
+    padding: 0 !important;
+    display: block;
+}
+
+#orderPickup .medicineBox .DayBox {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+#orderPickup .medicineBox .noOfQty {
+    width: 41px;
+    height: 41px;
+    background: rgb(235 164 0);
+    border: 1px solid rgb(235 164 0);
+    box-shadow: 0px 4px 9px rgb(235 164 0 / 63%);
+    border-radius: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#orderPickup .medicineBox .DayBox h2 {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 1;
+    color: #FFFFFF;
+    text-align: left;
+    margin: 0;
+}
+
+#orderPickup .packageId label,
+#orderPickup .packageId p {
+    font-size: 10px;
+}
+
+#orderPickup .Delivery label,
+#orderPickup .Delivery p {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.4px;
+}
+
+#orderPickup .List i {
+    font-size: 15px;
+    color: #713bdb;
+    margin-right: 3px;
+    font-weight: 800;
+}
+
+#orderPickup .deliveryDate label {
+    font-size: 14px !important;
+    display: block;
+    font-weight: 300 !important;
+    line-height: 0.4 !important;
+}
+
+.deliveryDate p {
+    font-size: 13px !important;
+    display: block;
+    font-weight: 600 !important;
+    line-height: 0.4 !important;
+    color: #b31717 !important;
+}
+
+#orderPickup .assign-to-me {
+    transition: 0.1s;
+}
+
+#orderPickup .assign-to-me button {
+    background: #eba400;
+    border: 1px solid #ffda8b;
+    color: #fdf7ea;
+    padding: 10px 25px;
+    border-radius: 8px;
+    box-shadow: 0px 3px 14px #eba4009e;
+}
+
+#orderPickup .fixed-Btn {
+    width: 100%;
+    height: 85px;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+}
+
+#orderPickup .fixed-Btn .background {
+    background: #fdf7eafa;
+    padding: 13px 48px;
+    border-radius: 5px;
+    border: 1px solid #eba400;
+    right: 177px;
+    position: absolute;
+    box-shadow: 0px 0px 17px 3px #999999c9;
+}
+
+#orderPickup .background {
+    background: #fdf7eafa;
+    padding: 13px 48px;
+    border-radius: 5px;
+    border: 1px solid #eba400;
+    box-shadow: 0px 0px 17px 3px #999999c9;
+    width: 260px;
+    float: right;
+    margin-right: 16px;
+}
+
+.display {
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    border: 1px solid #845ef7;
+    border-radius: 6px;
+    display: flex;
+    flex-direction: column;
+    /* padding: 15px 17px 17px 17px; */
+}
+
+.display label {
+    font-weight: 600;
+    font-size: 0.875rem;
+    margin: 0;
+}
+
+select {
+    background-color: #fff;
+    font-family: 'Poppins';
+    transition: 0.3s;
+    width: 100%;
+    border: 1px solid rgb(113 59 219 / 51%);
+    box-shadow: 0px 11px 34px -5px rgb(113 59 219 / 21%);
+    border-radius: 6px;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 107%;
+    outline: none;
+    padding: 2px 29px 2px 8px !important;
+    cursor: pointer;
+    min-height: 3rem;
+}
+
+.selectorBox {
+    margin-bottom: 0.5rem;
+}
+
+.selectBox label {
+    padding-top: 15px !important;
+}
+
+.selectedFormValue label {
+    padding: 4px 7px 1px 8px !important;
+    transition: 0.3s;
+    font-size: 10px !important;
+    opacity: 0.6;
+}
+
+.selectorBox i {
+    position: absolute;
+    top: 2px;
+    bottom: 0px;
+    right: 2px;
+    display: flex;
+    align-items: center;
+    height: 92%;
+    background: #fff;
+}
+
+.selectorBox label {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px !important;
+    line-height: 110%;
+    color: rgb(146 90 255);
+    transition: 0.3s;
+}
+
+h6 {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 0.875rem;
+    line-height: 1.3;
+    margin: 0;
+    color: #000;
+}
+
+p {
+    font-weight: 500;
+    font-size: 0.75rem;
+    margin: 0;
+}
+
+.header {
+    background: #d0bfff;
+    padding: 8px 12px;
+    border-top-right-radius: 6px;
+    border-top-left-radius: 6px;
+    border-bottom: 1px solid #845ef7;
+}
+
+option {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 107%;
+}
+
+.form-control:focus {
+    width: 100%;
+    background: #F2ECFF;
+    border: 1px solid rgba(113, 59, 219, 0.18);
+    box-shadow: 0px 11px 34px -5px rgb(113 59 219 / 21%);
+    color: #713BDB;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+.QuantityFixed {
+    pointer-events: none;
+}
+
+.MedicineModify {
+    /* padding: 10px 0px; */
+}
+
+input {
+    width: 100%;
+    background: #F2ECFF;
+    border: 1px solid rgba(113, 59, 219, 0.18);
+    box-shadow: 0px 11px 34px -5px rgb(113 59 219 / 21%);
+    border-radius: 6px;
+    padding: 5px 7px 5px 7px !important;
+    text-align: center;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 0.75rem;
+    line-height: 107%;
+    color: #713BDB;
+    outline: none;
+}
+
+h6 {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 0.875rem;
+    line-height: 1.3;
+    margin: 0;
+    color: #000;
+}
+
+.form-floating>.form-control {
+    height: 35px !important;
+}
+
+.bottom-border {
+    border-bottom: 1px solid #713bdb7d;
+    padding-bottom: 9px;
+    width: 100%;
+    margin: auto;
+    margin-bottom: 9px;
+}
+
+.bottom-borders {
+    border-bottom: 1px solid #713bdb7d;
+    padding-bottom: 10px;
+    width: 92%;
+    margin: auto;
+    margin-bottom: 10px;
+}
+
+.bottom-borders .row {
+    margin: 0px -34px;
+}
+
+.noBorder {
+    border: unset !important;
+}
+
+.Proceed button {
+    background: #713bdb;
+    box-shadow: 0px 11px 34px -5px rgb(113 59 219 / 79%);
+    border: none;
+    padding: 9px 13px;
+    border-radius: 4px;
+    color: #ffff;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 1.3;
+    margin: 0;
+    letter-spacing: 0.7px;
+}
+
+.noItem {
+    min-height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.noItem P {
+    font-size: 1rem;
+}
+
+@media (min-width: 768px) {
+    .col-md-2 {
+        flex: 0 0 auto;
+        width: 14%;
+    }
+}

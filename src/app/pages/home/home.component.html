@@ -1,0 +1,67 @@
+<app-header></app-header>
+
+<body>
+    <div class="container content-all paddingContainer">
+        <div class="row" style="padding-bottom: 20px;" >
+            <div class="col-md-12 headerTwo" *ngIf="activeMenu !== 'welcome'">
+                <div class="row header h-100">
+                    <div class="col-md-3"></div>
+                    <div class="col-md-5 d-flex align-items-center">
+                        <h3>{{getHeader()}}</h3>
+                    </div>
+                    <div class="col-md-4">
+                        <div *ngIf="!isCustomizeUserEdit"
+                            class="col-md-12 d-flex align-items-center h-100 justify-content-end">
+                            <div class="px-2 d-flex justify-content-end">
+                                <div>
+                                    <div class="d-flex justify-content-end">
+                                        <!-- <label for="userId">User ID :&nbsp;</label> -->
+                                        <h6 class="m-0">User ID :&nbsp;{{userId}}</h6>
+                                    </div>
+                                    <div class="d-flex Alternative justify-content-end">
+                                        <h5 *ngIf="alternateUserId">{{alternateUserId}}</h5>
+                                        <h5 *ngIf="!alternateUserId" (click)="showCustomizeUserId()"
+                                            class="CustomiseId m-0">
+                                            Customise your
+                                            User ID</h5>
+                                    </div>
+                                </div>
+                                <div class="Edit">
+                                    <i class="bi-pencil-fill" (click)="showCustomizeUserId()"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div *ngIf="isCustomizeUserEdit" class="col-md-12 d-flex justify-content-end position-relative">
+                            <div class="">
+                                <div class="typeUserId ">
+                                    <div class="form-floating">
+                                        <input onkeydown="return /[a-z0-9]/i.test(event.key)" type="text"
+                                            name="LastName" placeholder="Last Name" id="alternativeuserid"
+                                            class="form-control" [(ngModel)]="alternateUserId" maxlength="20"
+                                            (keyup)="alternateUserIdLowerCase(alternateUserId)">
+                                        <label for="alternativeuserid">Alternative User Id</label>
+                                    </div>
+                                    <div class="d-flex">
+                                        <i (click)="setAlternateUserId()" class="bi-check-square-fill"
+                                            style="cursor: pointer;" id="check"></i>
+                                        <i (click)="cancelCustomizeUserId()" style="cursor: pointer;"
+                                            class="bi-x-circle-fill" id="close"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 p-0 dpageback" style="border-radius: unset !important;" *ngIf="activeMenu !== 'welcome'">
+                <app-menu-sidebar></app-menu-sidebar>
+            </div>
+            <div class="col-md-9 p-0 dpageback" *ngIf="activeMenu !== 'welcome'">
+                <router-outlet></router-outlet>
+            </div>
+            <div class="col-md-12 p-0 dpageback" *ngIf="activeMenu == 'welcome'">
+                <router-outlet></router-outlet>
+            </div>
+        </div>
+    </div>
+</body>

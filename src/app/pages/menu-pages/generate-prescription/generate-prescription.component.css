@@ -1,0 +1,1061 @@
+ #GeneratePrescription .modal-content {
+     background: #FFFFFF;
+     border: 1px solid #fcc419;
+     box-shadow: 0px 8px 18px 5px rgba(253, 217, 134, 0.33);
+     border-radius: 12px;
+     padding: 40px;
+     width: 75%;
+     margin: auto;
+ }
+
+ #GeneratePrescription .modal {
+     --bs-modal-width: 54%;
+ }
+
+ #GeneratePrescription .modal-header h5 {
+     font-family: 'Poppins';
+     font-style: normal;
+     font-weight: 700;
+     font-size: 30px;
+     line-height: 33px;
+     color: #434242;
+ }
+
+ #GeneratePrescription .modal-body h2 {
+     font-family: 'Poppins';
+     font-style: normal;
+     font-weight: 700;
+     font-size: 20px;
+     line-height: 110%;
+     color: #484747;
+ }
+
+ #GeneratePrescription .modal-body h3 {
+     font-family: 'Poppins';
+     font-style: normal;
+     font-weight: 600;
+     font-size: 13px;
+     line-height: 110%;
+     color: #4E4C4C;
+     display: -webkit-box;
+     -webkit-line-clamp: 1;
+     -webkit-box-orient: vertical;
+     overflow: hidden;
+     width: 100%;
+ }
+
+ #GeneratePrescription .modal-body span {
+     font-family: 'Poppins';
+     font-style: normal;
+     font-weight: 500;
+     font-size: 15px;
+     line-height: 110%;
+     color: #e67700;
+ }
+
+ #GeneratePrescription .modal-body h4 {
+     font-family: 'Poppins';
+     font-style: normal;
+     font-weight: 700;
+     font-size: 20px;
+     line-height: 110%;
+     color: #484747;
+ }
+
+ #GeneratePrescription input[type="text"],
+ #GeneratePrescription select,
+ #GeneratePrescription input[type="number"] {
+     height: 51px !important;
+     background: #fff9db;
+     border: 1px solid #fcc419;
+     border-radius: 6px;
+     font-family: 'Poppins';
+     font-style: normal;
+     font-weight: 500;
+     font-size: 12px;
+     line-height: 110%;
+     color: #e67700;
+     padding: 21px 10px 10px 13px;
+     outline: none;
+     width: 100%;
+ }
+
+ #GeneratePrescription .select1 {
+     appearance: none;
+     -webkit-appearance: none;
+     -moz-appearance: none;
+     -ms-appearance: none;
+     background-position: calc(100% - 12px) center !important;
+     background: #fff url("../../../../assets/images/select-icon-orange.png") no-repeat;
+     padding: 8px 32px 8px 16px;
+ }
+
+ #GeneratePrescription .seraching {
+     width: 98%;
+     height: 272px;
+     margin: 0 auto;
+     background: #FFFCF5;
+     border: 1px solid rgba(193, 193, 193, 0.51);
+     box-shadow: 0px 20px 34px 7px rgb(215 167 55 / 19%);
+     border-radius: 10px;
+     padding: 0px 15px;
+     display: none;
+     position: absolute;
+     left: 0;
+     right: 0;
+     top: 65px;
+ }
+
+ #GeneratePrescription .seraching span {
+     font-family: 'Poppins';
+     font-style: normal;
+     font-weight: 700;
+     font-size: 15px;
+     line-height: 110%;
+     color: #3E3E3E;
+     display: block;
+     padding: 20px 2px;
+     border-bottom: 1px solid #99999957;
+     cursor: pointer;
+ }
+
+ #GeneratePrescription .select1::-ms-expand {
+     display: none;
+ }
+
+ #GeneratePrescription .AddBox {
+     height: 196px;
+     left: 837px;
+     top: 539px;
+     border: 1px solid rgba(231, 168, 20, 0.51);
+     border-radius: 10px;
+     padding: 20px;
+ }
+
+ #GeneratePrescription .AddBox h2 {
+     font-family: 'Poppins';
+     font-style: normal;
+     font-weight: 600;
+     font-size: 15px;
+     line-height: 110%;
+     color: #E7A814;
+ }
+
+ #GeneratePrescription .MedicineBox {
+     width: 100%;
+     height: 100%;
+     background: #fff4e6;
+     border: 1px solid #ff922b;
+     border-radius: 6px;
+     padding: 25px;
+ }
+
+ #GeneratePrescription .MedicineBox h2 {
+     font-family: 'Poppins';
+     font-style: normal;
+     font-weight: 700;
+     font-size: 20px;
+     line-height: 110%;
+     color: #d9480f;
+ }
+
+ #GeneratePrescription .MedicineBox h3 {
+     font-family: 'Poppins';
+     font-style: normal;
+     font-weight: 700;
+     font-size: 15px;
+     line-height: 110%;
+     color: #3E3E3E;
+     margin-bottom: 0;
+     display: -webkit-box;
+     -webkit-line-clamp: 1;
+     -webkit-box-orient: vertical;
+     overflow: hidden;
+     width: 90%;
+ }
+
+ #GeneratePrescription .MedicineBox p {
+     font-family: 'Poppins';
+     font-style: normal;
+     font-size: 12px;
+     line-height: 1.5;
+     color: #484848;
+     display: -webkit-box;
+     -webkit-line-clamp: 1;
+     -webkit-box-orient: vertical;
+     overflow: hidden;
+     padding: 0px 31px;
+ }
+
+ #GeneratePrescription .MedicineBox i {
+     color: #d9480f;
+     font-size: 12px;
+     padding: 0px 5px;
+     cursor: pointer;
+ }
+
+ .foodTime {
+     display: flex;
+ }
+
+ .foodTime p {
+     padding: 0 !important;
+     margin: 0 !important;
+ }
+
+ /* .foodTime p::after {
+     content: "_";
+ } */
+
+ #GeneratePrescription .MedicineBox .bi-hand-index-thumb-fill {
+     transform: rotate(90deg);
+     font-size: 20px;
+     cursor: unset;
+ }
+
+ /* .MedicineBox .DayBox .bi-pencil-fill{
+    border-bottom: 1px solid #fcc419
+} */
+
+ #GeneratePrescription .MedicineBox h6 {
+     font-family: 'Poppins';
+     font-style: normal;
+     font-weight: 600;
+     font-size: 13px;
+     line-height: 136.5%;
+     color: #403F3D;
+     display: -webkit-box;
+     -webkit-line-clamp: 1;
+     -webkit-box-orient: vertical;
+     overflow: hidden;
+     width: 66%;
+     margin: 0;
+ }
+
+ #GeneratePrescription .MedicineBox .DayBox {
+     display: flex;
+     flex-direction: column;
+     justify-content: space-evenly;
+     width: 59px;
+     height: 59px;
+     background: #FFFFFF;
+     border: 1px solid #94d82d;
+     box-shadow: 0px 16px 34px -6px rgb(92 148 13 / 19%);
+     border-radius: 10px;
+     position: relative;
+     margin-left: 59px;
+     align-items: flex-end;
+ }
+
+ .MedicineBox .bottom-border {
+     border-bottom: 1px solid rgba(231, 168, 20, 0.795);
+ }
+
+ .LaboratoryTest .bottom-border {
+     border-bottom: 1px solid #5c7cfa;
+ }
+
+ #GeneratePrescription .MedicineBox .DayBox .Days {
+     width: 61px;
+     height: 61px;
+     background: #d9480f;
+     border: 1px solid #ff922b;
+     border-radius: 50px;
+     padding: 10px;
+     text-align: left;
+     position: absolute;
+     left: -35px;
+     top: -2px;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+ }
+
+ #GeneratePrescription .MedicineBox .DayBox .Days h2 {
+     font-family: 'Poppins' !important;
+     font-style: normal !important;
+     font-weight: 700 !important;
+     font-size: 12px !important;
+     line-height: 1 !important;
+     color: #FFFFFF !important;
+     text-align: center;
+     margin: 0;
+ }
+
+ #GeneratePrescription .MedicineBox .DayBox h2 span {
+     color: #fff;
+     font-weight: 400;
+ }
+
+ .reset {
+     width: 47px;
+     height: 29px;
+     margin: 0px 0px;
+     background: none;
+     border: none;
+     border-radius: 4px;
+     font-family: 'Poppins';
+     font-style: normal;
+     font-weight: 600;
+     font-size: 12px;
+     line-height: 110%;
+     color: #a37a19;
+     margin-top: 20px;
+     text-decoration: underline;
+ }
+
+ #GeneratePrescription .AddBox {
+     width: 100%;
+     height: 139px;
+     background: #fff9db;
+     border: 1px solid #fcc419;
+     border-radius: 6px;
+     padding: 20px;
+     resize: none;
+     outline: none;
+     font-family: 'Poppins';
+     font-style: normal;
+     font-weight: 500;
+     font-size: 14px;
+     line-height: 110%;
+     color: #e67700;
+ }
+
+ .medicinesList .bottom-border:last-child {
+     border-bottom: 1px solid #fcc41900;
+ }
+
+ #GeneratePrescription .MedicineBox select {
+     background: #fff4e6 !important;
+     border: 1px solid #ff922b !important;
+     width: 100%;
+     font-family: 'Poppins';
+     font-style: normal;
+     font-weight: 500;
+     font-size: 12px;
+     line-height: 110%;
+     color: #d9480f !important;
+ }
+
+ .medicineTiming label {
+     font-size: 12px !important;
+ }
+
+ #GeneratePrescription .MedicineBox select option {
+     font-family: 'Poppins';
+     font-style: normal;
+     font-weight: 700;
+     font-size: 15px;
+     line-height: 110%;
+     color: #3E3E3E;
+     background-color: #FFFCF5;
+ }
+
+ #GeneratePrescription .LaboratoryTest i {
+     color: #364fc7;
+ }
+
+ #GeneratePrescription .LaboratoryTest .DayBox .Days {
+     background: #364fc7;
+     border: 1px solid #5c7cfa;
+     box-shadow: unset;
+     color: #fff !important;
+     font-size: 14px;
+     text-align: center;
+ }
+
+ #GeneratePrescription .LaboratoryTest p {
+     font-family: 'Poppins';
+     font-style: normal;
+     font-weight: 500;
+     font-size: 12px;
+     line-height: 1.4;
+     color: #484848;
+     padding: 0px 0px 0px 31px;
+     display: -webkit-box;
+     -webkit-line-clamp: 2 !important;
+     -webkit-box-orient: vertical;
+     margin: 0;
+     overflow: hidden;
+ }
+
+ #GeneratePrescription .selectBox {
+     width: 100%;
+     padding: 12px;
+     background: #ffff;
+     border: 1px solid #ff922b;
+     border-radius: 6px;
+ }
+
+ #GeneratePrescription .specialNotes label {
+     font-family: 'Poppins';
+     font-style: normal;
+     font-weight: 700;
+     font-size: 15px;
+     line-height: 110%;
+     color: #484747;
+ }
+
+ #GeneratePrescription .specialNotes textarea {
+     width: 100%;
+     height: 85px !important;
+     background: #fff4e6;
+     border: 1px solid #ff922b;
+     border-radius: 6px;
+     outline: none;
+     font-family: 'Poppins';
+     font-style: normal;
+     font-weight: 700;
+     font-size: 15px;
+     line-height: 110%;
+     color: #d9480f;
+     resize: none;
+     margin-bottom: 9px;
+ }
+
+ #GeneratePrescription .pinkbox {
+     background: #fff;
+     border: 1px solid #5c7cfa;
+     position: relative;
+ }
+
+ #GeneratePrescription .pinkbox label {
+     font-family: 'Poppins';
+     font-style: normal;
+     font-weight: 500;
+     font-size: 14px;
+     line-height: 110%;
+     color: #484747;
+ }
+
+ #GeneratePrescription .timings {
+     width: 100% !important;
+     height: 74px !important;
+     left: 800px !important;
+     top: 1737px !important;
+     background: #FFFFFF !important;
+     border: 1px solid rgba(113, 59, 219, 0.19) !important;
+     box-shadow: 0px 16px 34px -6px rgba(113, 59, 219, 0.19) !important;
+     border-radius: 10px !important;
+ }
+
+ #GeneratePrescription .Duration {
+     width: 45% !important;
+     height: 57px !important;
+     left: 838px !important;
+     top: 1825px !important;
+     background: #FFFFFF !important;
+     border: 1px solid rgba(113, 59, 219, 0.19) !important;
+     box-shadow: 0px 16px 34px -6px rgba(113, 59, 219, 0.19) !important;
+     border-radius: 10px !important;
+     margin: 0px 5px !important;
+ }
+
+ #GeneratePrescription input[type="submit"] {
+     width: 117px;
+     height: 57px;
+     left: 1306px;
+     top: 1825px;
+     background: #713BDB;
+     border-radius: 11px;
+     border: none;
+     font-family: 'Poppins';
+     font-style: normal;
+     font-weight: 700;
+     font-size: 14px;
+     line-height: 1.4;
+     color: #FFFFFF;
+     letter-spacing: 1px;
+ }
+
+ #GeneratePrescription .save {
+     width: 146px;
+     height: 50px;
+     background: #e67700;
+     border-radius: 6px;
+     border: none;
+     font-family: 'Poppins';
+     font-style: normal;
+     font-weight: 500;
+     font-size: 12px;
+     line-height: 110%;
+     color: #FFFFFF;
+     letter-spacing: 1px;
+     float: right;
+     margin: 8px 4px;
+     resize: none;
+ }
+
+ /* #GeneratePrescription .Visit {
+     width: 83px !important;
+     height: 57px !important;
+     left: 857px !important;
+     top: 1999px !important;
+     background: #FFFFFF !important;
+     border: 1px solid rgba(231, 168, 20, 0.19) !important;
+     box-shadow: 0px 16px 34px -6px rgba(199, 148, 29, 0.19) !important;
+     border-radius: 10px !important;
+ } */
+
+ #GeneratePrescription .modal-content .count {
+     font-family: 'Poppins';
+     font-style: normal;
+     font-weight: 600;
+     font-size: 16px;
+     line-height: 110%;
+     color: #e67700;
+ }
+
+ #GeneratePrescription .NextVisit {
+     height: 15px;
+     left: 779px;
+     top: 2020px;
+     font-family: 'Poppins';
+     font-style: normal;
+     font-weight: 700;
+     font-size: 16px;
+     line-height: 110%;
+     color: #484747;
+ }
+
+ #GeneratePrescription .faq-heading {
+     font-family: Lato;
+     font-weight: 400;
+     font-size: 19px;
+     -webkit-transition: text-indent 0.2s;
+     text-indent: 20px;
+     color: #333;
+     padding: 11px 0px !important;
+ }
+
+ #GeneratePrescription .faq-text {
+     font-family: 'Poppins';
+     font-style: normal;
+     font-weight: 500 !important;
+     font-size: 14px !important;
+     line-height: 110% !important;
+     color: #666666 !important;
+ }
+
+ #GeneratePrescription .faq {
+     width: 98%;
+     margin: 0 auto;
+     background: #edf2ff;
+     border-radius: 10px;
+     border: 1px solid #5c7cfa;
+     padding: 0px 15px;
+     display: none;
+     position: absolute;
+     left: 0;
+     right: 0;
+     top: 80px;
+     z-index: 99;
+ }
+
+ #GeneratePrescription .faq label {
+     display: block;
+     position: relative;
+     overflow: hidden;
+     cursor: pointer;
+     padding-top: 1px;
+ }
+
+ #GeneratePrescription .faq p {
+     margin: 0;
+     font-family: 'Poppins';
+     font-style: normal;
+     font-weight: 600;
+     font-size: 15px;
+     line-height: 110%;
+     color: #3E3E3E;
+ }
+
+ #GeneratePrescription .faq-box {
+     display: none;
+ }
+
+ #GeneratePrescription #settings {
+     display: none;
+ }
+
+ #GeneratePrescription input[type="checkbox"] {
+     cursor: pointer;
+     margin: 2px;
+ }
+
+ #GeneratePrescription input[name="foo"] {
+     margin: 12px 2px;
+ }
+
+ #GeneratePrescription #faq-bg {
+     background: #dbe4ff !important;
+     border: 1px solid #5c7cfa;
+     border-radius: 6px;
+     margin: 10px 0px;
+ }
+
+ #GeneratePrescription .faq .faq-arrow {
+     width: 5px;
+     height: 5px;
+     transition: -webkit-transform 0.8s;
+     transition: transform 0.8s;
+     transition: transform 0.8s, -webkit-transform 0.8s;
+     -webkit-transition-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+     border-top: 2px solid rgba(0, 0, 0, 0.33);
+     border-right: 2px solid rgba(0, 0, 0, 0.33);
+     float: right;
+     position: relative;
+     top: -30px;
+     right: 27px;
+     -webkit-transform: rotate(45deg);
+     transform: rotate(45deg);
+ }
+
+ #GeneratePrescription .faq input[type="checkbox"]:checked+label>.faq-arrow {
+     transition: -webkit-transform 0.8s;
+     transition: transform 0.8s;
+     transition: transform 0.8s, -webkit-transform 0.8s;
+     -webkit-transition-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+     -webkit-transform: rotate(135deg);
+     transform: rotate(135deg);
+ }
+
+ #GeneratePrescription .faq input[type="checkbox"]:checked+label {
+     display: block;
+     background: #F8F4FF !important;
+     color: #4f7351;
+     height: auto;
+     transition: height 0.8s;
+     -webkit-transition-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+ }
+
+ #GeneratePrescription .faq input[type='checkbox']:not(:checked)+label {
+     display: block;
+     transition: height 0.8s;
+     height: 60px;
+     -webkit-transition-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+     line-height: 2;
+ }
+
+ #GeneratePrescription ::-webkit-scrollbar {
+     display: none;
+ }
+
+ #GeneratePrescription .SpecialInst textarea {
+     width: 100%;
+     height: 133px;
+     resize: none;
+     background: #FFFFFF;
+     border: 1px solid rgba(231, 168, 20, 0.19);
+     box-shadow: 0px 16px 34px -6px rgb(199 148 29 / 19%);
+     border-radius: 10px;
+     outline: none;
+     padding: 12px 16px;
+     font-family: 'Poppins';
+     font-style: normal;
+     font-weight: 500;
+     font-size: 14px;
+     line-height: 110%;
+     color: #484747;
+ }
+
+ .close {
+     position: absolute;
+     background: #fff;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     border-radius: 50px;
+     width: 35px;
+     height: 34px;
+     right: -15px;
+     top: -15px;
+     cursor: pointer;
+     border: 1px solid #fcc419;
+ }
+
+ .close i {
+     color: #ecac18;
+     font-size: 22px;
+     line-height: 0;
+ }
+
+ .Special {
+     width: 100%;
+     height: 155px !important;
+     background: #fff9db;
+     border: 1px solid #fcc419;
+     border-radius: 6px;
+     outline: none;
+     padding: 10px;
+     font-family: 'Poppins';
+     font-style: normal;
+     font-weight: 500;
+     font-size: 14px;
+     line-height: 110%;
+     color: #e67700;
+     resize: none;
+ }
+
+ .form-floating label {
+     font-family: 'Poppins';
+     width: 100%;
+     font-style: normal;
+     font-weight: 500;
+     font-size: 14px;
+     line-height: 107%;
+     color: #fab005;
+ }
+
+ .form-control:focus {
+     box-shadow: unset !important;
+ }
+
+ .MedicineBox input {
+     background: #fff4e6 !important;
+     border: 1px solid #ff922b !important;
+     color: #d9480f !important;
+ }
+
+ .MedicineBox label {
+     color: #fd7e14 !important;
+ }
+
+ .MedicineBox .save {
+     background: #d9480f !important;
+     border-radius: 6px !important;
+     color: #fff;
+ }
+
+ .LaboratoryTest {
+     border: 1px solid #5c7cfa !important;
+     background: #edf2ff !important;
+ }
+
+ .LaboratoryTest h2 {
+     color: #364fc7 !important;
+ }
+
+ .LaboratoryTest input {
+     border: 1px solid #5c7cfa !important;
+     background: #edf2ff !important;
+     color: #364fc7 !important;
+ }
+
+ .LaboratoryTest label {
+     color: #4c6ef5 !important;
+ }
+
+ #GeneratePrescription .LaboratoryTest select {
+     border: 1px solid #5c7cfa !important;
+     background: #edf2ff !important;
+     color: #364fc7 !important;
+ }
+
+ .LaboratoryTest .saves input {
+     background: #364fc7 !important;
+     color: #fff !important;
+     border-radius: 6px !important;
+     margin: 8px 4px !important;
+ }
+
+ .LaboratoryDisplayBox {
+     max-height: 405px;
+     overflow: auto;
+ }
+
+ .faq::-webkit-scrollbar {
+     width: 5px !important;
+ }
+
+ .faq::-webkit-scrollbar-thumb {
+     background: #364fc7 !important;
+     border-radius: 5px !important;
+ }
+
+ .faq::-webkit-scrollbar-track {
+     background: #edf2ff !important;
+ }
+
+ .faq .save {
+     background: #364fc7 !important;
+     color: #fff !important;
+ }
+
+ .errorDiv {
+     font-size: 12px;
+     color: red;
+     height: 12px;
+     padding-left: 7px;
+     padding-top: 2px;
+ }
+
+ #GeneratePrescription .LaboratoryTest .DayBox {
+     background: #edf2ff !important;
+     border: 1px solid #5c7cfa !important;
+ }
+
+ #viewMoreText {
+     position: absolute;
+     z-index: 999;
+     top: 36px;
+ }
+
+ .close {
+     position: absolute;
+     background: #fff;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     border-radius: 50px;
+     width: 22px;
+     height: 22px;
+     right: -8px;
+     top: -8px;
+     cursor: pointer;
+     border: 1px solid #364fc7a8;
+ }
+
+ .close i {
+     font-size: 22px;
+     line-height: 0;
+ }
+
+ #GeneratePrescription .LaboratoryTest span {
+     color: #364fc7 !important;
+     width: 63px;
+     font-size: 12px;
+ }
+
+ .LaboratoryTest .bottom-border:last-child {
+     border-bottom: 1px solid #fcc41900;
+ }
+
+ .close {
+     position: absolute;
+     background: #fff;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     border-radius: 50px;
+     width: 35px;
+     height: 34px;
+     right: -15px;
+     top: -15px;
+     cursor: pointer;
+     border: 1px solid #edb7388f;
+ }
+
+ .OtherItem {
+     border: 1px solid #94d82d !important;
+     background: #f4fce3 !important;
+ }
+
+ .OtherItem input,
+ .OtherItem textarea {
+     background: #f4fce3 !important;
+     border: 1px solid #94d82d !important;
+     color: #5c940d !important;
+ }
+
+ .OtherItem label,
+ .OtherItem h2 {
+     color: #5c940d !important;
+ }
+
+ .OtherItem .selectBox {
+     border: 1px solid #94d82d !important;
+ }
+
+ .OtherItem .save {
+     background: #5c940d !important;
+     color: #fff !important;
+ }
+
+ .OtherItem .DayBox .Days {
+     background: #5c940d !important;
+     border: none !important;
+     box-shadow: 0px 4px 9px rgb(92 148 13 / 70%) !important;
+ }
+
+ .OtherItem .Days i {
+     color: #fff !important;
+     font-size: 38px !important;
+     line-height: 0 !important;
+ }
+
+ .OtherItem .foodTime p,
+ .OtherItem i {
+     color: #5c940d !important;
+ }
+
+ .doctorDetails .CollapsePrescribed .m-d.expand-list>li {
+     list-style-type: none;
+     padding: 20px 15px 10px 15px;
+     position: relative;
+     background: #fff6e3;
+     border: 1px solid rgb(231 168 20 / 59%);
+     box-shadow: 8px 8px 11px rgb(231 168 20 / 36%);
+     border-radius: 10px;
+     margin: 0px;
+     z-index: 10;
+ }
+
+ .doctorDetails .CollapsePrescribed .m-d.expand-list>li label h5 {
+     font-family: 'Poppins';
+     font-style: normal;
+     font-weight: 700;
+     font-size: 18px;
+     line-height: 1.3;
+     color: #3a3a3a;
+     margin: 0;
+ }
+
+ .doctorDetails .doctorCard {
+     border: 1px solid rgb(231 168 20 / 39%);
+     border-radius: 5px;
+     padding: 5px 10px;
+ }
+
+ .doctorDetails .profileImg {
+     height: 100px;
+     width: 100px;
+     border-radius: 7%;
+     overflow: hidden;
+ }
+
+ .doctorDetails .profileImg img {
+     height: 100%;
+     width: 100%;
+ }
+
+ .doctorDetails .dropdown ul {
+     width: 100%;
+ }
+
+ .doctorDetails .dropdown a {
+     font-family: 'Poppins';
+     font-style: normal;
+     font-weight: 700;
+     font-size: 18px;
+     line-height: 1.3;
+     color: #3a3a3a !important;
+     margin: 0;
+     background: none;
+     border: none;
+     outline: none;
+     width: 100%;
+     text-decoration: none;
+     display: flex;
+     align-items: center;
+     justify-content: space-between;
+ }
+
+ .doctorDetails .dropdown a span {
+     font-size: 12px !important;
+     color: #e67700;
+ }
+
+ .doctorDetails .dropdown li a:hover {
+     background: #e7dbc2;
+ }
+
+ .doctorDetails .doctorCard p {
+     font-family: 'Poppins';
+     font-style: normal;
+     font-weight: 500;
+     font-size: 13px;
+     line-height: 140.5%;
+     color: #484747;
+     margin: 0;
+     padding: 0 !important;
+ }
+
+ .doctorDetails .doctorCard p i {
+     color: #e7a814;
+     padding-right: 4px;
+ }
+
+ .doctorDetails .doctorCard h5 {
+     font-family: 'Poppins';
+     font-style: normal;
+     font-weight: 700;
+     font-size: 18px;
+     line-height: 1.3;
+     color: #3a3a3a !important;
+ }
+
+ .doctorDetails .Confirm {
+     background: #e67700;
+     border: none;
+     font-family: 'Poppins';
+     font-style: normal;
+     font-weight: 500;
+     font-size: 13px;
+     line-height: 110%;
+     color: #FFFFFF;
+     letter-spacing: 0.5px;
+     padding: 8px 16px;
+     border-radius: 5px;
+     margin-top: 10px;
+ }
+
+ td {
+     font-size: 11px;
+ }
+
+ td i {
+     color: #e67700;
+ }
+
+ .doctorDetails {
+     position: absolute;
+ }
+
+ .healthClinicDetails {
+     padding: 9px 15px;
+     border: 1px solid #ffc107;
+     border-radius: 6px;
+ }
+
+ .healthClinicDetails i {
+     color: #e67700;
+ }
+
+ .healthClinicDetails h2 {
+     font-family: 'Poppins';
+     font-style: normal;
+     font-weight: 700;
+     font-size: 20px;
+     line-height: 110%;
+     color: #484747;
+ }
+
+ .healthClinicDetails p {
+     font-family: 'Poppins';
+     font-style: normal;
+     font-weight: 500;
+     font-size: 14px;
+     line-height: 110%;
+     color: #484747;
+ }
+
+ .form-floating>.select:not(:placeholder-shown)~label {
+     opacity: unset;
+     transform: unset;
+ }
+
+ .form-floating>.select {
+     appearance: none;
+     -webkit-appearance: none;
+     -moz-appearance: none;
+     -ms-appearance: none;
+     background-position: calc(100% - 10px) center !important;
+     background: #fff9db url(../../../../assets/images/DownArrow.png) no-repeat;
+     padding: 8px 16px 8px 11px;
+ }
+
+ .selectValue label {
+     opacity: .65 !important;
+     transform: scale(0.85) translateY(-0.5rem) translateX(0.15rem) !important;
+ }

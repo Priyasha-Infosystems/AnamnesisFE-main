@@ -1,0 +1,875 @@
+.tabcontent {
+  float: left;
+  padding: 35px 12px;
+  width: 100%;
+  border-left: none;
+  height: 100%;
+}
+
+.tabcontent h3 {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 30px;
+  line-height: 33px;
+  color: #434242;
+  padding-bottom: 3%;
+}
+
+.tabcontent p {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 18px;
+  color: #474545;
+}
+
+#DiagnosticCentre .content {
+  width: 100%;
+}
+
+.imgAndcontent {
+  background: rgba(255, 255, 255, 0.79);
+  border: 2px solid rgba(174, 140, 239, 0.54);
+  box-shadow: 0px 12px 53px -24px rgb(134 87 226 / 63%);
+  border-radius: 12px;
+  padding: 20px;
+}
+
+.imgAndcontent .Dr-Name {
+  width: 100%;
+  height: 100%;
+}
+
+.imgAndcontent .Dr-Name .imgDisplay {
+  width: 100%;
+  height: 200px;
+}
+
+.imgAndcontent .Dr-Name .imgDisplay img {
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
+}
+
+.imgAndcontent .Dr-Name h2 {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 110%;
+  color: #484747;
+}
+
+.imgAndcontent .Dr-Name p {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 140.5%;
+  color: #484747;
+  cursor: pointer;
+}
+
+.imgAndcontent .DCHDisplay i {
+  color: #713BDB !important;
+}
+
+.imgAndcontent .Dr-Name h6 {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 110%;
+  color: #484747;
+}
+
+.imgAndcontent .Dr-Name label {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 110%;
+  color: #484747;
+}
+
+input,
+select {
+  color: #1b1b1b;
+}
+
+.imgAndcontent .Dr-Name span {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 13px;
+  color: #484747;
+  padding-left: 3px;
+}
+
+#DiagnosticCentre .content .PathologyBox .To {
+  width: 30px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#DiagnosticCentre .content .PathologyBox .To p {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 11px;
+  line-height: 110%;
+  color: #000000;
+  margin-bottom: 7px !important;
+}
+
+.PathologyBox select {
+  width: 100%;
+  height: 44px;
+  padding: 16px 8px 6px 8px;
+  border: 1px solid rgba(113, 59, 219, 0.19);
+  box-shadow: 0px 16px 34px -6px rgba(113, 59, 219, 0.19);
+  border-radius: 8px;
+  outline: none;
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 13px;
+  line-height: 110%;
+  color: #673ab7;
+}
+
+#DiagnosticCentre .content .PathologyBox select {
+  outline: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+/* to change arrow fill color, add %23 infront of hex color */
+#DiagnosticCentre .content .PathologyBox select {
+  background: url("../../../../assets/images/selectArrow.png") no-repeat;
+  background-color: #F2ECFF;
+  border: 1px solid rgba(113, 59, 219, 0.18);
+  box-shadow: 0px 11px 34px -5px rgb(113 59 219 / 21%);
+  line-height: 107%;
+  color: #713BDB;
+  outline: none;
+  height: 46px !important;
+}
+
+#DiagnosticCentre .content .PathologyBox select {
+  background-size: 11px;
+  background-position: calc(100% - 11px) 16px;
+  background-repeat: no-repeat;
+}
+
+#DiagnosticCentre .content .PathologyBox select option {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 110%;
+  color: #484747;
+}
+
+#DiagnosticCentre .content .PathologyBox .dateAndtime .form-floating input {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 11px;
+  padding: 19px 12px 9px 8px;
+  width: 100%;
+  background: #F2ECFF;
+  border: 1px solid rgba(113, 59, 219, 0.18);
+  box-shadow: 0px 11px 34px -5px rgb(113 59 219 / 21%);
+  border-radius: 6px;
+  line-height: 107%;
+  color: #713BDB;
+  outline: none;
+  height: 46px !important;
+}
+
+#DiagnosticCentre .content .PathologyBox h6 {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 110%;
+  color: #713BDB;
+  cursor: pointer;
+}
+
+.AddAnotherDepertment h6 {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 110%;
+  color: #713BDB;
+  cursor: pointer;
+}
+
+#DiagnosticCentre .content .PathologyBox .DeleteIcon {
+  color: #713BDB;
+  cursor: pointer;
+  padding-left: 4px !important;
+}
+
+#DiagnosticCentre .content .PathologyBox .cs-width {
+  width: 282px;
+}
+
+#DiagnosticCentre .content .PathologyBox .LaboratoryCharges span {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 110%;
+  color: #713BDB;
+  margin-right: 10px;
+}
+
+#DiagnosticCentre .content .PathologyBox .LaboratoryCharges input {
+  width: 84px;
+  padding: 15px 5px;
+  background: rgba(255, 255, 255, 0.79);
+  border: 2px solid rgba(174, 140, 239, 0.54);
+  box-shadow: 0px 12px 53px -24px rgba(134, 87, 226, 0.63);
+  border-radius: 8px;
+  outline: none;
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 800;
+  font-size: 16px;
+  line-height: 110%;
+  text-align: center;
+  color: #343335;
+}
+
+.PathologyBox .Approximate p {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 110%;
+  color: #555456;
+  margin: 0;
+  margin-right: 10px;
+}
+
+#DiagnosticCentre .content .PathologyBox .Approximate input {
+  width: 80px;
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 11px;
+  padding: 22px 12px 13px 12px;
+  background: #F2ECFF;
+  border: 1px solid rgba(113, 59, 219, 0.18);
+  box-shadow: 0px 11px 34px -5px rgb(113 59 219 / 21%);
+  border-radius: 6px;
+  line-height: 107%;
+  color: #713BDB;
+  outline: none;
+  height: 46px !important;
+}
+
+#DiagnosticCentre .content .footer button {
+  width: 149px;
+  height: 58px;
+  background: #713BDB;
+  box-shadow: 0px 12px 53px -24px rgba(134, 87, 226, 0.63);
+  border-radius: 6px;
+  border: none;
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 110%;
+  color: #FEFEFF;
+}
+
+#DiagnosticCentre .content .footer p {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 15px;
+  line-height: 110%;
+  color: #713BDB;
+  cursor: pointer;
+}
+
+#DiagnosticCentre .content .HolidaySchedule {
+  width: 100%;
+  padding: 19px 12px;
+  background: #F2ECFF;
+  border: 1px solid rgba(113, 59, 219, 0.19);
+  box-shadow: 0px 16px 34px rgba(113, 59, 219, 0.19);
+  border-radius: 10px;
+}
+
+#DiagnosticCentre .content .Calendar {
+  width: 100%;
+  padding: 19px 12px;
+  background: #F2ECFF;
+  border: 1px solid rgba(113, 59, 219, 0.19);
+  box-shadow: 0px 16px 34px rgba(113, 59, 219, 0.19);
+  border-radius: 10px;
+}
+
+#DiagnosticCentre .content .HolidaySchedule h2 {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 110%;
+  color: #434242;
+}
+
+#DiagnosticCentre .content .HolidaySchedule input[type="date"] {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 11px;
+  padding: 19px 12px 9px 9px;
+  width: 100%;
+  background: #F2ECFF;
+  border: 1px solid rgba(113, 59, 219, 0.18);
+  box-shadow: 0px 11px 34px -5px rgb(113 59 219 / 21%);
+  border-radius: 6px;
+  line-height: 107%;
+  color: #713BDB;
+  outline: none;
+  text-align: left;
+  height: 46px !important;
+}
+
+#DiagnosticCentre .content .HolidaySchedule ::-webkit-calendar-picker-indicator {
+  filter: invert(1);
+}
+
+#DiagnosticCentre .content .HolidaySchedule input[type="date"] {
+  color-scheme: dark;
+}
+
+#DiagnosticCentre .content .HolidaySchedule input[type="date"]::before {
+  content: attr(data-placeholder);
+  width: 100%;
+}
+
+#DiagnosticCentre .content .HolidaySchedule input[type="date"]:focus::before,
+#DiagnosticCentre .content .HolidaySchedule input[type="date"]:valid::before {
+  display: none
+}
+
+.mat-datepicker-toggle {
+  position: absolute;
+  right: 2.5px;
+  top: 1.5px;
+}
+
+#matDateInput {
+  width: 100%;
+  padding: 14px 16px 14px 0px;
+  background: rgba(255, 255, 255, 0.79);
+  border: 2px solid rgba(174, 140, 239, 0.54);
+  box-shadow: 0px 12px 53px -24px rgb(134 87 226 / 63%);
+  border-radius: 9px;
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 500;
+  text-align: center;
+  font-size: 12px;
+  line-height: 110%;
+  outline: none;
+  color: #000000;
+}
+
+.img {
+  padding: 0px 3px 0px 6px;
+}
+
+.holidayDescription input {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 11px;
+  padding: 19px 12px 9px 9px;
+  width: 100%;
+  background: #F2ECFF;
+  border: 1px solid rgba(113, 59, 219, 0.18);
+  box-shadow: 0px 11px 34px -5px rgb(113 59 219 / 21%);
+  border-radius: 6px;
+  line-height: 107%;
+  color: #713BDB;
+  outline: none;
+  height: 46px !important;
+}
+
+.holidayDescription label {
+  padding: 15px 8px;
+  font-size: 12px;
+}
+
+#DiagnosticCentre .content .HolidaySchedule p {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 110%;
+  color: #000000;
+  margin-bottom: 11px;
+  padding: 2px;
+}
+
+.DeleteIcon {
+  color: #713BDB;
+  cursor: pointer;
+}
+
+#DiagnosticCentre .content .HolidaySchedule .img i {
+  margin: 0px 3px 0px 0px;
+  color: #713BDB;
+  font-size: 18px;
+}
+
+/*
+#DiagnosticCentre .content .HolidaySchedule h2 {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 13px;
+  line-height: 110%;
+  color: #713BDB;
+  text-align: right;
+  margin: 0;
+} */
+
+.HolidaySchedule span {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 13px;
+  line-height: 110%;
+  color: #713BDB;
+  text-align: right;
+  margin: 0;
+  cursor: pointer;
+}
+
+.timePicker {
+  width: 100%;
+  height: 48px;
+  background: #F8F8FF;
+  border: 2px solid rgba(174, 140, 239, 0.54);
+  box-shadow: 0px 4px 5px rgb(113 59 219 / 12%);
+  border-radius: 8px;
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 11px;
+  line-height: 110%;
+  color: #0c0c0c;
+  outline: none;
+  padding: 16px 8px 6px 13px;
+}
+
+#PathologyBoxDelete {
+  font-size: 25px;
+  position: absolute;
+  right: 3px;
+  top: -10px;
+}
+
+.submit {
+  padding: 13px 22px;
+  background: #713BDB;
+  box-shadow: 0px 12px 53px -24px rgb(134 87 226 / 63%);
+  border-radius: 6px;
+  border: none;
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 13px;
+  line-height: 110%;
+  color: #FEFEFF;
+}
+
+.selectedFormValue label {
+  padding: 7px 7px 1px 8px !important;
+  transition: 0.3s;
+  font-size: 9px !important;
+  opacity: 0.6;
+}
+
+label {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 10px !important;
+  line-height: 110%;
+  color: rgb(146 90 255);
+  transition: 0.3s;
+}
+
+.border-botton {
+  padding: 5px 0px 0px 0px;
+}
+
+@media (max-width: 1024px) {
+  .holidayDescription {
+    width: 96%;
+    margin-top: 1.5%;
+    margin: auto;
+  }
+
+  .startDate {
+    width: 50%;
+    margin-bottom: 2%;
+  }
+
+  .endDate {
+    width: 50%;
+    margin-bottom: 2%;
+  }
+
+  #DiagnosticCentre .content .HolidaySchedule h2 {
+    font-size: 12px;
+  }
+
+  #matDateInput {
+    padding: 11px 23px 11px 3px;
+  }
+
+  .holidayDescription input {
+    height: 41px;
+  }
+
+  .dateAndtime .addtext {
+    width: 100%;
+    margin-top: 8px;
+  }
+
+  .weekDay {
+    width: 50%
+  }
+
+  .timing {
+    width: 41%;
+  }
+
+  .border-botton {
+    border-bottom: 1px solid #703bdb1f;
+    padding: 15px 0px;
+  }
+
+  .startDate {
+    width: 100%;
+  }
+}
+
+.active h6,
+.active p {
+  color: blue !important;
+}
+
+.errorDiv {
+  color: red !important;
+  line-height: 1;
+  font-size: 10px !important;
+  text-align: left !important;
+  height: 10px;
+  letter-spacing: 0.5px;
+  font-weight: 500;
+}
+
+.datepickerColor {
+  color: transparent !important;
+}
+
+/*
+.HolidaySchedule::ng-deep .mat-datepicker-toggle {
+  background: rgba(255, 0, 0, 0);
+}
+
+.HolidaySchedule::ng-deep .mat-calendar-body-label {
+  color: #713BDB;
+  font-weight: 700;
+}
+
+.HolidaySchedule::ng-deep .mat-calendar-body-cell-content {
+  color: #713BDB;
+}
+
+.HolidaySchedule::ng-deep .mat-button-wrapper {
+  color: #713BDB;
+  font-weight: 700;
+}
+
+.HolidaySchedule::ng-deep .mat-datepicker-toggle-default-icon {
+  width: 18px;
+}
+
+.HolidaySchedule::ng-deep .mat-calendar-table-header {
+  color: #000;
+  font-weight: 700;
+}
+
+.HolidaySchedule::ng-deep .mat-datepicker-content .mat-calendar-next-button {
+  color: #713BDB;
+}
+
+.HolidaySchedule::ng-deep .mat-datepicker-content .mat-calendar-previous-button {
+  color: #713BDB;
+}
+
+.HolidaySchedule::ng-deep .mat-icon-button.mat-button-disabled.mat-button-disabled {
+  color: #703bdb81;
+}
+
+.HolidaySchedule::ng-deep .cdk-program-focused {
+  background: none !important;
+}
+
+.HolidaySchedule::ng-deep .mat-button-focus-overlay {
+  background: #FFFFFF;
+}
+
+.HolidaySchedule::ng-deep .mat-calendar-body-selected {
+  color: #fff !important;
+}
+
+.HolidaySchedule::ng-deep .mat-icon-button {
+  width: 20px !important;
+  padding-right: 8px !important;
+} */
+
+.labtestDisplay {
+  width: 100%;
+  padding: 19px 12px;
+  background: #F2ECFF;
+  border: 1px solid rgba(113, 59, 219, 0.19);
+  box-shadow: 0px 16px 34px rgba(113, 59, 219, 0.19);
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  margin-bottom: 12px;
+  position: relative;
+}
+
+.labtestDisplay p {
+  font-size: 11px !important;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  line-height: 1;
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 500;
+  line-height: 1.7;
+  color: #474545;
+  margin: 0 !important;
+}
+
+.labtestDisplay label {
+  font-size: 11px !important;
+  margin-bottom: 5px !important;
+}
+
+.labtestDisplay label span {
+  font-size: 11px;
+  color: #000 !important;
+}
+
+.labtestDisplay b {
+  font-size: 12px;
+}
+
+.labtestDisplay label .bi-pencil-fill {
+  color: #5225ac !important;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+.labtestDisplay .Additional p {
+  font-size: 11px !important;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  line-height: 1;
+}
+
+.bi-trash-fill {
+  color: #5225ac !important;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.borderrow {
+  border-bottom: 1px solid rgba(112, 59, 219, 0.336);
+  border-style: dashed;
+  border-top: none;
+  border-right: none;
+  border-left: none;
+  padding-bottom: 2px;
+  padding-top: 5px;
+}
+
+.dropbtn {
+  background-color: #713bdb;
+  color: white;
+  padding: 4px 10px;
+  border: none;
+  cursor: pointer;
+  border-radius: 3px;
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 140.5%;
+  letter-spacing: 0.5px;
+}
+
+.dropbtn i {
+  color: #fff !important;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  background-color: #f9f9f9;
+  width: 100%;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  padding: 10px 14px;
+  border-radius: 6px;
+}
+
+.dropdown-content .DCHtext h6 {
+  cursor: pointer;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 3px 10px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {
+  background-color: #f1f1f1
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown:hover .dropbtn {
+  background-color: #713bdb;
+  color: white;
+  padding: 4px 10px;
+  border: none;
+  cursor: pointer;
+  border-radius: 3px;
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 140.5%;
+  letter-spacing: 0.5px;
+}
+
+.DCHname {
+  background: #f3f0ff;
+  border: 1px solid #845ef7;
+  border-radius: 6px;
+  padding: 20px;
+  position: relative;
+}
+
+.editDCH {
+  position: absolute;
+  width: 100%;
+  right: 5px;
+  top: 4px;
+  text-align: end;
+}
+
+.Cancel {
+  background: grey !important;
+}
+
+.ScheduleDetails {
+  height: 32px;
+  display: flex;
+  align-items: center;
+}
+
+.ScheduleDetails h6 {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 1;
+  color: #474545;
+  margin: 0;
+}
+
+.labtestDisplay h2 {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 14px !important;
+  line-height: 110%;
+  color: rgb(146 90 255);
+  margin-bottom: 0px;
+}
+
+.labtestDisplay b span {
+  color: rgb(146 90 255);
+  font-size: 10px;
+}
+
+.labtestDisplay i {
+  color: #5225ac !important;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+.DeleteHC {
+  position: absolute;
+  top: 2px;
+  right: 4px;
+  color: #713bdb;
+  font-size: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.deleteName {
+  position: absolute;
+  height: 95%;
+  top: 1px;
+  bottom: 1px;
+  right: 11px;
+  display: flex;
+  align-items: center;
+  font-size: 17px !important;
+  background: #f2ecff;
+}
+
+.dateAndtime .bi-trash-fill {
+  margin-bottom: 7px;
+  display: block;
+}

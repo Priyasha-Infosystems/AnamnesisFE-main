@@ -1,0 +1,74 @@
+#contact {
+  margin-top: 100px;
+}
+
+#contact .input-contact h3 {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 800;
+  font-size: 40px;
+  line-height: 112%;
+  color: #343333;
+}
+
+#contact .input-contact p {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 156.5%;
+  color: #575757;
+}
+
+#contact .input-contact input {
+  width: 100%;
+  height: 63px;
+  background: #FFFFFF;
+  border: 1px solid rgba(227, 184, 106, 0.79);
+  box-shadow: 0px 9px 18px 2px rgb(255 186 25 / 20%);
+  border-radius: 6px;
+  margin-bottom: 20px;
+  padding: 15px;
+  outline: none;
+  font-family: 'Poppins';
+  color: #C39B52;
+}
+
+#contact .input-contact textarea {
+  width: 100%;
+  height: 237px; 
+  background: #FFFFFF;
+  border: 1px solid rgba(227, 184, 106, 0.79);
+  box-shadow: 0px 9px 18px 2px rgba(255, 186, 25, 0.2);
+  border-radius: 6px;
+  font-family: 'Poppins';
+  color: #C39B52;
+  padding: 15px;
+  outline: none;
+  resize: none;
+}
+
+#contact .input-contact ::placeholder {
+  color: #C39B52;
+}
+
+#contact .input-contact input[type="submit"] {
+  width: 100%;
+  background: linear-gradient(180deg, #AA8444 0%, #C39B52 100%);
+  border: 1px solid #C39B52;
+  box-shadow: 0px 9px 18px 2px rgb(255 186 25 / 20%);
+  border-radius: 6px;
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 23px;
+  line-height: 0;
+  text-align: center;
+  color: #FFFFFF;
+  margin-top: 30px;
+}
+
+#contact .map {
+  height: 100%;
+  padding: 20px;
+}

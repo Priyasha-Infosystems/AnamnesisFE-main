@@ -1,0 +1,488 @@
+.tabcontent {
+    float: left;
+    padding: 2.1875rem 0.75rem;
+    width: 100%;
+    border-left: none;
+    height: 100%;
+}
+
+.tabcontent h3 {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 1.875rem;
+    line-height: 33px;
+    color: #434242;
+    padding-bottom: 3%;
+}
+
+.tabcontent p {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 0.875rem;
+    line-height: 18px;
+    color: #474545;
+}
+
+#Manage .home-box {
+    height: 20rem;
+    background: #FDFDFF;
+    border: 2px solid rgba(113, 59, 219, 0.52);
+    box-shadow: 0px 11px 31px 11px rgba(113, 59, 219, 0.26);
+    border-radius: 10px;
+    position: relative;
+    overflow: hidden;
+    padding: 0.875rem;
+}
+
+#Manage .Default {
+    position: absolute;
+    width: 10.625rem;
+    height: 9.375rem;
+    top: -5rem;
+    right: -5rem;
+    background: #713BDB;
+    box-shadow: 0px 4px 9px rgb(113 59 219 / 35%);
+    color: #fff;
+    text-align: center;
+    border-radius: 50%;
+    padding: 6.25rem 3.5rem 0rem 0rem;
+    font-size: 0.75rem;
+}
+
+#Manage .home-box #home-img {
+    max-width: 3.75rem;
+    /* margin-top: -25px; */
+}
+
+#Manage .home-box .home h4 {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 1.625rem;
+    line-height: 110%;
+    color: #484747;
+    display: inline-block;
+    margin-top: 1rem;
+
+}
+
+#Manage .home-box .icon {
+    padding: 1.25rem 0rem;
+}
+
+#Manage .home-box .icon i {
+    font-size: 1rem;
+    color: #713BDB;
+    letter-spacing: 5px;
+    cursor: pointer;
+}
+
+#Manage .home-box .icon img {
+    cursor: pointer;
+}
+
+#Manage .home-box #border-b {
+    justify-content: space-between;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+#Manage .content h4 {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 0.9375rem;
+    line-height: 110%;
+    color: #414141;
+}
+
+#Manage .content {
+    padding: 0.9375rem;
+}
+
+#Manage .content h4 span {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 0.8125rem;
+    line-height: 110%;
+    color: #414141;
+}
+
+#Manage .content p {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 0.8125rem;
+    line-height: 110%;
+    color: #414141;
+}
+
+#Manage .office-box {
+    height: 19.125rem;
+    left: 61.1875rem;
+    top: 13.9375rem;
+    padding: 0.875rem;
+    background: #FDFDFF;
+    border: 1px solid rgba(126, 126, 126, 0.28);
+    box-shadow: 0px 11px 2.125rem -5px rgba(113, 59, 219, 0.21);
+    border-radius: 10px;
+}
+
+#Manage .office-box #home-img {
+    max-width: 3.75rem;
+    margin-top: -1.5625rem;
+}
+
+#Manage .office-box .home h4 {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 1.625rem;
+    line-height: 110%;
+    color: #484747;
+    display: inline-block;
+    margin-top: 1rem;
+}
+
+#Manage .office-box .icon {
+    padding: 1.25rem 0rem;
+}
+
+#Manage .office-box .icon i {
+    font-size: 1rem;
+    color: #713BDB;
+    letter-spacing: 5px;
+    cursor: pointer;
+}
+
+#Manage .office-box .icon img {
+    cursor: pointer;
+}
+
+#Manage .office-box #border-b {
+    justify-content: space-between;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+#Manage .Add-Address {
+    background: #713bdb;
+    box-shadow: 0px 11px 2.125rem -5px rgb(113 59 219 / 79%);
+    border-radius: 0.75rem;
+    border: none;
+    width: 16rem;
+    height: 4.3125rem;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 1rem;
+    line-height: 110%;
+    color: #FFFFFF;
+}
+
+#Manage .modal {
+    display: block;
+    position: fixed;
+    padding-top: 6.25rem;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+#Manage .modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 1.5rem 2.5rem 2rem 2.5rem;
+    border: 1px solid #888;
+    width: 71%;
+    top: 3.125rem;
+}
+
+#Manage .modal-content h2 {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 1.625rem;
+    line-height: 50px;
+    color: #434242;
+}
+
+#Manage .modal-content input[type="text"] {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.79);
+    border: 2px solid rgba(174, 140, 239, 0.54);
+    box-shadow: 0px 0.75rem 53px -1.5rem rgb(134 87 226 / 63%);
+    border-radius: 8px;
+    outline: none;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 0.875rem;
+}
+
+#Manage .modal-content input[type="number"] {
+    width: 100%;
+    height: 4.5rem;
+    left: 16.625rem;
+    top: 24.25rem;
+    background: rgba(255, 255, 255, 0.79);
+    border: 2px solid rgba(174, 140, 239, 0.54);
+    box-shadow: 0px 0.75rem 53px -1.5rem rgb(134 87 226 / 63%);
+    border-radius: 0.75rem;
+    padding: 0.9375rem;
+    margin-bottom: 2%;
+    outline: none;
+}
+
+#Manage .modal-content textarea {
+    width: 100%;
+    height: 8rem;
+    background: rgba(255, 255, 255, 0.79);
+    border: 2px solid rgba(174, 140, 239, 0.54);
+    box-shadow: 0px 0.75rem 53px -1.5rem rgb(134 87 226 / 63%);
+    border-radius: 8px;
+    outline: none;
+    resize: none;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 0.875rem;
+}
+
+#Manage .modal-content select {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.79);
+    border: 2px solid rgba(174, 140, 239, 0.54);
+    box-shadow: 0px 0.75rem 53px -1.5rem rgb(134 87 226 / 63%);
+    border-radius: 8px;
+    padding: 0px 1.8125rem 0px 0.75rem;
+    outline: none;
+}
+
+#Manage .modal-content select.addColor {
+    color: rgba(113, 59, 219, 0.51);
+}
+
+#Manage .modal-content .Address-Type {
+    width: 100%;
+    padding: 0.75rem;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+#Manage .modal-content .Address-Type input[type="radio"] {
+    margin-left: 1.25rem;
+    background: #FFFFFF;
+    border: 1px solid #AE88F9;
+    box-shadow: 0px 4px 9px rgba(191, 161, 250, 0.58);
+    outline: none;
+    cursor: pointer;
+}
+
+#Manage .modal-content select.one {
+    background: url('../../../../assets/images/down-arrow.png') no-repeat;
+    -webkit-appearance: none;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 0.875rem;
+}
+
+#Manage .modal-content select.one {
+    background-size: 1.25rem;
+    background-position: calc(100% - 8px);
+    background-repeat: no-repeat;
+}
+
+#Manage .close:hover,
+#Manage .close:focus {
+    color: #000;
+    text-decoration: none;
+}
+
+#Manage .modal-content label {
+    color: rgba(113, 59, 219, 0.51);
+}
+
+.addressDetailsDiv {
+    height: 2.5625rem;
+    white-space: normal;
+    overflow: auto;
+    text-overflow: ellipsis;
+}
+
+.errorDiv {
+    margin-bottom: 0.625rem;
+    margin-top: -0.625rem;
+    text-align: left !important;
+    color: red !important;
+}
+
+.selectBox label {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    line-height: 110%;
+    color: rgb(146 90 255);
+    padding: 2.125rem 0.875rem 0.0625rem 0.875rem;
+    width: 100%;
+    transition: 0.3s;
+    opacity: 1 !important
+}
+
+.selectedFormValue label {
+    opacity: .65;
+    transform: scale(.85) translateY(-0.5rem) translateX(0.15rem);
+    padding: 1rem .75rem;
+}
+
+#Manage .modal-content .selectedFormValue select {
+    padding: 1rem 1.8125rem 0rem 0.75rem;
+}
+
+.error {
+    height: 0.75rem !important;
+    font-size: 0.6875rem !important;
+}
+
+.close {
+    position: absolute;
+    background: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50px;
+    width: 2.1875rem;
+    height: 2.125rem;
+    right: -0.9375rem;
+    top: -0.9375rem;
+    cursor: pointer;
+    border: 1px solid rgba(113, 59, 219, 0.51);
+}
+
+.close i {
+    color: rgb(146 90 255);
+    font-size: 1.375rem;
+    line-height: 0;
+}
+
+@media (max-width:768px) {
+
+    .selectBox label {
+        padding: 1.375rem 1.75rem 0rem 1rem !important;
+    }
+
+    #Manage .modal-content {
+        padding: 1.5rem;
+    }
+
+    #Manage .modal-content h2 {
+        font-size: 1.375rem;
+        line-height: 2.125rem;
+    }
+
+    #Manage .modal-content .Address-Type {
+        padding: 0rem;
+        font-size: 0.875rem;
+    }
+
+    #Manage .modal-content input[type="text"] {
+        height: 2.5625rem;
+        padding: 0.6875rem 0.875rem 0.1875rem 0.875rem;
+        font-size: 0.75rem !important;
+        border-radius: 5px;
+    }
+
+    #Manage .modal-content label {
+        font-size: 0.75rem;
+        padding: 0.75rem 0.9375rem;
+    }
+
+    #Manage .modal-content textarea {
+        height: 7.5rem;
+    }
+
+    #Manage .modal-content select.one {
+        background-size: 1.25rem;
+        background-position: calc(100% - 8px);
+        background-repeat: no-repeat;
+        width: 100%;
+        padding: 0.8125rem 1.3125rem 0.3125rem 0.9375rem;
+        font-size: 0.6875rem;
+        height: 2.5625rem;
+    }
+
+    .selectedFormValue label {
+        padding: 0.9375rem 1.8125rem 0.25rem 0.9375rem !important;
+    }
+
+    #Manage .Add-Address {
+        border-radius: 5px;
+        width: 8.125rem;
+        height: 2.6875rem;
+        font-size: 0.8125;
+    }
+}
+
+@media (max-width:820px) {
+    .selectBox label {
+        padding: 1.375rem 1.75rem 0rem 1rem !important;
+    }
+
+    #Manage .modal-content {
+        padding: 1.5rem;
+    }
+
+    #Manage .modal-content h2 {
+        font-size: 1.375rem;
+        line-height: 2.125rem;
+    }
+
+    #Manage .modal-content .Address-Type {
+        padding: 0rem;
+        font-size: 0.875rem;
+    }
+
+    #Manage .modal-content input[type="text"] {
+        height: 2.5625rem;
+        padding: 0.6875rem 0.875rem 0.1875rem 0.875rem;
+        font-size: 0.75rem !important;
+        border-radius: 5px;
+    }
+
+    #Manage .modal-content label {
+        font-size: 0.75rem;
+        padding: 0.75rem 0.9375rem;
+    }
+
+    #Manage .modal-content textarea {
+        height: 7.5rem;
+    }
+
+    #Manage .modal-content select.one {
+        background-size: 1.25rem;
+        background-position: calc(100% - 8px);
+        background-repeat: no-repeat;
+        width: 100%;
+        padding: 0.8125rem 1.3125rem 0.3125rem 0.9375rem;
+        font-size: 0.6875rem;
+        height: 2.5625rem;
+    }
+
+    .selectedFormValue label {
+        padding: 0.9375rem 1.8125rem 0.25rem 0.9375rem !important;
+    }
+
+    #Manage .Add-Address {
+        border-radius: 5px;
+        width: 8.125rem;
+        height: 2.6875rem;
+        font-size: 0.8125;
+    }
+}

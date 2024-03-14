@@ -1,0 +1,176 @@
+<router-outlet>
+    <ngx-spinner bdColor="rgba(51,51,51,0.8)" size="medium" color="#fff" type="ball-circus" [fullScreen]="true">
+    </ngx-spinner>
+</router-outlet>
+<div id="Assignment" class="tabcontent">
+    <div class=" row d-flex justify-content-end align-items-center">
+        <div class="col-md-10">
+            <div class="filter" *ngIf="allCaseList.length">
+                <button [ngClass]="{oneSideBorderOfCategoryButtonLeft: categoryIndex === (categoryList.length -1),
+                    oneSideBorderOfCategoryButtonRight: categoryIndex === 0,
+                    actives: activeFilterKey ===category.Key}"
+                    *ngFor="let category of categoryList let categoryIndex = index"
+                    (click)="filterCaseList(category.Key)">{{category.Key}} <span>({{category.number}})</span></button>
+            </div>
+        </div>
+        <div class=" col-md-2 d-flex showrecords align-items-center" *ngIf="allCaseList.length">
+            <button>SHOW</button>
+            <select [(ngModel)]="selectView" (change)="currentViewChange(selectView)">
+                <option [value]="1">1</option>
+                <option [value]="2">2</option>
+                <option [value]="3">3</option>
+            </select>
+            <button>RECORDS</button>
+        </div>
+    </div>
+    <div class="row px-1 mt-2">
+        <div class="col-md-4 p-0" *ngFor="let case of caseList; let caseIndex = index;">
+            <div class="caseListHeight" *ngIf="case.seqNo>=viewItem.startIndex && case.seqNo<=viewItem.lastIndex ">
+                <div class="AssignedBox">
+                    <div class="RightTop">
+                        <p>{{case.caseCode}}</p>
+                    </div>
+                    <div class="contant">
+                        <div class="d-flex firstText">
+                            <span>Summary:</span>
+                            <p id="length">{{case.summary}}</p>
+                            <!-- <sub data-bs-toggle="modal" data-bs-target="#myModal">More...</sub> -->
+                        </div>
+                        <div class="d-flex">
+                            <span>Type:</span>
+                            <p data-bs-toggle="modal" data-bs-target="#exampleModal">{{case.type}}</p>
+                        </div>
+                        <div class="d-flex clr">
+                            <span>Assigned Date :</span>
+                            <p>{{case.OpenDate | date: 'd MMM yyyy' }}</p>
+                        </div>
+                        <div class="d-flex clr  ">
+                            <span>Target Completion Date :</span>
+                            <p>{{case.targetCompletionDate | date: 'd MMM yyyy'}}</p>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="d-flex ">
+                                <p *ngIf="case.wrAttachmentDetailsList.length"><b>Attachment: </b></p>
+                                <div
+                                    *ngFor="let wrAttachmentDetails of case.wrAttachmentDetailsList let wrAttachmentDetailsInedx =index">
+                                    <i class="bi-card-image" *ngIf=" wrAttachmentDetailsInedx <3 "
+                                        [ngClass]="{'bi-paperclip':wrAttachmentDetails.contentType === 'application/pdf'}"></i>
+                                </div>
+                                <span class="AttachmentMore"
+                                    *ngIf=" case.wrAttachmentDetailsList.length >3 ">+{{case.wrAttachmentDetailsList.length-3}}More</span>
+                            </div>
+                            <p (click)="openCaseLog(case.caseCode)" class="caseLog">Case Log</p>
+                        </div>
+                    </div>
+                    <button (click)="openModal(case)" *ngIf="case.wrStatus === 1">New Work Request</button>
+                    <button (click)="openModal(case)" *ngIf="case.wrStatus === 2">Assigned</button>
+                    <button (click)="openModal(case)" *ngIf="case.wrStatus === 3">On Hold</button>
+                    <button (click)="openModal(case)" *ngIf="case.wrStatus === 4">Pending For Information</button>
+                    <button (click)="openModal(case)" *ngIf="case.wrStatus === 5">Resolved</button>
+                    <button (click)="openModal(case)" *ngIf="case.wrStatus === 6">Reopened</button>
+                    <button (click)="openModal(case)" *ngIf="case.wrStatus === 7">Pending For Review</button>
+                    <button (click)="openModal(case)" *ngIf="case.wrStatus === 8">Assigned For Review</button>
+                    <button (click)="openModal(case)" *ngIf="case.wrStatus === 9">Resolved And Closed</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12 text-center mt-4" *ngIf="caseList.length">
+            <div class="PrevButton d-flex justify-content-center">
+                <button class="button" (click)="pageChange(1)" [ngClass]="{active:1 === currentPage }"
+                    [disabled]="paginationList.length === 1"><i class="bi-chevron-double-left"></i>First</button>
+                <button class="button" (click)="pageChange(currentPage-1)" [disabled]="currentPage===1"
+                    [ngClass]="{buttonWithOutHover:currentPage===1}">Prev</button>
+                <div *ngFor="let page of paginationList; let pageIndex = index;">
+                    <div class="mt-1"
+                        *ngIf="!isPageIndexVisible(currentPage, pageIndex) && pageIndex < currentPage && pageIndex < 3">
+                        .
+                    </div>
+                    <button *ngIf="isPageIndexVisible(currentPage, pageIndex)" class="button"
+                        [ngClass]="{active:page === currentPage }" (click)="pageChange(page)">{{page}}</button>
+                    <div class="mt-1"
+                        *ngIf="!isPageIndexVisible(currentPage, pageIndex) && pageIndex > currentPage && pageLastIndex > pageIndex">
+                        .
+                    </div>
+                </div>
+                <button class="button" (click)="pageChange(currentPage+1)"
+                    [disabled]="currentPage===paginationList.length"
+                    [ngClass]="{buttonWithOutHover:currentPage===paginationList.length}">Next</button>
+                <button class="button" (click)="pageChange(paginationList.length)"
+                    [ngClass]="{active:paginationList.length === currentPage }"
+                    [disabled]="paginationList.length === 1">Last<i class="bi-chevron-double-right"></i></button>
+            </div>
+        </div>
+        <div class="col-md-12 text-center noRecordFound" *ngIf="!caseList.length">
+            <P>No records found</P>
+        </div>
+    </div>
+    <div *ngIf="activeModal === 'ENR'" class="modal fade" class="modal" tabindex="-1" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <span class="close"><i class="bi-x-lg" (click)="closeModal($event)"></i></span>
+                <div class="modal-body">
+                    <app-delivery-agent-modal></app-delivery-agent-modal>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="activeModal ==='ASA'" class="modal fade" class="modal" tabindex="-1" role="dialog">
+        <div class="container">
+            <app-authorised-signatory-approval (close)="closeModal($event)" [WorkRequestDetails]="passData">
+            </app-authorised-signatory-approval>
+        </div>
+    </div>
+    <div *ngIf="activeModal === 'PCU'" class="modal fade" class="modal" tabindex="-1" role="dialog">
+        <div class="container-fluid">
+            <app-physician-consultation-prescription-data-entry [WorkRequestDetails]="passData"
+                (close)="closeModal($event)"></app-physician-consultation-prescription-data-entry>
+        </div>
+    </div>
+    <div *ngIf="activeModal === 'CSR'" class="modal fade" class="modal" tabindex="-1" role="dialog">
+        <div class="container">
+            <app-work-request-popup (close)="closeModal($event)"
+                [WorkRequestDetails]="passData"></app-work-request-popup>
+        </div>
+    </div>
+    <div *ngIf="activeModal === 'LRU'" class="modal fade" class="modal" tabindex="-1" role="dialog">
+        <div class="container-fluid">
+            <app-labtest-report-upload [WorkRequestDetails]="passData" (close)="closeModal($event)">
+            </app-labtest-report-upload>
+        </div>
+    </div>
+    <div *ngIf="activeModal === 'CIA'" class="modal fade" class="modal" tabindex="-1" role="dialog">
+        <div class="container">
+            <app-company-information-approval [WorkRequestDetails]="passData" (close)="closeModal($event)">
+            </app-company-information-approval>
+        </div>
+    </div>
+    <div *ngIf="activeModal === 'PIA'" class="modal fade" class="modal" tabindex="-1" role="dialog">
+        <div class="container">
+            <app-personal-information-approval [WorkRequestDetails]="passData" (close)="closeModal($event)">
+            </app-personal-information-approval>
+        </div>
+    </div>
+    <div *ngIf="activeModal === 'PCA'" class="modal fade" class="modal" tabindex="-1" role="dialog">
+        <div class="container">
+            <app-physician-credential-approval [WorkRequestDetails]="passData" (close)="closeModal($event)">
+            </app-physician-credential-approval>
+        </div>
+    </div>
+    <div *ngIf="activeModal === 'CASE_LOG'" class="modal fade" class="modal" tabindex="-1" role="dialog">
+        <div class="container">
+            <app-view-case-log [WorkRequestDetails]="passData" (close)="closeModal($event)"></app-view-case-log>
+        </div>
+    </div>
+    <div *ngIf="activeModal === 'PHC'" class="modal fade" class="modal" tabindex="-1" role="dialog">
+        <div class="container">
+            <app-physician-consultation [WorkRequestDetails]="passData"
+                (close)="closeModal($event)"></app-physician-consultation>
+        </div>
+    </div>
+    <div *ngIf="activeModal === 'LTA'" class="modal fade" class="modal" tabindex="-1" role="dialog">
+        <div class="container">
+            <app-laboratory-test-appointment [WorkRequestDetails]="passData"
+                (close)="closeModal($event)"></app-laboratory-test-appointment>
+        </div>
+    </div>
+</div>

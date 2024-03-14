@@ -1,0 +1,711 @@
+<router-outlet>
+  <ngx-spinner bdColor="rgba(51,51,51,0.8)" size="medium" color="#fff" type="ball-circus" [fullScreen]="true">
+  </ngx-spinner>
+</router-outlet>
+<div class="modal-dialog">
+  <div class="modal-content">
+    <!-- <span class="close"><i class="bi-x-lg" (click)="openAuthSignModal()"></i></span> -->
+    <div class="modal-body">
+      <div class="close" (click)="closePopUp(false)">
+        <i class="bi-x-circle-fill"></i>
+      </div>
+      <div class="DataEntryDisplay">
+        <div class="row">
+          <div class="col-md-6 px-1">
+            <div class="row h-100">
+              <div class="col-md-1 p-0">
+                <div class="tab">
+                  <button class="tablinks" id="defaultOpen"
+                    *ngFor="let wrAttachmentDetails of fileDetailsList;let i = index" (click)="changeFileView(i)"
+                    [ngClass]="{active: i !== viewFileIndex}">
+                    <i class="bi-file-earmark-pdf-fill"
+                      *ngIf="wrAttachmentDetails.contentType === 'application/pdf'"></i>
+                    <i class="bi bi-images" *ngIf="wrAttachmentDetails.contentType !== 'application/pdf'"></i></button>
+                </div>
+              </div>
+              <div class="col-md-11">
+                <div class="ViewPDF">
+                  <div id="{{i}}" class=" "
+                    *ngFor="let wrAttachmentDetails of WorkRequestDetails.wrAttachmentDetailsList;let i = index">
+                    <div *ngIf="i === viewFileIndex && requestKeyDetails">
+                      <div *ngIf="wrAttachmentDetails.contentType === 'application/pdf'">
+                        <div class="d-flex justify-content-center align-items-center zoomPdf">
+                          <i class="bi bi-zoom-in" (click)="zoomIn(false)"></i>
+                          <pdf-viewer [src]="wrAttachmentDetails.fileName |getFile:wrAttachmentDetails.documentType" [rotation]="0"
+                            [original-size]="false" [show-all]="true" [fit-to-page]="true" [zoom]="pdfZoom"
+                            [zoom-scale]="'page-fit'" [stick-to-page]="false" [render-text]="true"
+                            [external-link-target]="'blank'" [autoresize]="false" [show-borders]="true"
+                            style="width: 100%; height: 780px;"></pdf-viewer>
+                          <i class="bi bi-zoom-out" (click)="zoomOut(false)"></i>
+                        </div>
+                      </div>
+                      <div *ngIf="wrAttachmentDetails.contentType !== 'application/pdf'" class="content">
+                        <div class="row position-relative">
+                          <div class="img-wrapper" id="img-wrapper">
+                            <div
+                              [ngClass]="{rotateImg0:rotateDeegre===0,rotateImg90:rotateDeegre===90,rotateImg180:rotateDeegre===180,rotateImg360:rotateDeegre===360}">
+                              <img id="image" class="my-image" [src]="wrAttachmentDetails.fileName |getFile:wrAttachmentDetails.documentType" />
+                            </div>
+                          </div>
+                          <div class="col-md-12 mt-5">
+                            <div class="d-flex justify-content-around pdfZoom">
+                              <i class="bi bi-zoom-in" (click)="zoomIn(true)"></i>
+                              <div class="rotate"> <i class="bi-arrow-clockwise" (click)="rotateImg()"></i></div>
+                              <i class="bi bi-zoom-out" (click)="zoomOut(true)"></i>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- ------------------------------------ DetaEntery ------------------------------------ -->
+          <div class="col-md-6 d-flex px-1 position-relative" *ngIf="!somthingWentWrong">
+            <div>
+              <div [ngClass]="{formDisabled:WorkRequestDetails.isDisabled}">
+                <form [formGroup]="labTestForm">
+                  <div formArrayName="testReportList">
+                    <div *ngFor="let testReport of testReportList().controls; let testReportIndex = index">
+                      <ng-container formGroupName="{{testReportIndex}}"
+                        *ngIf="testReportIndex === viewTestReportIndex && !testReport.value.isDelete">
+                        <div class="DetaEntery">
+                          <div class="close" (click)="deleteTestReport(testReportIndex)">
+                            <img src="../../../../assets/images/DeletePrescription.png" alt="">
+                          </div>
+                          <div class="ContentDisplay">
+                            <div class="topContent">
+                              <div class="row">
+                                <div class="col-md-12 mb-3">
+                                  <div class="SearchBar">
+                                    <div class="row">
+                                      <div class="col-md-5">
+                                        <div class="form-floating ">
+                                          <input type="text" name="Diagnostic" placeholder="Diagnostic" id="Diagnostic"
+                                            class="form-control" formControlName="diagnosticCentreName"
+                                            [matAutocomplete]="diagnosticCentreNameauto"
+                                            (keyup)="onTypeDiagnosticCentreName(testReportIndex)">
+                                          <label for="Diagnostic">Diagnostic</label>
+                                          <i class="fa fa-search search" aria-hidden="true"
+                                            *ngIf="!testReportList().at(testReportIndex).get('diagnosticCentreID')?.value.length"></i>
+                                          <div class="validation-div errorDiv">
+                                            <app-validation-message
+                                              [control]="getTestReportController(testReportIndex,'diagnosticCentreID')"
+                                              [messages]="errorMessage.testReport.diagnosticCentreID">
+                                            </app-validation-message>
+                                          </div>
+                                          <mat-autocomplete #diagnosticCentreNameauto="matAutocomplete">
+                                            <mat-option *ngFor="let item of diagnosticCentreList"
+                                              [value]="searcDiagnosticCentre"
+                                              (click)="selectDiagnosticCentre(testReportIndex,item)">
+                                              <div class="d-flex flex-column">
+                                                <p>{{item.diagnosticCentreName}}</p>
+                                                <span>{{item.diagnosticCentreID}}</span>
+                                              </div>
+                                            </mat-option>
+                                          </mat-autocomplete>
+                                          <button class="Delete"
+                                            (click)="unSelectDiagnosticCentreForTestPage(testReportIndex)"
+                                            *ngIf="testReportList().at(testReportIndex).get('diagnosticCentreID')?.value.length">
+                                            <i class="bi-x-circle-fill"></i></button>
+                                        </div>
+                                      </div>
+                                      <div *ngIf="showDiagnosticCentreDetails" class="doctorDetails">
+                                        <div class="row">
+                                          <div class="col-md-8">
+                                            <div class="CollapsePrescribed">
+                                              <ul class="m-d expand-list p-0">
+                                                <li data-md-content="200">
+                                                  <label name="tab" for="tabAddress" tabindex="-1" class="tab_lab w-100"
+                                                    role="tab">
+                                                    <div>
+                                                      <div id="dropdownMenuLink" style="display: flex;">
+                                                        <div>
+                                                          <span>{{selectedDiagnosticCentreDetails.diagnosticCentreName}}</span>
+                                                          <span
+                                                            style="font-size: 12px !important; color: #713bdb;">&nbsp;({{selectedDiagnosticCentreDetails.diagnosticCentreID}})</span>
+                                                        </div>
+                                                      </div>
+                                                    </div>
+                                                  </label>
+                                                  <div class="row">
+                                                    <div class="col-md-12">
+                                                      <div class="doctorCard">
+                                                        <div class="row">
+                                                          <div class="col-md-5">
+                                                            <div class="profileImg">
+                                                              <img
+                                                                [src]="selectedDiagnosticCentreDetails.profilePictureFileName
+                                                                |getFile:selectedDiagnosticCentreDetails.profilePictureFileType">
+                                                            </div>
+                                                          </div>
+                                                          <div class="col-md-7">
+                                                            <table>
+                                                              <tbody>
+                                                                <tr>
+                                                                  <td><i class="bi-geo-alt-fill"></i></td>
+                                                                  <td>
+                                                                    <p [innerHTML]="selectedDiagnosticCentreDetails.addressLine |addressLine" *ngIf="selectedDiagnosticCentreDetails"></p>
+                                                                    <p>{{selectedDiagnosticCentreDetails.landmark}}</p>
+                                                                    <p>
+                                                                    {{selectedDiagnosticCentreDetails.city}} ,
+                                                                    {{selectedDiagnosticCentreDetails.stateName}} -
+                                                                    {{selectedDiagnosticCentreDetails.pincode}}
+                                                                    </p>
+                                                                  </td>
+                                                                </tr>
+                                                                <tr>
+                                                                  <td><i class="bi-telephone-fill"></i></td>
+                                                                  <td>
+                                                                    <b>(P)</b>+91{{selectedDiagnosticCentreDetails.primaryContactNo}}
+                                                                  </td>
+                                                                </tr>
+                                                                <tr
+                                                                  *ngIf="selectedDiagnosticCentreDetails.secondaryContactNo">
+                                                                  <td></td>
+                                                                  <td>
+                                                                    <b>(S)</b>+91{{selectedDiagnosticCentreDetails.secondaryContactNo}}
+                                                                  </td>
+                                                                </tr>
+                                                                <tr
+                                                                  *ngif="selectedDiagnosticCentreDetails.openHoureStart">
+                                                                  <td><i class="bi-clock"></i></td>
+                                                                  <td><b>Open -
+                                                                    </b>{{selectedDiagnosticCentreDetails.openHoureStart}}
+                                                                  </td>
+                                                                </tr>
+                                                                <tr
+                                                                  *ngif="selectedDiagnosticCentreDetails.openHoureEnd">
+                                                                  <td><i class="bi-clock"></i></td>
+                                                                  <td><b>Close -
+                                                                    </b>{{selectedDiagnosticCentreDetails.openHoureEnd}}
+                                                                  </td>
+                                                                </tr>
+                                                              </tbody>
+                                                            </table>
+                                                          </div>
+                                                        </div>
+                                                      </div>
+                                                    </div>
+                                                    <div class="col-md-12 text-end">
+                                                      <button class="Confirm"
+                                                        (click)="selectDiagnosticCentreForTestPage(testReportIndex)">Confirm</button>
+                                                      <button class="Confirm"
+                                                        (click)="unSelectDiagnosticCentre(testReportIndex)">Cancel</button>
+                                                    </div>
+                                                  </div>
+                                                </li>
+                                              </ul>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                      <div class="col-md-4 p-0">
+                                        <div class="form-floating ">
+                                          <input type="text" name="Patient" placeholder="Patient" id="Patient"
+                                            class="form-control" formControlName="patientName"
+                                            [matAutocomplete]="patientNameauto"
+                                            (keyup)="onTypePatientName(testReportIndex)">
+                                          <div class="validation-div errorDiv">
+                                            <app-validation-message
+                                              [control]="getTestReportController(testReportIndex,'patientCode')"
+                                              [messages]="errorMessage.testReport.patientCode">
+                                            </app-validation-message>
+                                          </div>
+                                          <label for="Patient">Patient</label>
+                                          <i class="fa fa-search search" aria-hidden="true"
+                                            *ngIf="!testReportList().at(testReportIndex).get('patientCode')?.value.length"></i>
+                                          <mat-autocomplete #patientNameauto="matAutocomplete">
+                                            <mat-option *ngFor="let item of patientList" [value]="searcPatient"
+                                              (click)="selectPatient(testReportIndex,item)">
+                                              <div class="d-flex flex-column">
+                                                <p>{{item.displayName}}</p>
+                                                <span>{{item.userCode}}</span>
+                                              </div>
+                                            </mat-option>
+                                          </mat-autocomplete>
+                                          <button class="Delete" (click)="unSelectPatientForTestPage(testReportIndex)"
+                                            *ngIf="testReportList().at(testReportIndex).get('patientCode')?.value.length"><i
+                                              class="bi-x-circle-fill"></i></button>
+                                        </div>
+                                      </div>
+                                      <div *ngIf="showPatientDetails" class="doctorDetails">
+                                        <div class="row">
+                                          <div class="col-md-4"></div>
+                                          <div class="col-md-8">
+                                            <div class="CollapsePrescribed">
+                                              <ul class="m-d expand-list p-0">
+                                                <li data-md-content="200">
+                                                  <label name="tab" for="tabAddress" tabindex="-1" class="tab_lab w-100"
+                                                    role="tab">
+                                                    <div>
+                                                      <div id="dropdownMenuLink" style="display: flex;">
+                                                        <div>
+                                                          <span>{{selectedPatientDetails.displayName}}</span>
+                                                          <span
+                                                            style="font-size: 12px !important; color: #713bdb;">&nbsp;({{selectedPatientDetails.userCode}})</span>
+                                                        </div>
+                                                      </div>
+                                                    </div>
+                                                  </label>
+                                                  <div class="row">
+                                                    <div class="col-md-12">
+                                                      <div class="doctorCard">
+                                                        <div class="row">
+                                                          <div class="col-md-5">
+                                                            <div class="profileImg">
+                                                              <img
+                                                                [src]="selectedPatientDetails.profilePictureFileName|getFile:selectedPatientDetails.profilePictureFileType">
+                                                            </div>
+                                                          </div>
+                                                          <div class="col-md-7">
+                                                            <table>
+                                                              <tbody>
+                                                                <tr>
+                                                                  <td></td>
+                                                                  <td>
+                                                                    {{commonService.calculateGender(selectedPatientDetails.gender)}},
+                                                                    {{commonService.calculateAge(selectedPatientDetails.dateOfBirth)}}
+                                                                  </td>
+                                                                </tr>
+                                                                <tr *ngIf="selectedPatientDetails.primaryPhoneno">
+                                                                  <td><i class="bi-telephone-fill"></i></td>
+                                                                  <td><b>(P)</b> +91
+                                                                    {{selectedPatientDetails.primaryPhoneno}}</td>
+                                                                </tr>
+                                                                <tr *ngIf="selectedPatientDetails.secondaryPhoneNo">
+                                                                  <td><i class="bi-telephone-fill"></i></td>
+                                                                  <td><b>(s)</b> +91
+                                                                    {{selectedPatientDetails.secondaryPhoneNo}}</td>
+                                                                </tr>
+                                                              </tbody>
+                                                            </table>
+                                                          </div>
+                                                        </div>
+                                                      </div>
+                                                    </div>
+                                                    <div class="col-md-12 text-end">
+                                                      <button class="Confirm"
+                                                        (click)="selectPatientForTestPage(testReportIndex)">Confirm</button>
+                                                      <button class="Confirm"
+                                                        (click)="unSelectPatient(testReportIndex)">Cancel</button>
+                                                    </div>
+                                                  </div>
+                                                </li>
+                                              </ul>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                      <div class="col-md-3">
+                                        <div class="date text-end">
+                                          <div class="dateInput form-floating "
+                                            [ngClass]="{selectedFormValue : testReport.value.laboratoryTestDate}">
+                                            <label>Lab Test Date</label>
+                                            <input type="date" (focusout)="checkValidDate(testReportIndex)"
+                                              formControlName="laboratoryTestDate" id="matDateInput"
+                                              max="{{currentDate| date:'yyyy-MM-dd' }}">
+                                            <div class="validation-div errorDiv">
+                                              <app-validation-message
+                                                [control]="getTestReportController(testReportIndex,'laboratoryTestDate')"
+                                                [messages]="errorMessage.testReport.laboratoryTestDate">
+                                              </app-validation-message>
+                                            </div>
+                                            <!-- <mat-datepicker-toggle matSuffix [for]="visitDatePicker">
+                                            </mat-datepicker-toggle>
+                                            <mat-datepicker #visitDatePicker></mat-datepicker> -->
+                                          </div>
+                                        </div>
+                                      </div>
+                                      <small>{{testReport.value.diagnosticCentreErrMsg}}</small>
+                                      <div class="col-md-12 patientName mt-2"
+                                        *ngIf="testReport.value.diagnosticCentreID || testReport.value.patientCode">
+                                        <div class="row">
+                                          <div class="col-md-12">
+                                            <div class="nameDisplay">
+                                              <h6 id="companyName" *ngIf="testReport.value.diagnosticCentreID">
+                                                {{testReport.getRawValue().diagnosticCentreName}}</h6>
+                                              <!-- <h6 id="referredName">Referred By : <b>Dr. S. Das,</b></h6> -->
+                                              <h6 id="name" *ngIf="testReport.value.patientCode">
+                                                {{testReport.getRawValue().patientName}}</h6>
+                                              <!-- <h6 id="age">Male, 30 Years</h6> -->
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div formArrayName="testPageList">
+                              <div
+                                *ngFor="let testPage of testPageList(testReportIndex).controls; let testPageIndex = index ">
+                                <div class="MiddleContent " *ngIf="!testPage.value.isDelete">
+                                  <i class="bi-x-circle-fill closeMiddleContent"
+                                    (click)="deleteTestPage(testReportIndex,testPageIndex,testPage.value.isAdd,testReport.value.isAdd)"></i>
+                                  <ng-container formGroupName="{{testPageIndex}}">
+                                    <div class="row">
+                                      <div formArrayName="labtestList" class="col-md-12 position-relative">
+                                        <div
+                                          *ngFor="let labtest of labtestList(testReportIndex,testPageIndex).controls let labtestIndex = index">
+                                          <ng-container formGroupName="{{labtestIndex}}"
+                                            *ngIf="!labtest.value.isDelete">
+                                            <div class="row labtestList">
+                                              <div
+                                                class="col-md-12 p-0 d-flex justify-content-between align-items-start position-relative">
+                                                <div class="w-100 form-floating selectBox"
+                                                  [ngClass]="{selectedFormValue : labtest.getRawValue().testName}">
+                                                  <input type="text" name="TestName" id="TestName" class="one "
+                                                    formControlName="testName" [matAutocomplete]="testNameauto"
+                                                    (keyup)="filterLabtestList(labtest.value.testName,testReportIndex,testPageIndex,labtestIndex,testPage.value.resultType)">
+                                                  <label>laboratory Test Name</label>
+                                                  <div class="validation-div errorDiv">
+                                                    <app-validation-message
+                                                      [control]="getLabtestController(testReportIndex,testPageIndex,labtestIndex,'laboratoryTestCode')"
+                                                      [messages]="errorMessage.testReport.testPageList.labtestList.laboratoryTestCode">
+                                                    </app-validation-message>
+                                                  </div>
+                                                  <mat-autocomplete #testNameauto="matAutocomplete">
+                                                    <mat-option *ngFor="let item of labtest.value.tempLabtestList" [value]="labtest.value.testName"  (click)="selectlabtest(item,testReportIndex,testPageIndex,labtestIndex)">
+                                                      <p>{{item.laboratoryTestName}}</p>
+                                                    </mat-option>
+                                                  </mat-autocomplete>
+                                                </div>
+                                                <div class="w-50 px-1"
+                                                  *ngIf="testPage.value.resultType && !labtest.value.testComponentInd">
+                                                  <div class="Test_Result">
+                                                    <div *ngIf="labtest.value.isNumeric">
+                                                      <div class="form-floating ">
+                                                        <input type="text" name="Test_Result" placeholder="Test_Result"
+                                                          id="Test_Result" class="form-control"
+                                                          (keyup)="labtestNumericResultChange(testReportIndex,testPageIndex,labtestIndex,labtest.value.testResult,labtest.value.isAdd,testPage.value.isAdd,testReport.value.isAdd)"
+                                                          formControlName="testResult">
+                                                        <label for="Test_Result">Test Result</label>
+                                                      </div>
+                                                      <div class="d-flex Numeric mt-1 px-1">
+                                                        <label>Numeric</label>
+                                                      </div>
+                                                      <div class="validation-div errorDiv">
+                                                        <app-validation-message
+                                                          [control]="getLabtestController(testReportIndex,testPageIndex,labtestIndex,'testResult')"
+                                                          [messages]="errorMessage.testReport.testPageList.labtestList.testResult">
+                                                        </app-validation-message>
+                                                      </div>
+                                                    </div>
+                                                    <div *ngIf="!labtest.value.isNumeric">
+                                                      <div class="form-floating ">
+                                                        <input type="text" name="Test_Result" placeholder="Test_Result"
+                                                          id="Test_Result" class="form-control"
+                                                          formControlName="testResultChar"
+                                                          (keyup)="labtestChange(testReportIndex,testPageIndex,labtestIndex,labtest.value.isAdd,testPage.value.isAdd,testReport.value.isAdd)">
+                                                        <label for="Test_Result">Test Result</label>
+                                                      </div>
+                                                      <div class="d-flex Numeric mt-1 px-1">
+                                                        <label>Non Numeric</label>
+                                                      </div>
+                                                    </div>
+                                                  </div>
+                                                  <div class="Numeric d-flex align-items-center">
+                                                    <input type="checkbox" id="isNormal__checkbox{{labtestIndex}}"
+                                                      formControlName="isNormal" class="defaultCheckbox"
+                                                      (change)="labtestChange(testReportIndex,testPageIndex,labtestIndex,labtest.value.isAdd,testPage.value.isAdd,testReport.value.isAdd)">
+                                                    <label for="isNormal__checkbox{{labtestIndex}}">Normal</label>
+                                                  </div>
+                                                  <div class="validation-div errorDiv" style="font-size:9px;">
+                                                    <app-validation-message
+                                                      [control]="getLabtestController(testReportIndex,testPageIndex,labtestIndex,'testResultChar')"
+                                                      [messages]="errorMessage.testReport.testPageList.labtestList.testResultChar">
+                                                    </app-validation-message>
+                                                  </div>
+                                                </div>
+                                                <div class="d-flex Numeric mt-1 px-1 w-100">
+                                                  <div class="benchmarkData">
+                                                    <p>{{labtest.value.benchmark}}</p>
+                                                  </div>
+                                                </div>
+                                              </div>
+                                              <div *ngIf="labtest.value.testComponentInd" class="col-md-12"
+                                                formArrayName="componentList">
+                                                <div class=" row mb-2"
+                                                  *ngFor="let component of componentList(testReportIndex,testPageIndex,labtestIndex).controls; let componentIndex = index">
+                                                  <ng-container formGroupName="{{componentIndex}}">
+                                                    <div class="col-md-12">
+                                                      <div class="row">
+                                                        <div class="col-md-4">
+                                                          <p>{{component.value.componentName}}</p>
+                                                        </div>
+                                                        <div class="col-md-3">
+                                                          <div *ngIf="component.value.isNumeric">
+                                                            <div class="form-floating ">
+                                                              <input type="text" name="Test_Result"
+                                                                placeholder="Test_Result" id="Test_Result"
+                                                                class="form-control"
+                                                                (keyup)="componentNumericResultChange(testReportIndex,testPageIndex,labtestIndex,componentIndex,labtest.value.isAdd,testPage.value.isAdd,testReport.value.isAdd,component.value.componentResult)"
+                                                                formControlName="componentResult">
+                                                              <label for="Test_Result">Test Result</label>
+                                                            </div>
+                                                            <div class="d-flex Numeric mt-1 px-1">
+                                                              <label>Numeric</label>
+                                                            </div>
+                                                            <div class="validation-div errorDiv">
+                                                              <app-validation-message
+                                                                [control]="getComponentController(testReportIndex,testPageIndex,labtestIndex,componentIndex,'componentResult')"
+                                                                [messages]="errorMessage.testReport.testPageList.labtestList.componentList.componentResult">
+                                                              </app-validation-message>
+                                                            </div>
+                                                          </div>
+                                                          <div *ngIf="!component.value.isNumeric">
+                                                            <div class="form-floating ">
+                                                              <input type="text" name="Test_Result"
+                                                                placeholder="Test_Result" id="Test_Result"
+                                                                class="form-control"
+                                                                formControlName="componentResultChar"
+                                                                (keyup)="componentChange(testReportIndex,testPageIndex,labtestIndex,componentIndex,labtest.value.isAdd,testPage.value.isAdd,testReport.value.isAdd)">
+                                                              <label for="Test_Result">Test Result</label>
+                                                            </div>
+                                                            <div class="d-flex Numeric mt-1 px-1">
+                                                              <label>Non Numeric</label>
+                                                            </div>
+                                                          </div>
+                                                          <div class="Numeric d-flex align-items-center">
+                                                            <input type="checkbox"
+                                                              id="isNormal__checkbox{{componentIndex}}"
+                                                              formControlName="isNormal"
+                                                              (change)="componentChange(testReportIndex,testPageIndex,labtestIndex,componentIndex,labtest.value.isAdd,testPage.value.isAdd,testReport.value.isAdd)">
+                                                            <label
+                                                              for="isNormal__checkbox{{componentIndex}}">Normal</label>
+                                                          </div>
+                                                          <div class="validation-div errorDiv">
+                                                            <app-validation-message
+                                                              [control]="getComponentController(testReportIndex,testPageIndex,labtestIndex,componentIndex,'componentResultChar')"
+                                                              [messages]="errorMessage.testReport.testPageList.labtestList.componentList.componentResultChar">
+                                                            </app-validation-message>
+                                                          </div>
+                                                        </div>
+                                                        <div class="col-md-5 Numeric mt-1 px-1">
+                                                          <p>{{component.value.benchmark}}</p>
+                                                        </div>
+                                                      </div>
+                                                    </div>
+                                                  </ng-container>
+                                                </div>
+                                              </div>
+                                              <div class="col-md-1">
+                                                <i class="bi-x-circle-fill labtestListClose"
+                                                  *ngIf="testPage.value.resultType"
+                                                  (click)="deleteLabtest(testReportIndex,testPageIndex,labtestIndex,labtest.value.isAdd,testPage.value.isAdd,testReport.value.isAdd)"></i>
+                                              </div>
+                                            </div>
+                                            <div class="validation-div errorDiv">
+                                              <small style="font-size: 11px;">{{labtest.value.errMsg}}</small>
+                                            </div>
+                                          </ng-container>
+                                        </div>
+                                        <div class="col-md-12 d-flex justify-content-end"
+                                          *ngIf="testPage.value.resultType">
+                                          <h5
+                                            (click)="addAnotherLabtest(testReportIndex,testPageIndex,testPage.value.isAdd,testReport.value.isAdd)">
+                                            +Add Another Test</h5>
+                                        </div>
+                                      </div>
+                                      <div
+                                        class="col-md-4 pageswitchBox d-flex justify-content-between w-100 align-items-center">
+                                        <h3 *ngIf="testPage.value.resultType">Value - Based</h3>
+                                        <h3 *ngIf="!testPage.value.resultType">Observation - Based</h3>
+                                        <div class="d-flex justify-content-end align-items-center">
+                                          <div class="Switch">
+                                            <input type="checkbox" id="current__checkbox" formControlName="resultType"
+                                              (change)="pageResultTypeChange(testReportIndex,testPageIndex,testPage.value.isAdd,testPage.value.resultType,testReport.value.isAdd)">
+                                          </div>
+                                          <h3>Page {{testPageIndex+1}} of {{testPageList(testReportIndex).length}}</h3>
+                                        </div>
+                                      </div>
+                                      <div class="col-md-12 mt-3" *ngIf="!testPage.value.resultType">
+                                        <div class="form-floating ">
+                                          <input type="text" name="Procedure" placeholder="Procedure" id="Procedure"
+                                            class="form-control" formControlName="procedure"
+                                            (keyup)="testPageChange(testReportIndex,testPageIndex,testPage.value.resultType,testReport.value.isAdd)">
+                                          <div class="validation-div errorDiv">
+                                            <app-validation-message
+                                              [control]="getTestPageController(testReportIndex,testPageIndex,'procedure')"
+                                              [messages]="errorMessage.testReport.testPageList.procedure">
+                                            </app-validation-message>
+                                          </div>
+                                          <label for="Procedure">Procedure</label>
+                                        </div>
+                                      </div>
+                                      <div class="col-md-12" *ngIf="!testPage.value.resultType">
+                                        <div class="form-floating ">
+                                          <textarea name="TestFindings" id="TestFindings" cols="30" rows="8"
+                                            placeholder="Test Findings" class="form-control"
+                                            formControlName="testFindings"
+                                            (keyup)="testPageChange(testReportIndex,testPageIndex,testPage.value.resultType,testReport.value.isAdd)"></textarea>
+                                          <div class="validation-div errorDiv">
+                                            <app-validation-message
+                                              [control]="getTestPageController(testReportIndex,testPageIndex,'testFindings')"
+                                              [messages]="errorMessage.testReport.testPageList.testFindings">
+                                            </app-validation-message>
+                                          </div>
+                                          <label for="TestFindings">Test Findings</label>
+                                        </div>
+                                      </div>
+                                      <div class="col-md-12 mt-3" *ngIf="!testPage.value.resultType">
+                                        <div class="form-floating ">
+                                          <input type="text" name="Impression" placeholder="Impression" id="Impression"
+                                            class="form-control" formControlName="impression"
+                                            (keyup)="testPageChange(testReportIndex,testPageIndex,testPage.value.resultType,testReport.value.isAdd)">
+                                          <div class="validation-div errorDiv">
+                                            <app-validation-message
+                                              [control]="getTestPageController(testReportIndex,testPageIndex,'impression')"
+                                              [messages]="errorMessage.testReport.testPageList.impression">
+                                            </app-validation-message>
+                                          </div>
+                                          <label for="Impression">Impression</label>
+                                        </div>
+                                      </div>
+                                      <div class="col-md-12">
+                                        <div class="form-floating ">
+                                          <textarea name="SpecialNotes" id="SpecialNotes" cols="30" rows="6"
+                                            placeholder="Special Notes" class="form-control"
+                                            formControlName="specialNotes"
+                                            (keyup)="testPageChange(testReportIndex,testPageIndex,testPage.value.resultType,testReport.value.isAdd)"></textarea>
+                                          <label for="SpecialNotes">Special Notes</label>
+                                        </div>
+                                      </div>
+                                      <div class="col-md-12 mt-3">
+                                        <div class="d-flex flex-wrap" formArrayName="authorisedSignatoryList">
+                                          <div class="authorisedSignatoryList"
+                                            *ngFor="let authorisedSignatory of authorisedSignatoryList(testReportIndex,testPageIndex).controls; let authorisedSignatoryIndex = index">
+                                            <div *ngIf="!authorisedSignatory.value.isDelete" class="authorisedPadding">
+                                              <ng-container formGroupName="{{authorisedSignatoryIndex}}">
+                                                <div class="drName form-floating selectBox"
+                                                  [ngClass]="{selectedFormValue : authorisedSignatory.getRawValue().physicianName}">
+                                                  <input type="text" name="authorisedSignatoryName" class="one two"
+                                                    formControlName="physicianName">
+                                                  <label for="Test_Result">Authorised Signatory</label>
+                                                  <div class="d-flex align-items-center Signatoryicon">
+                                                    <i class="fa fa-search"
+                                                      *ngIf="!authorisedSignatory.value.physicianCode"
+                                                      (click)="authorisedSignatorySearch(authorisedSignatory.value.physicianName,testReportIndex,testPageIndex,authorisedSignatoryIndex,testReport.value.diagnosticCentreID)"></i>
+                                                    <i class="bi-check-circle-fill"
+                                                      [ngClass]="{'bi-question-circle-fill':!authorisedSignatory.value.physicianCode.length}"></i>
+                                                  </div>
+                                                  <i class="bi-x-circle-fill drNameDelete"
+                                                    (click)="deleteAuthorisedSignatory(testReportIndex,testPageIndex,authorisedSignatoryIndex,authorisedSignatory.value.isAdd,testPage.value.isAdd,testReport.value.isAdd)"></i>
+                                                </div>
+                                                <div class="RightSignature"
+                                                  *ngIf="authorisedSignatory.value.physicianCode.length">
+                                                  <div class="imgDisplay">
+                                                    <img
+                                                      [src]="authorisedSignatory.value.signatureFileName | getFile: authorisedSignatory.value.signatureFileType">
+                                                  </div>
+                                                  <h4>{{authorisedSignatory.getRawValue().physicianName}}</h4>
+                                                  <h4>{{authorisedSignatory.getRawValue().physicianQualification}},
+                                                    {{authorisedSignatory.getRawValue().physicianSpecialisation}}</h4>
+                                                  <p>Reg. No :
+                                                    {{authorisedSignatory.getRawValue().physicianRegistrationNumber}}
+                                                    ({{authorisedSignatory.getRawValue().physicianRegistrationAuthority}})
+                                                  </p>
+                                                </div>
+                                                <div *ngIf="authorisedSignatory.value.tempAuthorisedSignatoryList"
+                                                  class="SignatoryBox">
+                                                  <p class="Signatoryvalue"
+                                                    *ngFor="let item of authorisedSignatory.value.tempAuthorisedSignatoryList"
+                                                    (click)="selectAuthorisedSignatory(item,testReportIndex,testPageIndex,authorisedSignatoryIndex)">
+                                                    {{item.physicianName}} <span>{{item.physicianUserCode}}</span>
+                                                  </p>
+                                                </div>
+                                              </ng-container>
+                                            </div>
+                                            <h2 class="addAnotherAuthorisedSignatory"
+                                              *ngIf="authorisedSignatoryList(testReportIndex,testPageIndex).length === authorisedSignatoryIndex+1"
+                                              (click)="addAnotherAuthorisedSignatory(testReportIndex,testPageIndex,testPage.value.isAdd,testReport.value.isAdd)">
+                                              +Add
+                                              Another Authorised Signatory</h2>
+                                            <div class="validation-div errorDiv">
+                                              <small
+                                                style="font-size: 11px;">{{authorisedSignatory.value.errMsg}}</small>
+                                              <app-validation-message *ngIf="!authorisedSignatory.value.errMsg"
+                                                [control]="getAuthorisedSignatoryController(testReportIndex,testPageIndex,authorisedSignatoryIndex,'physicianCode')"
+                                                [messages]="errorMessage.testReport.testPageList.authorisedSignatoryList.physicianCode">
+                                              </app-validation-message>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </ng-container>
+                                </div>
+                                <div class="validation-div errorDiv">
+                                  <small style="font-size: 11px;">{{testPage.value.errMsg}}</small>
+                                </div>
+                              </div>
+                              <div class="d-flex justify-content-end">
+                                <h2 class="addAnotherPage"
+                                  (click)="addAnotherTestPage(testReportIndex,testReport.value.isAdd)">+Add Another Page
+                                </h2>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </ng-container>
+                    </div>
+                  </div>
+                </form>
+              </div>
+              <div class="footer mt-4 justify-content-between ">
+                <div class="row">
+                  <div class="col-md-8 text-start">
+                    <button (click)="saveLabtest(labTestForm.getRawValue(),labTestForm.valid, true)"
+                      *ngIf="!WorkRequestDetails.isDisabled">
+                      {{ getSubmitButton() }}</button>
+                  </div>
+                  <div class="col-md-4 text-end d-flex justify-content-between">
+                    <button (click)="saveLabtest(labTestForm.getRawValue(),labTestForm.valid)"
+                      *ngIf="!WorkRequestDetails.isDisabled">Save</button>
+                    <button (click)="closePopUp(false)">Cancel</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="px-1 py-4">
+              <div class="EditFile">
+                <div *ngFor="let testReport of testReportList().controls; let testReportIndex = index">
+                  <button (click)="changeViewTestReport(testReportIndex)"
+                    [ngClass]="{active:!testReport.value.isDelete && testReportIndex !== viewTestReportIndex}"
+                    *ngIf="!testReport.value.isDelete"><img src="../../../assets/images/PrescriptionPink.png"></button>
+                </div>
+                <button *ngIf="!WorkRequestDetails.isDisabled" (click)="addAnotherTestReport()"><i
+                    class="bi-plus-circle-fill"></i></button>
+              </div>
+            </div>
+            <div *ngIf="deleteConfirmationBox" class="ConfirmPopupDiv">
+              <div class="ConfirmPopup">
+                <p>This Lab test report will delete permanently</p>
+                <div class="d-flex justify-content-between w-100">
+                  <button (click)="confirmDelete()">Confirm</button>
+                  <button (click)="cancelDelete()">Cancel</button>
+                </div>
+              </div>
+            </div>
+            <div *ngIf="deleteAuthorisedSignatoryConfirmationBox" class="ConfirmPopupDiv">
+              <div class="ConfirmPopup">
+                <p>All authorised signatory will be deleted permanently</p>
+                <div class="d-flex justify-content-between w-100">
+                  <button (click)="clearAuthorisedSignatoryForReport()">Confirm</button>
+                  <button (click)="closePopUpForAuthorisedSignatory()">Cancel</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 d-flex px-1 position-relative somthingWentWrong" *ngIf="somthingWentWrong">
+            <p>Something went wrong, Please try after sometime</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

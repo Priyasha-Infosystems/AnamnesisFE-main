@@ -1,0 +1,93 @@
+<div id="PriceSetup" class="tabcontent">
+  <div class="content">
+    <div class="row">
+      <div class="col-md-7">
+        <div class="displaymainContent">
+          <form [formGroup]="priceSetupForm">
+            <div class="DepartmentGroup" formArrayName="depPriceList"
+              *ngFor=" let priceSetupForm of priceSetupFormList().controls; let priceSetupFormListIndex = index">
+              <ng-container formGroupName="{{ priceSetupFormListIndex }}">
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="wrap d-flex align-items-center w-100">
+                      <div class="form-floating w-100  selectBox"
+                        [ngClass]="{selectedFormValue:priceSetupForm.getRawValue().departmentCode}">
+                        <select formControlName="departmentCode" name="Department-Code"
+                          id="Department-Code floatingSelect" class="appearance-none form-select"
+                          aria-label="Floating label select example">
+                          <!-- <option value="">Select</option> -->
+                          <option *ngFor="let department of departmentList" [value]="department.departmentCode">
+                            {{department.departmentDescription}}</option>
+                        </select>
+                        <label for="floatingSelect">Department</label>
+                      </div>
+                      <i (click)="deletePricingDetails(priceSetupFormListIndex)" class="bi-trash-fill"></i>
+                    </div>
+                    <div class="validation-div errorDiv">
+                      <app-validation-message [control]="getController(priceSetupFormListIndex, 'departmentCode')"
+                        [messages]="errorMessage.departmentCode">
+                      </app-validation-message>
+                    </div>
+                  </div>
+                  <div class="col-md-12">
+                    <div class="test-typeName" formArrayName="priceTestList">
+                      <div
+                        *ngFor="let priceTests of getPriceTestList(priceSetupFormListIndex).controls; let priceTestIndex = index"
+                        class="d-flex align-items-center ">
+                        <ng-container formGroupName="{{ priceTestIndex }}">
+                          <div class="wrap w-75">
+                            <div class="form-floating">
+                              <input type="text" class="form-control one" name="TestName" id="TestName" placeholder=" "
+                                formControlName="test" [matAutocomplete]="testNameauto"
+                                (keyup)="filterLabtestList(priceTests.value.test,priceSetupFormListIndex,priceTestIndex)">
+                              <label for="floatingInput">Test Name</label>
+                            </div>
+                            <div class="validation-div errorDiv">
+                              <small>{{priceTests.value.errMsg}}</small>
+                              <app-validation-message
+                                [control]="getChildController(priceSetupFormListIndex, priceTestIndex, 'testCode')"
+                                [messages]="errorMessage.testCode">
+                              </app-validation-message>
+                            </div>
+                            <mat-autocomplete #testNameauto="matAutocomplete">
+                              <mat-option *ngFor="let item of priceTests.value.tempLabtestList"
+                                [value]="priceTests.value.test">
+                                <p (click)="selectLabtest(item,priceSetupFormListIndex,priceTestIndex)">
+                                  {{item.laboratoryTestPackageDescription}}</p>
+                              </mat-option>
+                            </mat-autocomplete>
+                          </div>
+                          <div class=" w-25">
+                            <div class="px-1 d-flex align-items-center ">
+                              <div class="form-floating">
+                                <input formControlName="price" type="text" name="price" class="form-control"
+                                  placeholder="name@example.com">
+                                <label for="floatingInput">Price</label>
+                              </div>
+                              <i (click)="deleteOrder(priceSetupFormListIndex, priceTestIndex)"
+                                class="bi-trash-fill"></i>
+                            </div>
+                            <div class="validation-div errorDiv">
+                              <app-validation-message
+                                [control]="getChildController(priceSetupFormListIndex, priceTestIndex, 'price')"
+                                [messages]="errorMessage.price">
+                              </app-validation-message>
+                            </div>
+                          </div>
+                        </ng-container>
+                      </div>
+                    </div>
+                    <button (click)="addTestOrder(priceSetupFormListIndex)" class="AddOrder">+Add
+                      More Order</button>
+                  </div>
+                </div>
+              </ng-container>
+            </div>
+            <button (click)="save(priceSetupForm.value, priceSetupForm.valid)" class="Submit">Submit</button>
+            <button (click)="addPricingDetails()" class="AddOrder mb-3">+Add More Pricing Order</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

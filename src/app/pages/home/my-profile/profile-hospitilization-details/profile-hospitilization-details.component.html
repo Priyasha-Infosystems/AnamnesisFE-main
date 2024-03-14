@@ -1,0 +1,79 @@
+<div id="myProfile" class="Information">
+    <div class="row">
+        <div class="col-md-12 mb-3">
+            <div class="d-flex align-items-center">
+                <span>{{ profileIndex }}</span>
+                <h1>Previous Hospitilization Details</h1>
+            </div>
+        </div>
+    </div>
+    <form [formGroup]="hospitalisationParam">
+        <div formArrayName="hospitalisationDetailsInfoList" class="row">
+            <div
+                *ngFor=" let hospitalisationform of getHospitalisationList() .controls; let hospitalisationIndex = index ">
+                <ng-container formGroupName="{{ hospitalisationIndex }}">
+                    <div class="row" *ngIf="isdeleted(hospitalisationIndex)">
+                        <div class="col-md-4 my-2">
+                            <div *ngIf="!isDisbaled(hospitalisationIndex)"
+                                class="form-floating date selectBox selectedFormValue">
+                                <input (focusout)="checkValidDate(hospitalisationIndex)"
+                                    formControlName="hospitalisationDate" max="{{ currentDate | date:'yyyy-MM-dd' }}"
+                                    type="date" name="HospitalizationDate" class="form-control" id="date" />
+                                <label for="date">Hospitalization Date</label>
+                            </div>
+                            <div *ngIf="isDisbaled(hospitalisationIndex)" class="form-floating">
+                                <input [readonly]="isDisbaled(hospitalisationIndex) ? true : false"
+                                    [ngClass]="isDisbaled(hospitalisationIndex) ? 'disable' : ''"
+                                    [value]="getSetDate(hospitalisationIndex)" type="text" name="HospitalizationDate"
+                                    placeholder="Hospitalization Date" id="date" class="form-control">
+                                <label for="date">Hospitalization Date</label>
+                            </div>
+                            <div class="regErrorDiv">
+                                <app-validation-message
+                                    [control]="getController(hospitalisationIndex, 'hospitalisationDate')"
+                                    [messages]="errorMessage.hospitalisationDate">
+                                </app-validation-message>
+                            </div>
+                        </div>
+                        <div class="col-md-8 my-2 d-flex flex-start">
+                            <div class="form-floating col-md-9">
+                                <input (change)="checkValidDate()"
+                                    [readonly]="isDisbaled(hospitalisationIndex) || isHosResDisbaled(hospitalisationIndex) ? true : false"
+                                    [ngClass]="isDisbaled(hospitalisationIndex) || isHosResDisbaled(hospitalisationIndex) ? 'disable' : ''"
+                                    formControlName="hospitalisationReason" type="text" name="Reason"
+                                    placeholder="Reason" id="Reason" class="form-control">
+                                <label for="Reason">Reason</label>
+                                <div class="regErrorDiv">
+                                    <app-validation-message
+                                        [control]="getController(hospitalisationIndex, 'hospitalisationReason')"
+                                        [messages]="errorMessage.hospitalisationReason">
+                                    </app-validation-message>
+                                </div>
+                            </div>
+                            <div *ngIf="!isDisbaled(hospitalisationIndex)" class="form-floating col-md-3 d-flex ">
+                                <button (click)="addHospitalisation(hospitalisationIndex, hospitalisationform.valid)"
+                                    class="add mx-2">{{ getLabel(hospitalisationIndex) }}</button>
+                                <i (click)="deleteHospitalisation(hospitalisationIndex)" style="cursor: pointer;"
+                                    class="bi-trash-fill d-flex align-items-center"></i>
+                            </div>
+                            <div *ngIf="isDisbaled(hospitalisationIndex)"
+                                class="form-floating col-md-3 editableActions d-flex align-items-center">
+                                <i (click)="editHospitalisation(hospitalisationIndex)"
+                                    style="margin-right: 15px; cursor: pointer;" class="bi-pencil-fill"></i>
+                                <i (click)="deleteHospitalisation(hospitalisationIndex)" style="cursor: pointer;"
+                                    class="bi-trash-fill"></i>
+                            </div>
+                        </div>
+                    </div>
+                </ng-container>
+            </div>
+            <div class="col-md-12 my-2 d-flex align-items-end flex-column text-end">
+                <div class="col-md-4">
+                    <h3 (click)="addHospitalizationDetails()">+Add Hospitalization Details</h3>
+                </div>
+                <input (click)="save(hospitalisationParam.value, hospitalisationParam.valid)" class="mt-2" type="submit"
+                    value="Save & Continue">
+            </div>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,1490 @@
+.tabcontent {
+    float: left;
+    padding: 2.1875rem 0.75rem;
+    width: 100%;
+    border-left: none;
+    height: 100%;
+}
+
+#Authorize .List-2 .viewIcon {
+    display: unset !important;
+    height: 0px !important;
+    width: unset !important;
+    right: 1.1875rem !important;
+}
+
+.tabcontent h3 {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 1.875rem;
+    line-height: 33px;
+    color: #434242;
+    padding-bottom: 3%;
+}
+
+.doctorCard i {
+    font-size: 0.625rem;
+    padding-right: 0.3125rem;
+    color: #edb738;
+}
+
+.tabcontent p {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 0.875rem;
+    line-height: 1.125rem;
+    color: #474545;
+}
+
+#Authorize .List {
+    background: #FFFFFF;
+    border: 1px solid #EDB738;
+    box-shadow: 0px 8px 1.125rem 5px rgba(253, 217, 134, 0.33);
+    border-radius: 11px;
+    padding: 0.9375rem;
+}
+
+#Authorize .List .srl {
+    min-height: 315px; 
+    padding: 0rem 0.375rem 0.5rem 0rem;
+    max-height: 28.5625rem;
+    overflow-y: auto;
+}
+
+#Authorize ::-webkit-scrollbar {
+    width: 0.3125rem;
+    margin: 0.3125rem;
+}
+
+#Authorize ::-webkit-scrollbar-track {
+    background: rgba(253, 250, 242, 0.79);
+    box-shadow: 0px 4px 4px rgba(253, 217, 134, 0.77);
+    border-radius: 32px;
+}
+
+#Authorize ::-webkit-scrollbar-thumb {
+    background: #E7A814;
+    border-radius: 0.625rem;
+}
+
+#Authorize ::-webkit-scrollbar-thumb:hover {
+    background: #c58d0a;
+}
+
+#Authorize .Dr-list {
+    background: rgba(255, 244, 219, 0.79);
+    border: 1px solid rgba(231, 168, 20, 0.51);
+    box-shadow: 0px 11px 34px -5px rgba(215, 167, 55, 0.19);
+    border-radius: 0.625rem;
+    padding: 0.625rem 1.0625rem 0.375rem 1.0625rem;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    position: relative;
+    width: 100%;
+    margin-bottom: 0.75rem;
+}
+
+#Authorize .Dr-list h6 {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 0.8125rem;
+    line-height: 110%;
+    color: #404040;
+    margin: 0px 0px 0.3125rem 0.5rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+#Authorize .Dr-list h5 {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 0.8125rem;
+    line-height: 112%;
+    color: #404040;
+    margin: 0rem 0.5rem 0.3125rem 0rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+#Authorize .Dr-list i {
+    color: #E7A814;
+    font-size: 0.875rem;
+    cursor: pointer;
+}
+
+#Authorize .Dr-list img {
+    vertical-align: revert !important;
+    max-width: 1rem;
+}
+
+#Authorize .Dr-list p {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 0.8125rem;
+    line-height: 110%;
+    color: #BF8B11;
+    margin: 0rem 0.5rem 0rem 0.5rem;
+}
+
+#Authorize .Suraks {
+    background: #F2ECFF !important;
+    border: 1px solid rgba(113, 59, 219, 0.18) !important;
+    box-shadow: 0px 11px 34px -0.3125rem rgb(113 59 219 / 21%) !important;
+    padding: 0.625rem 1.0625rem 0.625rem 1.0625rem;
+}
+
+.List-2 .Dr-list {
+    padding: 0.625rem 1.0625rem 0.625rem 44px !important;
+}
+
+#Authorize .Suraks p {
+    color: #713BDB;
+}
+
+#Authorize .Suraks i {
+    background: #713BDB;
+    box-shadow: 0px 4px 0.5rem rgb(113 59 219 / 51%);
+}
+
+#Authorize .List h4 {
+    font-weight: 700;
+    font-size: 1rem;
+    line-height: 110%;
+    color: #484747;
+    padding: 0.75rem 0rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+#Authorize .Suraksha {
+    padding: 0.8125rem 1.0625rem 0rem 1.0625rem;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    position: relative;
+    width: 100%;
+    background: #F2ECFF;
+    border: 1px solid rgba(113, 59, 219, 0.18);
+    box-shadow: 0px 11px 34px -0.3125rem rgba(113, 59, 219, 0.21);
+    border-radius: 0.625rem;
+}
+
+#Authorize .Suraksha h6 {
+    display: inline-block;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 0.8125rem;
+    line-height: 110%;
+    color: #404040;
+    margin: 0rem 0.5rem 0rem 0.5rem;
+}
+
+#Authorize .Suraksha i {
+    float: right;
+    background: #713BDB;
+    box-shadow: 0px 4px 0.5rem rgba(113, 59, 219, 0.51);
+    border-radius: 100%;
+    height: 1.875rem;
+    width: 1.875rem;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    position: absolute;
+    right: 0.5rem;
+    cursor: pointer;
+    padding: 0.75rem;
+    font-size: 0.75rem;
+}
+
+#Authorize .Suraksha img {
+    vertical-align: revert !important;
+}
+
+#Authorize .Suraksha p {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 0.8125rem;
+    line-height: 110%;
+    color: #713BDB;
+}
+
+#Authorize .Suraksha .fa-chevron-left {
+    left: 0.5rem !important;
+    padding: 0.625rem;
+}
+
+
+#Authorize .Check input {
+    font-family: 'Poppins';
+    width: 100%;
+    background: #F2ECFF;
+    border: 1px solid rgba(113, 59, 219, 0.18);
+    box-shadow: 0px 11px 34px -5px rgb(113 59 219 / 21%);
+    border-radius: 6px;
+    padding: 1.5625rem 0.875rem 0.5625rem 0.875rem;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 0.875rem;
+    line-height: 107%;
+    color: #713BDB;
+    outline: none;
+}
+
+#Authorize .Check {
+    width: 100%;
+}
+
+#Authorize .Check input {
+    color: rgb(113 59 219 / 100%);
+}
+
+#Authorize .Check label {
+    color: rgb(113 59 219 / 63%);
+    width: 100%;
+    padding: 1.125rem 0.9375rem;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 0.875rem;
+    line-height: 107%;
+}
+
+#Authorize .Check .Dr-id {
+    outline: none;
+    border: none;
+    background: none;
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 1.125rem;
+    line-height: 22px;
+    color: #4F4E4E;
+}
+
+#Authorize .submit {
+    width: 7.6875rem;
+    height: 3.8125rem;
+    left: 85.1875rem;
+    top: 14.3125rem;
+    background: #EDB738;
+    box-shadow: 0px 11px 34px -5px rgba(253, 217, 134, 0.79);
+    border-top-right-radius: 0.8125rem;
+    border-bottom-right-radius: 0.8125rem;
+    border: none;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 1rem;
+    line-height: 110%;
+    color: #FFFFFF;
+    letter-spacing: 0.5px;
+}
+
+#Authorize .List-2 {
+    background: rgba(255, 255, 255, 0.79);
+    border: 1px solid rgba(190, 190, 190, 0.46);
+    border-radius: 0.75rem;
+    padding: 0.5625rem;
+}
+
+.Suraks i {
+    background: #713BDB !important;
+    color: #fff !important;
+    box-shadow: 0px 4px 8px rgba(113, 59, 219, 0.51) !important;
+}
+
+#Authorize .List-2 i {
+    border-radius: 100% !important;
+    height: 1.875rem !important;
+    width: 1.875rem !important;
+    display: flex !important;
+    align-items: center !important;
+    position: absolute !important;
+    right: 0.5rem !important;
+    cursor: pointer !important;
+    padding: 0.625rem;
+    font-size: 0.75rem !important;
+}
+
+#Authorize .fa-chevron-left {
+    left: 0.375rem !important;
+    padding: 0.625rem;
+}
+
+#Authorize .scroll-2 {
+    min-height: 290px;
+    max-height: 48.6875rem;
+    padding: 0.5625rem;
+    overflow: auto;
+}
+
+#Authorize .submit-btn {
+    width: 12rem;
+    height: 3.0625rem;
+    margin-top: 0.875rem !important;
+    background: #EDB738;
+    box-shadow: 0px 11px 34px -5px rgba(253, 217, 134, 0.79);
+    border-radius: 7px;
+    border: none;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 0.875rem;
+    line-height: 110%;
+    color: #FFFFFF;
+}
+
+#Authorize .Test-Reports {
+    background: #FFFFFF;
+    border: 1px solid #713BDB;
+    box-shadow: 0px 4px 28px 5px rgba(113, 59, 219, 0.23);
+    border-radius: 11px;
+    margin-top: 1.0625rem;
+    padding: 0.9375rem;
+}
+
+#Authorize .Test-Reports h4 {
+    font-weight: 700;
+    font-size: 1rem;
+    line-height: 110%;
+    color: #484747;
+    padding: 0rem 0rem 0.75rem 0rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+#Authorize .Test-Reports .scroll-Test {
+    min-height: 315px;
+    max-height: 28.5625rem;
+    overflow: auto;
+    padding: 0rem 0.3125rem 0rem 0rem;
+}
+
+#Authorize .Dr-name {
+    list-style-type: none;
+    padding: 0.625rem 0.9375rem 0.625rem 0.9375rem;
+    position: relative;
+    background: #fff6e3;
+    border: 1px solid rgb(231 168 20 / 59%);
+    box-shadow: 8px 8px 11px rgb(231 168 20 / 36%);
+    border-radius: 0.625rem;
+    margin: -0.875rem 0rem 0.375rem 0rem;
+}
+
+#Authorize .Dr-name h1 {
+    margin: 0;
+    font-weight: 800;
+    font-size: 0.875rem;
+    line-height: 1.125rem;
+    color: #474545;
+}
+
+#Authorize .Dr-name h6 {
+    font-size: 0.75rem;
+    margin: 0; 
+    font-family: 'Inter';
+    font-style: normal;
+    line-height: 1.125rem;
+    color: #474545;
+}
+
+#Authorize .Dr-name h5 {
+    font-size: 0.875rem;
+    margin: 0; 
+    font-family: 'Inter';
+    font-style: normal;
+    line-height: 1.125rem;
+    color: #474545;
+}
+
+#Authorize .Dr-name h4 {
+    font-weight: 700;
+    font-size: 1rem;
+    line-height: 110%;
+    color: #484747;
+    padding: 0.75rem 0rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+#Authorize .Dr-name i {
+    cursor: pointer;
+    color: #C00000 !important;
+}
+
+#Authorize .Dr-name .idNo {
+    width: fit-content;
+    min-width: 145px !important;
+    background: #edb738;
+    border-radius: 3px;
+    padding: 0.3125rem 12px;
+    display: flex;
+    justify-content: center;
+}
+
+#Authorize .Dr-name h6 span {
+    color: #cb9821;
+}
+
+#Authorize .Test-Reports .scroll-Test .Dr-list {
+    padding: 0.9375rem 1.0625rem 0.9375rem 1.0625rem;
+    display: flex;
+    align-items: center;
+    position: relative;
+    width: 100%;
+    background: #F2ECFF;
+    border: 1px solid rgba(113, 59, 219, 0.18);
+    box-shadow: 0px 11px 34px -5px rgba(113, 59, 219, 0.21);
+    border-radius: 0.625rem;
+    justify-content: flex-start;
+}
+
+#Authorize .Test-Reports .scroll-Test .Dr-list h6 {
+    display: inline-block;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 0.8125rem;
+    line-height: 110%;
+    color: #404040;
+    margin: 0rem 0.5rem 0.3125rem 0.5rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    width: 90%;
+}
+
+#Authorize .Dr-list .fa-chevron-right {
+    float: right;
+    background: #E7A814;
+    box-shadow: 0px 4px 8px #e7a8145e;
+    border-radius: 100%;
+    height: 1.875rem;
+    width: 1.875rem;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    position: absolute;
+    right: 0.5rem;
+    cursor: pointer;
+    padding: 0.75rem;
+    font-size: 0.75rem;
+}
+
+#Authorize .Dr-list .fa-chevron-left {
+    float: right;
+    background: #E7A814;
+    box-shadow: 0px 4px 8px #e7a8145e;
+    border-radius: 100%;
+    height: 1.875rem;
+    width: 1.875rem;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    position: absolute;
+    right: 0.5rem;
+    cursor: pointer;
+    padding: 0.75rem;
+    font-size: 0.75rem;
+}
+
+#Authorize .Test-Reports .scroll-Test .Dr-list i {
+    float: right;
+    background: #713BDB;
+    box-shadow: 0px 4px 8px rgba(113, 59, 219, 0.51);
+    border-radius: 100%;
+    height: 1.875rem;
+    width: 1.875rem;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    position: absolute;
+    right: 0.5rem;
+    cursor: pointer;
+    padding: 0.75rem;
+    font-size: 0.75rem;
+}
+
+#Authorize .Test-Reports .scroll-Test .Dr-list img {
+    vertical-align: revert !important;
+    max-width: 1rem;
+}
+
+#Authorize .Test-Reports .scroll-Test .Dr-list p {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 0.8125rem;
+    line-height: 110%;
+    color: #713BDB;
+}
+
+#Authorize .Test-Reports ::-webkit-scrollbar {
+    width: 0.3125rem;
+    margin: 0.3125rem;
+}
+
+#Authorize .Test-Reports ::-webkit-scrollbar-track {
+    background: #EAECFC;
+    box-shadow: 0px 4px 4px rgba(173, 181, 239, 0.58);
+    border-radius: 32px;
+}
+
+#Authorize .Test-Reports ::-webkit-scrollbar-thumb {
+    background: #713BDB;
+    border-radius: 8px;
+    transform: rotate(-90deg);
+}
+
+#Authorize .Test-Reports ::-webkit-scrollbar-thumb:hover {
+    background: #5624ba;
+}
+
+
+#Authorize .List h4 {
+    font-weight: 700;
+    font-size: 1rem;
+    line-height: 110%;
+    color: #484747;
+    padding: 0rem 0rem 0.75rem 0rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+#Authorize .doctorDetails .CollapsePrescribed .m-d.expand-list>li {
+    list-style-type: none;
+    padding: 1.25rem 0.9375rem 0.625rem 0.9375rem;
+    position: relative;
+    background: #fff6e3;
+    border: 1px solid rgb(231 168 20 / 59%);
+    box-shadow: 8px 8px 11px rgb(231 168 20 / 36%);
+    border-radius: 0.625rem;
+    margin-top: -0.9375rem;
+}
+
+#Authorize .doctorDetails .CollapsePrescribed .m-d.expand-list>li label h5 {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 1.125rem;
+    line-height: 1.3;
+    color: #3a3a3a;
+    margin: 0;
+}
+
+#Authorize .doctorDetails .doctorCard {
+    margin: 0.9375rem 0rem 0rem 0rem;
+    border: 1px solid rgb(231 168 20 / 39%);
+    border-radius: 5px;
+    padding: 0.3125rem 0.625rem;
+}
+
+#Authorize .doctorDetails .profileImg {
+    height: 6.25rem;
+    width: 6.25rem;
+    border-radius: 7%;
+    overflow: hidden;
+}
+
+#Authorize .doctorDetails .profileImg img {
+    height: 100%;
+    width: 100%;
+}
+
+#Authorize .doctorDetails .dropdown ul {
+    width: 100%;
+}
+
+#Authorize .doctorDetails .dropdown a {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 1.125rem;
+    line-height: 1.3;
+    color: #3a3a3a !important;
+    margin: 0;
+    background: none;
+    border: none;
+    outline: none;
+    width: 100%;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#Authorize .doctorDetails .dropdown a span {
+    font-size: 0.75rem !important;
+    color: #713bdb;
+}
+
+#Authorize .doctorDetails .dropdown li a:hover {
+    background: #e7dbc2;
+}
+
+#Authorize .doctorDetails .doctorCard p {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 0.8125rem;
+    line-height: 140.5%;
+    color: #484747;
+    margin: 0;
+}
+
+#Authorize .doctorDetails .doctorCard p i {
+    color: #e7a814;
+    padding-right: 0.25rem;
+}
+
+#Authorize .doctorDetails .doctorCard h5 {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 1.125rem;
+    line-height: 1.3;
+    color: #3a3a3a !important;
+}
+
+#Authorize .doctorDetails .Confirm {
+    background: #EDB738;
+    box-shadow: 0px 6px 6px -5px rgb(187 153 74 / 79%);
+    border: none;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 0.8125rem;
+    line-height: 110%;
+    color: #FFFFFF;
+    letter-spacing: 0.5px;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    margin-top: 0.625rem;
+}
+
+#Authorize .autocomplete {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+}
+
+#Authorize .autocomplete input {
+    border: 1px solid transparent;
+    background-color: #f1f1f1;
+    padding: 0.625rem;
+    font-size: 1rem;
+}
+
+#Authorize .autocomplete input[type=text] {
+    background-color: #f1f1f1;
+    width: 100%;
+}
+
+
+#Authorize .autocomplete-items {
+    position: absolute;
+    border-bottom: none;
+    border: none;
+    z-index: 99;
+    top: 3.1875rem;
+    left: 0;
+    right: 0;
+    height: 24.6875rem;
+    overflow: auto;
+}
+
+#Authorize .autocomplete-items div {
+    padding: 0.625rem;
+    cursor: pointer;
+    background-color: rgba(255, 255, 255, 1);
+    border: 1px solid #d4d4d4;
+    border-top: none;
+}
+
+#Authorize .autocomplete-items div span {
+    font-size: 0.75rem !important;
+    color: #713bdb;
+}
+
+#Authorize .autocomplete-items div:hover {
+    background-color: #e7dbc2;
+}
+
+#Authorize .autocomplete-active {
+    background-color: #e7dbc2 !important;
+    color: #ffffff;
+}
+
+
+#Authorize::ng-deep.mat-form-field {
+    width: 100%;
+}
+
+#Authorize::ng-deep.mat-form-field-underline {
+
+    background-color: rgba(0, 128, 0, 0) !important;
+}
+
+#Authorize::ng-deep.mat-form-field-ripple {
+
+    background-color: rgba(0, 128, 0, 0) !important;
+}
+
+#Authorize::ng-deep.mat-form-field-wrapper {
+    padding: 0 !important;
+}
+
+#Authorize::ng-deep.mat-form-field-infix {
+    border: none !important;
+}
+
+#Authorize::ng-deep mat-label {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 1rem;
+    color: #713BDB;
+    padding-bottom: 3%;
+}
+
+#Authorize::ng-deep.mat-form-field-should-float {
+    padding-top: 0.3125rem;
+}
+
+.modal {
+    display: block;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(26 24 42 / 78%);
+}
+
+#myModal::-webkit-scrollbar {
+    width: 0px;
+}
+
+.searchicn {
+    height: 100%;
+    position: absolute;
+    top: 0;
+    right: 0.3125rem;
+    display: flex;
+    align-items: center;
+}
+
+.searchicn i {
+    color: #713bdb;
+    margin-right: 0.5rem;
+}
+
+td {
+    font-size: 0.6875rem;
+}
+
+@media (max-width:768px) {
+    #Authorize .Check input {
+        height: 2.6875rem;
+        font-size: 0.75rem;
+        padding: 1.0625rem 0.875rem 0.5rem 1rem;
+    }
+
+    #Authorize .Check label {
+        color: rgb(113 59 219 / 63%);
+        width: 100%;
+        padding: 0.9375rem 0.9375rem 0.625rem 0.9375rem;
+        font-size: 0.75rem;
+    }
+
+    ::ng-deep.mat-option-text {
+        font-family: 'Poppins';
+        font-style: normal;
+        font-weight: 500;
+        font-size: 0.875rem;
+        color: #2c2b2b;
+    }
+
+    .CollapsePrescribed {
+        position: absolute;
+        width: 45%;
+    }
+
+    #Authorize .doctorDetails .CollapsePrescribed .m-d.expand-list>li {
+        padding: 0.5rem 0.625rem 0.625rem 0.625rem;
+        border-radius: 6px;
+    }
+
+    #dropdownMenuLink span {
+        font-family: 'Poppins';
+        font-style: normal;
+        font-weight: 500;
+        font-size: 0.875rem;
+        color: #2c2b2b;
+    }
+
+    #Authorize .doctorDetails .doctorCard {
+        margin: 0.5rem 0px 0px 0px;
+        padding: 4px 7px;
+    }
+
+    #Authorize .doctorDetails .profileImg {
+        height: 4.75rem;
+        width: 4.9375rem;
+    }
+
+    .doctorCard i {
+        font-size: 0.5625rem;
+        padding-right: 0.1875rem;
+    }
+
+    td {
+        font-size: 0.5625rem;
+        font-weight: 600;
+    }
+
+    #Authorize .doctorDetails .Confirm {
+        font-size: 0.625rem;
+        padding: 0.375rem 0.5625rem;
+        border-radius: 3px;
+    }
+
+    #Authorize .Dr-name h1 {
+        font-size: 0.75rem;
+    }
+
+    #Authorize .Dr-name h5 {
+        font-size: 0.75rem;
+    }
+
+    #Authorize .Dr-name h6 {
+        font-size: 0.6875rem;
+    }
+
+    #Authorize .Dr-name .idNo {
+        border-radius: 2px;
+        padding: 0.1875rem 0rem;
+    }
+
+    #Authorize .Dr-name {
+        padding: 0.4375rem 0.625rem 0.4375rem 0.625rem;
+        border-radius: 6px;
+    }
+
+    #Authorize .List h4 {
+        font-size: 0.875rem;
+        padding: 0.5rem 0rem;
+    }
+
+    #Authorize .List .srl {
+        height: 16.25rem;
+    }
+
+    #Authorize .Test-Reports .scroll-Test {
+        height: 16.25rem;
+    }
+
+    #Authorize .scroll-2 {
+        height: 31.5625rem;
+        padding: 0.2rem 0rem;
+    }
+
+    #Authorize .Dr-list {
+        border-radius: 7px;
+        padding: 0.375rem 0.375rem 0.375rem 0.4375rem !important;
+        margin-bottom: 0.5rem;
+    }
+
+    #Authorize .Dr-list img {
+        max-width: 0.8125rem;
+    }
+
+    #Authorize .Dr-list h6 {
+        line-height: 1.9;
+        margin: 0rem 0rem 0.1875rem 0.3125rem;
+        font-size: 0.7rem !important;
+    }
+
+    #Authorize .Dr-list h5 {
+        font-size: 0.5625rem;
+        margin: 0.4375rem 0.125rem 0.0625rem 0rem;
+        display: -webkit-box;
+        -webkit-line-clamp: 1;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        line-height: 1.1;
+        margin-bottom: 9px;
+    }
+
+    #Authorize .Dr-list p {
+        font-size: 0.625rem;
+        margin: 0rem 0.5rem 0rem 0.375rem;
+    }
+
+    #Authorize .Dr-list i {
+        font-size: 0.75rem;
+    }
+
+    #Authorize .List {
+        padding: 0.625rem;
+    }
+
+    #Authorize .Dr-list .fa-chevron-right {
+        height: 1.25rem;
+        width: 1.25rem;
+        right: 0.375rem;
+        padding: 0.375rem 0.4375rem 0.3125rem 0.5rem;
+        font-size: 0.5625rem;
+    }
+
+    #Authorize .Dr-list .fa-chevron-left {
+        height: 1.25rem !important;
+        width: 1.25rem !important;
+        right: 0.375rem !important;
+        padding: 0.1688rem 0rem 0.1875rem 0.4375rem !important;
+        font-size: 0.5625rem !important;
+    }
+
+    #Authorize .List-2 .viewIcon {
+        display: unset !important;
+        height: 0px !important;
+        width: unset !important;
+        right: 0.4375rem !important;
+    }
+
+    #Authorize .List-2 .Dr-list {
+        padding: 0.375rem 0.375rem 0.375rem 1.4375rem !important;
+    }
+}
+
+@media (min-width:769px) and (max-width:1024px) {
+    #Authorize .Check input {
+        height: 2.6875rem;
+        font-size: 0.75rem;
+        padding: 1.0625rem 0.875rem 0.5rem 1rem;
+    }
+
+    #Authorize .Check label {
+        color: rgb(113 59 219 / 63%);
+        width: 100%;
+        padding: 0.9375rem 0.9375rem 0.625rem 0.9375rem;
+        font-size: 0.75rem;
+    }
+
+    ::ng-deep.mat-option-text {
+        font-family: 'Poppins';
+        font-style: normal;
+        font-weight: 500;
+        font-size: 0.875rem;
+        color: #2c2b2b;
+    }
+
+    .CollapsePrescribed {
+        position: absolute;
+        width: 45%;
+    }
+
+    #Authorize .doctorDetails .CollapsePrescribed .m-d.expand-list>li {
+        padding: 0.5rem 0.625rem 0.625rem 0.625rem;
+        border-radius: 6px;
+    }
+
+    #dropdownMenuLink span {
+        font-family: 'Poppins';
+        font-style: normal;
+        font-weight: 500;
+        font-size: 0.875rem;
+        color: #2c2b2b;
+    }
+
+    #Authorize .doctorDetails .doctorCard {
+        margin: 0.5rem 0px 0px 0px;
+        padding: 4px 7px;
+    }
+
+    #Authorize .doctorDetails .profileImg {
+        height: 4.75rem;
+        width: 4.9375rem;
+    }
+
+    .doctorCard i {
+        font-size: 0.5625rem;
+        padding-right: 0.1875rem;
+    }
+
+    td {
+        font-size: 0.5625rem;
+        font-weight: 600;
+    }
+
+    #Authorize .doctorDetails .Confirm {
+        font-size: 0.625rem;
+        padding: 0.375rem 0.5625rem;
+        border-radius: 3px;
+    }
+
+    #Authorize .Dr-name h1 {
+        font-size: 0.75rem;
+    }
+
+    #Authorize .Dr-name h5 {
+        font-size: 0.75rem;
+    }
+
+    #Authorize .Dr-name h6 {
+        font-size: 0.6875rem;
+    }
+
+    #Authorize .Dr-name .idNo {
+        border-radius: 2px;
+        padding: 0.1875rem 0rem;
+    }
+
+    #Authorize .Dr-name {
+        padding: 0.4375rem 0.625rem 0.4375rem 0.625rem;
+        border-radius: 6px;
+    }
+
+    #Authorize .List h4 {
+        font-size: 0.875rem;
+        padding: 0.5rem 0rem;
+    }
+
+    #Authorize .List .srl {
+        height: 16.25rem;
+    }
+
+    #Authorize .Test-Reports .scroll-Test {
+        height: 16.25rem;
+    }
+
+    #Authorize .scroll-2 {
+        height: 31.5625rem;
+        padding: 0.2rem 0rem;
+    }
+
+    #Authorize .Dr-list {
+        border-radius: 7px;
+        padding: 0.375rem 1.375rem 0.375rem 0.4375rem !important;
+        margin-bottom: 0.5rem;
+    }
+
+    #Authorize .Dr-list img {
+        max-width: 0.8125rem;
+    }
+
+    #Authorize .Dr-list h6 {
+        line-height: 1.9;
+        margin: 0rem 0rem 0.1875rem 0.3125rem;
+        font-size: 0.7rem !important;
+    }
+
+    #Authorize .Dr-list h5 {
+        font-size: 0.5625rem;
+        margin: 0.4375rem 0.125rem 0.0625rem 0rem;
+        display: -webkit-box;
+        -webkit-line-clamp: 1;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        line-height: 1.1;
+        margin-bottom: 9px;
+    }
+
+    #Authorize .Dr-list p {
+        font-size: 0.625rem;
+        margin: 0rem 0.5rem 0rem 0.375rem;
+    }
+
+    #Authorize .Dr-list i {
+        font-size: 0.75rem;
+    }
+
+    #Authorize .List {
+        padding: 0.625rem;
+    }
+
+    #Authorize .Dr-list .fa-chevron-right {
+        height: 1.25rem;
+        width: 1.25rem;
+        right: 0.375rem;
+        padding: 0.375rem 0.4375rem 0.3125rem 0.5rem;
+        font-size: 0.5625rem;
+    }
+
+    #Authorize .Dr-list .fa-chevron-left {
+        height: 1.25rem !important;
+        width: 1.25rem !important;
+        right: 0.375rem !important;
+        padding: 0.1688rem 0rem 0.1875rem 0.4375rem !important;
+        font-size: 0.5625rem !important;
+    }
+
+    #Authorize .List-2 .viewIcon {
+        display: unset !important;
+        height: 0px !important;
+        width: unset !important;
+        right: 0.4375rem !important;
+    }
+
+    #Authorize .List-2 .Dr-list {
+        padding: 0.375rem 0.375rem 0.375rem 1.4375rem !important;
+    }
+}
+
+@media (max-width:820px) {
+
+    #Authorize .Check input {
+        height: 2.6875rem;
+        font-size: 0.75rem;
+        padding: 1.0625rem 0.875rem 0.5rem 1rem;
+    }
+
+    #Authorize .Check label {
+        color: rgb(113 59 219 / 63%);
+        width: 100%;
+        padding: 0.9375rem 0.9375rem 0.625rem 0.9375rem;
+        font-size: 0.75rem;
+    }
+
+    ::ng-deep.mat-option-text {
+        font-family: 'Poppins';
+        font-style: normal;
+        font-weight: 500;
+        font-size: 0.875rem;
+        color: #2c2b2b;
+    }
+
+    .CollapsePrescribed {
+        position: absolute;
+        width: 45%;
+    }
+
+    #Authorize .doctorDetails .CollapsePrescribed .m-d.expand-list>li {
+        padding: 0.5rem 0.625rem 0.625rem 0.625rem;
+        border-radius: 6px;
+    }
+
+    #dropdownMenuLink span {
+        font-family: 'Poppins';
+        font-style: normal;
+        font-weight: 500;
+        font-size: 0.875rem;
+        color: #2c2b2b;
+    }
+
+    #Authorize .doctorDetails .doctorCard {
+        margin: 0.5rem 0px 0px 0px;
+        padding: 4px 7px;
+    }
+
+    #Authorize .doctorDetails .profileImg {
+        height: 4.75rem;
+        width: 4.9375rem;
+    }
+
+    .doctorCard i {
+        font-size: 0.5625rem;
+        padding-right: 0.1875rem;
+    }
+
+    td {
+        font-size: 0.5625rem;
+        font-weight: 600;
+    }
+
+    #Authorize .doctorDetails .Confirm {
+        font-size: 0.625rem;
+        padding: 0.375rem 0.5625rem;
+        border-radius: 3px;
+    }
+
+    #Authorize .Dr-name h1 {
+        font-size: 0.75rem;
+    }
+
+    #Authorize .Dr-name h5 {
+        font-size: 0.75rem;
+    }
+
+    #Authorize .Dr-name h6 {
+        font-size: 0.6875rem;
+    }
+
+    #Authorize .Dr-name .idNo {
+        border-radius: 2px;
+        padding: 0.1875rem 0rem;
+    }
+
+    #Authorize .Dr-name {
+        padding: 0.4375rem 0.625rem 0.4375rem 0.625rem;
+        border-radius: 6px;
+    }
+
+    #Authorize .List h4 {
+        font-size: 0.875rem;
+        padding: 0.5rem 0rem;
+    }
+
+    #Authorize .List .srl {
+        height: 16.25rem;
+    }
+
+    #Authorize .Test-Reports .scroll-Test {
+        height: 16.25rem;
+    }
+
+    #Authorize .scroll-2 {
+        height: 31.5625rem;
+        padding: 0.2rem 0rem;
+    }
+
+    #Authorize .Dr-list {
+        border-radius: 7px;
+        padding: 0.375rem 0.375rem 0.375rem 0.4375rem !important;
+        margin-bottom: 0.5rem;
+    }
+
+    #Authorize .Dr-list img {
+        max-width: 0.8125rem;
+    }
+
+    #Authorize .Dr-list h6 {
+        line-height: 1.9;
+        margin: 0rem 0rem 0.1875rem 0.3125rem;
+        font-size: 0.7rem !important;
+    }
+
+    #Authorize .Dr-list h5 {
+        font-size: 0.5625rem;
+        margin: 0.4375rem 0.125rem 0.0625rem 0rem;
+        display: -webkit-box;
+        -webkit-line-clamp: 1;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        line-height: 1.1;
+        margin-bottom: 9px;
+    }
+
+    #Authorize .Dr-list p {
+        font-size: 0.625rem;
+        margin: 0rem 0.5rem 0rem 0.375rem;
+    }
+
+    #Authorize .Dr-list i {
+        font-size: 0.75rem;
+    }
+
+    #Authorize .List {
+        padding: 0.625rem;
+    }
+
+    #Authorize .Dr-list .fa-chevron-right {
+        height: 1.25rem;
+        width: 1.25rem;
+        right: 0.375rem;
+        padding: 0.375rem 0.4375rem 0.3125rem 0.5rem;
+        font-size: 0.5625rem;
+    }
+
+    #Authorize .Dr-list .fa-chevron-left {
+        height: 1.25rem !important;
+        width: 1.25rem !important;
+        right: 0.375rem !important;
+        padding: 0.1688rem 0rem 0.1875rem 0.4375rem !important;
+        font-size: 0.5625rem !important;
+    }
+
+    #Authorize .List-2 .viewIcon {
+        display: unset !important;
+        height: 0px !important;
+        width: unset !important;
+        right: 0.4375rem !important;
+    }
+
+    #Authorize .List-2 .Dr-list {
+        padding: 0.375rem 0.375rem 0.375rem 1.4375rem !important;
+    }
+}
+
+@media (min-width:821px) and (max-width:1180px) {
+    #Authorize .Check input {
+        height: 2.6875rem;
+        font-size: 0.75rem;
+        padding: 1.0625rem 0.875rem 0.5rem 1rem;
+    }
+
+    #Authorize .Check label {
+        color: rgb(113 59 219 / 63%);
+        width: 100%;
+        padding: 0.9375rem 0.9375rem 0.625rem 0.9375rem;
+        font-size: 0.75rem;
+    }
+
+    ::ng-deep.mat-option-text {
+        font-family: 'Poppins';
+        font-style: normal;
+        font-weight: 500;
+        font-size: 0.875rem;
+        color: #2c2b2b;
+    }
+
+    .CollapsePrescribed {
+        position: absolute;
+        width: 45%;
+    }
+
+    #Authorize .doctorDetails .CollapsePrescribed .m-d.expand-list>li {
+        padding: 0.5rem 0.625rem 0.625rem 0.625rem;
+        border-radius: 6px;
+    }
+
+    #dropdownMenuLink span {
+        font-family: 'Poppins';
+        font-style: normal;
+        font-weight: 500;
+        font-size: 0.875rem;
+        color: #2c2b2b;
+    }
+
+    #Authorize .doctorDetails .doctorCard {
+        margin: 0.5rem 0px 0px 0px;
+        padding: 4px 7px;
+    }
+
+    #Authorize .doctorDetails .profileImg {
+        height: 4.75rem;
+        width: 4.9375rem;
+    }
+
+    .doctorCard i {
+        font-size: 0.5625rem;
+        padding-right: 0.1875rem;
+    }
+
+    td {
+        font-size: 0.5625rem;
+        font-weight: 600;
+    }
+
+    #Authorize .doctorDetails .Confirm {
+        font-size: 0.625rem;
+        padding: 0.375rem 0.5625rem;
+        border-radius: 3px;
+    }
+
+    #Authorize .Dr-name h1 {
+        font-size: 0.75rem;
+    }
+
+    #Authorize .Dr-name h5 {
+        font-size: 0.75rem;
+    }
+
+    #Authorize .Dr-name h6 {
+        font-size: 0.6875rem;
+    }
+
+    #Authorize .Dr-name .idNo {
+        border-radius: 2px;
+        padding: 0.1875rem 0rem;
+    }
+
+    #Authorize .Dr-name {
+        padding: 0.4375rem 0.625rem 0.4375rem 0.625rem;
+        border-radius: 6px;
+    }
+
+    #Authorize .List h4 {
+        font-size: 0.875rem;
+        padding: 0.5rem 0rem;
+    }
+
+    #Authorize .List .srl {
+        height: 16.25rem;
+    }
+
+    #Authorize .Test-Reports .scroll-Test {
+        height: 16.25rem;
+    }
+
+    #Authorize .scroll-2 {
+        height: 31.5625rem;
+        padding: 0.2rem 0rem;
+    }
+
+    #Authorize .Dr-list {
+        border-radius: 7px;
+        padding: 0.375rem 1.375rem 0.375rem 0.4375rem !important;
+        margin-bottom: 0.5rem;
+    }
+
+    #Authorize .Dr-list img {
+        max-width: 0.8125rem;
+    }
+
+    #Authorize .Dr-list h6 {
+        line-height: 1.9;
+        margin: 0rem 0rem 0.1875rem 0.3125rem;
+        font-size: 0.7rem !important;
+    }
+
+    #Authorize .Dr-list h5 {
+        font-size: 0.5625rem;
+        margin: 0.4375rem 0.125rem 0.0625rem 0rem;
+        display: -webkit-box;
+        -webkit-line-clamp: 1;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        line-height: 1.1;
+        margin-bottom: 9px;
+    }
+
+    #Authorize .Dr-list p {
+        font-size: 0.625rem;
+        margin: 0rem 0.5rem 0rem 0.375rem;
+    }
+
+    #Authorize .Dr-list i {
+        font-size: 0.75rem;
+    }
+
+    #Authorize .List {
+        padding: 0.625rem;
+    }
+
+    #Authorize .Dr-list .fa-chevron-right {
+        height: 1.25rem;
+        width: 1.25rem;
+        right: 0.375rem;
+        padding: 0.375rem 0.4375rem 0.3125rem 0.5rem;
+        font-size: 0.5625rem;
+    }
+
+    #Authorize .Dr-list .fa-chevron-left {
+        height: 1.25rem !important;
+        width: 1.25rem !important;
+        right: 0.375rem !important;
+        padding: 0.1688rem 0rem 0.1875rem 0.4375rem !important;
+        font-size: 0.5625rem !important;
+    }
+
+    #Authorize .List-2 .viewIcon {
+        display: unset !important;
+        height: 0px !important;
+        width: unset !important;
+        right: 0.4375rem !important;
+    }
+
+    #Authorize .List-2 .Dr-list {
+        padding: 0.375rem 0.375rem 0.375rem 1.4375rem !important;
+    }
+}

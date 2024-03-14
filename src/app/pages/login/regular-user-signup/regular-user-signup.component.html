@@ -1,0 +1,264 @@
+<div class="login-panel">
+    <div class="regularuser">
+        <p>REGULAR USER</p>
+    </div>
+    <h2>Signup Your Account</h2>
+    <form [formGroup]="regSignUpParam" role="form" class="d-flex flex-wrap align-items-center justify-content-between ">
+        <div class="row">
+            <div class="col-md-6 bottom-margin ">
+                <div class="form-floating">
+                    <input formControlName="firstName" autofocus="" type="text" name="firstName"
+                        placeholder="First Name" class="form-control">
+                    <label for="">First Name</label>
+                </div>
+                <div class="regErrorDiv">
+                    <app-validation-message [control]="regSignUpParam.controls['firstName']"
+                        [messages]="errorMessage.firstName">
+                    </app-validation-message>
+                </div>
+            </div>
+            <div class="col-md-6 bottom-margin">
+                <div class="form-floating">
+                    <input formControlName="middleName" autofocus="" type="text" name="middleName"
+                        placeholder="Middle Name" class="form-control">
+                    <label for="">Middle Name</label>
+                </div>
+                <div class="regErrorDiv">
+                    <app-validation-message [control]="regSignUpParam.controls['middleName']"
+                        [messages]="errorMessage.middleName">
+                    </app-validation-message>
+                </div>
+            </div>
+            <div class="col-md-6 bottom-margin">
+                <div class="form-floating">
+                    <input formControlName="lastName" autofocus="" type="text" name="lastName" placeholder="Last Name"
+                        class="form-control">
+                    <label for="">Last Name</label>
+                </div>
+                <div class="regErrorDiv">
+                    <app-validation-message [control]="regSignUpParam.controls['lastName']"
+                        [messages]="errorMessage.lastName">
+                    </app-validation-message>
+                </div>
+            </div>
+            <div class="col-md-6 bottom-margin d-flex align-items-center">
+                <div class="round">
+                    Physician <input formControlName="physicianInd" autofocus="" type="checkbox" checked
+                        id="checkbox" />
+                    <label for="checkbox"></label>
+                </div>
+            </div>
+            <div class="col-md-6 bottom-margin">
+                <div class="form-floating">
+                    <input formControlName="emailID" autofocus="" email type="email" name="emailID" placeholder="Email"
+                        class="form-control">
+                    <label for="">Email</label>
+                </div>
+                <div class="regErrorDiv">
+                    <app-validation-message [control]="regSignUpParam.controls['emailID']"
+                        [messages]="errorMessage.emailID">
+                    </app-validation-message>
+                </div>
+            </div>
+            <div class="col-md-6 bottom-margin">
+                <div class="form-floating">
+                    <input formControlName="contactNo" autofocus="" type="text" name="contactNo"
+                        placeholder="Phone Number" class="form-control">
+                    <label for="">Phone Number</label>
+                </div>
+                <div *ngIf="!idError" class="regErrorDiv">
+                    <app-validation-message [control]="regSignUpParam.controls['contactNo']"
+                        [messages]="errorMessage.contactNo">
+                    </app-validation-message>
+                </div>
+                <div *ngIf="idError" class="regErrorDiv">
+                    Phone number is already registered
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-floating textarea">
+                    <textarea formControlName="addressLine" autofocus="" name="addressLine" placeholder="Address"
+                        class="form-control"></textarea>
+                    <label for="">Address</label>
+                </div>
+                <div class="regErrorDiv">
+                    <app-validation-message [control]="regSignUpParam.controls['addressLine']"
+                        [messages]="errorMessage.addressLine">
+                    </app-validation-message>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-12 bottom-margin">
+                        <div class="form-floating">
+                            <input formControlName="city" autofocus="" type="text" name="city" placeholder="City"
+                                class="form-control">
+                            <label for="">City</label>
+                        </div>
+                        <div class="regErrorDiv">
+                            <app-validation-message [control]="regSignUpParam.controls['city']"
+                                [messages]="errorMessage.city">
+                            </app-validation-message>
+                        </div>
+                    </div>
+                    <div class="col-md-12 bottom-margin">
+                        <div class="form-floating selectBox"
+                            [ngClass]="{selectedFormValue:regSignUpParam.value.stateName}">
+                            <select class="form-select one ng-pristine ng-invalid ng-touched" id="floatingSelect"
+                                aria-label="Floating label select example" formControlName="stateName" autofocus=""
+                                name="stateName">
+                                <option [value]="state.stateName" *ngFor="let state of stateList">{{ state.stateName }}
+                                </option>
+                            </select>
+                            <label for="floatingSelect">State</label>
+                        </div>
+                        <div class="regErrorDiv">
+                            <app-validation-message [control]="regSignUpParam.controls['stateName']"
+                                [messages]="errorMessage.stateName">
+                            </app-validation-message>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 bottom-margin">
+                <div class="form-floating">
+                    <input formControlName="landmark" autofocus="" type="text" name="landmark" placeholder="Landmark"
+                        class="form-control">
+                    <label for="">Landmark</label>
+                </div>
+                <div class="regErrorDiv">
+                    <app-validation-message [control]="regSignUpParam.controls['landmark']"
+                        [messages]="errorMessage.landmark">
+                    </app-validation-message>
+                </div>
+            </div>
+            <div class="col-md-6 bottom-margin">
+                <div class="form-floating">
+                    <input formControlName="pinCode" autofocus="" type="text" name="pinCode" placeholder="Pincode"
+                        class="form-control">
+                    <label for="">Pincode</label>
+                </div>
+                <div class="regErrorDiv">
+                    <app-validation-message [control]="regSignUpParam.controls['pinCode']"
+                        [messages]="errorMessage.pinCode">
+                    </app-validation-message>
+                </div>
+            </div>
+            <div class="col-md-6 bottom-margin position-relative">
+                <div class="form-floating">
+                    <input formControlName="userPassword" autofocus=""
+                        [type]="showPassword === true ? 'text' : 'password'" name="password"
+                        (focus)="showPasswordPolicies()" (focusout)="hidePasswordPolicies()"
+                        (input)="showPasswordPolicies()" name="userPassword" id="myInput" class="form-control"
+                        placeholder="Create Password" onpaste="return false;" ondrop="return false;"
+                        oncopy="return false" oncut="return false" ondrag="return false" autocomplete=off />
+                    <label for="">Create Password</label>
+                    <i [ngClass]="showPassword === true ? 'bi bi-eye iPadding' : 'bi bi-eye-slash iPadding'"
+                        (click)="showHidePassword()" id="Open-eyes"></i>
+                </div>
+                <!-- <div class="regErrorDiv">
+                                            <app-validation-message [control]="regSignUpParam.controls['userPassword']"
+                                                [messages]="errorMessage.userPassword">
+                                            </app-validation-message>
+                                        </div> -->
+                <div *ngIf="isAnyError()" class="regErrorDiv">
+                    Password policy does not matched
+                </div>
+                <div *ngIf="isRequiredError()" class="regErrorDiv">
+                    Password is required
+                </div>
+                <div *ngIf="isShowPasswordPolicy" class="passwordCnd">
+                    <label class="labelPosition"
+                        [ngClass]="regSignUpParam.controls['userPassword'].hasError('required') || regSignUpParam.controls['userPassword'].hasError('minlength')  ? 'text-danger' : 'text-success'">
+                        <i class="material-icons" style="position: unset; color: unset;">
+                            {{ regSignUpParam.controls['userPassword'].hasError('required') ||
+                            regSignUpParam.controls['userPassword'].hasError('minlength') ?
+                            'cancel'
+                            :
+                            'check_circle' }}
+                        </i>
+                        Must be at least 8 characters!
+                    </label>
+                    <label class="col labelPosition"
+                        [ngClass]="regSignUpParam.controls['userPassword'].hasError('required') || regSignUpParam.controls['userPassword'].hasError('hasNumber')  ? 'text-danger' : 'text-success'">
+                        <i class="material-icons" style="position: unset; color: unset;">
+                            {{ regSignUpParam.controls['userPassword'].hasError('required') ||
+                            regSignUpParam.controls['userPassword'].hasError('hasNumber') ?
+                            'cancel'
+                            :
+                            'check_circle' }}
+                        </i>
+                        Must contain at least 1 number!
+                    </label>
+                    <label class="col labelPosition"
+                        [ngClass]="regSignUpParam.controls['userPassword'].hasError('required') || regSignUpParam.controls['userPassword'].hasError('hasCapitalCase')  ? 'text-danger' : 'text-success'">
+                        <i class="material-icons" style="position: unset; color: unset;">
+                            {{ regSignUpParam.controls['userPassword'].hasError('required') ||
+                            regSignUpParam.controls['userPassword'].hasError('hasCapitalCase') ?
+                            'cancel' :
+                            'check_circle' }}
+                        </i>
+                        Must contain at least 1 Capital letter!
+                    </label>
+                    <label class="col labelPosition"
+                        [ngClass]="regSignUpParam.controls['userPassword'].hasError('required') || regSignUpParam.controls['userPassword'].hasError('hasSmallCase')  ? 'text-danger' : 'text-success'">
+                        <i class="material-icons" style="position: unset; color: unset;">
+                            {{ regSignUpParam.controls['userPassword'].hasError('required') ||
+                            regSignUpParam.controls['userPassword'].hasError('hasSmallCase') ?
+                            'cancel' :
+                            'check_circle' }}
+                        </i>
+                        Must contain at least 1 Small letter!
+                    </label>
+                    <label class="col labelPosition"
+                        [ngClass]="regSignUpParam.controls['userPassword'].hasError('required') || regSignUpParam.controls['userPassword'].hasError('hasSpecialCharacters') ? 'text-danger' : 'text-success'">
+                        <i class="material-icons" style="position: unset; color: unset;">
+                            {{ regSignUpParam.controls['userPassword'].hasError('required') ||
+                            regSignUpParam.controls['userPassword'].hasError('hasSpecialCharacters')
+                            ? 'cancel' :
+                            'check_circle' }}
+                        </i>
+                        Must contain at least 1 Special Character!
+                    </label>
+                </div>
+            </div>
+            <div class="col-md-6 bottom-margin position-relative">
+                <div class="form-floating">
+                    <input formControlName="confirmPassword" autofocus=""
+                        [type]="showConfirmPassword === true ? 'text' : 'password'" name="password"
+                        name="confirmPassword" id="myInput1" class="form-control" placeholder="Confirm Password"
+                        onpaste="return false;" ondrop="return false;" oncopy="return false" oncut="return false"
+                        ondrag="return false" autocomplete=off />
+                    <label for="">Confirm Password</label>
+                    <i [ngClass]="showConfirmPassword === true ? 'bi bi-eye iPadding' : 'bi bi-eye-slash iPadding'"
+                        (click)="showHideConfirmPassword()" id="Open-eyes"></i>
+                </div>
+                <div class="regErrorDiv">
+                    <app-validation-message [control]="regSignUpParam.controls['confirmPassword']"
+                        [messages]="errorMessage.confirmPassword">
+                    </app-validation-message>
+                </div>
+                <div class="regErrorDiv">
+                    <div *ngIf="passwordMissmatchError">
+                        Password do not matched
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 bottom-margin mt-2">
+                <button type="submit" (click)="sendOTP(regSignUpParam.value, regSignUpParam.valid)">
+                    Submit for OTP
+                </button>
+            </div>
+            <div class="col-md-6 bottom-margin mt-4 verticalCenter">
+                <label>Already Registered? <a style="cursor: pointer" (click)="navigate()">Login</a> here</label>
+            </div>
+        </div>
+    </form>
+    <div class="modal-content" *ngIf="setOTPModal">
+        <div class="modal customModal" tabindex="-1" role="dialog">
+            <app-otp-validation [screenCode]="screenCode" [transactionID]="transactionID" [formData]="formData"
+                (closeOTP)="closeOTP()" (resetLogin)="navigate()">
+            </app-otp-validation>
+        </div>
+    </div>
+</div>

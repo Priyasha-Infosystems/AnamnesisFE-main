@@ -1,0 +1,2325 @@
+<router-outlet>
+  <ngx-spinner bdColor="rgba(51,51,51,0.8)" size="medium" color="#fff" type="ball-circus" [fullScreen]="true">
+  </ngx-spinner>
+</router-outlet>
+  <div id="noName" class="tabcontent">
+    <div class="content">
+      <div class="row">
+        <div class="col-md-12" *ngIf="!activeMenue">
+          <div class="tabpane">
+            <div class="row w-100 m-auto">
+              <div class="col-md-3">
+                <div class="box" [ngClass]="{active:activeMenue === 'RoleTypeChange'}"
+                  (click)="activeMenueChange('RoleTypeChange')">
+                  Role Type Change
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="box" [ngClass]="{active:activeMenue === 'LaboratoryTestPackages'}"
+                  (click)="activeMenueChange('LaboratoryTestPackages')">
+                  Add Laboratory Test Packages
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="box" (click)="activeMenueChange('LaboratoryTest')"
+                  [ngClass]="{active:activeMenue === 'LaboratoryTest'}">
+                  Add Laboratory Test
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="box" [ngClass]="{active:activeMenue === 'AddNewEntity'}"
+                  (click)="activeMenueChange('AddNewEntity')">
+                  Add New Entity
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="box" [ngClass]="{active:activeMenue === 'Physician'}"
+                  (click)="activeMenueChange('Physician')">
+                  Physician
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="box" [ngClass]="{active:activeMenue === 'AuthoritySignatureAddition'}"
+                  (click)="activeMenueChange('AuthoritySignatureAddition')">
+                  Authority Signature Addition
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="box" [ngClass]="{active:activeMenue === 'PhysicianAppointmentBook'}"
+                  (click)="activeMenueChange('PhysicianAppointmentBook')">Physician Appointment Book</div>
+              </div>
+              <div class="col-md-3">
+                <div class="box" [ngClass]="{active:activeMenue === 'GSTSetup'}"
+                  (click)="activeMenueChange('GSTSetup')">
+                  GST Setup
+                </div>
+              </div>
+              <div class="col-md-3 m-auto">
+                <div class="box" [ngClass]="{active:activeMenue === 'AnamnesisDiscount'}"
+                  (click)="activeMenueChange('AnamnesisDiscount')">
+                  Discount Setup
+                </div>
+              </div>
+              <div class="col-md-3 m-auto">
+                <div class="box" [ngClass]="{active:activeMenue === 'DataUpload'}"
+                  (click)="activeMenueChange('DataUpload')">
+                  Data Upload
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-12" *ngIf="activeMenue">
+          <div class="tabcontents">
+            <p class="ChangeRole" (click)="activeMenueChange('')">Anamnesis Setup -> {{getPageName()}}</p>
+            <div class="tabpane" id="RoleTypeChange" *ngIf="activeMenue === 'RoleTypeChange'">
+              <h2>Role Type Change</h2>
+              <form [formGroup]="RoleFormGroup">
+                <div class="box">
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="form-floating">
+                        <input type="number" name="userId" id="userId" placeholder="Enter User Id"
+                          formControlName="userID" class="form-control">
+                        <label for="">User Id</label>
+                      </div>
+                      <div class="validation-div errorDiv">
+                        <app-validation-message [control]="RoleFormGroup.controls['userID']"
+                          [messages]="errorMessage.role.userID">
+                        </app-validation-message>
+                        <app-validation-message [control]="RoleFormGroup.controls['name']"
+                          *ngIf="RoleFormGroup.controls['userID'].valid" [messages]="errorMessage.role.name">
+                        </app-validation-message>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-floating disable">
+                        <input type="text" name="Name" id="Name" placeholder="Enter User Id" formControlName="name"
+                          class="form-control">
+                        <label for="">Name</label>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-floating selectBox"
+                        [ngClass]="{selectedFormValue : RoleFormGroup.value.roleCode }">
+                        <select name="roletype" class="form-select" id="" formControlName="roleCode">
+                          <option [value]="role.roleCode" *ngFor="let role of roleList">
+                            {{role.roleName}}</option>
+                        </select>
+                        <label for="">Role Type</label>
+                      </div>
+                      <div class="validation-div errorDiv">
+                        <app-validation-message [control]="RoleFormGroup.controls['roleCode']"
+                          [messages]="errorMessage.role.roleCode">
+                        </app-validation-message>
+                      </div>
+                    </div>
+                    <div class="col-md-6"
+                      *ngIf="RoleFormGroup.getRawValue().roleCode === 'PHR' || RoleFormGroup.getRawValue().roleCode === 'DLA'">
+                      <div class="form-floating selectBox"
+                        [ngClass]="{selectedFormValue : RoleFormGroup.value.deliveryRegion }">
+                        <select name="roletype" class="form-select" id="" formControlName="deliveryRegion">
+                          <option value=""></option>
+                          <option [value]="deliveryRegion.deliveryRegion"
+                            *ngFor="let deliveryRegion of deliveryRegionList">
+                            {{deliveryRegion.deliveryRegionDescription}}</option>
+                        </select>
+                        <label for="">Delivery Region</label>
+                      </div>
+                      <div class="validation-div errorDiv">
+                        <app-validation-message [control]="RoleFormGroup.controls['deliveryRegion']"
+                          [messages]="errorMessage.role.deliveryRegion">
+                        </app-validation-message>
+                      </div>
+                    </div>
+                    <div class="col-md-6"
+                      *ngIf="RoleFormGroup.getRawValue().roleCode === 'PHR' || RoleFormGroup.getRawValue().roleCode === 'DLA'">
+                      <div class="form-floating selectBox"
+                        [ngClass]="{selectedFormValue : RoleFormGroup.value.stateCode }">
+                        <select name="roletype" class="form-select" id="" formControlName="stateCode">
+                          <option value=""></option>
+                          <option [value]="state.stateCode" *ngFor="let state of stateListForDelivery">
+                            {{state.stateName}}</option>
+                        </select>
+                        <label for="">State</label>
+                      </div>
+                      <div class="validation-div errorDiv">
+                        <app-validation-message [control]="RoleFormGroup.controls['stateCode']"
+                          [messages]="errorMessage.role.stateCode">
+                        </app-validation-message>
+                      </div>
+                    </div>
+                    <div class="col-md-6"
+                      *ngIf="RoleFormGroup.getRawValue().roleCode === 'PHR' || RoleFormGroup.getRawValue().roleCode === 'DLA'">
+                      <div class="form-floating selectBox"
+                        [ngClass]="{selectedFormValue : RoleFormGroup.value.distributionZone }">
+                        <select name="roletype" class="form-select" id="" formControlName="distributionZone">
+                          <option value=""></option>
+                          <option [value]="distributionZone.distributionZone"
+                            *ngFor="let distributionZone of distributionZoneList">
+                            {{distributionZone.distributionZoneDescription}}</option>
+                        </select>
+                        <label for="">Distribution zone</label>
+                      </div>
+                      <div class="validation-div errorDiv">
+                        <app-validation-message [control]="RoleFormGroup.controls['distributionZone']"
+                          [messages]="errorMessage.role.distributionZone">
+                        </app-validation-message>
+                      </div>
+                    </div>
+                    <div class="col-md-6"
+                      *ngIf="RoleFormGroup.getRawValue().roleCode === 'PHR' || RoleFormGroup.getRawValue().roleCode === 'DLA'">
+                      <div class="form-floating selectBox"
+                        [ngClass]="{selectedFormValue : RoleFormGroup.value.deliveryZone }">
+                        <select name="roletype" class="form-select" id="" formControlName="deliveryZone">
+                          <option value=""></option>
+                          <option [value]="deliveryZone.deliveryZone" *ngFor="let deliveryZone of deliveryZoneList">
+                            {{deliveryZone.deliveryZoneDescription}}</option>
+                        </select>
+                        <label for="">Delivery zone</label>
+                      </div>
+                      <div class="validation-div errorDiv">
+                        <app-validation-message [control]="RoleFormGroup.controls['deliveryZone']"
+                          [messages]="errorMessage.role.deliveryZone">
+                        </app-validation-message>
+                      </div>
+                    </div>
+                    <div class="col-md-12">
+                      <div class="errorDiv">
+                        <small>{{roleChangeErrMSG}}</small>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </form>
+              <div class="row">
+                <div class="col-md-6 text-center">
+                  <button (click)="roleTypeSave(RoleFormGroup.value,RoleFormGroup.valid)" class="p-2">Confirm</button>
+                </div>
+                <div class="col-md-6 text-center">
+                  <button (click)="roleFormReset()" class="p-2">Cancel</button>
+                </div>
+              </div>
+
+            </div>
+            <div class="tabpane" id="LaboratoryPackagestabpane" *ngIf="activeMenue === 'LaboratoryTestPackages'">
+              <h2>Laboratory Test Packages</h2>
+              <div class="box">
+                <form [formGroup]="LaboratoryFormGroup">
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="form-floating">
+                        <input type="text" name="LaboratoryTestPackages" placeholder="Laboratory Test Packages"
+                          formControlName="laboratoryPackageName" class="form-control">
+                        <label for="">Laboratory Test Packages</label>
+                      </div>
+                      <div class="validation-div errorDiv">
+                        <app-validation-message [control]="LaboratoryFormGroup.controls['laboratoryPackageName']"
+                          [messages]="errorMessage.laboratoryTestPackage.laboratoryPackageName">
+                        </app-validation-message>
+                      </div>
+                    </div>
+                    <div formArrayName="laboratoryTestList">
+                      <div class="col-md-12"
+                        *ngFor="let laboratoryTest of laboratoryTestList().controls;let laboratoryTestindex = index;">
+                        <div class=" d-flex align-items-center">
+                          <ng-container formGroupName="{{laboratoryTestindex}}">
+                            <div class="form-floating selectBox"
+                              [ngClass]="{selectedFormValue : laboratoryTest.value.laboratoryTestCode }">
+                              <select name="PackagesType" class="form-select" formControlName="laboratoryTestCode">
+                                <option [value]="labTest.labTestCode" *ngFor="let labTest of labTestList"
+                                  [hidden]="isSelectedPreviousLabTest(labTest.labTestCode,laboratoryTest.value.laboratoryTestCode)">
+                                  {{labTest.labTestName}}</option>
+                              </select>
+                              <label for="">Packages Type</label>
+                            </div>
+                          </ng-container>
+                          <div class="delete"
+                            *ngIf="laboratoryTest.value.laboratoryTestCode || laboratoryTestList().length>1">
+                            <i class="bi-trash-fill" (click)="removeLabtest(laboratoryTestindex)"></i>
+                          </div>
+                        </div>
+                        <div class="validation-div errorDiv">
+                          <small>{{laboratoryTest.value.customErrMsg}}</small>
+                          <app-validation-message *ngIf="laboratoryTest.value.customErrMsg"
+                            [control]="getLaboratoryTestController(laboratoryTestindex,'laboratoryTestCode')"
+                            [messages]="errorMessage.laboratoryTestPackage.laboratoryTestCode">
+                          </app-validation-message>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="errorDiv">
+                        <small>{{labTestPackagesErrMSG}}</small>
+                      </div>
+                    </div>
+                    <div class="col-md-12 mt-2 d-flex justify-content-between align-items-start">
+                      <button (click)="LaboratoryFormReset()"
+                        class="p-2">Cancel</button>
+                      <button (click)="saveLabtest(LaboratoryFormGroup.value,LaboratoryFormGroup.valid)"
+                        class="p-2">Submit</button>
+                      <div class="addTest" (click)="addLabTest()">+Add Test Packages</div>
+                    </div>
+                  </div>
+                </form>
+              </div>
+
+            </div>
+            <div class="tabpane" id="LaboratoryTesttabpane" *ngIf="activeMenue === 'LaboratoryTest'">
+              <h2>Laboratory Test</h2>
+              <div class="box">
+                <form [formGroup]="LabTestFormGroup">
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="row">
+                        <div class="col-md-3 p-0 d-flex align-items-center ">
+                          <p>Laboratory Test Name</p>
+                        </div>
+                        <div class="col-md-9 ">
+                          <div class="form-floating">
+                            <input type="text" name="labtestName" id="labtestName"
+                              placeholder="Enter Laboratory Test Name" formControlName="labtestName"
+                              class="form-control">
+                            <label for="">Enter Laboratory Test Name</label>
+                          </div>
+                          <div class="validation-div errorDiv">
+                            <app-validation-message [control]="LabTestFormGroup.controls['labtestName']"
+                              [messages]="errorMessage.labTest.labtestName">
+                            </app-validation-message>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-12 Type">
+                      <div class="row">
+                        <div class="col-md-3 p-0 d-flex align-items-center">
+                          <p>Specimen Type</p>
+                        </div>
+                        <div class="col-md-9">
+                          <select name="SpecimenType" id="SpecimenType" formControlName="specimenType">
+                            <option [value]="specimenType.specimenType" *ngFor="let specimenType of specimenTypeList">
+                              {{specimenType.specimenDescription}}</option>
+                          </select>
+                          <div class="validation-div errorDiv">
+                            <app-validation-message [control]="LabTestFormGroup.controls['specimenType']"
+                              [messages]="errorMessage.labTest.specimenType">
+                            </app-validation-message>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-6 p-0 Type">
+                      <div class="row">
+                        <div class="col-md-6 d-flex align-items-center">
+                          <p>Result Type</p>
+                        </div>
+                        <div class="col-md-6">
+                          <select name="TrendChart" id="TrendChart" formControlName="resultType">
+                            <option [value]="'V'">Value Based</option>
+                            <option [value]="'O'">Observation Based</option>
+                          </select>
+                          <div class="validation-div errorDiv">
+                            <app-validation-message [control]="LabTestFormGroup.controls['resultType']"
+                              [messages]="errorMessage.labTest.resultType">
+                            </app-validation-message>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-9 ">
+                      <div class="checkbox mb-2">
+                        <input type="checkbox" id="check" formControlName="labTestComponentCheck">
+                        <label for="check">
+                          Laboratory Test Component
+                        </label>
+                      </div>
+                    </div>
+                    <div class="col-md-12">
+                      <div *ngIf="!LabTestFormGroup.controls['labTestComponentCheck'].value" class="row">
+                        <div class="col-md-6 Type">
+                          <div class="row">
+                            <div class="col-md-6 d-flex align-items-center">
+                              <p>Lab Test Unit</p>
+                            </div>
+                            <div class="col-md-6">
+                              <select name="LabTestUnit" id="LabTestUnit" formControlName="unit">
+                                <option value=""></option>
+                                <option [value]="measurementUnitName"
+                                  *ngFor="let measurementUnitName of measurementUnitNameList"> {{measurementUnitName}}
+                                </option>
+                              </select>
+                              <div class="validation-div errorDiv">
+                                <app-validation-message [control]="LabTestFormGroup.controls['unit']"
+                                  [messages]="errorMessage.labTest.unit">
+                                </app-validation-message>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-md-12 mb-3">
+                          <div class="form-floating pt-4 pb-1 h-100 textarea">
+                            <textarea name="EnterYourBenchmark" id="Laboratory" cols="60" rows="20"
+                              placeholder="Enter Your Benchmark" formControlName="banchMark"
+                              class="form-control"></textarea>
+                            <label for="Laboratory">Benchmark</label>
+                          </div>
+                          <div class="validation-div errorDiv">
+                            <app-validation-message [control]="LabTestFormGroup.controls['banchMark']"
+                              [messages]="errorMessage.labTest.banchMark">
+                            </app-validation-message>
+                          </div>
+                        </div>
+                        <div class="col-md-6 Type p-0">
+                          <div class="row">
+                            <div class="col-md-6 d-flex align-items-center">
+                              <p>Trend Chart Type</p>
+                            </div>
+                            <div class="col-md-6 ">
+                              <select name="TrendChart" id="TrendChart" formControlName="trendChartType">
+                                <option [value]="trendChart.trendChartType" *ngFor="let trendChart of trendChartList">
+                                  {{trendChart.trendChartDescription}}</option>
+                              </select>
+                              <div class="validation-div errorDiv">
+                                <app-validation-message [control]="LabTestFormGroup.controls['trendChartType']"
+                                  [messages]="errorMessage.labTest.trendChartType">
+                                </app-validation-message>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-md-6 Type d-flex align-items-center">
+                          <div class="checkbox mb-2">
+                            <input type="checkbox" id="NonNumeric" formControlName="nonNumeric">
+                            <label for="NonNumeric">
+                              Non Numeric
+                            </label>
+                          </div>
+                        </div>
+                        <div class="col-md-12 Type">
+                          <div class="row">
+                            <div class="col-md-3 p-0 d-flex align-items-center">
+                              <p>Department </p>
+                            </div>
+                            <div class="col-md-9">
+                              <select name="DepartmentCode" id="DepartmentCode" formControlName="departmentCode">
+                                <option *ngFor="let department of departmentList" [value]="department.departmentCode">
+                                  {{department.departmentDescription}}</option>
+                              </select>
+                              <div class="validation-div errorDiv">
+                                <app-validation-message [control]="LabTestFormGroup.controls['departmentCode']"
+                                  [messages]="errorMessage.labTest.departmentCode">
+                                </app-validation-message>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div *ngIf="LabTestFormGroup.controls['labTestComponentCheck'].value">
+                      <div formArrayName="labTestComponentList">
+                        <div
+                          *ngFor="let labTestComponent of labTestComponentList().controls; let labTestComponentIndex = index;">
+                          <ng-container formGroupName="{{labTestComponentIndex}}">
+                            <div class="ListBox">
+                              <div class="row">
+                                <div class="delete">
+                                  <i class="bi-trash-fill" (click)="removeLabtestComponent(labTestComponentIndex)"
+                                    *ngIf="labTestComponentList().length>1 
+                                  ||labTestComponent.value.componentName
+                                  ||labTestComponent.value.trendChartType                                         
+                                  ||labTestComponent.value.nonNumeric 
+                                  ||labTestComponent.value.departmentCode 
+                                  ||labTestComponent.value.banchMark 
+                                  ||labTestComponent.value.unit"></i>
+                                </div>
+                                <div class="col-md-3 p-0 d-flex align-items-center">
+                                  <p>Laboratory Test Component Name</p>
+                                </div>
+                                <div class="col-md-9">
+                                  <div class="form-floating">
+                                    <input type="text" name="labtestComponentName" id="labtestComponentName"
+                                      placeholder="Enter Laboratory Test Component Name" formControlName="componentName"
+                                      class="form-control">
+                                    <label for="">Enter Laboratory Test Component Name</label>
+                                  </div>
+                                  <div class="validation-div errorDiv">
+                                    <app-validation-message
+                                      [control]="getComponentController(labTestComponentIndex,'componentName')"
+                                      [messages]="errorMessage.labTest.componentName">
+                                    </app-validation-message>
+                                  </div>
+                                </div>
+                                <div class="col-md-6 Type">
+                                  <div class="row">
+                                    <div class="col-md-6 p-0 d-flex align-items-center">
+                                      <p>Trend Chart Type</p>
+                                    </div>
+                                    <div class="col-md-6">
+                                      <select name="TrendChartComponent" id="TrendChartComponent"
+                                        formControlName="trendChartType">
+                                        <option [value]="trendChart.trendChartType"
+                                          *ngFor="let trendChart of trendChartList">
+                                          {{trendChart.trendChartDescription}}
+                                        </option>
+                                      </select>
+                                      <div class="validation-div errorDiv">
+                                        <app-validation-message
+                                          [control]="getComponentController(labTestComponentIndex,'trendChartType')"
+                                          [messages]="errorMessage.labTest.trendChartType">
+                                        </app-validation-message>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="col-md-6 Type">
+                                </div>
+                                <div class="col-md-6 Type">
+                                  <div class="row">
+                                    <div class="col-md-6 p-0 d-flex align-items-center">
+                                      <p>Lab Test unit</p>
+                                    </div>
+                                    <div class="col-md-6">
+                                      <select name="LabTestUnit" id="LabTestUnit" formControlName="unit">
+                                        <option value=""></option>
+                                        <option [value]="measurementUnitName"
+                                          *ngFor="let measurementUnitName of measurementUnitNameList">
+                                          {{measurementUnitName}}</option>
+                                      </select>
+                                      <div class="validation-div errorDiv">
+                                        <app-validation-message
+                                          [control]="getComponentController(labTestComponentIndex,'unit')"
+                                          [messages]="errorMessage.labTest.unit">
+                                        </app-validation-message>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="col-md-6 Type d-flex align-items-center">
+                                  <div class="checkbox mb-2">
+                                    <input type="checkbox" id="NonNumeric{{labTestComponentIndex}}"
+                                      formControlName="nonNumeric">
+                                    <label for="NonNumeric{{labTestComponentIndex}}">
+                                      Non Numeric
+                                    </label>
+                                  </div>
+                                </div>
+                                <div class="col-md-12 mb-3">
+                                  <div class="form-floating pt-4 pb-1 h-100 textarea">
+                                    <textarea name="EnterYourBenchmarkComponent" id="LaboratoryComponent"
+                                      placeholder="Enter Your Benchmark" formControlName="banchMark"
+                                      class="form-control"></textarea>
+                                    <label for="Laboratory">Benchmark</label>
+                                  </div>
+                                  <div class="validation-div errorDiv">
+                                    <app-validation-message
+                                      [control]="getComponentController(labTestComponentIndex,'banchMark')"
+                                      [messages]="errorMessage.labTest.banchMark">
+                                    </app-validation-message>
+                                  </div>
+                                </div>
+                                <div class="col-md-12 Type">
+                                  <div class="row">
+                                    <div class="col-md-3 p-0 d-flex align-items-center">
+                                      <p>Department Code</p>
+                                    </div>
+                                    <div class="col-md-9">
+                                      <select name="DepartmentCode" id="DepartmentCode"
+                                        formControlName="departmentCode">
+                                        <option *ngFor="let department of departmentList"
+                                          [value]="department.departmentCode">
+                                          {{department.departmentDescription}}</option>
+                                      </select>
+                                      <div class="validation-div errorDiv">
+                                        <app-validation-message
+                                          [control]="getComponentController(labTestComponentIndex,'departmentCode')"
+                                          [messages]="errorMessage.labTest.departmentCode">
+                                        </app-validation-message>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="validation-div errorDiv">
+                                  <small>{{labTestComponent.value.customErrMsg}}</small>
+                                </div>
+                              </div>
+                            </div>
+                          </ng-container>
+                        </div>
+                      </div>
+                      <div class="col-md-4" style="float:right;">
+                        <button class="addTest w-100 p-2" (click)="addLabTestComponent()">+Add Test Component</button>
+                      </div>
+                    </div>
+                    <div class="col-md-12">
+                      <div class="errorDiv">
+                        <small>{{addLabtestErrMSG}}</small>
+                      </div>
+                    </div>
+                    <div class="col-md-12 mt-2">
+                      <button (click)="labTestFormReset()"
+                        class="p-2">Cancel</button>
+                      <button (click)="labtestSave(LabTestFormGroup.value,LabTestFormGroup.valid)"
+                        class="p-2">Submit</button>
+                    </div>
+                    
+                  </div>
+                </form>
+              </div>
+
+            </div>
+            <div class="tabpane" id="AddNewEntity" *ngIf="activeMenue === 'AddNewEntity'">
+              <h2>Add New Entity</h2>
+              <form [formGroup]="DiagnosticCenterFormGroup">
+                <div class="box">
+                  <div class="row">
+                    <div class="col-md-7">
+                      <div class="form-floating">
+                        <input type="text" name="Diagnostic" id="Diagnostic" placeholder="Enter Diagnostic Centre Name"
+                          formControlName="commercialEntityName" class="form-control">
+                        <label for="">Enter Name</label>
+                      </div>
+                      <div class="validation-div errorDiv">
+                        <app-validation-message [control]="DiagnosticCenterFormGroup.controls['commercialEntityName']"
+                          [messages]="errorMessage.diagnosticCenterForm.commercialEntityName">
+                        </app-validation-message>
+                      </div>
+                    </div>
+                    <div class="col-md-5">
+                      <div class="form-floating  selectBox"
+                        [ngClass]="{selectedFormValue : DiagnosticCenterFormGroup.value.commercialType}">
+                        <select name="commercialType" id="CommercialType floatingSelect"
+                          formControlName="commercialType" class="form-select ">
+                          <option value="HLCLN"> Health Clinic </option>
+                          <option value="DGCTR"> Diagnostic Centre </option>
+                          <option value="PHRMC"> Pharmacy </option>
+                        </select>
+                        <label for="floatingSelect">Commercial Type</label>
+                      </div>
+                      <div class="validation-div errorDiv">
+                        <app-validation-message [control]="DiagnosticCenterFormGroup.controls['commercialType']"
+                          [messages]="errorMessage.diagnosticCenterForm.commercialType">
+                        </app-validation-message>
+                      </div>
+                    </div>
+                    <div class="col-md-7 h-100">
+                      <div class="form-floating  pt-4 pb-1 h-100 textarea">
+                        <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2"
+                          formControlName="commercialEntityAddressLine"></textarea>
+                        <label for="floatingTextarea2"> Address Line</label>
+                      </div>
+                      <div class="validation-div errorDiv">
+                        <app-validation-message
+                          [control]="DiagnosticCenterFormGroup.controls['commercialEntityAddressLine']"
+                          [messages]="errorMessage.diagnosticCenterForm.commercialEntityAddressLine">
+                        </app-validation-message>
+                      </div>
+                    </div>
+                    <div class="col-md-5">
+                      <div class="row">
+                        <div class="col-md-12">
+                          <div class="form-floating">
+                            <input type="text" name="City" id="City" placeholder="City"
+                              formControlName="commercialEntityCity" class="form-control">
+                            <label for="">City / District</label>
+                          </div>
+                          <div class="validation-div errorDiv">
+                            <app-validation-message
+                              [control]="DiagnosticCenterFormGroup.controls['commercialEntityCity']"
+                              [messages]="errorMessage.diagnosticCenterForm.commercialEntityCity">
+                            </app-validation-message>
+                          </div>
+                        </div>
+                        <div class="col-md-12">
+                          <div class="form-floating">
+                            <input type="text" name="PinCode" id="PinCode" placeholder="PinCode"
+                              formControlName="commercialEntityPincode" class="form-control">
+                            <label for="">PinCode</label>
+                          </div>
+                          <div class="validation-div errorDiv">
+                            <app-validation-message
+                              [control]="DiagnosticCenterFormGroup.controls['commercialEntityPincode']"
+                              [messages]="errorMessage.diagnosticCenterForm.commercialEntityPincode">
+                            </app-validation-message>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-7">
+                      <div class="form-floating">
+                        <input type="text" name="landmark" id="landmark" placeholder="landmark"
+                          formControlName="commercialEntityLandmark" class="form-control">
+                        <label for="">Landmark</label>
+                      </div>
+                      <div class="validation-div errorDiv">
+                        <app-validation-message
+                          [control]="DiagnosticCenterFormGroup.controls['commercialEntityLandmark']"
+                          [messages]="errorMessage.diagnosticCenterForm.commercialEntityLandmark">
+                        </app-validation-message>
+                      </div>
+                    </div>
+                    <div class="col-md-5">
+                      <div class="form-floating selectBox"
+                        [ngClass]="{ selectedFormValue : DiagnosticCenterFormGroup.value.commercialEntityStateCode}">
+                        <select class="form-select" name="state" id="state floatingSelect"
+                          formControlName="commercialEntityStateCode" (change)="selectStaeForDiagnosticCenter()">
+                          <option [value]="state.stateCode" *ngFor="let state of stateList">{{state.stateName}}</option>
+                        </select>
+                        <label for="floatingSelect">State</label>
+                      </div>
+                      <div class="validation-div errorDiv">
+                        <app-validation-message
+                          [control]="DiagnosticCenterFormGroup.controls['commercialEntityStateCode']"
+                          [messages]="errorMessage.diagnosticCenterForm.commercialEntityStateCode">
+                        </app-validation-message>
+                      </div>
+                    </div>
+                    <div class="col-md-7">
+                      <div class="form-floating">
+                        <input type="text" name="Contact_Number" id="Contact_Number" placeholder="Enter Contact Number"
+                          formControlName="commercialEntityContactNo" class="form-control">
+                        <label for="">Enter Contact Number</label>
+                      </div>
+                      <div class="validation-div errorDiv">
+                        <app-validation-message
+                          [control]="DiagnosticCenterFormGroup.controls['commercialEntityContactNo']"
+                          [messages]="errorMessage.diagnosticCenterForm.commercialEntityContactNo">
+                        </app-validation-message>
+                      </div>
+                    </div>
+                    <div class="col-md-5">
+                      <div class="form-floating">
+                        <input type="text" name="Email" id="Email" placeholder="Enter Email Id"
+                          formControlName="commercialEntityEmailID" class="form-control">
+                        <label for="">Enter Email Id</label>
+                      </div>
+                      <div class="validation-div errorDiv">
+                        <app-validation-message
+                          [control]="DiagnosticCenterFormGroup.controls['commercialEntityEmailID']"
+                          [messages]="errorMessage.diagnosticCenterForm.commercialEntityEmailID">
+                        </app-validation-message>
+                      </div>
+                    </div>
+                    <div class="col-md-7">
+                      <div class="row">
+                        <div class="col-md-12">
+                          <div class="form-floating">
+                            <input type="text" name="Opening" id="Opening" placeholder="Enter Opening Time"
+                              [ngxTimepicker]="endTimePicker" formControlName="commercialEntityOpenTime"
+                              class="form-control">
+                            <ngx-material-timepicker [minutesGap]="5" [theme]="timePickerTheme"
+                              [defaultTime]="'12:00 AM'" #endTimePicker>
+                            </ngx-material-timepicker>
+                            <label for="">Enter Opening Time</label>
+                          </div>
+                          <div class="validation-div errorDiv">
+                            <app-validation-message
+                              [control]="DiagnosticCenterFormGroup.controls['commercialEntityOpenTime']"
+                              [messages]="errorMessage.diagnosticCenterForm.commercialEntityOpenTime">
+                            </app-validation-message>
+                          </div>
+                        </div>
+                        <div class="col-md-12">
+                          <div class="form-floating">
+                            <input type="text" name="Closing_Time" id="Closing_Time" placeholder="Enter Closing Time"
+                              [ngxTimepicker]="startTimePicker" formControlName="commercialEntityCloseTime"
+                              class="form-control">
+                            <ngx-material-timepicker [minutesGap]="5" [theme]="timePickerTheme"
+                              [defaultTime]="'12:00 AM'" #startTimePicker>
+                            </ngx-material-timepicker>
+                            <label for="">Enter Closing Time</label>
+                          </div>
+                          <div class="validation-div errorDiv">
+                            <app-validation-message
+                              [control]="DiagnosticCenterFormGroup.controls['commercialEntityCloseTime']"
+                              [messages]="errorMessage.diagnosticCenterForm.commercialEntityCloseTime">
+                            </app-validation-message>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-5">
+                      <div class="textarea">
+                        <div class="selectDate">
+                          <label for="">Open Days</label>
+                          <div class="d-flex justify-content-between">
+                            <div>
+                              <div>
+                                <button [ngClass]="isDaysSelected(0) ? 'slected' : ''"
+                                  (click)="setSelectedDay(0)">MONDAY</button>
+                              </div>
+                              <div>
+                                <button [ngClass]="isDaysSelected(1) ? 'slected' : ''"
+                                  (click)="setSelectedDay(1)">TUESDAY</button>
+                              </div>
+                              <div>
+                                <button [ngClass]="isDaysSelected(2) ? 'slected' : ''"
+                                  (click)="setSelectedDay(2)">WEDNESDAY</button>
+                              </div>
+                              <div>
+                                <button [ngClass]="isDaysSelected(3) ? 'slected' : ''"
+                                  (click)="setSelectedDay(3)">THURSDAY</button>
+                              </div>
+                              <div>
+                                <button [ngClass]="isDaysSelected(4) ? 'slected' : ''"
+                                  (click)="setSelectedDay(4)">FRIDAY</button>
+                              </div>
+                            </div>
+                            <div class="holiday">
+                              <div class="my-2">
+                                <button [ngClass]="isDaysSelected(5) ? 'slected' : 'my-2'"
+                                  (click)="setSelectedDay(5)">SATURDAY</button>
+                              </div>
+                              <div class="my-2">
+                                <button [ngClass]="isDaysSelected(6) ? 'slected' : 'my-2'"
+                                  (click)="setSelectedDay(6)">SUNDAY</button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="validation-div errorDiv">
+                      </div>
+                    </div>
+                    <div class="col-md-12">
+                      <div class="errorDiv">
+                        <small>{{addNewEntityMSG}}</small>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </form>
+              <div class="row">
+                <div class="col-md-6 text-center">
+                  <button (click)="saveCommercialEntity()" class="p-2">Confirm</button>
+                </div>
+                <div class="col-md-6 text-center">
+                  <button (click)="cleaDiagnosticCentreForm()" class="p-2">Cancel</button>
+                </div>
+              </div>
+
+            </div>
+            <div class="tabpane" id="Physician" *ngIf="activeMenue === 'Physician'">
+              <h2>Physician</h2>
+              <form [formGroup]="PhysicianFormGroup">
+                <div class="box d-flex justify-content-between flex-wrap">
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="form-floating">
+                        <input type="text" name="Physician_Name" id="Physician_Name" placeholder="Enter Physician Name"
+                          class="form-control" formControlName="displayName">
+                        <label for="Laboratory">Physician Name</label>
+                      </div>
+                      <div class="validation-div errorDiv">
+                        <app-validation-message [control]="PhysicianFormGroup.controls['displayName']"
+                          [messages]="errorMessage.physicianForm.displayName">
+                        </app-validation-message>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-floating">
+                        <input type="text" name="First_Name" id="First_Name" placeholder="Enter First Name"
+                          class="form-control" formControlName="firstName">
+                        <label for="Laboratory">First Name</label>
+                      </div>
+                      <div class="validation-div errorDiv">
+                        <app-validation-message [control]="PhysicianFormGroup.controls['firstName']"
+                          [messages]="errorMessage.physicianForm.firstName">
+                        </app-validation-message>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-floating">
+                        <input type="text" name="Middle_Name" id="Middle_Name" placeholder="Enter Middle Name"
+                          class="form-control" formControlName="middleName">
+                        <label for="Laboratory">Middle Name</label>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-floating">
+                        <input type="text" name="Last_Name" id="Last_Name" placeholder="Enter Last Name"
+                          class="form-control" formControlName="lastName">
+                        <label for="Laboratory">Last Name</label>
+                      </div>
+                      <div class="validation-div errorDiv">
+                        <app-validation-message [control]="PhysicianFormGroup.controls['lastName']"
+                          [messages]="errorMessage.physicianForm.lastName">
+                        </app-validation-message>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-floating">
+                        <input type="text" name="Degree" id="Degree" placeholder="Enter Degree" class="form-control"
+                          formControlName="physicianQualification">
+                        <label for="Laboratory">Degree</label>
+                      </div>
+                      <div class="validation-div errorDiv">
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-floating">
+                        <input type="text" name="Specialisation" id="Specialisation" placeholder="Enter Specialisation"
+                          class="form-control" formControlName="physicianSpecialisation">
+                        <label for="Specialisation">Specialisation</label>
+                      </div>
+                      <div class="validation-div errorDiv">
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-floating">
+                        <input type="text" name="Registration" id="Registration" placeholder="Enter Registration Number"
+                          class="form-control" formControlName="registrationNumber">
+                        <label for="">Registration Number</label>
+                      </div>
+                      <div class="validation-div errorDiv">
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-floating">
+                        <input type="text" name="Registration_Authority" placeholder="Registration Authority"
+                          class="form-control" formControlName="registrationAuthority">
+                        <label for="">Registration Authority</label>
+                      </div>
+                      <div class="validation-div errorDiv">
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-floating">
+                        <input id="file" type="input" name="Contact_Number" class="form-control Dr-list massage-box"
+                          placeholder="Contact Number" class="form-control" formControlName="primaryContactNumber">
+                        <label for="">Contact Number</label>
+                      </div>
+                      <div class="validation-div errorDiv">
+                        <app-validation-message [control]="PhysicianFormGroup.controls['primaryContactNumber']"
+                          [messages]="errorMessage.physicianForm.primaryContactNumber">
+                        </app-validation-message>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-floating">
+                        <input id="file" type="input" name="Contact_Number" class="form-control Dr-list massage-box"
+                          placeholder="Contact Number" class="form-control" formControlName="secondaryContactNumber">
+                        <label for="">Secondary Contact Number</label>
+                      </div>
+                      <div class="validation-div errorDiv">
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-floating">
+                        <input type="email" name="Email" id="Email" placeholder="Enter Email Id" class="form-control"
+                          formControlName="emailID">
+                        <label for="">Email Id</label>
+                      </div>
+                      <div class="validation-div errorDiv">
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="row">
+                        <div class="col-md-6">
+                          <div class="form-floating selectBox"
+                            [ngClass]="{selectedFormValue : PhysicianFormGroup.value.addressType}">
+                            <select class="form-select" formControlName="addressType" id="floatingSelect TrendChart"
+                              aria-label="Floating label select example" name="TrendChart">
+                              <option value="WORK" *ngIf="PhysicianFormGroup.get('healthClinicName')?.value">Health
+                                Clinic
+                              </option>
+                              <option value="HOME">Home</option>
+                              <option ></option>
+                            </select>
+                            <label for="floatingSelect">Address Type</label>
+                          </div>
+                          <div class="validation-div errorDiv"> 
+                            <app-validation-message [control]="PhysicianFormGroup.controls['addressType']"
+                              [messages]="errorMessage.physicianForm.addressType">
+                            </app-validation-message>
+                            <small *ngIf="PhysicianFormGroup.controls['addressType'].valid">{{addressError}}</small>
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <button class="addAddress w-100 mt-3" (click)="manageAddress()"> + Add Address</button>
+                          
+                          <div *ngIf="physicianWorkAddressDetails && physicianAddressType==='WORK'">
+                            <p>{{physicianWorkAddressDetails.addressIdentifier}}</p>
+                          </div>
+                          <div *ngIf="physicianHomeAddressDetails && physicianAddressType==='HOME'">
+                            <p>{{physicianHomeAddressDetails.addressIdentifier}}</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-floating">
+                        <input type="text" name="Search" id="Search" placeholder="Search" class="form-control"
+                          formControlName="healthClinicName" [matAutocomplete]="healthClinicNameauto"
+                          [ngClass]="{'disable':PhysicianFormGroup.get('healthClinicName')?.disabled === true}"
+                          (keyup)="onTypeHealthClinicName()">
+                        <label for="">Health Clinic</label>
+                        <mat-autocomplete #healthClinicNameauto="matAutocomplete">
+                          <mat-option *ngFor="let item of healthClinicList" [value]="searcedhealthClinic"
+                            (click)="selectHealthClinic(item)">
+                            <p>{{item.healthClinicName}} <span
+                                style="font-size: 12px !important; color: #713bdb;">{{item.healthClinicID}}</span>
+                            </p>
+                          </mat-option>
+                        </mat-autocomplete>
+                        <button class="Delete" *ngIf="PhysicianFormGroup.get('healthClinicID')?.value.length"
+                          (click)="unSelectHealthClinicForPrescription()"><i class="bi-x-circle-fill"></i></button>
+                        <div *ngIf="showHealthClinicDetails" class="doctorDetails">
+                          <div class="CollapsePrescribed">
+                            <ul class="m-d expand-list p-0">
+                              <li data-md-content="200">
+                                <label name="tab" for="tabAddress" tabindex="-1" class="tab_lab w-100" role="tab">
+                                  <div>
+                                    <div id="dropdownMenuLink" style="display: flex;">
+                                      <div>
+                                        <span>{{selectedHealthClinicDetails.physicianName}}</span>
+                                        <span
+                                          style="font-size: 12px !important; color: #713bdb;">&nbsp;({{selectedHealthClinicDetails.physicianUserCode}})</span>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </label>
+                                <div class="row">
+                                  <div class="col-md-12">
+                                    <div class="doctorCard">
+                                      <div class="row">
+                                        <div class="col-md-11">
+                                          <div class="CollapsePrescribed">
+                                            <ul class="m-d expand-list p-0">
+                                              <li data-md-content="200">
+                                                <label name="tab" for="tabAddress" tabindex="-1" class="tab_lab w-100"
+                                                  role="tab">
+                                                  <div>
+                                                    <div id="dropdownMenuLink" style="display: flex;">
+                                                      <div>
+                                                        <span>{{selectedHealthClinicDetails.healthClinicName}}</span>
+                                                        <span
+                                                          style="font-size: 12px !important; color: #713bdb;">&nbsp;({{selectedHealthClinicDetails.healthClinicID
+                                                          }})</span>
+                                                      </div>
+                                                    </div>
+                                                  </div>
+                                                </label>
+                                                <div class="row">
+                                                  <div class="col-md-12">
+                                                    <div class="doctorCard">
+                                                      <div class="row">
+                                                        <div class="col-md-4">
+                                                          <div class="profileImg">
+                                                            <img
+                                                              [src]="selectedHealthClinicDetails.profilePictureName|getFile:selectedHealthClinicDetails.profilePictureType">
+                                                          </div>
+                                                        </div>
+                                                        <div class="col-md-8">
+                                                          <div class="d-flex flex-column">
+                                                            <div class="d-flex mb-2">
+                                                              <i class="bi-geo-alt-fill"></i>
+                                                              <div class="d-flex flex-column">
+                                                                <p [innerHTML]="selectedHealthClinicDetails.addressLine |addressLine"
+                                                                  *ngIf="selectedHealthClinicDetails.addressLine"></p>
+                                                                <p>{{selectedHealthClinicDetails.landmark}}</p>
+                                                                <p>{{selectedHealthClinicDetails.city}} ,
+                                                                  {{selectedHealthClinicDetails.stateName}} -
+                                                                  {{selectedHealthClinicDetails.pincode}}</p>
+                                                              </div>
+                                                            </div>
+                                                            <div class="d-flex">
+                                                              <i class="bi-telephone-fill"></i>
+                                                              <div class="d-flex flex-column">
+                                                                <p>
+                                                                  <b>(P)</b>+91{{selectedHealthClinicDetails.primaryContactNo}}
+                                                                </p>
+                                                                <div
+                                                                  *ngIf="selectedHealthClinicDetails.secondaryContactNo">
+                                                                  <p>
+                                                                    <b>(S)</b>+91{{selectedHealthClinicDetails.secondaryContactNo}}
+                                                                  </p>
+                                                                </div>
+                                                              </div>
+                                                            </div>
+                                                            <div class="d-flex">
+                                                              <i class="bi-clock"></i>
+                                                              <div class="d-flex ">
+                                                                <div *ngif="selectedHealthClinicDetails.openHoureStart">
+                                                                  <p>
+                                                                    <b>Open -
+                                                                    </b>{{selectedHealthClinicDetails.openHoureStart}}
+                                                                  </p>
+                                                                </div>
+                                                                <div *ngif="selectedHealthClinicDetails.openHoureEnd">
+                                                                  <p>
+                                                                    <b>Close -
+                                                                    </b>{{selectedHealthClinicDetails.openHoureEnd}}
+                                                                  </p>
+                                                                </div>
+                                                              </div>
+                                                            </div>
+                                                            <p>
+                                                              <!--  {{selectedPhysicianDetails.physicianSpecialisation}} -->
+                                                            </p>
+                                                          </div>
+                                                        </div>
+                                                      </div>
+                                                    </div>
+                                                  </div>
+                                                  <div class="col-md-12 d-flex justify-content-between">
+                                                    <button class="Confirm"
+                                                      (click)="selectHealthClinicForPrescription()">Confirm</button>
+                                                    <button class="Confirm"
+                                                      (click)="unSelectHealthClinic()">Cancel</button>
+                                                  </div>
+                                                </div>
+                                              </li>
+                                            </ul>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="col-md-12 text-end">
+                                    <button class="Confirm" (click)="unSelectHealthClinic()" class="p-2">Cancel</button>
+                                    <button class="Confirm" (click)="selectHealthClinicForPrescription()"
+                                      class="p-2">Confirm</button>
+                                  </div>
+                                </div>
+                              </li>
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-12">
+                      <div class="errorDiv">
+                        <small>{{physicianErrMSG}}</small>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </form>
+              <div class="row">
+                <div class="col-md-6 text-center">
+                  <button (click)="physicianSave(PhysicianFormGroup.value,PhysicianFormGroup.valid)"
+                    class="p-2">Confirm</button>
+                </div>
+                <div class="col-md-6 text-center">
+                  <button class="p-2">Cancel</button>
+                </div>
+              </div>
+
+            </div>
+            <div class="tabpane" id="authoritysignatureaddition" *ngIf="activeMenue === 'AuthoritySignatureAddition'">
+              <h2>Authority Signature Addition</h2>
+              <form [formGroup]="AuthorisedSignatoryFormGroup">
+                <div class="box d-flex justify-content-between flex-wrap">
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="form-floating">
+                        <input type="text" name="PhysicianName" id="PhysicianName" placeholder="PhysicianName"
+                          class="form-control" formControlName="physicianDisplayName">
+                        <label for="Laboratory">Physician Name</label>
+                      </div>
+                      <div class="validation-div errorDiv">
+                        <app-validation-message
+                          [control]="AuthorisedSignatoryFormGroup.controls['physicianDisplayName']"
+                          [messages]="errorMessage.AuthorisedSignatoryForm.physicianDisplayName">
+                        </app-validation-message>
+                      </div>
+                    </div>
+                    <div class="col-md-12">
+                      <div class="row">
+                        <div class="col-md-4">
+                          <div class="col-md-12">
+                            <div class="form-floating">
+                              <input type="text" name="FirstName" id="FirstName" placeholder="FirstName"
+                                class="form-control" formControlName="physicianFirstName">
+                              <label for="Laboratory">First Name</label>
+                            </div>
+                            <div class="validation-div errorDiv">
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-md-4">
+                          <div class="col-md-12">
+                            <div class="form-floating">
+                              <input type="text" name="MiddleName" id="MiddleName" placeholder="MiddleName"
+                                class="form-control" formControlName="physicianMiddleName">
+                              <label for="Laboratory">Middle Name</label>
+                            </div>
+                            <div class="validation-div errorDiv">
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-md-4">
+                          <div class="col-md-12">
+                            <div class="form-floating">
+                              <input type="text" name="lastName" id="lastName" placeholder="lastName"
+                                class="form-control" formControlName="physicianLastName">
+                              <label for="Laboratory">Last Name</label>
+                            </div>
+                            <div class="validation-div errorDiv">
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-12">
+                      <div class="form-floating selectBox"
+                        [ngClass]="{ 'selectedFormValue' : AuthorisedSignatoryFormGroup.value.stateCode }">
+                        <select class="form-select" name="state" id="state floatingSelect" formControlName="stateCode"
+                          (change)="selectStaeForAuthorisedSignatory()">
+                          <option [value]="state.stateCode" *ngFor="let state of stateList">{{state.stateName}}</option>
+                        </select>
+                        <label for="floatingSelect">State</label>
+                      </div>
+                      <div class="validation-div errorDiv">
+                        <app-validation-message [control]="AuthorisedSignatoryFormGroup.controls['stateCode']"
+                          [messages]="errorMessage.AuthorisedSignatoryForm.stateCode">
+                        </app-validation-message>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-floating">
+                        <input type="text" name="qualification" id="qualification" placeholder="qualification"
+                          class="form-control" formControlName="physicianQualification">
+                        <label for="Laboratory">Qualification</label>
+                      </div>
+                      <div class="validation-div errorDiv">
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-floating">
+                        <input type="text" name="specialization" id="specialization" placeholder="specialization"
+                          class="form-control" formControlName="physicianSpecialisation">
+                        <label for="Laboratory">specialization</label>
+                      </div>
+                      <div class="validation-div errorDiv">
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-floating">
+                        <input type="text" name="registrationNo" id="registrationNo" placeholder="registrationNo"
+                          class="form-control" formControlName="registrationNumber">
+                        <label for="Laboratory">Registration No</label>
+                      </div>
+                      <div class="validation-div errorDiv">
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-floating">
+                        <input type="text" name="registrationAuthority" id="registrationAuthority"
+                          placeholder="registration Authority" class="form-control"
+                          formControlName="registrationAuthority">
+                        <label for="Laboratory">Registration Authority</label>
+                      </div>
+                      <div class="validation-div errorDiv">
+                      </div>
+                    </div>
+                    <div class="col-md-12">
+                      <div class="errorDiv">
+                        <small>{{authorisedSignatoryErrMSG}}</small>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </form>
+              <div class="row">
+                <div class="col-md-6 text-center">
+                  <button (click)="authorisedSignatorySave()" class="p-2">Submit</button>
+                </div>
+                <div class="col-md-6 text-center">
+                  <button (click)="authoriserSignatoryFormReset()" class="p-2">Cancel</button>
+                </div>
+              </div>
+
+            </div>
+            <div class="tabpane" id="PhysicianAppointmentBook" *ngIf="activeMenue === 'PhysicianAppointmentBook'">
+              <h2>Physician Appointment Schedule</h2>
+              <form [formGroup]="PhysicianAppointmentForm">
+                <div class="box d-flex justify-content-between flex-wrap">
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="col-md-12">
+                        <div class="form-floating">
+                          <input type="text" name="PhysicianName" id="PhysicianName" placeholder="PhysicianName"
+                            [matAutocomplete]="physicianNameautoForAppointment"
+                            [ngClass]="{'disable':PhysicianAppointmentForm.get('physicianName')?.disabled === true}"
+                            (keyup)="onTypephysicianNameForAppointment()" class="form-control"
+                            formControlName="physicianName">
+                          <label for="Laboratory">Physician Name</label>
+                          <div class="Delete" *ngIf="PhysicianAppointmentForm.get('physicianUserID')?.value.length"
+                            (click)="unSelectPhysicianForPrescriptionForAppointment()">
+                            <i class="bi-x-circle-fill"></i>
+                          </div>
+                          <mat-autocomplete #physicianNameautoForAppointment="matAutocomplete">
+                            <mat-option *ngFor="let item of PhysicianListForAppointment"
+                              [value]="searchedPhysicianForAppointment" (click)="selectPhysicianForAppointment(item)">
+                              <div class="d-flex flex-column">
+                                <p class="p-0">{{item.physicianName}}</p>
+                                <span>{{item.physicianUserCode}}</span>
+                              </div>
+                            </mat-option>
+                          </mat-autocomplete>
+                        </div>
+                        <div class="validation-div errorDiv">
+                          <app-validation-message [control]="PhysicianAppointmentForm.controls['physicianUserID']"
+                            [messages]="errorMessage.PhysicianAppointment.physicianUserID">
+                          </app-validation-message>
+                        </div>
+                      </div>
+                      <div class="doctorDetails" *ngIf="showPhysicianDetailsForAppointment">
+                        <div class="row">
+                          <div class="col-md-9">
+                            <div class="CollapsePrescribed">
+                              <ul class="m-d expand-list p-0">
+                                <li data-md-content="200">
+                                  <label name="tab" for="tabAddress" tabindex="-1" class="tab_lab w-100" role="tab">
+                                    <div>
+                                      <div id="dropdownMenuLink" style="display: flex;">
+                                        <div>
+                                          <span>{{selectedPhysicianDetailsForAppointment.physicianName}}</span>
+                                          <span
+                                            style="font-size: 12px !important; color: #713bdb;">&nbsp;({{selectedPhysicianDetailsForAppointment.physicianUserCode}})</span>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </label>
+                                  <div class="row">
+                                    <div class="col-md-12">
+                                      <div class="doctorCard">
+                                        <div class="row">
+                                          <div class="col-md-5">
+                                            <div class="profileImg">
+                                              <img
+                                                [src]="selectedPhysicianDetailsForAppointment.physicianProfilePictureFileName|getFile:selectedPhysicianDetailsForAppointment.physicianProfilePictureFileType">
+                                            </div>
+                                          </div>
+                                          <div class="col-md-7">
+                                            <table>
+                                              <tbody>
+                                                <tr>
+                                                  <td></td>
+                                                  <td>{{selectedPhysicianDetailsForAppointment.physicianSpecialisation}}
+                                                  </td>
+                                                </tr>
+                                                <tr>
+                                                  <td></td>
+                                                  <td>{{selectedPhysicianDetailsForAppointment.physicianQualification}}
+                                                  </td>
+                                                </tr>
+                                                <tr>
+                                                  <td></td>
+                                                  <td>
+                                                    {{selectedPhysicianDetailsForAppointment.physicianRegistrationNo}}({{selectedPhysicianDetailsForAppointment.physicianRegistrationAuthority}})
+                                                  </td>
+                                                </tr>
+                                                <tr
+                                                  *ngIf="selectedPhysicianDetailsForAppointment.physicianPrimaryContactNo">
+                                                  <td><i class="bi-telephone-fill"></i></td>
+                                                  <td><b>(P)</b> +91
+                                                    {{selectedPhysicianDetailsForAppointment.physicianPrimaryContactNo}}
+                                                  </td>
+                                                </tr>
+                                                <tr
+                                                  *ngIf="selectedPhysicianDetailsForAppointment.physicianSecondaryContactNo">
+                                                  <td><i class="bi-telephone-fill"></i></td>
+                                                  <td><b>(s)</b> +91
+                                                    {{selectedPhysicianDetailsForAppointment.physicianSecondaryContactNo}}
+                                                  </td>
+                                                </tr>
+                                              </tbody>
+                                            </table>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <div class="col-md-12 d-flex justify-content-between">
+                                      <button class="Confirm" (click)="selectPhysicianForPrescriptionForAppointment()"
+                                        class="p-2">Confirm</button>
+                                      <button class="Confirm" (click)="unSelectPhysicianForPrescriptionForAppointment()"
+                                        class="p-2">Cancel</button>
+                                    </div>
+                                  </div>
+                                </li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-12">
+                        <div class="form-floating">
+                          <input type="text" name="HealthclinicName" id="HealthclinicName"
+                            placeholder="HealthclinicName" [matAutocomplete]="healthClinicNameautoForAppointment"
+                            [ngClass]="{'disable':PhysicianAppointmentForm.get('healthClinicName')?.disabled === true}"
+                            (keyup)="onTypeHealthClinicNameForAppointment()" class="form-control"
+                            formControlName="healthClinicName">
+                          <mat-autocomplete #healthClinicNameautoForAppointment="matAutocomplete">
+                            <mat-option *ngFor="let item of HealthClinicListForAppointment"
+                              [value]="searcHealthClinicForAppointment"
+                              (click)="selectHealthClinicForAppointment(item)">
+                              <div class="d-flex flex-column">
+                                <p class="p-0">{{item.healthClinicName}}</p>
+                                <span>{{item.healthClinicID}}</span>
+                              </div>
+                            </mat-option>
+                          </mat-autocomplete>
+                          <label for="Laboratory">Healthclinic Name</label>
+                          <div class="Delete" *ngIf="PhysicianAppointmentForm.get('healthClinicID')?.value.length"
+                            (click)="unSelectHealthClinicForPrescriptionForAppointment()"><i
+                              class="bi-x-circle-fill"></i></div>
+                        </div>
+                        <div class="validation-div errorDiv">
+                          <app-validation-message [control]="PhysicianAppointmentForm.controls['healthClinicID']"
+                            [messages]="errorMessage.PhysicianAppointment.healthClinicID">
+                          </app-validation-message>
+                        </div>
+                        <div class="doctorDetails" *ngIf="showHealthClinicDetailsForAppointment">
+                          <div class="row">
+                            <div class="col-md-8">
+                              <div class="CollapsePrescribed">
+                                <ul class="m-d expand-list p-0">
+                                  <li data-md-content="200">
+                                    <label name="tab" for="tabAddress" tabindex="-1" class="tab_lab w-100" role="tab">
+                                      <div>
+                                        <div id="dropdownMenuLink" style="display: flex;">
+                                          <div>
+                                            <span>{{selectedHealthClinicDetailsForAppointment.healthClinicName}}</span>
+                                            <span
+                                              style="font-size: 12px !important; color: #713bdb;">&nbsp;({{selectedHealthClinicDetailsForAppointment.healthClinicID
+                                              }})</span>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </label>
+                                    <div class="row">
+                                      <div class="col-md-12">
+                                        <div class="doctorCard">
+                                          <div class="row">
+                                            <div class="col-md-5">
+                                              <div class="profileImg">
+                                                <img
+                                                  [src]="selectedHealthClinicDetailsForAppointment.profilePictureFileName|getFile:selectedHealthClinicDetailsForAppointment.profilePictureFileType">
+                                              </div>
+                                            </div>
+                                            <div class="col-md-7">
+                                              <table>
+                                                <tbody>
+                                                  <tr>
+                                                    <td><i class="bi-geo-alt-fill"></i></td>
+                                                    <td>
+                                                      <p [innerHTML]="selectedHealthClinicDetailsForAppointment.addressLine |addressLine"
+                                                        *ngIf="selectedHealthClinicDetailsForAppointment.addressLine">
+                                                      </p>
+                                                      <p>{{selectedHealthClinicDetailsForAppointment.landmark}} </p>
+                                                      <p>{{selectedHealthClinicDetailsForAppointment.city}} ,
+                                                        {{selectedHealthClinicDetailsForAppointment.stateName}} -
+                                                        {{selectedHealthClinicDetailsForAppointment.pincode}}</p>
+                                                    </td>
+                                                  </tr>
+                                                  <tr>
+                                                    <td><i class="bi-telephone-fill"></i></td>
+                                                    <td>
+                                                      <b>(P)</b>+91{{selectedHealthClinicDetailsForAppointment.primaryContactNo}}
+                                                    </td>
+                                                  </tr>
+                                                  <tr
+                                                    *ngIf="selectedHealthClinicDetailsForAppointment.secondaryContactNo">
+                                                    <td><i class="bi-telephone-fill"></i></td>
+                                                    <td>
+                                                      <b>(S)</b>+91{{selectedHealthClinicDetailsForAppointment.secondaryContactNo}}
+                                                    </td>
+                                                  </tr>
+                                                  <tr *ngIf="selectedHealthClinicDetailsForAppointment.openHoureStart">
+                                                    <td><i class="bi-clock"></i></td>
+                                                    <td><b>Open -
+                                                      </b>{{selectedHealthClinicDetailsForAppointment.openHoureStart}}
+                                                    </td>
+                                                  </tr>
+                                                  <tr *ngIf="selectedHealthClinicDetailsForAppointment.openHoureEnd">
+                                                    <td><i class="bi-clock"></i></td>
+                                                    <td><b>Close -
+                                                      </b>{{selectedHealthClinicDetailsForAppointment.openHoureEnd}}
+                                                    </td>
+                                                  </tr>
+                                                </tbody>
+                                              </table>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                      <div class="col-md-12 d-flex justify-content-between">
+                                        <button class="Confirm"
+                                          (click)="selectHealthClinicForPrescriptionForAppointment()"
+                                          class="p-2">Confirm</button>
+                                        <button class="Confirm" (click)="unSelectHealthClinicForAppointment()"
+                                          class="p-2">Cancel</button>
+                                      </div>
+                                    </div>
+                                  </li>
+                                </ul>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-12">
+                        <div class="form-floating">
+                          <input type="text" name="patientName" id="patientName" placeholder="Patient Name"
+                            [ngClass]="{'disable':PhysicianAppointmentForm.get('patientName')?.disabled === true}"
+                            (keyup)="onTypePatientNameForAppointment()"
+                            [matAutocomplete]="patientNameautoForAppointment" class="form-control"
+                            formControlName="patientName">
+                          <mat-autocomplete #patientNameautoForAppointment="matAutocomplete">
+                            <mat-option *ngFor="let item of PatientListForAppointment"
+                              [value]="searcPatientForAppointment" (click)="selectPatientForAppointment(item)">
+                              <div class="d-flex flex-column">
+                                <p class="p-0">{{item.displayName}}</p>
+                                <span>{{item.userCode}}</span>
+                              </div>
+                            </mat-option>
+                          </mat-autocomplete>
+                          <label for="Laboratory">Patient Name</label>
+                          <div class="Delete" *ngIf="PhysicianAppointmentForm.get('patientUserCode')?.value.length"
+                            (click)="unSelectPatientForPrescriptionForAppointment()"><i class="bi-x-circle-fill"></i>
+                          </div>
+                        </div>
+                        <div class="validation-div errorDiv">
+                          <app-validation-message [control]="PhysicianAppointmentForm.controls['patientUserCode']"
+                            [messages]="errorMessage.PhysicianAppointment.patientUserCode">
+                          </app-validation-message>
+                        </div>
+                      </div>
+                      <div class="doctorDetails" *ngIf="showPatientDetailsForAppointment">
+                        <div class="row">
+                          <div class="col-md-7">
+                            <div class="CollapsePrescribed">
+                              <ul class="m-d expand-list p-0">
+                                <li data-md-content="200">
+                                  <label name="tab" for="tabAddress" tabindex="-1" class="tab_lab w-100" role="tab">
+                                    <div>
+                                      <div id="dropdownMenuLink" style="display: flex;">
+                                        <div>
+                                          <span>{{selectedPatientDetailsForAppointment.displayName}}</span>
+                                          <span
+                                            style="font-size: 12px !important; color: #713bdb;">&nbsp;({{selectedPatientDetailsForAppointment.userCode}})</span>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </label>
+                                  <div class="row">
+                                    <div class="col-md-12">
+                                      <div class="doctorCard">
+                                        <div class="row">
+                                          <div class="col-md-5">
+                                            <div class="profileImg">
+                                              <img
+                                                [src]="selectedPatientDetailsForAppointment.profilePictureFileName|getFile:selectedPatientDetailsForAppointment.profilePictureFileType">
+                                            </div>
+                                          </div>
+                                          <div class="col-md-7">
+                                            <div class="d-flex flex-column">
+                                              <table>
+                                                <tbody>
+                                                  <tr>
+                                                    <td></td>
+                                                    <td>
+                                                      {{commonService.calculateGender(selectedPatientDetailsForAppointment.gender)}},
+                                                      {{commonService.calculateAge(selectedPatientDetailsForAppointment.dateOfBirth)}}
+                                                    </td>
+                                                  </tr>
+                                                  <tr *ngIf="selectedPatientDetailsForAppointment.primaryPhoneno">
+                                                    <td><i class="bi-telephone-fill"></i></td>
+                                                    <td><b>(P)</b> +91
+                                                      {{selectedPatientDetailsForAppointment.primaryPhoneno}}</td>
+                                                  </tr>
+                                                  <tr *ngIf="selectedPatientDetailsForAppointment.secondaryPhoneNo">
+                                                    <td><i class="bi-telephone-fill"></i> </td>
+                                                    <td><b>(s)</b> +91
+                                                      {{selectedPatientDetailsForAppointment.secondaryPhoneNo}}</td>
+                                                  </tr>
+                                                </tbody>
+                                              </table>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <div class="col-md-12 d-flex justify-content-between">
+                                      <button class="Confirm" (click)="selectPatientForPrescriptionForAppointment()"
+                                        class="p-2">Confirm</button>
+                                      <button class="Confirm" (click)="unSelectPatientForAppointment()"
+                                        class="p-2">Cancel</button>
+                                    </div>
+                                  </div>
+                                </li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="row">
+                        <div class="col-md-12">
+                          <div class="displayText">
+                            <div class="displaydetails">
+                              <div *ngIf="PhysicianAppointmentForm.getRawValue().physicianUserCode">
+                                <div class="px-2">
+                                  <label for="">{{PhysicianAppointmentForm.getRawValue().physicianName}}</label>
+                                  <span>[{{PhysicianAppointmentForm.getRawValue().physicianUserCode}}]</span>
+                                  <p>{{PhysicianAppointmentForm.getRawValue().physicianQualification}}</p>
+                                  <p>{{PhysicianAppointmentForm.getRawValue().physicianSpecialisation}}</p>
+                                  <p>{{PhysicianAppointmentForm.getRawValue().physicianPrimaryContactNo}}</p>
+                                </div>
+                              </div>
+                              <div class="px-2">
+                                <div *ngIf="PhysicianAppointmentForm.value.healthClinicID">
+                                  <label for="">{{PhysicianAppointmentForm.getRawValue().healthClinicName}}</label>
+                                  <p>{{PhysicianAppointmentForm.getRawValue().healthClinicAddress}}</p>
+                                </div>
+                                <div *ngIf="PhysicianAppointmentForm.value.patientUserCode">
+                                  <label for="">{{PhysicianAppointmentForm.getRawValue().patientName}}</label>
+                                  <span>[{{PhysicianAppointmentForm.getRawValue().patientUserCode}}]</span>
+                                  <p>{{PhysicianAppointmentForm.getRawValue().patientID}}</p>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-floating">
+                        <input type="date" name="appointmentDate" id="appointmentDate" placeholder="appointmentDate"
+                          class="form-control" formControlName="appointmentDate"
+                          min="{{currentDate |date:'yyyy-MM-dd'}}">
+                        <label for="Laboratory">Appointment Date</label>
+                      </div>
+                      <div class="validation-div errorDiv">
+                        <app-validation-message [control]="PhysicianAppointmentForm.controls['appointmentDate']"
+                          [messages]="errorMessage.PhysicianAppointment.appointmentDate">
+                        </app-validation-message>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-floating">
+                        <input type="text" name="time" id="time" placeholder="time"
+                          [ngxTimepicker]="AppointmentTimePicker" [format]="12" placeholder="12:00 AM"
+                          class="form-control" formControlName="appointmentTime">
+                        <ngx-material-timepicker [minutesGap]="5" [theme]="timePickerTheme" [defaultTime]="'12:00 AM'"
+                          #AppointmentTimePicker>
+                        </ngx-material-timepicker>
+                        <label for="Laboratory">Time</label>
+                      </div>
+                      <div class="validation-div errorDiv">
+                        <app-validation-message [control]="PhysicianAppointmentForm.controls['appointmentTime']"
+                          [messages]="errorMessage.PhysicianAppointment.appointmentTime">
+                        </app-validation-message>
+                      </div>
+                    </div>
+                    <div class="col-md-12">
+                      <div class="errorDiv">
+                        <small>{{appointmentBookErrMSG}}</small>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </form>
+              <div class="row mt-2">
+                <div class="col-md-6 text-center">
+                  <button (click)="bookAppointment()" class="p-2">Submit</button>
+                </div>
+                <div class="col-md-6 text-center">
+                  <button (click)="clearPhysicianAppointmentForm()" class="p-2">Cancel</button>
+                </div>
+              </div>
+            </div>
+            <div class="tabpane" id="GSTSetup" *ngIf="activeMenue === 'GSTSetup'">
+
+              <form [formGroup]="GstForm">
+                <div class="row">
+                  <div class="col-md-12">
+                    <div formArrayName="gstItemList">
+                      <div class="row " *ngFor="let gstItem of gstItemList().controls let gstItemIndex = index">
+                        <div class="col-md-12">
+                          <div class="box">
+                            <ng-container formGroupName="{{gstItemIndex}}">
+                              <div class="row">
+                                <div class="col-md-12 px-2">
+                                  <div class="form-floating position-relative">
+                                    <input type="text" name="Medicine/HouseholdItemName" id="Medicine/HouseholdItemName"
+                                      placeholder="Medicine/HouseholdItemName" formControlName="itemName"
+                                      class="form-control"
+                                      (keyup)="itemSearch(gstItemIndex,gstItem.getRawValue().itemName)"
+                                      [matAutocomplete]="ItemNameauto"
+                                      [ngClass]="{medicineGSTinput:gstItem.value.isMedicine==='Y',householdGSTinput:gstItem.value.isMedicine==='N'}">
+                                    <label for="floatingSelect">Medicine / Household Item Name</label>
+                                    <mat-autocomplete #ItemNameauto="matAutocomplete">
+                                      <mat-option *ngFor="let item of gstItem.value.tempMedicineList"
+                                        [value]="gstItem.value.searchedItem"
+                                        (click)="selectItem(gstItemIndex,item,true)">
+                                        <p class="medicineList">{{item.medicineName}}</p>
+                                      </mat-option>
+                                      <mat-option *ngFor="let item of gstItem.value.tempHouseHoldList"
+                                        [value]="gstItem.value.searchedItem"
+                                        (click)="selectItem(gstItemIndex,item,false)">
+                                        <p class="householdList">{{item.householdItemName}}</p>
+                                      </mat-option>
+                                    </mat-autocomplete>
+                                  </div>
+                                  <div class="validation-div errorDiv">
+                                    <app-validation-message [control]="getGstItemController(gstItemIndex,'itemCode')"
+                                      [messages]="errorMessage.GstForm.itemCode">
+                                    </app-validation-message>
+                                  </div>
+                                </div>
+                                <div class="col-md-5 px-2">
+                                  <div class="form-floating">
+                                    <input type="text" name="HSN/SBA Code" id="HSN/SBACode" placeholder="HSN/SBACode"
+                                      formControlName="hsnSbaCode" class="form-control"
+                                      (focusout)="hsnSbaCodeChange(gstItemIndex,gstItem.value.hsnSbaCode)"
+                                      [ngClass]="{medicineGSTinput:gstItem.value.isMedicine==='Y',householdGSTinput:gstItem.value.isMedicine==='N'}">
+                                    <label for="">HSN / SBA Code</label>
+                                  </div>
+                                  <div class="validation-div errorDiv">
+                                    <app-validation-message [control]="getGstItemController(gstItemIndex,'hsnSbaCode')"
+                                      [messages]="errorMessage.GstForm.hsnSbaCode">
+                                    </app-validation-message>
+                                  </div>
+                                </div>
+                                <!-- <div class="col-md-3 px-1">
+                                  <div class="form-floating selectBox"
+                                    [ngClass]="{selectedFormValue : GstForm.value.gstRateVariation }">
+                                    <select formControlName="gstRateVariation" id="floatingSelect TrendChart"
+                                      name="TrendChart" class="form-select">
+                                      <option value="1">1</option>
+                                      <option value="2">2</option>
+                                      <option value="3">3</option>
+                                      <option value="4">4</option>
+                                      
+                                    </select>
+                                    <div class="validation-div errorDiv">
+                                      <app-validation-message [control]="getGstItemController(gstItemIndex,'gstRateVariation')"
+                                        [messages]="errorMessage.GstForm.gstRateVariation">
+                                      </app-validation-message>
+                                    </div>
+                                    <label for="floatingSelect">Variation</label>
+                                  </div>
+                                </div> -->
+                                <div class="col-md-2 px-2">
+                                  <div class="form-floating">
+                                    <input type="text" name="GST%" id="GST%" placeholder="GST%"
+                                      formControlName="gstRate" class="form-control"
+                                      (keyup)="changeGstPescentage(gstItemIndex,gstItem.getRawValue().igstRate,'gstRate')"
+                                      (focusout)="gstRateValidationChange(gstItemIndex,gstItem.getRawValue().igstRate)"
+                                      [ngClass]="{medicineGSTinput:gstItem.value.isMedicine==='Y',householdGSTinput:gstItem.value.isMedicine==='N'}">
+                                    <label for="">GST %</label>
+                                  </div>
+                                  <div class="validation-div errorDiv">
+                                    <app-validation-message [control]="getGstItemController(gstItemIndex,'gstRate')"
+                                      [messages]="errorMessage.GstForm.gstRate">
+                                    </app-validation-message>
+                                  </div>
+                                </div>
+                                <div class="col-md-2 px-2">
+                                  <div class="form-floating">
+                                    <input type="text" name="CESS%" id="CESS%" placeholder="CESS%"
+                                      formControlName="cessRate" class="form-control"
+                                      (keyup)="changeGstPescentage(gstItemIndex,gstItem.getRawValue().cessRate,'cessRate')"
+                                      (focusout)="gstRateValidationChange(gstItemIndex,gstItem.getRawValue().cessRate)"
+                                      [ngClass]="{medicineGSTinput:gstItem.value.isMedicine==='Y',householdGSTinput:gstItem.value.isMedicine==='N'}">
+                                    <label for="">CESS %</label>
+                                  </div>
+                                  <div class="validation-div errorDiv">
+                                    <app-validation-message [control]="getGstItemController(gstItemIndex,'cessRate')"
+                                      [messages]="errorMessage.GstForm.cessRate">
+                                    </app-validation-message>
+                                  </div>
+                                </div>
+                                <div class="col-md-12 text-end"
+                                  *ngIf="(gstItemList().length>1 || gstItem.getRawValue().dataSet) && !GstForm.value.ifErr">
+                                  <i class="bi-trash-fill" (click)="deleteGstItem(gstItemIndex)"></i>
+                                </div>
+                                <div class="validation-div errorDiv" *ngIf="gstItem.value.customErrMsg">
+                                  <small>{{gstItem.value.customErrMsg}}</small>
+                                </div>
+                              </div>
+                            </ng-container>
+                          </div>
+                        </div>
+                        <div class="col-md-12 text-end">
+                          <div class="addTest" *ngIf="gstItemIndex+1 === gstItemList().length && !GstForm.value.ifErr"
+                            (click)="addAnotherGstGroup()">+Add Item</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-12 text-end mt-2">
+                  <button class="p-2" (click)="saveGstForm(GstForm.getRawValue(),GstForm.valid)"
+                    *ngIf="!GstForm.value.ifErr">Submit</button>
+                  <button class="p-2" (click)="gstFormReset()" >Reset</button>
+                </div>
+              </form>
+            </div>
+            <div class="tabpane" id="DISCetup" *ngIf="activeMenue === 'AnamnesisDiscount'">
+              <form [formGroup]="anamnesisDiscountForm">
+                <div class="row">
+                  <div class="col-md-6" formGroupName="CouponCategory1">
+                    <div class="box h-100 m-0 pb-0">
+                      <h6>Anamnesis Discount</h6>
+                      <div class="row">
+                        <div class="col-md-12 mb-2">
+                          <ngx-slider [(value)]="CouponCategory1DateValue" [(highValue)]="CouponCategory1HighValue"
+                            [options]="CouponCategory1DateOptions" (highValueChange)="onHighValueChange(1,$event)"
+                            (valueChange)="onLowValueChange(1,$event)"></ngx-slider>
+                        </div>
+
+                        <div class="col-md-6">
+                          <div class="col-md-12">
+                            <div class="form-floating">
+                              <select class="form-select" id="CoupenType" aria-label="CoupenType"
+                                formControlName="couponType"
+                                (change)="couponTypeChange(1,anamnesisDiscountForm.value.CouponCategory1.couponType)">
+                                <option [value]="couponType.couponType"
+                                  *ngFor="let couponType of couponCodeOptionListOfCouponCategory">
+                                  {{couponType.couponTypeDescription}}</option>
+                              </select>
+                              <label for="CoupenType">Coupon Type</label>
+                            </div>
+                            <div class="validation-div errorDiv" *ngIf="getControll(1,'couponType')">
+                              <app-validation-message [control]="getControll(1,'couponType')"
+                                [messages]="errorMessage.anamnesisDiscountForm.couponType">
+                              </app-validation-message>
+                            </div>
+                          </div>
+                          <div class="col-md-12">
+                            <div class="form-floating"
+                              *ngIf=" isShowInputCouponCategory1(anamnesisDiscountForm.value.CouponCategory1.couponType,'discountPercent')">
+                              <input type="text" class="form-control" id="Coupen%" placeholder="Coupen"
+                                formControlName="discountPercent"
+                                (keyup)="changeDecNumber(1,'discountPercent',anamnesisDiscountForm.value.CouponCategory1.discountPercent)">
+                              <label for="Coupen%">Coupon %</label>
+                            </div>
+                            <div class="validation-div errorDiv"
+                              *ngIf="isShowInputCouponCategory1(anamnesisDiscountForm.value.CouponCategory1.couponType,'discountPercent')">
+                              <app-validation-message [control]="getControll(1,'discountPercent')"
+                                [messages]="errorMessage.anamnesisDiscountForm.discountPercent">
+                              </app-validation-message>
+                            </div>
+
+                            <div class="form-floating "
+                              *ngIf="isShowInputCouponCategory1(anamnesisDiscountForm.value.CouponCategory1.couponType,'discountFlatAmount')">
+                              <input type="text" class="form-control" id="CoupenAmount" placeholder="Coupen Amount"
+                                formControlName="discountFlatAmount"
+                                (keyup)="changeNumber(1,'discountFlatAmount',anamnesisDiscountForm.value.CouponCategory1.discountFlatAmount)">
+                              <label for="CoupenAmount">Coupon Amount</label>
+                            </div>
+                            <div class="validation-div errorDiv"
+                              *ngIf=" isShowInputCouponCategory1(anamnesisDiscountForm.value.CouponCategory1.couponType,'discountFlatAmount')">
+                              <app-validation-message [control]="getControll(1,'discountFlatAmount')"
+                                [messages]="errorMessage.anamnesisDiscountForm.discountFlatAmount">
+                              </app-validation-message>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <div class="form-floating">
+                            <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea"
+                              formControlName="couponCodeDescription"></textarea>
+                            <label for="floatingTextarea">Comments</label>
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <div class="form-floating">
+                            <input type="text" class="form-control" id="FloorLimit" placeholder="Floor Limit"
+                              formControlName="maxDiscountAmount"
+                              (keyup)="changeNumber(1,'maxDiscountAmount',anamnesisDiscountForm.value.CouponCategory1.maxDiscountAmount)">
+                            <label for="FloorLimit">Discount Cap</label>
+                          </div>
+                          <div class="validation-div errorDiv">
+                            <app-validation-message [control]="getControll(1,'maxDiscountAmount')"
+                              [messages]="errorMessage.anamnesisDiscountForm.maxDiscountAmount">
+                            </app-validation-message>
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <div class="form-floating"
+                            *ngIf="isShowInputCouponCategory1(anamnesisDiscountForm.value.CouponCategory1.couponType,'orderFloorLimit')">
+                            <input type="text" class="form-control" id="FloorLimit" placeholder="Floor Limit"
+                              formControlName="orderFloorLimit"
+                              (keyup)="changeNumber(1,'orderFloorLimit',anamnesisDiscountForm.value.CouponCategory1.orderFloorLimit)">
+                            <label for="FloorLimit">Floor Limit</label>
+                          </div>
+                          <div class="validation-div errorDiv"
+                            *ngIf="isShowInputCouponCategory1(anamnesisDiscountForm.value.CouponCategory1.couponType,'orderFloorLimit')">
+                            <app-validation-message [control]="getControll(1,'orderFloorLimit')"
+                              [messages]="errorMessage.anamnesisDiscountForm.orderFloorLimit">
+                            </app-validation-message>
+                          </div>
+                        </div>
+
+                        <div class="col-md-12 my-2">
+                          <div class="CouponBox">
+                            <table style="width: 100%;">
+                              <tr class="LabelList">
+                                <th>Coupon Code</th>
+                                <th>Type</th>
+                                <th>Start Date</th>
+                                <th>Expiry Date</th>
+                                <th>Dis %</th>
+                              </tr>
+                              <tr
+                                *ngFor="let anamnesisDiscount of anamnesisDiscountList let anamnesisDiscountIndex = index"
+                                [ngClass]="{active:anamnesisDiscountIndex===0}">
+                                <td>{{anamnesisDiscount?.couponCode}}</td>
+                                <td>{{anamnesisDiscount?.couponType}}</td>
+                                <td>{{anamnesisDiscount?.couponStartDate?(dateFormat(anamnesisDiscount?.couponStartDate)|date:'dd-MMM-yyyy'):''}}</td>
+                                <td>{{anamnesisDiscount?.couponExpiryDate?(dateFormat(anamnesisDiscount?.couponExpiryDate)|date:'dd-MMM-yyyy'):''}}</td>
+                                <td>{{anamnesisDiscount?.couponDiscountPercent}} %</td>
+                              </tr>
+                              <tr *ngIf="!anamnesisDiscountList.length">
+                                <td>{{' '}}</td>
+                                <td>{{' '}}</td>
+                                <td>No coupo code available</td>
+                                <td>{{' '}}</td>
+                                <td>{{' '}}</td>
+                              </tr>
+                            </table>
+                          </div>
+                        </div>
+                        <div class="col-md-12 my-2 text-end">
+                          <button class="p-2" (click)="saveCouponCategory(1)">Submit</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6" formGroupName="CouponCategory2">
+                    <div class="box h-100 m-0 pb-0">
+                      <h6>Special Discount</h6>
+                      <div class="row">
+                        <div class="col-md-12 mb-2">
+                          <ngx-slider [(value)]="CouponCategory2DateValue" [(highValue)]="CouponCategory2HighValue"
+                            [options]="CouponCategory2DateOptions" (highValueChange)="onHighValueChange(2,$event)"
+                            (valueChange)="onLowValueChange(2,$event)"></ngx-slider>
+                        </div>
+                        <div class="col-md-6">
+                          <div class="row">
+                            <div class="col-md-12">
+                              <div class="form-floating">
+                                <select class="form-select" id="CoupenType" aria-label="CoupenType"
+                                  formControlName="couponType"
+                                  (change)="couponTypeChange(2,anamnesisDiscountForm.value.CouponCategory2.couponType)">
+                                  <option [value]="couponType.couponType"
+                                    *ngFor="let couponType of couponCodeOptionListOfCouponCategory">
+                                    {{couponType.couponTypeDescription}}</option>
+                                </select>
+                                <label for="CoupenType">Coupon Type</label>
+                              </div>
+                              <div class="validation-div errorDiv" *ngIf="getControll(2,'couponType')">
+                                <app-validation-message [control]="getControll(2,'couponType')"
+                                  [messages]="errorMessage.anamnesisDiscountForm.couponType">
+                                </app-validation-message>
+                              </div>
+                            </div>
+                            <div class="col-md-12">
+                              <div class="form-floating"
+                                *ngIf="isShowInputCouponCategory2(anamnesisDiscountForm.value.CouponCategory2.couponType,'discountPercent')">
+                                <input type="text" class="form-control" id="Coupen%" placeholder="Coupen"
+                                  formControlName="discountPercent"
+                                  (keyup)="changeDecNumber(2,'discountPercent',anamnesisDiscountForm.value.CouponCategory2.discountPercent)">
+                                <label for="Coupen%">Coupon %</label>
+                              </div>
+                              <div class="validation-div errorDiv"
+                                *ngIf="isShowInputCouponCategory2(anamnesisDiscountForm.value.CouponCategory2.couponType,'discountPercent')">
+                                <app-validation-message [control]="getControll(2,'discountPercent')"
+                                  [messages]="errorMessage.anamnesisDiscountForm.discountPercent">
+                                </app-validation-message>
+                              </div>
+                              <div class="form-floating "
+                                *ngIf="isShowInputCouponCategory2(anamnesisDiscountForm.value.CouponCategory2.couponType,'discountFlatAmount')">
+                                <input type="text" class="form-control" id="CoupenAmount" placeholder="Coupen Amount"
+                                  (keyup)="changeNumber(2,'discountFlatAmount',anamnesisDiscountForm.value.CouponCategory2.discountFlatAmount)">
+                                <label for="CoupenAmount">Coupon Amount</label>
+                              </div>
+                              <div class="validation-div errorDiv"
+                                *ngIf=" isShowInputCouponCategory2(anamnesisDiscountForm.value.CouponCategory2.couponType,'discountFlatAmount')">
+                                <app-validation-message [control]="getControll(2,'discountFlatAmount')"
+                                  [messages]="errorMessage.anamnesisDiscountForm.discountFlatAmount">
+                                </app-validation-message>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <div class="form-floating">
+                            <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea"
+                              formControlName="couponCodeDescription"></textarea>
+                            <label for="floatingTextarea">Comments</label>
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <div class="form-floating">
+                            <input type="text" class="form-control" id="FloorLimit" placeholder="Floor Limit"
+                              formControlName="maxDiscountAmount"
+                              (keyup)="changeNumber(2,'maxDiscountAmount',anamnesisDiscountForm.value.CouponCategory2.maxDiscountAmount)">
+                            <label for="FloorLimit">Discount Cap</label>
+                          </div>
+                          <div class="validation-div errorDiv">
+                            <app-validation-message [control]="getControll(2,'maxDiscountAmount')"
+                              [messages]="errorMessage.anamnesisDiscountForm.maxDiscountAmount">
+                            </app-validation-message>
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <div class="form-floating"
+                            *ngIf="isShowInputCouponCategory2(anamnesisDiscountForm.value.CouponCategory2.couponType,'orderFloorLimit')">
+                            <input type="text" class="form-control" id="FloorLimit" placeholder="Floor Limit"
+                              formControlName="orderFloorLimit"
+                              (keyup)="changeNumber(2,'orderFloorLimit',anamnesisDiscountForm.value.CouponCategory2.orderFloorLimit)">
+                            <label for="FloorLimit">Floor Limit</label>
+                          </div>
+                          <div class="validation-div errorDiv"
+                            *ngIf="isShowInputCouponCategory2(anamnesisDiscountForm.value.CouponCategory2.couponType,'orderFloorLimit')">
+                            <app-validation-message [control]="getControll(2,'orderFloorLimit')"
+                              [messages]="errorMessage.anamnesisDiscountForm.orderFloorLimit">
+                            </app-validation-message>
+                          </div>
+                        </div>
+
+                        <div class="col-md-12 my-2">
+                          <div class="CouponBox">
+                            <table style="width: 100%;">
+                              <tr class="LabelList">
+                                <th>Coupon Code</th>
+                                <th>Type</th>
+                                <th>Start Date</th>
+                                <th>Expiry Date</th>
+                                <th>Dis %</th>
+                              </tr>
+                              <tr *ngFor="let specialDiscount of specialDiscountList let specialDiscountIndex = index"
+                                [ngClass]="{active:specialDiscountIndex===0}">
+                                <td>{{specialDiscount?.couponCode}}</td>
+                                <td>{{specialDiscount?.couponType}}</td>
+                                <td>{{specialDiscount?.couponStartDate?(dateFormat(specialDiscount?.couponStartDate)|date:'dd-MMM-yyyy'):''}}</td>
+                                <td>{{specialDiscount?.couponExpiryDate?(dateFormat(specialDiscount?.couponExpiryDate)|date:'dd-MMM-yyyy'):''}}</td>
+                                <td>{{specialDiscount?.couponDiscountPercent}}%</td>
+                              </tr>
+                              <tr *ngIf="!specialDiscountList.length" style="height:14px">
+                                <td></td>
+                                <td></td>
+                                <td>No coupon code available</td>
+                                <td></td>
+                                <td></td>
+                              </tr>
+                            </table>
+                          </div>
+                        </div>
+                        <div class="col-md-12 my-2 text-end">
+                          <button class="p-2" (click)="saveCouponCategory(2)">Submit</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row" formGroupName="CouponCategory3">
+                  <div class="col-md-12">
+                    <div class="box">
+                      <h6>Coupon Details</h6>
+                      <div class="row">
+                        <div class="col-md-6">
+                          <div class="row">
+                            <div class="col-md-12 mb-2">
+                              <ngx-slider [(value)]="CouponCategory3DateValue" [(highValue)]="CouponCategory3HighValue"
+                                [options]="CouponCategory3DateOptions" (highValueChange)="onHighValueChange(3,$event)"
+                                (valueChange)="onLowValueChange(3,$event)"></ngx-slider>
+                            </div>
+                            <div class="col-md-6">
+                              <div class="form-floating">
+                                <select class="form-select" id="CoupenType" aria-label="CoupenType"
+                                  formControlName="couponType"
+                                  (change)="couponTypeChange(3,anamnesisDiscountForm.value.CouponCategory3.couponType)">
+                                  <option [value]="couponType.couponType"
+                                    *ngFor="let couponType of couponCodeOptionListOfCouponCategory">
+                                    {{couponType.couponTypeDescription}}</option>
+                                </select>
+                                <label for="CoupenType">Coupon Type</label>
+                              </div>
+                              <div class="validation-div errorDiv" *ngIf="getControll(3,'couponType')">
+                                <app-validation-message [control]="getControll(3,'couponType')"
+                                  [messages]="errorMessage.anamnesisDiscountForm.couponType">
+                                </app-validation-message>
+                              </div>
+                            </div>
+                            <div class="col-md-6">
+                              <div class="form-floating">
+                                <input type="Text" class="form-control" id="CouponCode" placeholder="CouponCode"
+                                  formControlName="couponCode"
+                                  (keyup)="couponCodeChange(3,anamnesisDiscountForm.value.CouponCategory3.couponCode)">
+                                <label for="CouponCode">Coupon Code</label>
+                              </div>
+                              <div class="validation-div errorDiv">
+                                <app-validation-message [control]="getControll(3,'couponCode')"
+                                  [messages]="errorMessage.anamnesisDiscountForm.couponCode">
+                                </app-validation-message>
+                              </div>
+                            </div>
+                            <div class="col-md-6">
+                              <div class="form-floating"
+                                *ngIf="isShowInputCouponCategory3(anamnesisDiscountForm.value.CouponCategory3.couponType,'discountPercent')">
+                                <input type="text" class="form-control" id="Coupen%" placeholder="Coupen"
+                                  formControlName="discountPercent"
+                                  (keyup)="changeDecNumber(3,'discountPercent',anamnesisDiscountForm.value.CouponCategory3.discountPercent)">
+                                <label for="Coupen%">Coupon %</label>
+                              </div>
+                              <div class="form-floating "
+                                *ngIf="isShowInputCouponCategory3(anamnesisDiscountForm.value.CouponCategory3.couponType,'discountFlatAmount')">
+                                <input type="text" class="form-control" id="CoupenAmount" placeholder="Coupen Amount"
+                                  formControlName="discountFlatAmount"
+                                  (keyup)="changeNumber(3,'discountFlatAmount',anamnesisDiscountForm.value.CouponCategory3.discountFlatAmount)">
+                                <label for="CoupenAmount">Coupon Amount</label>
+                              </div>
+                              <div class="validation-div errorDiv"
+                                *ngIf=" isShowInputCouponCategory3(anamnesisDiscountForm.value.CouponCategory3.couponType,'discountFlatAmount')">
+                                <app-validation-message [control]="getControll(3,'discountFlatAmount')"
+                                  [messages]="errorMessage.anamnesisDiscountForm.discountFlatAmount">
+                                </app-validation-message>
+                              </div>
+                            </div>
+                            <div class="col-md-6">
+
+                              <div class="form-floating">
+                                <input type="text" class="form-control" id="FloorLimit" placeholder="Floor Limit"
+                                  formControlName="maxDiscountAmount"
+                                  (keyup)="changeNumber(3,'maxDiscountAmount',anamnesisDiscountForm.value.CouponCategory3.maxDiscountAmount)">
+                                <label for="FloorLimit">Discount Cap</label>
+                              </div>
+                              <div class="validation-div errorDiv">
+                                <app-validation-message [control]="getControll(3,'maxDiscountAmount')"
+                                  [messages]="errorMessage.anamnesisDiscountForm.maxDiscountAmount">
+                                </app-validation-message>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <div class="row">
+
+                            <div class="col-md-12">
+                              <div class="form-floating">
+                                <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea"
+                                  formControlName="couponCodeDescription"></textarea>
+                                <label for="floatingTextarea">Comments</label>
+                              </div>
+                            </div>
+                            <div class="col-md-12">
+                              <div class="form-floating"
+                                *ngIf="isShowInputCouponCategory3(anamnesisDiscountForm.value.CouponCategory3.couponType,'orderFloorLimit')">
+                                <input type="text" class="form-control" id="FloorLimit" placeholder="Floor Limit"
+                                  formControlName="orderFloorLimit"
+                                  (keyup)="changeNumber(3,'orderFloorLimit',anamnesisDiscountForm.value.CouponCategory3.orderFloorLimit)">
+                                <label for="FloorLimit">Floor Limit</label>
+                              </div>
+                              <div class="validation-div errorDiv"
+                                *ngIf="isShowInputCouponCategory3(anamnesisDiscountForm.value.CouponCategory3.couponType,'orderFloorLimit')">
+                                <app-validation-message [control]="getControll(3,'orderFloorLimit')"
+                                  [messages]="errorMessage.anamnesisDiscountForm.orderFloorLimit">
+                                </app-validation-message>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+                      </div>
+                      <div class="CouponBox mt-2">
+                        <div class="CouponList">
+                          <table style="width: 100%;">
+                            <tr class="LabelList">
+                              <th>Coupon Code</th>
+                              <th>Type</th>
+                              <th>Start Date</th>
+                              <th>Expiry Date</th>
+                              <th>Discount %</th>
+                              <th>Discount Ant</th>
+                              <th>Floor Limit</th>
+                              <th>Discount Cap</th>
+                              <th></th>
+                            </tr>
+                            <tr *ngFor="let Coupon of CouponCategory3DiscountList">
+                              <td>{{Coupon.couponCode}}</td>
+                              <td>{{Coupon.couponType}}</td>
+                              <td>{{Coupon?.commencementDate}}</td>
+                              <td>{{Coupon?.expiryDate}}</td>
+                              <td>
+                                <div class="d-flex w-100 justify-content-center align-items-center">
+                                  <div class="amount">{{Coupon?.discountPercent |truncPrice}}</div>
+                                  <i>%</i>
+                                </div>
+                              </td>
+                              <td>
+                                <div class="d-flex w-100 justify-content-center align-items-center">
+                                  <i class="fa fa-rupee rup"></i>
+                                  <div class="amount">{{Coupon?.discountFlatAmount |truncPrice}}</div>
+                                </div>
+                              </td>
+                              <td>
+                                <div class="d-flex w-100 justify-content-center align-items-center">
+                                  <i class="fa fa-rupee rup"></i>
+                                  <div class="amount">{{Coupon?.orderFloorLimit |truncPrice}}</div>
+                                </div>
+                              </td>
+                              <td>
+                                <div class="d-flex w-100 justify-content-center align-items-center">
+                                  <i class="fa fa-rupee rup"></i>
+                                  <div class="amount">{{Coupon?.maxDiscountAmount |truncPrice}}</div>
+                                </div>
+                              </td>
+                              <td><i class="bi-pencil-square" (click)="editCouponCategory3(Coupon)"></i> <i class="bi-trash" (click)="deleteCouponCodeCategory3(Coupon)"></i></td>
+                            </tr>
+                            <tr *ngIf="!CouponCategory3DiscountList.length" style="height:14px">
+                              <td></td>
+                              <td></td>
+                              <td>No coupo code available</td>
+                              <td></td>
+                              <td></td>
+                            </tr>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-12 my-2 text-end">
+                    <button class="p-2" (click)="resetAnamnesisDiscountForm(3)">Reset</button>
+                    <button class="p-2" (click)="saveCouponCategory(3)">Submit</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+            <div class="tabpane" id="DataUpload" *ngIf="activeMenue === 'DataUpload'">
+              <form [formGroup]="dataUploadForm">
+                <div class="row">
+                  <div class="col-md-6" formGroupName="MED">
+                    <div class="box h-100 m-0 pb-0">
+                      <h6>Medicine Upload</h6>
+                      <div class="row">
+                        <div class="col-md-12">
+                          <div class="form-floating">
+                            <input type="text" class="form-control" id="LastProcessedID" placeholder="Last Processed ID"
+                              formControlName="lastProcessedID">
+                            <label for="LastProcessedID">Last Processed ID</label>
+                          </div>
+                          <div class="validation-div errorDiv"
+                            >
+                            <app-validation-message [control]="getDataPuloadFormControl('MED','lastProcessedID')"
+                              [messages]="errorMessage.dataUploadForm.lastProcessedID">
+                            </app-validation-message>
+                          </div>
+                        </div>
+                        <div class="col-md-12">
+                          <div class="form-floating">
+                            <input type="number" class="form-control" id="RecordCount" placeholder="RecordCount"
+                              formControlName="recordCount">
+                            <label for="RecordCount">Record Count</label>
+                          </div>
+                          <div class="validation-div errorDiv"
+                            >
+                            <app-validation-message [control]="getDataPuloadFormControl('MED','recordCount')"
+                              [messages]="errorMessage.dataUploadForm.recordCount">
+                            </app-validation-message>
+                          </div>
+                        </div>
+                        <div class="col-md-12">
+                          <div class="form-floating">
+                            <input type="text" class="form-control" id="authenticationKey" placeholder="authenticationKey"
+                              formControlName="authenticationKey">
+                            <label for="authenticationKey">Password</label>
+                          </div>
+                          <div class="validation-div errorDiv"
+                            >
+                            <app-validation-message [control]="getDataPuloadFormControl('MED','authenticationKey')"
+                              [messages]="errorMessage.dataUploadForm.authenticationKey">
+                            </app-validation-message>
+                          </div>
+                        </div>
+                        <p>Last Processed ID : {{medLastProcessedID}}</p>
+                        <button (click)="uploadData('MED')">Upload Medicine</button>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6" formGroupName="HHI">
+                    <div class="box h-100 m-0 pb-0">
+                      <h6>Household Item Upload</h6>
+                      <div class="row">
+                        <div class="col-md-12">
+                          <div class="form-floating">
+                            <input type="text" class="form-control" id="LastProcessedID" placeholder="Last Processed ID"
+                              formControlName="lastProcessedID">
+                            <label for="LastProcessedID">Last Processed ID</label>
+                          </div>
+                          <div class="validation-div errorDiv"
+                            >
+                            <app-validation-message [control]="getDataPuloadFormControl('HHI','lastProcessedID')"
+                              [messages]="errorMessage.dataUploadForm.lastProcessedID">
+                            </app-validation-message>
+                          </div>
+                        </div>
+                        <div class="col-md-12">
+                          <div class="form-floating">
+                            <input type="number" class="form-control" id="RecordCount" placeholder="RecordCount"
+                              formControlName="recordCount">
+                            <label for="RecordCount">Record Count</label>
+                          </div>
+                          <div class="validation-div errorDiv"
+                            >
+                            <app-validation-message [control]="getDataPuloadFormControl('HHI','recordCount')"
+                              [messages]="errorMessage.dataUploadForm.recordCount">
+                            </app-validation-message>
+                          </div>
+                        </div>
+                        <div class="col-md-12">
+                          <div class="form-floating">
+                            <input type="text" class="form-control" id="authenticationKey" placeholder="authenticationKey"
+                              formControlName="authenticationKey">
+                            <label for="authenticationKey">Password</label>
+                          </div>
+                          <div class="validation-div errorDiv"
+                            >
+                            <app-validation-message [control]="getDataPuloadFormControl('HHI','authenticationKey')"
+                              [messages]="errorMessage.dataUploadForm.authenticationKey">
+                            </app-validation-message>
+                          </div>
+                        </div>
+                        <p >Last Processed ID : {{hhiLastProcessedID}}</p>
+                        <button (click)="uploadData('HHI')">Upload Household Item</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        <div id="myModal" class="modal" *ngIf="physicianOpenAddressModal" tabindex="-1" role="dialog">
+          <div class="container">
+            <app-address-modal [stateList]="stateList" [newAddress]="physicianAddNewAddress"
+              [selectedAddress]="physicianSelectedAddress" [isApiCall]="false" [addressType]="physicianAddressType"
+              (close)="closeAddressPopup($event)">
+            </app-address-modal>
+          </div>
+        </div>
+        <div id="myModals" class="modal" *ngIf="CouponCategory3DeletePopup" tabindex="-1" role="dialog">
+          <div class="container">
+            <div class="box w-25 pb-1 m-auto text-center">
+              <p>Are you want to delete this {{CouponCategory3DeleteObj.couponCode}} coupon code</p>
+              <button (click)="confirmDelete()">Delete</button>
+              <button (click)="cancelDelete()">Cancel</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="myModal" class="modal" *ngIf="physicianedition" tabindex="-1" role="dialog">
+        <div class="container">
+           <app-physician-edition></app-physician-edition>
+        </div>
+      </div>

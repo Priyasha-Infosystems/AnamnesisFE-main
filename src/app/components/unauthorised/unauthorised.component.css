@@ -1,0 +1,50 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@600&family=Poppins:wght@100;200;300;400;500;600;700;800;900&family=Titillium+Web:wght@400;700&display=swap');
+
+.four_zero_four_bg {
+  background-image: url(../../../assets/images/dribbble_1.gif);
+  height: 400px;
+  width: 700px;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  margin: auto;
+}
+
+.mainbox {
+  margin: auto;
+  height: auto;
+  width: 600px;
+  position: relative;
+  top: -45px;
+}
+
+.msg {
+  text-align: center;
+  font-family: 'Titillium Web', sans-serif;
+  font-size: 1.6rem;
+}
+
+a {
+  text-decoration: none !important;
+  color: #713BDB !important;
+  font-weight: 600 !important;
+  cursor: pointer !important;
+}
+
+a:hover {
+  text-decoration: underline !important;
+}
+
+#logo {
+  max-width: 320px;
+  opacity: 0.4;
+  padding-bottom: 65px;
+}
+
+.page_404 {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+}

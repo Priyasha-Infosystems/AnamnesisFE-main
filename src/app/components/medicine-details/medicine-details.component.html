@@ -1,0 +1,199 @@
+<div id="medicineView">
+  <div class="container">
+    <div class="modal-content details">
+      <div class="close" (click)="closeMedicnePopup()"><i class="bi-x-circle-fill"></i></div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-md-12" *ngIf="!somthingWentWrong">
+            <div class="row">
+              <div class="col-md-6">
+                <div class="col-md-12">
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="medicineCarousel">
+                        <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true"
+                          *ngIf=" medicineDetails.medicineFileDetailsList && medicineDetails.medicineFileDetailsList.length">
+                          <div class="carousel-inner">
+                            <div class="carousel-item " [ngClass]="{active:i===0}"
+                              *ngFor="let medicineFile of medicineDetails.medicineFileDetailsList let i = index">
+                              <img [src]="medicineFile.fileName |getFile:medicineFile.fileType" class="d-block"
+                                alt="...">
+                            </div>
+                          </div>
+                          <button class="carousel-control-prev" type="button"
+                            data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                          </button>
+                          <button class="carousel-control-next" type="button"
+                            data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                          </button>
+                        </div>
+                        <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true"
+                          *ngIf=" medicineDetails.medicineFileDetailsList && !medicineDetails.medicineFileDetailsList.length">
+                          <div class="carousel-inner">
+                            <div class="carousel-item active">
+                              <img src="../../../assets/images/previewNotAvlMed.jpg" class="d-block" alt="...">
+                            </div>
+                          </div>
+                          <button class="carousel-control-prev" type="button"
+                            data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                          </button>
+                          <button class="carousel-control-next" type="button"
+                            data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                          </button>
+                        </div>
+                      </div>
+                    </div> 
+                    <div class="col-md-6 p-0 medicineDetails d-flex justify-content-start status align-items-center">
+                      <p *ngIf="medicineDetails.medicineStatus === 'U'">Out Of Stock</p>
+                    </div>
+                    <div class="col-md-6 p-0 medicineDetails d-flex justify-content-end">
+                      <Button *ngIf="cartAddressDetails" class="w-100 addCart" (click)="medicineAddToCart(medicineDetails)">{{!isItemAlreadyInCart?'Add To Cart':'Already in cart ...,Add more?'}}</Button>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-12">
+                  <div class="medicineDetails">
+                    <div class="medicinename">
+                      <h2 *ngIf="medicineDetails.medicineName">{{medicineDetails.medicineName}}
+                        <span class="scheduleDrug">{{medicineDetails.restrictedDrugsCategory}}</span>
+                        <i class="bi-pencil-fill" (click)="editeMedicine(medicineDetails.medicineCode)"
+                        *ngIf="IsEditButtonShow"></i>
+                      </h2>
+                    </div>
+                    <div class="d-flex align-items-center justify-content-between py-1 w-100">
+                      <h6 *ngIf=" medicineDetails.medicineComposition">{{medicineDetails.medicineComposition}}</h6>
+                      <div class="d-flex px-3 medicinePrice">
+                        <h6>Price</h6>
+                        <i class="fa fa-rupee rup"></i>
+                        <h6 class="text-dark">{{medicineDetails.medicinePrice|truncPrice}}</h6>
+                      </div>
+                    </div>
+                    <div class="company">
+                      <p *ngIf="medicineDetails.medicineManufacturer">{{medicineDetails.medicineManufacturer}}</p>
+                    </div>
+                    <div class="Address mb-3">
+                      <p style="font-size: 10px !important;">{{medicineDetails.medicineManufacturerAddress}}</p>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <button class="mx-4" *ngIf="medicineDetails.medicinePrescription === 'Y'">
+                          <img src="../../../assets/images/Prescription.png" alt=""> Prescription
+                          Required</button>
+                      </div>
+                      <div class="col-md-6">
+                        <button class="Storebelow mx-4" *ngIf="medicineDetails.medicineRefrigerator==='N'">
+                          Store below 30°C</button>
+                        <button class="Storebelow mx-4" *ngIf="medicineDetails.medicineRefrigerator==='Y'">
+                          <img src="../../../assets/images/Store-below.png" alt="">
+                          Store between 2°C - 8°C</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-12">
+                  <div class="d-flex flex-column">
+                    <div class="Description">
+                      <h2>Description</h2>
+                      <p *ngIf="medicineDetails.medicineDescription">{{medicineDetails.medicineDescription}}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="SafetyScroll">
+                  <div class="col-md-12">
+                    <div class="Effects_Uses">
+                      <div class="row">
+                        <div class="col-md-6 border-right">
+                          <div class="sideEffects">
+                            <h3>Side Effects</h3>
+                            <div class="sideEffectsScroll">
+                              <div *ngIf="sideEffectList">
+                                <div class="row">
+                                  <div class="col-md-12 p-0 d-flex align-items-top"
+                                    *ngFor="let sideEffect of sideEffectList">
+                                    <i class="bi-check-circle-fill"></i>
+                                    <p>{{sideEffect}}</p>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <div class="user">
+                            <h3>Uses</h3>
+                            <div class="userScroll">
+                              <p *ngIf="medicineDetails.medicineUsage">{{medicineDetails.medicineUsage}}</p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-12 mt-5">
+                    <div class="Safety">
+                      <h2>Safety Measures</h2>
+                      <div *ngIf="safetyMeasuresList">
+                        <div class="Alcohol d-flex" *ngFor="let safetyMeasure of safetyMeasuresList">
+                          <img [src]="'../../../assets/images/'+safetyMeasure.safetyAdviceCategory+'.png'" alt="">
+                          <div class="d-flex flex-column">
+                            <div class="d-flex align-items-end">
+                              <h3>{{safetyMeasure.safetyAdviceCategory}}</h3>
+                              <h5>{{safetyMeasure.safetyAdviceInteraction}}</h5>
+                            </div>
+                            <p>{{safetyMeasure.safetyAdviceDetails}}</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div id="faq">
+
+                    <div class="Safety">
+                      <h2>FAQs</h2>
+                    </div>
+                    <div class="DrugPane__content___3-yrB">
+                      <div>
+                        <div class="Faqs__tile___1B58W" *ngIf="medicineDetails.medicineFAQList">
+                          <div *ngFor="let medicineFAQ of medicineDetails.medicineFAQList">
+                            <h3 class="Faqs__ques___1iPB9">Q. {{medicineFAQ.questionDetails}}</h3>
+                            <div class="Faqs__ans___1uuIW">
+                              {{medicineFAQ.answerDetails}}
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="footerBtn">
+              <button (click)="getMedicineDetails(medicineDetails.previousMedicineCode)"
+                style="left: -68px; transform: rotate(270deg);" *ngIf="medicineDetails.previousMedicineCode && IsEditButtonShow">
+                PREVIOUS</button>
+              <button style="right: -68px" (click)="getMedicineDetails(medicineDetails.nextMedcicineCode)"
+                *ngIf="medicineDetails.nextMedcicineCode && IsEditButtonShow">
+                NEXT</button>
+            </div>
+          </div>
+          <div class="col-md-12 somthingWentWrong" *ngIf="somthingWentWrong">
+            <p style="color: red;">Something went wrong, Please try after sometime</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="myModal" class="modal" *ngIf="openMedicineEditPopupModal" tabindex="-1" role="dialog">
+    <app-medicine-edit [medicineCode]="medicineCode" (close)="closeEditeMedicine($event)"></app-medicine-edit>
+  </div>
+</div>

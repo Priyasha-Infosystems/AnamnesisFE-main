@@ -1,0 +1,233 @@
+<router-outlet>
+  <ngx-spinner bdColor="rgba(51,51,51,0.8)" size="medium" color="#fff" type="ball-circus" [fullScreen]="true">
+  </ngx-spinner>
+</router-outlet>
+<div class="tabcontent">
+  <div class="content">
+    <form [formGroup]="houseHoldItemEntryForm">
+      <div class="row">
+        <div class="col-md-8">
+          <div class="row">
+            <div class="col-md-12 px-1">
+              <div class="form-floating">
+                <input type="text" name="HouseHold-Item-Name" placeholder="" formControlName="householdItemName"
+                  class="form-control" id="floatingInput">
+                <i class="bi-search search" *ngIf="houseHoldItemEntryForm.controls['isAdd'].value"
+                  (click)="householdItemListFetch(houseHoldItemEntryForm.controls['householdItemName'].value)"></i>
+                <i class="bi-x-circle-fill remove" *ngIf="!houseHoldItemEntryForm.controls['isAdd'].value"
+                  (click)="resetForm()"></i>
+                <div class="validation-div errorDiv">
+                  <app-validation-message [control]="houseHoldItemEntryForm.controls['householdItemName']"
+                    [messages]="errorMessage.householdItemName">
+                  </app-validation-message>
+                </div>
+                <div class="col-md-12 position-relative">
+                  <div class="faq " [ngClass]="{'d-block':houseHoldItemList.length}">
+                    <div *ngFor="let householdItem of houseHoldItemList" (click)="optionSelected(householdItem)"
+                      class="medicineList d-flex flex-column">
+                      <p>{{householdItem.householdItemName}}</p>
+                      <span>{{householdItem.householdItemCode}}</span>
+                    </div>
+                  </div>
+                </div>
+                <label for="floatingInput">Household Item Name</label>
+              </div>
+              <div class="form-floating">
+                <input type="text" name="HouseHold-Item-Name" placeholder="" formControlName="householdItemShortName"
+                  class="form-control" id="floatingInput">
+                <div class="validation-div errorDiv">
+                  <app-validation-message [control]="houseHoldItemEntryForm.controls['householdItemShortName']"
+                    [messages]="errorMessage.householdItemName">
+                  </app-validation-message>
+                </div>
+                <label for="floatingInput">Household Item Short Name</label>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6 px-1">
+              <div class="form-floating select"
+                [ngClass]="{'selected':houseHoldItemEntryForm.value.householdItemCategory}">
+                <select name="Category" id="Category" class="form-control" id="floatingInput"
+                  formControlName="householdItemCategory" (change)="changeCategory(houseHoldItemEntryForm.value.householdItemCategory)">
+                  <option></option>
+                  <option [value]="category" *ngFor="let category of categoryList">{{category}}</option>
+                </select>
+                <label for="floatingInput">Category</label>
+              </div>
+              <div class="validation-div errorDiv">
+                <app-validation-message [control]="houseHoldItemEntryForm.controls['householdItemCategory']"
+                  [messages]="errorMessage.householdItemCategory">
+                </app-validation-message>
+              </div>
+            </div>
+            <div class="col-md-6 px-1">
+              <div class="form-floating select"
+                [ngClass]="{'selected':houseHoldItemEntryForm.value.householdItemSubCategory}">
+                <select name="Sub Category" id="Sub Category" class="form-control" id="floatingInput"
+                  formControlName="householdItemSubCategory" (change)="changeHouseItemDetails()">
+                  <option></option>
+                  <option [value]="subCategory" *ngFor="let subCategory of subCategoryList">{{subCategory}}</option>
+                </select>
+                <label for="floatingInput">Sub Category</label>
+              </div>
+              <div class="validation-div errorDiv">
+                <app-validation-message [control]="houseHoldItemEntryForm.controls['householdItemSubCategory']"
+                  [messages]="errorMessage.householdItemSubCategory">
+                </app-validation-message>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6 px-1">
+              <div class="form-floating">
+                <input type="text" name="manufactur" class="form-control" id="floatingInput" placeholder=""
+                  formControlName="householdItemManufacturer" (keyup)="changeHouseItemDetails()">
+                <label for="floatingInput">Manufacturer</label>
+              </div>
+              <div class="validation-div errorDiv">
+                <app-validation-message [control]="houseHoldItemEntryForm.controls['householdItemManufacturer']"
+                  [messages]="errorMessage.householdItemManufacturer">
+                </app-validation-message>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="row">
+                <div class="col-md-6 px-1">
+                  <div class="form-floating">
+                    <input type="text" name="Price" class="form-control" id="floatingInput" placeholder=""
+                      formControlName="householdItemUnitPrice" (keyup)="changeHouseItemDetails()">
+                    <label for="floatingInput">Price</label>
+                  </div>
+                  <div class="validation-div errorDiv">
+                    <app-validation-message [control]="houseHoldItemEntryForm.controls['householdItemUnitPrice']"
+                      [messages]="errorMessage.householdItemUnitPrice">
+                    </app-validation-message>
+                  </div>
+                </div>
+                <div class="col-md-6 px-1">
+                  <div class="form-floating select"
+                    [ngClass]="{'selected':houseHoldItemEntryForm.value.householdItemStatus}">
+                    <select name="Status" id="Status" class="form-control" id="floatingInput"
+                      formControlName="householdItemStatus" (change)="changeHouseItemDetails()">
+                      <option></option>
+                      <option value="A" >Active</option>
+                      <option value="D" >Duplicate</option>
+                      <option value="O" >Obsolete</option>
+                      <option value="U" >Out of Stock</option>
+                    </select>
+                    <label for="floatingInput">Status</label>
+                  </div>
+                  <div class="validation-div errorDiv">
+                    <app-validation-message [control]="houseHoldItemEntryForm.controls['householdItemStatus']"
+                      [messages]="errorMessage.householdItemStatus">
+                    </app-validation-message>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12 px-1">
+              <div class="form-floating">
+                <input type="text" name="manufacturAddress" placeholder="" class="form-control" id="floatingInput"
+                  formControlName="householdItemMaufacturerAddress" (keyup)="changeHouseItemDetails()">
+                <label for="floatingInput">Manufacturer Address</label>
+              </div>
+              <div class="validation-div errorDiv">
+                <app-validation-message [control]="houseHoldItemEntryForm.controls['householdItemMaufacturerAddress']"
+                  [messages]="errorMessage.householdItemMaufacturerAddress">
+                </app-validation-message>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12 px-1">
+              <div class="form-floating textarea">
+                <textarea class="form-control" name="Introduction" placeholder="" id="floatingTextarea2"
+                  id="floatingInput" formControlName="householdItemIntroduction" style="height: 90px"
+                  (keyup)="changeHouseItemDetails()"></textarea>
+                <label for="floatingTextarea2">Introduction</label>
+              </div>
+              <div class="validation-div errorDiv">
+                <app-validation-message [control]="houseHoldItemEntryForm.controls['householdItemIntroduction']"
+                  [messages]="errorMessage.householdItemIntroduction">
+                </app-validation-message>
+              </div>
+            </div>
+            <div class="col-md-12 px-1">
+              <div class="form-floating textarea">
+                <textarea class="form-control" name="Ingredients" placeholder="" id="floatingTextarea2"
+                  id="floatingInput" formControlName="householdItemIngredients" style="height: 90px"
+                  (keyup)="changeHouseItemDetails()"></textarea>
+                <label for="floatingTextarea2">Ingredients</label>
+              </div>
+              <div class="validation-div errorDiv">
+                <app-validation-message [control]="houseHoldItemEntryForm.controls['householdItemIngredients']"
+                  [messages]="errorMessage.householdItemIngredients">
+                </app-validation-message>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12 px-1">
+              <div class="form-floating textarea">
+                <textarea class="form-control" name="Ingredients" placeholder="" id="floatingTextarea2"
+                  id="floatingInput" formControlName="householdItemDescription" (keyup)="changeHouseItemDetails()"
+                  style="height: 130px" ></textarea>
+                <label for="floatingTextarea2">Description</label>
+              </div>
+              <div class="validation-div errorDiv">
+                <app-validation-message [control]="houseHoldItemEntryForm.controls['householdItemDescription']"
+                  [messages]="errorMessage.householdItemDescription">
+                </app-validation-message>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="product">
+            <div class=" text-center imgDisplay">
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="largeImg" *ngIf="myFiles.length">
+                    <img [src]="myFiles[0].response[0].fileName|getFile:myFiles[0].response[0].fileType"
+                      *ngIf="myFiles[0].response.length">
+                  </div>
+                </div>
+                <div class="col-md-12 pt-4">
+                  <div class="d-flex flex-wrap mt-4">
+                    <div class="shortImg" *ngFor="let file of myFiles; let i = index">
+                      <div class="img" *ngIf="!file.isDelete">
+                        <img [src]="file.response[0].fileName|getFile:myFiles[0].response[0].fileType"
+                          *ngIf="file.response.length" (click)="changeDisplayImg(i)">
+                        <i class="bi-x-circle-fill" (click)="removeFile(i)"></i>
+                      </div>
+                      <div *ngIf="!file.error" id="Progress_Status">
+                        <div [style.width]="file.progress + '%'" id="myprogressBar"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div *ngIf="houseHoldItemEntryForm.getRawValue().householdItemCode">
+              <input id="file" type="file" multiple (change)="onPfFileChange($event)"
+                class="form-control Dr-list massage-box inputDefaultColor">
+              <div *ngIf="fileError">
+                <span class="massage">{{fileError}}</span>
+              </div>
+            </div>
+          </div>
+          <div class="text-center">
+            <button class="Submit " (click)="save(houseHoldItemEntryForm.getRawValue(),houseHoldItemEntryForm.valid)"
+              *ngIf="(houseHoldItemEntryForm.getRawValue().isAdd && !houseHoldItemEntryForm.getRawValue().householdItemCode)||(!houseHoldItemEntryForm.getRawValue().isAdd && houseHoldItemEntryForm.getRawValue().householdItemCode)">Submit</button>
+            <button class="Submit" (click)="resetForm()"
+              *ngIf="houseHoldItemEntryForm.getRawValue().isAdd && houseHoldItemEntryForm.getRawValue().householdItemCode">Complete</button>
+            <button class="Reset" (click)="resetForm()">Reset</button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

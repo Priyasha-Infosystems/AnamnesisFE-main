@@ -1,0 +1,189 @@
+<router-outlet>
+    <ngx-spinner bdColor="rgba(51,51,51,0.8)" size="medium" color="#fff" type="ball-circus" [fullScreen]="true">
+    </ngx-spinner>
+</router-outlet>
+<div id="CaseAssignment" class="tabcontent">
+    <div class="CaseAssignmentContent mt-3">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="col-md-10 position-relative">
+                        <div class="form-floating p-0">
+                            <form [formGroup]="searchFormGroup" role="form">
+                                <div class="form-floating"  *ngIf="!selectedUser">
+                                    <input type="text" name="patientID" placeholder="Add patient's ID here......"
+                                        id="Laboratory" class="form-control" formControlName="searchKey"
+                                        [matAutocomplete]="patientNameauto">
+                                    <label for="floatingInput">Search helpdesk user......</label>
+                                    <div class="search">
+                                        <!-- <i class="bi-search"></i> -->
+                                    </div>
+                                </div>
+                                <div class="form-floating field" *ngIf="selectedUser">
+                                    <p>{{selectedUser.displayName}} <span>{{selectedUser.helpdeskUserCode}}</span></p>
+                                    <i class="bi-x-circle-fill" (click)="unSelectUser()"></i>
+                                </div>
+                                <div class="validation-div errorDiv">
+                                    <app-validation-message [control]="searchFormGroup.controls['searchKey']"
+                                        [messages]="errorMessage.searchKey">
+                                    </app-validation-message>
+                                </div>
+                                <div class="errror">{{selectedUserError}}</div>
+                            </form>
+                            <mat-autocomplete #patientNameauto="matAutocomplete">
+                                <mat-option *ngFor="let user of userList" (click)="optionSelected(user)">
+                                    <p>{{user.displayName}} <span
+                                            style="font-size: 12px !important; color: #713bdb;">({{user.helpdeskUserCode}})</span>
+                                    </p>
+                                </mat-option>
+                            </mat-autocomplete>
+                        </div>
+                        <div class="doctorDetails col-md-5" *ngIf="tempSelectedUserDetails">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="doctorCard">
+                                        <div class="row">
+                                            <div class="col-md-5">
+                                                <div class="profileImg">
+                                                    <img
+                                                        [src]="tempSelectedUserDetails.profilePictureFileName| getFile:tempSelectedUserDetails.profilePictureFileType">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-7">
+                                                <table>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td></td>
+                                                            <td><b>{{tempSelectedUserDetails.displayName}}</b></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><i class="bi-telephone-fill"></i></td>
+                                                            <td><b>+91 {{tempSelectedUserDetails.helpdeskUserID}}</b>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 d-flex justify-content-end">
+                                    <button class="Confirm mx-2" (click)="confirmUser()">Confirm</button>
+                                    <button class="Confirm" (click)="cancleUser()">Cancle</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-2 position-relative">
+                        <button (click)="assignCase()" class="Assignbtn">Assign</button>
+                    </div>
+                    <div class="col-md-9">
+                        <div class="filter" *ngIf="allCaseList.length">
+                            <button [ngClass]="{oneSideBorderOfCategoryButtonLeft: categoryIndex === (categoryList.length -1),
+                                oneSideBorderOfCategoryButtonRight: categoryIndex === 0,
+                                actives: activeFilterKey ===category.Key}"
+                                *ngFor="let category of categoryList let categoryIndex = index"
+                                (click)="filterCaseList(category.Key)">{{category.Key}}
+                                <span>({{category.number}})</span></button>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="d-flex showrecords align-items-center" *ngIf="allCaseList.length">
+                            <button>SHOW</button>
+                            <select [(ngModel)]="selectView" (change)="currentViewChange(selectView)">
+                                <option [value]="1">1</option>
+                                <option [value]="2">2</option>
+                                <option [value]="3">3</option>
+                            </select>
+                            <button>ROW</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="row px-1 mt-2">
+                    <div>
+                    </div>
+                    <div class="col-md-4 p-0" *ngFor="let case of caseList; let caseIndex = index;">
+                        <div class=" caseList h-100"
+                            *ngIf="case.seqNo>=viewItem.startIndex && case.seqNo<=viewItem.lastIndex ">
+                            <div class="AssignedBox " [ngClass]="{activeBox : case.isSelected}"
+                                (click)="selectCase(caseIndex)">
+                                <div class="RightTop">
+                                    <p>{{case.caseCode}}</p>
+                                </div>
+                                <div class="contant">
+                                    <div class="d-flex">
+                                        <p id="length">
+                                            <label>Summary:</label>
+                                            {{case.summary}}
+                                        </p>
+                                    </div>
+                                    <div class="d-flex">
+                                        <label>Type:</label>
+                                        <p>{{case.type}}</p>
+                                    </div>
+                                    <div class="d-flex clr">
+                                        <label>Open Date :</label>
+                                        <p>{{case.OpenDate | date: 'd MMM yyyy' }}</p>
+                                    </div>
+                                    <div class="d-flex clr  ">
+                                        <label>Target Completion Date :</label>
+                                        <p>{{case.targetCompletionDate | date: 'd MMM yyyy'}}</p>
+                                    </div>
+                                    <p *ngIf="case.wrAttachmentDetailsList.length"><b>Attachment: </b>
+                                        <i class="bi-card-image"
+                                            *ngFor="let wrAttachmentDetails of case.wrAttachmentDetailsList"
+                                            [ngClass]="{'bi-paperclip':wrAttachmentDetails.contentType === 'application/pdf'}"></i>
+                                        <!-- <span (click)="openCaseLog(case.caseCode)">Case Log</span> -->
+                                    </p>
+                                </div>
+                                <button *ngIf="case.wrStatus === 1">New</button>
+                                <button *ngIf="case.wrStatus === 2">Assigned</button>
+                                <button *ngIf="case.wrStatus === 3">On Hold</button>
+                                <button *ngIf="case.wrStatus === 4">Pending For Information</button>
+                                <button *ngIf="case.wrStatus === 5">Resolved</button>
+                                <button *ngIf="case.wrStatus === 6">Reopened</button>
+                                <button *ngIf="case.wrStatus === 7">Pending For Review</button>
+                                <button *ngIf="case.wrStatus === 8">Assigned For Review</button>
+                                <button *ngIf="case.wrStatus === 9">Resolved And Closed</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12 text-center mt-4" *ngIf="caseList.length">
+                        <div class="PrevButton d-flex justify-content-center">
+                            <button class="button" (click)="pageChange(1)" [ngClass]="{active:1 === currentPage }"
+                                [disabled]="paginationList.length === 1"><i
+                                    class="bi-chevron-double-left"></i>First</button>
+                            <button class="button" (click)="pageChange(currentPage-1)" [disabled]="currentPage===1"
+                                [ngClass]="{buttonWithOutHover:currentPage===1}">Prev</button>
+                            <div *ngFor="let page of paginationList; let pageIndex = index;">
+                                <div class="mt-1"
+                                    *ngIf="!isPageIndexVisible(currentPage, pageIndex) && pageIndex < currentPage && pageIndex < 3">
+                                    .
+                                </div>
+                                <button *ngIf="isPageIndexVisible(currentPage, pageIndex)" class="button"
+                                    [ngClass]="{active:page === currentPage }"
+                                    (click)="pageChange(page)">{{page}}</button>
+                                <div class="mt-1"
+                                    *ngIf="!isPageIndexVisible(currentPage, pageIndex) && pageIndex > currentPage && pageLastIndex > pageIndex">
+                                    .
+                                </div>
+                            </div>
+                            <button class="button" (click)="pageChange(currentPage+1)"
+                                [disabled]="currentPage===paginationList.length"
+                                [ngClass]="{buttonWithOutHover:currentPage===paginationList.length}">Next</button>
+                            <button class="button" (click)="pageChange(paginationList.length)"
+                                [ngClass]="{active:paginationList.length === currentPage }"
+                                [disabled]="paginationList.length === 1">Last<i
+                                    class="bi-chevron-double-right"></i></button>
+                        </div>
+                    </div>
+                    <div class="col-md-12 text-center noRecordFound" *ngIf="!caseList.length">
+                        <P>No records found</P>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,226 @@
+<router-outlet>
+    <ngx-spinner bdColor="rgba(51,51,51,0.8)" size="medium" color="#fff" type="ball-circus" [fullScreen]="true">
+    </ngx-spinner>
+</router-outlet>
+<div id="GeneralMedicineInformation" class="tabcontent">
+    <div class="GeneralMedicinecontent">
+        <div class="row" *ngIf="appointmentList && appointmentList.length">
+            <div class="col-md-6">
+                <div class="DoctorList">
+                    <div class="DoctorName" *ngFor="let appointment of appointmentList let appointmentIndex = index">
+                        <div class="header">
+                            <div class="row align-items-center">
+                                <div class="col-md-12">
+                                    <h2>{{appointment.physicianName}}</h2>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <p>{{utility.timeFormateInto12Hours(appointment.sessionStartTime)}} -
+                                            {{utility.timeFormateInto12Hours(appointment.sessionEndTime)}}</p>
+                                        <span *ngIf="!appointment.isCompletionStatusHide"
+                                            (click)="hideCompletionStatus(true,appointmentIndex)">Hide completed
+                                            Appointments</span>
+                                        <span *ngIf="appointment.isCompletionStatusHide"
+                                            (click)="hideCompletionStatus(false,appointmentIndex)">Show completed
+                                            Appointments</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="d-flex align-items-center justify-content-between"
+                            *ngFor="let patientScheduleInfo of appointment.patientScheduleInfoList let patientIndex = index;">
+                            <div class="d-flex">
+                                <i class="bi-hand-index-thumb-fill"></i>
+                                <p
+                                    (click)="selectPatient(patientScheduleInfo,appointment,appointmentIndex,patientIndex)">
+                                    {{patientScheduleInfo.patientName}}</p>
+                            </div>
+                            <div class="patientStatus">
+                                <i class="bi-check-square-fill" id="complete"
+                                    *ngIf="patientScheduleInfo.arrivalStatus === 'Y' && patientScheduleInfo.gmiStatusInfo=== 'Y'"></i>
+                                <i class="bi-exclamation-square-fill" id="initialised"
+                                    *ngIf="patientScheduleInfo.arrivalStatus === 'Y' && patientScheduleInfo.gmiStatusInfo=== 'N'"></i>
+                                <i class="bi-question-square-fill " id="absent"
+                                    *ngIf="patientScheduleInfo.arrivalStatus === 'N'"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="medicineEntry">
+                    <div class="row" *ngIf="selectedPatientDetails">
+                        <div class="col-md-12">
+                            <div class="DoctorName">
+                                <div class="box">
+                                    <div class="border-top"></div>
+                                    <div class="border-right"></div>
+                                    <div class="border-bottom"></div>
+                                    <div class="border-left"></div>
+                                    <div class="inner-content">
+                                        <div class="header">
+                                            <div class="row align-items-center">
+                                                <div class="col-md-12">
+                                                    <h2>{{selectedPatientDetails.physicianName}}</h2>
+                                                    <p>{{selectedPatientDetails.physicianSpecialisation}}</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <p>{{selectedPatientDetails.PatientName}}</p>
+                                            <button class="patientArrived"
+                                                *ngIf="selectedPatientDetails.isArrived ==='Y'">Patient has
+                                                Arrived</button>
+                                            <div class="d-flex align-items-center arrived ">
+                                                <div class="form-group px-2">
+                                                    <input type="checkbox" id="check" (click)="setIsArrived()"
+                                                        [checked]="selectedPatientDetails.isArrived ==='Y'">
+                                                    <label for="check"></label>
+                                                </div>
+                                                <p>Arrived</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div><!-- box -->
+                        </div>
+                        <div *ngIf="selectedPatientDetails.isArrived ==='Y'">
+                            <form [formGroup]="medicalInfoForm">
+                                <div formArrayName="medicalInfoList">
+                                    <div class="col-md-12 my-2 position-relative"
+                                        *ngFor="let medicalInfo of medicalInfoList().controls; let medicalInfoIndex = index">
+                                        <div class="row" formGroupName="{{medicalInfoIndex}}">
+                                            <div class="col-md-5">
+                                                <select name="" id="" formControlName="key"
+                                                    (change)="selectMedicalInfoSelect(medicalInfoIndex,medicalInfo.value.key)">
+                                                    <option [value]="item.generalMedicalInfoKey"
+                                                        *ngFor="let item of generalMedicalInformationOptionList"
+                                                        [ngClass]="{'d-none':isSelectedPreviousMedicalInfoOption(item.generalMedicalInfoKey,medicalInfo.value.key)}">
+                                                        {{item.generalMedicalInfoDesc}}</option>
+                                                </select>
+                                                <div class="validation-div errorDiv">
+                                                    <app-validation-message
+                                                        [control]="getmedicalInfoController(medicalInfoIndex,'key')"
+                                                        [messages]="errorMessage.key">
+                                                    </app-validation-message>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 p-0">
+                                                <input type="text" *ngIf="medicalInfo.value.key===''" name="Height"
+                                                    placeholder="" formControlName="result">
+                                                <input type="text" *ngIf="medicalInfo.value.key==='HT'" name="Height"
+                                                    placeholder="Height(cm)" formControlName="result"
+                                                    (keyup)="onChangeResult(medicalInfoIndex,medicalInfo.value.result,medicalInfo.value.resultType)">
+                                                <input type="text" *ngIf="medicalInfo.value.key==='WT'" name="Weight"
+                                                    placeholder="Weight(Kgs)" formControlName="result"
+                                                    (keyup)="onChangeResult(medicalInfoIndex,medicalInfo.value.result,medicalInfo.value.resultType)">
+                                                <input type="text" *ngIf="medicalInfo.value.key==='TM'"
+                                                    name="Temperature" placeholder="Temperature(C°)"
+                                                    formControlName="result"
+                                                    (keyup)="onChangeResult(medicalInfoIndex,medicalInfo.value.result,medicalInfo.value.resultType)">
+                                                <input type="text" *ngIf="medicalInfo.value.key==='PL'" name="Pulse"
+                                                    placeholder="Pulse(minute)" formControlName="result"
+                                                    (keyup)="onChangeResult(medicalInfoIndex,medicalInfo.value.result,medicalInfo.value.resultType)">
+                                                <input type="text" *ngIf="medicalInfo.value.key==='BP'" name="Pressure"
+                                                    placeholder="Pressure(mmHg)" formControlName="result"
+                                                    (keyup)="onChangeResult(medicalInfoIndex,medicalInfo.value.result,medicalInfo.value.resultType)">
+                                                <input type="text" *ngIf="medicalInfo.value.key==='GM23019910'"
+                                                    name="Pressure" [placeholder]="getPlaceHolder('GM23019910')"
+                                                    formControlName="result"
+                                                    (keyup)="onChangeResult(medicalInfoIndex,medicalInfo.value.result,medicalInfo.value.resultType)">
+                                                <input type="text" *ngIf="medicalInfo.value.key==='GM23019920'"
+                                                    name="Pressure" [placeholder]="getPlaceHolder('GM23019920')"
+                                                    formControlName="result"
+                                                    (keyup)="onChangeResult(medicalInfoIndex,medicalInfo.value.result,medicalInfo.value.resultType)">
+                                                <input type="text" *ngIf="medicalInfo.value.key==='GM23019930'"
+                                                    name="Pressure" [placeholder]="getPlaceHolder('GM23019930')"
+                                                    formControlName="result"
+                                                    (keyup)="onChangeResult(medicalInfoIndex,medicalInfo.value.result,medicalInfo.value.resultType)">
+                                                <input type="text" *ngIf="medicalInfo.value.key==='GM23019940'"
+                                                    name="Pressure" [placeholder]="getPlaceHolder('GM23019940')"
+                                                    formControlName="result"
+                                                    (keyup)="onChangeResult(medicalInfoIndex,medicalInfo.value.result,medicalInfo.value.resultType)">
+                                                <input type="text" *ngIf="medicalInfo.value.key==='GM23019950'"
+                                                    name="Pressure" [placeholder]="getPlaceHolder('GM23019950')"
+                                                    formControlName="result"
+                                                    (keyup)="onChangeResult(medicalInfoIndex,medicalInfo.value.result,medicalInfo.value.resultType)">
+                                                <input type="text" *ngIf="medicalInfo.value.key==='GM23019960'"
+                                                    name="Pressure" [placeholder]="getPlaceHolder('GM23019960')"
+                                                    formControlName="result"
+                                                    (keyup)="onChangeResult(medicalInfoIndex,medicalInfo.value.result,medicalInfo.value.resultType)">
+                                                <select name="BloodGroup" id="" formControlName="result"
+                                                    *ngIf="medicalInfo.value.key==='BG'">
+                                                    <option [value]="'A+'">A+</option>
+                                                    <option [value]="'A-'">A-</option>
+                                                    <option [value]="'B+'">B+</option>
+                                                    <option [value]="'B-'">B-</option>
+                                                    <option [value]="'AB+'">AB+</option>
+                                                    <option [value]="'AB-'">AB-</option>
+                                                    <option [value]="'O+'">O+</option>
+                                                    <option [value]="'O-'">O-</option>
+                                                </select>
+                                                <select name="Diabetics" id="" formControlName="result"
+                                                    *ngIf="medicalInfo.value.key==='DC'">
+                                                    <option [value]="''"></option>
+                                                    <option [value]="'Y'">Yes</option>
+                                                    <option [value]="'N'">No</option>
+                                                </select>
+                                                <select name="Thyroid" id="" formControlName="result"
+                                                    *ngIf="medicalInfo.value.key==='TH'">
+                                                    <option [value]="''"></option>
+                                                    <option [value]="'N'">Normal</option>
+                                                    <option [value]="'H'">Hypo</option>
+                                                    <option [value]="'R'">Hyper</option>
+                                                </select>
+                                                <select name="Smoking" id="" formControlName="result"
+                                                    *ngIf="medicalInfo.value.key==='SM'">
+                                                    <option [value]="''"></option>
+                                                    <option [value]="'Y'">Yes</option>
+                                                    <option [value]="'N'">No</option>
+                                                </select>
+                                                <select name="PressureRange" id="" formControlName="result"
+                                                    *ngIf="medicalInfo.value.key==='BC'">
+                                                    <option [value]="''"></option>
+                                                    <option [value]="'N'">Normal</option>
+                                                    <option [value]="'L'">Low</option>
+                                                    <option [value]="'H'">High</option>
+                                                </select>
+                                                <select name="Alchole" id="" formControlName="result"
+                                                    *ngIf="medicalInfo.value.key==='AL'">
+                                                    <option [value]="''"></option>
+                                                    <option [value]="'Y'">Yes</option>
+                                                    <option [value]="'N'">No</option>
+                                                </select>
+                                                <div class="validation-div errorDiv">
+                                                    <app-validation-message
+                                                        [control]="getmedicalInfoController(medicalInfoIndex,'result')"
+                                                        [messages]="errorMessage.result">
+                                                    </app-validation-message>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-1 d-flex align-items-center p-0">
+                                                <i class="bi-trash-fill"
+                                                    (click)="deleteMedicalInfo(medicalInfoIndex)"></i>
+                                            </div>
+                                        </div>
+                                        <small class="err">{{medicalInfo.value.err}}</small>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="col-md-6 save my-1" *ngIf="selectedPatientDetails.isArrived ==='Y'">
+                            <button (click)="saveMedicalGeneralInfo()">Save</button>
+                        </div>
+                        <div class="col-md-6 text-end addList my-1" *ngIf="selectedPatientDetails.isArrived ==='Y'">
+                            <button (click)="addAnotherMedicalInfo()">+Add Another List</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="d-flex justify-content-center " style="padding-top:200px ;"
+            *ngIf="appointmentList && !appointmentList.length">
+            <p>No appointment schedule list </p>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,96 @@
+<router-outlet>
+  <ngx-spinner bdColor="rgba(51,51,51,0.8)" size="medium" color="#fff" type="ball-circus" [fullScreen]="true">
+  </ngx-spinner>
+</router-outlet>
+<section id="MedicineModal">
+  <div id="Manage1" class="medicineDetailsModal container" *ngIf="medicineDetailsModal">
+    <div id="myModal1" class="modal1" tabindex="-1" role="dialog">
+      <app-medicine-details [medicineCode]="showMedicineCode" (close)="closePopupMedicineDetails($event)">
+      </app-medicine-details>
+    </div>
+  </div>
+  <div class="modal-content" *ngIf="!medicineDetailsModal">
+    <div class="close" data-bs-dismiss="modal" (click)="closeMedicnePopup()">
+      <i class="bi-x-circle-fill"></i>
+    </div>
+    <div class="modal-body">
+      <div class="MedicineBox">
+        <div class="row mt-1">
+          <div class="col-md-12 mb-1">
+            <h2>Medicine</h2>
+          </div>
+          <div *ngIf="selectedMedicineList.length">
+            <div class="medicineName d-flex"
+              *ngFor="let selectedMedicine of selectedMedicineList; let selectedMedicineIndex = index">
+              <div class="col-md-8 d-flex flex-column pt-2 pb-2">
+                <div class="d-flex">
+                  <i class="bi-hand-index-thumb-fill"></i>
+                  <h3 (click)="openMedicineDetailsModal(selectedMedicine.medicineCode)">
+                    {{selectedMedicine.medicineName}}
+                  </h3>
+                  <img src="../../../assets/images/deleteicon.png" alt=""
+                    (click)="removeMedicine(selectedMedicineIndex)">
+                </div>
+                <p>{{selectedMedicine.composition}}</p> 
+              </div>
+              <div class="col-md-4 text-end pt-2 pb-2 d-flex align-items-center justify-content-end">
+                <span class="quantityErr">{{selectedMedicine.errorMsg}}</span>
+                <div class="DayBox">
+                  <div class="noOfQty">
+                    <h2>{{selectedMedicine.count}}</h2>
+                  </div>
+                  <i class="bi-plus-lg" (click)="addOneMedicine(selectedMedicineIndex)"></i>
+                  <i class="bi-dash-lg" (click)="subtractOneMedicine(selectedMedicineIndex)"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-12 mt-2">
+            <div class="selectBox">
+              <form [formGroup]="medicineSeectionFormGroup" role="form">
+                <div class="row">
+                  <div class="col-md-8 position-relative">
+                    <div class="MedicineName">
+                      <input type="text" name="MedicineName" placeholder="Medicine Name" formControlName="medicine"
+                        [matAutocomplete]="autoGroup" (keyup)="changeValidator()" autofocus> 
+                      <div class="validation-div errorDiv">
+                        <small class="customErrorFormMsg">{{medicineSearchErrMsg}}</small>
+                        <app-validation-message [control]="medicineSeectionFormGroup.controls['medicine']"
+                          [messages]="errorMessage.medicine">
+                        </app-validation-message>
+                      </div>
+                      <mat-autocomplete #autoGroup="matAutocomplete" class="abc" (optionSelected)="optionSelected()">
+                        <mat-option *ngFor="let medicine of medicineGroupOptions" [value]="medicine.medicineName">
+                          {{medicine.medicineName}}
+                        </mat-option>
+                      </mat-autocomplete>
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <input type="number" name="Quantity" placeholder="Quantity" formControlName="count">
+                    <div class="validation-div errorDiv">
+                      <app-validation-message [control]="medicineSeectionFormGroup.controls['count']"
+                        [messages]="errorMessage.quantity">
+                      </app-validation-message>
+                    </div>
+                    <small class="customErrorFormMsg">{{customErrorFormMsg}}</small>
+                  </div>
+                  <div class="col-md-12 text-end">
+                    <button class="save mt-2"
+                      (click)="selectMedicine(medicineSeectionFormGroup.value, medicineSeectionFormGroup.valid)">Save</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+            <div class="errorDiv">
+              <small>{{customErrorAddToCartMsg}}</small>
+            </div>
+          </div>
+          <div class="col-md-12 text-center">
+            <button class="AddToCart" (click)="addToCart()">Add To Cart</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

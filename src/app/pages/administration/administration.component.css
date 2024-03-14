@@ -1,0 +1,30 @@
+.paddingContainer {
+    padding-top: 75px;
+}
+
+body {
+    background-color: #EAECFC !important;
+    font-family: 'Poppins', sans-serif;
+}
+
+.headerTwo {
+    background: #713BDB;
+    height: 46px;
+    color: #fff;
+}
+
+h3 {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 22px;
+    line-height: 33px;
+    color: #fff;
+    margin: 0;
+    padding-left: 21px; 
+}
+
+.dpageback {
+    background: #713bdb;
+    border-bottom-right-radius: 22px;
+}

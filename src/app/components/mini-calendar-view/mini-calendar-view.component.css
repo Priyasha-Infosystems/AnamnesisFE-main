@@ -1,0 +1,510 @@
+.calendar h3 {
+    margin: 0 0 10px;
+}
+
+.calendar h6 {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 17px;
+    line-height: 1.7;
+    color: #484747;
+    margin: 0;
+}
+
+.calendar pre {
+    background-color: #f5f5f5;
+    padding: 15px;
+}
+
+.calendar .modal {
+    display: block;
+    position: fixed;
+    padding-top: 73px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.4);
+    z-index: 999;
+}
+
+.calendar .modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px 20px 13px 20px;
+    border: 1px solid #713bdb;
+    width: 42%;
+    text-align: center;
+    margin-right: 250px;
+}
+
+.calendar .modal-content h2 {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 26px;
+    line-height: 50px;
+    color: #434242;
+}
+
+.calendar .modal-content textarea {
+    width: 100%;
+    height: 169px;
+    left: 267px;
+    top: 573px;
+    background: rgba(255, 255, 255, 0.79);
+    border: 2px solid rgba(174, 140, 239, 0.54);
+    box-shadow: 0px 12px 53px -24px rgb(134 87 226 / 63%);
+    border-radius: 12px;
+    padding: 15px;
+    outline: none;
+    margin-bottom: 4px;
+}
+
+.calendar .modal-content .Address-Type {
+    width: 100%;
+    height: 80px;
+    top: 388px;
+    padding: 30px;
+    margin-bottom: 10px;
+}
+
+.calendar .modal-content .Address-Type input[type="radio"] {
+    margin-left: 30px;
+    background: #FFFFFF;
+    border: 1px solid #AE88F9;
+    box-shadow: 0px 4px 9px rgba(191, 161, 250, 0.58);
+    outline: none;
+    cursor: pointer;
+}
+
+.calendar .close {
+    position: absolute;
+    background: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50px;
+    width: 27px;
+    height: 27px;
+    right: -10px;
+    top: -10px;
+    cursor: pointer;
+    border: 1px solid #703bdbbb;
+    padding-left: 1px;
+}
+
+.calendar .close i {
+    color: #713bdb;
+    font-size: 19px;
+    line-height: 0;
+}
+
+/* .calendar .modal-content ::placeholder {
+    color: rgba(113, 59, 219, 0.51);
+} */
+
+.calendar .displayDetails p,
+.calendar .displayDetails label {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 110%;
+    color: #484747;
+    margin-bottom: 5px;
+    text-align: left;
+}
+
+.calendar .displayDetails p span {
+    color: #713bdb;
+    font-size: 12px;
+}
+
+.calendar #calendarEventModal {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.calendar .save {
+    width: 72px;
+    padding: 12px 14px;
+    background: #713BDB;
+    box-shadow: 0px 11px 34px -5px rgba(113, 59, 219, 0.45);
+    border-radius: 6px;
+    border: none;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 13px;
+    line-height: 110%;
+    color: #FFFFFF;
+    margin-top: 15px;
+}
+
+.calendar.calendar::ng-deep .cal-day-badge {
+    display: none;
+}
+
+.calendar .arrow i {
+    font-size: 23px;
+    color: #713BDB;
+    line-height: 0;
+    cursor: pointer;
+}
+
+.calendar .arrow button {
+    background: none;
+    border: none;
+    font-size: 14px;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    color: #713BDB;
+
+}
+
+.calendar::ng-deep .cal-month-view .cal-header .cal-cell {
+    font-size: 8px;
+}
+
+.calendar::ng-deep .cal-month-view .cal-day-cell {
+    min-height: 40px !important;
+    position: relative !important;
+
+}
+
+.calendar::ng-deep .cal-month-view .cal-cell-top {
+    min-height: 40px !important;
+    flex: 1 !important;
+    position: relative !important;
+    z-index: 1;
+}
+
+.calendar::ng-deep .cal-month-view .cal-day-number {
+    font-size: 14px;
+    font-weight: 600 !important;
+    float: right !important;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    text-align: right;
+    padding: 10px;
+}
+
+.calendar::ng-deep .cal-events {
+    position: absolute;
+    bottom: 0;
+    opacity: 0.5;
+}
+
+.calendar::ng-deep .cal-month-view .cal-event {
+    width: 6px !important;
+    height: 6px !important;
+}
+
+.calendar::ng-deep .cal-month-view .cal-day-cell.cal-today {
+    background-color: #d0bfff !important;
+}
+
+.calendar::ng-deep .cal-month-view .bg-blue,
+.cal-week-view .cal-day-columns .bg-blue,
+.cal-day-view .bg-blue {
+    background-color: #D1E8FF !important;
+    border-color: azure;
+    border-bottom: 1px solid azure;
+}
+
+.DailyBusyHours {
+    width: 100%;
+    padding: 12px 15px;
+    background: rgba(255, 255, 255, 0.79);
+    border: 2px solid rgba(174, 140, 239, 0.54);
+    box-shadow: 0px 12px 53px -24px rgba(134, 87, 226, 0.63);
+    border-radius: 9px;
+    position: relative;
+}
+
+.Holiday .form-floating {
+    outline: none;
+    height: 100%;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 11px;
+    padding: 16px 12px 4px 12px;
+    width: 100%;
+    background: #F2ECFF;
+    border: 1px solid rgba(113, 59, 219, 0.18);
+    box-shadow: 0px 11px 34px -5px rgb(113 59 219 / 21%);
+    border-radius: 6px;
+    line-height: 107%;
+    color: #713BDB;
+}
+
+.Holiday .form-floating label {
+    padding: 3px 10px !important;
+}
+
+.form-floating label {
+    font-family: 'Poppins' !important;
+    font-style: normal !important;
+    font-weight: 500 !important;
+    font-size: 10px !important;
+    line-height: 110% !important;
+    color: rgb(146 90 255) !important;
+    margin-bottom: 0px !important;
+    opacity: 0.5 !important;
+}
+
+input,
+select {
+    color: rgb(60, 17, 146) !important;
+}
+
+.form-floating p {
+    font-family: 'Poppins' !important;
+    font-style: normal !important;
+    font-weight: 500 !important;
+    font-size: 11px !important;
+    line-height: 107% !important;
+    color: #713BDB !important;
+    text-align: left !important;
+}
+
+.text-start label {
+    font-family: 'Poppins' !important;
+    font-style: normal !important;
+    font-weight: 600 !important;
+    font-size: 12px !important;
+    line-height: 110% !important;
+    color: rgb(146 90 255) !important;
+    margin-bottom: 5px !important;
+    padding: 8px 6px 0px 6px !important;
+    display: flex;
+    align-items: center;
+}
+
+.text-start label input {
+    margin-right: 4px;
+}
+
+.form-group input:checked+label:after {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 4px;
+    left: 6.48px;
+    width: 3.5px;
+    height: 7px;
+    border: solid #ffffff;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+    box-shadow: 0px 0px 0px 6px rgb(72, 28, 161);
+    background: rgb(72, 28, 161);
+}
+
+.DND h3 {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 13px;
+    line-height: 33px;
+    color: #7137d6;
+    margin-bottom: -9px;
+}
+
+.DND i {
+    color: #7137d6;
+}
+
+.Round {
+    border: 2px solid #7137d6;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    margin: auto;
+    margin-top: 3px;
+}
+
+.DailyBusyHours select {
+    height: 46px !important;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 11px;
+    line-height: 107%;
+    color: #713BDB;
+    outline: none;
+    width: 100%;
+    -webkit-appearance: none !important;
+    appearance: none !important;
+    background: url("../../../assets/images/selectArrow.png") no-repeat;
+    background-color: #F2ECFF;
+    background-size: 10px;
+    background-position: calc(100% - 6px) 18px;
+    background-repeat: no-repeat;
+    padding: 18px 18px 13px 9px;
+    border: 1px solid rgba(113, 59, 219, 0.18);
+    box-shadow: 0px 11px 34px -5px rgb(113 59 219 / 21%);
+    border-radius: 6px;
+}
+
+.DailyBusyHours #matDateInput {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 11px;
+    padding: 19px 12px 9px 8px;
+    width: 100%;
+    background: #F2ECFF;
+    border: 1px solid rgba(113, 59, 219, 0.18);
+    box-shadow: 0px 11px 34px -5px rgb(113 59 219 / 21%);
+    border-radius: 6px;
+    line-height: 107%;
+    color: #713BDB;
+    outline: none;
+    height: 46px !important;
+}
+
+.selectedFormValue label {
+    padding: 7px 7px 1px 8px !important;
+    transition: 0.3s;
+    font-size: 9px !important;
+    opacity: 0.5;
+}
+
+.DailyBusyHours h3 {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 11px;
+    line-height: 110%;
+    text-align: center;
+    color: #323232;
+    margin: 0;
+    width: 44px;
+}
+
+.BusyHourschedule .form-group input {
+    padding: 0;
+    height: initial;
+    width: initial;
+    margin-bottom: 0;
+    display: none;
+    cursor: pointer;
+}
+
+.BusyHourschedule .form-group label {
+    position: relative;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    margin: 0;
+    overflow: hidden;
+    border-radius: 50%;
+    padding: 0;
+}
+
+.BusyHourschedule .form-group label:before {
+    content: '';
+    -webkit-appearance: none;
+    background-color: transparent;
+    border: 2px solid #713bdb;
+    box-shadow: 0 1px 2px rgb(0 0 0 / 5%), inset 0px -15px 10px -12px rgb(0 0 0 / 5%);
+    padding: 6px;
+    display: inline-block;
+    position: relative;
+    vertical-align: middle;
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+.BusyHourschedule .form-group input:checked+label:after {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 4px;
+    left: 6.48px;
+    width: 3.5px;
+    height: 7px;
+    border: solid #ffffff;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+    box-shadow: 0px 0px 0px 6px rgb(72, 28, 161);
+    background: rgb(72, 28, 161);
+}
+
+.DeleteIcon {
+    margin-bottom: 4px;
+    color: #713bdb;
+}
+
+.DailyBusyHours .DeleteIcon {
+    position: absolute;
+    right: -5px;
+    top: -8px;
+}
+
+.BusyHourschedule {
+    width: 100%;
+    padding: 15px 14px;
+    background: rgba(255, 255, 255, 0.79);
+    border: 2px solid rgba(174, 140, 239, 0.54);
+    box-shadow: 2px 2px 7px 0px rgb(134 87 226 / 29%);
+    border-radius: 9px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-bottom: 10px;
+    position: relative;
+}
+
+.Holidayschedule {
+    width: 100%;
+    padding: 12px 10px;
+    background: rgba(255, 255, 255, 0.79);
+    border: 2px solid rgba(174, 140, 239, 0.54);
+    box-shadow: 0px 12px 53px -24px rgba(134, 87, 226, 0.63);
+    border-radius: 9px;
+    position: relative;
+}
+
+.errorDiv {
+    color: red;
+    font-size: 12px;
+    height: 12px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+}
+
+.scroll {
+    overflow: auto;
+    max-height: 500px;
+    padding: 10px 0px;
+}
+
+.scroll::-webkit-scrollbar {
+    width: 5px;
+}
+
+.scroll::-webkit-scrollbar-thumb {
+    background: #713bdb;
+    border-radius: 2px;
+}
+
+.scroll::-webkit-scrollbar-track {
+    border-radius: 2px;
+    background: #713bdb6b;
+}
+
+@media (min-width:769px) and (max-width:1024px) {
+    ::ng-deep .calendar .cal-month-view .cal-day-number {
+        font-size: 10px !important;
+    }
+}

@@ -1,0 +1,263 @@
+<router-outlet>
+  <ngx-spinner bdColor="rgba(51,51,51,0.8)" size="medium" color="#fff" type="ball-circus" [fullScreen]="true">
+  </ngx-spinner>
+</router-outlet>
+<div id="AuthorisedSignatory" class="tabcontent">
+  <div class="AuthorisedAddition">
+    <form [formGroup]="authorisedSignatoryAdditionForm">
+      <div class="row">
+        <div class="col-md-12 mb-3">
+          <div class="form-floating drName">
+            <input type="text" name="DoctorName" placeholder="Doctor's Name" id="Laboratory" class="form-control"
+              formControlName="physicianName" [matAutocomplete]="auto">
+            <label for="Laboratory">Doctor's Name</label>
+            <!-- <button class="Check"
+              (click)="searchPhysician(authorisedSignatoryAdditionForm.value.physicianName)">Check</button> -->
+            <mat-autocomplete #auto="matAutocomplete">
+              <mat-option *ngFor="let item of physicianList" [value]="searchedPhysician"
+                (click)="selectPhysician(item)">
+                <p>{{item.physicianName}} <span
+                    style="font-size: 12px !important; color: #713bdb;">{{item.physicianUserCode}}</span>
+                </p>
+              </mat-option>
+            </mat-autocomplete>
+            <div class="row">
+              <div class="col-md-5 position-absolute">
+                <div *ngIf="showPhysicianDetails" class="doctorDetails">
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="CollapsePrescribed">
+                        <ul class="m-d expand-list p-0">
+                          <li data-md-content="200">
+                            <label name="tab" for="tabAddress" tabindex="-1" class="tab_lab w-100" role="tab">
+                              <div>
+                                <div id="dropdownMenuLink" style="display: flex;">
+                                  <div class="d-flex align-items-center">
+                                    <p class="m-0">{{selectedPhysicianDetails.physicianName}}</p>
+                                    <span
+                                      style="font-size: 12px !important; color: #713bdb;">&nbsp;({{selectedPhysicianDetails.physicianUserCode}})</span>
+                                  </div>
+                                </div>
+                              </div>
+                            </label>
+                            <div class="row">
+                              <div class="col-md-12">
+                                <div class="doctorCard">
+                                  <div class="row ">
+                                    <div class="col-md-5">
+                                      <div class="profileImg">
+                                        <img
+                                          [src]="selectedPhysicianDetails.physicianProfilePictureFileName|getFile:selectedPhysicianDetails.physicianProfilePictureFileType">
+                                      </div>
+                                    </div>
+                                    <div class="col-md-7">
+                                      <table>
+                                        <tbody>
+                                          <tr>
+                                            <td></td>
+                                            <td>{{selectedPhysicianDetails.physicianSpecialisation}}</td>
+                                          </tr>
+                                          <tr>
+                                            <td></td>
+                                            <td>{{selectedPhysicianDetails.physicianQualification}}</td>
+                                          </tr>
+                                          <tr>
+                                            <td></td>
+                                            <td>
+                                              {{selectedPhysicianDetails.physicianRegistrationNo}}({{selectedPhysicianDetails.physicianRegistrationAuthority}})
+                                            </td>
+                                          </tr>
+                                          <tr *ngIf="selectedPhysicianDetails.physicianPrimaryContactNo">
+                                            <td><i class="bi-telephone-fill"></i></td>
+                                            <td><b>(P)</b> +91 {{selectedPhysicianDetails.physicianPrimaryContactNo}}
+                                            </td>
+                                          </tr>
+                                          <tr *ngIf="selectedPhysicianDetails.physicianSecondaryContactNo">
+                                            <td><i class="bi-telephone-fill"></i></td>
+                                            <td><b>(s)</b> +91 {{selectedPhysicianDetails.physicianSecondaryContactNo}}
+                                            </td>
+                                          </tr>
+                                        </tbody>
+                                      </table>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="col-md-12 d-flex justify-content-between">
+                                <button class="Confirm" (click)="selectPhysicianForForm()">Confirm</button>
+                                <button class="Confirm" (click)="unSelectPhysician()">Cancel</button>
+                              </div>
+                            </div>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-12">
+          <div class="details" *ngIf="authorisedSignatoryAdditionForm.value.physicianUserCode ">
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-floating-d ">
+                  <label for=""> Degree</label>
+                  <p>{{authorisedSignatoryAdditionForm.value.physicianQualification}}</p>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-floating-d ">
+                  <label for="">Specialization</label>
+                  <p>{{authorisedSignatoryAdditionForm.value.physicianSpecialisation}}</p>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-floating-d ">
+                  <label for="">Registration Number</label>
+                  <p>{{authorisedSignatoryAdditionForm.value.registrationNumber}}</p>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-floating-d ">
+                  <label for="">Registration Authority</label>
+                  <p>{{authorisedSignatoryAdditionForm.value.registrationAuthority}}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="document mb-3"
+        *ngIf="authorisedSignatoryAdditionForm.value.physicianUserCode && previousAuthorisedSignstoryDocumentList.length">
+        <h2>Uploaded Document</h2>
+        <div class="row">
+          <div class="col-md-4 px-2 mt-2" *ngFor="let document of previousAuthorisedSignstoryDocumentList">
+            <div class="documentBox">
+              <div class="d-flex align-items-center">
+                <div class="d-flex flex-column align-items-center icon">
+                  <i class="bi-file-earmark-pdf-fill" *ngIf="document.contentType === 'application/pdf'"></i>
+                  <i class="bi bi-images" *ngIf="document.contentType !== 'application/pdf'"></i>
+                </div>
+                <div class="d-flex flex-column">
+                  <label for="AdhaarNo.">{{document.fileType==='ADH'?'Adhaar No.':document.fileType==='VOT'?'Voter
+                    No.':document.fileType==='PAN'?'PAN No.':document.fileType==='MRC'?'Registration Certificate
+                    No.':document.fileType==='PDC'?'Physician Degree Certificate No.':document.fileType==='SIG'?'Digital
+                    Signature File':''}}</label>
+                  <p>{{document.documentNumber}}</p>
+                </div>
+              </div>
+              <div class="d-flex flex-column statusIcon">
+                <i class="bi-x-circle-fill" *ngIf="document.documentStatus === 3"></i>
+                <i class="bi-check-circle-fill" *ngIf="document.documentStatus === 0"></i>
+                <i class="bi-question-circle-fill" *ngIf="document.documentStatus === 2"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="regErrorDiv">
+          <small>{{fileError}}</small>
+        </div>
+      </div>
+      <div class="documentUpload" *ngIf="authorisedSignatoryAdditionForm.value.physicianUserCode">
+        <div formArrayName="documentList">
+          <div *ngFor="let document of documentList() .controls; let documentIndex = index">
+            <ng-container formGroupName="{{ documentIndex }}">
+              <div class="row">
+                <div class="col-md-3 my-2">
+                  <div class="form-floating selectBox"
+                    [ngClass]="getDocumentControllerValue(documentIndex, 'fileType') !== '' ? 'selectedFormValue' : ''">
+                    <select [ngClass]="getDocumentControllerValue(documentIndex, 'fileType') !== '' ? 'addColor' : ''"
+                      class="form-select one" id="floatingSelect fileType" aria-label="Floating label select example"
+                      formControlName="fileType" autofocus="" name="fileType"
+                      (change)="onChangeDocNoAndDocType(documentIndex)">
+                      <option *ngFor="let documentType of documentTypeDetailsList" [value]="documentType.documentType"
+                        [hidden]=" isSelectedPreviousDocType(documentType.documentType,document.value.fileType)">{{
+                        documentType.documentTypeDescription }}</option>
+                    </select>
+                    <label for="floatingSelect">Document Type</label>
+                  </div>
+                  <div class="regErrorDiv">
+                    <app-validation-message [control]="getDocumentController(documentIndex, 'fileType')"
+                      [messages]="errorMessage.authorisedSignatoryForm.fileType">
+                    </app-validation-message>
+                  </div>
+                </div>
+                <div class="col-md-3 my-2">
+                  <div class="form-floating ">
+                    <input formControlName="documentNumber" autofocus="" type="text" name="documentNumber"
+                      placeholder="Document Number" id="documentNumber" class="form-control"
+                      (change)="onChangeDocNoAndDocType(documentIndex)">
+                    <label for="documentNumber">Document Number</label>
+                  </div>
+                  <div class="regErrorDiv">
+                    <app-validation-message [control]="getDocumentController(documentIndex, 'documentNumber')"
+                      [messages]="errorMessage.authorisedSignatoryForm.documentNumber">
+                    </app-validation-message>
+                  </div>
+                </div>
+                <div class="col-md-6 my-2">
+                  <div class="d-flex">
+                    <div class="form-group file-area">
+                      <div *ngIf="getDocumentControllerValue(documentIndex, 'document')">
+                        <div *ngIf="!getDocumentControllerValue(documentIndex, 'error')" class="Dr-list mt-0">
+                          <img src="../../../assets/images/PrescriptionPink.png">
+                          <h6>{{getDocumentControllerValue(documentIndex, 'fileName')}}</h6>
+                          <i class="bi-x" (click)="removeItem(documentIndex)"></i>
+                          <div id="Progress_Status">
+                            <div *ngIf="getDocumentControllerValue(documentIndex, 'progress')" id="text">
+                              {{ getDocumentControllerValue(documentIndex, 'progress') }} %
+                            </div>
+                            <div [style.width]="getDocumentControllerValue(documentIndex, 'progress') + '%'"
+                              id="myprogressBar"></div>
+                          </div>
+                        </div>
+                        <div *ngIf="getDocumentControllerValue(documentIndex, 'error')" class="Dr-list mt-0">
+                          <img src="../../../assets/images/dr-prpl.png">
+                          <h6>{{getDocumentControllerValue(documentIndex, 'fileName')}}</h6>
+                          <i class="bi-x" (click)="removeItem(documentIndex)"></i>
+                        </div>
+                      </div>
+                      <div *ngIf="!getDocumentControllerValue(documentIndex, 'document')">
+                        <label autofocus="" for="document"> No File Choosen ....</label>
+                        <input [ngClass]="isDisabled(documentIndex) ? 'disable' : ''" formControlName="fileSource"
+                          type="file" name="document" id="document" required="required" multiple="multiple"
+                          (change)="onFileUpload($event,documentIndex)" />
+                      </div>
+                    </div>
+                    <div class=" d-flex align-items-center justify-content-center">
+                      <i class="bi-trash-fill" (click)="deleteDocument(documentIndex)"></i>
+                    </div>
+                  </div>
+                  <div class="regErrorDiv">
+                    <div *ngIf="getDocumentControllerValue(documentIndex, 'error')">
+                      <small> Couldn`t upload the file </small>
+                    </div>
+                    <small>{{document.value.fileError}}</small>
+                    <app-validation-message [control]="getDocumentController(documentIndex, 'fileID')"
+                      [messages]="errorMessage.authorisedSignatoryForm.fileID">
+                    </app-validation-message>
+                  </div>
+                </div>
+              </div>
+            </ng-container>
+          </div>
+          <div class="col-md-12 add text-end">
+            <h6 (click)="addAnotherDocument()">+Add Another Document</h6>
+          </div>
+        </div>
+      </div>
+    </form>
+    <div class="submit mt-5" *ngIf="authorisedSignatoryAdditionForm.value.physicianUserCode">
+      <div class="row">
+        <div class="col-md-6 text-end">
+          <button class="submit" (click)="saveAuthorisedSignarory()">Submit</button>
+        </div>
+        <div class="col-md-6 text-start">
+          <button class="cancel" (click)="authorisedSignatoryAdditionFormReset()">Cancel</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

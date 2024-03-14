@@ -1,0 +1,495 @@
+section {
+  padding: 87px 0px 0px 0px !important;
+}
+
+.header {
+  z-index: 997;
+  padding: 12px 0px 0px 0px;
+  transition: 0.8s;
+}
+
+.header .container-fluid {
+  border-bottom: 1px solid rgb(231 168 20 / 49%);
+  padding-bottom: 12px;
+}
+
+@media (max-width: 1200px) {
+  .header {
+    padding: 12px 0;
+  }
+}
+
+
+.header.sticked {
+  background: #673ab7;
+  transition: 0.8s;
+}
+
+.header.sticked .container-fluid {
+  border: none;
+}
+
+.header .logo img {
+  max-height: 70px;
+  margin-right: 6px;
+  transition: all 0.5s;
+}
+
+.header .color-logo {
+  position: absolute;
+  max-height: 57px !important;
+}
+
+
+.header .logo h1 {
+  font-size: 30px;
+  font-weight: 700;
+  color: #fff;
+  font-family: var(--font-secondary);
+  margin: 0;
+}
+
+/*--------------------------------------------------------------
+# Desktop Navigation
+--------------------------------------------------------------*/
+@media (min-width: 1280px) {
+  .navbar {
+    padding: 0;
+  }
+
+  .navbar ul {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    list-style: none;
+    align-items: center;
+  }
+
+  .navbar li {
+    position: relative;
+  }
+
+  .navbar a,
+  .navbar a:focus {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 0 15px 30px;
+    font-family: var(--font-default);
+    font-size: 15px;
+    font-weight: 500;
+    color: #fff;
+    white-space: nowrap;
+    transition: 0.3s;
+  }
+
+  .navbar a i,
+  .navbar a:focus i {
+    font-size: 12px;
+    line-height: 0;
+    margin-left: 5px;
+  }
+
+  .navbar a:hover,
+  .navbar .active,
+  .navbar .active:focus,
+  .navbar li:hover>a {
+    color: #e7a814 !important;
+  }
+
+  .active a {
+    color: #673ab7;
+  }
+
+  .navbar .dropdown ul {
+    display: block;
+    position: absolute;
+    left: 14px;
+    top: calc(100% + 30px);
+    margin: 0;
+    padding: 10px 0;
+    z-index: 99;
+    opacity: 0;
+    visibility: hidden;
+    background: #fff;
+    box-shadow: 0px 0px 30px rgba(127, 137, 161, 0.25);
+    transition: 0.2s;
+  }
+
+  .navbar .dropdown ul li {
+    min-width: 200px;
+  }
+
+  .navbar .dropdown ul a {
+    padding: 10px 20px;
+    font-size: 15px;
+    text-transform: none;
+    color: var(--color-secondary);
+  }
+
+  .navbar .dropdown ul a i {
+    font-size: 12px;
+  }
+
+  .navbar .dropdown ul a:hover,
+  .navbar .dropdown ul .active:hover,
+  .navbar .dropdown ul li:hover>a {
+    color: var(--color-primary);
+  }
+
+  .navbar .dropdown:hover>ul {
+    opacity: 1;
+    top: 100%;
+    visibility: visible;
+  }
+
+  .navbar .dropdown .dropdown ul {
+    top: 0;
+    left: calc(100% - 30px);
+    visibility: hidden;
+  }
+
+  .navbar .dropdown .dropdown:hover>ul {
+    opacity: 1;
+    top: 0;
+    left: 100%;
+    visibility: visible;
+  }
+}
+
+@media (min-width: 1280px) and (max-width: 1366px) {
+  .navbar .dropdown .dropdown ul {
+    left: -90%;
+  }
+
+  .navbar .dropdown .dropdown:hover>ul {
+    left: -100%;
+  }
+}
+
+@media (min-width: 1280px) {
+
+  .mobile-nav-show,
+  .mobile-nav-hide {
+    display: none;
+  }
+}
+
+/*--------------------------------------------------------------
+# Mobile Navigation
+--------------------------------------------------------------*/
+@media (max-width: 1279px) {
+  .navbar {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 100%;
+    max-width: 280px;
+    bottom: 0;
+    transition: 0.8s;
+    z-index: 9997;
+  }
+
+  .navbar ul {
+    position: absolute;
+    inset: 0;
+    padding: 70px 0 10px 0;
+    margin: 0;
+    background: rgb(103 58 183 / 100%);
+    overflow-y: auto;
+    transition: 0.3s;
+    z-index: 9998;
+  }
+
+  .navbar a,
+  .navbar a:focus {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    font-family: var(--font-default);
+    font-size: 15px;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.7);
+    white-space: nowrap;
+    transition: 0.3s;
+  }
+
+  .navbar a i,
+  .navbar a:focus i {
+    font-size: 12px;
+    line-height: 0;
+    margin-left: 5px;
+  }
+
+  .navbar a:hover,
+  .navbar .active,
+  .navbar .active:focus,
+  .navbar li:hover>a {
+    color: #673ab7 !important;
+  }
+
+  .navbar .dropdown ul,
+  .navbar .dropdown .dropdown ul {
+    position: static;
+    display: none;
+    padding: 10px 0;
+    margin: 10px 20px;
+    background-color: rgba(20, 35, 51, 0.6);
+  }
+
+  .navbar .dropdown>.dropdown-active,
+  .navbar .dropdown .dropdown>.dropdown-active {
+    display: block;
+  }
+
+  .mobile-nav-show {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 28px;
+    cursor: pointer;
+    line-height: 0;
+    transition: 0.5s;
+  }
+
+  .mobile-nav-hide {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 32px;
+    cursor: pointer;
+    line-height: 0;
+    transition: 0.5s;
+    position: fixed;
+    right: 15px;
+    top: 15px;
+    z-index: 9999;
+  }
+
+  .mobile-nav-active {
+    overflow: hidden;
+  }
+
+  .mobile-nav-active .navbar {
+    right: 0;
+  }
+
+  .mobile-nav-active .navbar:before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: rgba(27, 47, 69, 0.7);
+    z-index: 9996;
+  }
+}
+
+.logotitle small {
+  color: #e7a814;
+  font-size: 6.25rem;
+}
+
+.logotitle {
+  font-size: 5.625rem;
+  font-family: Michland;
+  color: #fff !important;
+  text-decoration: none;
+  line-height: .7;
+}
+
+.logotitle span {
+  font-size: 1.25rem;
+  font-family: PalatinoLinotype;
+  margin-left: -1.125rem;
+}
+
+/* .Login {
+  background: #31057d;
+  padding: 7px 22px;
+  color: #fff;
+  transition: 0.4s;
+  margin: 15px 0 15px 30px;
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 151%;
+  letter-spacing: 0.5px;
+  border: inset;
+  border-color: #fff;
+  box-shadow: inset 0px 0px 4px 0px #fff;
+  border-top-right-radius: 11px;
+  border-bottom-left-radius: 11px;
+} */
+
+
+.Login {
+  background: #3b1283;
+  padding: 7px 22px;
+  color: #fff;
+  transition: 0.4s;
+  margin: 15px 0 15px 30px;
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 151%;
+  letter-spacing: 0.5px;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 2px 2px 7px 0px #0000005e;
+}
+
+.Login:hover {
+  border-radius: 11px 0px 11px 0px;
+  transform: scale(1.04);
+  box-shadow: 2px 2px 7px 0px #0000008f;
+  color: #e7a814;
+  background: #4109a3;
+}
+
+li span {
+  position: absolute;
+  bottom: -3px;
+  right: -10px;
+  font-family: var(--font-default);
+  font-size: 12px;
+  font-weight: 700;
+  color: #fff;
+  white-space: nowrap;
+  transition: 0.3s;
+  letter-spacing: 0.8px;
+}
+
+/* button[disabled] { 
+  background-color: #cccccc;
+  color: #666666;
+}
+
+button[disabled]:hover{
+  background-color: #cccccc !important;
+  color: #666666 !important;
+} */
+
+button[disabled] {
+  cursor: no-drop;
+}
+
+button[disabled]:hover+span {
+  transform: scale(1.17);
+  color: #a10000;
+  text-shadow: 2px 1px 4px #fff;
+  bottom: 3px;
+}
+
+.openNav {
+  right: 0px !important;
+  transition: 0.8s !important;
+}
+
+.pointerCursor {
+  cursor: pointer;
+}
+
+.bi-x {
+  font-size: 30px;
+  position: absolute;
+  top: 16px;
+  right: 15px;
+  color: #ffff;
+}
+
+
+@media (max-width:768px) {
+  .logotitle {
+    font-size: 3.625rem;
+  }
+
+  .logotitle small {
+    font-size: 5.25rem;
+  }
+
+  .logotitle span {
+    font-size: 1rem;
+    margin-left: -2px;
+  }
+
+  .header {
+    padding: 12px 0 0px 0;
+  }
+}
+
+@media (min-width:769px) and (max-width:1024px) {
+  .logotitle {
+    font-size: 3.625rem;
+  }
+
+  .logotitle small {
+    font-size: 5.25rem;
+  }
+
+  .logotitle span {
+    font-size: 1rem;
+    margin-left: -2px;
+  }
+
+  .header {
+    padding: 12px 0 0px 0;
+  }
+}
+
+@media (max-width:820px) {
+  .logotitle {
+    font-size: 3.625rem;
+  }
+
+  .logotitle small {
+    font-size: 5.25rem;
+  }
+
+  .logotitle span {
+    font-size: 1rem;
+    margin-left: -2px;
+  }
+
+  .header {
+    padding: 12px 0 0px 0;
+  }
+}
+
+@media (min-width:821px) and (max-width:1180px) {
+  .logotitle {
+    font-size: 3.625rem;
+  }
+
+  .logotitle small {
+    font-size: 5.25rem;
+  }
+
+  .logotitle span {
+    font-size: 1rem;
+    margin-left: -2px;
+  }
+
+  .header {
+    padding: 12px 0 0px 0;
+  }
+}
+
+@media (max-width:425px) {
+  .logotitle {
+    font-size: 2.625rem;
+  }
+
+  .logotitle small {
+    font-size: 4.25rem;
+  }
+
+  .logotitle span {
+    font-size: 12px;
+    margin-left: -4px;
+  }
+
+  .navbar a:hover,
+  .navbar .active,
+  .navbar .active:focus,
+  .navbar li:hover>a {
+    color: #e7a814 !important;
+  }
+}

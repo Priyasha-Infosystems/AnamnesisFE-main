@@ -1,0 +1,70 @@
+<section id="AddressChanges">
+    <div class="close" (click)="closePopup()">
+        <i class="bi-x-circle-fill"></i>
+    </div>
+    <div class="container p-0">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="tab">
+                    <div class="button  mb-2" id="defaultOpen"
+                        *ngFor="let address of addresList ;let addressInex= index"
+                        [ngClass]="{active:selectedAddessIndex === addressInex}"
+                        (click)="selectAddress(address,addressInex)">
+                        <P>{{address.addressIdentifier}}</P>
+                        <span>{{address.displayName}}</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-8">
+                <div id="MyHome" class="AddressChangescontent" *ngIf="selectedAddress">
+                    <div class="home-box">
+                        <div class="Default" *ngIf="selectedAddress.default">Default</div>
+                        <div class="row w-100 m-auto" id="border-b">
+                            <div class="col-md-2 d-flex align-items-center justify-content-center">
+                                <img src={{setAddressImg(selectedAddress.addressType)}} id="home-img">
+                            </div>
+                            <div class="col-md-10 home p-0 d-flex align-items-center">
+                                <h4>{{selectedAddress.addressIdentifier ? selectedAddress.addressIdentifier :
+                                    "Other"}} <i class="bi-pencil-fill" (click)="editAddress()"></i></h4> 
+                            </div> 
+                        </div>
+                        <div class="content">
+                            <h4 class="pb-2">{{selectedAddress.customerName}}</h4>
+                            <div class="d-flex"> 
+                                <div class="w-100">
+                                    <div class="addressDetailsDiv">
+                                        <p><b>Address : </b></p>
+                                        <p [innerHTML]="selectedAddress.customerAddress |addressLine" *ngIf="selectedAddress.customerAddress"></p>
+                                        <p>{{selectedAddress.customerLandmark}}</p>
+                                        <p> {{selectedAddress.customerCity}}, {{selectedAddress.customerStateName}} - {{selectedAddress.customerPincode}}</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <p><b>Contact Number: </b></p> 
+                            </div>
+                            <p *ngIf="selectedAddress.customerContactNo">(P)&nbsp;+91&nbsp;{{selectedAddress.customerContactNo}}</p>
+                            <p *ngIf="selectedAddress?.customerSecondaryContactNo">(S)&nbsp;+91&nbsp;{{selectedAddress.customerSecondaryContactNo}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12 d-flex justify-content-between align-items-center pt-3 footerBtn">
+                <div class="d-flex justify-content-end align-items-center ">
+                    <button class="Add-Address" id="myBtn" (click)="addAddress()">+ Add Address</button>
+                </div>
+                <div>
+                    <button (click)="saveAddressAsCartAddress()">Save</button>
+                    <button (click)="closePopup()">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="myModal1" class="modal1" *ngIf="openModal" tabindex="-1" role="dialog">
+        <div class="container">
+            <app-address-modal [stateList]="stateList" [newAddress]="addNewAddress"
+                [selectedAddress]="editAddressDetails" (close)="closeAddressPopUp($event)">
+            </app-address-modal>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,254 @@
+<app-header [prod]="prod" (navigate)="scrollToDiv($event)"></app-header>
+<div class="headerBg"></div>
+<script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://anamnesis.in/blog"
+      },
+      "headline": "Healthcare Articles",
+      "description": "Latest updates in Healthcare Industry",
+      "image": "",  
+      "author": {
+        "@type": "Organization",
+        "name": "anamnesis",
+        "url": "https://anamnesis.in/"
+      },  
+      "publisher": {
+        "@type": "Organization",
+        "name": "",
+        "logo": {
+          "@type": "ImageObject",
+          "url": ""
+        }
+      },
+      "datePublished": ""
+    }
+    </script>
+<div class="container-fluid px-5 top">
+    <div class="row deskVersion">
+
+        <!-- Right Side Button  -->
+        <div class="d-none">
+            <div class="col-md-3" data-aos="fade-up">
+                <div class="tab">
+                    <h2>Spotlight</h2>
+                    <button class="tablinks" *ngFor="let Data of blogView;  let SpotlightButton = index;"
+                        (click)="blogViewChange(SpotlightButton)"
+                        [ngClass]="{active:ShowBlog===SpotlightButton}">{{Data.HeadLine}}</button>
+                </div>
+            </div>
+            <div class="col-md-6" data-aos="fade-up">
+                <div *ngFor="let Data of blogView ; let blog = index;">
+                    <div class="tabcontent" *ngIf="blog === ShowBlog" data-aos="fade-up">
+                        <h3>{{Data.HeadLine}}</h3>
+                        <p>{{Data.Blog}}</p>
+
+                        <!-- <img src="../../assets/img/blog image/offtopic_3" alt=""> -->
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <!-- <pre width="100px"><p>{{Data.sidetext}}</p></pre> -->
+                            </div>
+                            <div class="col-md-6"><img
+                                    src="{{'../../../../assets/images/img/blog image/'+ Data.images +'.jpg'}}" alt=""
+                                    class="w-100"></div>
+                            <div class="col-md-12">
+                                <!-- <pre><p>{{Data.blogs}}</p></pre> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Blog Print End -->
+        <div class="col-md-9 p-0">
+            <h2 class="title" >Spotlight</h2>
+            <div [attr.id]="blogIndex" class="blogBox" *ngFor="let Data of NewBlogView let blogIndex = index">
+                <div class="row w-100 m-auto">
+                    <div class="col-md-6">
+                        <div class="img w-100 h-100 pt-3 px-1">
+                            <img src="{{'../../../../assets/images/img/blog image/'+ Data.images +'.jpg'}}"
+                                class="w-100 ">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="contentDetails w-100 pt-4 px-1">
+                            <h2>{{Data.HeadLine}}</h2>
+                            <p [innerHTML]="Data.Blog|inrHtml"></p>
+                            <h6>{{Data.HeadLine2}}</h6>
+                            <p [innerHTML]="Data.Blog2|inrHtml"> </p>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="contentDetails w-100 pt-4 px-1">
+                            <h6 *ngIf="Data.HeadLine3">{{Data.HeadLine3}}</h6>
+                            <p *ngIf="Data.Blog3" [innerHTML]="Data.Blog3|inrHtml"> </p>
+                            <pre><p class="p-0" [innerHTML]="Data.Dot_blogs|inrHtml"></p></pre>
+
+                            <h6 *ngIf="Data.endHeadLine">{{Data.endHeadLine}}</h6>
+                            <p *ngIf="Data.endBlog">{{Data.endBlog}}</p>
+                            <div class="bottom">
+                                <div><span *ngIf="Data.Source"><b>{{Data.PS}}</b> {{Data.Source}}</span></div>
+                                <div class="footerIcon">
+                                    <a target="_blank" href="https://www.facebook.com/profile.php?id=100083805635661">
+                                        <i class="fa fa-facebook-square"></i>
+                                    </a>
+                                    <a target="_blank" href="https://www.youtube.com/@AnamnesisMyHealthBook">
+                                        <i class="bi-youtube" style="font-size: 22px;"></i>
+                                    </a>
+                                    <a target="_blank" href="https://www.instagram.com/anamnesismyhealthbook/">
+                                        <i class="bi-instagram"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="blogBox" *ngFor="let Data of blogView">
+                <div class="img">
+                    <img src="{{'../../../../assets/images/img/blog image/'+ Data.images +'.jpg'}}" class="w-100">
+                </div>
+                <div class="contentDetails">
+                   
+                    <h2 *ngIf="Data.HeadLine">{{Data.HeadLine}}</h2>
+                    <p *ngIf="Data.Blog">{{Data.Blog}}</p>
+                    <h6 *ngIf="Data.HeadLine2">{{Data.HeadLine2}}</h6>
+                    <p *ngIf="Data.Blog2">{{Data.Blog2}}</p> 
+                    <pre *ngIf="Data.Dot_blogs"><p class="p-0">{{Data.Dot_blogs}}</p></pre>
+                    <p *ngIf="Data.endBlog">{{Data.endBlog}}</p>
+                    <div class="bottom">
+                        <div><span *ngIf="Data.Source"><b>{{Data.PS}}</b> {{Data.Source}}</span></div>
+                        <div class="footerIcon">
+                            <a target="_blank" href="https://www.facebook.com/profile.php?id=100083805635661">
+                                <i class="fa fa-facebook-square"></i>
+                            </a>
+                            <a target="_blank" href="https://www.youtube.com/@AnamnesisMyHealthBook">
+                                <i class="bi-youtube" style="font-size: 22px;"></i>
+                            </a>
+                            <a target="_blank" href="https://www.instagram.com/anamnesismyhealthbook/">
+                                <i class="bi-instagram"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Left Side Content  -->
+        <div class="col-md-3 px-4" data-aos="fade-up">
+            <div class="rightSideBlog">
+                <div class="right-box" style="border:none ; box-shadow: unset;">
+                    <h2>Latest update in Healthcare industry</h2>
+                </div>
+
+                <div class="right-box" *ngFor="let Data of Latestupdate">
+                    <a [attr.href]="Data.link" target="_blank">
+                        <div class="d-flex">
+                            <img src="{{'../../../../assets/images/img/blog image/'+ Data.images +'.jpg'}}">
+                            <div class="d-flex flex-column p-2">
+                                <a>{{Data.title}}</a>
+                                <span>{{timeDiff(Data.Time)}}</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+        <!-- Left Side Content End -->
+    </div>
+
+    <section id="mobileVersion" class="p-0">
+        <div class="CollapsePrescribed">
+            <h2>Spotlight</h2>
+            <ul class="m-d expand-list">
+                <li data-md-content="200" class="Prescription" *ngFor="let Data of NewBlogView;  let SpotlightButtons = index;" (click)="blogViewChange(SpotlightButtons)" [ngClass]="{active:ShowBlog===SpotlightButtons}">
+                    <label name="tab" for="tab1" tabindex="-1" role="tab" class="tab_lab w-100">
+                        <h5>{{Data.HeadLine}}</h5>
+                    </label>
+                    <input type="checkbox" id="tab1" tabindex="0" class="tabCollapse" [checked]="isChecked(SpotlightButtons)" (click)="openBlog(SpotlightButtons)">
+                    <span class="open-close-icon">
+                        <i class="bi-caret-up-fill"> </i>
+                    </span>
+                    <div class="contentCollapse">
+                        <h3>{{Data.HeadLine}}</h3>
+                        <p>{{Data.Blog}}</p>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <!-- <pre width="100px"><p>{{Data.sidetext}}</p></pre> -->
+                            </div>
+                            <div class="col-md-6"><img
+                                    src="{{'../../../../assets/images/img/blog image/'+ Data.images +'.jpg'}}" alt=""
+                                    class="w-100"></div>
+                            <div class="col-md-12">
+                                <pre><p>{{Data.Dot_blogs}}</p></pre>
+                                <p>{{Data.endBlog}}</p>
+                                <h6>{{Data.HeadLine2}}</h6>
+                                <p>{{Data.Blog2}}</p>
+                                <h6 *ngIf="Data.HeadLine3">{{Data.HeadLine3}}</h6>
+                                <p *ngIf="Data.Blog3">{{Data.Blog3}}</p>
+                                <pre><p class="p-0" [innerHTML]="Data.Dot_blogs"></p></pre>
+                                <h6 *ngIf="Data.endHeadLine">{{Data.endHeadLine}}</h6>
+                                <p *ngIf="Data.endBlog">{{Data.endBlog}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li data-md-content="200" class="Prescription"
+                    *ngFor="let Data of blogView;  let SpotlightButton = index;"
+                    (click)="blogViewChange(SpotlightButton)" [ngClass]="{active:ShowBlog===SpotlightButton}">
+                    <label name="tab" for="tab1" tabindex="-1" role="tab" class="tab_lab w-100">
+                        <h5>{{Data.HeadLine}}</h5>
+                    </label>
+                    <input type="checkbox" id="tab1" tabindex="0" class="tabCollapse"
+                        [checked]="isChecked(SpotlightButton)" (click)="openBlog(SpotlightButton)">
+                    <span class="open-close-icon">
+                        <i class="bi-caret-up-fill"> </i>
+                    </span>
+                    <div class="contentCollapse">
+                        <h3>{{Data.HeadLine}}</h3>
+                        <p>{{Data.Blog}}</p>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <!-- <pre width="100px"><p>{{Data.sidetext}}</p></pre> -->
+                            </div>
+                            <div class="col-md-6"><img
+                                    src="{{'../../../../assets/images/img/blog image/'+ Data.images +'.jpg'}}" alt=""
+                                    class="w-100"></div>
+                            <div class="col-md-12">
+                                <pre><p>{{Data.Dot_blogs}}</p></pre>
+                                <p>{{Data.endBlog}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+            <div class="col-md-12" data-aos="fade-up">
+                <div class="right-box" style="border:none">
+                    <h2>Latest update in Healthcare industry</h2>
+                </div>
+                <div class="right-box" *ngFor="let Data of Latestupdate">
+                    <img src="{{'../../../../assets/images/img/blog image/'+ Data.images +'.jpg'}}" class="w-100">
+                    <div class="d-flex flex-column p-2">
+                        <a [attr.href]="Data.link" target="_blank">{{Data.title}}</a>
+                        <span>{{timeDiff(Data.Time)}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+<app-footer [prod]="prod" (navigate)="scrollToDiv($event)" (termNCnd)="openTermNCndPopUp()"></app-footer>
+<div *ngIf="commingSoonPopUp" class="modal" tabindex="-1" role="dialog">
+    <!-- <div class="close" (click)="closeCommingSoonPopUp()"></div> -->
+    <app-comming-soon (close)="closeCommingSoonPopUp()"></app-comming-soon>
+</div>
+<div *ngIf="termNCndPopUp" class="modal" tabindex="-1" role="dialog">
+    <!-- <div class="close" (click)="closeCommingSoonPopUp()"></div> -->
+    <app-term-ncend (close)="closeTermNCndPopUp()"></app-term-ncend>
+</div>

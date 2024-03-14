@@ -1,0 +1,228 @@
+.tabcontent {
+    float: left;
+    padding: 35px 12px;
+    width: 100%;
+    border-left: none;
+    height: 100%;
+}
+
+.tabcontent h3 {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 30px;
+    line-height: 33px;
+    color: #434242;
+    padding-bottom: 3%;
+}
+
+.tabcontent p {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 18px;
+    color: #474545;
+}
+
+#Security .Questions-box {
+    width: 100%;
+    background: #fff;
+    border-radius: 15px; 
+}
+
+#Security .Questions-box select {
+    width: 98%;
+    height: 56px;
+    background: #F8F8FF;
+    box-shadow: 0px 4px 5px rgb(113 59 219 / 12%);
+    border-radius: 30px;
+    border: none;
+    padding: 10px 54px;
+    outline: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    transition: 0.3s;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 110%;
+    color: #373737;
+}
+
+#Security .Questions-box img {
+    max-width: 45px;
+    position: absolute;
+    bottom: 0;
+    top: 7px;
+    left: 15px;
+}
+
+#Security .Questions-box i {
+    position: absolute;
+    right: 30px;
+    top: 15px;
+    font-size: 18px;
+}
+
+#Security .ans-input {
+    background: #FDFDFF;
+    border: 1px solid rgba(113, 59, 219, 0.18);
+    box-shadow: 0px 11px 34px rgb(113 59 219 / 21%);
+    width: 100%;
+    height: 93px;
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+    margin-top: -25px;
+    padding: 45px 0px 0px 20px;
+}
+
+#Security .ans-input input {
+    width: 100%;
+    border: none;
+    background: none;
+    outline: none;
+}
+
+#Security ::placeholder {
+    color: #EDB738;
+}
+
+#Security .All-box {
+    margin-bottom: 20px;
+    position: relative;
+}
+
+#Security .Questions-box button {
+    width: 256px;
+    height: 69px;
+    background: #EDB738;
+    box-shadow: 0px 11px 34px -5px rgb(253 217 134 / 79%);
+    border-radius: 12px;
+    border: none;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 110%;
+    color: #FFFFFF;
+    margin-top: 5%;
+}
+
+#Security .Questions-box .add-qa {
+    float: right;
+}
+
+#Security .modal1 {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    padding-top: 250px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background: rgba(15, 3, 37, 0.65);
+}
+
+#Security .modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 60px;
+    border: 1px solid #888;
+    width: 51%;
+    border-radius: 20px;
+    box-shadow: 0px 12px 13px rgb(32 22 54 / 41%);
+}
+
+#Security .modal-content h2 {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 28px;
+    line-height: 110%;
+    text-align: center;
+    color: #434242;
+}
+
+#Security .modal-content p {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 110%;
+    /* identical to box height, or 22px */
+    text-align: center;
+    color: #434242;
+}
+
+/* The Close Button */
+#Security .close1 {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+#Security .close1:hover,
+#Security .close1:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#Security form input {
+    display: inline-block;
+    /* text-align: center; */
+    width: 53px;
+    /* height: 55px; */
+    left: 596px;
+    top: 604px;
+    border: 2px solid rgba(113, 59, 219, 0.66);
+    border-radius: 7px;
+    outline: none;
+    /* margin: 5px; */
+}
+
+#Security .modal-content .Validate {
+    width: 257px !important;
+    height: 73px !important;
+    left: 657px !important;
+    top: 693px !important;
+    background: #713BDB !important;
+    box-shadow: 0px 11px 34px -5px rgba(113, 59, 219, 0.45) !important;
+    border-radius: 11px !important;
+    margin: auto !important;
+}
+
+#Security .modal-content a {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 17px;
+    line-height: 110%;
+    color: #713BDB;
+    text-decoration: none;
+    padding: 15px 0px;
+}
+
+.secQuesErrorDiv {
+    margin-bottom: -5px;
+    margin-top: 5px;
+    text-align: left !important;
+    padding-left: 24px;
+}
+
+#Security .Questions-box select {
+    background-size: 13px !important;
+    background-position: calc(100% - 17px) !important;
+    background-repeat: no-repeat !important;
+}
+
+#Security .Questions-box select {
+    background: url(../../../../assets/images/normalSelect.png) #F8F8FF no-repeat;
+    -webkit-appearance: none;
+}

@@ -1,0 +1,52 @@
+<router-outlet>
+  <ngx-spinner bdColor="rgba(51,51,51,0.8)" size="medium" color="#fff" type="ball-circus" [fullScreen]="true">
+  </ngx-spinner>
+</router-outlet>
+<div id="UserSetup" class="tabcontent">
+  <div class="" id="UserEntry" *ngIf="showSingleUserSetUp">
+    <!-- <p id="lenght">Phasellus at lectus eu sem sodales scelerisque. Cras tristique lobortis libero
+      eu
+      efficitur. In
+      eget vehicula ligula. Maecenas luctus sed ipsum egestas condimentum.
+      Quisque faucibus turpis et maximus fringilla. Duis eget lectus bibendum, mollis dui quis,
+      molestie lacus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere
+      cubilia
+      curae; Praesent sit amet diam sed lorem porta dignissim in in elit. </p> -->
+    <div class="row mt-3">
+      <div class="col-md-6">
+        <h2 id="downloadTemplate" ><a (click)="fileDownload()">Download</a> Bulk User Setup Template Here</h2>
+      </div>
+      <div class="col-md-12 text-end">
+        <div class="d-flex align-items-center justify-content-between">
+        <button class="UploadBar">
+          <div class="Dr-list mt-3" *ngIf="file">
+            <img src="../../../../assets/images/pdf.svg">
+            <div class="d-flex align-items-start flex-column px-2">
+              <h6>Suspendisse et prescription_23/09.pdf</h6>
+              <div id="Progress_Status" *ngIf="fileUploadProgress">
+                <div id="text">{{fileUploadProgress}}%</div>
+                <div id="myprogressBar" [style.width]="fileUploadProgress+'%'"></div>
+              </div>
+            </div>
+            <i class="bi-x"></i>
+          </div>
+          <div class= "" *ngIf="!file">
+            <input #fileInput type="file" (change)="onFileChange($event)" [disabled]="fileUploadDisable">
+          </div>
+        </button> 
+        <button (click)="upload()">Bulk Upload</button>
+      </div>
+        <div class="erorr">
+          <small>{{fileErrMsg}}</small>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-12 mt-5">
+      <app-single-user-setup [xlData]="xlData" (finalData)="singleUserClose($event)"></app-single-user-setup>
+    </div>
+  </div>
+  <!-- ---------------------------------------------------- userView--------------------------------------------------- -->
+  <div class=" " id="UserDisplay" *ngIf="showBulkUserSetUp">
+    <app-bulk-user-setup (close)="blukUserClose($event)" [userSetupForm]="finalData"></app-bulk-user-setup>
+  </div>
+</div>

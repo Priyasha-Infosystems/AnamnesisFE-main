@@ -1,0 +1,308 @@
+<router-outlet>
+    <ngx-spinner bdColor="rgba(51,51,51,0.8)" size="medium" color="#fff" type="ball-circus" [fullScreen]="true">
+    </ngx-spinner>
+</router-outlet>
+<div id="PatientConsultation">
+    <div class="container p-0">
+        <div class="contentDisplay">
+            <h2>Patient Consultation</h2>
+            <div *ngIf="!showPatientInformation">
+                <div class="row">
+                    <div class="col-md-12 mb-4 " id="searchPatient">
+                        <div class="searchsection">
+                            <form [formGroup]="searchPatientFormGroup" role="form">
+                                <div class="form-floating ">
+                                    <input type="text" name="Patient" placeholder="Patient" id="Patient"
+                                        class="form-control" formControlName="searchKey" matInput
+                                        [matAutocomplete]="patientNameauto">
+                                    <label for="Patient">Add patient's ID here......</label>
+                                    <div class="searchicn">
+                                        <i class="bi-search"></i>
+                                    </div>
+                                    <mat-autocomplete #patientNameauto="matAutocomplete">
+                                        <mat-option *ngFor="let item of patientList" (click)="selectPatient(item)">
+                                            <p>{{item.displayName}} <span
+                                                    style="font-size: 12px !important; color: #713bdb;">{{item.userCode}}</span>
+                                            </p>
+                                        </mat-option>
+                                    </mat-autocomplete>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div *ngIf="showPatientDetails" class="doctorDetails col-md-6 ">
+                        <div class="CollapsePrescribed">
+                            <label name="tab" for="tabAddress" tabindex="-1" class="tab_lab w-100" role="tab">
+                                <div>
+                                    <div id="dropdownMenuLink" style="display: flex;">
+                                        <div>
+                                            <span>{{selectedPatientDetails.displayName}}</span>
+                                            <span
+                                                style="font-size: 12px !important; color: #713bdb;">&nbsp;({{selectedPatientDetails.userCode}})</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </label>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="doctorCard">
+                                        <div class="row">
+                                            <div class="col-md-5">
+                                                <div class="profileImg">
+                                                    <img
+                                                        [src]="selectedPatientDetails.profilePictureFileName|getFile:selectedPatientDetails.profilePictureFileType">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-7">
+                                                <table>
+                                                    <tr>
+                                                        <td></td>
+                                                        <td>{{commonService.calculateGender(selectedPatientDetails.gender)}},
+                                                            {{commonService.calculateAge(selectedPatientDetails.dateOfBirth)}}
+                                                        </td>
+                                                    </tr>
+                                                    <tr *ngIf="selectedPatientDetails.primaryPhoneno">
+                                                        <td><i class="bi-telephone-fill"></i></td>
+                                                        <td><b>(P)</b>
+                                                            +91
+                                                            {{selectedPatientDetails.primaryPhoneno}}</td>
+                                                    </tr>
+                                                    <tr *ngIf="selectedPatientDetails.secondaryPhoneNo">
+                                                        <td><i class="bi-telephone-fill"></i></td>
+                                                        <td><b>(s)</b> +91
+                                                            {{selectedPatientDetails.secondaryPhoneNo}}</td>
+                                                    </tr>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 text-end">
+                                    <button class="Confirm" (click)="selectPatientForDetails()">Confirm</button>
+                                    <button class="Confirm" (click)="unSelectPatient()">Cancel</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div *ngIf="showPatientInformation" class="patientDetails mb-4">
+                <div class="row">
+                    <div class="col-md-2">
+                        <div class="name">
+                            <h3 style="text-align: center;">{{selectedPatientDetails.displayName}}</h3>
+                            <p>{{genderData[selectedPatientDetails?.gender]}}, {{age}}</p>
+                            <i class="bi-x-circle-fill" id="closePatient" (click)="clearSearch()"></i>
+                            <button class="Generate" (click)="generatePrescriptionModal(true)">Generate
+                                Prescription</button>
+                        </div>
+                    </div>
+                    <div class="col-md-2 p-0">
+                        <div class="Pressure">
+                            <table>
+                                <tr>
+                                    <td class="text-end"><label for="Height">Height: </label></td>
+                                    <td>
+                                        <h6>{{genMedInfo.HT?genMedInfo.HT:'-'}}</h6>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="text-end"><label for="Weight">Weight: </label></td>
+                                    <td>
+                                        <h6>{{genMedInfo.WT?genMedInfo.WT:'-'}}</h6>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="col-md-2 p-0">
+                        <div class="Pressure">
+                            <table>
+                                <tr>
+                                    <td><h6>{{genMedInfo.BP}}</h6></td>
+                                </tr>
+                                <tr>
+                                    <td><label for="Pressure">Pressure: </label></td>
+                                    <td><h6>{{genMedInfo.userPressure?genMedInfo.userPressure:'-'}}</h6></td>
+                                </tr>
+                                <tr>
+                                    <td><label for="Pressure">Pulse: </label></td>
+                                    <td><h6>{{genMedInfo.userPulse?genMedInfo.userPulse:'-'}}</h6></td>
+                                </tr>
+                                <!-- <tr>
+                                    <td><label for="Pressure">Pressure: </label></td>
+                                    <td><h6>{{genMedInfo.BP}}</h6></td>
+                                </tr> -->
+                            </table>
+                        </div>
+                    </div>
+                    <div class="col-md-2 p-0">
+                        <div class="Pressure">
+                            <label for="Thyroid">Thyroid: </label>
+                            <h6>{{genMedInfo.TH}}</h6>
+                        </div>
+                    </div>
+                    <div class="col-md-2 p-0">
+                        <div class="Pressure">
+                            <label for="Diabetic">Diabetic: </label>
+                            <h6>{{genMedInfo.DB}}</h6>
+                        </div>
+                    </div>
+                    <div class="col-md-2 p-0">
+                        <div class="Pressure">
+                            <div class="d-flex align-items-center">
+                                <h6>{{genMedInfo.userTemperature?genMedInfo.userTemperature:'-'}}</h6>
+                                <!-- <span>-</span> -->
+                                <p>°</p><b>F</b>
+                                <i class="fa fa-thermometer-full"></i>
+                            </div>
+                            <div class="d-flex">
+                                <label for="Thyroid">Blood Group: </label>
+                                <h6>{{genMedInfo.BG?genMedInfo.BG:'-'}}</h6>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-2 p-0">
+                        <div class="Pressure">
+                            <table>
+                                <tr>
+                                    <td class="text-end"><label for="Smoking">Smoking: </label></td>
+                                    <td>
+                                        <h6>{{genMedInfo.SM?genMedInfo.SM:'-'}}</h6>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="text-end"><label for="Alcohol">Alcohol: </label></td>
+                                    <td>
+                                        <h6>{{genMedInfo.AL?genMedInfo.AL:'-'}}</h6>
+                                    </td>
+                                </tr> 
+                            </table>
+                        </div>
+                    </div> 
+                </div>
+            </div>
+            <div class="mainContent">
+                <div class="row">
+                    <div *ngIf="showPatientInformation" class="col-md-8">
+                        <app-consultation-report [selectedPatientDetails]="selectedPatientDetails" [isPc]="true"
+                            (PrescriptionID)="prescriptionView($event)">
+                        </app-consultation-report>
+                    </div>
+                    <div *ngIf="!showPatientInformation" class="col-md-8"></div>
+                    <div class="col-md-4 mainContent">
+                        <div style="height: 1067px; overflow: auto;" class="ConsultationSchedule mb-3">
+                            <h3>Consultation Schedule</h3>
+                            <div *ngFor="let schedulelist of patientSchedulelist;let i = index">
+                                <div class="CollapsePrescribed">
+                                    <ul class="m-d expand-list m-0 p-2 pb-0">
+                                        <li data-md-content="200" class="Prescription">
+                                            <label name="tab" for="tab1" tabindex="-1" role="tab" class="tab_lab w-100">
+                                                <h5 class="dateh4">{{dateFormat(schedulelist[0].scheduleDate)| date:
+                                                    'd-MMM-yyyy'}} {{isToday(schedulelist[0].scheduleDate)}}</h5>
+                                                <p>{{schedulelist[0].healthClinicName}}
+                                                    <span>{{utility.timeFormateInto12Hours(schedulelist[0].sessionStartTime)}}
+                                                        -
+                                                        {{utility.timeFormateInto12Hours(schedulelist[0].sessionEndTime)}}</span>
+                                                </p>
+                                            </label>
+                                            <input type="checkbox" id="tab1" tabindex="0" class="tabCollapse"><span
+                                                class="open-close-icon"><i class="bi-caret-up-fill"></i></span>
+                                            <div class="contentCollapse">
+                                                <div>
+                                                    <div *ngFor="let schedule of schedulelist">
+                                                        <!-- <h6>
+                                                            <div>{{schedule.healthClinicName}}</div>
+                                                            <div><span>{{getTime(schedule.sessionStartTime)}} -
+                                                                    {{getTime(schedule.sessionEndTime)}}</span></div>
+                                                        </h6> -->
+                                                        <div *ngFor="let scheduleAppointment of schedule.appointmentInformationList;let idx = index"
+                                                            class="d-flex justify-content-between align-items-center mb-2 mt-2">
+                                                            <div class="timename d-flex flex-wrap align-items-center">
+                                                                <div class="indicator-margin">
+                                                                    <i placement="right"
+                                                                        [ngbTooltip]="getTooltipText(scheduleAppointment)"
+                                                                        [class]="getArrivalStatus(scheduleAppointment)"></i>
+                                                                </div>
+                                                                <div class="time">
+                                                                    {{getTime(scheduleAppointment.appointmentTime)}}
+                                                                </div>
+                                                                <h5>{{scheduleAppointment.displayName}}</h5>
+                                                            </div>
+                                                            <div
+                                                                class="d-flex justify-content-between align-items-center">
+                                                                <div *ngIf="scheduleAppointment.completionStatus === 'N'"
+                                                                    class="checkbox">
+                                                                    <label class="container">
+                                                                        <input
+                                                                            (click)="openConfirmation($event, scheduleAppointment)"
+                                                                            type="checkbox"
+                                                                            [checked]="getCompletionStatus(scheduleAppointment.completionStatus)">
+                                                                        <div class="checkmark"></div>
+                                                                    </label>
+                                                                </div>
+                                                                <div *ngIf="scheduleAppointment.completionStatus === 'Y'"
+                                                                    class="checkbox">
+                                                                    <label class="container">
+                                                                        <input disabled readonly type="checkbox"
+                                                                            checked>
+                                                                        <div class="checkmark"></div>
+                                                                    </label>
+                                                                </div>
+                                                                <img style="cursor: pointer;" class="Consultation"
+                                                                    (click)="OpenPrescriptionWithHealthClinic(schedulelist[0].healthClinicID,scheduleAppointment.userCode,scheduleAppointment.appointmentDate)"
+                                                                    src="../../../../assets/images/Consultation.png"
+                                                                    alt="">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="pt-4" *ngIf="patientSchedulelist.length === 0">
+                                <p>No upcoming schedule</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div>
+        <div id="GeneratePrescription">
+            <div class="modal" *ngIf="showGeneratePrescriptionModal" tabindex="-1" role="dialog">
+                <div class="container">
+                    <app-generate-prescription [generatePrescriptionDetails]="this.generatePrescriptionDetails"
+                        (close)="closePrescriptionModal($event)"></app-generate-prescription>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div>
+        <div id="confirmSchedule">
+            <div id="myModals" tabindex="-1" *ngIf="showConfirmationPopup" tabindex="-1" role="dialog" class="modal">
+                <div class="container popup">
+                    <div class="modal-content text-center">
+                        <div class="close" (click)="openConfirmation()">
+                            <i class="bi-x-circle-fill"></i>
+                        </div>
+                        <p>Please confirm the completion of this schedule </p>
+                        <div class="d-flex justify-content-center twoBtn">
+                            <button (click)="confirmSchedule()">Confirm</button>
+                            <button (click)="openConfirmation()" class="Cancel">Cancel</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> 
+<div id="myModal" class="modal" *ngIf="showPrescription">
+    <div class="container-fluid">
+        <app-prescription-view [prescriptionID]="showPrescriptionID" (close)="closePrescription()">
+        </app-prescription-view>
+    </div>
+</div>

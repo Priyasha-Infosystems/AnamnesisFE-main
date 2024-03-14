@@ -1,0 +1,153 @@
+<div id="healthReportUpdate">
+    <form [formGroup]="madicalInfoForm">
+        <div class="modal-content">
+            <div class="M-header">
+                <h5 class="modal-title" id="exampleModalToggleLabel">Update Medical Information</h5>
+                <div class="close" data-bs-dismiss="modal">
+                    <i class="bi-x-circle-fill" (click)="closePopup('')"></i>
+                </div>
+            </div>
+            <div class="modal-body">
+                <div formArrayName="medicalInfoList" class="medicalInfoList">
+                    <div class="col-md-12 my-2"
+                        *ngFor="let medicalInfo of medicalInfoList().controls; let medicalInfoIndex = index">
+                        <div class="row" formGroupName="{{medicalInfoIndex}}">
+                            <div class="col-md-4">
+                                <select name="" id="" formControlName="key"
+                                    (change)="selectMedicalInfoSelect(medicalInfoIndex,medicalInfo.value.key)">
+                                    <option [value]="item.generalMedicalInfoKey"
+                                        *ngFor="let item of generalMedicalInformationOptionList"
+                                        [ngClass]="{'d-none':isSelectedPreviousMedicalInfoOption(item.generalMedicalInfoKey,medicalInfo.value.key)}">
+                                        {{item.generalMedicalInfoDesc}}</option>
+                                </select>
+                                <div class="validation-div errorDiv">
+                                    <app-validation-message [control]="getmedicalInfoController(medicalInfoIndex,'key')"
+                                        [messages]="errorMessage.key">
+                                    </app-validation-message>
+                                </div>
+                            </div>
+                            <div class="col-md-4 ">
+                                <input type="text" *ngIf="medicalInfo.value.key===''" name="Height" placeholder=""
+                                    formControlName="result">
+                                <input type="text" *ngIf="medicalInfo.value.key==='HT'" name="Height"
+                                    placeholder="Height(cm)" formControlName="result"
+                                    (keyup)="onChangeResult(medicalInfoIndex,medicalInfo.value.result,medicalInfo.value.resultType)">
+                                <input type="text" *ngIf="medicalInfo.value.key==='WT'" name="Weight"
+                                    placeholder="Weight(Kgs)" formControlName="result"
+                                    (keyup)="onChangeResult(medicalInfoIndex,medicalInfo.value.result,medicalInfo.value.resultType)">
+                                <input type="text" *ngIf="medicalInfo.value.key==='TM'" name="Temperature"
+                                    placeholder="Temperature(C°)" formControlName="result"
+                                    (keyup)="onChangeResult(medicalInfoIndex,medicalInfo.value.result,medicalInfo.value.resultType)">
+                                <input type="text" *ngIf="medicalInfo.value.key==='PL'" name="Pulse"
+                                    placeholder="Pulse(minute)" formControlName="result"
+                                    (keyup)="onChangeResult(medicalInfoIndex,medicalInfo.value.result,medicalInfo.value.resultType)">
+                                <input type="text" *ngIf="medicalInfo.value.key==='BP'" name="Pressure"
+                                    placeholder="Pressure(mmHg)" formControlName="result"
+                                    (keyup)="onChangeResult(medicalInfoIndex,medicalInfo.value.result,medicalInfo.value.resultType)">
+                                <input type="text" *ngIf="medicalInfo.value.key==='GM23019910'" name="Pressure"
+                                    [placeholder]="getPlaceHolder('GM23019910')" formControlName="result"
+                                    (keyup)="onChangeResult(medicalInfoIndex,medicalInfo.value.result,medicalInfo.value.resultType)">
+                                <input type="text" *ngIf="medicalInfo.value.key==='GM23019920'" name="Pressure"
+                                    [placeholder]="getPlaceHolder('GM23019920')" formControlName="result"
+                                    (keyup)="onChangeResult(medicalInfoIndex,medicalInfo.value.result,medicalInfo.value.resultType)">
+                                <input type="text" *ngIf="medicalInfo.value.key==='GM23019930'" name="Pressure"
+                                    [placeholder]="getPlaceHolder('GM23019930')" formControlName="result"
+                                    (keyup)="onChangeResult(medicalInfoIndex,medicalInfo.value.result,medicalInfo.value.resultType)">
+                                <input type="text" *ngIf="medicalInfo.value.key==='GM23019940'" name="Pressure"
+                                    [placeholder]="getPlaceHolder('GM23019940')" formControlName="result"
+                                    (keyup)="onChangeResult(medicalInfoIndex,medicalInfo.value.result,medicalInfo.value.resultType)">
+                                <input type="text" *ngIf="medicalInfo.value.key==='GM23019950'" name="Pressure"
+                                    [placeholder]="getPlaceHolder('GM23019950')" formControlName="result"
+                                    (keyup)="onChangeResult(medicalInfoIndex,medicalInfo.value.result,medicalInfo.value.resultType)">
+                                <input type="text" *ngIf="medicalInfo.value.key==='GM23019960'" name="Pressure"
+                                    [placeholder]="getPlaceHolder('GM23019960')" formControlName="result"
+                                    (keyup)="onChangeResult(medicalInfoIndex,medicalInfo.value.result,medicalInfo.value.resultType)">
+                                <select name="BloodGroup" id="" formControlName="result"
+                                    *ngIf="medicalInfo.value.key==='BG'"
+                                    (change)="onChangeSelectedResuld(medicalInfoIndex,medicalInfo.value.result)">
+                                    <option [value]="'A+'">A+</option>
+                                    <option [value]="'A-'">A-</option>
+                                    <option [value]="'B+'">B+</option>
+                                    <option [value]="'B-'">B-</option>
+                                    <option [value]="'AB+'">AB+</option>
+                                    <option [value]="'AB-'">AB-</option>
+                                    <option [value]="'O+'">O+</option>
+                                    <option [value]="'O-'">O-</option>
+                                </select>
+                                <select name="Diabetics" id="" formControlName="result"
+                                    *ngIf="medicalInfo.value.key==='DC'"
+                                    (change)="onChangeSelectedResuld(medicalInfoIndex,medicalInfo.value.result)">
+                                    <option [value]="''"></option>
+                                    <option [value]="'Y'">Yes</option>
+                                    <option [value]="'N'">No</option>
+                                </select>
+                                <select name="Thyroid" id="" formControlName="result"
+                                    *ngIf="medicalInfo.value.key==='TH'"
+                                    (change)="onChangeSelectedResuld(medicalInfoIndex,medicalInfo.value.result)">
+                                    <option [value]="''"></option>
+                                    <option [value]="'N'">Normal</option>
+                                    <option [value]="'H'">Hypo</option>
+                                    <option [value]="'R'">Hyper</option>
+                                </select>
+                                <select name="Smoking" id="" formControlName="result"
+                                    *ngIf="medicalInfo.value.key==='SM'"
+                                    (change)="onChangeSelectedResuld(medicalInfoIndex,medicalInfo.value.result)">
+                                    <option [value]="''"></option>
+                                    <option [value]="'Y'">Yes</option>
+                                    <option [value]="'N'">No</option>
+                                </select>
+                                <select name="PressureRange" id="" formControlName="result"
+                                    *ngIf="medicalInfo.value.key==='BC'"
+                                    (change)="onChangeSelectedResuld(medicalInfoIndex,medicalInfo.value.result)">
+                                    <option [value]="''"></option>
+                                    <option [value]="'N'">Normal</option>
+                                    <option [value]="'L'">Low</option>
+                                    <option [value]="'H'">High</option>
+                                </select>
+                                <select name="Alchole" id="" formControlName="result"
+                                    *ngIf="medicalInfo.value.key==='AL'"
+                                    (change)="onChangeSelectedResuld(medicalInfoIndex,medicalInfo.value.result)">
+                                    <option [value]="''"></option>
+                                    <option [value]="'Y'">Yes</option>
+                                    <option [value]="'N'">No</option>
+                                </select>
+                                <div class="validation-div errorDiv">
+                                    <app-validation-message
+                                        [control]="getmedicalInfoController(medicalInfoIndex,'result')"
+                                        [messages]="errorMessage.result"
+                                        (change)="onChangeSelectedResuld(medicalInfoIndex,medicalInfo.value.result)">
+                                    </app-validation-message>
+                                </div>
+                            </div>
+                            <div class="col-md-3 ">
+                                <div class="checkUpDate">
+                                    <div class="date text-end">
+                                        <div class="dateInput  form-floating selectValue">
+                                            <label>Checkup Date</label>
+                                            <input type="date" id="matDateInput" formControlName="checkupDate"
+                                                (focusout)="checkValidDate(medicalInfoIndex)"
+                                                max="{{currentDate| date:'yyyy-MM-dd' }}">
+                                        </div>
+                                        <div class="validation-div errorDiv">
+                                            <app-validation-message
+                                                [control]="getmedicalInfoController(medicalInfoIndex,'checkupDate')"
+                                                [messages]="errorMessage.checkupDate">
+                                            </app-validation-message>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-1 d-flex align-items-center p-0">
+                                <i class="bi-trash-fill" (click)="deleteMedicalInfo(medicalInfoIndex)"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="save">
+                    <button (click)="saveMedicalInfo(madicalInfoForm.getRawValue())">Save</button>
+                </div>
+                <small>{{errMsg}}</small>
+            </div>
+        </div>
+    </form>
+</div>

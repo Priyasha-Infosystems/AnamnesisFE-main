@@ -1,0 +1,226 @@
+.box {
+    border: 1px solid #7a00dd;
+    min-height: 162px;
+    width: 100%;
+    border-radius: 5px;
+    overflow: hidden;
+    padding: 10px;
+}
+
+h2 {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 26px;
+    line-height: 1.2;
+    color: #713bdb !important;
+    transition: 0.3s;
+    text-transform: uppercase;
+    text-align: center;
+    text-shadow: 1px 1px 0px #000000e3;
+}
+
+.download {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 1.2;
+    color: #713bdb !important;
+    transition: 0.3s;
+    text-transform: uppercase;
+    text-align: center;
+    border: 2px solid #713bdb;
+    border-radius: 3px;
+    padding: 6px 15px;
+    background: #fff;
+    box-shadow: 4px 4px 8px 0px #00000040;
+}
+
+.middle {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+table {
+    border: 1px solid #713bdb;
+}
+
+th,
+td {
+    vertical-align: middle;
+    padding: 0px;
+}
+
+
+.AssignedBox button:hover {
+    box-shadow: inset 0px 0px 7px 2px #9c36b5 !important;
+}
+
+.PrevButton button {
+    background: none;
+    border: none;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 110%;
+    color: #525252;
+    margin: 3px;
+    padding: 8px 13px;
+    transition: 0.3s;
+}
+
+.PrevButton button i {
+    font-size: 12px;
+}
+
+.PrevButton button:hover {
+    background: #713bdb;
+    border-radius: 7px;
+    color: #fff;
+}
+
+.active {
+    background: #713bdb !important;
+    border-radius: 7px;
+    color: #fff !important;
+}
+
+td i {
+    padding-right: 8px;
+}
+
+h6 {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 12px;
+    margin: 0;
+    line-height: 1;
+    padding: 6px 3px 4px 3px;
+    color: #0a0a0a;
+}
+
+td p {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 12px;
+    margin: 0;
+    line-height: 1;
+}
+
+
+th {
+    background: #713bdb;
+    color: #fff;
+    font-weight: 500;
+    padding: 5px 8px;
+    font-size: 14px;
+    vertical-align: middle;
+}
+
+input[type="Date"] {
+    width: 100%;
+    height: 45px;
+    padding: 17px 8px 9px 11px !important;
+    background: rgba(255, 255, 255, 0.79);
+    border: 1px solid rgba(113, 59, 219, 0.35);
+    border-radius: 3px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 11px;
+    line-height: 15px;
+    color: #713BDB;
+    outline: none;
+}
+
+.errorDiv {
+    height: 10px;
+    font-size: 10px;
+    color: red;
+}
+
+.selectedFormValue label {
+    padding: 5px 14px 1px 11px !important;
+    font-size: 11px;
+}
+
+.selectBox label {
+    padding: 19px 14px 1px 14px;
+    transition: 0.3s;
+}
+
+label {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 13px;
+    line-height: 1.4;
+    color: #5f3dc4;
+    margin: 0;
+}
+
+.refresh {
+    border: none;
+    background: #8e54ff;
+    border-radius: 3px;
+    font-size: 12px;
+    padding: 6px 15px;
+    color: #fff;
+    font-weight: 500;
+    letter-spacing: 0.4px;
+    box-shadow: 2px 3px 4px 0px #00000052;
+}
+
+.nodata {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+}
+
+.nodata p {
+    color: red;
+}
+
+.OrderId {
+    width: 139px;
+    word-break: break-all;
+}
+
+.Tax {
+    width: 45px;
+}
+
+tbody,
+tr {
+    border-bottom: 1px solid #7a00dd;
+}
+
+tbody:last-child {
+    border-bottom: none !important;
+}
+
+.colorOne p {
+    background: #ffe8cc;
+    padding: 4px 3px 2px 3px;
+}
+
+.colorTwo p {
+    background: #ffccb8;
+    padding: 4px 3px 2px 3px;
+}
+
+td:first-child {
+    border: 1px solid #7a00dd;
+    text-align: center;
+}
+
+td:last-child {
+    border: 1px solid #7a00dd;
+}

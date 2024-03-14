@@ -1,0 +1,480 @@
+<app-header [prod]="prod" (navigate)="scrollToDiv($event)"></app-header>
+<section id="Banner" #Banner class="Banner d-flex align-items-center frame">
+  <div class="container">
+    <div class="row justify-content-between">
+      <div class="col-md-7 d-flex flex-column justify-content-center">
+        <h2 data-aos="fade-up" class="aos-init aos-animate">
+          Welcome to <span>the World of Digitised </span>Healthcare
+        </h2>
+        <p>Fullfill the need of your health with a life long memory, personal touch !! Better care, faster remediation
+          and access your records anywhere.</p>
+        <div class="d-flex justify-content-start">
+          <a (click)="scrollToDiv('servicesList')" class="button3d btn-medium btn-gray">
+            <div>Our services</div>
+            <span>Our services</span>
+          </a>
+          <a (click)="scrollToDiv('servicesStep')" class="button3d btn-medium btn-gray mx-3">
+            <div>Learn more</div>
+            <span>Learn more</span>
+          </a>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="carousel">
+          <app-slick-carousel></app-slick-carousel>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section id="services-list" #servicesList class="services-list">
+  <div class="container" data-aos="fade-up" data-aos-duration="3000">
+    <div class="col-md-10 m-auto">
+      <div class="section-header">
+        <h2><span>{{currentWord}}</span> Digitised Healthcare</h2>
+        <p>Anamnesis, a healthcare brand by Priyasha Infosystems, aims to digitize healthcare by focusing on
+          accessibility, affordability, and availability through 5A's, ensuring a seamless experience for everyone.</p>
+      </div>
+    </div>
+    <div class="row mt-4 mb-4 justify-content-between">
+      <div class="col-md-8">
+        <div class="row">
+          <div class="col-md-6 p-3 mb-2">
+            <div class="Healthcare">
+              <div class="iconBox">
+                <i class="fa fa-laptop"></i>
+              </div>
+              <h6>Health record Digitization</h6>
+              <p>With the help of Anamnesis: my health book, users can digitise their prescriptions and lab test
+                reports.
+              </p>
+            </div>
+          </div>
+          <div class="col-md-6 p-3 mb-2">
+            <div class="Healthcare">
+              <div class="iconBox">
+                <i class="fa fa-calendar"></i>
+              </div>
+              <h6>Appointment booking</h6>
+              <p>Anamnesis: My health book will help their users to book doctor appointments and lab test appointments.
+                faster. </p>
+            </div>
+          </div>
+          <div class="col-md-6 p-3 mb-2">
+            <div class="Healthcare">
+              <div class="iconBox">
+                <i class="fa fa-motorcycle"></i>
+              </div>
+              <h6>Medicine delivery</h6>
+              <p>Anamnesis has thousands of trusted genuine medicine partners to deliver medicine on-time to customers.
+              </p>
+            </div>
+          </div>
+          <div class="col-md-6 p-3 mb-2">
+            <div class="Healthcare">
+              <div class="iconBox">
+                <i class="fa fa-handshake-o"></i>
+              </div>
+              <h6>Digitised record keeping</h6>
+              <p>Digitised healthcare data keeping is another feature of Anamnesis, helps to store securely and refer it
+                for future usage.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3 width">
+        <div class="serviceCart">
+          <div class="img">
+            <img src="../../../../assets/images/img/Senescencecare.png" alt="">
+          </div>
+          <div class="details">
+            <h4>Senescence care is a tribute to the senior citizens living alone in Kolkata. We will take care of their
+              medical needs at their doorstep.</h4>
+            <span>Senescence care</span>
+          </div>
+        </div>
+      </div>
+      <!-- End Service Item -->
+    </div>
+    <div class="col-md-12 text-center">
+      <a><button class="read-me" (click)="navigateTo('login')">Know More
+          <i class="bi-arrow-right-circle-fill"></i></button></a>
+    </div>
+  </div>
+</section>
+<section id="services-step" #servicesStep class="services-step">
+  <div class="container" data-aos="fade-up" data-aos-duration="3000">
+    <div class="col-md-10 m-auto">
+      <div class="section-header">
+        <h2>How does it work?</h2>
+      </div>
+    </div>
+    <div class="row justify-content-between columnReverse">
+      <div class="col-md-4 list">
+        <div class="icon">
+          <img src="../../../../assets/images/img/service/Login.png" alt="" id="login">
+          <img src="../../../../assets/images/img/service/regular.png" alt="" id="regular">
+        </div>
+      </div>
+      <div class="col-md-5 py-5 position-relative">
+        <div class="detailsBox" style="margin-left: -50px;">
+          <h2><span>1</span>Start your journey</h2>
+          <p>Register your account by providing your basic details and setting a strong password. From the beginning,
+            you can choose your profile type (Commercial or general user).</p>
+        </div>
+        <div class="shape"></div>
+      </div>
+    </div>
+    <div class="row justify-content-between">
+      <div class="col-md-5 py-5 position-relative">
+        <div class="detailsBox" style="margin-left: 50px;">
+          <h2><span>2</span>Your need</h2>
+          <p>You can book required medicines from Anamnesis. in by visiting your cart/ From your prescriptions,/ By
+            phone call.</p>
+        </div>
+        <div class="shape"></div>
+      </div>
+      <div class="col-md-4 list">
+        <div class="icon">
+          <img src="../../../../assets/images/img/service/medicineOrder.png" alt="" id="Order">
+          <img src="../../../../assets/images/img/service/medicine.png" alt="" id="medicine">
+        </div>
+      </div>
+    </div>
+    <div class="row justify-content-between columnReverse">
+      <div class="col-md-4 list">
+        <div class="icon">
+          <img src="../../../../assets/images/img/service/orderlist.png" alt="" id="orderlist">
+          <img src="../../../../assets/images/img/service/order.png" alt="" id="order">
+        </div>
+      </div>
+      <div class="col-md-5 py-5 position-relative">
+        <div class="detailsBox" style="margin-left: -50px;">
+          <h2><span>3</span>Delivery order and payment</h2>
+          <p>Order medicines online and make payment against your order faster and safer.</p>
+        </div>
+        <div class="shape"></div>
+      </div>
+    </div>
+    <div class="row justify-content-between">
+      <div class="col-md-5 py-5 position-relative">
+        <div class="detailsBox" style="margin-left: 50px;">
+          <h2><span>4</span>Appointment Booking</h2>
+          <p>You can book a physician or lab test appointment by providing the desired date and timing.</p>
+        </div>
+        <div class="shape"></div>
+      </div>
+      <div class="col-md-4 list">
+        <div class="icon">
+          <img src="../../../../assets/images/img/service/addL.png" alt="" id="addL">
+          <img src="../../../../assets/images/img/service/Add.png" alt="" id="Add">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section id="specialService" #specialService class="specialService">
+  <div class="container" data-aos="fade-up" data-aos-duration="3000">
+    <div class="col-md-10 m-auto">
+      <div class="section-header">
+        <h2>Special services</h2>
+      </div>
+    </div>
+    <div class="row justify-content-evenly mt-3">
+      <div class="col-md-4">
+        <div class="specialServiceBox">
+          <div class="iconBox">
+            <img src="../../../../assets/images/img/service/Easily.png" alt="">
+          </div>
+          <h6>Carry-on Health Book</h6>
+          <h5>For patients</h5>
+          <p>User can easily carry their digitised health records anywhere they need. Users of Anamnesis will not have
+            to carry a bunch of papers as their health documents. </p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="specialServiceBox">
+          <div class="iconBox">
+            <img src="../../../../assets/images/img/service/ManageLab.png" alt="">
+          </div>
+          <h6>Manage your Laboratory</h6>
+          <h5>For diagnostic centre</h5>
+          <p>As a lab head, Anamnesis allows you to manage your lab digitally anytime, anywhere. That makes your work
+            easy.</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="specialServiceBox">
+          <div class="iconBox">
+            <img src="../../../../assets/images/img/service/Manage.png" alt="">
+          </div>
+          <h6>Manage your schedule</h6>
+          <h5>For Physicians</h5>
+          <p>As a physician, you can manage your chamber and patient consultation schedules, making it digitally
+            available anytime, anywhere.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section id="recent-posts" #recentPosts class="recent-posts">
+  <div class="container" data-aos="fade-up">
+    <div class="col-md-6 m-auto section-header">
+      <h2>Our Blog</h2>
+      <p>Get interactive health information here. Follow our blog to know more.</p>
+    </div>
+    <div class="row gy-5">
+      <div *ngFor="let Box of blogBox ; let blogIndex = index;" class="col-xl-3 col-md-6 b-bx" data-aos="fade-up"
+        data-aos-delay="100">
+        <div class="post-box">
+          <div class="post-img">
+            <img src='{{"../../../../assets/images/img/blog image/"+ Box.image +".jpg"}}' class="img-fluid" alt="">
+          </div>
+          <div class="cont">
+            <div class="titleBox">
+              <h3 class="post-title">{{Box.title}}</h3>
+            </div>
+            <p>{{timeDiff(Box.time)}}</p>
+            <a  class="readmore stretched-link" (click)="openBlog(blogIndex)">
+              <i class="bi-arrow-right-circle-fill"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-12 text-center">
+      <a><button class="read-me" routerLink="/blog" routerLinkActive="active" (click)="navigateTo('blog')">Read More <i
+            class="bi-arrow-right-circle-fill"></i></button></a>
+    </div>
+  </div>
+</section>
+<section id="contactForm" #contactForm class="contactForm">
+  <div class="col-md-10 m-auto">
+    <div class="section-header">
+      <h2>Contact Us</h2>
+    </div>
+  </div>
+  <div class="container" data-aos="fade-up" data-aos-duration="3000">
+    <div class="row">
+      <div class="col-md-12 m-auto">
+        <div class="formBox">
+          <form [formGroup]="contactFormGroup">
+            <div class="row">
+              <div class="col-md-4 mb-3">
+                <div class="form-floating">
+                  <input type="text" class="form-control" id="floatingInput" placeholder="Name"
+                    formControlName="firstName">
+                  <label for="floatingInput">First Name</label>
+                  <div class="validation-div errorDiv">
+                    <app-validation-message [control]="contactFormGroup.controls['firstName']"
+                      [messages]="errMsg.firstName">
+                    </app-validation-message>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4 mb-3">
+                <div class="form-floating">
+                  <input type="text" class="form-control" id="floatingInput" placeholder="Name"
+                    formControlName="middleName">
+                  <label for="floatingInput">Middle Name</label>
+                </div>
+              </div>
+              <div class="col-md-4 mb-3">
+                <div class="form-floating">
+                  <input type="text" class="form-control" id="floatingInput" placeholder="Name"
+                    formControlName="lastName">
+                  <label for="floatingInput">Last Name</label>
+                  <div class="validation-div errorDiv">
+                    <app-validation-message [control]="contactFormGroup.controls['lastName']"
+                      [messages]="errMsg.lastName">
+                    </app-validation-message>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6 mb-3">
+                <div class="form-floating">
+                  <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com"
+                    formControlName="emailID">
+                  <label for="floatingInput">Email address</label>
+                  <div class="validation-div errorDiv">
+                    <app-validation-message [control]="contactFormGroup.controls['emailID']"
+                      [messages]="errMsg.emailID">
+                    </app-validation-message>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6 mb-3">
+                <div class="form-floating">
+                  <input type="text" class="form-control" id="floatingInput" placeholder="Subject"
+                    formControlName="contactNumber">
+                  <label for="floatingInput">Contact Number</label>
+                  <div class="validation-div errorDiv">
+                    <app-validation-message [control]="contactFormGroup.controls['contactNumber']"
+                      [messages]="errMsg.contactNumber">
+                    </app-validation-message>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-12 mb-3 text-end">
+                <div class="form-floating">
+                  <textarea class="form-control" placeholder="Leave a Message here" id="floatingTextarea2"
+                    style="height: 150px" formControlName="customerMessage"></textarea>
+                  <label for="floatingTextarea2">Message</label>
+                </div>
+                <button (click)="saveContactForm()">Submit</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<app-footer [prod]="prod" (navigate)="scrollToDiv($event)" (termNCnd)="openTermNCndPopUp()"></app-footer>
+<div *ngIf="commingSoonPopUp" class="modal" tabindex="-1" role="dialog">
+  <!-- <div class="close" (click)="closeCommingSoonPopUp()"></div> -->
+  <app-comming-soon (close)="closeCommingSoonPopUp()"></app-comming-soon>
+</div>
+<div *ngIf="termNCndPopUp" class="modal" tabindex="-1" role="dialog">
+  <!-- <div class="close" (click)="closeCommingSoonPopUp()"></div> -->
+  <app-term-ncend (close)="closeTermNCndPopUp()"></app-term-ncend>
+</div>
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Anamnesis",
+    "alternateName": "Digitised Healthcare",
+    "url": "https://anamnesis.in/",
+    "logo": "https://anamnesis.in/assets/images/Title-Logo-Anamnesis-White-Text-NoBackground.png",
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "telephone": "9147307561",
+      "contactType": "sales",
+      "areaServed": "IN",
+      "availableLanguage": ["en","Bengali"]
+    },
+    "sameAs": [
+      "https://www.facebook.com/profile.php?id=100083805635661",
+      "https://www.youtube.com/@AnamnesisMyHealthBook",
+      "https://www.instagram.com/anamnesismyhealthbook/"
+    ]
+  }
+</script>
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org/",
+    "@type": "HowTo",
+    "name": "How does it work?",
+    "description": "Start your journey
+  Register your account by providing your basic details and setting a strong password. From the beginning, you can choose your profile type (Commercial or general user).
+  
+  Your need
+  You can book required medicines from Anamnesis. in by visiting your cart/ From your prescriptions,/ By phone call.
+  
+  Delivery order and payment
+  Order medicines online and make payment against your order faster and safer.
+  
+  Appointment Booking
+  You can book a physician or lab test appointment by providing the desired date and timing.","image": "https://anamnesis.in/assets/images/img/service/regular.png",
+    "estimatedCost": {
+      "@type": "MonetaryAmount",
+      "currency": "INR",
+      "value": ""
+    },
+    "step": [
+      {
+        "@type": "HowToStep",
+        "text": "You can book required medicines from Anamnesis. in by visiting your cart/ From your prescriptions,/ By phone call.",
+        "image": "https://anamnesis.in/assets/images/img/service/medicine.png",
+        "name": "Your need",
+        "url": "https://anamnesis.in/"
+      },
+      {
+        "@type": "HowToStep",
+        "text": "Order medicines online and make payment against your order faster and safer.",
+        "image": "https://anamnesis.in/assets/images/img/service/order.png",
+        "name": "Delivery order and payment",
+        "url": "https://anamnesis.in/"
+      },
+      {
+        "@type": "HowToStep",
+        "text": "You can book a physician or lab test appointment by providing the desired date and timing.",
+        "image": "https://anamnesis.in/assets/images/img/service/addL.png",
+        "name": "Appointment Booking",
+        "url": "https://anamnesis.in/"
+      },
+      {
+        "@type": "HowToStep",
+        "text": "Register your account by providing your basic details and setting a strong password. From the beginning, you can choose your profile type (Commercial or general user).",
+        "image": "https://anamnesis.in/assets/images/img/service/Login.png",
+        "name": "Start your journey",
+        "url": "https://anamnesis.in/"
+      }
+    ]
+  }
+</script>
+
+
+<script type="application/ld+json"> {
+
+  "@context":"https://schema.org",
+  "@graph":[ {
+
+    "@id":"https://anamnesis.in/",
+    "@type":"Organization",
+    "name":"PharmEasy",
+    "email":"connect.anamnesis@gmail.com",
+    "publishingPrinciples":"https://anamnesis.in/about",
+    "areaServed":"IN",
+    "founders":[ {
+      "@type": "Person", "name":"Avik Roy"
+    }
+
+    ,
+    {
+    "@type": "Person", "name":"Saurav Das"
+  } 
+
+],
+"foundingDate":"2023",
+"legalName":"Priyashainfosystems Pvt Ltd",
+"url":"https://anamnesis.in/",
+"brand": {
+  "@type": "Brand", "name":"Anamnesis"
+}
+
+,
+"address": {
+  "@type": "PostalAddress", "streetAddress":"Astra Towers, ASO-211, 2C/1, Action Area IIC, Newtown, Kolkata, West Bengal", "addressLocality":"Kolkata", "addressRegion":"IN-MH", "addressCountry":"IN", "postalCode":"700161"
+}
+
+,
+"contactPoint": {
+  "@type": "ContactPoint", "telephone":"+91 9147307561", "contactType":"Customer Care", "email":"connect.anamnesis@gmail.com", "areaServed":"IN"
+}
+
+,
+"description":"Anamnesis is one of India's top online pharmacy and healthcare platforms. It enables you to purchase medicines online and get it delivered to your home within 24-48* hours. Our doorstep medicine delivery service is available PAN-India covering 1200+ cities and 22000+ pin codes. The major cities that we deliver medicines to include Kolkata. Apart from medicines, you can also buy healthcare products, OTC products, medical equipment and book diagnostic tests including blood tests, full-body checkups, and other preventive health check-ups at an affordable cost, right from the comfort of your home. Our diagnostic test services are available in Kolkata including New Town.",
+"logo":"https://anamnesis.in/assets/images/Title-Logo-Anamnesis-White-Text-NoBackground.png",
+"sameAs":["https://www.facebook.com/profile.php?id=100083805635661",
+"https://www.youtube.com/@AnamnesisMyHealthBook",
+"https://www.instagram.com/anamnesismyhealthbook/"]
+}
+,
+{
+
+"@type":"WebSite",
+"@id":"https://anamnesis.in/",
+"url":"https://anamnesis.in/",
+"potentialAction": {
+  "@type":"SearchAction",
+  "target":"https://anamnesis.in/",
+  "query-input": "required name=search_term_string"
+}
+} 
+]
+} 
+</script>

@@ -1,0 +1,657 @@
+#CaseAssignment {
+  position: relative;
+}
+
+#CaseAssignment .CaseAssignmentContent .form-control:focus {
+  outline: none;
+}
+
+#CaseAssignment .CaseAssignmentContent .form-floating input {
+  padding: 15px 10px;
+}
+
+#CaseAssignment .CaseAssignmentContent .form-control {
+  background: #FFFFFF;
+  font-family: 'Poppins';
+  width: 100%;
+  height: 47px;
+  border: 1px solid rgba(113, 59, 219, 0.18);
+  box-shadow: 0px 11px 34px -5px rgb(113 59 219 / 21%);
+  border-radius: 6px;
+  padding: 26px 14px 10px 14px !important;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 107%;
+  color: #713BDB;
+  outline: none;
+}
+
+.search {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 9px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+#CaseAssignment .CaseAssignmentContent label {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 15px;
+  line-height: 18px;
+  color: rgba(105, 102, 102, 0.74);
+}
+
+#CaseAssignment .CaseAssignmentContent .Check {
+  position: absolute;
+  padding: 14px 21px;
+  background: #FFFFFF;
+  border: 1px solid rgba(113, 59, 219, 0.36);
+  box-shadow: 0px 11px 34px -5px rgba(113, 59, 219, 0.4);
+  border-radius: 7px;
+  top: 0;
+  right: 0;
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 120.5%;
+  color: #000;
+}
+
+.Assignbtn {
+  padding: 14px 21px !important;
+  background: rgba(113, 59, 219, 1);
+  border: 1px solid rgba(113, 59, 219, 0.36);
+  box-shadow: 0px 11px 34px -5px rgba(113, 59, 219, 0.4);
+  border-radius: 7px;
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 120.5%;
+  color: #fff;
+}
+
+#CaseAssignment .CaseAssignmentContent .showrecords {
+  border-radius: 7px;
+  padding: 15px 14px;
+  width: 148px;
+  margin-left: 25px;
+}
+
+#CaseAssignment .CaseAssignmentContent .showrecords button {
+  background: none;
+  border: none;
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 11px;
+  line-height: 135.5%;
+  color: #555353;
+}
+
+#CaseAssignment .CaseAssignmentContent .showrecords select {
+  background: none;
+  text-align: center;
+  border-top: none;
+  border-bottom: none;
+  border-color: rgba(112, 59, 219, 0);
+  color: #713BDB;
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 13px;
+  line-height: 135.5%;
+  outline: none;
+}
+
+#CaseAssignment .CaseAssignmentContent .AssignedBox {
+  width: 100%;
+  height: 100%;
+  background: #FDFDFF;
+  border: 1px solid rgba(126, 126, 126, 0.41);
+  box-shadow: 4px 5px 10px 1px rgb(113 59 219 / 26%);
+  border-radius: 10px;
+  position: relative;
+  overflow: hidden;
+}
+
+#CaseAssignment .CaseAssignmentContent .AssignedBox button {
+  width: 100%;
+  height: 43px;
+  background: #cc5de8;
+  border: none;
+  /* border-top-left-radius: 5px;
+  border-top-right-radius: 5px; */
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 15px;
+  line-height: 110%;
+  color: #FFFFFF;
+  letter-spacing: 0.7px;
+}
+
+#CaseAssignment .CaseAssignmentContent .AssignedBox button:hover {
+  box-shadow: inset 0px 0px 7px 2px #9c36b5 !important;
+}
+
+#CaseAssignment .CaseAssignmentContent .AssignedBox .RightTop {
+  width: 130px;
+  background: #713bdb;
+  border: 1px solid rgb(113 59 219 / 43%);
+  box-shadow: 0px 4px 9px rgb(113 59 219 / 35%);
+  position: absolute;
+  right: 0;
+  top: 0;
+  border-bottom-left-radius: 7px;
+  padding: 7px 10px 7px 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#CaseAssignment .CaseAssignmentContent .AssignedBox .RightTop p {
+  font-family: sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  color: #fff;
+  word-break: break-all;
+  letter-spacing: 1.4px;
+  font-size: 14px;
+  display: unset;
+  margin: 0;
+}
+
+#CaseAssignment .CaseAssignmentContent .AssignedBox .contant {
+  padding: 38px 13px 44px 13px;
+}
+
+#CaseAssignment .CaseAssignmentContent span {
+  cursor: unset !important;
+}
+
+#CaseAssignment .CaseAssignmentContent #length {
+  height: 33px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2 !important;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+#CaseAssignment .CaseAssignmentContent p {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 120.5%;
+  color: #616161;
+  display: flex;
+  margin-top: 3px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  margin-bottom: 6px;
+}
+
+#CaseAssignment .CaseAssignmentContent .bi-paperclip {
+  transform: rotate(45deg);
+}
+
+#CaseAssignment .CaseAssignmentContent p i {
+  color: #EDB738;
+  font-size: 18px;
+  padding: 0px 5px;
+}
+
+#CaseAssignment .CaseAssignmentContent span {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 13px;
+  line-height: 122%;
+  color: #713BDB;
+  cursor: pointer;
+}
+
+#CaseAssignment .CaseAssignmentContent label {
+  margin-right: 5px;
+  font-size: 13px;
+  color: #302d2d;
+  font-weight: 600;
+}
+
+#CaseAssignment .CaseAssignmentContent .PrevButton button {
+  background: none;
+  border: none;
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 110%;
+  color: #525252;
+  margin: 3px;
+  padding: 8px 13px;
+  transition: 0.3s;
+}
+
+#CaseAssignment .CaseAssignmentContent .active {
+  background: #713bdb !important;
+  border-radius: 7px;
+  color: #fff !important;
+}
+
+#CaseAssignment .CaseAssignmentContent .PrevButton .button:hover {
+  background: #713bdb;
+  border-radius: 7px;
+  color: #fff;
+}
+
+#CaseAssignment .CaseAssignmentContent .PrevButton .buttonWithOutHover:hover {
+  background: unset !important;
+  border-radius: unset !important;
+  color: #525252c6 !important;
+
+}
+
+#CaseAssignment .CaseAssignmentContent .PrevButton .buttonWithOutHover {
+  color: #525252c6;
+}
+
+#CaseAssignment .CaseAssignmentContent .activeBox {
+  border: 1px solid rgb(134 87 226 / 87%);
+  box-shadow: 3px 4px 10px 4px rgb(113 59 219 / 51%);
+}
+
+#CaseAssignment .CaseAssignmentContent .activeBox .RightTop {
+  border: 1px solid rgb(134 87 226 / 63%);
+  background: #713bdb;
+}
+
+#CaseAssignment .CaseAssignmentContent .activeBox .RightTop p {
+  color: #fff;
+}
+
+#CaseAssignment .CaseAssignmentContent .Assign {
+  display: flex;
+  align-items: center;
+  padding: 0px 10px 0px 10px;
+  position: absolute;
+  bottom: -21px;
+}
+
+#CaseAssignment .CaseAssignmentContent .Assign label {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 13px;
+  line-height: 126.5%;
+  color: #555353;
+}
+
+#CaseAssignment .CaseAssignmentContent .Assign p {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 13px;
+  line-height: 126.5%;
+  color: #713BDB;
+  margin: 0;
+  padding-left: 8px;
+}
+
+#CaseAssignment .CaseAssignmentContent .Assign i {
+  color: #713BDB;
+  border-radius: 100%;
+  line-height: 0;
+  margin-left: 5px;
+  border: 4px solid #fff;
+  cursor: pointer;
+  box-shadow: 0px 0px 16px 1px;
+}
+
+#CaseAssignment .faq {
+  margin: 0 auto;
+  background: #ffffff;
+  box-shadow: 0px 20px 34px 7px rgba(111, 55, 215, 0.19);
+  border-radius: 6px;
+  border: 1px solid #E1E1E1;
+  padding: 8px 11px;
+  display: none;
+  z-index: 3;
+  position: absolute;
+  width: 100%;
+  top: 46px;
+}
+
+#CaseAssignment .errorDiv {
+  height: 5px;
+  font-size: 13px;
+  padding: 2px 3px;
+}
+
+.errror {
+  height: 5px;
+  font-size: 12px;
+  color: red !important;
+}
+
+#CaseAssignment .faq p {
+  margin: 0;
+  cursor: pointer;
+}
+
+.dr-list {
+  cursor: pointer;
+}
+
+.modal-dialog {
+  max-width: 100% !important;
+}
+
+.modal-body {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 147%;
+  color: #616161;
+  /* padding: 40px 30px; */
+}
+
+.caseLog {
+  position: absolute;
+  top: 94px;
+}
+
+.doctorDetails .box {
+  list-style-type: none;
+  padding: 20px 15px 10px 15px;
+  position: relative;
+  background: #fff6e3;
+  border: 1px solid rgb(231 168 20 / 59%);
+  box-shadow: 8px 8px 11px rgb(231 168 20 / 36%);
+  border-radius: 10px;
+}
+
+.doctorDetails a {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 1.3;
+  color: #3a3a3a !important;
+  margin: 0;
+  background: none;
+  border: none;
+  outline: none;
+  width: 100%;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.doctorDetails .doctorCard {
+  margin: 15px 0px 0px 0px;
+  background: #ece7ff;
+  border: 1px solid #845ef7;
+  border-radius: 5px;
+  padding: 5px 10px;
+}
+
+.doctorDetails .profileImg {
+  height: 100px;
+  width: 100px;
+  border-radius: 7%;
+  overflow: hidden;
+}
+
+.doctorDetails .profileImg img {
+  height: 100%;
+  width: 100%;
+}
+
+.doctorDetails .doctorCard h5 {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 1.3;
+  color: #3a3a3a !important;
+}
+
+.doctorDetails .doctorCard p {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 140.5%;
+  color: #484747;
+  margin: 0;
+}
+
+.doctorDetails .Confirm {
+  background: #713bdb;
+  box-shadow: 0px 6px 6px -5px rgb(113 59 219 / 79%);
+  border: none;
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 110%;
+  color: #FFFFFF;
+  letter-spacing: 0.5px;
+  padding: 8px 16px;
+  border-radius: 5px;
+  margin-top: 10px;
+}
+
+.doctorDetails .doctorCard i {
+  color: #845ef7 !important;
+  padding-right: 4px !important;
+  font-size: 12px !important;
+}
+
+.doctorDetails {
+  list-style-type: none;
+  padding: 20px 15px 10px 15px;
+  background: #f3f0ff;
+  border: 1px solid #845ef7;
+  box-shadow: 8px 8px 11px rgb(132 94 247 / 36%);
+  border-radius: 10px;
+  margin: 20px 0px;
+  top: 27px;
+  position: absolute;
+  z-index: 1;
+}
+
+.doctorDetails label h5 {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 1.3;
+  color: #3a3a3a;
+  margin: 0;
+}
+
+input,
+select {
+  color: #000;
+}
+
+.user {
+  height: 32px;
+}
+
+
+sub {
+  position: absolute;
+  color: #713bdb;
+  height: 10px;
+  top: 55px;
+  right: 25px;
+  font-size: 12px;
+  letter-spacing: 0.7px;
+  cursor: pointer;
+}
+
+.showrecords {
+  height: 50px;
+  left: 1344px;
+  top: 154px;
+  background: #FFFFFF;
+  border: 1px solid rgba(113, 59, 219, 0.38);
+  border-radius: 7px;
+  padding: 9px 0px;
+}
+
+.showrecords button {
+  background: none;
+  border: none;
+  text-align: center;
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 11px;
+  line-height: 135.5%;
+  color: #555353;
+}
+
+.showrecords select {
+  background: none !important;
+  text-align: center !important;
+  border-top: none !important;
+  border-bottom: none !important;
+  border-color: rgba(113, 59, 219, 0.6) !important;
+  color: #713BDB !important;
+  font-family: 'Poppins' !important;
+  font-style: normal !important;
+  font-weight: 600 !important;
+  font-size: 13px !important;
+  line-height: 135.5% !important;
+  outline: none !important;
+}
+
+.filter button {
+  background: none;
+  border: 1px solid #713bdb8c;
+  box-shadow: inset 1px -1px 2px 0px #713bdb6e;
+  padding: 6px 10px;
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 120.5%;
+  color: #713bdb;
+  transition: 0.3s;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+}
+
+.filter button span {
+  font-size: 10px !important;
+}
+
+.filter .actives {
+  background: #713bdb !important;
+  color: #fff !important;
+  transform: scale(1.07) !important;
+  box-shadow: 1px 1px 9px 0px #34107a80;
+}
+
+.filter .actives span {
+  color: #fff !important;
+}
+
+.filter button:hover {
+  background: #713bdb !important;
+  color: #fff !important;
+  transform: scale(1.07) !important;
+  box-shadow: 1px 1px 9px 0px #34107a80;
+}
+
+.filter button:hover span {
+  color: #fff !important;
+}
+
+td {
+  font-size: 11px;
+}
+
+.oneSideBorderOfCategoryButtonLeft {
+  border-top-right-radius: 0px !important;
+}
+
+.oneSideBorderOfCategoryButtonRight {
+  border-top-left-radius: 0px !important;
+}
+
+.noRecordFound {
+  margin-top: 131px;
+  font-size: 18px !important;
+}
+
+::ng-deep .mat-option-text p {
+  font-size: 12px !important;
+  margin: 0;
+  line-height: 1;
+}
+
+::ng-deep .mat-option-text span {
+  font-size: 10px !important;
+  color: #713bdb !important;
+  line-height: 1;
+  margin: 0;
+}
+
+::ng-deep .mat-option {
+  padding: 13px !important;
+}
+
+::ng-deep .mat-option-text {
+  padding: 10px 0px;
+}
+
+.filter {
+  height: 50px;
+  display: flex;
+  align-items: flex-end;
+}
+
+.caseList {
+  padding: 8px !important;
+  min-height: 242px;
+}
+
+.field {
+  background: #FFFFFF;
+  font-family: 'Poppins';
+  width: 100%;
+  height: 47px;
+  border: 1px solid rgba(113, 59, 219, 0.18);
+  box-shadow: 0px 11px 34px -5px rgb(113 59 219 / 21%);
+  border-radius: 6px;
+  padding: 11px 10px;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 107%;
+  color: #713BDB;
+  outline: none;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+}

@@ -1,0 +1,124 @@
+<div id="Manage">
+    <!-- <router-outlet>
+      <ngx-spinner bdColor="rgba(51,51,51,0.8)" size="medium" color="#fff" type="ball-circus" [fullScreen]="true">
+      </ngx-spinner>
+  </router-outlet> -->
+    <div class="modal-content">
+        <div class="close" (click)="closeAddressPopup()">
+            <i class="bi-x-circle-fill"></i>
+        </div>
+        <h2>{{newAddress ? 'Add a New Address' : 'Update your Address'}}</h2>
+        <form [formGroup]="addressParam" role="form">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-floating">
+                        <input type="text" formControlName="addressIdentifier" name="Address-Identifier"
+                            placeholder="Address Identifier" class="form-control">
+                        <label for="Laboratory">Address Identifier</label>
+                        <div class="error">
+                            <app-validation-message [control]="addressParam.controls['addressIdentifier']"
+                                [messages]="errorMessage.addressIdentifier">
+                            </app-validation-message>
+                        </div>
+                    </div>
+                    <div class="form-floating">
+                        <input type="text" formControlName="customerName" name="Full-Name" placeholder="Full Name"
+                            class="form-control">
+                        <label for="Laboratory">Display Name</label>
+                        <div class="error">
+                            <app-validation-message [control]="addressParam.controls['customerName']"
+                                [messages]="errorMessage.customerName">
+                            </app-validation-message>
+                        </div>
+                    </div>
+                    <div class="form-floating ">
+                        <textarea cols="20" formControlName="customerAddress" rows="5" placeholder="Full Address"
+                            class="form-control"></textarea>
+                        <label for="Laboratory">Full Address</label>
+                        <div class="error" *ngIf="addressParam.controls['customerAddress'].invalid">
+                            <app-validation-message [control]="addressParam.controls['customerAddress']"
+                                [messages]="errorMessage.customerAddress">
+                            </app-validation-message>
+                        </div>
+                        <div class="error " *ngIf="addressParam.controls['customerAddress'].valid">
+                            <small>{{addressParam.controls['customerErrMsg'].value}}</small>
+                        </div>
+                    </div>
+                    <div class="form-floating">
+                        <input type="text" formControlName="customerLandmark" name="customerLandmark"
+                            placeholder="Landmark" class="form-control">
+                        <label for="Laboratory">Landmark</label>
+                        <div class="error">
+                            <app-validation-message [control]="addressParam.controls['customerLandmark']"
+                                [messages]="errorMessage.customerLandmark">
+                            </app-validation-message>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="Address-Type">
+                        <label>Address Type :</label>
+                        <input formControlName="addressType" type="radio" value="HOME"> Home
+                        <input formControlName="addressType" type="radio" value="WORK"> Work
+                        <input formControlName="addressType" type="radio" value="OTHR">
+                        Others
+                        <div class="error" style="margin-top: 2%">
+                            <app-validation-message [control]="addressParam.controls['addressType']"
+                                [messages]="errorMessage.addressType">
+                            </app-validation-message>
+                        </div>
+                    </div>
+                    <div class="form-floating">
+                        <input type="text" formControlName="customerContactNo" name="Phone-Number"
+                            placeholder="Phone Number" class="form-control" maxlength="10">
+                        <label for="Laboratory">Phone Number</label>
+                        <div class="error">
+                            <app-validation-message [control]="addressParam.controls['customerContactNo']"
+                                [messages]="errorMessage.customerContactNo">
+                            </app-validation-message>
+                        </div>
+                    </div>
+                    <div class="form-floating">
+                        <input type="text" formControlName="customerCity" name="City" placeholder="City"
+                            class="form-control">
+                        <label for="Laboratory">City</label>
+                        <div class="error">
+                            <app-validation-message [control]="addressParam.controls['customerCity']"
+                                [messages]="errorMessage.customerCity">
+                            </app-validation-message>
+                        </div>
+                    </div>
+                    <div class="form-floating selectBox"
+                        [ngClass]="{selectedFormValue : addressParam.value.customerStateName}">
+                        <div class="form-floating">
+                            <select name="State" class="form-select" id="floatingSelect State"
+                                aria-label="Floating label select example" formControlName="customerStateName">
+                                <option *ngFor="let state of stateList1" [value]="state.stateName">{{ state.stateName }}
+                                </option>
+                            </select>
+                            <label for="floatingSelect">State/Union Territory</label>
+                        </div>
+                    </div>
+                    <div class="error">
+                        <app-validation-message [control]="addressParam.controls['customerStateName']"
+                            [messages]="errorMessage.customerStateName">
+                        </app-validation-message>
+                    </div>
+                    <div class="form-floating">
+                        <input formControlName="customerPinCode" type="text" name="Pincode" placeholder="Pincode"
+                            class="form-control" maxlength="6">
+                        <label for="Laboratory">Pincode</label>
+                        <div class="error">
+                            <app-validation-message [control]="addressParam.controls['customerPinCode']"
+                                [messages]="errorMessage.customerPinCode">
+                            </app-validation-message>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button class="Add-Address mt-1" (click)="manageAddress(addressParam.value, addressParam.valid)">
+                {{newAddress ? 'Add Address' : 'Update Address'}}
+            </button>
+        </form>
+    </div>
+</div>

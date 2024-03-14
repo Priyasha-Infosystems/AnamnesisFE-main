@@ -1,0 +1,281 @@
+body {
+    background-color: #EAECFC !important;
+    font-family: 'Poppins', sans-serif;
+}
+
+#header .Profile {
+    background: #EDB738;
+    box-shadow: 0px 11px 34px -5px rgb(253 217 134 / 79%);
+    border-radius: 7px;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 0.875rem;
+    line-height: 21px;
+    color: #FFFFFF;
+    width: 8.9375rem;
+    height: 3.375rem;
+    display: flex !important;
+    align-items: center;
+}
+
+button {
+    cursor: pointer;
+}
+
+#header .Profile img {
+    width: 2.875rem;
+    height: 2.875rem;
+}
+
+#header {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 999;
+}
+
+#header a {
+    color: #ffff;
+    font-weight: 500;
+}
+
+#header .dropdown-menu {
+    background-color: #edb738;
+}
+
+#header .show {
+    border-radius: 13px;
+}
+
+.dropdown-item:focus,
+.dropdown-item:hover {
+    color: #000 !important;
+    background: unset;
+}
+
+.logo img {
+    max-width: 6.25rem;
+}
+
+#header .navbar {
+    background-color: #EAECFC !important;
+    border-bottom: 1px solid #E3E3E3;
+}
+
+.content-all {
+    margin-top: 6.6875rem;
+}
+
+.tab {
+    float: left;
+    height: 62.5rem;
+    width: 100%;
+    background: #713BDB;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 1.125rem;
+    line-height: 27px;
+    color: #FFFFFF;
+    border-top-right-radius: 44px;
+    padding: 0px 0px 22.5rem 0.8125rem;
+    border-bottom-left-radius: 22px;
+}
+
+/* Style the buttons inside the tab */
+.tab button {
+    display: block;
+    background-color: inherit;
+    color: #fff;
+    padding: 0.625rem 0.75rem;
+    width: 100%;
+    border: none;
+    outline: none;
+    text-align: left;
+    cursor: pointer;
+    transition: 0.3s;
+    font-size: 1rem;
+    font-weight: 400;
+}
+
+.tab button i {
+    font-size: 0.875rem;
+}
+
+.tab h5 {
+    border-bottom: 1px solid #fff;
+    font-weight: 600;
+    line-height: 40px;
+    letter-spacing: 0.5px;
+    height: 3.75rem;
+    display: flex;
+    align-items: center;
+    margin-bottom: 10%;
+    font-size: 1.5625rem;
+    justify-content: center;
+    margin-left: -0.8125rem;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+    background-color: #fff;
+    color: #713BDB;
+    border-top-left-radius: 25px;
+    border-bottom-left-radius: 25px;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+/* Create an active/current "tab button" class */
+.tab button.active {
+    background-color: #fff;
+    color: #713BDB;
+    border-top-left-radius: 25px;
+    border-bottom-left-radius: 25px;
+    font-size: 1.0625rem;
+    font-weight: 600;
+    margin-bottom: 5%;
+    margin-top: 5%;
+}
+
+/* Style the tab content */
+.tabcontent {
+    float: left;
+    padding: 2.1875rem 0.75rem;
+    width: 100%;
+    border-left: none;
+    height: 100%;
+}
+
+.tabcontent h3 {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 1.875rem;
+    line-height: 33px;
+    color: #434242;
+}
+
+.tabcontent p {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 0.875rem;
+    line-height: 18px;
+    color: #474545;
+}
+
+.fix {
+    position: sticky;
+    top: 0;
+}
+
+.disabledTab {
+    cursor: not-allowed !important;
+    opacity: 0.5;
+}
+
+@media (max-width:768px) {
+    .tab h5 {
+        font-size: 0.94rem !important;
+    }
+
+    .tab button {
+        font-size: 0.88rem;
+    }
+
+    .tab button.active {
+        font-size: 0.9812rem;
+    }
+
+    .headerTwo {
+        margin-bottom: -0.0625rem;
+    }
+
+    .tab button i {
+        padding-right: 0.6875rem;
+    }
+
+    .tab button {
+        padding: 0.375rem 0.5rem;
+    }
+}
+
+@media (min-width:769px) and (max-width:1024px) {
+    .tab h5 {
+        font-size: 0.94rem !important;
+    }
+
+    .tab button {
+        font-size: 0.88rem;
+    }
+
+    .tab button.active {
+        font-size: 0.9812rem;
+    }
+
+    .headerTwo {
+        margin-bottom: -0.0625rem;
+    }
+
+    .tab button i {
+        padding-right: 0.6875rem;
+    }
+
+    .tab button {
+        padding: 0.375rem 0.5rem;
+    }
+}
+
+@media (max-width:820px) {
+    .tab h5 {
+        font-size: 0.94rem !important;
+    }
+
+    .tab button {
+        font-size: 0.88rem;
+    }
+
+    .tab button.active {
+        font-size: 0.9812rem;
+    }
+
+    .headerTwo {
+        margin-bottom: -0.0625rem;
+    }
+
+    .tab button i {
+        padding-right: 0.6875rem;
+    }
+
+    .tab button {
+        padding: 0.375rem 0.5rem;
+    }
+}
+
+@media (min-width:821px) and (max-width:1180px) {
+    .tab h5 {
+        font-size: 0.94rem !important;
+    }
+
+    .tab button {
+        font-size: 0.88rem;
+    }
+
+    .tab button.active {
+        font-size: 0.9812rem;
+    }
+
+    .headerTwo {
+        margin-bottom: -0.0625rem;
+    }
+
+    .tab button i {
+        padding-right: 0.6875rem;
+    }
+
+    .tab button {
+        padding: 0.375rem 0.5rem;
+    }
+}

@@ -1,0 +1,532 @@
+#LaboratoryTestModal .close {
+  position: absolute;
+  right: -10px;
+  top: -11px;
+  width: 30px;
+  height: 31px;
+  background: #FFFFFF;
+  box-shadow: 0px 4px 4px rgb(54 79 199 / 47%);
+  border-radius: 50px;
+  padding: 4.5px 5px;
+  z-index: 10;
+  cursor: pointer;
+}
+
+#LaboratoryTestModal .close i {
+  color: #364fc7;
+  font-size: 21px;
+  line-height: 0;
+}
+
+#LaboratoryTestModal .modal-content {
+  width: 80%;
+  top: 43px;
+  margin: auto;
+  background: #edf2ff;
+  border: 1px solid #5c7cfa;
+  box-shadow: 0px 20px 34px 7px rgb(54 79 199 / 50%);
+  border-radius: 10px;
+  padding: 0px 15px;
+}
+
+#LaboratoryTestModal .modal {
+  --bs-modal-width: 54%;
+}
+
+#LaboratoryTestModal .modal-header h5 {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 30px;
+  line-height: 33px;
+  color: #434242;
+}
+
+#LaboratoryTestModal .modal-body h2 {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 110%;
+  color: #484747;
+}
+
+#LaboratoryTestModal .modal-body h3 {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 13px;
+  line-height: 110%;
+  color: #4E4C4C;
+  margin-bottom: 2px;
+}
+
+#LaboratoryTestModal .modal-body span {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 110%;
+  color: #364fc7;
+}
+
+#LaboratoryTestModal input[type="text"],
+#LaboratoryTestModal select {
+  width: 176.2px;
+  height: 57px;
+  left: 402px;
+  top: 368px;
+  background: #FFFFFF;
+  border: 1px solid rgba(54, 79, 199, 0.19);
+  box-shadow: 0px 16px 34px -6px rgba(54, 79, 199, 19%);
+  border-radius: 10px;
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 110%;
+  color: #484747;
+  padding: 10px;
+  margin: 8px 4px;
+  outline: none;
+}
+
+#LaboratoryTestModal .MedicineBox .DayBox {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  width: 59px;
+  height: 59px;
+  background: #FFFFFF;
+  border: 1px solid #5c7cfa;
+  box-shadow: 0px 16px 34px -6px rgb(54 79 199 / 46%);
+  border-radius: 10px;
+  position: relative;
+  padding: 8px;
+  margin-left: 20px;
+}
+
+#LaboratoryTestModal .MedicineBox .DayBox h2 {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 22px;
+  line-height: 0.7;
+  color: #FFFFFF;
+  text-align: left;
+  margin: 0;
+}
+
+#LaboratoryTestModal .MedicineBox .DayBox .noOfQty {
+  width: 61px;
+  height: 61px;
+  background: #364fc7;
+  border: 1px solid #364fc7;
+  box-shadow: 0px 11px 34px -5px rgb(54 79 199 / 58%);
+  border-radius: 50px;
+  padding: 16px 14px;
+  position: absolute;
+  left: -35px;
+  top: -2px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#LaboratoryTestModal .LaboratoryTestName {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+#LaboratoryTestModal .MedicineBox .DayBox .noOfQty i {
+  color: #fff;
+  font-size: 50px;
+}
+
+#LaboratoryTestModal .MedicineBox .DayBox h2 span {
+  color: #fff;
+  font-weight: 400;
+}
+
+/* ---------------------------------------------------------------------------------------------------------------- */
+#LaboratoryTestModal .LaboratoryTest i {
+  color: #364fc7;
+}
+
+#LaboratoryTestModal .LaboratoryTest .DayBox h2 {
+  background: #364fc7;
+  border: 1px solid rgba(54, 79, 199, 0.51);
+  box-shadow: 0px 4px 9px rgba(54, 79, 199, 0.56);
+}
+
+#LaboratoryTestModal .LaboratoryTest p {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1.4;
+  color: #484848;
+  display: -webkit-box;
+  -webkit-line-clamp: 2 !important;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+#LaboratoryTestModal .bi-hand-index-thumb-fill {
+  transform: rotate(90deg);
+  height: 13px;
+}
+
+#LaboratoryTestModal .selectBox {
+  width: 100%;
+  padding: 12px;
+  background: rgba(255, 244, 219, 0.79);
+  border: 1px solid rgba(54, 79, 199, 0.16);
+  box-shadow: 0px 11px 34px -5px rgb(54 79 199 / 79%);
+  border-radius: 10px;
+}
+
+#LaboratoryTestModal .specialNotes label {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 15px;
+  line-height: 110%;
+  color: #484747;
+}
+
+input {
+  color: #181818 !important;
+}
+
+#LaboratoryTestModal .specialNotes textarea {
+  width: 100%;
+  height: 85px !important;
+  background: #FFFFFF;
+  border: 1px solid #5c7cfa;
+  box-shadow: 0px 16px 34px -6px rgb(54 79 199 / 19%);
+  border-radius: 10px;
+}
+
+#LaboratoryTestModal .selectBox input[type="text"] {
+  width: 100%;
+  height: 57px;
+  background: #FFFFFF;
+  border: 1px solid #5c7cfa;
+  box-shadow: 0px 16px 34px -6px rgb(54 79 199 / 19%);
+  border-radius: 10px;
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 110%;
+  color: #484747;
+}
+
+#LaboratoryTestModal .pinkbox {
+  background: #dbe4ff;
+  border: 1px solid #5c7cfa;
+  box-shadow: 0px 16px 34px -6px rgb(54 79 199 / 19%);
+  position: relative;
+}
+
+#LaboratoryTestModal .pinkbox label {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 110%;
+  color: #2e2e2e;
+  padding: 6px 30px;
+}
+
+#LaboratoryTestModal .timings {
+  width: 100% !important;
+  height: 74px !important;
+  left: 800px !important;
+  top: 1737px !important;
+  background: #FFFFFF !important;
+  border: 1px solid rgba(54, 79, 199, 0.19) !important;
+  box-shadow: 0px 16px 34px -6px rgba(54, 79, 199, 0.19) !important;
+  border-radius: 10px !important;
+}
+
+#LaboratoryTestModal .Duration {
+  width: 45% !important;
+  height: 57px !important;
+  left: 838px !important;
+  top: 1825px !important;
+  background: #FFFFFF !important;
+  border: 1px solid rgba(54, 79, 199, 0.19) !important;
+  box-shadow: 0px 16px 34px -6px rgba(54, 79, 199, 0.19) !important;
+  border-radius: 10px !important;
+  margin: 0px 5px !important;
+}
+
+#LaboratoryTestModal input[type="submit"] {
+  padding: 18px 20px;
+  background: #364fc7;
+  box-shadow: 0px 11px 34px -5px rgb(54 79 199 / 79%);
+  border-radius: 11px;
+  border: none;
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.4;
+  color: #FFFFFF;
+  letter-spacing: 1px;
+}
+
+#LaboratoryTestModal .saveBtn {
+  padding: 12px 18px;
+  background: #364fc7;
+  box-shadow: 0px 11px 34px -5px rgb(54 79 199 / 79%);
+  border-radius: 6px;
+  border: none;
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 110%;
+  color: #FFFFFF;
+  letter-spacing: 0.4px;
+}
+
+#LaboratoryTestModal .Visit {
+  width: 83px !important;
+  height: 57px !important;
+  left: 857px !important;
+  top: 1999px !important;
+  background: #FFFFFF !important;
+  border: 1px solid rgba(54, 79, 199, 0.19) !important;
+  box-shadow: 0px 16px 34px -6px rgba(54, 79, 199, 0.19) !important;
+  border-radius: 10px !important;
+}
+
+#LaboratoryTestModal .modal-content .count {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 110%;
+  color: #364fc7;
+}
+
+#LaboratoryTestModal .NextVisit {
+  height: 15px;
+  left: 779px;
+  top: 2020px;
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 110%;
+  color: #484747;
+}
+
+#LaboratoryTestModal .faq-heading {
+  padding: 15px 0px 9px 17px !important;
+}
+
+.parentfaq-text {
+  border-top: 1px solid #e4daf8;
+}
+
+#LaboratoryTestModal .faq-heading label {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 110%;
+  letter-spacing: 0.3px;
+  color: #323232 !important;
+  padding: 0 !important;
+}
+
+#LaboratoryTestModal .faq-text {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 500 !important;
+  font-size: 14px !important;
+  line-height: 110% !important;
+  color: #666666 !important;
+}
+
+.options {
+  max-height: 370px;
+  overflow: auto;
+}
+
+#LaboratoryTestModal .faq {
+  width: 99%;
+  margin: 0 auto;
+  background: #edf2ff;
+  border-radius: 10px;
+  border: 1px solid #5c7cfa;
+  padding: 5px 15px 10px 15px;
+  margin-top: 13px;
+  display: none;
+}
+
+.LaboratoryTestName:last-child {
+  border: none !important;
+}
+
+#LaboratoryTestModal .faq label {
+  display: block;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  -webkit-user-select: none;
+  /* Safari */
+  -ms-user-select: none;
+  /* IE 10 and IE 11 */
+  user-select: none;
+  /* Standard syntax */
+}
+
+#LaboratoryTestModal .faq p {
+  margin: 0;
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 15px;
+  line-height: 110%;
+  color: #3E3E3E;
+}
+
+#LaboratoryTestModal .faq-box {
+  display: none;
+}
+
+#LaboratoryTestModal #settings {
+  display: none;
+}
+
+#LaboratoryTestModal input[type="checkbox"] {
+  cursor: pointer;
+}
+
+#LaboratoryTestModal input[name="foo"] {
+  margin: 12px 2px;
+}
+
+#LaboratoryTestModal #faq-bg {
+  background: #fff !important;
+  border: 1px solid #5c7cfa;
+  box-shadow: 0px 16px 34px -6px rgb(54 79 199 / 19%);
+  border-radius: 6px;
+  margin: 8px 0px;
+}
+
+#LaboratoryTestModal .faq .faq-arrow {
+  width: 5px;
+  height: 5px;
+  transition: -webkit-transform 0.8s;
+  transition: transform 0.8s;
+  transition: transform 0.8s, -webkit-transform 0.8s;
+  -webkit-transition-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  border-top: 2px solid rgba(0, 0, 0, 0.33);
+  border-right: 2px solid rgba(0, 0, 0, 0.33);
+  float: right;
+  position: relative;
+  top: -30px;
+  right: 27px;
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+#LaboratoryTestModal .faq input[type="checkbox"]:checked+label>.faq-arrow {
+  transition: -webkit-transform 0.8s;
+  transition: transform 0.8s;
+  transition: transform 0.8s, -webkit-transform 0.8s;
+  -webkit-transition-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  -webkit-transform: rotate(135deg);
+  transform: rotate(135deg);
+}
+
+#LaboratoryTestModal .faq input[type="checkbox"]:checked+label {
+  display: block;
+  background: #F8F4FF !important;
+  color: #4f7351;
+  height: auto;
+  transition: height 0.8s;
+  -webkit-transition-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+#LaboratoryTestModal .faq input[type='checkbox']:not(:checked)+label {
+  display: block;
+  transition: height 0.8s;
+  height: 60px;
+  -webkit-transition-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  line-height: 2;
+}
+
+#Manage .close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+#Manage .close i {
+  float: right;
+  font-size: 20px;
+}
+
+#Manage .close:hover,
+#Manage .close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+#Manage .modal-content ::placeholder {
+  color: rgba(54, 79, 199, 0.51);
+}
+
+#viewMoreText {
+  width: 33%;
+  height: 200px;
+  overflow: auto;
+  font-size: 12px;
+  border-radius: 6px;
+  border: 1px solid #999;
+  padding: 10px;
+  position: absolute;
+  z-index: 9;
+  background: #fff;
+  right: 128px;
+  top: 60px;
+}
+
+.options::-webkit-scrollbar {
+  width: 5px;
+}
+
+.options::-webkit-scrollbar-thumb {
+  background: #364fc7 !important;
+  border-radius: 5px;
+}
+
+.options::-webkit-scrollbar-track {
+  background: #5c7cfa !important;
+}
+
+.Reset {
+  background: none;
+  border: none;
+  font-size: 20px;
+  color: #000;
+  position: absolute;
+  right: 13px;
+  top: 32px;
+}
+
+small,
+.errorDiv {
+  color: red !important;
+  font-size: 12px !important;
+  font-weight: 600;
+  height: 12px;
+}

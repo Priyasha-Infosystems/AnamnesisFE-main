@@ -1,0 +1,192 @@
+#PriceSetup .content {
+    width: 100%;
+    background: #FFFFFF;
+    border-radius: 22px;
+    padding: 25px 13px;
+}
+
+#PriceSetup .DepartmentGroup input {
+    width: 100%;
+    height: 45px;
+    background: #F2ECFF;
+    border: 1px solid rgba(113, 59, 219, 0.18);
+    box-shadow: 0px 11px 34px -5px rgb(113 59 219 / 21%);
+    border-radius: 6px;
+    padding: 17px 14px 8px 14px;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 107%;
+    color: #713BDB;
+    outline: none;
+}
+
+label {
+    color: rgb(113 59 219 / 63%);
+    width: 100%;
+    padding: 14px 15px;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 107%;
+}
+
+input,
+select {
+    color: rgb(113 59 219 / 100%) !important;
+}
+
+#PriceSetup select {
+    outline: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+/* to change arrow fill color, add %23 infront of hex color */
+#PriceSetup select {
+    background: url("../../../../assets/images/selectArrow.png") no-repeat;
+    background-color: #F2ECFF;
+    transition: 0.3s;
+    width: 100%;
+    height: 58px;
+    border: 1px solid rgba(113, 59, 219, 0.18);
+    box-shadow: 0px 11px 34px -5px rgb(113 59 219 / 21%);
+    border-radius: 6px;
+    background-size: 10px !important;
+    background-position: calc(100% - 8px) 23px !important;
+    background-repeat: no-repeat !important;
+    font-family: 'Poppins';
+    padding: 26px 18px 11px 13px;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 107%;
+    color: #713BDB !important;
+    outline: none;
+}
+
+#PriceSetup .DepartmentGroup i {
+    font-size: 17px;
+    color: #713BDB;
+    cursor: pointer;
+    line-height: 0;
+    margin-left: 5px;
+}
+
+#PriceSetup .DepartmentGroup #testName {
+    width: 100%;
+    background-size: 10px !important;
+    background-position: calc(100% - 8px) 18px !important;
+    background-repeat: no-repeat !important;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 110%;
+    color: #000000;
+    padding: 9px 20px 9px 10px;
+    margin: 0px 0px 0px 0px;
+}
+
+#PriceSetup .DepartmentGroup #testName {
+    height: 45px !important;
+}
+
+#PriceSetup .DepartmentGroup {
+    padding: 20px 15px;
+    position: relative;
+    background: #F2ECFF;
+    border: 1px solid rgb(113 59 219 / 59%);
+    box-shadow: 8px 8px 11px rgb(113 59 219 / 36%);
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+#PriceSetup .DepartmentGroup .test-typeName {
+    /* margin-top: 10px; */
+}
+
+#PriceSetup .content .AddOrder {
+    background: none;
+    border: none;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 110%;
+    color: #713BDB;
+    float: right;
+    z-index: 2;
+    margin-top: 8px;
+}
+
+#PriceSetup .content .addfullRow {
+    background: none;
+    border: none;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 110%;
+    color: #000000;
+    float: right;
+    z-index: 2;
+    margin-bottom: 15px;
+}
+
+#PriceSetup .content .addfullRow b {
+    color: #713BDB;
+    font-weight: 600;
+}
+
+.displaymainContent {
+    border: 1px solid rgb(113 59 219 / 45%);
+    box-shadow: 3px 7px 9px rgb(113 59 219 / 14%);
+    border-radius: 8px;
+    padding: 16px 12px;
+    width: 100%;
+    height: 100%;
+}
+
+.selectBox label {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 110%;
+    padding: 32px 14px 1px 13px;
+    width: 100%;
+    transition: 0.3s;
+    color: rgb(113 59 219 / 63%);
+    opacity: 1;
+}
+
+.selectedFormValue label {
+    padding: 21px 14px 1px 14px !important;
+    transition: 0.3s;
+    opacity: .65 !important;
+}
+
+.Submit {
+    padding: 12px 26px;
+    background: #713BDB;
+    box-shadow: 0px 11px 34px -5px rgba(113, 59, 219, 0.45);
+    border-radius: 6px;
+    border: none;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 13px;
+    line-height: 110%;
+    color: #FFFFFF;
+    margin: -6px 2px 29px 0px;
+}
+
+.errorDiv {
+    font-size: 12px;
+    height: 12px;
+    text-align: left;
+    color: red;
+    padding-left: 3px;
+}

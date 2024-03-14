@@ -1,0 +1,630 @@
+.tabcontent {
+    float: left;
+    padding: 35px 12px;
+    width: 100%;
+    border-left: none;
+    height: 100%;
+}
+
+.tabcontent h3 {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 30px;
+    line-height: 33px;
+    color: #434242;
+    padding-bottom: 3%;
+}
+
+.tabcontent p {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 18px;
+    color: #474545;
+}
+
+#AuthorisedSignatory .AuthorisedAddition {
+    width: 100%;
+    height: 100%;
+}
+
+#AuthorisedSignatory .AuthorisedAddition .form-control {
+    background: #FBF9FF;
+    border: 1px solid rgba(113, 59, 219, 0.18);
+    box-shadow: 0px 11px 34px -5px rgba(113, 59, 219, 0.21);
+    border-radius: 8px;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 128.5%;
+    color: #393939;
+    resize: none;
+}
+
+#AuthorisedSignatory .AuthorisedAddition .Check {
+    padding: 20px 36px;
+    border: 1px solid rgba(113, 59, 219, 0.49);
+    box-shadow: 0px 11px 34px -5px rgba(113, 59, 219, 0.4);
+    border-radius: 8px;
+    background: none;
+    position: absolute;
+    z-index: 1;
+    top: 0px;
+    right: 0;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 110%;
+    color: #713BDB;
+}
+
+#AuthorisedSignatory .AuthorisedAddition label {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 110%;
+    color: rgba(113, 59, 219, 0.51);
+}
+
+#AuthorisedSignatory .AuthorisedAddition textarea {
+    width: 100%;
+    height: 93px;
+}
+
+#AuthorisedSignatory .AuthorisedAddition .drName input {
+    font-weight: 700;
+}
+
+#AuthorisedSignatory .AuthorisedAddition .displayAllDetails h2 {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 21px;
+    line-height: 110%;
+    color: #484747;
+    width: 100%;
+}
+
+#AuthorisedSignatory .AuthorisedAddition .displayAllDetails label {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 110%;
+    color: rgba(113, 59, 219, 0.51);
+}
+
+#AuthorisedSignatory .AuthorisedAddition .displayAllDetails input {
+    color: rgba(113, 59, 219, 1);
+}
+
+#AuthorisedSignatory .AuthorisedAddition .displayAllDetails p {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 13px;
+    line-height: 110%;
+    color: #323232;
+    margin-bottom: 8px;
+}
+
+#AuthorisedSignatory .AuthorisedAddition .document {
+    width: 100%;
+    height: 100%;
+    background: #F2ECFF;
+    border: 1px solid rgba(113, 59, 219, 0.19);
+    box-shadow: 0px 16px 34px rgba(113, 59, 219, 0.19);
+    border-radius: 10px;
+    padding: 13px 25px 25px 25px;
+}
+
+#AuthorisedSignatory .AuthorisedAddition .document h2 {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 22px;
+    line-height: 110%;
+    color: #434242;
+}
+
+#AuthorisedSignatory .AuthorisedAddition .documentBox {
+    width: 100%;
+    height: 100%;
+    margin: auto;
+    background: #FFFFFF;
+    border: 1px solid rgba(113, 59, 219, 0.18);
+    box-shadow: 0px 11px 34px -5px rgba(113, 59, 219, 0.21);
+    border-radius: 5px;
+    display: flex;
+    padding: 7px 10px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#AuthorisedSignatory .AuthorisedAddition .documentBox .bi-file-earmark-pdf-fill {
+    color: #c21616;
+    font-size: 26px;
+    line-height: 0;
+}
+
+#AuthorisedSignatory .AuthorisedAddition .documentBox .bi-eye-fill {
+    color: #713BDB;
+    font-size: 17px;
+    line-height: 0;
+    cursor: pointer;
+}
+
+#AuthorisedSignatory .AuthorisedAddition .documentBox label {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 1.6;
+    color: #474646;
+    margin-bottom: 3px;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    width: 195px;
+    word-wrap: break-word;
+}
+
+#AuthorisedSignatory .AuthorisedAddition .documentBox p {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 13px;
+    line-height: 110%;
+    color: #323232;
+    margin: 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    width: 195px;
+    word-wrap: break-word;
+}
+
+#AuthorisedSignatory .AuthorisedAddition .bi-check-circle-fill {
+    color: #19CC56;
+    font-size: 28px;
+    line-height: 0;
+}
+
+.bi-question-circle-fill {
+    color: #713BDB;
+    font-size: 28px;
+    line-height: 0;
+}
+
+#AuthorisedSignatory .AuthorisedAddition .bi-x-circle-fill {
+    color: #c21616;
+    font-size: 28px;
+    line-height: 0;
+}
+
+#AuthorisedSignatory .AuthorisedAddition .Dr-list {
+    background: #F2ECFF;
+    box-shadow: 0px 11px 34px -5px rgba(113, 59, 219, 0.21);
+    border-radius: 10px;
+    padding: 13px 17px 11px 17px;
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    align-items: center;
+    position: relative;
+    width: 100%;
+    height: 56px;
+    margin-top: 19px;
+}
+
+#AuthorisedSignatory .AuthorisedAddition .Dr-list h6 {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 110%;
+    color: #414141;
+    margin: 0px 8px 0px 8px;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    width: 80%;
+}
+
+#AuthorisedSignatory .AuthorisedAddition .Dr-list i {
+    float: right;
+    background: #713BDB;
+    box-shadow: 0px 4px 8px #DEE2FF;
+    border-radius: 100%;
+    height: 25px;
+    width: 25px;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    position: absolute;
+    right: 8px;
+    cursor: pointer;
+    padding: 5px;
+    font-size: 17px;
+}
+
+#AuthorisedSignatory .AuthorisedAddition #myprogressBar {
+    width: 225px;
+    height: 5px;
+    background: linear-gradient(180deg, #91F0A2 0%, rgba(101, 177, 103, 0.71) 100%);
+    border-radius: 8px;
+}
+
+#AuthorisedSignatory .AuthorisedAddition #Progress_Status {
+    width: 78%;
+    margin-left: 25px;
+    height: 5px;
+    left: 497px;
+    top: 380px;
+    background: #DEE2FF;
+    border-radius: 8px;
+}
+
+#AuthorisedSignatory .AuthorisedAddition #text {
+    float: right;
+    margin-top: -20px;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 110%;
+    color: #BCC2F7;
+}
+
+#AuthorisedSignatory .AuthorisedAddition .Dr-list img {
+    max-width: 20px;
+}
+
+#AuthorisedSignatory .AuthorisedAddition .file-area {
+    width: 100%;
+    background: #FBF9FF;
+    border: 1px solid rgba(113, 59, 219, 0.18);
+    box-shadow: 0px 11px 34px -5px rgba(113, 59, 219, 0.21);
+    border-radius: 10px;
+    position: relative;
+    cursor: pointer;
+}
+
+#AuthorisedSignatory .AuthorisedAddition .file-area label {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 110%;
+    color: #BCC2F7;
+    padding: 22px 19px;
+    width: 100%;
+}
+
+#AuthorisedSignatory .AuthorisedAddition .file-area input[type=file] {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 0;
+    cursor: pointer;
+}
+
+#AuthorisedSignatory .AuthorisedAddition .file:last-child:after {
+    content: "Upload Another Document";
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 110%;
+    color: #713BDB;
+    cursor: pointer;
+    float: right;
+    padding: 10px;
+}
+
+#AuthorisedSignatory .AuthorisedAddition .submit h2 {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 110%;
+    color: #713BDB;
+    margin-bottom: 10px;
+}
+
+#AuthorisedSignatory .AuthorisedAddition .submit button {
+    width: 166px;
+    height: 69px;
+    background: #713BDB;
+    box-shadow: 0px 11px 34px -5px rgba(113, 59, 219, 0.4);
+    border-radius: 12px;
+    border: 1px solid rgba(113, 59, 219, 0.52);
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 110%;
+    color: #FFFFFF;
+}
+
+#AuthorisedSignatory .AuthorisedAddition .submit .cancel {
+    background: none;
+    color: #713BDB;
+}
+
+.AuthorisedAddition select {
+    width: 100%;
+    height: 100%;
+    padding: 22px 24px 14px 14px;
+    background: url("../../../../assets/images/selectArrow.png") no-repeat;
+    outline: none;
+    border: 1px solid rgba(113, 59, 219, 0.18);
+    box-shadow: 0px 11px 34px -5px rgb(113 59 219 / 21%);
+    border-radius: 8px;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 128.5%;
+    color: #393939;
+    resize: none;
+}
+
+.AuthorisedAddition select {
+    background-size: 11px;
+    background-position: calc(100% - 11px) 23px;
+    background-repeat: no-repeat;
+}
+
+.AuthorisedAddition.file-area {
+    width: 100%;
+    position: relative;
+    width: 100%;
+    height: 80px;
+    background: rgba(255, 255, 255, 0.79);
+    border: 2px solid rgba(174, 140, 239, 0.54);
+    box-shadow: 0px 12px 53px -24px rgba(134, 87, 226, 0.63);
+    border-radius: 12px;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 110%;
+    color: rgb(72, 28, 161);
+}
+
+.doctorCard i {
+    font-size: 10px;
+    color: #edb738;
+    padding-right: 5px;
+}
+
+.doctorDetails .CollapsePrescribed .m-d.expand-list>li {
+    list-style-type: none;
+    padding: 20px 15px 10px 15px;
+    position: relative;
+    background: #fff;
+    border: 1px solid #845ef7;
+    box-shadow: 8px 8px 9px #673ab72e;
+    border-radius: 10px;
+    margin: 0px;
+    z-index: 10;
+}
+
+.doctorDetails .CollapsePrescribed .m-d.expand-list>li label h5 {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 1.3;
+    color: #3a3a3a;
+    margin: 0;
+}
+
+.doctorDetails .doctorCard {
+    margin: 5px 0px 0px 0px;
+    background: #f3f0ff;
+    border: 1px solid #845ef7;
+    border-radius: 5px;
+    padding: 5px 10px;
+}
+
+.doctorDetails .doctorCard i {
+    color: #673ab7;
+}
+
+.doctorDetails .profileImg {
+    height: 115px;
+    width: 100%;
+    border-radius: 7%;
+    overflow: hidden;
+}
+
+.doctorDetails .profileImg img {
+    height: 100%;
+    width: 100%;
+}
+
+.doctorDetails .dropdown ul {
+    width: 100%;
+}
+
+.doctorDetails .dropdown a {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 1.3;
+    color: #3a3a3a !important;
+    margin: 0;
+    background: none;
+    border: none;
+    outline: none;
+    width: 100%;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.doctorDetails .dropdown a span {
+    font-size: 12px !important;
+    color: #EDB738;
+}
+
+.doctorDetails .dropdown li a:hover {
+    background: #e7dbc2;
+}
+
+.doctorDetails .doctorCard p {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 140.5%;
+    color: #484747;
+    margin: 0;
+}
+
+.doctorDetails .doctorCard p i {
+    color: #e7a814;
+    padding-right: 4px;
+}
+
+.doctorDetails .doctorCard h5 {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 1.3;
+    color: #3a3a3a !important;
+}
+
+.doctorDetails .Confirm {
+    background: #673ab7;
+    box-shadow: 0px 6px 6px -5px rgb(103 58 183 / 79%);
+    border: none;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 110%;
+    color: #FFFFFF;
+    letter-spacing: 0.5px;
+    padding: 8px 16px;
+    border-radius: 5px;
+    margin: 10px 8px 0px 0px;
+}
+
+.selectBox label {
+    font-family: 'Poppins' !important;
+    font-style: normal !important;
+    font-weight: 500 !important;
+    font-size: 15px !important;
+    line-height: 110% !important;
+    color: rgb(146 90 255) !important;
+    padding: 34px 14px 1px 14px;
+    width: 100% !important;
+    transition: 0.3s !important;
+    -webkit-appearance: none;
+}
+
+.selectedFormValue label {
+    padding: 15px 14px 1px 14px !important;
+    transition: 0.3s;
+    color: rgb(146 90 255 / 51%) !important;
+}
+
+.form-floating-d {
+    background: #FBF9FF;
+    border: 1px solid rgba(113, 59, 219, 0.18);
+    box-shadow: 0px 11px 34px -5px rgba(113, 59, 219, 0.21);
+    border-radius: 8px;
+    margin-bottom: 15px;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 128.5%;
+    color: #393939;
+    resize: none;
+    padding: 10px 10px 10px 10px;
+    height: 58px;
+}
+
+.form-floating-d label {
+    opacity: .65;
+    font-size: 13px !important;
+}
+
+.form-floating-d p {
+    margin: 0;
+}
+
+.regErrorDiv {
+    color: red;
+    font-size: 12px;
+    height: 12px;
+}
+
+.bi-trash-fill {
+    color: #713bdb;
+    font-size: 16px;
+    padding: 0px 5px;
+    cursor: pointer;
+}
+
+.add {
+    display: flex;
+    justify-content: end;
+}
+
+.add h6 {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 15px;
+    line-height: 110%;
+    color: #713BDB;
+    cursor: pointer;
+    position: absolute;
+}
+
+.bi-images {
+    color: #673ab7;
+}
+
+td {
+    font-size: 12px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    color: #1c1c1c;
+}
+
+table {
+    width: 100%;
+    height: 80%;
+}
+
+.icon i {
+    font-size: 18px !important;
+    margin-right: 7px;
+}
+
+.statusIcon i {
+    font-size: 26px !important;
+}

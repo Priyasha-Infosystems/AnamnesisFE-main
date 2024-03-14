@@ -1,0 +1,1173 @@
+#noName .content {
+    width: 100%;
+    height: 100%;
+    padding: 10px 25px 25px 25px;
+    background: #FDFDFF;
+    border: 1px solid rgba(126, 126, 126, 0.41);
+    box-shadow: 0px 11px 31px 11px rgb(113 59 219 / 26%);
+    border-radius: 10px;
+}
+
+#noName ul {
+    padding: 0;
+}
+
+#noName li {
+    list-style: none;
+}
+
+#noName li button {
+    width: 100%;
+    background: none;
+    margin: 6px 0px;
+    border-radius: 5px;
+    outline: none;
+    -webkit-user-select: none;
+    user-select: none;
+    text-align: left;
+    font-size: 12px;
+    padding: 10px;
+    color: #713bdb;
+    cursor: pointer;
+    transition: 0.3s;
+    font-weight: 500;
+    border: 1px solid #703bdb00;
+}
+
+#DISCetup textarea {
+    height: 104px !important;
+    min-height: unset !important;
+    width: 100% !important;
+    background: #F2ECFF !important;
+    border: 1px solid rgba(113, 59, 219, 0.18) !important;
+    border-radius: 6px !important;
+    padding: 19px 4px 4px 14px !important;
+    font-style: normal !important;
+    font-weight: 500 !important;
+    font-size: 14px !important;
+    line-height: 107% !important;
+    color: #713BDB !important;
+    outline: none !important;
+}
+
+.box {
+    background: #ffffff;
+    border: 1px solid #845ef78f;
+    box-shadow: 2px 4px 6px 0px rgb(113 59 219 / 19%);
+    border-radius: 5px;
+    padding: 10px 15px 15px 15px;
+    margin: 10px 0px 0px 0px;
+}
+
+#noName .tabcontents .box .form-floating {
+    position: relative;
+    width: 100%;
+}
+
+#noName .tabcontents .box .form-floating input {
+    box-shadow: unset !important;
+}
+
+.form-control:focus {
+    box-shadow: unset !important;
+}
+
+#noName .tabcontents .tabpane button {
+    width: auto;
+    padding: 10px 8px; 
+    text-align: center;
+    background: #713BDB;
+    border: none;
+    box-shadow: 0px 12px 53px -24px rgba(134, 87, 226, 0.63);
+    border-radius: 5px;
+    font-weight: 500;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-size: 13px;
+    line-height: 110%;
+    color: #fff;
+    margin: 12px;
+}
+
+#noName .active {
+    background: #703bdbad;
+    border: 1px solid #713bdb;
+    color: #fff !important;
+}
+
+#noName .tabcontents .box label {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 12px;
+    color: #3F3F3F;
+    width: 100%;
+}
+
+input,
+select {
+    color: #000;
+}
+
+.tabpane {
+    background: #F2ECFF;
+    border: 1px solid rgba(113, 59, 219, 0.19);
+    box-shadow: 0px 16px 34px rgb(113 59 219 / 19%);
+    border-radius: 5px;
+    margin: 15px 0px;
+    padding: 10px 5px;
+}
+
+#noName .tabcontents .box h2 {
+    width: 100%;
+    border: 1px solid rgba(174, 140, 239, 0.54);
+    border-radius: 5px;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 110%;
+    color: #242424;
+    padding: 8px 21px;
+    margin: 0;
+}
+
+#noName .tabcontents .tabpane {
+    background: #F2ECFF;
+    border: 1px solid rgba(113, 59, 219, 0.19);
+    box-shadow: 0px 16px 34px rgb(113 59 219 / 19%);
+    border-radius: 5px;
+    margin-bottom: 15px;
+    padding: 10px 15px;
+}
+
+#noName .tabcontents select,
+#noName .tabcontents option {
+    width: 100%;
+    height: 45px !important;
+    min-height: unset;
+    border: 1px solid rgba(113, 59, 219, 0.18);
+    border-radius: 6px;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 13px;
+    line-height: 110%;
+    color: #713BDB;
+    padding: 16px 20px 7px 13px;
+    margin: 0;
+    outline: none;
+}
+
+.errorDiv {
+    font-size: 11px;
+    height: 14px;
+    color: red;
+    display: flex;
+    align-items: center;
+}
+
+#noName .tabcontents input {
+    font-family: 'Poppins';
+    margin: 0;
+    height: 45px;
+    min-height: unset;
+    width: 100%;
+    background: #F2ECFF;
+    border: 1px solid rgba(113, 59, 219, 0.18);
+    border-radius: 6px;
+    padding: 18px 14px 6px 14px;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 107%;
+    color: #713BDB;
+    outline: none;
+}
+
+#noName .tabcontents .box input::-webkit-outer-spin-button,
+#noName .tabcontents .box input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Firefox */
+#noName .tabcontents .box input[type=number] {
+    -moz-appearance: textfield;
+}
+
+#noName .tabcontents input::placeholder {
+    font-weight: 400;
+}
+
+.addTest {
+    background: none !important;
+    border: none !important;
+    color: #713BDB !important;
+    padding: 0px !important;
+    font-size: 14px !important;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+#noName .tabcontents #LaboratoryPackagestabpane i {
+    color: #713BDB;
+    cursor: pointer;
+    padding: 0px 4px;
+    font-size: 16px;
+}
+
+.checkbox {
+    width: 100%;
+    margin-top: -4px;
+}
+
+.checkbox input[type="checkbox"] {
+    padding: 0;
+    height: initial;
+    width: initial;
+    margin-bottom: 0;
+    display: none;
+    cursor: pointer;
+}
+
+.checkbox label {
+    position: relative;
+    display: flex;
+    align-items: center;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 140.5%;
+    color: #484747;
+    margin: 0;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.checkbox label:before {
+    content: '';
+    -webkit-appearance: none;
+    background-color: white;
+    border: 2px solid #d2bff6;
+    box-shadow: 0 1px 2px rgb(0 0 0 / 5%), inset 0px -15px 10px -12px rgb(0 0 0 / 5%);
+    padding: 6px;
+    display: inline-block;
+    position: relative;
+    vertical-align: middle;
+    cursor: pointer;
+    border-radius: 2px;
+    margin-right: 5px;
+}
+
+.checkbox input:checked+label:after {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 4px;
+    left: 6px;
+    width: 4px;
+    height: 8px;
+    border: solid #d2bff6;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+
+p {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 140.5%;
+    color: #484747;
+    margin: 0;
+
+}
+
+.col-md-4 input::placeholder {
+    font-size: 13px;
+}
+
+#noName .tabcontents .form-floating textarea {
+    width: 100%;
+    height: 74px;
+    background: none;
+    border: none;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 110%;
+    color: #713BDB;
+    margin: 0;
+    outline: none;
+    resize: none;
+    padding: 0px 3px;
+}
+
+#noName .tabcontents textarea:focus {
+    box-shadow: unset;
+}
+
+#noName .tabcontents .form-floating label {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 140.5%;
+    color: #a07ce8 !important;
+    margin: 0;
+    padding: 12px 14px 1px 14px;
+}
+
+.low {
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.low::after {
+    content: "\f138";
+    display: inline-block;
+    font-family: bootstrap-icons !important;
+    font-style: normal;
+    font-weight: normal !important;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    vertical-align: -0.125em;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    position: absolute;
+    right: -7px;
+}
+
+/* .Range input {
+    width: 96% !important;
+} */
+
+p span {
+    font-size: 9px;
+    font-weight: 600;
+    color: #713bdb;
+    display: block;
+    text-align: right;
+    line-height: 1;
+}
+
+/* .Type select{
+    width: 95% !important;
+} */
+
+.ListBox {
+    border: 1px solid rgb(174 140 239 / 67%);
+    padding: 10px;
+    border-radius: 7px;
+    margin-bottom: 10px;
+    box-shadow: 0px 16px 34px rgb(113 59 219 / 13%);
+    margin-top: 10px;
+}
+
+.ListBox .delete {
+    text-align: right;
+    color: #713BDB;
+    cursor: pointer;
+    min-height: 24px;
+}
+
+.massage-box {
+    box-shadow: unset !important;
+}
+
+.Dr-list {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.79);
+    border: 1px solid rgba(174, 140, 239, 0.54);
+    border-radius: 5px;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 110%;
+    color: #242424;
+    padding: 11px 21px;
+    margin: 0;
+    outline: none;
+}
+
+::file-selector-button {
+    display: none;
+}
+
+#Progress_Status {
+    width: 100%;
+    height: 5px;
+    background: #FBD478;
+    border-radius: 3px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+#myprogressBar {
+    height: 5px;
+    background: linear-gradient(180deg, #91F0A2 0%, rgba(101, 177, 103, 0.71) 100%);
+    border-radius: 3px;
+}
+
+.img i {
+    position: absolute;
+    right: -7px;
+    top: -9px;
+    font-size: 16px;
+    color: #c10202;
+    cursor: pointer;
+}
+
+.img {
+    height: 42px;
+    width: 50px;
+    margin: auto;
+    position: relative;
+    border: 1px solid rgba(174, 140, 239, 0.54);
+    border-radius: 3px;
+    padding: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: -12px;
+}
+
+.uploadimg {
+    width: 124px;
+    height: 55px;
+}
+
+input[type="file"] {
+    margin-bottom: 14px !important;
+    width: 98% !important;
+}
+
+.fixedImg {
+    overflow: hidden;
+    height: 37px;
+    width: 100%;
+}
+
+.addAddress {
+    background: none !important;
+    padding: 0 !important;
+    color: #713bdb !important;
+    font-size: 12px !important;
+    font-weight: 800 I !important;
+}
+
+.modal {
+    display: block;
+    position: fixed;
+    padding-top: 73px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.doctorDetails .CollapsePrescribed .m-d.expand-list>li {
+    margin-top: -12px;
+    list-style-type: none;
+    padding: 8px 15px 0px 15px;
+    position: relative;
+    background: rgb(247 243 255);
+    border: 1px solid rgb(113 59 219 / 59%);
+    box-shadow: 6px 6px 15px rgb(113 59 219 / 36%);
+    border-radius: 10px;
+    z-index: 10;
+}
+
+.doctorDetails .CollapsePrescribed .m-d.expand-list>li label h5 {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 1.3;
+    color: #3a3a3a;
+    margin: 0;
+}
+
+.doctorDetails .doctorCard {
+    margin: 3px 0px 0px 0px;
+    border: 1px solid rgb(113 59 219 / 39%);
+    border-radius: 5px;
+    padding: 5px 10px;
+}
+
+.doctorDetails .profileImg {
+    height: 100px;
+    width: 100px;
+    border-radius: 7%;
+    overflow: hidden;
+}
+
+.doctorDetails .profileImg img {
+    height: 100%;
+    width: 100%;
+}
+
+.doctorCard i {
+    color: #713bdb !important;
+}
+
+.doctorDetails .dropdown ul {
+    width: 100%;
+}
+
+.doctorDetails .dropdown a {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 1.3;
+    color: #3a3a3a !important;
+    margin: 0;
+    background: none;
+    border: none;
+    outline: none;
+    width: 100%;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.doctorDetails .dropdown a span {
+    font-size: 12px !important;
+    color: #EDB738;
+}
+
+.doctorDetails .dropdown li a:hover {
+    background: #e7dbc2;
+}
+
+.doctorDetails .doctorCard p {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 140.5%;
+    color: #484747;
+    margin: 0;
+    padding: 0 !important;
+}
+
+.doctorDetails .doctorCard p i {
+    color: #e7a814;
+    padding-right: 4px;
+}
+
+.doctorDetails .doctorCard h5 {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 1.3;
+    color: #3a3a3a !important;
+}
+
+.doctorDetails .Confirm {
+    background: #EDB738;
+    box-shadow: 0px 6px 6px -5px rgb(187 153 74 / 79%);
+    border: none;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 110%;
+    color: #FFFFFF;
+    letter-spacing: 0.5px;
+    padding: 8px 16px;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+.selectBox select {
+    height: calc(2.8rem + 0px) !important;
+}
+
+.selectBox label {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500 !important;
+    line-height: 110%;
+    color: #3F3F3F !important;
+    padding: 23px 14px 0px 14px;
+    width: 100%;
+    transition: 0.3s;
+    opacity: 1 !important;
+}
+
+.selectedFormValue label {
+    opacity: .65 !important;
+    transform: scale(.85) translateY(-0.5rem) translateX(0.15rem) !important;
+    padding: 1rem .75rem !important;
+}
+
+.selectedFormValue select {
+    padding: 16px 23px 0px 12px !important;
+}
+
+.form-select:focus {
+    border-color: #86b7fe;
+    outline: 0;
+    box-shadow: 0 0 0 0.25rem rgb(13 110 253 / 0%) !important;
+}
+
+.displayText {
+    width: 100%;
+    min-height: 163px;
+    background: rgb(252 251 255);
+    border: 1px solid rgba(174, 140, 239, 0.54);
+    border-radius: 5px;
+    position: relative;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 110%;
+    color: #242424;
+    padding: 4px 4px;
+    margin: 0;
+    outline: none;
+    overflow: auto;
+    height: 165px;
+    margin-bottom: 10px;
+}
+
+.displayText::-webkit-scrollbar {
+    width: 6px;
+}
+
+.displayText::-webkit-scrollbar-thumb {
+    background: #713bdb;
+    border-radius: 10px;
+}
+
+.displayText::-webkit-scrollbar-track {
+    background: #d1bff652;
+    border-radius: 10px;
+}
+
+.doctorDetails {
+    position: absolute;
+}
+
+.displayText .profileImg {
+    max-width: 60px;
+}
+
+.displayText .profileImg img {
+    width: 100%;
+    border-radius: 5px;
+}
+
+.displaydetails p {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 11px;
+    line-height: 140.5%;
+    color: #242424;
+    margin: 0;
+    padding: 0 !important;
+}
+
+.displaydetails span {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 10px;
+    line-height: 140.5%;
+    color: #713BDB;
+}
+
+.Delete {
+    position: absolute;
+    cursor: pointer;
+    color: #713BDB;
+    right: 6px;
+    top: 11px;
+}
+
+.tabcontents ::ng-deep .mat-datepicker-toggle {
+    position: absolute;
+    top: 2px;
+    right: 5px;
+}
+
+.tabcontents ::ng-deep .mat-datepicker-toggle {
+    background: rgba(255, 0, 0, 0);
+}
+
+.tabcontents ::ng-deep .mat-calendar-body-label {
+    color: #713BDB;
+    font-weight: 700;
+}
+
+.tabcontents ::ng-deep .mat-calendar-body-cell-content {
+    color: #713BDB;
+}
+
+.tabcontents ::ng-deep .mat-button-wrapper {
+    color: #713BDB;
+    font-weight: 700;
+    padding-left: 15px;
+}
+
+.tabcontents ::ng-deep .mat-datepicker-toggle-default-icon {
+    width: 18px;
+}
+
+.tabcontents ::ng-deep .mat-calendar-table-header {
+    color: #000;
+    font-weight: 700;
+}
+
+.tabcontents ::ng-deep .mat-datepicker-content .mat-calendar-next-button {
+    color: #713BDB;
+}
+
+.tabcontents ::ng-deep .mat-datepicker-content .mat-calendar-previous-button {
+    color: #713BDB;
+}
+
+.tabcontents ::ng-deep .mat-icon-button.mat-button-disabled.mat-button-disabled {
+    color: #703bdb81;
+}
+
+.tabcontents ::ng-deep .cdk-program-focused {
+    background: none !important;
+}
+
+.tabcontents ::ng-deep .mat-button-focus-overlay {
+    background: #FFFFFF;
+}
+
+.tabcontents ::ng-deep .mat-calendar-body-selected {
+    color: #fff !important;
+}
+
+.tabcontents ::ng-deep .mat-icon-button {
+    /* padding-right: 8px !important; */
+}
+
+.textarea {
+    width: 100%;
+    background: #F2ECFF;
+    border: 1px solid rgba(113, 59, 219, 0.18);
+    border-radius: 6px;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 110%;
+    color: #242424;
+    padding: 4px 12px;
+    margin: 0;
+    outline: none;
+    resize: none;
+}
+
+.textarea ::-webkit-scrollbar {
+    width: 6px !important;
+}
+
+.textarea ::-webkit-scrollbar-thumb {
+    background: #713bdb !important;
+    border-radius: 10px !important;
+}
+
+.textarea ::-webkit-scrollbar-track {
+    background: #d1bff652 !important;
+    border-radius: 10px !important;
+}
+
+.selectDate button {
+    background: none !important;
+    border: 1px solid rgba(72, 28, 161, 0.486) !important;
+    font-family: 'Poppins' !important;
+    font-style: normal !important;
+    font-weight: 600 !important;
+    font-size: 9px !important;
+    line-height: 110% !important;
+    color: rgb(72, 28, 161) !important;
+    padding: 2px 8px 0px 8px !important;
+    border-radius: 3px !important;
+    width: 71px !important;
+    margin: 2.8px 8px 0px 0px !important;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+}
+
+.holiday button {
+    background: #c3c3c3 !important;
+    color: #000 !important;
+    border-color: #747474 !important;
+}
+
+.selectDate label {
+    font-size: 11px !important;
+}
+
+.selectDate .slected {
+    background: #713BDB !important;
+    color: #fff !important;
+}
+
+.holiday {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+select {
+    outline: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+/* to change arrow fill color, add %23 infront of hex color */
+select {
+    background: url("../../../../assets/images/selectArrow.png") no-repeat;
+    background-color: #F2ECFF;
+    font-family: 'Poppins';
+}
+
+select {
+    background-size: 10px;
+    background-position: calc(100% - 8px) 17px;
+    background-repeat: no-repeat;
+}
+
+::-webkit-calendar-picker-indicator {
+    margin-top: -17px;
+}
+
+.tabcontents .tabpane h2 {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 15px;
+    color: #713bdb;
+}
+
+td {
+    font-size: 10px;
+    padding: 0px 7px;
+    text-align: center;
+    font-weight: 500;
+}
+
+td .amount {
+    width: 45px;
+}
+
+td i {
+    padding-right: 8px;
+}
+
+th {
+    text-align: center;
+    padding: 4px 7px;
+    font-size: 12px;
+}
+
+::ng-deep .mat-option-text p {
+    font-size: 12px !important;
+    margin: 0;
+    line-height: 1;
+}
+
+::ng-deep .mat-option-text span {
+    font-size: 10px !important;
+    color: #713bdb !important;
+    line-height: 1;
+    margin: 0;
+}
+
+::ng-deep .mat-option {
+    padding: 13px !important;
+}
+
+::ng-deep .mat-option-text {
+    padding: 10px 0px;
+}
+
+#GSTSetup i {
+    font-size: 20px;
+    color: #713bdb;
+    height: 77%;
+    cursor: pointer;
+    line-height: 0;
+}
+
+.ItemList {
+    position: absolute;
+    border-style: solid;
+    width: 265px;
+    border-width: 1px;
+    border-color: #dacbf7;
+    background-color: white;
+    border-radius: 4px;
+    padding: 3px 0px 3px 0px;
+    height: 250px;
+    overflow: auto;
+}
+
+.medicineList {
+    color: #e67700;
+}
+
+.householdList {
+    color: #5c940d;
+}
+
+.medicineGSTinput {
+    background: #fff4ec !important;
+    border: 1px solid rgba(219, 128, 59, 0.18) !important;
+    color: #e67700 !important;
+}
+
+.householdGSTinput {
+    background: #f3ffec !important;
+    border: 1px solid rgba(134, 219, 59, 0.18) !important;
+    color: #5c940d !important;
+}
+
+.disable {
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+#DISCetup ::-webkit-calendar-picker-indicator {
+    margin: -2px -10px 16px -4px !important;
+    font-size: 12px;
+}
+
+#DISCetup input[type="date"] {
+    font-size: 12px !important;
+}
+
+.DiscountCode {
+    display: flex;
+    flex-direction: column;
+}
+
+.DiscountCode p {
+    padding: 0 !important;
+    margin: 0 !important;
+    font-weight: 700 !important;
+    color: #713BDB !important;
+}
+
+#DISCetup h6 {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 110%;
+    color: #242424;
+    margin: 3px 0px;
+}
+
+.CouponBox {
+    overflow: hidden;
+    border: 1px solid #713bdb8f;
+    border-radius: 4px;
+}
+
+.LabelList {
+    position: sticky;
+    top: 0px;
+    background: #e0d3ff;
+    border-bottom: 1px solid #af91ebb5;
+}
+
+.CouponList {
+    max-height: 120px;
+    overflow: auto;
+    position: relative;
+}
+
+.CouponList td {
+    font-size: 12px !important;
+}
+
+.CouponList::-webkit-scrollbar {
+    width: 7px;
+    border-radius: 10px;
+}
+
+.CouponList::-webkit-scrollbar-track {
+    background: #a27aff;
+}
+
+.CouponList::-webkit-scrollbar-thumb {
+    background: #6111ac;
+}
+
+#LaboratoryTesttabpane p {
+    padding-left: 14px;
+    padding-bottom: 15px;
+}
+
+.col-md-3 .box {
+    height: 80px;
+    display: flex;
+    align-items: center;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 110%;
+    color: #825cce;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.ChangeRole {
+    color: #713BDB;
+    cursor: pointer;
+    padding: 0px 0px 12px 0px;
+}
+
+
+.tabpane ::ng-deep .ngx-slider .ngx-slider-bar {
+    left: 0;
+    z-index: 1;
+    height: 10px !important;
+    width: 100%;
+    background: rgba(59, 104, 219, 0.21) !important;
+    box-shadow: 0px 4px 4px rgb(59 104 219 / 11%);
+    border-radius: 8px !important;
+}
+
+.tabpane ::ng-deep .ngx-slider .ngx-slider-pointer {
+    z-index: 3 !important;
+    border-radius: 25px !important;
+    top: -4px !important;
+    cursor: pointer !important;
+    width: 18px !important;
+    height: 18px !important;
+    background: #FFFFFF !important;
+    border: 1px solid #3B68DB !important;
+    box-shadow: 0px 4px 4px rgb(59 104 219 / 20%) !important;
+}
+
+.tabpane ::ng-deep .ngx-slider .ngx-slider-pointer:after {
+    display: none;
+}
+
+.tabpane ::ng-deep .ngx-slider .ngx-slider-selection {
+    z-index: 2;
+    background: #3B68DB !important;
+    border-radius: 8px !important;
+}
+
+.tabpane ::ng-deep .ngx-slider .ngx-slider-bubble {
+    border: none !important;
+    margin: 0px 0 3px 0 !important;
+    outline: none !important;
+    font-family: 'Inter' !important;
+    font-style: normal !important;
+    font-weight: 600 !important;
+    font-size: 12px !important;
+    line-height: 15px !important;
+    color: #3B68DB !important;
+}
+
+.tabpane ::ng-deep .ngx-slider {
+    margin: 31px 0 8px !important;
+}
+
+.tabpane ::ng-deep .ngx-slider .ngx-slider-bar-wrapper {
+    margin: 0;
+    padding-top: 0px;
+}
+
+.selectedFormValue label {
+    padding: 5px 14px 1px 10px !important;
+    font-size: 11px;
+}
+
+.selectBox label {
+    margin: 10px 0px 0px 0px !important;
+    transition: 0.3s;
+}
+
+
+#DISCetup input[type="Date"] {
+    width: 100% !important;
+    height: 45px !important;
+    padding: 20px 8px 9px 11px !important;
+    font-family: 'Inter' !important;
+    font-style: normal !important;
+    font-weight: 500 !important;
+    font-size: 11px !important;
+    line-height: 15px !important;
+    color: #713BDB !important;
+    outline: none !important;
+}
+
+::-webkit-calendar-picker-indicator {
+    padding: 9px;
+}
+
+td .bi-pencil-square {
+    color: #713BDB;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+td .bi-trash {
+    color: #790606;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+#myModals {
+    display: flex;
+    position: fixed;
+    align-items: center;
+    padding-top: 0px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+#myModals button {
+    width: 77px;
+    height: 30px;
+    text-align: center;
+    background: #713BDB;
+    border: none;
+    box-shadow: 0px 12px 53px -24px rgba(134, 87, 226, 0.63);
+    border-radius: 3px;
+    font-weight: 500;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-size: 12px;
+    line-height: 110%;
+    color: #fff;
+    margin: 8px 7px;
+}

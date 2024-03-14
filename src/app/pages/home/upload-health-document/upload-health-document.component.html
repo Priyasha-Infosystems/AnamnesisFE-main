@@ -1,0 +1,74 @@
+<div id="Upload" class="tabcontent">
+    <router-outlet>
+        <ngx-spinner bdColor="rgba(51,51,51,0.8)" size="medium" color="#fff" type="ball-circus" [fullScreen]="true">
+        </ngx-spinner>
+    </router-outlet>
+    <form [formGroup]="docUploadParam" role="form">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="List">
+                    <h4>Choose Prescription File <span>from your device</span></h4>
+                    <div class="srl">
+                        <div>
+                            <div *ngFor="let file of myFiles; let i = index" [attr.data-index]="i">
+                                <div class="Dr-list ">
+                                    <img src="../../../assets/images/dr.png">
+                                    <h6>{{file.name}}</h6>
+                                    <i class="bi-x" (click)="removeItem(i,file)"></i>
+                                    <div *ngIf="!file.error" id="Progress_Status">
+                                        <div *ngIf="file.progress" id="text">
+                                            {{ file.progress }} %
+                                        </div>
+                                        <div [style.width]="file.progress + '%'" id="myprogressBar"></div>
+                                    </div>
+                                </div>
+                                <div  class="massage">
+                                    <span *ngIf="file.error">Couldn't upload the file</span>
+                                </div>
+                            </div>
+                            <input id="file" type="file" multiple
+                                class="form-control Dr-list massage-box inputDefaultColor"
+                                (change)="onPfFileChange($event)">
+                            <div class="massage">
+                                <span *ngIf="fileError">{{fileError}}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="Test-Reports">
+                    <h4>Choose Lab Report File <span>from your device</span></h4>
+                    <div class="scroll-Test">
+                        <div>
+                            <div *ngFor="let file of myLabFiles; let i = index" [attr.data-index]="i">
+                                <div class="Dr-list ">
+                                    <img src="../../../assets/images/dr-prpl.png">
+                                    <h6>{{file.name}}</h6>
+                                    <i class="bi-x" (click)="removeLabItem(i,file)"></i>
+                                    <div *ngIf="!file.error" id="Progress_Status">
+                                        <div *ngIf="file.progress" id="text">
+                                            {{ file.progress }} %
+                                        </div>
+                                        <div [style.width]="file.progress + '%'" id="myprogressBar"></div>
+                                    </div>
+                                </div>
+                                <div class="massage">
+                                    <span *ngIf="file.error">Couldn't upload the file</span>
+                                </div>
+                            </div>
+                            <input id="file" type="file" multiple style="background: #f3f0ff; color: #364fc7;"
+                                class="form-control Dr-list massage-box inputDefaultColor"
+                                (change)="onLrfFileChange($event)">
+                            <div class="massage">
+                                <span *ngIf="labFileError">{{labFileError}}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button class="uplod-btn mt-4" (click)="handleUpload()">Upload
+            Document</button>
+    </form>
+</div>

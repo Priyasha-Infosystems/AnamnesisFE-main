@@ -1,0 +1,231 @@
+.all {
+    width: 100%;
+    background: #ffff;
+    border-radius: 6px;
+    padding: 18px 18px 18px 18px;
+    margin-top: -12px;
+    margin-bottom: 10px;
+}
+
+.display {
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    border: 1px solid #845ef7;
+    border-radius: 6px;
+    display: flex;
+    flex-direction: column;
+}
+
+.filter {
+    width: 100%;
+    height: 258px;
+    background: #fff;
+    border: 1px solid #845ef7;
+    border-radius: 6px;
+    display: flex;
+    flex-direction: column;
+    padding: 12px 12px;
+}
+
+th {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 1.4;
+    color: #7950f2;
+    margin-bottom: 5px;
+    border: 1px solid #d0bfff;
+}
+
+td,
+p {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 1.4;
+    color: #5f3dc4;
+    margin: 0;
+}
+
+h6 {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 13px;
+    line-height: 1.4;
+    color: #5f3dc4;
+    margin: 0;
+}
+
+input[type="Date"] {
+    width: 180px;
+    height: 44px;
+    padding: 17px 8px 9px 11px !important;
+    background: rgba(255, 255, 255, 0.79);
+    border: 1px solid rgba(113, 59, 219, 0.35);
+    border-radius: 3px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 11px;
+    line-height: 15px;
+    color: #713BDB;
+    outline: none;
+}
+
+label {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 13px;
+    line-height: 1.4;
+    color: #5f3dc4;
+    margin: 0;
+}
+
+.Refresh {
+    width: 74px;
+    margin-top: 15px;
+    padding: 10px 13px;
+    background: #713BDB;
+    border-radius: 6px;
+    border: none;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 13px;
+    line-height: 110%;
+    color: #FFFFFF;
+}
+
+.form-select:focus {
+    box-shadow: 0px -1px 34px -4px rgba(113, 59, 219, 0.28);
+
+}
+
+select {
+    width: 180px;
+    padding: 17px 8px 9px 11px;
+    border: 1px solid rgba(113, 59, 219, 0.35);
+    border-radius: 3px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 15px;
+    color: #713BDB;
+    outline: none;
+}
+
+select {
+    outline: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+/* to change arrow fill color, add %23 infront of hex color */
+select {
+    background: url("../../../../assets/images/selectArrow.png") no-repeat;
+    background-color: rgba(255, 255, 255, 0.79);
+    font-family: 'Poppins';
+}
+
+select {
+    background-size: 10px;
+    background-position: calc(100% - 10px) 17px;
+    background-repeat: no-repeat;
+}
+
+.selectBox label {
+    padding: 19px 14px 1px 14px;
+    transition: 0.3s;
+}
+
+.selectedFormValue label {
+    padding: 5px 14px 1px 11px !important;
+    font-size: 11px;
+}
+
+.request {
+    background: #f3f0ff;
+    border: 1px solid #845ef7;
+    border-radius: 3px;
+    margin-top: 1px !important;
+    margin-bottom: 9px !important;
+    padding: 10px 0px;
+    cursor: pointer;
+}
+
+.request p {
+    color: #5f3dc4ed;
+}
+
+.header {
+    background: #d0bfff;
+    padding: 6px 0px;
+    border-top-right-radius: 6px;
+    border-top-left-radius: 6px;
+    border-bottom: 1px solid #845ef7;
+}
+
+.header p {
+    color: #000 !important;
+    font-weight: 600 !important;
+    font-size: 12px !important;
+}
+
+.errorDiv {
+    text-align: left !important;
+    height: 12px;
+    font-size: 12px;
+    letter-spacing: 0.5px;
+    margin-top: 2px;
+    margin-left: 2px;
+    color: red;
+}
+
+.srcl {
+    height: 430px;
+    overflow: auto;
+    padding: 9px 12px 12px 12px;
+}
+
+
+.srcl::-webkit-scrollbar {
+    width: 6px;
+}
+
+.srcl::-webkit-scrollbar-thumb {
+    background: #713bdb;
+    border-radius: 10px;
+}
+
+.srcl::-webkit-scrollbar-track {
+    background: #d1bff652;
+    border-radius: 10px;
+}
+
+.modal {
+    display: block !important;
+    position: fixed;
+    padding-top: 73px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.noRecord {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: red;
+}

@@ -1,0 +1,162 @@
+<div class="modal-dialog">
+    <div class="modal-content">
+        <div class="close" (click)="closePopUp(false)">
+            <i class="bi-x-circle-fill"></i>
+        </div>
+        <div class="modal-body" *ngIf="!somthingWentWrong">
+            <h2>Personal Information Approval Request {{WorkRequestDetails.isDisabled?' - '+WorkRequestDetails.caseCode:''}}</h2>
+            <div class="PersonalInformationContent">
+                <div class="Details">
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <div class="drName print">
+                                <label for="FullName">Full Name</label>
+                                <p>{{personalInformation.fullName}}</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <div class="print">
+                                <label for="displayName">Display Name</label>
+                                <p>{{personalInformation.displayName}} </p>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <div class="print">
+                                <label for="Gendar">Gendar</label>
+                                <p>{{personalInformation.gender=== 'F'?'Female':personalInformation.gender ===
+                                    'M'?'Male':'Other'}} </p>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <div class="print">
+                                <label for="DateofBirth">Date of Birth</label>
+                                <p>{{personalInformation.dateOfBirth |date: 'd-MMM-y'}} </p>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <div class="print">
+                                <label for="maritalstatus">marital status</label>
+                                <p>{{personalInformation.maritialStatus ===
+                                    'S'?'Single':personalInformation.maritialStatus === 'M'?'Married':'Other'}} </p>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <div class="print">
+                                <label for="Email_Id">Email Id</label>
+                                <p>{{personalInformation.emailID}} </p>
+                            </div>
+                        </div>
+                        <div class="col-md-12 mb-3">
+                            <div class="print Address">
+                                <label for="HomeAddress">Home Address</label>
+                                <p [innerHTML]="personalInformation.addressLine |addressLine" *ngIf="personalInformation.addressLine"></p>
+                                <p>{{personalInformation.landmark}}</p>
+                                <p>{{personalInformation.city}}, {{personalInformation.stateName}} - {{personalInformation.pincode}}</p>
+                            </div>
+                        </div>
+                        <div class="col-md-12 mb-3" *ngIf="caseLogdetails && WorkRequestDetails.isDisabled">
+                            <div class="CaseLog">
+                                <h2>Case Log</h2>
+                                <div class="row">
+                                    <div class="col-md-12 my-2" *ngFor="let wrCaseLogEntry of caseLogdetails.caseLogInformationList">
+                                        <p>{{wrCaseLogEntry.caseLogUserName}} add at {{dateFormat(wrCaseLogEntry.caseLogTimestamp)|date:'d-MMM-y @
+                                            h:m a'}}</p>
+                                          <p>{{wrCaseLogEntry.caseLogText}}</p>
+                                    </div>
+                                    <div *ngIf="!caseLogdetails.caseLogInformationList.length">
+                                        <p>No caselog is there</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="document">
+                    <div class="row">
+                        <div class="col-md-12 mb-3">
+                            <div class="row">
+                                <div class="col-md-4 mt-3"
+                                    *ngFor="let wrAttachmentDetails of personalInformation.fileDetailsList;let i = index">
+                                    <div class="d-flex flex-column">
+                                        <div class="documentBox">
+                                            <div class="d-flex align-items-center">
+                                                <div class="d-flex flex-column align-items-center">
+                                                    <i class="bi-file-earmark-pdf-fill"
+                                                        *ngIf="wrAttachmentDetails.contentType === 'application/pdf'"></i>
+                                                    <i class="bi bi-images"
+                                                        *ngIf="wrAttachmentDetails.contentType !== 'application/pdf'"></i>
+                                                    <i class="bi-eye-fill" (click)="openFile(wrAttachmentDetails)"></i>
+                                                </div>
+                                                <div class="d-flex flex-column px-2">
+                                                    <label
+                                                        for="AdhaarNo.">{{wrAttachmentDetails.fileType==='ADH'?'Adhaar
+                                                        No.':wrAttachmentDetails.fileType==='VOT'?'Voter
+                                                        No.':wrAttachmentDetails.fileType==='PAN'?'PAN
+                                                        No.':wrAttachmentDetails.fileType==='MRC'?'Registration
+                                                        Certificate
+                                                        No.':wrAttachmentDetails.fileType==='PDC'?'Physician Degree
+                                                        Certificate
+                                                        No.':''}}</label>
+                                                    <p>{{wrAttachmentDetails.documentNumber}}</p>
+                                                </div>
+                                            </div>
+                                            <div class="d-flex flex-column">
+                                                <button class="Approve"
+                                                    *ngIf="wrAttachmentDetails.documentStatus === 2  && !WorkRequestDetails.isDisabled"
+                                                    (click)="attachmenStatusChange(wrAttachmentDetails,'A',i,personalInformation.userID)">Approve</button>
+                                                <button class="Decline"
+                                                    *ngIf="wrAttachmentDetails.documentStatus === 2  && !WorkRequestDetails.isDisabled"
+                                                    (click)="attachmenStatusChange(wrAttachmentDetails,'R',i,personalInformation.userID)">Decline</button>
+                                                <i class="bi-x-circle-fill"
+                                                    *ngIf="wrAttachmentDetails.documentStatus === 3"></i>
+                                                <i class="bi-check-circle-fill"
+                                                    *ngIf="wrAttachmentDetails.documentStatus === 0"></i>
+                                            </div>
+                                        </div>
+                                        <div class="error">
+                                            <small>{{wrAttachmentDetails.errorMsg}}</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12" *ngIf="!WorkRequestDetails.isDisabled">
+                            <div class="print">
+                                <label for="OfficeAddress">Rejection Reason</label>
+                                <textarea name="RejectionReason" id="" cols="30" rows="10"
+                                    [(ngModel)]="rejectionReason"></textarea>
+                            </div>
+                            <div class="error">
+                                <small>{{rejectionReasonError}}</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="documentUpload">
+                    <div class="row">
+                        <div class="col-md-5 text-start mt-3" *ngIf="!WorkRequestDetails.isDisabled">
+                            <button class="Reviewed" (click)="authorisedSignatoryApproval('A')">Reviewed &
+                                Approved</button>
+                        </div>
+                        <div class="col-md-4 text-start mt-3" *ngIf="!WorkRequestDetails.isDisabled">
+                            <button class="Reject" (click)="authorisedSignatoryApproval('R')">Reviewed & Reject</button>
+                        </div>
+                        <div class="col-md-3 text-start mt-3" *ngIf="!WorkRequestDetails.isDisabled">
+                            <button class="Cancel" (click)="closePopUp(false)">Cancel</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="somthingWentWrong" *ngIf="somthingWentWrong">
+            <p style="color: red;">Something went wrong, Please try after sometime</p>
+        </div>
+    </div>
+</div>
+<div id="Manage1" class="position-absolute fileModal container" *ngIf="showFile">
+    <div id="myModal1" class="modal1" tabindex="-1" role="dialog">
+        <div class="container">
+            <app-view-file [wrAttachmentDetails]="wrAttachmentDetails" (close)="closeFile()"></app-view-file>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,155 @@
+<div class="tabcontent">
+    <div class="row">
+        <div class="col-md-4">
+            <form [formGroup]="refreshForm">
+                <div class="box">
+                    <div class="form-floating selectBox selectedFormValue">
+                        <input type="date" id="floatingInput" name="StartDate" placeholder="StartDate"
+                        formControlName="startDate" (focusout)="checkValidDate('startDate')" max="{{currentDate| date:'yyyy-MM-dd'}}">
+                        <label for="">Start Date</label>
+                        <div class="validation-div errorDiv">
+                            <app-validation-message
+                                [control]="refreshForm.controls['startDate']"
+                                [messages]="errMsg.startDate">
+                            </app-validation-message>
+                        </div>
+                    </div>
+                    <div class="form-floating selectBox selectedFormValue">
+                        <input type="date" id="floatingInput" name="EndDate" placeholder="EndDate"
+                        formControlName="endDate" (focusout)="checkValidDate('endDate')" max="{{currentDate| date:'yyyy-MM-dd'}}">
+                        <label for="">End Date</label>
+                        <div class="validation-div errorDiv">
+                            <app-validation-message
+                                [control]="refreshForm.controls['endDate']"
+                                [messages]="errMsg.endDate">
+                            </app-validation-message>
+                        </div>
+                    </div>
+                    <div class="w-100 text-end">
+                        <button class="refresh" (click)="getReportList(refreshForm.value,refreshForm.valid)">Refresh</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="col-md-4 text-center middle">
+            <h2>Drugs Register Sheet</h2>
+            <button class="download">Download</button>
+        </div>
+        <div class="col-md-4">
+            <div class="box"></div>
+        </div>
+    </div>
+    <div class="row pt-4">
+        <div class="col-md-1 text-center" ><button class="button" *ngIf="buttonShow(true)" (click)="changeDate(true)">Previous</button></div>
+        <div class="col-md-4 text-center"><Label><h6>Date :</h6></Label></div>
+        <div class="col-md-4 text-center">
+            <h6>{{formatDate(filterDate)|date:'dd-MMM-yyyy'}}</h6>
+        </div>
+        <div class="col-md-1 text-center"><button  class="button" *ngIf="buttonShow(false)" (click)="changeDate(false)">Next</button></div>
+        <div class="col-md-12">
+            <div class="box p-0 border-0">
+                <table class="table table-borderless m-0">
+                    <thead>
+                        <tr>
+                            <th scope="col">Sl</th>
+                            <th scope="col">Invoice No<br>Customer Name</th>
+                            <th scope="col">Medicine Name<br>Contact No</th>
+                            <th scope="col">Quantity<br>Physician Name</th>
+                            <th scope="col">Batch No<br>Contact No</th>
+                            <th scope="col">Expiry Date<br>Registrion No</th>
+                            <th scope="col">Signature</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let drugRegisterReport of drugRegisterReportList; let drugRegisterReportIndex = index">
+                            <td>
+                                <div class="d-flex w-100 flex-column">
+                                    <div class="amount">
+                                        <h6>{{drugRegisterReportIndex+1}}</h6>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="d-flex w-100 flex-column colorOne">
+                                    <div class="amount">
+                                        <h6>{{drugRegisterReport.invoiceID}}</h6>
+                                    </div>
+                                    <p>{{drugRegisterReport.customerName}}</p>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="d-flex w-100 flex-column colorOne">
+                                    <div class="amount">
+                                        <h6>{{drugRegisterReport.medicineShortName}}</h6>
+                                    </div>
+                                    <p>{{drugRegisterReport.customerContactNo}}</p>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="d-flex w-100 flex-column colorTwo">
+                                    <div class="amount">
+                                        <h6>{{drugRegisterReport.medicineQuantity}}</h6>
+                                    </div>
+                                    <p>{{drugRegisterReport.physicianName}}</p>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="d-flex w-100 flex-column colorTwo">
+                                    <div class="amount">
+                                        <h6>{{drugRegisterReport.medicineBatchNo}}</h6>
+                                    </div>
+                                    <p>{{drugRegisterReport.physicianContactNo}}</p>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="d-flex w-100 flex-column colorTwo">
+                                    <div class="amount">
+                                        <h6>{{drugRegisterReport.medicineExpiryDate}}</h6>
+                                    </div>
+                                    <p>{{drugRegisterReport.physicianRegistrationNo}}</p>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="d-flex w-100 flex-column">
+                                    <div class="amount">Signature</div>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="nodata" *ngIf="drugRegisterReportList && drugRegisterReportList.length">
+                    <p>No report found !!!</p>
+                </div>
+            </div>
+            <div class="col-md-12 text-center mt-4">
+                <div class="PrevButton d-flex justify-content-center">
+                    <button class="button" (click)="pageChange(1)" [ngClass]="{active:1 === currentPage }"
+                                [disabled]="paginationList.length === 1"><i
+                                    class="bi-chevron-double-left"></i>First</button>
+                            <button class="button" (click)="pageChange(currentPage-1)" [disabled]="currentPage===1"
+                                [ngClass]="{buttonWithOutHover:currentPage===1}">Prev</button>
+                            <div *ngFor="let page of paginationList; let pageIndex = index;">
+                                <div class="mt-1"
+                                    *ngIf="!isPageIndexVisible(currentPage, pageIndex) && pageIndex < currentPage && pageIndex < 3">
+                                    .
+                                </div>
+                                <button *ngIf="isPageIndexVisible(currentPage, pageIndex)" class="button"
+                                    [ngClass]="{active:page === currentPage }"
+                                    (click)="pageChange(page)">{{page}}</button>
+                                <div class="mt-1"
+                                    *ngIf="!isPageIndexVisible(currentPage, pageIndex) && pageIndex > currentPage && pageLastIndex > pageIndex">
+                                    .
+                                </div>
+                            </div>
+                            <button class="button" (click)="pageChange(currentPage+1)"
+                                [disabled]="currentPage===paginationList.length"
+                                [ngClass]="{buttonWithOutHover:currentPage===paginationList.length}">Next</button>
+                            <button class="button" (click)="pageChange(paginationList.length)"
+                                [ngClass]="{active:paginationList.length === currentPage }"
+                                [disabled]="paginationList.length === 1">Last<i
+                                    class="bi-chevron-double-right"></i></button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

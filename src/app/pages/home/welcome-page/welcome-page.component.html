@@ -1,0 +1,206 @@
+<div class="WelcomePage">
+    <div class="row">
+        <div class="col-md-12 text-center d-flex align-items-center">
+            <div class="d-flex align-items-center justify-content-center" style="margin: 0px 10px 10px -10px;">
+                <div class="proImg">
+                    <img *ngIf="!isProfilePicFetched" [src]="profilePicUrl">
+                    <img *ngIf="isProfilePicFetched"
+                        [src]="profilePicDetails.fileName | getFile:profilePicDetails.fileType">
+                    alt="">
+                </div>
+                <h2>{{displayName}}</h2>
+            </div>
+            <div class="d-flex align-items-center justify-content-center"
+                style="margin-left: 144px; margin-top: -33px;">
+                <h6>Welcome To</h6>
+                <a class="logotitle"><small>A</small>namnesis <span>My Health Book</span></a>
+            </div>
+        </div>
+        <div class="col-md-12 mt-1">
+            <p class="content">Thanks you for....... Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione
+                perferendis, culpa
+                possimus voluptates corporis voluptatum.</p>
+        </div>
+        <div class="col-md-12">
+            <div class="mainBox">
+                <div class="row shortMenu Landing" id="content">
+                    <div class="col-md-12">
+                        <div class="row">
+                            <div class="col-md-12 mt-2 mb-4">
+                                <div id="carouselExampleControls" class="carousel carousel-dark slide"
+                                    data-bs-ride="carousel">
+                                    <div class="carousel-inner">
+                                        <div class="carousel-item active">
+                                            <div class="card-wrapper container-sm d-flex  justify-content-around">
+                                                <div class="card-body">
+                                                    <h5 class="card-title">Medicine highlights : </h5>
+                                                    <p>Total #s medicines available</p>
+                                                    <p>Type of FMCG products</p>
+                                                </div>
+                                                <div class="card-body">
+                                                    <h5 class="card-title">Investigations</h5>
+                                                    <p>Locality based new lab highlights</p>
+                                                    <p>New addition of services by any Lab</p>
+                                                </div>
+                                                <div class="card-body">
+                                                    <h5 class="card-title">Announcements</h5>
+                                                    <p>New discount against medicine/Labs announced</p>
+                                                    <p>Wallet based new features</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="carousel-item">
+                                            <div class="card-wrapper container-sm d-flex  justify-content-around">
+                                                <div class="card-body">
+                                                    <h5 class="card-title">Consultants</h5>
+                                                    <p>Locality based best Dr details ( user feedback)</p>
+                                                    <p>Details of new clinic opened by locality doctors</p>
+                                                </div>
+                                                <div class="card-body">
+                                                    <h5 class="card-title">Senescence care</h5>
+                                                    <p># new Sr. citizen availed services.</p>
+                                                    <p>Sharing feedback one liner “” </p>
+                                                </div>
+                                                <div class="card-body">
+                                                    <h5 class="card-title">Wallet</h5>
+                                                    <p># Default amount</p>
+                                                    <p>Deals on Wallet</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <button class="carousel-control-prev" type="button"
+                                        data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                                        <i class="bi-caret-left-fill" aria-hidden="true"></i>
+                                        <span class="visually-hidden">Previous</span>
+                                    </button>
+                                    <button class="carousel-control-next" type="button"
+                                        data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                                        <i class="bi-caret-right-fill" aria-hidden="true"></i>
+                                        <span class="visually-hidden">Next</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <div class="mainPage">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <h3>Keeping updated</h3>
+                                            <h5> Health records is of paramount</h5>
+                                            <p>importance for tracking and maintiaing
+                                                health</p>
+                                            <div class="p-1 bg-light shadow-sm searchBox">
+                                                <div class="input-group">
+                                                    <input type="search" placeholder="searching for Medicine"
+                                                        aria-describedby="button-addon1"
+                                                        class="form-control border-0 bg-light">
+                                                    <div class="input-group-append d-flex">
+                                                        <button id="button-addon1" type="submit"
+                                                            class="btn btn-link text-primary">
+                                                            <i class="fa fa-search"></i>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 d-flex align-items-center justify-content-center">
+                                            <div class="rightContentBox">
+                                                <p>Anamnesis is your partner to help you to achieve the same. Start
+                                                    building your health records by following the process below..</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <div class="mainPage secound">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <h3>In Anamnesis</h3>
+                                            <h5>You can Search and order </h5>
+                                            <p>medicine at your leasure. We currently offer following @ your door steps
+                                                : </p>
+                                            <span><b>1. 2 lacs +</b> Medicinal products </span>
+                                            <span><b>2. 1.4 lacs+</b> Household products..</span>
+                                        </div>
+                                        <div class="col-md-6 d-flex align-items-center justify-content-center">
+                                            <div class="rightContentBox">
+                                                <p>Why wait.. Please follow the process below to order medicine,
+                                                    household products and enjoy the benefits..</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <div class="mainPage third">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <h3>You have following</h3>
+                                            <h5>Qs in your mind, then you are landed in a right place :</h5>
+                                            <ol>
+                                                <li>
+                                                    <p>Couldn't find a trusted lab to conduct test</p>
+                                                </li>
+                                                <li>
+                                                    <p>How to find a lab near my home..</p>
+                                                </li>
+                                                <li>
+                                                    <p>Lab charges are quiet exhorbitant..</p>
+                                                </li>
+                                                <li>
+                                                    <p>Labs are not providing all tests under one roof.</p>
+                                                </li>
+                                            </ol>
+                                        </div>
+                                        <div class="col-md-6 d-flex align-items-center justify-content-center">
+                                            <div class="rightContentBox">
+                                                <p>Anamnesis, have partenered with serveral renown labs of the region
+                                                    and
+                                                    providing consolidated lab test services under one roof through
+                                                    partners.
+                                                    so STOP worroying, start placing your lab test request using
+                                                    following...</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <div class="mainPage third">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <h3>In Anamnesis</h3>
+                                            <h5>there are many updates, announcements happening </h5>
+                                            <p>related to the world of healthcare services, News, Digital records.</p>
+                                            <p>To keep yourself updated, follow the links below :</p>
+                                        </div>
+                                        <div class="col-md-6 d-flex align-items-center justify-content-center">
+                                            <div class="rightContentBox">
+                                                <ol>
+                                                    <li>
+                                                        <p>Healthcare Blogs</p>
+                                                    </li>
+                                                    <li>
+                                                        <p>News of healthcare trends</p>
+                                                    </li>
+                                                    <li>
+                                                        <p>Details of our lab partners</p>
+                                                    </li>
+                                                    <li>
+                                                        <p>News letters</p>
+                                                    </li>
+                                                </ol>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> 
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

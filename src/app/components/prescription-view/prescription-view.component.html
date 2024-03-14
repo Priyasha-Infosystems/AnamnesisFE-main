@@ -1,0 +1,389 @@
+<div class="container">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="close" (click)="prescriptionClose()"><i class="bi-x-circle-fill"></i></div>
+                <div class="PrescriptionDisplay" *ngIf="!somthingWentWrong">
+                    <div *ngIf="prescriptionDetails">
+                        <div class="row w-100 m-auto">
+                            <div class="col-md-4 p-3">
+                                <div class="leftDetails">
+                                    <h3>{{prescriptionDetails.physicianName}}</h3>
+                                    <p>{{prescriptionDetails.physicianSpecialization}}</p>
+                                    <p>{{prescriptionDetails.physicianQualification}}</p>
+                                    <h5>{{prescriptionDetails.physicianEmailID}}</h5>
+                                    <h5 *ngIf="prescriptionDetails.physicianContactNo">+91
+                                        {{prescriptionDetails.physicianContactNo}}</h5>
+                                </div>
+                            </div>
+                            <div class="col-md-4 p-3">
+                                <div class="middleDetails text-center">
+                                    <div class="Profileimg mb-2">
+                                        <img
+                                            [src]="prescriptionDetails.profilePictureName|getFile:prescriptionDetails.profilePictureType">
+                                    </div>
+                                    <h2>{{prescriptionDetails.patientName}}</h2>
+                                    <p>{{prescriptionDetails.patientprofileGender==='M'?'Male':prescriptionDetails.patientprofileGender==='F'?'Female':'Other'}},
+                                        {{prescriptionDetails.patientAge}} Years</p>
+                                </div>
+                            </div>
+                            <div class="col-md-4 p-3">
+                                <div class="prescriptionDate">
+                                    <p>{{prescriptionDetails.visitDate|date:'d-MMM-yyyy'}}</p>
+                                </div>
+                                <div class="RightDetails">
+                                    <h3>{{prescriptionDetails.healthClinicName}}</h3>
+                                    <p [innerHTML]="prescriptionDetails.healthclinicAddress |addressLine"
+                                        *ngIf="prescriptionDetails.healthclinicAddress"></p>
+                                    <p>{{prescriptionDetails.healthClinicLandmark}}</p>
+                                    <p>{{prescriptionDetails.healthClinicCity}},
+                                        {{prescriptionDetails.healthClinicState}} -
+                                        {{prescriptionDetails.healthclinicPincode}}</p>
+                                    <h5>{{prescriptionDetails.healthclinicemailID}}</h5>
+                                    <h5><i class="bi-telephone-fill"></i> +91
+                                        {{prescriptionDetails.healthcliniccontactNo}}</h5>
+                                    <span
+                                        *ngIf="prescriptionDetails.healthclinicOpenTime">{{prescriptionDetails.healthclinicOpenTime}}
+                                        -
+                                        {{prescriptionDetails.healthclinicCloseTime}} (
+                                        {{prescriptionDetails.healthclinicOpenDays}}
+                                        )
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12 m-auto border-top mt-2">
+                            <div class="col-md-12 m-auto p-3">
+                                <div class="row justify-content-evenly w-100 bodyDetails">
+                                    <div class="col-md-2">
+                                        <div class="detailsBox">
+                                            <table>
+                                                <tr>
+                                                    <td class="text-end"><label for="Height">Height: </label>
+                                                    </td>
+                                                    <td *ngIf="prescriptionDetails.hight">
+                                                        <p>{{prescriptionDetails.hight}} cm</p>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-end"><label for="Weight">Weight: </label>
+                                                    </td>
+                                                    <td *ngIf="prescriptionDetails.weight">
+                                                        <p>{{prescriptionDetails.weight}} kgs</p>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <div class="detailsBox">
+                                            <table>
+                                                <tr>
+                                                    <td>
+                                                        <p><span>{{prescriptionDetails.pressureRange==='N'?'Normal':prescriptionDetails.pressureRange==='L'?'Low':prescriptionDetails.pressureRange==='H'?'High':''}}</span>
+                                                        </p>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td><label for="Pressure">Pressure: </label></td>
+                                                    <td>
+                                                        <p>{{prescriptionDetails.pressure}}
+                                                        </p>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td><label for="Pulse">Pulse:</label></td>
+                                                    <td>
+                                                        <p *ngIf="prescriptionDetails.pulse">
+                                                            {{prescriptionDetails.pulse}}</p>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <div class="detailsBox">
+                                            <table>
+                                                <tr>
+                                                    <td><label for="">Thyroid: </label></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <p>{{prescriptionDetails.thyroid==='N'?'Normal':prescriptionDetails.thyroid==='H'?'Hypo':prescriptionDetails.thyroid==='R'?'Hyper':''}}
+                                                        </p>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <div class="detailsBox">
+                                            <table>
+                                                <tr>
+                                                    <td><label for="">Diabetic: </label></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <p>{{prescriptionDetails.diabetics==='Y'?'Yes':prescriptionDetails.diabetics==='N'?'No':''}}
+                                                        </p>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <div class="detailsBox">
+                                            <div class="Pressure">
+                                                <div class="d-flex align-items-center">
+                                                    <p>{{prescriptionDetails.temperature}}°</p><b>F</b><i
+                                                        class="fa fa-thermometer-full"></i>
+                                                </div>
+                                                <div class="d-flex"><label for="Thyroid">Blood Group: </label>
+                                                    <p>B+</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <div class="detailsBox border-0">
+                                            <table>
+                                                <tr>
+                                                    <td class="text-end">
+                                                        <label for="Smoking">Smoking: </label>
+                                                    </td>
+                                                    <td>
+                                                        <p>{{prescriptionDetails.smoking==='Y'?'Yes':prescriptionDetails.smoking==='N'?'No':''}}
+                                                        </p>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-end">
+                                                        <label for="Alcohol">Alcohol: </label>
+                                                    </td>
+                                                    <td>
+                                                        <p>{{prescriptionDetails.alchol==='Y'?'Yes':prescriptionDetails.alchol==='N'?'No':''}}
+                                                        </p>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12 m-auto p-1">
+                                <div class="row m-auto pb-3">
+                                    <div class="col-md-6">
+                                        <div class="Symptoms">
+                                            <div class="d-flex mb-2 align-items-end">
+                                                <img src="../../../assets/images/Symptoms_Icon.png" alt="">
+                                                <span> Symptoms </span>
+                                            </div>
+                                            <div [innerHTML]="prescriptionDetails.symptoms" class="prints"
+                                                *ngIf="prescriptionDetails.symptoms"></div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="Symptoms">
+                                            <div class="d-flex mb-2 align-items-end">
+                                                <img src="../../../assets/images/Diagnosis_icon.png" alt="">
+                                                <span> Diagnosis</span>
+                                            </div>
+                                            <div [innerHTML]="prescriptionDetails.diagnosis" class="prints"
+                                                *ngIf="prescriptionDetails.diagnosis"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12 m-auto p-3 pt-0">
+                                <div class="Medicine">
+                                    <div class="d-flex justify-content-between">
+                                        <h5>Medicine</h5>
+                                        <a (click)="medicineAddToCart(medicineForm.value)" style="cursor: pointer;"
+                                            *ngIf="medicines().length && !isAnotherUser">+Add Medicine to your
+                                            Cart</a>
+                                    </div>
+                                    <form [formGroup]="medicineForm">
+                                        <div formArrayName="medicines">
+                                            <div *ngIf="medicines().length" class="">
+                                                <div class="d-flex justify-content-between align-items-center medicinesList mb-3"
+                                                    *ngFor="let medicine of medicines().controls; let medicineIndex= index">
+                                                    <div class="d-flex" formGroupName="{{medicineIndex}}">
+                                                        <div *ngIf="!isAnotherUser">
+                                                            <input type="checkbox"
+                                                                id="medicineCheckBox{{medicineIndex}}"
+                                                                formControlName="medicineCheck">
+                                                        </div>
+                                                        <div>
+                                                            <h2>{{prescriptionDetails.medicines[medicineIndex].medicineName}}
+                                                            </h2>
+                                                            <span>{{prescriptionDetails.medicines[medicineIndex].medicineComposition}}</span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="d-flex align-items-center">
+                                                        <h4
+                                                            *ngIf="!prescriptionDetails.medicines[medicineIndex].spcialNotes.length">
+                                                            {{prescriptionDetails.medicines[medicineIndex].dose?+prescriptionDetails.medicines[medicineIndex].dose>3?prescriptionDetails.medicines[medicineIndex].dose:+prescriptionDetails.medicines[medicineIndex].dose===1?'Once':+prescriptionDetails.medicines[medicineIndex].dose===2?'Twice':+prescriptionDetails.medicines[medicineIndex].dose.dose===3?'Thrice':'':''}}
+                                                            {{prescriptionDetails.medicines[medicineIndex].dose?.length===0?'':+prescriptionDetails.medicines[medicineIndex].dose>3?'Times':''}}
+                                                            {{prescriptionDetails.medicines[medicineIndex].frequency}}
+                                                            {{prescriptionDetails.medicines[medicineIndex].medicineTiming}}
+                                                        </h4>
+                                                        <h4
+                                                            *ngIf="prescriptionDetails.medicines[medicineIndex].spcialNotes.length">
+                                                            {{prescriptionDetails.medicines[medicineIndex].spcialNotes}}
+                                                        </h4>
+                                                        <div class="days"
+                                                            *ngIf="prescriptionDetails.medicines[medicineIndex].durationText">
+                                                            <p>{{prescriptionDetails.medicines[medicineIndex].durationText}}
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="NoDeta" *ngIf="!medicines().length">
+                                                <span>No Medicine is There</span>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                            <div class="col-md-12 m-auto p-3 pt-0">
+                                <div class="Medicine LaboratoryTest">
+                                    <div class="d-flex justify-content-between">
+                                        <h5>Laboratory Test </h5>
+                                        <a (click)="labTestAddToCart(labtestForm.value) " style="cursor: pointer;"
+                                            *ngIf="labtests().length && !isAnotherUser">+Add
+                                            Laboratory Test to your
+                                            Cart</a>
+                                    </div>
+                                    <form [formGroup]="labtestForm">
+                                        <div formArrayName="labtests">
+                                            <div *ngIf="labtests().length" class="">
+                                                <div class="d-flex justify-content-between align-items-center labtestsreport mb-3"
+                                                    *ngFor="let labtest of labtests().controls; let labtestIndex= index">
+                                                    <div class="d-flex" formGroupName="{{labtestIndex}}">
+                                                        <div *ngIf="!isAnotherUser">
+                                                            <input type="checkbox" name="labtestCheckBox"
+                                                                id="labTestCheck{{labtestIndex}}"
+                                                                formControlName="labTestCheck">
+                                                        </div>
+                                                        <div class="col-md-12">
+                                                            <h2>{{prescriptionDetails.labTeses[labtestIndex].labtest.test}}
+                                                            </h2>
+                                                            <div
+                                                                *ngIf="prescriptionDetails.labTeses[labtestIndex].labtest.childTests.length">
+                                                                <p>{{prescriptionDetails.labTeses[labtestIndex].labtest.displayText}}<span
+                                                                        *ngIf="prescriptionDetails.labTeses[labtestIndex].labtest.hidenItem > 0"
+                                                                        (click)="viewAllChild(labtestIndex)">+{{prescriptionDetails.labTeses[labtestIndex].labtest.hidenItem}}
+                                                                        More</span></p>
+                                                            </div>
+                                                            <div *ngIf="prescriptionDetails.labTeses[labtestIndex].labtest.openViewMoreTextPopup && prescriptionDetails.labTeses[labtestIndex].labtest.hidenItem > 0"
+                                                                id="viewMoreText">
+                                                                <app-view-more-text-component
+                                                                    (close)="viewMorTextPopupClose(labtestIndex)"
+                                                                    [viewMoreText]="prescriptionDetails.labTeses[labtestIndex].labtest.fullDisplayText"></app-view-more-text-component>
+                                                            </div>
+                                                            <div
+                                                                *ngIf="!prescriptionDetails.labTeses[labtestIndex].labtest.childTests.length">
+                                                                <p>{{prescriptionDetails.labTeses[labtestIndex].labtest.testDescription}}<span
+                                                                        *ngIf="prescriptionDetails.labTeses[labtestIndex].labtest.fullTestDescription.length > 0"
+                                                                        (click)="viewAllChild(labtestIndex)">View
+                                                                        More</span></p>
+                                                            </div>
+                                                            <div *ngIf="prescriptionDetails.labTeses[labtestIndex].labtest.openViewMoreTextPopup && prescriptionDetails.labTeses[labtestIndex].labtest.fullTestDescription.length > 0"
+                                                                id="viewMoreText">
+                                                                <app-view-more-text-component
+                                                                    (close)="viewMorTextPopupClose(labtestIndex)"
+                                                                    [viewMoreText]="prescriptionDetails.labTeses[labtestIndex].labtest.fullTestDescription"></app-view-more-text-component>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="d-flex align-items-center">
+                                                        <h4>After</h4>
+                                                        <div class="days">
+                                                            <p>{{prescriptionDetails.labTeses[labtestIndex].durationText}}
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="NoDeta" *ngIf="!labtests().length">
+                                                <span>No Laboratory Test is There</span>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                            <div class="col-md-12 m-auto p-3 pt-0">
+                                <div class="Other Medicine">
+                                    <div class="d-flex justify-content-between">
+                                        <h5>House Hold Item</h5>
+                                        <a (click)="houseHoldItemAddToCart(houseHoldItemForm.value) "
+                                            style="cursor: pointer;"
+                                            *ngIf="houseHoldItemList().length && !isAnotherUser">+Add
+                                            Other House Hold Item to your
+                                            Cart</a>
+                                    </div>
+                                    <form [formGroup]="houseHoldItemForm">
+                                        <div formArrayName="houseHoldItemList">
+                                            <div *ngIf="houseHoldItemList().length" class="">
+                                                <div class="d-flex justify-content-between align-items-center OtherList mb-3"
+                                                    *ngFor="let houseHoldItem of houseHoldItemList().controls; let houseHoldItemIndex= index">
+                                                    <div class="d-flex" formGroupName="{{houseHoldItemIndex}}">
+                                                        <div>
+                                                            <input type="checkbox" name="houseHoldItemCheckBox"
+                                                                id="houseHoldItemCheckBoxCheck{{houseHoldItemIndex}}"
+                                                                formControlName="houseHoldItemCheck">
+                                                        </div>
+                                                        <div class="col-md-12">
+                                                            <h2>{{prescriptionDetails.houseHoldItemList[houseHoldItemIndex].householdItemName}}
+                                                            </h2>
+                                                            <div>
+                                                                <p>{{prescriptionDetails.houseHoldItemList[houseHoldItemIndex].comments}}
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="NoDeta" *ngIf="!houseHoldItemList().length">
+                                                <span>No House hold item is There</span>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                            <div class="col-md-12 m-auto p-3 pt-4">
+                                <div class="NextVisit w-100">
+                                    <div class="row w-100 m-auto">
+                                        <div class="col-md-12 mt-4 Instructions">
+                                            <h3>Special Instructions</h3>
+                                            <p [innerHTML]="prescriptionDetails.prescriptionSpecialInstruction" *ngIf="prescriptionDetails.prescriptionSpecialInstruction"></p> 
+                                        </div>
+                                        <div class="col-md-9"></div>
+                                        <div class="col-md-3 Visit">
+                                            <h5>Next Visit</h5>
+                                            <span *ngIf="prescriptionDetails.nextVisitCount">After
+                                                {{prescriptionDetails.nextVisitCount}}
+                                                {{prescriptionDetails.nextVisitUnit==='D'?
+                                                prescriptionDetails.nextVisitCount>1?
+                                                'Days':'Day':prescriptionDetails.nextVisitUnit==='M'?
+                                                prescriptionDetails.nextVisitCount>1?
+                                                'Months':'Month':prescriptionDetails.nextVisitUnit==='Y'?
+                                                prescriptionDetails.nextVisitCount>1?
+                                                'Years':'Year':''}}
+                                                (Around {{prescriptionDetails.nextVisitDate |date:'d MMM,yyyy'}})</span>
+                                        </div> 
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="PrescriptionDisplay d-flex justify-content-center align-items-center"
+                    *ngIf="somthingWentWrong">
+                    <p style="color: red; margin-bottom: -192px;">Something went wrong, Please try after sometime</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

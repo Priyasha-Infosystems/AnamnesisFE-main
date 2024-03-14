@@ -1,0 +1,181 @@
+<header id="header">
+    <nav class="navbar navbar-expand-lg ">
+        <div class="container border-btm">
+            <div class=" d-flex align-items-center">
+                <a class="logo"> <img src="../../../assets/images/Anamnesis_new_logo_v22.png"></a>
+                <a class="logotitle"><small>A</small>namnesis
+                    <span>My Health Book</span>
+                </a>
+            </div>
+            <div class="d-flex align-items-center">
+                <i class="bi-wallet" (click)="navigateTo('home/wallet')" *ngIf="false"></i>
+                <div class="collapse navbar-collapse position-relative" id="navbarSupportedContent">
+                    <div class="position-relative">
+                        <div class="cartItemNo" *ngIf="cartItemCount>0 && !IsCartNotShow">
+                            <b>{{cartItemCount}}</b>
+                        </div>
+                        <button (click)="navigateTo('home/view-my-cart')" class="Cart-Btn" *ngIf="!IsCartNotShow"><img
+                                src="../../../assets/images/cart-icon.png" alt="">
+                        </button>
+                    </div>
+                    <button class="Cart-Btn d-flex align-items-center justify-content-center" *ngIf="!IsCartNotShow">
+                        <img src="../../../assets/images/wallet.png" alt="" (click)="openWalletDetailsPopup()">
+                        <!-- <i class="fa fa-rupee"><b>{{walletBalance}}</b></i> -->
+                    </button>
+                    <div class="position-relative">
+                        <div class="notifecationItemNo" *ngIf="notificationCount>0">
+                            <b>{{notificationCount}}</b>
+                        </div>
+                        <button class="Cart-Btn" (click)="OpenNotification()">
+                            <i class="bi-bell-fill"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent" style="flex-direction: row-reverse;">
+                    <div class="d-flex Profile">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                            <li class="nav-item dropdown" data-bs-toggle="modal" data-bs-target="#profileModal"
+                                (click)="openMenue()">
+                                <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button"
+                                    aria-expanded="false">
+                                    <img *ngIf="!isProfilePicFetched" [src]="profilePicUrl">
+                                    <img  *ngIf="isProfilePicFetched" [src]="profilePicDetails.fileName | getFile:profilePicDetails.fileType">
+                                    {{getFormattedName(userName)}}</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+</header>
+<div class="container">
+    <div class="modal fade" style="overflow: hidden" id="profileModal" tabindex="-1" aria-labelledby="profileModalLabel"
+        aria-hidden="true">
+        <div class="container position-relative">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="close" data-bs-dismiss="modal">
+                        <i class="bi-x-circle-fill"></i>
+                    </div>
+                    <div style="cursor: pointer;" data-bs-dismiss="modal" (click)="setProfileModal()"
+                        class="profileName d-flex align-items-center">
+                        <img *ngIf="!isProfilePicFetched" [src]="profilePicUrl">
+                        <img  *ngIf="isProfilePicFetched" [src]="profilePicDetails.fileName | getFile:profilePicDetails.fileType">
+                        <div class="name d-flex flex-column">
+                            <h2>{{displayName}}</h2>
+                        </div>
+                    </div>
+                    <div *ngFor="let avlMenue of activeProfileMenuList">
+                    <div *ngIf="avlMenue==='HOME'" class="listButton" data-bs-dismiss="modal"
+                        (click)="navigateTo('home/welcome')">
+                        <div class="icon Home"><i class="fa fa-home" aria-hidden="true"></i></div>
+                        <p>Home</p>
+                    </div>
+                    <div *ngIf="avlMenue==='MACT'" class="listButton" data-bs-dismiss="modal"
+                        (click)="navigateTo('home/my-profile')">
+                        <div class="icon"><i class="fa fa-user-circle-o"></i></div>
+                        <p>Manage Account</p>
+                    </div>
+                    <div *ngIf="avlMenue==='ADMN'" class="listButton" data-bs-dismiss="modal"
+                        (click)="navigateTo('administration/new-case-registration')">
+                        <div class="icon"><i class="fa fa-users"></i></div>
+                        <p>Administration</p>
+                    </div>
+                    <div *ngIf="avlMenue==='MHLR'" class="listButton" data-bs-dismiss="modal"
+                        (click)="navigateTo('menu-pages/my-health-report')">
+                        <div class="icon"><i class="fa fa-hospital-o"></i></div>
+                        <p>My Health Report</p>
+                    </div>
+                    <div *ngIf="avlMenue==='PTCN'" class="listButton" data-bs-dismiss="modal"
+                        (click)="navigateTo('menu-pages/patient-consultation')">
+                        <div class="icon"><i class="fa fa-hospital-o"></i></div>
+                        <p>Patient Consultation</p>
+                    </div>
+                    <div *ngIf="avlMenue==='SNCR'" class="openExtraMenu listButton" data-bs-dismiss="modal">
+                        <div class="icon">
+                            <img src="../../../assets/images/leaf.png" alt="">
+                        </div>
+                        <p>Senescence Care</p>
+                        <div class="extraMenu">
+                            <app-senescence-care (close)="closeSenescenceCare($event)"></app-senescence-care>
+                        </div>
+                    </div>
+                </div>
+                    
+                    <div class="listButton" (click)="logOut()" data-bs-dismiss="modal">
+                        <div class="icon"><i class="fa fa-sign-out"></i></div>
+                        <p>Log Out</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="myModal" class="modal" *ngIf="isShowProfileModal" tabindex="99" role="dialog">
+    <div class="container" *ngIf="isShowProfileModal">
+        <div class="modal-content">
+            <div class="close" (click)="setProfileModal()">
+                <i class="bi-x-circle-fill"></i>
+            </div>
+            <app-profile-pic [isProfilePicFetched]="isProfilePicFetched" [profilePicDetails]="profilePicDetails"
+                [displayName]="displayName"></app-profile-pic>
+        </div>
+    </div>
+</div>
+
+<div id="myModal" class="modal" *ngIf="WalletDetailsPopup" tabindex="99" role="dialog">
+    <div class="container">
+        <div class="modal-content" style="width: 40%;">
+
+            <app-wallet-details (close)="closeWalletDetailsPopup($event)"></app-wallet-details>
+        </div>
+    </div>
+</div>
+<!-- <div class="closeNotification " id="" *ngIf="notificationOpen" (click)="OpenNotification()">
+    <div class="container position-relative">
+        <div class="notificationOpen" *ngIf="notificationOpen" tabindex="99" [ngClass]="{'UP':DownNotification}">
+            <div class="close" (click)="OpenNotification()">
+                <i class="bi-x-circle-fill"></i>
+            </div>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem, laudantium labore nulla vel magnam enim
+                sint, illo provident laborum, dolore architecto incidunt!</p>
+        </div>
+        <div class="closeNotification"></div>
+    </div>
+    </div> 
+-->
+
+<div class="notification">
+    <div id="myModal" class="modal notificationModal" *ngIf="notificationOpen" tabindex="99" role="dialog">
+        <div class="container">
+            <div class="notificationOpen CollapsePrescribed" [ngClass]="{'UP':DownNotification}">
+                <ul class="m-d expand-list">
+                    <li data-md-content="200" class="Medicine"
+                        *ngFor="let notification of notifications let notificationIndex = index">
+                        <label name="tab" for="tab2" tabindex="-1" role="tab" class="tab_lab w-100">
+                            <h5>{{notification.notificationHeader}}</h5>
+                            <div class="Amount w-100">
+                                <div class="AmountPrice">
+                                    <label
+                                        for="Amount">{{notification.notificationDate?(dateFormat(notification.notificationDate)|
+                                        date:'dd-MMM-yyyy'):''}}</label><b>{{
+                                        timeFormat(notification.notificationTime)}}</b>
+                                </div>
+                            </div>
+                        </label>
+                        <input type="checkbox" id="tab2" tabindex="0" class="tabCollapse"
+                            (click)="notificationRead(notification.notificationID,notification.notificationReadIndicator)"><span
+                            class="open-close-icon"><i class="bi-caret-up-fill"></i></span>
+                        <div class="contentCollapse">
+                            <div class="contentOpen">
+                                <p [innerHTML]="notification.notificationDetails |addressLine" *ngIf="notification.notificationDetails"></p>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="closeNotification" *ngIf="notificationOpen" (click)="OpenNotification()"></div>
+        </div>
+    </div>
+</div>

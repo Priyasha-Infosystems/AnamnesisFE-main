@@ -1,0 +1,102 @@
+<footer id="footer" class="footer">
+    <div class="col-md-12" data-aos="fade-up">
+        <div class="Subscribe">
+            <div class="container d-flex" style="justify-content: space-between;">
+                <div class="content">
+                    <h3>Subscribe To Our Newsletter</h3>
+                    <p>Stay tuned for our latest updates and information, as well as events. Please subscribe to our
+                        newsletter by providing your email address Here.</p>
+                </div>
+                <div class="input">
+                    <form [formGroup]="subscritionForm" class="d-flex align-items-center">
+                        <input type="email" name="email" placeholder="Enter your mail...." formControlName="emailID">
+                        <div class="validation-div errorDiv">
+                            <app-validation-message [control]="subscritionForm.controls['emailID']"
+                                [messages]="errMsg.email">
+                            </app-validation-message>
+                        </div>
+                        <button type="submit" (click)="saveContactForm()">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer-content" data-aos="fade-up">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 footer-info">
+                    <a class="logo d-flex align-items-center">
+                        <img src="../../../../assets/images/Title-Logo-Anamnesis-White-Text-NoBackground.png" alt="">
+                    </a>
+                    <div>
+                        <div class="d-flex px-2 align-items-center">
+                            <a href="tel:+919147307561" style="color: #fff;"><i class="bi-telephone-fill"></i></a>
+                            <p>+91 9147307561</p>
+                        </div>
+                        <div class="d-flex px-2 align-items-center" >
+                            <a href = "mailto: connect.anamnesis@gmail.com" style="color: #fff;"><i class="bi-envelope-fill"></i></a>
+                            <p>connect.anamnesis@gmail.com</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-2 footer-links border-1">
+                    <h4>Company</h4>
+                    <ul>
+                        <!-- <li><a (click)="navigateTo('we-are')">About Us</a></li> -->
+                        <li><a (click)="navigateTo('about')" >Our Vision</a></li>
+                        <li><a (click)="navigateTo('blog')">Blog</a></li>
+                        <li><a (click)="navigateTo('login')">Partner With Anamnesis</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-md-2 footer-links border-1">
+                    <h4>Our Services</h4>
+                    <ul>
+                        <li><a (click)="navigateTo('login')">Your health book</a></li>
+                        <li><a (click)="navigateTo('login')">Order Medicine</a></li>
+                        <li><a (click)="navigateTo('login')">Book Your lab test</a></li>
+                        <li><a (click)="navigateTo('login')">Doctor`s consultation</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-md-2 footer-links border-1 d-none">
+                    <h4>Our policies</h4>
+                    <p (click)="openTermNCndPopup()">Data Privacy
+                        <!-- <br> Terms and Condition <br>Cancellation & Refund policy -->
+                    </p>
+                </div>
+
+
+                <div class="col-md-2 footer-links footer-contact border-1">
+                    <h4>Contact Us</h4>
+                    <div class="footerIcon">
+                        <a target="_blank" href="https://www.facebook.com/profile.php?id=100083805635661"><i
+                                class="fa fa-facebook-square"></i></a>
+                        <a target="_blank" href="https://www.youtube.com/@AnamnesisMyHealthBook"><i
+                                class="bi-youtube"></i></a>
+                        <a target="_blank" href="https://www.instagram.com/anamnesismyhealthbook/"><i
+                                class="bi-instagram"></i></a>
+                    </div>
+
+                </div>
+
+                <div class="col-md-2 p-0 footer-contact text-center border-1">
+                    <h4>Download App</h4>
+                    <img src="../../../../assets/images/img/palyStore.png" alt="" id="palyStore"
+                        (click)="navigateTo('login')">
+                </div>
+
+            </div>
+        </div>
+        <div class="footer-legal">
+            <div class="container">
+                <div class="copyright">
+                    © {{currentDate|date:'yyyy'}} <strong><span>priyashainfosystems</span></strong>. All Rights
+                    Reserved
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
