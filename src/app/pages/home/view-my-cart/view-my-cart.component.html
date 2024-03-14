@@ -72,17 +72,17 @@
             <h2>Choose an option</h2>
             <div>
               <div class="d-flex align-items-center my-2">
-                <input type="checkbox" name="PhonePe" id="PhonePe">
+                <input type="radio" name="Upi" id="PhonePe">
                 <label for="PhonePe">PhonePe</label>
               </div>
               <button class="CONTINUE" type="button" *ngIf="0">CONTINUE</button>
             </div>
             <div>
               <div class="d-flex align-items-center">
-                <input type="checkbox" name="Your_UPI_ID" id="Your_UPI_ID">
+                <input type="radio" name="Upi" id="Your_UPI_ID">
                 <label for="Your_UPI_ID">Your UPI ID</label>
               </div>
-              <div class="d-flex align-items-center my-2" *ngIf="0">
+              <div class="d-flex align-items-start my-2" *ngIf="1">
                 <div class="form-floating">
                   <input type="text" class="form-control" id="floatingInput" placeholder="name@example.com">
                   <label for="floatingInput">Enter UPI ID</label>
@@ -96,7 +96,7 @@
           <div class="WalletsBox" *ngIf="WalletsBox">
             <div>
               <div class="d-flex align-items-center">
-                <input type="checkbox" name="Phonepe_Wallet" id="Phonepe_Wallet">
+                <input type="radio" name="Phonepe_Wallet" id="Phonepe_Wallet">
                 <label for="Phonepe_Wallet">Phonepe Wallet</label>
               </div>
               <label for="" class="m-0 mt-2" style="opacity: 0.8;">Coming soon.</label>
@@ -141,40 +141,40 @@
             <div class="row">
               <div class="col-md-6">
                 <div class="d-flex align-items-center my-2">
-                  <input type="checkbox" name="PhonePe" id="PhonePe">
-                  <label for="PhonePe"><img
-                      src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNiIgaGVpZ2h0PSIyNiI+PGcgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj48cGF0aCBkPSJNLTctN2g0MHY0MEgtN3oiLz48cGF0aCBmaWxsPSIjRUQyMzJBIiBkPSJNMCAwaDI2djI2SDAiLz48cGF0aCBmaWxsPSIjRkZGIiBkPSJNNC42IDQuNmgxNi44djE2LjhINC42Ii8+PHBhdGggZmlsbD0iI0ZGRiIgZD0iTTExLjcgMGgyLjZ2MjZoLTIuNiIvPjxwYXRoIGZpbGw9IiNGRkYiIGQ9Ik0wIDExLjdoMjZ2Mi42SDAiLz48cGF0aCBmaWxsPSIjMDA0QzhGIiBkPSJNOSA5aDh2OEg5Ii8+PC9nPjwvc3ZnPg=="
+                  <input type="radio" name="NetBanking" id="HDFC">
+                  <label for="HDFC">
+                    <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNiIgaGVpZ2h0PSIyNiI+PGcgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj48cGF0aCBkPSJNLTctN2g0MHY0MEgtN3oiLz48cGF0aCBmaWxsPSIjRUQyMzJBIiBkPSJNMCAwaDI2djI2SDAiLz48cGF0aCBmaWxsPSIjRkZGIiBkPSJNNC42IDQuNmgxNi44djE2LjhINC42Ii8+PHBhdGggZmlsbD0iI0ZGRiIgZD0iTTExLjcgMGgyLjZ2MjZoLTIuNiIvPjxwYXRoIGZpbGw9IiNGRkYiIGQ9Ik0wIDExLjdoMjZ2Mi42SDAiLz48cGF0aCBmaWxsPSIjMDA0QzhGIiBkPSJNOSA5aDh2OEg5Ii8+PC9nPjwvc3ZnPg=="
                       class="R_IlUx">HDFC Bank</label>
                 </div>
               </div>
               <div class="col-md-6">
                 <div class="d-flex align-items-center my-2">
-                  <input type="checkbox" name="PhonePe" id="PhonePe">
-                  <label for="PhonePe"><img
+                  <input type="radio" name="NetBanking" id="ICICI">
+                  <label for="ICICI"><img
                       src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNiIgaGVpZ2h0PSIyOCI+PGcgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj48cGF0aCBkPSJNLTctNmg0MHY0MEgtN3oiLz48cGF0aCBmaWxsPSIjRjk5RDI3IiBkPSJNNy41IDZjNi4zLTYuMiAxNC04IDE3LTMuNiAzIDQuMy40IDEzLTYgMTkuMi02LjIgNi4zLTE0IDgtMTcgMy42LTMtNC4zLS4zLTEzIDYtMTkuMiIvPjxwYXRoIGZpbGw9IiNCMDJBMzAiIGQ9Ik0xMS43IDIuN2MtLjcuNS0xLjQgMS0yIDEuOC01LjYgNS41LTggMTMtNS4yIDE2LjcgMi44IDMuOCA5LjYgMi40IDE1LjMtMyAzLTMgNS02LjUgNi05LjcgMC0yLjQtLjItNC41LTEuMy02QzIyLTEgMTctLjUgMTEuNyAyLjUiLz48cGF0aCBmaWxsPSIjRkZGIiBkPSJNMTkuMyAyLjVjLjcuNy4zIDIuNC0xIDMuNi0xLjMgMS43LTMgMi0zLjYgMS0uOC0uMy0uMy0yIDEtMy4yIDEuMi0xLjMgMy0xLjcgMy42LTF6bS00LjUgMjIuMmMtMyAyLjItNiAzLjMtOSAzIDEuMyAwIDIuMy0xLjQgMy0zLjMgMS0yIDEuNS0zLjcgMi01LjQuNS0yLjYuNS00LjUuMi01LS41LS42LTEuNy0uNC0zIC40LS42LjMtMS40IDAtLjQtMSAxLTEuMyA1LTQuMiA2LjMtNC42IDEuMi0uNSAzIDAgMi4zIDEuOC0uNCAxLjMtNS44IDE1LjYtMS44IDE0eiIvPjwvZz48L3N2Zz4="
                       class="R_IlUx">ICICI Bank</label>
                 </div>
               </div>
               <div class="col-md-6">
                 <div class="d-flex align-items-center my-2">
-                  <input type="checkbox" name="PhonePe" id="PhonePe">
-                  <label for="PhonePe"><img
+                  <input type="radio" name="NetBanking" id="State">
+                  <label for="State"><img
                       src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNyIgaGVpZ2h0PSIyNyI+PGcgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj48cGF0aCBkPSJNLTctN2g0MHY0MEgtN3oiLz48cGF0aCBmaWxsPSIjMTZEIiBkPSJNMTIuNiAyN0M1LjQgMjYuNS0uMiAyMC40IDAgMTMgLjIgNiA2LjIgMCAxMy41IDBTMjYuOCA1LjggMjcgMTNjLjIgNy40LTUuNCAxMy41LTEyLjYgMTRWMTZjMS0uNSAxLjctMS42IDEuNS0yLjgtLjQtMS4yLTEuNC0yLTIuNi0ycy0yLjIuOC0yLjQgMmMwIDEuMi41IDIuMyAxLjYgMi43Ii8+PC9nPjwvc3ZnPg=="
                       class="R_IlUx">State Bank of India</label>
                 </div>
               </div>
               <div class="col-md-6">
                 <div class="d-flex align-items-center my-2">
-                  <input type="checkbox" name="PhonePe" id="PhonePe">
-                  <label for="PhonePe"><img
+                  <input type="radio" name="NetBanking" id="Axis">
+                  <label for="Axis"><img
                       src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyOCIgaGVpZ2h0PSIyNCI+PGcgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj48cGF0aCBkPSJNLTYtOGg0MHY0MEgtNnoiLz48cGF0aCBmaWxsPSIjQkM0MTcwIiBkPSJNMjggMjRoLTguN0wxNCAxNWg4LjdtLTQuNC03LjZMOC43IDI0SDBMMTQgMCIvPjwvZz48L3N2Zz4="
                       class="R_IlUx">Axis Bank</label>
                 </div>
               </div>
               <div class="col-md-6">
                 <div class="d-flex align-items-center my-2">
-                  <input type="checkbox" name="PhonePe" id="PhonePe">
-                  <label for="PhonePe"><img
+                  <input type="radio" name="NetBanking" id="Kotak">
+                  <label for="Kotak"><img
                       src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyOCIgaGVpZ2h0PSIyNCIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiPjxkZWZzPjxwYXRoIGlkPSJhIiBkPSJNMjggMEgwdjIzLjhoMjhWMHoiLz48L2RlZnM+PGcgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj48cGF0aCBkPSJNLTYtOGg0MHY0MEgtNnoiLz48bWFzayBpZD0iYiIgZmlsbD0iI2ZmZiI+PHVzZSB4bGluazpocmVmPSIjYSIvPjwvbWFzaz48cGF0aCBmaWxsPSIjMDAzODc0IiBkPSJNMCAxMkMwIDUuMiA2LjMgMCAxNCAwczE0IDUuMyAxNCAxMmMwIDYuNS02LjMgMTEuOC0xNCAxMS44cy0xNC01LjMtMTQtMTIiIG1hc2s9InVybCgjYikiLz48cGF0aCBmaWxsPSIjRUQxQzI0IiBkPSJNMTIuMyAzLjhsMy4yLTFWMjBsLTMuMiAxLjIiIG1hc2s9InVybCgjYikiLz48cGF0aCBmaWxsPSIjRkZGIiBkPSJNMTQuMiAxNC43QzEyLjggMTYuMyAxMS40IDE4IDkgMThjLTMuNyAwLTUuNC0zLjQtNS40LTYuMyAwLTIuOCAxLjMtNiA0LjgtNiAxLjUgMCAzIDEgNCAyVjEwYy0xLS43LTIuNS0xLTMuNi0xLTIuMiAwLTQuMi43LTQgMyAwIDEuNCAxLjQgMi40IDMgMi40IDIuMiAwIDMuNi0yIDQuNy0zLjZMMTQgOWMxLTEuNiAyLjYtMy4yIDUtMy4yIDMgMCA0LjcgMi40IDUuMiA1SDIzYy0uNS0xLTEuNS0xLjQtMi42LTEuNC0yLjMgMC0zLjggMi01IDMuN2wtMS4yIDJ6TTI0LjUgMTNjLS4zIDIuNi0xLjcgNS00LjggNS0xLjggMC0zLjItMS00LjItMi42di0xLjdjMS4zLjYgMi40IDEuMiAzLjggMS4yIDEuNyAwIDMuMi0xIDMuOC0yaDJ6IiBtYXNrPSJ1cmwoI2IpIi8+PC9nPjwvc3ZnPg=="
                       class="R_IlUx">Kotak Mahindra Bank</label>
                 </div>
@@ -237,7 +237,7 @@
                 <option value="ZOROACOPBANK">The Zoroastrian Co-Operative Bank</option>
               </select>
               <button class="PAY w-50 m-0 mt-3" tabindex="2" type="button">PAY ₹31,892</button>
-              <label for="" class="m-0 p-0">This instrument has low success, use UPI or cards for better experience</label>
+              <label for="" class="m-0 p-0 mt-2" style="opacity: 0.8;">This instrument has low success, use UPI or cards for better experience</label>
             </div>
           </div>
         </div>
