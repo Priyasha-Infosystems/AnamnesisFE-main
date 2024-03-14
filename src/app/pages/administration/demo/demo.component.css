@@ -297,4 +297,96 @@ p {
     background: #be79e7;
     min-height: 200px;
     border-radius: 3px;
+    padding: 2px 10px;
+}
+
+.box td {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 110%;
+    color: #0c0c0c;
+    padding: 9px 0px;
+}
+
+.box p {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 110%;
+    color: #0c0c0c;
+    margin: 0;
+    padding: 13.49px 0px;
+}
+
+.DataBox {
+    background: #ebebeb;
+    padding: 10px 10px;
+    margin-top: 20px;
+    border-radius: 3px;
+}
+
+.DataBox h2 {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 110%;
+    color: #0c0c0c;
+    margin: 0;
+}
+
+.DataBox button {
+    background: #adadad;
+    border: none;
+    border-radius: 2px;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 110%;
+    color: #303030;
+    padding: 8px 15px;
+}
+
+.DataBox p,
+.DataBox span {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 110%;
+    color: #0c0c0c;
+    margin: 0;
+}
+
+.DataBox span {
+    color: #0669bb !important;
+    font-weight: 700 !important;
+}
+
+.details {
+    background: #d5d5d5;
+    margin: 10px 0px;
+    padding: 10px 10px;
+}
+
+table {
+    width: 100%;
+    table-layout: fixed;
+}
+
+td:first-child {
+    width: 40%;
+}
+
+td:nth-child(2) {
+    width: 10%;
+}
+
+td:last-child {
+    width: 40%;
+    text-align: center;
 }
